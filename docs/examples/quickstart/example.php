@@ -37,11 +37,9 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 try
 {
-	$a = new ClientImpl('localhost', '9999', 'a', 'a', 10, 1);
+	$a = new ClientImpl('localhost', '9999', 'admsin', 'aa22bbcc', 10, 1);
 	$a->open();
 	$a->close();
-	$b = new LoginAction('admin', 'aa22bbcc');
-	var_dump($b->serialize());
 } catch (Exception $e) {
 	echo $e->getMessage() . "\n";
 }

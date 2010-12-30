@@ -13,8 +13,12 @@
  */
 namespace AMI\Client\Impl;
 
+use AMI\Message\Action\LoginAction;
+
 use AMI\Message\OutgoingMessage;
+use AMI\Message\Message;
 use AMI\Message\IncomingMessage;
+use AMI\Message\Response\ResponseMessage;
 use AMI\Client\Exception\ClientException;
 use AMI\Client\IClient;
 
@@ -69,6 +73,8 @@ class ClientImpl implements IClient
 	private $_socket;
 	private $_context;
 	private $_eventListeners;
+	private $_outgoingQueue;
+	private $_incomingQueue;
 
 	/**
 	 * Opens a tcp connection to ami.
@@ -88,17 +94,54 @@ class ClientImpl implements IClient
 			throw new ClientException('Error connecting to ami: ' . $errstr);
 		}
 		stream_set_timeout($this->_socket, 0, $this->_rTimeout * 1000);
+	    $msg = new LoginAction($this->_user, $this->_pass);
+	    $id = $this->getLine();
+	    if (strstr($id, 'Asterisk Call Manager/') === false) {
+	        throw new ClientException('Unknown peer. Is this an ami?');
+	    }
+	    $response = $this->send($msg);
+	    if (!$response->isSuccess()) {
+	        throw new ClientException('Could not connect: ' . $response->getMessage());
+	    }
 	}
 
-	/**
-	 * Perform login.
-	 *
-	 * @return void
-	 */
-	private function _login()
+	protected function getLine()
 	{
+        return stream_get_line($this->_socket, 1024, Message::EOL);
 	}
 
+	protected function getMessage()
+	{
+        return stream_get_line($this->_socket, 1024, Message::EOM);
+	}
+	
+	public function process()
+	{
+	    $aMsg = $this->getMessage();
+	    if ($aMsg == false) {
+	        return;
+	    }
+	    $response = new ResponseMessage($aMsg);
+	    $this->_incomingQueue[] = $response;
+	}
+	
+	protected function getRelated(OutgoingMessage $message)
+	{
+	    $id = $message->getActionID('ActionID');
+	    $result = false;
+	    $total = count($this->_incomingQueue);
+	    for ($i = 0; $i < $total; $i++) {
+	        $candidate = $this->_incomingQueue[$i];
+	        if ($candidate instanceof ResponseMessage) {
+    	        if ($candidate->getActionID('ActionID') === $id) {
+    	            $result = $candidate;
+    	            unset($this->_incomingQueue[$i]);
+    	        }
+	        }
+	    }
+	    return $result;
+	}
+	
 	/**
 	 * Sends a message to ami.
 	 *
@@ -108,7 +151,19 @@ class ClientImpl implements IClient
 	 */
 	protected function send(OutgoingMessage $message)
 	{
-	    throw ClientException('Could not send message');
+	    
+	    $length = strlen($message->serialize());
+	    if (fwrite($this->_socket, $message->serialize()) < $length) {
+    	    throw new ClientException('Could not send message');
+	    }
+	    while(true) {
+	        $this->process();
+	        $response = $this->getRelated($message);
+	        if (!empty($response)) {
+	            return $response;
+	        }
+	        usleep(1000); // 1ms delay
+	    }
 	}
 	
 	/**
