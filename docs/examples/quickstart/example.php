@@ -37,7 +37,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 try
 {
-	$a = new ClientImpl('localhost', '9999', 'admsin', 'aa22bbcc', 10, 1);
+	$a = new ClientImpl($argv[1], $argv[2], $argv[3], $argv[4], 60, 60);
 	$a->open();
 	$a->close();
 } catch (Exception $e) {

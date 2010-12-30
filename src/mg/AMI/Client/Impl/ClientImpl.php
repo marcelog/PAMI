@@ -19,6 +19,7 @@ use AMI\Message\OutgoingMessage;
 use AMI\Message\Message;
 use AMI\Message\IncomingMessage;
 use AMI\Message\Response\ResponseMessage;
+use AMI\Message\Event\EventMessage;
 use AMI\Client\Exception\ClientException;
 use AMI\Client\IClient;
 
@@ -96,8 +97,8 @@ class ClientImpl implements IClient
 		stream_set_timeout($this->_socket, 0, $this->_rTimeout * 1000);
 	    $msg = new LoginAction($this->_user, $this->_pass);
 	    $id = $this->getLine();
-	    if (strstr($id, 'Asterisk Call Manager/') === false) {
-	        throw new ClientException('Unknown peer. Is this an ami?');
+	    if (strstr($id, 'Asterisk') === false) {
+	        throw new ClientException('Unknown peer. Is this an ami?: ' . $id);
 	    }
 	    $response = $this->send($msg);
 	    if (!$response->isSuccess()) {
@@ -121,7 +122,13 @@ class ClientImpl implements IClient
 	    if ($aMsg == false) {
 	        return;
 	    }
-	    $response = new ResponseMessage($aMsg);
+	    if (strstr($aMsg, 'Response:') !== false) {
+	        $response = new ResponseMessage($aMsg);
+	    } else {
+	        foreach ($this->_eventListeners as $listener) {
+	            $listener->handle(EventMessage($aMsg));
+	        }
+	    }
 	    $this->_incomingQueue[] = $response;
 	}
 	
