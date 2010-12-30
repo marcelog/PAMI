@@ -86,6 +86,54 @@ abstract class Message
 	}
 
 	/**
+	 * Adds a variable to this message.
+	 *
+	 * @param string $key   Key name (i.e: Action).
+	 * @param string $value Key value.
+	 * 
+	 * @return void
+	 */
+	protected function setKey($key, $value)
+	{
+		$this->_keys[$key] = $value;
+	}
+
+	/**
+	 * Returns a key by name.
+	 *
+	 * @param string $key Key name (i.e: Action).
+	 * 
+	 * @return string
+	 */
+	protected function getKey($key)
+	{
+		if (!isset($this->_keys[$key])) {
+		    return null;
+		}
+		return $this->_keys[$key];
+	}
+
+	/**
+	 * Returns all keys for this message.
+	 *
+	 * @return string[]
+	 */
+	protected function getKeys()
+	{
+	    return $this->_keys;
+	}
+
+	/**
+	 * Returns all variabels for this message.
+	 *
+	 * @return string[]
+	 */
+	protected function getVariables()
+	{
+	    return $this->_variables;
+	}
+
+	/**
 	 * Returns the end of line token appended to the end of a given line.
 	 *
 	 * @return string
@@ -102,9 +150,28 @@ abstract class Message
 	 */
 	protected function finishMessage($message)
 	{
-		return $message . self::$EOL . self::$EOL;
+		return $message . self::EOL . self::EOL;
 	}
 
+	/**
+	 * Gives a string representation for this message, ready to be sent to
+	 * ami.
+	 * 
+	 * @return string
+	 */
+	public function serialize()
+	{
+	    $result = array();
+	    foreach ($this->getKeys() as $k => $v) {
+	        $result[] = $k . ': ' . $v;
+	    }
+	    foreach ($this->getVariables() as $k => $v) {
+	        $result[] = 'Variable: ' . $k . '=' . $v;
+	    }
+	    $mStr = $this->finishMessage(implode(self::EOL, $result));
+	    return $mStr;
+	}
+	
 	/**
 	 * Constructor.
 	 *
@@ -113,5 +180,7 @@ abstract class Message
 	public function __construct()
 	{
 		$this->_lines = array();
+		$this->_variables = array();
+		$this->_keys = array();
 	}
 }

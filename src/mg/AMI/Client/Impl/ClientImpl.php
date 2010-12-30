@@ -13,6 +13,8 @@
  */
 namespace AMI\Client\Impl;
 
+use AMI\Message\OutgoingMessage;
+use AMI\Message\IncomingMessage;
 use AMI\Client\Exception\ClientException;
 use AMI\Client\IClient;
 
@@ -52,7 +54,17 @@ class ClientImpl implements IClient
      * @var string
      */
 	private $_pass;
+	
+	/**
+	 * Connection timeout, in seconds.
+	 * @var integer
+	 */
 	private $_cTimeout;
+	
+	/**
+	 * R/W timeout, in milliseconds.
+	 * @var integer
+	 */
 	private $_rTimeout;
 	private $_socket;
 	private $_context;
@@ -87,6 +99,28 @@ class ClientImpl implements IClient
 	{
 	}
 
+	/**
+	 * Sends a message to ami.
+	 *
+	 * @param OutgoingMessage $message Message to send.
+	 * 
+	 * @throws ClientException
+	 */
+	protected function send(OutgoingMessage $message)
+	{
+	    throw ClientException('Could not send message');
+	}
+	
+	/**
+	 * Receives a message from ami.
+	 *
+	 * @return IncomingMessage
+	 */
+	protected function read()
+	{
+	    return false;
+	}
+	
 	/**
 	 * Closes the connection to ami.
 	 *
