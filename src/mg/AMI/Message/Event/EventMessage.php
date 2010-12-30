@@ -11,6 +11,11 @@ class EventMessage extends IncomingMessage
         return $this->getVariable('ActionID');
     }
     
+    public function getName()
+    {
+        return $this->getKey('Event');
+    }
+    
     public function __construct($rawContent)
     {
         parent::__construct($rawContent);
