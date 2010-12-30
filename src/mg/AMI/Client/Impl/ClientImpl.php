@@ -79,10 +79,35 @@ class ClientImpl implements IClient
 	 * @var integer
 	 */
 	private $_rTimeout;
+	
+	/**
+	 * Our stream socket resource.
+	 * @var resource
+	 */
 	private $_socket;
+
+	/**
+	 * Our stream context resource.
+	 * @var resource
+	 */
 	private $_context;
+
+	/**
+	 * Our event listeners
+	 * @var IEventListener[]
+	 */
 	private $_eventListeners;
+	
+	/**
+	 * The send queue
+	 * @var OutgoingMessage[]
+	 */
 	private $_outgoingQueue;
+	
+	/**
+	 * The receiving queue.
+	 * @var IncomingMessage[]
+	 */
 	private $_incomingQueue;
 
 	/**
@@ -102,7 +127,7 @@ class ClientImpl implements IClient
 		if ($this->_socket === false) {
 			throw new ClientException('Error connecting to ami: ' . $errstr);
 		}
-		stream_set_timeout($this->_socket, 0, $this->_rTimeout * 1000);
+		//stream_set_timeout($this->_socket, 0, $this->_rTimeout * 1000);
 	    $msg = new LoginAction($this->_user, $this->_pass);
 	    $id = $this->getLine();
 	    if (strstr($id, 'Asterisk') === false) {
@@ -114,21 +139,47 @@ class ClientImpl implements IClient
 	    }
 	}
 
+	/**
+	 * Registers the given listener so it can receive events.
+	 *
+	 * @param IEventListener $listener
+	 * 
+	 * @return void
+	 */
 	public function registerEventListener(IEventListener $listener)
 	{
 	    $this->_eventListeners[] = $listener;
 	}
 	
+	/**
+	 * Reads a line over the stream until EOL.
+	 *
+	 * @return string
+	 */
 	protected function getLine()
 	{
         return stream_get_line($this->_socket, 1024, Message::EOL);
 	}
 
+	/**
+	 * Reads a complete message over the stream until EOM.
+	 *
+	 * @return string
+	 */
 	protected function getMessage()
 	{
         return stream_get_line($this->_socket, 1024, Message::EOM);
 	}
-	
+
+	/**
+	 * Main processing loop. Also called from send(), you should call this in
+	 * your own application in order to continue reading events and responses
+	 * from ami.
+	 * 
+	 * @todo not suitable for multithreaded applications.
+	 * 
+	 * @return void
+	 */
 	public function process()
 	{
 	    $aMsg = $this->getMessage();
@@ -146,6 +197,14 @@ class ClientImpl implements IClient
 	    }
 	}
 	
+	/**
+	 * Returns a message (response) related to the given message. This uses
+	 * the ActionID tag (key).
+	 *  
+	 * @todo not suitable for multithreaded applications.
+	 * 
+	 * @return IncomingMessage
+	 */
 	protected function getRelated(OutgoingMessage $message)
 	{
 	    $id = $message->getActionID('ActionID');
@@ -168,15 +227,19 @@ class ClientImpl implements IClient
 	 *
 	 * @param OutgoingMessage $message Message to send.
 	 * 
+	 * @see ClientImpl::send()
 	 * @throws ClientException
+	 * @return void
 	 */
 	protected function send(OutgoingMessage $message)
 	{
-	    
 	    $length = strlen($message->serialize());
 	    if (fwrite($this->_socket, $message->serialize()) < $length) {
     	    throw new ClientException('Could not send message');
 	    }
+	    /**
+	     * @todo this should not be an infinite loop. Check read timeout.
+	     */
 	    while(true) {
 	        $this->process();
 	        $response = $this->getRelated($message);
