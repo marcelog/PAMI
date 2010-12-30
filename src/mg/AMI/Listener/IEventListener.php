@@ -1,7 +1,7 @@
 <?php
 namespace AMI\Listener;
 
-use AMI\Message\EventMessage;
+use AMI\Message\Event\EventMessage;
 
 interface IEventListener
 {

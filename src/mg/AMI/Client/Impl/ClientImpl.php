@@ -13,13 +13,15 @@
  */
 namespace AMI\Client\Impl;
 
-use AMI\Message\Action\LoginAction;
-
 use AMI\Message\OutgoingMessage;
 use AMI\Message\Message;
 use AMI\Message\IncomingMessage;
+use AMI\Message\Action\LoginAction;
 use AMI\Message\Response\ResponseMessage;
 use AMI\Message\Event\EventMessage;
+use AMI\Message\Event\Factory\IEventFactory;
+use AMI\Message\Event\Factory\Impl\EventFactoryImpl;
+use AMI\Listener\IEventListener;
 use AMI\Client\Exception\ClientException;
 use AMI\Client\IClient;
 
@@ -67,6 +69,12 @@ class ClientImpl implements IClient
 	private $_cTimeout;
 	
 	/**
+	 * Event factory.
+	 * @var IEventFactory
+	 */
+	private $_eventFactory;
+	
+	/**
 	 * R/W timeout, in milliseconds.
 	 * @var integer
 	 */
@@ -106,6 +114,11 @@ class ClientImpl implements IClient
 	    }
 	}
 
+	public function registerEventListener(IEventListener $listener)
+	{
+	    $this->_eventListeners[] = $listener;
+	}
+	
 	protected function getLine()
 	{
         return stream_get_line($this->_socket, 1024, Message::EOL);
@@ -124,12 +137,13 @@ class ClientImpl implements IClient
 	    }
 	    if (strstr($aMsg, 'Response:') !== false) {
 	        $response = new ResponseMessage($aMsg);
+	        $this->_incomingQueue[] = $response;
 	    } else {
 	        foreach ($this->_eventListeners as $listener) {
-	            $listener->handle(EventMessage($aMsg));
+	            $event = $this->_eventFactory->createFromRaw($aMsg);
+	            $listener->handle($event);
 	        }
 	    }
-	    $this->_incomingQueue[] = $response;
 	}
 	
 	protected function getRelated(OutgoingMessage $message)
@@ -213,5 +227,7 @@ class ClientImpl implements IClient
 		$this->_pass = $pass;
 		$this->_cTimeout = $cTimeout;
 		$this->_rTimeout = $rTimeout;
+		$this->_eventListeners = array();
+		$this->_eventFactory = new EventFactoryImpl();
 	}
 }

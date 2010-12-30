@@ -29,16 +29,32 @@ ini_set(
 require_once 'AMI/Autoloader/Autoloader.php'; // Include ding autoloader.
 Autoloader::register(); // Call autoloader register for ding autoloader.
 use AMI\Client\Impl\ClientImpl;
-use AMI\Message\Action\LoginAction;
+use AMI\Listener\IEventListener;
+use AMI\Message\Event\EventMessage;
+
+class A implements IEventListener
+{
+    public function handle(EventMessage $event)
+    {
+        var_dump($event);
+    }
+}
 ////////////////////////////////////////////////////////////////////////////////
 // Code STARTS.
 ////////////////////////////////////////////////////////////////////////////////
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+
 try
 {
 	$a = new ClientImpl($argv[1], $argv[2], $argv[3], $argv[4], 60, 60);
+	$a->registerEventListener(new A());
 	$a->open();
+	while(true)
+	{
+	    $a->process();
+	    usleep(1000); // 1ms delay
+	}
 	$a->close();
 } catch (Exception $e) {
 	echo $e->getMessage() . "\n";

@@ -4,7 +4,7 @@ namespace AMI\Message\Event;
 
 use AMI\Message\IncomingMessage;
 
-abstract class EventMessage extends IncomingMessage
+class EventMessage extends IncomingMessage
 {
     public function getActionID()
     {
