@@ -1,8 +1,28 @@
 <?php
+/**
+ * A generic ami message, in-or-outbound.
+ *
+ * PHP Version 5
+ *
+ * @category Ami
+ * @package  Message
+ * @author   Marcelo Gornstein <marcelog@gmail.com>
+ * @license  http://www.noneyet.ar/ Apache License 2.0
+ * @version  SVN: $Id$
+ * @link     http://www.noneyet.ar/
+ */
 namespace AMI\Message;
 
 /**
- * This is a generic ami message.
+ * A generic ami message, in-or-outbound.
+ *
+ * PHP Version 5
+ *
+ * @category Ami
+ * @package  Message
+ * @author   Marcelo Gornstein <marcelog@gmail.com>
+ * @license  http://www.noneyet.ar/ Apache License 2.0
+ * @link     http://www.noneyet.ar/
  */
 abstract class Message
 {
@@ -37,11 +57,26 @@ abstract class Message
 	 */
 	private $_keys;
 
+	/**
+	 * Adds a variable to this message.
+	 *
+	 * @param string $key   Variable name.
+	 * @param string $value Variable value.
+	 * 
+	 * @return void
+	 */
 	protected function setVariable($key, $value)
 	{
 		$this->_variables[$key] = $value;
 	}
 
+	/**
+	 * Returns a variable by name.
+	 *
+	 * @param string $key Variable name.
+	 * 
+	 * @return string
+	 */
 	protected function getVariable($key)
 	{
 		if (!isset($this->_variables[$key])) {
