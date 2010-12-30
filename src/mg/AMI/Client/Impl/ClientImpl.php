@@ -1,6 +1,6 @@
 <?php
 /**
- * TCP Client for AMI.
+ * TCP Client implementation for AMI.
  *
  * PHP Version 5
  *
@@ -11,12 +11,13 @@
  * @version  SVN: $Id$
  * @link     http://www.noneyet.ar/
  */
-namespace AMI\Client;
+namespace AMI\Client\Impl;
 
 use AMI\Client\Exception\ClientException;
+use AMI\Client\IClient;
 
 /**
- * TCP Client for AMI.
+ * TCP Client implementation for AMI.
  *
  * PHP Version 5
  *
@@ -26,7 +27,7 @@ use AMI\Client\Exception\ClientException;
  * @license  http://www.noneyet.ar/ Apache License 2.0
  * @link     http://www.noneyet.ar/
  */
-class Client
+class ClientImpl implements IClient
 {
     /**
      * Hostname

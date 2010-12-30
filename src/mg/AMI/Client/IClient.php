@@ -1,6 +1,6 @@
 <?php
 /**
- * Connection/Protocol exception.
+ * Interface for an ami client.
  *
  * PHP Version 5
  *
@@ -11,12 +11,10 @@
  * @version  SVN: $Id$
  * @link     http://www.noneyet.ar/
  */
-namespace AMI\Client\Exception;
-
-use AMI\Exception\AMIException;
+namespace AMI\Client;
 
 /**
- * Connection/Protocol exception.
+ * Interface for an ami client.
  *
  * PHP Version 5
  *
@@ -24,9 +22,23 @@ use AMI\Exception\AMIException;
  * @package  Client
  * @author   Marcelo Gornstein <marcelog@gmail.com>
  * @license  http://www.noneyet.ar/ Apache License 2.0
+ * @version  SVN: $Id$
  * @link     http://www.noneyet.ar/
  */
-class ClientException extends AMIException
+interface IClient
 {
+	/**
+	 * Opens a tcp connection to ami.
+	 *
+	 * @throws ClientException
+	 * @return void
+	 */
+	public function open();
 
+	/**
+	 * Closes the connection to ami.
+	 *
+	 * @return void
+	 */
+	public function close();
 }

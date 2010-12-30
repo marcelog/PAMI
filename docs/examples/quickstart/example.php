@@ -15,13 +15,13 @@ ini_set(
 ////////////////////////////////////////////////////////////////////////////////
 require_once 'AMI/Autoloader/Autoloader.php'; // Include ding autoloader.
 Autoloader::register(); // Call autoloader register for ding autoloader.
-use AMI\Client\Client;
+use AMI\Client\Impl\ClientImpl;
 
-error_reporting(0);
-ini_set('display_errors', 0);
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 try
 {
-	$a = new Client('localhost', '9999', 'a', 'a', 10, 1);
+	$a = new ClientImpl('localhost', '9999', 'a', 'a', 10, 1);
 	$a->open();
 	$a->close();
 } catch (Exception $e) {
