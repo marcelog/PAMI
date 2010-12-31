@@ -3,7 +3,7 @@ namespace AMI\Message\Event;
 
 use AMI\Message\Event\EventMessage;
 
-class NewChannelEvent extends EventMessage
+class NewstateEvent extends EventMessage
 {
     /**
      * Returns key: 'Privilege'.
@@ -65,16 +65,6 @@ class NewChannelEvent extends EventMessage
         return $this->getKey('CallerIDName');
     }
 
-    /**
-     * Returns key: 'AccountCode'.
-     *
-     * @return string
-     */
-    public function getAccountCode()
-    {
-        return $this->getKey('AccountCode');
-    }
-    
     /**
      * Returns key: 'UniqueID'.
      *

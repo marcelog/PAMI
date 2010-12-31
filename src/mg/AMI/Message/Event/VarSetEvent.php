@@ -3,7 +3,7 @@ namespace AMI\Message\Event;
 
 use AMI\Message\Event\EventMessage;
 
-class NewExtenEvent extends EventMessage
+class VarSetEvent extends EventMessage
 {
     /**
      * Returns key: 'Privilege'.
@@ -24,57 +24,27 @@ class NewExtenEvent extends EventMessage
     {
         return $this->getKey('Channel');
     }
-
+    
     /**
-     * Returns key: 'Exten'.
+     * Returns key: 'Variable'.
      *
      * @return string
      */
-    public function getExtension()
+    public function getVariable()
     {
-        return $this->getKey('Exten');
-    }
-
-    /**
-     * Returns key: 'Context'.
-     *
-     * @return string
-     */
-    public function getContext()
-    {
-        return $this->getKey('Context');
-    }
-
-    /**
-     * Returns key: 'Priority'.
-     *
-     * @return string
-     */
-    public function getPriority()
-    {
-        return $this->getKey('Priority');
-    }
-
-    /**
-     * Returns key: 'Application'.
-     *
-     * @return string
-     */
-    public function getApplication()
-    {
-        return $this->getKey('Application');
-    }
-
-    /**
-     * Returns key: 'AppData'.
-     *
-     * @return string
-     */
-    public function getApplicationData()
-    {
-        return $this->getKey('AppData');
+        return $this->getKey('Variable');
     }
     
+    /**
+     * Returns key: 'Value'.
+     *
+     * @return string
+     */
+    public function getValue()
+    {
+        return $this->getKey('Value');
+    }
+
     /**
      * Returns key: 'UniqueID'.
      *

@@ -15,7 +15,6 @@
  */
 namespace AMI\Message\Event\Factory\Impl;
 
-use AMI\Message\Event\NewChannelEvent;
 use AMI\Message\Event\EventMessage;
 use AMI\Message\Event\UnknownEvent;
 use AMI\Message\Message;
@@ -47,16 +46,11 @@ class EventFactoryImpl
         $eventStart = strpos($message, 'Event: ') + 7;
         $eventEnd = strpos($message, Message::EOL, $eventStart);
         $name = substr($message, $eventStart, $eventEnd - $eventStart);
-        switch ($name)
-        {
-        case 'Newchannel':
-            $event = new NewChannelEvent($message);
-            break;
-        default:
-            $event = new UnknownEvent($message);
-            break;
+        $className = '\\AMI\\Message\\Event\\' . $name . 'Event';
+        if (class_exists($className, true)) {
+            return new $className($message);
         }
-        return $event;
+	    return new UnknownEvent($message);
     }
     
     /**

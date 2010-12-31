@@ -3,7 +3,7 @@ namespace AMI\Message\Event;
 
 use AMI\Message\Event\EventMessage;
 
-class NewExtenEvent extends EventMessage
+class ChannelUpdateEvent extends EventMessage
 {
     /**
      * Returns key: 'Privilege'.
@@ -24,57 +24,37 @@ class NewExtenEvent extends EventMessage
     {
         return $this->getKey('Channel');
     }
-
+    
     /**
-     * Returns key: 'Exten'.
+     * Returns key: 'ChannelType'.
      *
      * @return string
      */
-    public function getExtension()
+    public function getChannelType()
     {
-        return $this->getKey('Exten');
-    }
-
-    /**
-     * Returns key: 'Context'.
-     *
-     * @return string
-     */
-    public function getContext()
-    {
-        return $this->getKey('Context');
-    }
-
-    /**
-     * Returns key: 'Priority'.
-     *
-     * @return string
-     */
-    public function getPriority()
-    {
-        return $this->getKey('Priority');
-    }
-
-    /**
-     * Returns key: 'Application'.
-     *
-     * @return string
-     */
-    public function getApplication()
-    {
-        return $this->getKey('Application');
-    }
-
-    /**
-     * Returns key: 'AppData'.
-     *
-     * @return string
-     */
-    public function getApplicationData()
-    {
-        return $this->getKey('AppData');
+        return $this->getKey('ChannelType');
     }
     
+    /**
+     * Returns key: 'SIPcallid'.
+     *
+     * @return string
+     */
+    public function getSIPCallID()
+    {
+        return $this->getKey('SIPcallid');
+    }
+
+    /**
+     * Returns key: 'SIPfullcontact'.
+     *
+     * @return string
+     */
+    public function getSIPFullContact()
+    {
+        return $this->getKey('SIPfullcontact');
+    }
+
     /**
      * Returns key: 'UniqueID'.
      *
@@ -84,7 +64,7 @@ class NewExtenEvent extends EventMessage
     {
         return $this->getKey('UniqueID');
     }
-
+    
     /**
      * Constructor.
      *

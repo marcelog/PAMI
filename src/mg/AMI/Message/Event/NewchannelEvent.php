@@ -3,7 +3,7 @@ namespace AMI\Message\Event;
 
 use AMI\Message\Event\EventMessage;
 
-class NewExtenEvent extends EventMessage
+class NewchannelEvent extends EventMessage
 {
     /**
      * Returns key: 'Privilege'.
@@ -24,55 +24,55 @@ class NewExtenEvent extends EventMessage
     {
         return $this->getKey('Channel');
     }
-
+    
     /**
-     * Returns key: 'Exten'.
+     * Returns key: 'ChannelState'.
      *
      * @return string
      */
-    public function getExtension()
+    public function getChannelState()
     {
-        return $this->getKey('Exten');
+        return $this->getKey('ChannelState');
+    }
+    
+    /**
+     * Returns key: 'ChannelStateDesc'.
+     *
+     * @return string
+     */
+    public function getChannelStateDesc()
+    {
+        return $this->getKey('ChannelStateDesc');
+    }
+    
+    /**
+     * Returns key: 'CallerIDNum'.
+     *
+     * @return string
+     */
+    public function getCallerIDNum()
+    {
+        return $this->getKey('CallerIDNum');
+    }
+    
+    /**
+     * Returns key: 'CallerIDName'.
+     *
+     * @return string
+     */
+    public function getCallerIDName()
+    {
+        return $this->getKey('CallerIDName');
     }
 
     /**
-     * Returns key: 'Context'.
+     * Returns key: 'AccountCode'.
      *
      * @return string
      */
-    public function getContext()
+    public function getAccountCode()
     {
-        return $this->getKey('Context');
-    }
-
-    /**
-     * Returns key: 'Priority'.
-     *
-     * @return string
-     */
-    public function getPriority()
-    {
-        return $this->getKey('Priority');
-    }
-
-    /**
-     * Returns key: 'Application'.
-     *
-     * @return string
-     */
-    public function getApplication()
-    {
-        return $this->getKey('Application');
-    }
-
-    /**
-     * Returns key: 'AppData'.
-     *
-     * @return string
-     */
-    public function getApplicationData()
-    {
-        return $this->getKey('AppData');
+        return $this->getKey('AccountCode');
     }
     
     /**
