@@ -1,6 +1,6 @@
 <?php
 /**
- * This is a generic event received from ami.
+ * This is an unknown (not implemented yet) event received from ami.
  *
  * PHP Version 5
  *
@@ -17,7 +17,7 @@ namespace AMI\Message\Event;
 use AMI\Message\IncomingMessage;
 
 /**
- * This is a generic event received from ami.
+ * This is an unknown (not implemented yet) event received from ami.
  *
  * PHP Version 5
  *
@@ -28,18 +28,8 @@ use AMI\Message\IncomingMessage;
  * @license    http://www.noneyet.ar/ Apache License 2.0
  * @link       http://www.noneyet.ar/
  */
-abstract class EventMessage extends IncomingMessage
+class UnknownEvent extends EventMessage
 {
-    public function getActionID()
-    {
-        return $this->getVariable('ActionID');
-    }
-    
-    public function getName()
-    {
-        return $this->getKey('Event');
-    }
-    
     public function __construct($rawContent)
     {
         parent::__construct($rawContent);

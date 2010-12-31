@@ -17,6 +17,7 @@ namespace AMI\Message\Event\Factory\Impl;
 
 use AMI\Message\Event\NewChannelEvent;
 use AMI\Message\Event\EventMessage;
+use AMI\Message\Event\UnknownEvent;
 use AMI\Message\Message;
 
 /**
@@ -52,7 +53,7 @@ class EventFactoryImpl
             $event = new NewChannelEvent($message);
             break;
         default:
-            $event = new EventMessage($message);
+            $event = new UnknownEvent($message);
             break;
         }
         return $event;
