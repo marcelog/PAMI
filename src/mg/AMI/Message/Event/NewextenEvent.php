@@ -3,7 +3,7 @@ namespace AMI\Message\Event;
 
 use AMI\Message\Event\EventMessage;
 
-class NewExtenEvent extends EventMessage
+class NewextenEvent extends EventMessage
 {
     /**
      * Returns key: 'Privilege'.

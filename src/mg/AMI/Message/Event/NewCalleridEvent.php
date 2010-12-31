@@ -3,7 +3,7 @@ namespace AMI\Message\Event;
 
 use AMI\Message\Event\EventMessage;
 
-class DialEvent extends EventMessage
+class NewCalleridEvent extends EventMessage
 {
     /**
      * Returns key: 'Privilege'.
@@ -16,16 +16,6 @@ class DialEvent extends EventMessage
     }
     
     /**
-     * Returns key: 'SubEvent'.
-     *
-     * @return string
-     */
-    public function getSubEvent()
-    {
-        return $this->getKey('SubEvent');
-    }
-    
-    /**
      * Returns key: 'Channel'.
      *
      * @return string
@@ -35,16 +25,6 @@ class DialEvent extends EventMessage
         return $this->getKey('Channel');
     }
 
-    /**
-     * Returns key: 'Destination'.
-     *
-     * @return string
-     */
-    public function getDestination()
-    {
-        return $this->getKey('Destination');
-    }
-    
     /**
      * Returns key: 'CallerIDNum'.
      *
@@ -76,23 +56,13 @@ class DialEvent extends EventMessage
     }
 
     /**
-     * Returns key: 'DestUniqueID'.
+     * Returns key: 'CID-CallingPres'.
      *
      * @return string
      */
-    public function getDestUniqueID()
+    public function getCallerIdPres()
     {
-        return $this->getKey('DestUniqueID');
-    }
-
-    /**
-     * Returns key: 'DialString'.
-     *
-     * @return string
-     */
-    public function getDialString()
-    {
-        return $this->getKey('DialString');
+        return $this->getKey('CID-CallingPres');
     }
     
     /**

@@ -3,7 +3,7 @@ namespace AMI\Message\Event;
 
 use AMI\Message\Event\EventMessage;
 
-class DialEvent extends EventMessage
+class AGIExecEvent extends EventMessage
 {
     /**
      * Returns key: 'Privilege'.
@@ -24,7 +24,7 @@ class DialEvent extends EventMessage
     {
         return $this->getKey('SubEvent');
     }
-    
+
     /**
      * Returns key: 'Channel'.
      *
@@ -36,63 +36,43 @@ class DialEvent extends EventMessage
     }
 
     /**
-     * Returns key: 'Destination'.
+     * Returns key: 'CommandId'.
      *
      * @return string
      */
-    public function getDestination()
+    public function getCommandId()
     {
-        return $this->getKey('Destination');
-    }
-    
-    /**
-     * Returns key: 'CallerIDNum'.
-     *
-     * @return string
-     */
-    public function getCallerIDNum()
-    {
-        return $this->getKey('CallerIDNum');
-    }
-    
-    /**
-     * Returns key: 'CallerIDName'.
-     *
-     * @return string
-     */
-    public function getCallerIDName()
-    {
-        return $this->getKey('CallerIDName');
+        return $this->getKey('CommandId');
     }
 
     /**
-     * Returns key: 'UniqueID'.
+     * Returns key: 'Command'.
      *
      * @return string
      */
-    public function getUniqueID()
+    public function getCommand()
     {
-        return $this->getKey('UniqueID');
+        return $this->getKey('Command');
     }
 
     /**
-     * Returns key: 'DestUniqueID'.
+     * Returns key: 'Result'.
      *
      * @return string
      */
-    public function getDestUniqueID()
+    public function getResult()
     {
-        return $this->getKey('DestUniqueID');
+        return $this->getKey('Result');
     }
 
     /**
-     * Returns key: 'DialString'.
+     * Returns key: 'ResultCode'.
      *
      * @return string
      */
-    public function getDialString()
+    public function getResultCode()
     {
-        return $this->getKey('DialString');
+        return $this->getKey('ResultCode');
     }
     
     /**
