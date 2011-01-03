@@ -113,7 +113,8 @@ abstract class Message
 	 */
 	protected function setKey($key, $value)
 	{
-		$this->_keys[$key] = $value;
+	    $key = strtolower((string)$key);
+	    $this->_keys[$key] = $value;
 	}
 
 	/**
@@ -125,10 +126,11 @@ abstract class Message
 	 */
 	protected function getKey($key)
 	{
-		if (!isset($this->_keys[$key])) {
+	    $key = strtolower($key);
+	    if (!isset($this->_keys[$key])) {
 		    return null;
 		}
-		return $this->_keys[$key];
+		return (string)$this->_keys[$key];
 	}
 
 	/**
@@ -189,7 +191,17 @@ abstract class Message
 	    $mStr = $this->finishMessage(implode(self::EOL, $result));
 	    return $mStr;
 	}
-	
+
+	/**
+     * Returns key: 'ActionID'.
+     *
+     * @return string
+     */
+    public function getActionID()
+    {
+        return $this->getKey('ActionID');
+    }
+
 	/**
 	 * Constructor.
 	 *

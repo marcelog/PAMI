@@ -190,11 +190,18 @@ class ClientImpl implements IClient
 	    }
 	    if (strstr($aMsg, 'Response:') !== false) {
 	        $response = new ResponseMessage($aMsg);
-	        $this->_incomingQueue[] = $response;
+	        $actionId = $response->getActionId();
+            $this->_incomingQueue[$actionId] = $response;
 	    } else {
-	        foreach ($this->_eventListeners as $listener) {
-	            $event = $this->_eventFactory->createFromRaw($aMsg);
-	            $listener->handle($event);
+    	    $event = $this->_eventFactory->createFromRaw($aMsg);
+	        $actionId = $event->getActionId();
+	        if (!isset($this->_incomingQueue[$actionId])) {
+    	        foreach ($this->_eventListeners as $listener) {
+   	                $listener->handle($event);
+    	        }
+	        } else {
+	            $response = $this->_incomingQueue[$actionId];
+	            $response->addEvent($event);
 	        }
 	    }
 	}
@@ -210,18 +217,14 @@ class ClientImpl implements IClient
 	protected function getRelated(OutgoingMessage $message)
 	{
 	    $id = $message->getActionID('ActionID');
-	    $result = false;
-	    //$total = count($this->_incomingQueue);
-	    foreach ($this->_incomingQueue as $k => $candidate) {
-	        //$candidate = $this->_incomingQueue[$i];
-	        if ($candidate instanceof ResponseMessage) {
-    	        if ($candidate->getActionID('ActionID') === $id) {
-    	            $result = $candidate;
-    	            unset($this->_incomingQueue[$k]);
-    	        }
+	    if (isset($this->_incomingQueue[$id])) {
+	        $response = $this->_incomingQueue[$id];
+	        if ($response->isComplete()) {
+    	        unset($this->_incomingQueue[$id]);
+	            return $response;
 	        }
 	    }
-	    return $result;
+	    return false;
 	}
 	
 	/**

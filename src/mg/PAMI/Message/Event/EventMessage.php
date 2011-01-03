@@ -30,11 +30,6 @@ use PAMI\Message\IncomingMessage;
  */
 abstract class EventMessage extends IncomingMessage
 {
-    public function getActionID()
-    {
-        return $this->getVariable('ActionID');
-    }
-    
     public function getName()
     {
         return $this->getKey('Event');

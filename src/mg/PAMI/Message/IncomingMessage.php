@@ -26,14 +26,9 @@ namespace PAMI\Message;
  */
 abstract class IncomingMessage extends Message
 {
-    /**
-     * Returns key: 'ActionID'.
-     *
-     * @return string
-     */
-    public function getActionID()
+    public function getEventList()
     {
-        return $this->getVariable('ActionID');
+        return $this->getKey('EventList');
     }
     
     /**
@@ -51,7 +46,7 @@ abstract class IncomingMessage extends Message
             $content = explode(':', $line);
             $name = strtolower(trim($content[0]));
             unset($content[0]);
-            $value = isset($content[1]) ? implode(':', $content) : '';
+            $value = isset($content[1]) ? trim(implode(':', $content)) : '';
             $this->setKey($name, $value);
         }
     } 

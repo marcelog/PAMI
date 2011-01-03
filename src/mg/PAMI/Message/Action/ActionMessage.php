@@ -28,11 +28,6 @@ use PAMI\Message\OutgoingMessage;
  */
 abstract class ActionMessage extends OutgoingMessage
 {
-    public function getActionID()
-    {
-        return $this->getVariable('ActionID');
-    }
-    
     /**
      * Constructor.
      *
