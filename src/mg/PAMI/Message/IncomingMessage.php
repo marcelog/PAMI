@@ -49,9 +49,10 @@ abstract class IncomingMessage extends Message
         $lines = explode(Message::EOL, $rawContent);
         foreach ($lines as $line) {
             $content = explode(':', $line);
-            $this->setKey(
-                trim($content[0]), isset($content[1]) ? trim($content[1]) : ''
-            );
+            $name = trim($content[0]);
+            unset($content[0]);
+            $value = isset($content[1]) ? implode(':', $content) : '';
+            $this->setKey($name, $value);
         }
     } 
 }
