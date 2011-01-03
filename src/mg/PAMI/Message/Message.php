@@ -83,7 +83,8 @@ abstract class Message
 	 */
 	protected function setVariable($key, $value)
 	{
-		$this->_variables[$key] = $value;
+	    $key = strtolower($key);
+	    $this->_variables[$key] = $value;
 	}
 
 	/**
@@ -95,6 +96,7 @@ abstract class Message
 	 */
 	protected function getVariable($key)
 	{
+	    $key = strtolower($key);
 		if (!isset($this->_variables[$key])) {
 		    return null;
 		}
