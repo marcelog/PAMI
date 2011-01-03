@@ -26,6 +26,12 @@ namespace PAMI\Message;
  */
 abstract class IncomingMessage extends Message
 {
+    /**
+     * Returns key 'EventList'. In respones, this will surely be a "start". In
+     * events, should be a "complete".
+     *
+     * @return string
+     */
     public function getEventList()
     {
         return $this->getKey('EventList');

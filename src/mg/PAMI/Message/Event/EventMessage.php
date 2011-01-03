@@ -30,11 +30,23 @@ use PAMI\Message\IncomingMessage;
  */
 abstract class EventMessage extends IncomingMessage
 {
+    /**
+     * Returns key 'Event'.
+     *
+     * @return string
+     */
     public function getName()
     {
         return $this->getKey('Event');
     }
     
+    /**
+     * Constructor.
+     *
+     * @param string $rawContent Literal message as received from ami.
+     * 
+     * @return void
+     */
     public function __construct($rawContent)
     {
         parent::__construct($rawContent);
