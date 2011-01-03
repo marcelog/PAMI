@@ -178,6 +178,45 @@ class ClientImpl implements IClient
 	 * your own application in order to continue reading events and responses
 	 * from ami.
 	 * 
+	 * Taken from: http://www.voip-info.org/wiki/view/Asterisk+manager+API
+	 * 
+	 * The type of a packet is determined by the existence of one of the
+	 * following keys:
+	 * Action: A packet sent by the connected client to Asterisk, requesting a
+	 * particular Action be performed. There are a finite (but extendable) set
+	 * of actions available to the client, determined by the modules presently
+	 * loaded in the Asterisk engine. Only one action may be outstanding at a
+	 * time. The Action packet contains the name of the operation to be
+	 * performed as well as all required parameters.
+	 * Response: the response sent by Asterisk to the last action sent by the
+	 * client.
+	 * Event: data pertaining to an event generated from within the Asterisk
+	 * core or an extension module.
+	 * Generally the client sends Action packets to the Asterisk server, the
+	 * Asterisk server performs the requested operation and returns the result
+	 * (often only success or failure) in a Response packet. As there is no
+	 * guarantee regarding the order of Response packets the client usually
+	 * includes an ActionID parameter in every Action packet that is sent back
+	 * by Asterisk in the corresponding Response packet. That way the client
+	 * can easily match Action and Response packets while sending Actions at
+	 * any desired rate without having to wait for outstanding Response packets
+	 * before sending the next action. 
+	 * Event packets are used in two different contexts: On the one hand they
+	 * inform clients about state changes in Asterisk (like new channels being
+	 * created and hung up or agents being logged in and out) on the other hand
+	 * they are used to transport the response payload for actions that return
+	 * a list of data (event generating actions). When a client sends an event
+	 * generating action Asterisk sends a Response packed indicating success
+	 * and containing a "Response: Follows" line. Then it sends zero or more
+	 * events that contain the actual payload and finally an action complete
+	 * event indicating that all data has been sent. The events sent in
+	 * response to an event generating action and the action complete event
+	 * contain the ActionID of the Action packet that triggered them, so you
+	 * can easily match them the same way as Response packets. An example of an
+	 * event generating action is the Status action that triggers Status events
+	 * for each active channel. When all Status events have been sent a
+	 * terminating a StatusComplete event is sent.
+	 * 
 	 * @todo not suitable for multithreaded applications.
 	 * 
 	 * @return void
