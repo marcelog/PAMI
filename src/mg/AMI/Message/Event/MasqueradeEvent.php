@@ -3,7 +3,7 @@ namespace AMI\Message\Event;
 
 use AMI\Message\Event\EventMessage;
 
-class RenameEvent extends EventMessage
+class MasqueradeEvent extends EventMessage
 {
     /**
      * Returns key: 'Privilege'.
@@ -16,33 +16,42 @@ class RenameEvent extends EventMessage
     }
     
     /**
-     * Returns key: 'Channel'.
+     * Returns key: 'Clone'.
      *
      * @return string
      */
-    public function getChannel()
+    public function getClone()
     {
-        return $this->getKey('Channel');
+        return $this->getKey('Clone');
     }
 
     /**
-     * Returns key: 'Newname'.
+     * Returns key: 'CloneState'.
      *
      * @return string
      */
-    public function getNewname()
+    public function getCloneState()
     {
-        return $this->getKey('Newname');
+        return $this->getKey('CloneState');
     }
-    
     /**
-     * Returns key: 'UniqueID'.
+     * Returns key: 'Original'.
      *
      * @return string
      */
-    public function getUniqueID()
+    public function getOriginal()
     {
-        return $this->getKey('UniqueID');
+        return $this->getKey('Original');
+    }
+
+    /**
+     * Returns key: 'OriginalState'.
+     *
+     * @return string
+     */
+    public function getOriginalState()
+    {
+        return $this->getKey('OriginalState');
     }
 
     /**

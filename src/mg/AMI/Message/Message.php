@@ -58,6 +58,22 @@ abstract class Message
 	private $_keys;
 
 	/**
+	 * Created date (unix timestamp).
+	 * @var integer
+	 */
+	private $_createdDate;
+
+	/**
+	 * Returns created date.
+	 *
+	 * @return integer
+	 */
+	public function getCreatedDate()
+	{
+	    return $this->_createdDate;
+	}
+	
+	/**
 	 * Adds a variable to this message.
 	 *
 	 * @param string $key   Variable name.
@@ -182,5 +198,6 @@ abstract class Message
 		$this->_lines = array();
 		$this->_variables = array();
 		$this->_keys = array();
+		$this->_createdDate = time();
 	}
 }

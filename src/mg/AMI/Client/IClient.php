@@ -36,6 +36,17 @@ interface IClient
 	public function open();
 
 	/**
+	 * Main processing loop. Also called from send(), you should call this in
+	 * your own application in order to continue reading events and responses
+	 * from ami.
+	 * 
+	 * @todo not suitable for multithreaded applications.
+	 * 
+	 * @return void
+	 */
+	public function process();
+	
+	/**
 	 * Closes the connection to ami.
 	 *
 	 * @return void

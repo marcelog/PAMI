@@ -3,7 +3,7 @@ namespace AMI\Message\Event;
 
 use AMI\Message\Event\EventMessage;
 
-class DTMFEvent extends EventMessage
+class HoldEvent extends EventMessage
 {
     /**
      * Returns key: 'Privilege'.
@@ -26,43 +26,13 @@ class DTMFEvent extends EventMessage
     }
 
     /**
-     * Returns key: 'Digit'.
+     * Returns key: 'Status'.
      *
      * @return string
      */
-    public function getDigit()
+    public function getStatus()
     {
-        return $this->getKey('Digit');
-    }
-    
-    /**
-     * Returns key: 'Direction'.
-     *
-     * @return string
-     */
-    public function getDirection()
-    {
-        return $this->getKey('Direction');
-    }
-
-    /**
-     * Returns key: 'End'.
-     *
-     * @return string
-     */
-    public function getEnd()
-    {
-        return $this->getKey('End');
-    }
-
-    /**
-     * Returns key: 'Begin'.
-     *
-     * @return string
-     */
-    public function getBegin()
-    {
-        return $this->getKey('Begin');
+        return $this->getKey('Status');
     }
     
     /**

@@ -14,6 +14,7 @@ abstract class IncomingMessage extends Message
     
     public function __construct($rawContent)
     {
+        parent::__construct();
         $lines = explode(Message::EOL, $rawContent);
         foreach ($lines as $line) {
             $content = explode(':', $line);

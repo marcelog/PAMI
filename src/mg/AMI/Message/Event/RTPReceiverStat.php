@@ -3,7 +3,7 @@ namespace AMI\Message\Event;
 
 use AMI\Message\Event\EventMessage;
 
-class DTMFEvent extends EventMessage
+class RTPReceiverStatEvent extends EventMessage
 {
     /**
      * Returns key: 'Privilege'.
@@ -14,67 +14,67 @@ class DTMFEvent extends EventMessage
     {
         return $this->getKey('Privilege');
     }
-    
+
     /**
-     * Returns key: 'Channel'.
+     * Returns key: 'SSRC'.
      *
      * @return string
      */
-    public function getChannel()
+    public function getSSRC()
     {
-        return $this->getKey('Channel');
+        return $this->getKey('SSRC');
     }
 
     /**
-     * Returns key: 'Digit'.
+     * Returns key: 'ReceivedPackets'.
      *
      * @return string
      */
-    public function getDigit()
+    public function getReceivedPackets()
     {
-        return $this->getKey('Digit');
-    }
-    
-    /**
-     * Returns key: 'Direction'.
-     *
-     * @return string
-     */
-    public function getDirection()
-    {
-        return $this->getKey('Direction');
-    }
-
-    /**
-     * Returns key: 'End'.
-     *
-     * @return string
-     */
-    public function getEnd()
-    {
-        return $this->getKey('End');
-    }
-
-    /**
-     * Returns key: 'Begin'.
-     *
-     * @return string
-     */
-    public function getBegin()
-    {
-        return $this->getKey('Begin');
+        return $this->getKey('ReceivedPackets');
     }
     
     /**
-     * Returns key: 'UniqueID'.
+     * Returns key: 'LostPackets'.
      *
      * @return string
      */
-    public function getUniqueID()
+    public function getLostPackets()
     {
-        return $this->getKey('UniqueID');
+        return $this->getKey('LostPackets');
     }
 
+    /**
+     * Returns key: 'Jitter'.
+     *
+     * @return string
+     */
+    public function getJitter()
+    {
+        return $this->getKey('Jitter');
+    }
+
+    /**
+     * Returns key: 'Transit'.
+     *
+     * @return string
+     */
+    public function getTransit()
+    {
+        return $this->getKey('Transit');
+    }
+
+    /**
+     * Returns key: 'RRCount'.
+     *
+     * @return string
+     */
+    public function getRRCount()
+    {
+        return $this->getKey('RRCount');
+    }
+    
     /**
      * Constructor.
      *
