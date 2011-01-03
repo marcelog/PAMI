@@ -1,8 +1,33 @@
 <?php
 namespace AMI\Message\Event;
 
+/**
+ * Triggered when a hangup is detected.
+ *
+ * PHP Version 5
+ *
+ * @category   Ami
+ * @package    Message
+ * @subpackage Event
+ * @author     Marcelo Gornstein <marcelog@gmail.com>
+ * @license    http://www.noneyet.ar/ Apache License 2.0
+ * @version    SVN: $Id$
+ * @link       http://www.noneyet.ar/
+ */
 use AMI\Message\Event\EventMessage;
 
+/**
+ * Triggered when a hangup is detected.
+ *
+ * PHP Version 5
+ *
+ * @category   Ami
+ * @package    Message
+ * @subpackage Event
+ * @author     Marcelo Gornstein <marcelog@gmail.com>
+ * @license    http://www.noneyet.ar/ Apache License 2.0
+ * @link       http://www.noneyet.ar/
+ */
 class HangupEvent extends EventMessage
 {
     /**
