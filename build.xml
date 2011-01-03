@@ -1,0 +1,104 @@
+<project name="PAMI" default="all" basedir=".">
+  <property file="./build.properties"/>
+
+  <target name="prepare" depends="clean">
+    <mkdir dir="${dir.output}"/>
+  </target>
+
+  <target name="clean">
+	<delete dir="${dir.output}"/>
+  </target>
+
+  <target name="phpdepend">
+    <mkdir dir="${phpdepend.output.xml.dir}"/>
+    <mkdir dir="${phpdepend.output.html.dir}"/>
+    <exec
+      command="${phpdepend.exec} ${phpdepend.args}"
+      dir="${project.basedir}"
+      passthru="true"
+    />
+    <xslt
+      file="${phpdepend.output.xml.file}"
+      tofile="${phpdepend.output.html.file}"
+      style="${phpdepend.style}"
+    />
+  </target>
+
+  <target name="phpcs">
+    <mkdir dir="${phpcs.output.xml.dir}"/>
+    <mkdir dir="${phpcs.output.html.dir}"/>
+    <exec
+      command="${phpcs.exec} ${phpcs.args}"
+      dir="${project.basedir}"
+      passthru="true"
+    />
+    <xslt
+      file="${phpcs.output.xml.file}"
+      tofile="${phpcs.output.html.file}"
+      style="${phpcs.style}"
+    />
+  </target>
+
+  <target name="phpunit">
+    <mkdir dir="${phpunit.output.xml.dir}"/>
+    <mkdir dir="${phpunit.output.html.dir}"/>
+    <exec
+      command="${phpunit.exec} ${phpunit.args}"
+      dir="${project.basedir}/test"
+      passthru="true"
+    />
+  </target>
+
+  <target name="phpmd">
+    <mkdir dir="${phpmd.output.xml.dir}"/>
+    <mkdir dir="${phpmd.output.html.dir}"/>
+    <exec
+      command="${phpmd.exec} ${phpmd.args}"
+      dir="${project.basedir}"
+      passthru="true"
+    />
+    <xslt
+      file="${phpmd.output.xml.file}"
+      tofile="${phpmd.output.html.file}"
+      style="${phpmd.style}"
+    />
+  </target>
+
+  <target name="phpcpd">
+    <mkdir dir="${phpcpd.output.xml.dir}"/>
+    <mkdir dir="${phpcpd.output.html.dir}"/>
+    <exec
+      command="${phpcpd.exec} ${phpcpd.args}"
+      dir="${project.basedir}"
+      passthru="true"
+    />
+    <xslt
+      file="${phpcpd.output.xml.file}"
+      tofile="${phpcpd.output.html.file}"
+      style="${phpcpd.style}"
+    />
+  </target>
+
+  <target name="phpdoc">
+    <mkdir dir="${phpdoc.output.html.dir}"/>
+    <exec
+      command="${phpdoc.exec} ${phpdoc.args}"
+      dir="${project.basedir}/src/mg/PAMI"
+      passthru="true"
+    />
+  </target>
+
+  <target name="phploc">
+    <mkdir dir="${phploc.output.html.dir}"/>
+    <exec
+      command="${phploc.exec} ${phploc.args} > ${phploc.output.html.file}"
+      dir="${project.basedir}"
+      passthru="true"
+    />
+  </target>
+
+  <target name="all" depends="clean, prepare, report"/>
+  <target name="build" depends="test"/>
+  <target name="test" depends="phpunit"/>
+  <target name="report" depends="build, phploc, phpdoc, phpdepend, phpcs, phpmd, phpcpd"/>
+</project>

@@ -1,9 +1,13 @@
 Introduction
 ============
 
-PAMI means PHP Asterisk Manager Interface. As its name suggests is just a
-php set of classes that will let you issue commands to an ami and/or receive
-events.
+PAMI means PHP Asterisk Manager Interface. As its name suggests its just a
+set of php classes that will let you issue commands to an ami and/or receive
+events, using an observer-listener pattern.
+
+Example
+=======
+Please see docs/examples/quickstart/example.php for a very basic example.
 
 Currently Supported Events
 ==========================
@@ -37,5 +41,5 @@ can still catch them. If you catch one of these, please report it!
 * Unlink
 * VarSet
 
-Currently Supported Commands
-============================
+Currently Supported Actions
+===========================

@@ -1,0 +1,19 @@
+<phpunit
+  backupGlobals="false"
+  backupStaticAttributes="false"
+  syntaxCheck="false"
+  convertErrorsToExceptions="true"
+  convertNoticesToExceptions="true"
+  convertWarningsToExceptions="true"
+>
+  <filter>
+    <whitelist>
+      <directory suffix=".php">../src/mg/PAMI</directory>
+    </whitelist>
+  </filter>
+  <testsuites>
+    <testsuite name="Tests">
+      <directory suffix=".php">PAMI</directory>
+    </testsuite>
+  </testsuites>
+</phpunit>
