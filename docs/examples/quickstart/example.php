@@ -10,7 +10,6 @@
  * @version  SVN: $Id$
  * @link     http://www.noneyet.ar/
  */
-
 if ($argc != 5) {
     echo "Use: $argv[0] <host> <port> <user> <pass>";
     exit (254);
