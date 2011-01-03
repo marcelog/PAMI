@@ -1,0 +1,41 @@
+Introduction
+============
+
+PAMI means PHP Asterisk Manager Interface. As its name suggests is just a
+php set of classes that will let you issue commands to an ami and/or receive
+events.
+
+Currently Supported Events
+==========================
+More events will be added with time. I can only add the ones I can test for and
+use, so your contributions may make the difference! ;)
+
+Unknown (not yet implemented) events will be reported as UnknownEvent, so you
+can still catch them. If you catch one of these, please report it!
+
+* AGIExec
+* Bridge
+* ChannelUpdate
+* Dial
+* DTMF
+* Extension
+* Hangup
+* Hold
+* Masquerade
+* NewCallerid
+* Newchannel
+* Newexten
+* Newstate
+* PeerStatus
+* Rename
+* RTCPReceived
+* RTCPReceiver
+* RTCPSent
+* RTPReceiverStat
+* RTPSenderStat
+* Transfer
+* Unlink
+* VarSet
+
+Currently Supported Commands
+============================

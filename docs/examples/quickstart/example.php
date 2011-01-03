@@ -1,10 +1,10 @@
 <?php
 /**
- * AMI basic use example.
+ * PAMI basic use example.
  *
  * PHP Version 5
  *
- * @category Ami
+ * @category Pami
  * @author   Marcelo Gornstein <marcelog@gmail.com>
  * @license  http://www.noneyet.ar/ Apache License 2.0
  * @version  SVN: $Id$
@@ -26,11 +26,11 @@ ini_set(
 ////////////////////////////////////////////////////////////////////////////////
 // Mandatory stuff to bootstrap.
 ////////////////////////////////////////////////////////////////////////////////
-require_once 'AMI/Autoloader/Autoloader.php'; // Include ding autoloader.
+require_once 'PAMI/Autoloader/Autoloader.php'; // Include ding autoloader.
 Autoloader::register(); // Call autoloader register for ding autoloader.
-use AMI\Client\Impl\ClientImpl;
-use AMI\Listener\IEventListener;
-use AMI\Message\Event\EventMessage;
+use PAMI\Client\Impl\ClientImpl;
+use PAMI\Listener\IEventListener;
+use PAMI\Message\Event\EventMessage;
 
 class A implements IEventListener
 {
