@@ -32,16 +32,6 @@ use PAMI\Message\IncomingMessage;
 class ResponseMessage extends IncomingMessage
 {
     /**
-     * Returns key: 'ActionID'.
-     *
-     * @return string
-     */
-    public function getActionID()
-    {
-        return $this->getVariable('ActionID');
-    }
-    
-    /**
      * Checks if the Response field has the word Error in it.
      *
      * @return boolean

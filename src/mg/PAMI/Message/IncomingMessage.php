@@ -26,11 +26,23 @@ namespace PAMI\Message;
  */
 abstract class IncomingMessage extends Message
 {
+    /**
+     * Returns key: 'ActionID'.
+     *
+     * @return string
+     */
     public function getActionID()
     {
         return $this->getVariable('ActionID');
     }
     
+    /**
+     * Constructor.
+     *
+     * @param string $rawContent Original message as received from ami.
+     * 
+     * @return void
+     */
     public function __construct($rawContent)
     {
         parent::__construct();
