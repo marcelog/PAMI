@@ -3,7 +3,7 @@ namespace AMI\Message\Event;
 
 use AMI\Message\Event\EventMessage;
 
-class DTMFEvent extends EventMessage
+class RTCPSentEvent extends EventMessage
 {
     /**
      * Returns key: 'Privilege'.
