@@ -112,6 +112,11 @@ class ClientImpl implements IClient
 	 */
 	private $_incomingQueue;
 
+	/**
+	 * Our current received message. May be incomplete, will be completed
+	 * eventually with an EOM.
+	 * @var string
+	 */
 	private $_currentProcessingMessage;
 	
 	/**
@@ -174,11 +179,15 @@ class ClientImpl implements IClient
 	 */
 	protected function getMessage()
 	{
+	    // Read something.
 	    $read = fread($this->_socket, 8192);
 	    if ($read === false) {
 	        return false;
 	    }
-	    $this->_currentProcessingMessage .= $read; 
+	    // If we got something, add it to what we have read so far.
+	    $this->_currentProcessingMessage .= $read;
+	    // If we have a complete message, then return it. Save the rest for
+	    // later. 
 	    $marker = strpos($this->_currentProcessingMessage, Message::EOM);
 	    if($marker === false) {
 	        return false;
