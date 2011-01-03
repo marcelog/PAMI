@@ -31,6 +31,16 @@ use PAMI\Message\Event\EventMessage;
 class CoreShowchannelEvent extends EventMessage
 {
     /**
+     * Returns key: 'Privilege'.
+     *
+     * @return string
+     */
+    public function getPrivilege()
+    {
+        return $this->getKey('Privilege');
+    }
+    
+    /**
      * Returns key: 'Channel'.
      *
      * @return string

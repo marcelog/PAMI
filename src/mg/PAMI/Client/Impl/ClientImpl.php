@@ -112,6 +112,8 @@ class ClientImpl implements IClient
 	 */
 	private $_incomingQueue;
 
+	private $_currentProcessingMessage;
+	
 	/**
 	 * Opens a tcp connection to ami.
 	 *
@@ -139,6 +141,8 @@ class ClientImpl implements IClient
 	    if (!$response->isSuccess()) {
 	        throw new ClientException('Could not connect: ' . $response->getMessage());
 	    }
+	    stream_set_blocking($this->_socket, 0);
+	    $this->_currentProcessingMessage = '';
 	}
 
 	/**
@@ -170,7 +174,20 @@ class ClientImpl implements IClient
 	 */
 	protected function getMessage()
 	{
-        return stream_get_line($this->_socket, 1024, Message::EOM);
+	    $read = fread($this->_socket, 8192);
+	    if ($read === false) {
+	        return false;
+	    }
+	    $this->_currentProcessingMessage .= $read; 
+	    $marker = strpos($this->_currentProcessingMessage, Message::EOM);
+	    if($marker === false) {
+	        return false;
+	    }
+	    $msg = substr($this->_currentProcessingMessage, 0, $marker);
+	    $this->_currentProcessingMessage = substr(
+	        $this->_currentProcessingMessage, $marker + strlen(Message::EOM)
+	    );
+	    return $msg;
 	}
 
 	/**
@@ -287,7 +304,7 @@ class ClientImpl implements IClient
 	    while(true) {
 	        $this->process();
 	        $response = $this->getRelated($message);
-	        if (!empty($response)) {
+	        if ($response != false) {
 	            return $response;
 	        }
 	        usleep(1000); // 1ms delay
