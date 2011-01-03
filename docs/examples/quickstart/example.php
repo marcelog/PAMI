@@ -63,8 +63,8 @@ try
 	var_dump($a->send(new CoreShowChannelsAction()));
 	var_dump($a->send(new SIPPeersAction()));
 	var_dump($a->send(new StatusAction()));
-	var_dump($a->send(new ReloadAction()));
-	var_dump($a->send(new ReloadAction('chan_sip')));
+	//var_dump($a->send(new ReloadAction()));
+	//var_dump($a->send(new ReloadAction('chan_sip')));
 	
 	while(true)
 	{
