@@ -35,6 +35,8 @@ can still catch them. If you catch one of these, please report it!
 * AGIExec
 * Bridge
 * ChannelUpdate
+* CoreShowChannel
+* CoreShowChannelComplete
 * Dial
 * DTMF
 * Extension
@@ -45,6 +47,8 @@ can still catch them. If you catch one of these, please report it!
 * Newchannel
 * Newexten
 * Newstate
+* PeerEntry
+* PeerlistComplete
 * PeerStatus
 * Rename
 * RTCPReceived
@@ -60,7 +64,8 @@ Currently Supported Actions
 ===========================
 * Login
 * ListCommands
-
+* CoreShowChannels
+* Sippeers
 --------------------------------------------------------------------------------
 Developers
 ==========

@@ -233,7 +233,7 @@ class ClientImpl implements IClient
             $this->_incomingQueue[$actionId] = $response;
 	    } else {
     	    $event = $this->_eventFactory->createFromRaw($aMsg);
-	        $actionId = $event->getActionId();
+    	    $actionId = $event->getActionId();
 	        if (!isset($this->_incomingQueue[$actionId])) {
     	        foreach ($this->_eventListeners as $listener) {
    	                $listener->handle($event);

@@ -33,6 +33,7 @@ use PAMI\Listener\IEventListener;
 use PAMI\Message\Event\EventMessage;
 use PAMI\Message\Action\ListCommandsAction;
 use PAMI\Message\Action\CoreShowChannelsAction;
+use PAMI\Message\Action\SIPPeersAction;
 
 class A implements IEventListener
 {
@@ -54,6 +55,8 @@ try
 	$a->open();
 	var_dump($a->send(new ListCommandsAction()));
 	var_dump($a->send(new CoreShowChannelsAction()));
+	var_dump($a->send(new SIPPeersAction()));
+	
 	while(true)
 	{
 	    $a->process();
