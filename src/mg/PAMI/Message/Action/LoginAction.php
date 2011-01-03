@@ -31,7 +31,8 @@ class LoginAction extends ActionMessage
     /**
      * Constructor.
      *
-     * @param string $what Action command.
+     * @param string $user     AMI username.
+     * @param string $password AMI password.
      * 
      * @return void
      */

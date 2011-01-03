@@ -8,6 +8,13 @@ events, using an observer-listener pattern.
 The idea behind this, is to easily implement operator consoles, monitors, etc.
 either via SOA or ajax.
 
+--------------------------------------------------------------------------------
+Asterisk versions supported
+===========================
+PAMI is tested in asterisk 1.6 versions, just because this is the version
+I use in my boxes. If you need support for other versions, please contact me.
+
+--------------------------------------------------------------------------------
 Example
 =======
 Please see docs/examples/quickstart/example.php for a very basic example.

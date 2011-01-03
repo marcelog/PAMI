@@ -31,6 +31,7 @@ Autoloader::register(); // Call autoloader register for ding autoloader.
 use PAMI\Client\Impl\ClientImpl;
 use PAMI\Listener\IEventListener;
 use PAMI\Message\Event\EventMessage;
+use PAMI\Message\Action\ListCommandsAction;
 
 class A implements IEventListener
 {
@@ -50,6 +51,7 @@ try
 	$a = new ClientImpl($argv[1], $argv[2], $argv[3], $argv[4], 60, 60);
 	$a->registerEventListener(new A());
 	$a->open();
+	var_dump($a->send(new ListCommandsAction()));
 	while(true)
 	{
 	    $a->process();

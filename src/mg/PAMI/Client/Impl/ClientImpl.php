@@ -211,13 +211,13 @@ class ClientImpl implements IClient
 	{
 	    $id = $message->getActionID('ActionID');
 	    $result = false;
-	    $total = count($this->_incomingQueue);
-	    for ($i = 0; $i < $total; $i++) {
-	        $candidate = $this->_incomingQueue[$i];
+	    //$total = count($this->_incomingQueue);
+	    foreach ($this->_incomingQueue as $k => $candidate) {
+	        //$candidate = $this->_incomingQueue[$i];
 	        if ($candidate instanceof ResponseMessage) {
     	        if ($candidate->getActionID('ActionID') === $id) {
     	            $result = $candidate;
-    	            unset($this->_incomingQueue[$i]);
+    	            unset($this->_incomingQueue[$k]);
     	        }
 	        }
 	    }
@@ -233,7 +233,7 @@ class ClientImpl implements IClient
 	 * @throws ClientException
 	 * @return void
 	 */
-	protected function send(OutgoingMessage $message)
+	public function send(OutgoingMessage $message)
 	{
 	    $length = strlen($message->serialize());
 	    if (fwrite($this->_socket, $message->serialize()) < $length) {
@@ -294,5 +294,6 @@ class ClientImpl implements IClient
 		$this->_rTimeout = $rTimeout;
 		$this->_eventListeners = array();
 		$this->_eventFactory = new EventFactoryImpl();
+		$this->_incomingQueue = array();
 	}
 }
