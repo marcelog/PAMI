@@ -5,10 +5,14 @@ PAMI means PHP Asterisk Manager Interface. As its name suggests its just a
 set of php classes that will let you issue commands to an ami and/or receive
 events, using an observer-listener pattern.
 
+The idea behind this, is to easily implement operator consoles, monitors, etc.
+either via SOA or ajax.
+
 Example
 =======
 Please see docs/examples/quickstart/example.php for a very basic example.
 
+--------------------------------------------------------------------------------
 Currently Supported Events
 ==========================
 More events will be added with time. I can only add the ones I can test for and
@@ -40,6 +44,16 @@ can still catch them. If you catch one of these, please report it!
 * Transfer
 * Unlink
 * VarSet
-
+--------------------------------------------------------------------------------
 Currently Supported Actions
 ===========================
+* Login
+
+--------------------------------------------------------------------------------
+Developers
+==========
+* build.xml is a phing build file, not ant.
+* It's very possible that you may need to edit build.properties.
+* Available main targets: all, build, test, report.
+* Tools run: phpdoc, phploc, phpcs, phpmd, phpcpd, phpdepend, phpunit.
+--------------------------------------------------------------------------------
