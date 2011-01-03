@@ -69,6 +69,7 @@ Currently Supported Actions
 * CoreShowChannels
 * Sippeers
 * Status
+* Reload
 --------------------------------------------------------------------------------
 Developers
 ==========
