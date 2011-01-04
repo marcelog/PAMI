@@ -67,6 +67,7 @@ can still catch them. If you catch one of these, please report it!
 Currently Supported Actions
 ===========================
 * AbsoluteTimeout
+* Atxfer (asterisk 1.8?)
 * Bridge
 * Command
 * CoreSettings
@@ -80,6 +81,7 @@ Currently Supported Actions
 * ListCategories
 * ListCommands
 * Originate
+* Redirect
 * Reload
 * Sippeers
 * Sipshowregistry
