@@ -43,6 +43,7 @@ can still catch them. If you catch one of these, please report it!
 * Hangup
 * Hold
 * Masquerade
+* NewAccountCode
 * NewCallerid
 * Newchannel
 * Newexten
@@ -69,11 +70,13 @@ Currently Supported Actions
 * Command
 * CoreSettings
 * CoreShowChannels
+* CoreStatus
 * Hangup
 * Login
 * Logoff
 * ListCategories
 * ListCommands
+* Originate
 * Reload
 * Sippeers
 * Sipshowregistry

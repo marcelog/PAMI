@@ -36,17 +36,19 @@ use PAMI\Client\Impl\ClientImpl;
 use PAMI\Listener\IEventListener;
 use PAMI\Message\Event\EventMessage;
 use PAMI\Message\Action\ListCommandsAction;
+use PAMI\Message\Action\ListCategoriesAction;
 use PAMI\Message\Action\CoreShowChannelsAction;
+use PAMI\Message\Action\CoreSettingsAction;
+use PAMI\Message\Action\CoreStatusAction;
 use PAMI\Message\Action\SIPPeersAction;
+use PAMI\Message\Action\SIPShowRegistryAction;
 use PAMI\Message\Action\StatusAction;
 use PAMI\Message\Action\ReloadAction;
 use PAMI\Message\Action\CommandAction;
 use PAMI\Message\Action\HangupAction;
-use PAMI\Message\Action\SIPShowRegistryAction;
-use PAMI\Message\Action\CoreSettingsAction;
-use PAMI\Message\Action\ListCategoriesAction;
 use PAMI\Message\Action\LogoffAction;
 use PAMI\Message\Action\AbsoluteTimeoutAction;
+use PAMI\Message\Action\OriginateAction;
 
 class A implements IEventListener
 {
@@ -74,13 +76,19 @@ try
 	var_dump($a->send(new SIPShowRegistryAction()));
 	var_dump($a->send(new CoreSettingsAction()));
 	var_dump($a->send(new ListCategoriesAction('sip.conf')));
+	var_dump($a->send(new CoreStatusAction()));
+	$originateMsg = new OriginateAction('SIP/marcelog');
+	$originateMsg->setContext('netlabs');
+	$originateMsg->setPriority('1');
+	$originateMsg->setExtension('51992266');
+	var_dump($a->send($originateMsg));
 	//var_dump($a->send(new AbsoluteTimeoutAction('SIP/XXXX-123123', 10)));
 	//var_dump($a->send(new LogoffAction()));
 	//var_dump($a->send(new HangupAction('SIP/XXXX-123123')));
 	//var_dump($a->send(new ReloadAction()));
 	//var_dump($a->send(new ReloadAction('chan_sip')));
 	$time = time();
-	while((time() - $time) < 20) // Wait 20secs for events.
+	while((time() - $time) < 60) // Wait for events.
 	{
 	    $a->process();
 	    usleep(1000); // 1ms delay
