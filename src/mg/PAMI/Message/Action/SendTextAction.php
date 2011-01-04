@@ -1,6 +1,6 @@
 <?php
 /**
- * SipQualifyPeer action message.
+ * SendText action message.
  *
  * PHP Version 5
  *
@@ -15,7 +15,7 @@
 namespace PAMI\Message\Action;
 
 /**
- * SipQualifyPeer action message.
+ * SendText action message.
  *
  * PHP Version 5
  *
@@ -26,18 +26,20 @@ namespace PAMI\Message\Action;
  * @license    http://www.noneyet.ar/ Apache License 2.0
  * @link       http://www.noneyet.ar/
  */
-class SipQualifyPeerAction extends ActionMessage
+class SendTextAction extends ActionMessage
 {
     /**
      * Constructor.
      *
-     * @param string $peer The peer name you want to qualify.
+     * @param string $channel Channel to send message to.
+     * @param string $message Message to send.
      * 
      * @return void
      */
-    public function __construct($peer)
+    public function __construct($channel, $message)
     {
-        parent::__construct('Sipqualifypeer');
-        $this->setKey('Peer', $peer);
+        parent::__construct('SendText');
+        $this->setKey('Channel', $channel);
+        $this->setKey('Message', $message);
     }
 }

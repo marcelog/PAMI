@@ -107,6 +107,7 @@ Currently Supported Actions
 * PlayDTMF
 * Redirect
 * Reload
+* SendText
 * SetVar
 * Sippeers
 * Sipqualifypeer
