@@ -33,13 +33,13 @@ use PAMI\Message\Event\EventMessage;
 class DAHDIShowChannelsCompleteEvent extends EventMessage
 {
     /**
-     * Returns key: 'ListItems'.
+     * Returns key: 'Items'.
      *
      * @return string
      */
     public function getListItems()
     {
-        return $this->getKey('ListItems');
+        return $this->getKey('items');
     }
 
     /**
