@@ -2,20 +2,6 @@
 /**
  * Originate action message.
  *
- * [ActionID] - ActionID for this transaction. Will be returned.
- * Channel - Channel name to call.
- * [Exten] - Extension to use (requires Context and Priority )
- * [Context] - Context to use (requires Exten and Priority )
- * [Priority] - Priority to use (requires Exten and Context )
- * [Application] - Application to execute.
- * [Data] - Data to use (requires Application ).
- * [Timeout] - How long to wait for call to be answered (in ms.).
- * [CallerID] - Caller ID to be set on the outgoing channel.
- * [Variable] - Channel variable to set, multiple Variable: headers are allowed.
- * [Account] - Account code.
- * [Async] - Set to true for fast origination.
- * [Codecs] - Comma-separated list of codecs to use for this call.
- * 
  * PHP Version 5
  *
  * @category   Pami
@@ -31,20 +17,6 @@ namespace PAMI\Message\Action;
 /**
  * Originate action message.
  * 
- * [ActionID] - ActionID for this transaction. Will be returned.
- * Channel - Channel name to call.
- * [Exten] - Extension to use (requires Context and Priority )
- * [Context] - Context to use (requires Exten and Priority )
- * [Priority] - Priority to use (requires Exten and Context )
- * [Application] - Application to execute.
- * [Data] - Data to use (requires Application ).
- * [Timeout] - How long to wait for call to be answered (in ms.).
- * [CallerID] - Caller ID to be set on the outgoing channel.
- * [Variable] - Channel variable to set, multiple Variable: headers are allowed.
- * [Account] - Account code.
- * [Async] - Set to true for fast origination.
- * [Codecs] - Comma-separated list of codecs to use for this call.
- * 
  * PHP Version 5
  *
  * @category   Pami
@@ -56,60 +28,139 @@ namespace PAMI\Message\Action;
  */
 class OriginateAction extends ActionMessage
 {
+    /**
+     * Sets Exten key.
+     *  
+     * @param string $extension Extension to use (requires Context and Priority). 
+     * 
+     * @return void
+     */
     public function setExtension($extension)
     {
         $this->setKey('Exten', $extension);
     }
     
+    /**
+     * Sets Context key.
+     *  
+     * @param string $context Context to use (requires Exten and Priority). 
+     * 
+     * @return void
+     */
     public function setContext($context)
     {
         $this->setKey('Context', $context);
     }
     
+    /**
+     * Sets Priority key.
+     *  
+     * @param string $priority Priority to use (requires Exten and Context). 
+     * 
+     * @return void
+     */
     public function setPriority($priority)
     {
         $this->setKey('Priority', $priority);
     }
     
+    /**
+     * Sets Application key.
+     *  
+     * @param string $application Application to execute. 
+     * 
+     * @return void
+     */
     public function setApplication($application)
     {
         $this->setKey('Application', $application);
     }
     
+    /**
+     * Sets Data key.
+     *  
+     * @param string $data Data to use (requires Application). 
+     * 
+     * @return void
+     */
     public function setData($data)
     {
         $this->setKey('Data', $data);
     }
     
+    /**
+     * Sets Timeout key.
+     *  
+     * @param integer $timeout How long to wait for call to be answered (in ms). 
+     * 
+     * @return void
+     */
     public function setTimeout($timeout)
     {
         $this->setKey('Timeout', $timeout);
     }
     
+    /**
+     * Sets CallerID key.
+     *  
+     * @param string $clid Caller ID to be set on the outgoing channel. 
+     * 
+     * @return void
+     */
     public function setCallerId($clid)
     {
         $this->setKey('CallerID', $clid);
     }
     
+    /**
+     * Sets Account key.
+     *  
+     * @param string $name  Channel variable to set, multiple are allowed.
+     * @param string $value Variable value.
+     * 
+     * @return void
+     */
     public function setVariable($name, $value)
     {
         $this->setVariable($name, $value);
     }
     
+    /**
+     * Sets Account key.
+     *  
+     * @param string Account code. 
+     * 
+     * @return void
+     */
     public function setAccount($account)
     {
         $this->setKey('Account', $account);
     }
     
+    /**
+     * Sets Async key.
+     *  
+     * @param boolean $async Set to true for fast origination.
+     * 
+     * @return void
+     */
     public function setAsync($async)
     {
-        $this->setKey('Async', $async);
+        $this->setKey('Async', $async ? 'true' : 'false');
     }
     
-    public function setCodecs($codecs)
+    /**
+     * Sets Codecs key.
+     *  
+     * @param string[] $codecs List of codecs to use for this call.
+     * 
+     * @return void
+     */
+    public function setCodecs(array $codecs)
     {
-        $this->setKey('Codecs', $codecs);
+        $this->setKey('Codecs', implode(',', $codecs));
     }
+
     /**
      * Constructor.
      *
