@@ -76,6 +76,7 @@ Currently Supported Actions
 * CoreShowChannels
 * CoreStatus
 * DAHDIHangup
+* DAHDIRestart
 * DAHDIShowChannels
 * GetConfig
 * GetConfigJSON
