@@ -1,8 +1,7 @@
 Introduction
 ============
 
-Before anything at all: There is no official release yet. So if you're
-interested, stay tuned. This is a software still in development (although
+Before anything at all: There is no official release yet. Although
 it only lacks more actions and events, so it's not that bad really ;)).
 
 PAMI means PHP Asterisk Manager Interface. As its name suggests its just a
