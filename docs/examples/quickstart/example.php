@@ -50,6 +50,7 @@ use PAMI\Message\Action\LogoffAction;
 use PAMI\Message\Action\AbsoluteTimeoutAction;
 use PAMI\Message\Action\OriginateAction;
 use PAMI\Message\Action\BridgeAction;
+use PAMI\Message\Action\CreateConfigAction;
 use PAMI\Message\Action\GetConfigAction;
 use PAMI\Message\Action\GetConfigJSONAction;
 use PAMI\Message\Action\AttendedTransferAction;
@@ -92,6 +93,7 @@ try
 	var_dump($a->send(new GetConfigAction('sip.conf', 'general')));
 	var_dump($a->send(new GetConfigJSONAction('extensions.conf')));
 	var_dump($a->send(new DAHDIShowChannelsAction()));
+	var_dump($a->send(new CreateConfigAction('foo.conf')));
 	//var_dump($a->send(new DAHDIDNDOnAction('1')));
 	//var_dump($a->send(new DAHDIDNDOffAction('1')));
 	//var_dump($a->send(new DAHDIDialOffHookAction(1, '113')));
