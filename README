@@ -110,6 +110,7 @@ Currently Supported Actions
 * Reload
 * SetVar
 * Sippeers
+* Sipqualifypeer
 * Sipshowregistry
 * Status
 * VoicemailUsersList

@@ -75,6 +75,7 @@ use PAMI\Message\Action\GetVarAction;
 use PAMI\Message\Action\SetVarAction;
 use PAMI\Message\Action\PingAction;
 use PAMI\Message\Action\ParkedCallsAction;
+use PAMI\Message\Action\SipQualifyPeerAction;
 
 class A implements IEventListener
 {
@@ -124,6 +125,7 @@ try
 	//
 	// The following are commented just in case you run it in the wrong box ;)
 	//
+	//var_dump($a->send(new SipQualifyPeerAction('marcelog')));
 	//var_dump($a->send(new AgentLogoffAction('a', true)));
 	//var_dump($a->send(new PlayDTMFAction('DAHDI/1-1', '1')));
 	//var_dump($a->send(new CreateConfigAction('foo.conf')));
