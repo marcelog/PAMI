@@ -44,6 +44,7 @@ use PAMI\Message\Action\CommandAction;
 use PAMI\Message\Action\HangupAction;
 use PAMI\Message\Action\SIPShowRegistryAction;
 use PAMI\Message\Action\CoreSettingsAction;
+use PAMI\Message\Action\ListCategoriesAction;
 
 class A implements IEventListener
 {
@@ -70,6 +71,7 @@ try
 	var_dump($a->send(new CommandAction('sip show peers')));
 	var_dump($a->send(new SIPShowRegistryAction()));
 	var_dump($a->send(new CoreSettingsAction()));
+	var_dump($a->send(new ListCategoriesAction('sip.conf')));
 	//var_dump($a->send(new HangupAction('SIP/XXXX-123123')));
 	//var_dump($a->send(new ReloadAction()));
 	//var_dump($a->send(new ReloadAction('chan_sip')));

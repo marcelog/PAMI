@@ -70,6 +70,7 @@ Currently Supported Actions
 * CoreShowChannels
 * Hangup
 * Login
+* ListCategories
 * ListCommands
 * Reload
 * Sippeers
