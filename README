@@ -67,6 +67,7 @@ can still catch them. If you catch one of these, please report it!
 Currently Supported Actions
 ===========================
 * AbsoluteTimeout
+* Bridge
 * Command
 * CoreSettings
 * CoreShowChannels
