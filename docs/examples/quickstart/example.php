@@ -62,6 +62,7 @@ use PAMI\Message\Action\DAHDIDialOffHookAction;
 use PAMI\Message\Action\DAHDIDNDOnAction;
 use PAMI\Message\Action\DAHDIDNDOffAction;
 use PAMI\Message\Action\AgentsAction;
+use PAMI\Message\Action\AgentLogoffAction;
 use PAMI\Message\Action\MailboxStatusAction;
 use PAMI\Message\Action\MailboxCountAction;
 use PAMI\Message\Action\VoicemailUsersListAction;
@@ -102,6 +103,7 @@ try
 	var_dump($a->send(new MailboxStatusAction('marcelog@netlabs')));
 	var_dump($a->send(new MailboxCountAction('marcelog@netlabs')));
 	var_dump($a->send(new VoicemailUsersListAction()));
+	//var_dump($a->send(new AgentLogoffAction('a', true)));
 	//var_dump($a->send(new PlayDTMFAction('DAHDI/1-1', '1')));
 	//var_dump($a->send(new CreateConfigAction('foo.conf')));
 	//var_dump($a->send(new DAHDIDNDOnAction('1')));

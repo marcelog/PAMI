@@ -73,6 +73,7 @@ Currently Supported Actions
 ===========================
 * AbsoluteTimeout
 * Agents
+* AgentLogoff
 * Atxfer (asterisk 1.8?)
 * Bridge
 * Command
