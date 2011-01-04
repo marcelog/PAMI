@@ -64,6 +64,7 @@ use PAMI\Message\Action\DAHDIDNDOffAction;
 use PAMI\Message\Action\AgentsAction;
 use PAMI\Message\Action\MailboxStatusAction;
 use PAMI\Message\Action\MailboxCountAction;
+use PAMI\Message\Action\VoicemailUsersListAction;
 
 class A implements IEventListener
 {
@@ -99,6 +100,7 @@ try
 	var_dump($a->send(new AgentsAction()));
 	var_dump($a->send(new MailboxStatusAction('marcelog@netlabs')));
 	var_dump($a->send(new MailboxCountAction('marcelog@netlabs')));
+	var_dump($a->send(new VoicemailUsersListAction()));
 	//var_dump($a->send(new CreateConfigAction('foo.conf')));
 	//var_dump($a->send(new DAHDIDNDOnAction('1')));
 	//var_dump($a->send(new DAHDIDNDOffAction('1')));

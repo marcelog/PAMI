@@ -66,6 +66,8 @@ can still catch them. If you catch one of these, please report it!
 * Transfer
 * Unlink
 * VarSet
+* VoicemailUserEntry
+* VoicemailUserEntryComplete
 --------------------------------------------------------------------------------
 Currently Supported Actions
 ===========================
@@ -99,7 +101,7 @@ Currently Supported Actions
 * Sippeers
 * Sipshowregistry
 * Status
-
+* VoicemailUsersList
 --------------------------------------------------------------------------------
 Developers
 ==========
