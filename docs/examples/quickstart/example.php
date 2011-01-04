@@ -45,6 +45,7 @@ use PAMI\Message\Action\HangupAction;
 use PAMI\Message\Action\SIPShowRegistryAction;
 use PAMI\Message\Action\CoreSettingsAction;
 use PAMI\Message\Action\ListCategoriesAction;
+use PAMI\Message\Action\LogoffAction;
 
 class A implements IEventListener
 {
@@ -72,16 +73,17 @@ try
 	var_dump($a->send(new SIPShowRegistryAction()));
 	var_dump($a->send(new CoreSettingsAction()));
 	var_dump($a->send(new ListCategoriesAction('sip.conf')));
+	//var_dump($a->send(new LogoffAction()));
 	//var_dump($a->send(new HangupAction('SIP/XXXX-123123')));
 	//var_dump($a->send(new ReloadAction()));
 	//var_dump($a->send(new ReloadAction('chan_sip')));
-	
-	while(true)
+	$time = time();
+	while((time() - $time) < 20) // Wait 20secs for events.
 	{
 	    $a->process();
 	    usleep(1000); // 1ms delay
 	}
-	$a->close();
+	$a->close(); // send logoff and close the connection.
 } catch (Exception $e) {
 	echo $e->getMessage() . "\n";
 }

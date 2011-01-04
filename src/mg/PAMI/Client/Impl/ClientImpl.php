@@ -18,6 +18,7 @@ use PAMI\Message\OutgoingMessage;
 use PAMI\Message\Message;
 use PAMI\Message\IncomingMessage;
 use PAMI\Message\Action\LoginAction;
+use PAMI\Message\Action\LogoffAction;
 use PAMI\Message\Response\ResponseMessage;
 use PAMI\Message\Event\EventMessage;
 use PAMI\Message\Event\Factory\IEventFactory;
@@ -337,6 +338,7 @@ class ClientImpl implements IClient
 	 */
 	public function close()
 	{
+	    $this->send(new LogoffAction());
 		stream_socket_shutdown($this->_socket, STREAM_SHUT_RDWR);
 	}
 
