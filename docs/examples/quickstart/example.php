@@ -72,6 +72,7 @@ use PAMI\Message\Action\DBPutAction;
 use PAMI\Message\Action\DBDelAction;
 use PAMI\Message\Action\DBDelTreeAction;
 use PAMI\Message\Action\GetVarAction;
+use PAMI\Message\Action\SetVarAction;
 
 class A implements IEventListener
 {
@@ -112,6 +113,8 @@ try
 	var_dump($a->send(new DBGetAction('something', 'a')));
 	var_dump($a->send(new DBDelAction('something', 'a')));
 	var_dump($a->send(new DBDelTreeAction('something', 'a')));
+	var_dump($a->send(new SetVarAction('foo', 'asd')));
+	var_dump($a->send(new SetVarAction('foo', 'asd', 'SIP/a-1')));
 	var_dump($a->send(new GetVarAction('foo')));
 	var_dump($a->send(new GetVarAction('foo', 'SIP/a-1')));
 	//var_dump($a->send(new AgentLogoffAction('a', true)));
