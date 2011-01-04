@@ -55,6 +55,7 @@ use PAMI\Message\Action\GetConfigJSONAction;
 use PAMI\Message\Action\AttendedTransferAction;
 use PAMI\Message\Action\RedirectAction;
 use PAMI\Message\Action\DAHDIShowChannelsAction;
+use PAMI\Message\Action\DAHDIHangupAction;
 
 class A implements IEventListener
 {
@@ -98,6 +99,7 @@ try
 	//var_dump($a->send(new BridgeAction('SIP/a-1', 'SIP/a-2', true)));
 	//var_dump($a->send(new LogoffAction()));
 	//var_dump($a->send(new HangupAction('SIP/XXXX-123123')));
+	//var_dump($a->send(new DAHDIHangupAction('1')));
 	//var_dump($a->send(new ReloadAction()));
 	//var_dump($a->send(new ReloadAction('chan_sip')));
 	$time = time();
