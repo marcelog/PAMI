@@ -105,6 +105,7 @@ Currently Supported Actions
 * ParkedCalls
 * Ping
 * PlayDTMF
+* Queues
 * Redirect
 * Reload
 * SendText
