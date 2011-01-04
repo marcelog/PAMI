@@ -37,6 +37,8 @@ can still catch them. If you catch one of these, please report it!
 * ChannelUpdate
 * CoreShowChannel
 * CoreShowChannelComplete
+* DAHDIShowChannel
+* DAHDIShowChannelsComplete
 * Dial
 * DTMF
 * Extension
@@ -73,6 +75,7 @@ Currently Supported Actions
 * CoreSettings
 * CoreShowChannels
 * CoreStatus
+* DAHDIShowChannels
 * GetConfig
 * GetConfigJSON
 * Hangup
