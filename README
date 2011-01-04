@@ -96,6 +96,7 @@ Currently Supported Actions
 * MailboxCount
 * MailboxStatus
 * Originate
+* PlayDTMF
 * Redirect
 * Reload
 * Sippeers
