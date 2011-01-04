@@ -50,6 +50,7 @@ can still catch them. If you catch one of these, please report it!
 * PeerEntry
 * PeerlistComplete
 * PeerStatus
+* RegistrationsComplete
 * Rename
 * RTCPReceived
 * RTCPReceiver
@@ -64,14 +65,16 @@ can still catch them. If you catch one of these, please report it!
 --------------------------------------------------------------------------------
 Currently Supported Actions
 ===========================
+* Command
+* CoreShowChannels
+* Hangup
 * Login
 * ListCommands
-* CoreShowChannels
-* Sippeers
-* Status
 * Reload
-* Command
-* Hangup
+* Sippeers
+* Sipshowregistry
+* Status
+
 --------------------------------------------------------------------------------
 Developers
 ==========
