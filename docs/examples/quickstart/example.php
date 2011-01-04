@@ -46,6 +46,7 @@ use PAMI\Message\Action\SIPShowRegistryAction;
 use PAMI\Message\Action\CoreSettingsAction;
 use PAMI\Message\Action\ListCategoriesAction;
 use PAMI\Message\Action\LogoffAction;
+use PAMI\Message\Action\AbsoluteTimeoutAction;
 
 class A implements IEventListener
 {
@@ -73,6 +74,7 @@ try
 	var_dump($a->send(new SIPShowRegistryAction()));
 	var_dump($a->send(new CoreSettingsAction()));
 	var_dump($a->send(new ListCategoriesAction('sip.conf')));
+	//var_dump($a->send(new AbsoluteTimeoutAction('SIP/XXXX-123123', 10)));
 	//var_dump($a->send(new LogoffAction()));
 	//var_dump($a->send(new HangupAction('SIP/XXXX-123123')));
 	//var_dump($a->send(new ReloadAction()));
