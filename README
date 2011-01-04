@@ -102,6 +102,7 @@ Currently Supported Actions
 * MailboxCount
 * MailboxStatus
 * Originate
+* Ping
 * PlayDTMF
 * Redirect
 * Reload

@@ -73,6 +73,7 @@ use PAMI\Message\Action\DBDelAction;
 use PAMI\Message\Action\DBDelTreeAction;
 use PAMI\Message\Action\GetVarAction;
 use PAMI\Message\Action\SetVarAction;
+use PAMI\Message\Action\PingAction;
 
 class A implements IEventListener
 {
@@ -117,6 +118,7 @@ try
 	var_dump($a->send(new SetVarAction('foo', 'asd', 'SIP/a-1')));
 	var_dump($a->send(new GetVarAction('foo')));
 	var_dump($a->send(new GetVarAction('foo', 'SIP/a-1')));
+	var_dump($a->send(new PingAction()));
 	//var_dump($a->send(new AgentLogoffAction('a', true)));
 	//var_dump($a->send(new PlayDTMFAction('DAHDI/1-1', '1')));
 	//var_dump($a->send(new CreateConfigAction('foo.conf')));
