@@ -32,6 +32,7 @@ use, so your contributions may make the difference! ;)
 Unknown (not yet implemented) events will be reported as UnknownEvent, so you
 can still catch them. If you catch one of these, please report it!
 
+* AgentsComplete
 * AGIExec
 * Bridge
 * ChannelUpdate
@@ -69,6 +70,7 @@ can still catch them. If you catch one of these, please report it!
 Currently Supported Actions
 ===========================
 * AbsoluteTimeout
+* Agents
 * Atxfer (asterisk 1.8?)
 * Bridge
 * Command
