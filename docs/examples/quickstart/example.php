@@ -49,6 +49,8 @@ use PAMI\Message\Action\HangupAction;
 use PAMI\Message\Action\LogoffAction;
 use PAMI\Message\Action\AbsoluteTimeoutAction;
 use PAMI\Message\Action\OriginateAction;
+use PAMI\Message\Action\BridgeAction;
+use PAMI\Message\Action\GetConfigAction;
 
 class A implements IEventListener
 {
@@ -77,12 +79,15 @@ try
 	var_dump($a->send(new CoreSettingsAction()));
 	var_dump($a->send(new ListCategoriesAction('sip.conf')));
 	var_dump($a->send(new CoreStatusAction()));
-	$originateMsg = new OriginateAction('SIP/marcelog');
-	$originateMsg->setContext('netlabs');
-	$originateMsg->setPriority('1');
-	$originateMsg->setExtension('51992266');
-	var_dump($a->send($originateMsg));
+	var_dump($a->send(new GetConfigAction('extensions.conf')));
+	var_dump($a->send(new GetConfigAction('sip.conf', 'general')));
+	//$originateMsg = new OriginateAction('SIP/marcelog');
+	//$originateMsg->setContext('netlabs');
+	//$originateMsg->setPriority('1');
+	//$originateMsg->setExtension('51992266');
+	//var_dump($a->send($originateMsg));
 	//var_dump($a->send(new AbsoluteTimeoutAction('SIP/XXXX-123123', 10)));
+	//var_dump($a->send(new BridgeAction('SIP/a-1', 'SIP/a-2', true)));
 	//var_dump($a->send(new LogoffAction()));
 	//var_dump($a->send(new HangupAction('SIP/XXXX-123123')));
 	//var_dump($a->send(new ReloadAction()));

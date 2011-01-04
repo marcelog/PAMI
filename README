@@ -72,6 +72,7 @@ Currently Supported Actions
 * CoreSettings
 * CoreShowChannels
 * CoreStatus
+* GetConfig
 * Hangup
 * Login
 * Logoff
