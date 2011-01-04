@@ -79,6 +79,8 @@ Currently Supported Actions
 * DAHDIHangup
 * DAHDIRestart
 * DAHDIShowChannels
+* DAHDIDNDOn
+* DAHDIDNDOff
 * GetConfig
 * GetConfigJSON
 * Hangup
