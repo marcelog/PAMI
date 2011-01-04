@@ -93,6 +93,7 @@ Currently Supported Actions
 * CreateConfig
 * GetConfig
 * GetConfigJSON
+* GetVar
 * Hangup
 * Login
 * Logoff
