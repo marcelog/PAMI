@@ -1,40 +1,44 @@
 <?php
 /**
- * Agents action message.
+ * Event triggered for the end of the list when an action Agents is issued.
  *
  * PHP Version 5
  *
  * @category   Pami
  * @package    Message
- * @subpackage Action
+ * @subpackage Event
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://www.noneyet.ar/ Apache License 2.0
  * @version    SVN: $Id$
  * @link       http://www.noneyet.ar/
  */
-namespace PAMI\Message\Action;
+namespace PAMI\Message\Event;
+
+use PAMI\Message\Event\EventMessage;
 
 /**
- * Agents action message.
- * 
+ * Event triggered for the end of the list when an action Agents is issued.
+ *
  * PHP Version 5
  *
  * @category   Pami
  * @package    Message
- * @subpackage Action
+ * @subpackage Event
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://www.noneyet.ar/ Apache License 2.0
  * @link       http://www.noneyet.ar/
  */
-class AgentsAction extends ActionMessage
+class AgentsCompleteEvent extends EventMessage
 {
     /**
      * Constructor.
      *
+     * @param string $rawContent Literal message as received from ami.
+     * 
      * @return void
      */
-    public function __construct()
+    public function __construct($rawContent)
     {
-        parent::__construct('Agents');
+        parent::__construct($rawContent);
     }
 }

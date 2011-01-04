@@ -61,6 +61,7 @@ use PAMI\Message\Action\DAHDIRestartAction;
 use PAMI\Message\Action\DAHDIDialOffHookAction;
 use PAMI\Message\Action\DAHDIDNDOnAction;
 use PAMI\Message\Action\DAHDIDNDOffAction;
+use PAMI\Message\Action\AgentsAction;
 
 class A implements IEventListener
 {
@@ -93,7 +94,8 @@ try
 	var_dump($a->send(new GetConfigAction('sip.conf', 'general')));
 	var_dump($a->send(new GetConfigJSONAction('extensions.conf')));
 	var_dump($a->send(new DAHDIShowChannelsAction()));
-	var_dump($a->send(new CreateConfigAction('foo.conf')));
+	var_dump($a->send(new AgentsAction()));
+	//var_dump($a->send(new CreateConfigAction('foo.conf')));
 	//var_dump($a->send(new DAHDIDNDOnAction('1')));
 	//var_dump($a->send(new DAHDIDNDOffAction('1')));
 	//var_dump($a->send(new DAHDIDialOffHookAction(1, '113')));
