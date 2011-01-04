@@ -70,6 +70,8 @@ Currently Supported Actions
 * Sippeers
 * Status
 * Reload
+* Command
+* Hangup
 --------------------------------------------------------------------------------
 Developers
 ==========
