@@ -92,8 +92,8 @@ try
 	var_dump($a->send(new GetConfigAction('sip.conf', 'general')));
 	var_dump($a->send(new GetConfigJSONAction('extensions.conf')));
 	var_dump($a->send(new DAHDIShowChannelsAction()));
-	var_dump($a->send(new DAHDIDNDOnAction('1')));
-	var_dump($a->send(new DAHDIDNDOffAction('1')));
+	//var_dump($a->send(new DAHDIDNDOnAction('1')));
+	//var_dump($a->send(new DAHDIDNDOffAction('1')));
 	//var_dump($a->send(new DAHDIDialOffHookAction(1, '113')));
 	//var_dump($a->send(new DAHDIRestartAction()));
 	//var_dump($a->send(new RedirectAction('SIP/a-1', '51992266', 'netlabs', '1')));
