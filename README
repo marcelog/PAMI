@@ -86,6 +86,10 @@ Currently Supported Actions
 * DAHDIShowChannels
 * DAHDIDNDOn
 * DAHDIDNDOff
+* DBGet
+* DBPut
+* DBDel
+* DBDelTree
 * CreateConfig
 * GetConfig
 * GetConfigJSON

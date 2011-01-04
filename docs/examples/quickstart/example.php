@@ -67,6 +67,10 @@ use PAMI\Message\Action\MailboxStatusAction;
 use PAMI\Message\Action\MailboxCountAction;
 use PAMI\Message\Action\VoicemailUsersListAction;
 use PAMI\Message\Action\PlayDTMFAction;
+use PAMI\Message\Action\DBGetAction;
+use PAMI\Message\Action\DBPutAction;
+use PAMI\Message\Action\DBDelAction;
+use PAMI\Message\Action\DBDelTreeAction;
 
 class A implements IEventListener
 {
@@ -103,6 +107,10 @@ try
 	var_dump($a->send(new MailboxStatusAction('marcelog@netlabs')));
 	var_dump($a->send(new MailboxCountAction('marcelog@netlabs')));
 	var_dump($a->send(new VoicemailUsersListAction()));
+	var_dump($a->send(new DBPutAction('something', 'a', 'a')));
+	var_dump($a->send(new DBGetAction('something', 'a')));
+	var_dump($a->send(new DBDelAction('something', 'a')));
+	var_dump($a->send(new DBDelTreeAction('something', 'a')));
 	//var_dump($a->send(new AgentLogoffAction('a', true)));
 	//var_dump($a->send(new PlayDTMFAction('DAHDI/1-1', '1')));
 	//var_dump($a->send(new CreateConfigAction('foo.conf')));
