@@ -52,6 +52,7 @@ use PAMI\Message\Action\OriginateAction;
 use PAMI\Message\Action\BridgeAction;
 use PAMI\Message\Action\GetConfigAction;
 use PAMI\Message\Action\GetConfigJSONAction;
+use PAMI\Message\Action\AttendedTransferAction;
 
 class A implements IEventListener
 {
@@ -83,6 +84,7 @@ try
 	var_dump($a->send(new GetConfigAction('extensions.conf')));
 	var_dump($a->send(new GetConfigAction('sip.conf', 'general')));
 	var_dump($a->send(new GetConfigJSONAction('extensions.conf')));
+	//var_dump($a->send(new AttendedTransferAction('SIP/a-1', '51992266', 'netlabs', '1')));
 	//$originateMsg = new OriginateAction('SIP/marcelog');
 	//$originateMsg->setContext('netlabs');
 	//$originateMsg->setPriority('1');
