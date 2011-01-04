@@ -51,6 +51,7 @@ can still catch them. If you catch one of these, please report it!
 * Newchannel
 * Newexten
 * Newstate
+* ParkedCallsComplete
 * PeerEntry
 * PeerlistComplete
 * PeerStatus
@@ -102,6 +103,7 @@ Currently Supported Actions
 * MailboxCount
 * MailboxStatus
 * Originate
+* ParkedCalls
 * Ping
 * PlayDTMF
 * Redirect

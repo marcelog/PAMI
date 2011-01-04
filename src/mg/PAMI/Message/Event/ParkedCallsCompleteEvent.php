@@ -1,40 +1,46 @@
 <?php
 /**
- * ParkedCalls action message.
+ * Event triggered for the end of the list when an action ParkedCalls
+ * is issued.
  *
  * PHP Version 5
  *
  * @category   Pami
  * @package    Message
- * @subpackage Action
+ * @subpackage Event
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://www.noneyet.ar/ Apache License 2.0
  * @version    SVN: $Id$
  * @link       http://www.noneyet.ar/
  */
-namespace PAMI\Message\Action;
+namespace PAMI\Message\Event;
+
+use PAMI\Message\Event\EventMessage;
 
 /**
- * ParkedCalls action message.
+ * Event triggered for the end of the list when an action ParkedCalls
+ * is issued.
  *
  * PHP Version 5
  *
  * @category   Pami
  * @package    Message
- * @subpackage Action
+ * @subpackage Event
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://www.noneyet.ar/ Apache License 2.0
  * @link       http://www.noneyet.ar/
  */
-class ParkedCallsAction extends ActionMessage
+class ParkedCallsCompleteEvent extends EventMessage
 {
     /**
      * Constructor.
      *
+     * @param string $rawContent Literal message as received from ami.
+     * 
      * @return void
      */
-    public function __construct()
+    public function __construct($rawContent)
     {
-        parent::__construct('ParkedCalls');
+        parent::__construct($rawContent);
     }
 }
