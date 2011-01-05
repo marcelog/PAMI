@@ -87,6 +87,7 @@ use PAMI\Message\Action\ExtensionStateAction;
 use PAMI\Message\Action\JabberSendAction;
 use PAMI\Message\Action\LocalOptimizeAwayAction;
 use PAMI\Message\Action\ModuleCheckAction;
+use PAMI\Message\Action\ShowDialPlanAction;
 
 class A implements IEventListener
 {
@@ -139,6 +140,7 @@ try
 	$notify = new SIPNotifyAction('marcelog');
 	$notify->setVariable('a', 'b');
 	var_dump($a->send($notify));
+	var_dump($a->send(new ShowDialPlanAction()));
 
 	//
 	// The following are commented just in case you run it in the wrong box ;)
