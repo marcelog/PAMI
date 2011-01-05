@@ -1,6 +1,6 @@
 <?php
 /**
- * SipQualifyPeer action message.
+ * Sipshowpeer action message.
  *
  * PHP Version 5
  *
@@ -15,7 +15,7 @@
 namespace PAMI\Message\Action;
 
 /**
- * SipQualifyPeer action message.
+ * Sipshowpeer action message.
  *
  * PHP Version 5
  *
@@ -26,18 +26,18 @@ namespace PAMI\Message\Action;
  * @license    http://www.noneyet.ar/ Apache License 2.0
  * @link       http://www.noneyet.ar/
  */
-class SipQualifyPeerAction extends ActionMessage
+class SIPShowPeerAction extends ActionMessage
 {
     /**
      * Constructor.
      *
-     * @param string $peer The peer name you want to qualify.
-     * 
+     * @param string $peer Peer name.
+     *
      * @return void
      */
     public function __construct($peer)
     {
-        parent::__construct('Sipqualifypeer');
+        parent::__construct('SIPshowpeer');
         $this->setKey('Peer', $peer);
     }
 }
