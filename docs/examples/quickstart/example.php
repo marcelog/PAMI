@@ -84,6 +84,7 @@ use PAMI\Message\Action\StopMonitorAction;
 use PAMI\Message\Action\ExtensionStateAction;
 use PAMI\Message\Action\JabberSendAction;
 use PAMI\Message\Action\LocalOptimizeAwayAction;
+use PAMI\Message\Action\ModuleCheckAction;
 
 class A implements IEventListener
 {
@@ -131,6 +132,7 @@ try
 	var_dump($a->send(new GetVarAction('foo', 'SIP/a-1')));
 	var_dump($a->send(new PingAction()));
 	var_dump($a->send(new ExtensionStateAction('1', 'default')));
+	var_dump($a->send(new ModuleCheckAction('chan_sip')));
 
 	//
 	// The following are commented just in case you run it in the wrong box ;)
