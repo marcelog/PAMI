@@ -91,6 +91,7 @@ Currently Supported Actions
 * DBPut
 * DBDel
 * DBDelTree
+* ExtensionState
 * CreateConfig
 * GetConfig
 * GetConfigJSON
