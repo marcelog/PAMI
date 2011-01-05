@@ -77,6 +77,10 @@ use PAMI\Message\Action\PingAction;
 use PAMI\Message\Action\ParkedCallsAction;
 use PAMI\Message\Action\SipQualifyPeerAction;
 use PAMI\Message\Action\QueuesAction;
+use PAMI\Message\Action\MonitorAction;
+use PAMI\Message\Action\PauseMonitorAction;
+use PAMI\Message\Action\UnpauseMonitorAction;
+use PAMI\Message\Action\StopMonitorAction;
 
 class A implements IEventListener
 {
@@ -123,6 +127,10 @@ try
 	var_dump($a->send(new ParkedCallsAction()));
 	var_dump($a->send(new GetVarAction('foo', 'SIP/a-1')));
 	var_dump($a->send(new PingAction()));
+	var_dump($a->send(new MonitorAction('DAHDI/1-1', 'monitor')));
+	var_dump($a->send(new PauseMonitorAction('DAHDI/1-1')));
+	var_dump($a->send(new UnpauseMonitorAction('DAHDI/1-1')));
+	var_dump($a->send(new StopMonitorAction('DAHDI/1-1')));
 	//var_dump($a->send(new QueuesAction())); // See #2
 	//
 	// The following are commented just in case you run it in the wrong box ;)

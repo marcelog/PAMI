@@ -64,25 +64,25 @@ class ClientImpl implements IClient
      * @var string
      */
 	private $_pass;
-	
+
 	/**
 	 * Connection timeout, in seconds.
 	 * @var integer
 	 */
 	private $_cTimeout;
-	
+
 	/**
 	 * Event factory.
 	 * @var IEventFactory
 	 */
 	private $_eventFactory;
-	
+
 	/**
 	 * R/W timeout, in milliseconds.
 	 * @var integer
 	 */
 	private $_rTimeout;
-	
+
 	/**
 	 * Our stream socket resource.
 	 * @var resource
@@ -100,13 +100,13 @@ class ClientImpl implements IClient
 	 * @var IEventListener[]
 	 */
 	private $_eventListeners;
-	
+
 	/**
 	 * The send queue
 	 * @var OutgoingMessage[]
 	 */
 	private $_outgoingQueue;
-	
+
 	/**
 	 * The receiving queue.
 	 * @var IncomingMessage[]
@@ -119,7 +119,7 @@ class ClientImpl implements IClient
 	 * @var string
 	 */
 	private $_currentProcessingMessage;
-	
+
 	/**
 	 * Opens a tcp connection to ami.
 	 *
@@ -155,14 +155,14 @@ class ClientImpl implements IClient
 	 * Registers the given listener so it can receive events.
 	 *
 	 * @param IEventListener $listener
-	 * 
+	 *
 	 * @return void
 	 */
 	public function registerEventListener(IEventListener $listener)
 	{
 	    $this->_eventListeners[] = $listener;
 	}
-	
+
 	/**
 	 * Reads a line over the stream until EOL.
 	 *
@@ -188,7 +188,7 @@ class ClientImpl implements IClient
 	    // If we got something, add it to what we have read so far.
 	    $this->_currentProcessingMessage .= $read;
 	    // If we have a complete message, then return it. Save the rest for
-	    // later. 
+	    // later.
 	    $marker = strpos($this->_currentProcessingMessage, Message::EOM);
 	    if($marker === false) {
 	        return false;
@@ -204,9 +204,9 @@ class ClientImpl implements IClient
 	 * Main processing loop. Also called from send(), you should call this in
 	 * your own application in order to continue reading events and responses
 	 * from ami.
-	 * 
+	 *
 	 * Taken from: http://www.voip-info.org/wiki/view/Asterisk+manager+API
-	 * 
+	 *
 	 * The type of a packet is determined by the existence of one of the
 	 * following keys:
 	 * Action: A packet sent by the connected client to Asterisk, requesting a
@@ -227,7 +227,7 @@ class ClientImpl implements IClient
 	 * by Asterisk in the corresponding Response packet. That way the client
 	 * can easily match Action and Response packets while sending Actions at
 	 * any desired rate without having to wait for outstanding Response packets
-	 * before sending the next action. 
+	 * before sending the next action.
 	 * Event packets are used in two different contexts: On the one hand they
 	 * inform clients about state changes in Asterisk (like new channels being
 	 * created and hung up or agents being logged in and out) on the other hand
@@ -243,9 +243,9 @@ class ClientImpl implements IClient
 	 * event generating action is the Status action that triggers Status events
 	 * for each active channel. When all Status events have been sent a
 	 * terminating a StatusComplete event is sent.
-	 * 
+	 *
 	 * @todo not suitable for multithreaded applications.
-	 * 
+	 *
 	 * @return void
 	 */
 	public function process()
@@ -271,13 +271,13 @@ class ClientImpl implements IClient
 	        }
 	    }
 	}
-	
+
 	/**
 	 * Returns a message (response) related to the given message. This uses
 	 * the ActionID tag (key).
-	 *  
+	 *
 	 * @todo not suitable for multithreaded applications.
-	 * 
+	 *
 	 * @return IncomingMessage
 	 */
 	protected function getRelated(OutgoingMessage $message)
@@ -292,12 +292,12 @@ class ClientImpl implements IClient
 	    }
 	    return false;
 	}
-	
+
 	/**
 	 * Sends a message to ami.
 	 *
 	 * @param OutgoingMessage $message Message to send.
-	 * 
+	 *
 	 * @see ClientImpl::send()
 	 * @throws ClientException
 	 * @return void
@@ -320,7 +320,7 @@ class ClientImpl implements IClient
 	        usleep(1000); // 1ms delay
 	    }
 	}
-	
+
 	/**
 	 * Receives a message from ami.
 	 *
@@ -330,7 +330,7 @@ class ClientImpl implements IClient
 	{
 	    return false;
 	}
-	
+
 	/**
 	 * Closes the connection to ami.
 	 *
@@ -351,7 +351,7 @@ class ClientImpl implements IClient
 	 * @param string  $pass     Password.
 	 * @param integer $cTimeout In seconds. Max time to establish the connection.
 	 * @param integer $rTimeout In milliseconds. Read and write timeout.
-	 * 
+	 *
 	 * @return void
 	 */
 	public function __construct($host, $port, $user, $pass, $cTimeout, $rTimeout)

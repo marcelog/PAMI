@@ -1,6 +1,6 @@
 <?php
 /**
- * Stops the Monitor for a given channel.
+ * Pauses the Monitor for a given channel.
  *
  * PHP Version 5
  *
@@ -15,7 +15,7 @@
 namespace PAMI\Message\Action;
 
 /**
- * Stops the Monitor for a given channel.
+ * Pauses the Monitor for a given channel.
  *
  * PHP Version 5
  *
@@ -26,7 +26,7 @@ namespace PAMI\Message\Action;
  * @license    http://www.noneyet.ar/ Apache License 2.0
  * @link       http://www.noneyet.ar/
  */
-class StopMonitorAction extends ActionMessage
+class PauseMonitorAction extends ActionMessage
 {
     /**
      * Constructor.
@@ -37,7 +37,7 @@ class StopMonitorAction extends ActionMessage
      */
     public function __construct($channel)
     {
-        parent::__construct('StopMonitor');
+        parent::__construct('PauseMonitor');
         $this->setKey('Channel', $channel);
     }
 }
