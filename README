@@ -107,6 +107,9 @@ Currently Supported Actions
 * ListCommands
 * MailboxCount
 * MailboxStatus
+* MeetmeList
+* MeetmeMute
+* MeetmeUnmute
 * ModuleCheck
 * Monitor
 * Originate

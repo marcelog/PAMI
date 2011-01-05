@@ -89,6 +89,9 @@ use PAMI\Message\Action\LocalOptimizeAwayAction;
 use PAMI\Message\Action\ModuleCheckAction;
 use PAMI\Message\Action\ShowDialPlanAction;
 use PAMI\Message\Action\ParkAction;
+use PAMI\Message\Action\MeetmeListAction;
+use PAMI\Message\Action\MeetmeMuteAction;
+use PAMI\Message\Action\MeetmeUnmuteAction;
 
 class A implements IEventListener
 {
@@ -146,6 +149,9 @@ try
 	//
 	// The following are commented just in case you run it in the wrong box ;)
 	//
+	//var_dump($a->send(new MeetmeListAction('asd')));
+	//var_dump($a->send(new MeetmeMuteAction('asd', 'asd')));
+	//var_dump($a->send(new MeetmeUnmuteAction('asd', 'asd')));
 	//var_dump($a->send(new ParkAction('a', 'b')));
 	//var_dump($a->send(new JabberSendAction('a', 'b', 'c')));
 	//var_dump($a->send(new QueuesAction()));
