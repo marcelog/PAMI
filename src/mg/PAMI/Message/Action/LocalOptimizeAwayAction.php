@@ -1,6 +1,6 @@
 <?php
 /**
- * ExtensionState action message.
+ * LocalOptimizeAwayaction message.
  *
  * PHP Version 5
  *
@@ -15,7 +15,7 @@
 namespace PAMI\Message\Action;
 
 /**
- * ExtensionState action message.
+ * LocalOptimizeAway action message.
  *
  * PHP Version 5
  *
@@ -26,20 +26,18 @@ namespace PAMI\Message\Action;
  * @license    http://www.noneyet.ar/ Apache License 2.0
  * @link       http://www.noneyet.ar/
  */
-class ExtensionStateAction extends ActionMessage
+class LocalOptimizeAwayAction extends ActionMessage
 {
     /**
      * Constructor.
      *
-     * @param string $exten   Extension to check for.
-     * @param string $context Context for extension.
+     * @param string $channel The channel name to optimize away.
      *
      * @return void
      */
-    public function __construct($exten, $context)
+    public function __construct($channel)
     {
-        parent::__construct('ExtensionState');
-        $this->setKey('Exten', $exten);
-        $this->setKey('Context', $context);
+        parent::__construct('LocalOptimizeAway');
+        $this->setKey('Channel', $channel);
     }
 }

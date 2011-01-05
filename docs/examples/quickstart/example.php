@@ -83,6 +83,7 @@ use PAMI\Message\Action\UnpauseMonitorAction;
 use PAMI\Message\Action\StopMonitorAction;
 use PAMI\Message\Action\ExtensionStateAction;
 use PAMI\Message\Action\JabberSendAction;
+use PAMI\Message\Action\LocalOptimizeAwayAction;
 
 class A implements IEventListener
 {
@@ -130,6 +131,7 @@ try
 	var_dump($a->send(new GetVarAction('foo', 'SIP/a-1')));
 	var_dump($a->send(new PingAction()));
 	var_dump($a->send(new ExtensionStateAction('1', 'default')));
+
 	//
 	// The following are commented just in case you run it in the wrong box ;)
 	//
@@ -161,6 +163,7 @@ try
 	//var_dump($a->send(new DAHDIHangupAction('1')));
 	//var_dump($a->send(new ReloadAction()));
 	//var_dump($a->send(new ReloadAction('chan_sip')));
+	//var_dump($a->send(new LocalOptimizeAwayAction('SIP/a-1')));
 	$time = time();
 	while((time() - $time) < 60) // Wait for events.
 	{

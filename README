@@ -98,6 +98,7 @@ Currently Supported Actions
 * GetVar
 * Hangup
 * JabberSend
+* LocalOptimizeAway
 * Login
 * Logoff
 * ListCategories
