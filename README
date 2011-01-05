@@ -119,6 +119,7 @@ Currently Supported Actions
 * SetVar
 * Sippeers
 * Sipqualifypeer
+* Sipshowpeer
 * Sipshowregistry
 * Status
 * StopMonitor
