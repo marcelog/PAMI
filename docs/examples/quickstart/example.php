@@ -87,6 +87,9 @@ use PAMI\Message\Action\ExtensionStateAction;
 use PAMI\Message\Action\JabberSendAction;
 use PAMI\Message\Action\LocalOptimizeAwayAction;
 use PAMI\Message\Action\ModuleCheckAction;
+use PAMI\Message\Action\ModuleLoadAction;
+use PAMI\Message\Action\ModuleUnloadAction;
+use PAMI\Message\Action\ModuleReloadAction;
 use PAMI\Message\Action\ShowDialPlanAction;
 use PAMI\Message\Action\ParkAction;
 use PAMI\Message\Action\MeetmeListAction;
@@ -145,7 +148,6 @@ try
 	$notify->setVariable('a', 'b');
 	var_dump($a->send($notify));
 	var_dump($a->send(new ShowDialPlanAction()));
-
 	//
 	// The following are commented just in case you run it in the wrong box ;)
 	//
@@ -169,6 +171,9 @@ try
 	//var_dump($a->send(new DAHDIRestartAction()));
 	//var_dump($a->send(new RedirectAction('SIP/a-1', '51992266', 'netlabs', '1')));
 	//var_dump($a->send(new AttendedTransferAction('SIP/a-1', '51992266', 'netlabs', '1')));
+	//var_dump($a->send(new ModuleReloadAction('chan_sip.so')));
+	//var_dump($a->send(new ModuleLoadAction('chan_sip.so')));
+	//var_dump($a->send(new ModuleUnloadAction('chan_sip.so')));
 	//$originateMsg = new OriginateAction('SIP/marcelog');
 	//$originateMsg->setContext('netlabs');
 	//$originateMsg->setPriority('1');

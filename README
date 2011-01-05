@@ -111,6 +111,7 @@ Currently Supported Actions
 * MeetmeMute
 * MeetmeUnmute
 * ModuleCheck
+* ModuleLoad (split in ModuleLoad, ModuleUnload, and ModuleReload)
 * Monitor
 * Originate
 * ParkedCalls
