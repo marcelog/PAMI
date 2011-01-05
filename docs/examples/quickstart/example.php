@@ -88,6 +88,7 @@ use PAMI\Message\Action\JabberSendAction;
 use PAMI\Message\Action\LocalOptimizeAwayAction;
 use PAMI\Message\Action\ModuleCheckAction;
 use PAMI\Message\Action\ShowDialPlanAction;
+use PAMI\Message\Action\ParkAction;
 
 class A implements IEventListener
 {
@@ -145,6 +146,7 @@ try
 	//
 	// The following are commented just in case you run it in the wrong box ;)
 	//
+	//var_dump($a->send(new ParkAction('a', 'b')));
 	//var_dump($a->send(new JabberSendAction('a', 'b', 'c')));
 	//var_dump($a->send(new QueuesAction()));
 	//var_dump($a->send(new MonitorAction('DAHDI/1-1', 'monitor')));
