@@ -82,6 +82,7 @@ use PAMI\Message\Action\PauseMonitorAction;
 use PAMI\Message\Action\UnpauseMonitorAction;
 use PAMI\Message\Action\StopMonitorAction;
 use PAMI\Message\Action\ExtensionStateAction;
+use PAMI\Message\Action\JabberSendAction;
 
 class A implements IEventListener
 {
@@ -132,6 +133,7 @@ try
 	//
 	// The following are commented just in case you run it in the wrong box ;)
 	//
+	//var_dump($a->send(new JabberSendAction('a', 'b', 'c')));
 	//var_dump($a->send(new QueuesAction()));
 	//var_dump($a->send(new MonitorAction('DAHDI/1-1', 'monitor')));
 	//var_dump($a->send(new PauseMonitorAction('DAHDI/1-1')));

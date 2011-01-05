@@ -97,6 +97,7 @@ Currently Supported Actions
 * GetConfigJSON
 * GetVar
 * Hangup
+* JabberSend
 * Login
 * Logoff
 * ListCategories
