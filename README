@@ -117,6 +117,7 @@ Currently Supported Actions
 * Reload
 * SendText
 * SetVar
+* Sipnotify
 * Sippeers
 * Sipqualifypeer
 * Sipshowpeer

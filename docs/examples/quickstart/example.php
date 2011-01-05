@@ -77,6 +77,7 @@ use PAMI\Message\Action\SIPQualifyPeerAction;
 use PAMI\Message\Action\SIPShowPeerAction;
 use PAMI\Message\Action\SIPPeersAction;
 use PAMI\Message\Action\SIPShowRegistryAction;
+use PAMI\Message\Action\SIPNotifyAction;
 use PAMI\Message\Action\QueuesAction;
 use PAMI\Message\Action\MonitorAction;
 use PAMI\Message\Action\PauseMonitorAction;
@@ -135,6 +136,9 @@ try
 	var_dump($a->send(new ExtensionStateAction('1', 'default')));
 	var_dump($a->send(new ModuleCheckAction('chan_sip')));
 	var_dump($a->send(new SIPShowPeerAction('marcelog')));
+	$notify = new SIPNotifyAction('marcelog');
+	$notify->setVariable('a', 'b');
+	var_dump($a->send($notify));
 
 	//
 	// The following are commented just in case you run it in the wrong box ;)

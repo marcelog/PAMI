@@ -72,16 +72,16 @@ abstract class Message
 	{
 	    return $this->_createdDate;
 	}
-	
+
 	/**
 	 * Adds a variable to this message.
 	 *
 	 * @param string $key   Variable name.
 	 * @param string $value Variable value.
-	 * 
+	 *
 	 * @return void
 	 */
-	protected function setVariable($key, $value)
+	public function setVariable($key, $value)
 	{
 	    $key = strtolower($key);
 	    $this->_variables[$key] = $value;
@@ -91,10 +91,10 @@ abstract class Message
 	 * Returns a variable by name.
 	 *
 	 * @param string $key Variable name.
-	 * 
+	 *
 	 * @return string
 	 */
-	protected function getVariable($key)
+	public function getVariable($key)
 	{
 	    $key = strtolower($key);
 		if (!isset($this->_variables[$key])) {
@@ -108,7 +108,7 @@ abstract class Message
 	 *
 	 * @param string $key   Key name (i.e: Action).
 	 * @param string $value Key value.
-	 * 
+	 *
 	 * @return void
 	 */
 	protected function setKey($key, $value)
@@ -121,7 +121,7 @@ abstract class Message
 	 * Returns a key by name.
 	 *
 	 * @param string $key Key name (i.e: Action).
-	 * 
+	 *
 	 * @return string
 	 */
 	protected function getKey($key)
@@ -176,7 +176,7 @@ abstract class Message
 	/**
 	 * Gives a string representation for this message, ready to be sent to
 	 * ami.
-	 * 
+	 *
 	 * @return string
 	 */
 	public function serialize()
