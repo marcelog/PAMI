@@ -1,9 +1,6 @@
 Introduction
 ============
 
-Before anything at all: There is no official release yet. Although
-it only lacks some actions and events, so it's not that bad really ;).
-
 PAMI means PHP Asterisk Manager Interface. As its name suggests its just a
 set of php classes that will let you issue commands to an ami and/or receive
 events, using an observer-listener pattern.
