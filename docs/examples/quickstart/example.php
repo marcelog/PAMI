@@ -30,8 +30,8 @@ ini_set(
 ////////////////////////////////////////////////////////////////////////////////
 // Mandatory stuff to bootstrap.
 ////////////////////////////////////////////////////////////////////////////////
-require_once 'PAMI/Autoloader/PAMI_Autoloader.php'; // Include ding autoloader.
-PAMI_Autoloader::register(); // Call autoloader register for ding autoloader.
+require_once 'PAMI/Autoloader/PAMI_Autoloader.php'; // Include PAMI autoloader.
+PAMI_Autoloader::register(); // Call autoloader register for PAMI autoloader.
 use PAMI\Client\Impl\ClientImpl;
 use PAMI\Listener\IEventListener;
 use PAMI\Message\Event\EventMessage;
