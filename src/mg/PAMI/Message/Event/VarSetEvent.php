@@ -55,7 +55,7 @@ class VarSetEvent extends EventMessage
      *
      * @return string
      */
-    public function getVariable()
+    public function getVariableName()
     {
         return $this->getKey('Variable');
     }
