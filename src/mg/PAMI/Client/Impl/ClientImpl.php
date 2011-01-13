@@ -1,4 +1,5 @@
 <?php
+declare(ticks=1);
 /**
  * TCP Client implementation for AMI.
  *
@@ -149,6 +150,7 @@ class ClientImpl implements IClient
 	    }
 	    stream_set_blocking($this->_socket, 0);
 	    $this->_currentProcessingMessage = '';
+	    register_tick_function(array($this, 'process'));
 	}
 
 	/**
@@ -203,7 +205,7 @@ class ClientImpl implements IClient
 	/**
 	 * Main processing loop. Also called from send(), you should call this in
 	 * your own application in order to continue reading events and responses
-	 * from ami.
+	 * from ami. You may also declare(ticks=1) in your main source code.
 	 *
 	 * Taken from: http://www.voip-info.org/wiki/view/Asterisk+manager+API
 	 *

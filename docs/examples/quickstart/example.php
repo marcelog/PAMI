@@ -1,4 +1,5 @@
 <?php
+declare(ticks=1);
 /**
  * PAMI basic use example.
  *
@@ -192,8 +193,9 @@ try
 	$time = time();
 	while((time() - $time) < 60) // Wait for events.
 	{
-	    $a->process();
 	    usleep(1000); // 1ms delay
+	    // Since we declare(ticks=1) at the top, the following line is not necessary
+	    //$a->process();
 	}
 	$a->close(); // send logoff and close the connection.
 } catch (Exception $e) {
