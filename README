@@ -8,6 +8,11 @@ events, using an observer-listener pattern.
 The idea behind this, is to easily implement operator consoles, monitors, etc.
 either via SOA or ajax.
 
+Currently there is no manual or comprehensive documentation, so please refer
+to the examples, it's really all there (I will write the documentation as
+soon as possible). Please contact me if you have any comments, doubts, or
+any kind of feedback. Send an email to: marcelog@gmail.com
+
 --------------------------------------------------------------------------------
 Asterisk versions supported
 ===========================
