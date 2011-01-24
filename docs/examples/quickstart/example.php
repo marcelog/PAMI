@@ -80,6 +80,7 @@ use PAMI\Message\Action\SIPPeersAction;
 use PAMI\Message\Action\SIPShowRegistryAction;
 use PAMI\Message\Action\SIPNotifyAction;
 use PAMI\Message\Action\QueuesAction;
+use PAMI\Message\Action\QueueStatusAction;
 use PAMI\Message\Action\QueueSummaryAction;
 use PAMI\Message\Action\MonitorAction;
 use PAMI\Message\Action\PauseMonitorAction;
@@ -116,6 +117,7 @@ try
 	$a = new ClientImpl($argv[1], $argv[2], $argv[3], $argv[4], 60, 60);
 	$a->registerEventListener(new A());
 	$a->open();
+	var_dump($a->send(new QueueStatusAction()));
 	var_dump($a->send(new ListCommandsAction()));
 	var_dump($a->send(new CoreShowChannelsAction()));
 	var_dump($a->send(new SIPPeersAction()));

@@ -1,48 +1,46 @@
 <?php
 /**
- * QueueStatus action message.
+ * Event triggered for the end of the list when an action QueueStatus
+ * is issued.
  *
  * PHP Version 5
  *
  * @category   Pami
  * @package    Message
- * @subpackage Action
+ * @subpackage Event
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://www.noneyet.ar/ Apache License 2.0
  * @version    SVN: $Id$
  * @link       http://www.noneyet.ar/
  */
-namespace PAMI\Message\Action;
+namespace PAMI\Message\Event;
+
+use PAMI\Message\Event\EventMessage;
 
 /**
- * QueueStatus action message.
+ * Event triggered for the end of the list when an action QueueStatus
+ * is issued.
  *
  * PHP Version 5
  *
  * @category   Pami
  * @package    Message
- * @subpackage Action
+ * @subpackage Event
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://www.noneyet.ar/ Apache License 2.0
  * @link       http://www.noneyet.ar/
  */
-class QueueStatusAction extends ActionMessage
+class QueueStatusCompleteEvent extends EventMessage
 {
     /**
      * Constructor.
      *
-     * @param string $queue The queue (optional).
+     * @param string $rawContent Literal message as received from ami.
      *
      * @return void
      */
-    public function __construct($queue = false, $member = false)
+    public function __construct($rawContent)
     {
-        parent::__construct('QueueStatus');
-        if ($queue != false) {
-            $this->setKey('Queue', $queue);
-        }
-        if ($member != false) {
-            $this->setKey('Member', $member);
-        }
+        parent::__construct($rawContent);
     }
 }

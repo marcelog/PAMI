@@ -38,12 +38,15 @@ class EventFactoryImpl
      * This is our factory method.
      *
      * @param string $message Literall message as received from ami.
-     * 
+     *
      * @return EventMessage
      */
     public static function createFromRaw($message)
     {
         $eventStart = strpos($message, 'Event: ') + 7;
+        if ($eventStart > strlen($message)) {
+            return new UnknownEvent($message);
+        }
         $eventEnd = strpos($message, Message::EOL, $eventStart);
         $name = substr($message, $eventStart, $eventEnd - $eventStart);
         $className = '\\PAMI\\Message\\Event\\' . $name . 'Event';
@@ -52,7 +55,7 @@ class EventFactoryImpl
         }
 	    return new UnknownEvent($message);
     }
-    
+
     /**
      * Constructor. Nothing to see here, move along.
      *

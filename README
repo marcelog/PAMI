@@ -65,8 +65,11 @@ can still catch them. If you catch one of these, please report it!
 * PeerEntry
 * PeerlistComplete
 * PeerStatus
-* QueueSummaryComplete
+* QueueMember
 * QueueMemberStatus
+* QueueParams
+* QueueStatusComplete
+* QueueSummaryComplete
 * RegistrationsComplete
 * Rename
 * RTCPReceived
