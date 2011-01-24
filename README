@@ -46,6 +46,7 @@ can still catch them. If you catch one of these, please report it!
 * CoreShowChannelComplete
 * DAHDIShowChannel
 * DAHDIShowChannelsComplete
+* DBGetResponse
 * Dial
 * DTMF
 * Extension
