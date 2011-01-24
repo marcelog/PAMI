@@ -34,12 +34,12 @@ class DBPutAction extends ActionMessage
      * @param string $family Family.
      * @param string $key    Name.
      * @param string $value  Value.
-     * 
+     *
      * @return void
      */
     public function __construct($family, $key, $value)
     {
-        parent::__construct('DBGet');
+        parent::__construct('DBPut');
         $this->setKey('Family', $family);
         $this->setKey('Key', $key);
         $this->setKey('Val', $value);
