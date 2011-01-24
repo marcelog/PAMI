@@ -1,1 +1,94 @@
 <?php
+/**
+ * QueueAdd action message.
+ *
+ * PHP Version 5
+ *
+ * @category   Pami
+ * @package    Message
+ * @subpackage Action
+ * @author     Marcelo Gornstein <marcelog@gmail.com>
+ * @license    http://www.noneyet.ar/ Apache License 2.0
+ * @version    SVN: $Id$
+ * @link       http://www.noneyet.ar/
+ */
+namespace PAMI\Message\Action;
+
+/**
+ * QueueAdd action message.
+ *
+ * PHP Version 5
+ *
+ * @category   Pami
+ * @package    Message
+ * @subpackage Action
+ * @author     Marcelo Gornstein <marcelog@gmail.com>
+ * @license    http://www.noneyet.ar/ Apache License 2.0
+ * @link       http://www.noneyet.ar/
+ */
+class QueueAddAction extends ActionMessage
+{
+    /**
+     * Sets state interface ... ? Key: 'StateInterface'.
+     *
+     * @param string $stateInterface State interface ... ?
+     *
+     * @return void
+     */
+    public function setStateInterface($stateInterface)
+    {
+        $this->setKey('StateInterface', $stateInterface);
+    }
+
+    /**
+     * Sets penalty. Key: 'Penalty'.
+     *
+     * @param string $penalty Penalty .. ?
+     *
+     * @return void
+     */
+    public function setPenalty($penalty)
+    {
+        $this->setKey('Penalty', $penalty);
+    }
+
+    /**
+     * Sets member name. Key: 'MemberName'.
+     *
+     * @param string $memberName Member name ?
+     *
+     * @return void
+     */
+    public function setMemberName($memberName)
+    {
+        $this->setKey('MemberName', $memberName);
+    }
+
+
+    /**
+     * Sets paused. Key: 'Paused'.
+     *
+     * @param string $paused Paused .. ?
+     *
+     * @return void
+     */
+    public function setPaused($paused)
+    {
+        $this->setKey('Paused', $paused);
+    }
+
+    /**
+     * Constructor.
+     *
+     * @param string $queue     Queue name
+     * @param string $interface Interface ... ?
+     *
+     * @return void
+     */
+    public function __construct($queue, $interface)
+    {
+        parent::__construct('QueueAdd');
+        $this->setKey('Interface', $interface);
+        $this->setKey('Queue', $queue);
+    }
+}
