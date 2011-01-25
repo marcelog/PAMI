@@ -190,7 +190,7 @@ class ClientImpl implements IClient
 	protected function getMessage()
 	{
 	    // Read something.
-	    $read = fread($this->_socket, 8192);
+	    $read = fread($this->_socket, 65535);
 	    if ($read === false) {
 	        return false;
 	    }
