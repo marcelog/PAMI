@@ -119,6 +119,7 @@ try
 	$a = new ClientImpl($argv[1], $argv[2], $argv[3], $argv[4], 60, 60);
 	$a->registerEventListener(new A());
 	$a->open();
+	var_dump($a->send(new QueuesAction())->getRawContent());
 	var_dump($a->send(new ListCommandsAction()));
 	var_dump($a->send(new CoreShowChannelsAction()));
 	var_dump($a->send(new SIPPeersAction()));

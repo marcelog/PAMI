@@ -279,10 +279,12 @@ class ClientImpl implements IClient
 	            $response->addEvent($event);
 	        }
 	    } else { // This should not happen. Bad asterisk, bad!
-	        $response = new ResponseMessage($aMsg);
-	        $response->setActionId($this->_lastActionId);
-	        $actionId = $response->getActionId();
-            $this->_incomingQueue[$actionId] = $response;
+	        if ($this->_lastActionId !== false) {
+    	        $response = new ResponseMessage($aMsg);
+    	        $response->setActionId($this->_lastActionId);
+    	        $actionId = $response->getActionId();
+                $this->_incomingQueue[$actionId] = $response;
+	        }
 	    }
 	}
 
@@ -330,6 +332,7 @@ class ClientImpl implements IClient
 	        $this->process();
 	        $response = $this->getRelated($message);
 	        if ($response != false) {
+	            $this->_lastActionId = false;
 	            return $response;
 	        }
 	        usleep(1000); // 1ms delay
