@@ -27,6 +27,12 @@ namespace PAMI\Message;
 abstract class IncomingMessage extends Message
 {
     /**
+     * Holds original message.
+     * @var string
+     */
+    private $_rawContent;
+
+    /**
      * Returns key 'EventList'. In respones, this will surely be a "start". In
      * events, should be a "complete".
      *
@@ -36,17 +42,28 @@ abstract class IncomingMessage extends Message
     {
         return $this->getKey('EventList');
     }
-    
+
+    /**
+     * Returns the original message content without parsing.
+     *
+     * @return string
+     */
+    public function getRawContent()
+    {
+        return $this->_rawContent;
+    }
+
     /**
      * Constructor.
      *
      * @param string $rawContent Original message as received from ami.
-     * 
+     *
      * @return void
      */
     public function __construct($rawContent)
     {
         parent::__construct();
+        $this->_rawContent = $rawContent;
         $lines = explode(Message::EOL, $rawContent);
         foreach ($lines as $line) {
             $content = explode(':', $line);
@@ -55,5 +72,5 @@ abstract class IncomingMessage extends Message
             $value = isset($content[1]) ? trim(implode(':', $content)) : '';
             $this->setKey($name, $value);
         }
-    } 
+    }
 }
