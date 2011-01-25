@@ -51,13 +51,13 @@ class QueueMemberEvent extends EventMessage
     }
 
     /**
-     * Returns key: 'MemberName'.
+     * Returns key: 'Name'.
      *
      * @return string
      */
-    public function getMemberName()
+    public function getName()
     {
-        return $this->getKey('MemberName');
+        return $this->getKey('Name');
     }
 
     /**
