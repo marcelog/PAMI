@@ -66,6 +66,7 @@ can still catch them. If you catch one of these, please report it!
 * PeerlistComplete
 * PeerStatus
 * QueueMember
+* QueueMemberPause
 * QueueMemberStatus
 * QueueParams
 * QueueStatusComplete
@@ -134,6 +135,10 @@ Currently Supported Actions
 * Ping
 * PlayDTMF
 * Queues
+* QueueAdd
+* Queue
+* QueueUnpause
+* QueuePause
 * QueueSummary
 * Redirect
 * Reload
