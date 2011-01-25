@@ -1,6 +1,6 @@
 <?php
 /**
- * Queue pause action.
+ * Queue unpause action. This does not exist in the ami.
  *
  * PHP Version 5
  *
@@ -15,7 +15,7 @@
 namespace PAMI\Message\Action;
 
 /**
- * Queue pause action.
+ * Queue unpause action. This does not exist in the ami.
  *
  * PHP Version 5
  *
@@ -26,7 +26,7 @@ namespace PAMI\Message\Action;
  * @license    http://www.noneyet.ar/ Apache License 2.0
  * @link       http://www.noneyet.ar/
  */
-class QueuePauseAction extends ActionMessage
+class QueueUnpauseAction extends ActionMessage
 {
     /**
      * Constructor.
@@ -43,6 +43,6 @@ class QueuePauseAction extends ActionMessage
             $this->setKey('Reason', $reason);
         }
         $this->setKey('Interface', $interface);
-        $this->setKey('Paused', 'true');
+        $this->setKey('Paused', 'false');
     }
 }

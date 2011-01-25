@@ -98,6 +98,8 @@ use PAMI\Message\Action\ParkAction;
 use PAMI\Message\Action\MeetmeListAction;
 use PAMI\Message\Action\MeetmeMuteAction;
 use PAMI\Message\Action\MeetmeUnmuteAction;
+use PAMI\Message\Action\QueuePauseAction;
+use PAMI\Message\Action\QueueUnpauseAction;
 
 class A implements IEventListener
 {
@@ -117,7 +119,6 @@ try
 	$a = new ClientImpl($argv[1], $argv[2], $argv[3], $argv[4], 60, 60);
 	$a->registerEventListener(new A());
 	$a->open();
-	var_dump($a->send(new QueueStatusAction()));
 	var_dump($a->send(new ListCommandsAction()));
 	var_dump($a->send(new CoreShowChannelsAction()));
 	var_dump($a->send(new SIPPeersAction()));
@@ -148,6 +149,9 @@ try
 	var_dump($a->send(new ExtensionStateAction('1', 'default')));
 	var_dump($a->send(new ModuleCheckAction('chan_sip')));
 	var_dump($a->send(new SIPShowPeerAction('marcelog')));
+	var_dump($a->send(new QueuePauseAction('Agent/123')));
+	var_dump($a->send(new QueueUnpauseAction('Agent/123')));
+	var_dump($a->send(new QueueStatusAction()));
 	$notify = new SIPNotifyAction('marcelog');
 	$notify->setVariable('a', 'b');
 	var_dump($a->send($notify));

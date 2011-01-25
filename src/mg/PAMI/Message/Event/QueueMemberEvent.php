@@ -105,9 +105,9 @@ class QueueMemberEvent extends EventMessage
      *
      * @return boolean
      */
-    public function getPause()
+    public function getPaused()
     {
-        return intval($this->getKey('Pause')) != 0;
+        return intval($this->getKey('Paused')) != 0;
     }
 
     /**

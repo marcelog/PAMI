@@ -1,6 +1,6 @@
 <?php
 /**
- * Event triggered for a status change in a queue.
+ * Event triggered for a change in a queue member (pause/unpause).
  *
  * PHP Version 5
  *
@@ -17,7 +17,7 @@ namespace PAMI\Message\Event;
 use PAMI\Message\Event\EventMessage;
 
 /**
- * Event triggered for a status change in a queue.
+ * Event triggered for a change in a queue member (pause/unpause).
  *
  * PHP Version 5
  *
@@ -28,7 +28,7 @@ use PAMI\Message\Event\EventMessage;
  * @license    http://www.noneyet.ar/ Apache License 2.0
  * @link       http://www.noneyet.ar/
  */
-class QueueMemberStatusEvent extends EventMessage
+class QueueMemberPausedEvent extends EventMessage
 {
     /**
      * Returns key: 'Privilege'.
@@ -71,51 +71,11 @@ class QueueMemberStatusEvent extends EventMessage
     }
 
     /**
-     * Returns key: 'Membership'.
-     *
-     * @return string
-     */
-    public function getMembership()
-    {
-        return $this->getKey('Membership');
-    }
-
-    /**
-     * Returns key: 'Penalty'.
-     *
-     * @return integer
-     */
-    public function getPenalty()
-    {
-        return $this->getKey('Penalty');
-    }
-
-    /**
-     * Returns key: 'CallsTaken'.
-     *
-     * @return integer
-     */
-    public function getCallsTaken()
-    {
-        return $this->getKey('CallsTaken');
-    }
-
-    /**
-     * Returns key: 'Status'.
-     *
-     * @return integer
-     */
-    public function getStatus()
-    {
-        return $this->getKey('Status');
-    }
-
-    /**
      * Returns key: 'Paused'.
      *
      * @return boolean
      */
-    public function getPause()
+    public function getPaused()
     {
         return intval($this->getKey('Paused')) != 0;
     }
