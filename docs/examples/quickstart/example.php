@@ -82,6 +82,9 @@ use PAMI\Message\Action\SIPNotifyAction;
 use PAMI\Message\Action\QueuesAction;
 use PAMI\Message\Action\QueueStatusAction;
 use PAMI\Message\Action\QueueSummaryAction;
+use PAMI\Message\Action\QueuePauseAction;
+use PAMI\Message\Action\QueueRemoveAction;
+use PAMI\Message\Action\QueueUnpauseAction;
 use PAMI\Message\Action\MonitorAction;
 use PAMI\Message\Action\PauseMonitorAction;
 use PAMI\Message\Action\UnpauseMonitorAction;
@@ -98,8 +101,7 @@ use PAMI\Message\Action\ParkAction;
 use PAMI\Message\Action\MeetmeListAction;
 use PAMI\Message\Action\MeetmeMuteAction;
 use PAMI\Message\Action\MeetmeUnmuteAction;
-use PAMI\Message\Action\QueuePauseAction;
-use PAMI\Message\Action\QueueUnpauseAction;
+use PAMI\Message\Action\EventsAction;
 
 class A implements IEventListener
 {
@@ -119,7 +121,6 @@ try
 	$a = new ClientImpl($argv[1], $argv[2], $argv[3], $argv[4], 60, 60);
 	$a->registerEventListener(new A());
 	$a->open();
-	var_dump($a->send(new QueuesAction())->getRawContent());
 	var_dump($a->send(new ListCommandsAction()));
 	var_dump($a->send(new CoreShowChannelsAction()));
 	var_dump($a->send(new SIPPeersAction()));
@@ -161,6 +162,7 @@ try
 	//
 	// The following are commented just in case you run it in the wrong box ;)
 	//
+	//var_dump($a->send(new QueueRemoveAction('a', 'Agent/123')));
 	//var_dump($a->send(new MeetmeListAction('asd')));
 	//var_dump($a->send(new MeetmeMuteAction('asd', 'asd')));
 	//var_dump($a->send(new MeetmeUnmuteAction('asd', 'asd')));
@@ -197,6 +199,8 @@ try
 	//var_dump($a->send(new ReloadAction()));
 	//var_dump($a->send(new ReloadAction('chan_sip')));
 	//var_dump($a->send(new LocalOptimizeAwayAction('SIP/a-1')));
+	//var_dump($a->send(new EventsAction()));
+    //var_dump($a->send(new QueuesAction())->getRawContent());
 	$time = time();
 	while((time() - $time) < 60) // Wait for events.
 	{
