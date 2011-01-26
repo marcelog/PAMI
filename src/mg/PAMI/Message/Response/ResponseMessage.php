@@ -39,10 +39,10 @@ class ResponseMessage extends IncomingMessage
     private $_events;
 
     /**
-     * The count for the events.
-     * @var integer
+     * Is this response completed? (with all its events).
+     * @var boolean
      */
-    private $_eventsCount;
+    private $_completed;
 
     /**
      * True if this response is complete. A response is considered complete
@@ -53,20 +53,7 @@ class ResponseMessage extends IncomingMessage
      */
     public function isComplete()
     {
-        if (!$this->isList()) {
-            return true;
-        }
-        $total = $this->_eventsCount - 1;
-        if ($total < 0) {
-            return false;
-        }
-        $event = $this->_events[$total];
-        foreach ($this->_events as $event) {
-            if (stristr($event->getEventList(), 'complete') !== false) {
-                return true;
-            }
-        }
-        return false;
+        return $this->_completed;
     }
 
     /**
@@ -78,9 +65,10 @@ class ResponseMessage extends IncomingMessage
      */
     public function addEvent(EventMessage $event)
     {
-        $index = $this->_eventsCount;
-        $this->_events[$this->_eventsCount] = $event;
-        $this->_eventsCount++;
+        $this->_events[] = $event;
+        if (stristr($event->getEventList(), 'complete') !== false) {
+            $this->_completed = true;
+        }
     }
 
     /**
@@ -149,5 +137,6 @@ class ResponseMessage extends IncomingMessage
         parent::__construct($rawContent);
         $this->_events = array();
         $this->_eventsCount = 0;
+        $this->_completed = !$this->isList();
     }
 }
