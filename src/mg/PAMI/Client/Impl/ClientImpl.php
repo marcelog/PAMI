@@ -128,6 +128,13 @@ class ClientImpl implements IClient
 	private $_currentProcessingMessage;
 
 	/**
+	 * This should not happen. Asterisk may send responses without a
+	 * corresponding ActionId.
+	 * @var string
+	 */
+	private $_lastActionId;
+
+	/**
 	 * Opens a tcp connection to ami.
 	 *
 	 * @throws ClientException
@@ -273,6 +280,10 @@ class ClientImpl implements IClient
 	    if (strstr($aMsg, 'Response:') !== false) {
 	        $response = new ResponseMessage($aMsg);
 	        $actionId = $response->getActionId();
+	        if ($actionId === null) {
+	            $actionId = $this->_lastActionId;
+	            $response->setActionId($this->_lastActionId);
+	        }
             $this->_incomingQueue[$actionId] = $response;
 	    } else if (strstr($aMsg, 'Event:') !== false) {
     	    $event = $this->_eventFactory->createFromRaw($aMsg);
@@ -290,15 +301,6 @@ class ClientImpl implements IClient
         	        );
         	    }
 	        }
-/*
-	    } else { // This should not happen. Bad asterisk, bad!
-	        if ($this->_lastActionId !== false) {
-    	        $response = new ResponseMessage($aMsg);
-    	        $response->setActionId($this->_lastActionId);
-    	        $actionId = $response->getActionId();
-                $this->_incomingQueue[$actionId] = $response;
-	        }
-*/
 	    }
 	    if ($this->_logger->isDebugEnabled()) {
    	        $this->_logger->debug('----------------');
@@ -344,7 +346,7 @@ class ClientImpl implements IClient
 	        	'------ Sending: ------ ' . "\n" . $messageToSend . '----------'
 	        );
         }
-	    //$this->_lastActionId = $message->getActionId();
+	    $this->_lastActionId = $message->getActionId();
 	    if (fwrite($this->_socket, $messageToSend) < $length) {
     	    throw new ClientException('Could not send message');
 	    }
@@ -355,6 +357,7 @@ class ClientImpl implements IClient
 	        $this->process();
 	        $response = $this->getRelated($message);
 	        if ($response != false) {
+	            $this->_lastActionId = false;
 	            return $response;
 	        }
 	        usleep(1000); // 1ms delay
@@ -407,5 +410,6 @@ class ClientImpl implements IClient
 		$this->_eventListeners = array();
 		$this->_eventFactory = new EventFactoryImpl();
 		$this->_incomingQueue = array();
+		$this->_lastActionId = false;
 	}
 }
