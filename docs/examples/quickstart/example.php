@@ -89,6 +89,7 @@ use PAMI\Message\Action\QueueLogAction;
 use PAMI\Message\Action\QueuePenaltyAction;
 use PAMI\Message\Action\QueueReloadAction;
 use PAMI\Message\Action\QueueResetAction;
+use PAMI\Message\Action\QueueRuleAction;
 use PAMI\Message\Action\MonitorAction;
 use PAMI\Message\Action\PauseMonitorAction;
 use PAMI\Message\Action\UnpauseMonitorAction;
@@ -176,6 +177,7 @@ try
 	var_dump($a->send(new QueueLogAction('a', 'asdasd')));
 	var_dump($a->send(new QueuePenaltyAction('Agent/123', '123')));
 	var_dump($a->send(new QueueResetAction('a')));
+	var_dump($a->send(new QueueRuleAction('a')));
 	//var_dump($a->send(new QueueReloadAction('a', true, true, true)));
 	//
 	// The following are commented just in case you run it in the wrong box ;)
