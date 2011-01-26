@@ -137,9 +137,14 @@ Currently Supported Actions
 * Queues
 * QueueAdd
 * Queue
-* QueueUnpause
+* QueueLog
 * QueuePause
+* QueuePenalty
+* QueueReload
+* QueueRemove
 * QueueSummary
+* QueueStatus
+* QueueUnpause
 * Redirect
 * Reload
 * SendText
