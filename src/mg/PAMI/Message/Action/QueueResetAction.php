@@ -1,6 +1,6 @@
 <?php
 /**
- * QueueReload action message.
+ * QueueReset action message.
  *
  * PHP Version 5
  *
@@ -15,7 +15,7 @@
 namespace PAMI\Message\Action;
 
 /**
- * QueueReload action message.
+ * QueueReset action message.
  *
  * PHP Version 5
  *
@@ -26,27 +26,20 @@ namespace PAMI\Message\Action;
  * @license    http://www.noneyet.ar/ Apache License 2.0
  * @link       http://www.noneyet.ar/
  */
-class QueueReloadAction extends ActionMessage
+class QueueResetAction extends ActionMessage
 {
     /**
      * Constructor.
      *
-     * @param string  $queue      Queue name.
-     * @param boolean $members    Reload members.
-     * @param boolean $rules      Reload rules.
-     * @param boolean $parameters Reload parameters.
+     * @param string $queue Queue name.
      *
      * @return void
      */
-    public function __construct(
-        $queue = false, $members = false, $rules = false, $parameters = false
-    ) {
-        parent::__construct('QueueReload');
+    public function __construct($queue = false)
+    {
+        parent::__construct('QueueReset');
         if ($queue !== false) {
             $this->setKey('Queue', $queue);
         }
-        $this->setKey('Members', $members ? 'yes' : 'no');
-        $this->setKey('Rules', $rules ? 'yes' : 'no');
-        $this->setKey('Parameters', $parameters ? 'yes' : 'no');
     }
 }
