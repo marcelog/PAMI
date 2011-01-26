@@ -163,7 +163,7 @@ class ClientImpl implements IClient
 	    }
 	    stream_set_blocking($this->_socket, 0);
 	    $this->_currentProcessingMessage = '';
-	    register_tick_function(array($this, 'process'));
+	    //register_tick_function(array($this, 'process'));
 	    if ($this->_logger->isDebugEnabled()) {
 	        $this->_logger->debug('Logged in successfully to ami.');
 	    }

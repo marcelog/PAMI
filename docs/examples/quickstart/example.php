@@ -1,5 +1,5 @@
 <?php
-declare(ticks=1);
+//declare(ticks=1);
 /**
  * PAMI basic use example.
  *
@@ -226,7 +226,7 @@ try
 	{
 	    usleep(1000); // 1ms delay
 	    // Since we declare(ticks=1) at the top, the following line is not necessary
-	    //$a->process();
+	    $a->process();
 	}
 	$a->close(); // send logoff and close the connection.
 } catch (Exception $e) {
