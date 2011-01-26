@@ -66,7 +66,11 @@ class ResponseMessage extends IncomingMessage
     public function addEvent(EventMessage $event)
     {
         $this->_events[] = $event;
-        if (stristr($event->getEventList(), 'complete') !== false) {
+        if (
+            stristr($event->getEventList(), 'complete') !== false
+            || stristr($event->getName(), 'complete') !== false
+            || stristr($event->getName(), 'DBGetResponse') !== false
+        ) {
             $this->_completed = true;
         }
     }
@@ -93,13 +97,17 @@ class ResponseMessage extends IncomingMessage
 
     /**
      * Returns true if this response contains the key EventList with the
-     * word 'start' in it.
+     * word 'start' in it. Another way is to have a Message key, like:
+     * Message: Result will follow
      *
      * @return boolean
      */
     public function isList()
     {
-        return stristr($this->getKey('EventList'), 'start') !== false;
+        return
+            stristr($this->getKey('EventList'), 'start') !== false
+            || stristr($this->getMessage(), 'follow') !== false
+        ;
     }
 
     /**
