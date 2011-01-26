@@ -43,6 +43,12 @@ use PAMI\Client\IClient;
 class ClientImpl implements IClient
 {
     /**
+     * log4php logger or dummy.
+     * @var Logger
+     */
+    private $_logger;
+
+    /**
      * Hostname
      * @var string
      */
@@ -158,6 +164,9 @@ class ClientImpl implements IClient
 	    stream_set_blocking($this->_socket, 0);
 	    $this->_currentProcessingMessage = '';
 	    register_tick_function(array($this, 'process'));
+	    if ($this->_logger->isDebugEnabled()) {
+	        $this->_logger->debug('Logged in successfully to ami.');
+	    }
 	}
 
 	/**
@@ -263,6 +272,11 @@ class ClientImpl implements IClient
 	    if ($aMsg == false) {
 	        return;
 	    }
+	    if ($this->_logger->isDebugEnabled()) {
+   	        $this->_logger->debug(
+	        	'------ Received: ------ ' . "\n" . $aMsg . "\n\n"
+	        );
+	    }
 	    if (strstr($aMsg, 'Response:') !== false) {
 	        $response = new ResponseMessage($aMsg);
 	        $actionId = $response->getActionId();
@@ -277,6 +291,11 @@ class ClientImpl implements IClient
 	        } else {
 	            $response = $this->_incomingQueue[$actionId];
 	            $response->addEvent($event);
+        	    if ($this->_logger->isDebugEnabled()) {
+           	        $this->_logger->debug(
+        	        	'New ' . get_class($event) . ' related to: ' . $actionId
+        	        );
+        	    }
 	        }
 	    } else { // This should not happen. Bad asterisk, bad!
 	        if ($this->_lastActionId !== false) {
@@ -285,6 +304,9 @@ class ClientImpl implements IClient
     	        $actionId = $response->getActionId();
                 $this->_incomingQueue[$actionId] = $response;
 	        }
+	    }
+	    if ($this->_logger->isDebugEnabled()) {
+   	        $this->_logger->debug('----------------');
 	    }
 	}
 
@@ -320,9 +342,15 @@ class ClientImpl implements IClient
 	 */
 	public function send(OutgoingMessage $message)
 	{
-	    $length = strlen($message->serialize());
+	    $messageToSend = $message->serialize();
+	    $length = strlen($messageToSend);
+	    if ($this->_logger->isDebugEnabled()) {
+	        $this->_logger->debug(
+	        	'------ Sending: ------ ' . "\n" . $messageToSend . '----------'
+	        );
+        }
 	    $this->_lastActionId = $message->getActionId();
-	    if (fwrite($this->_socket, $message->serialize()) < $length) {
+	    if (fwrite($this->_socket, $messageToSend) < $length) {
     	    throw new ClientException('Could not send message');
 	    }
 	    /**
@@ -356,6 +384,9 @@ class ClientImpl implements IClient
 	 */
 	public function close()
 	{
+	    if ($this->_logger->isDebugEnabled()) {
+	        $this->_logger->debug('Closing connection to asterisk.');
+	    }
 	    $this->send(new LogoffAction());
 		stream_socket_shutdown($this->_socket, STREAM_SHUT_RDWR);
 	}
@@ -363,23 +394,22 @@ class ClientImpl implements IClient
 	/**
 	 * Constructor.
 	 *
-	 * @param string  $host     FQDN or IP address.
-	 * @param integer $port     TCP Port.
-	 * @param string  $user     Username.
-	 * @param string  $pass     Password.
-	 * @param integer $cTimeout In seconds. Max time to establish the connection.
-	 * @param integer $rTimeout In milliseconds. Read and write timeout.
+	 * @param string[] $options Options for ami client.
 	 *
 	 * @return void
 	 */
-	public function __construct($host, $port, $user, $pass, $cTimeout, $rTimeout)
+	public function __construct(array $options)
 	{
-		$this->_host = $host;
-		$this->_port = intval($port);
-		$this->_user = $user;
-		$this->_pass = $pass;
-		$this->_cTimeout = $cTimeout;
-		$this->_rTimeout = $rTimeout;
+        if (isset($options['log4php.properties'])) {
+            \Logger::configure($options['log4php.properties']);
+        }
+        $this->_logger = \Logger::getLogger('Pami.ClientImpl');
+	    $this->_host = $options['host'];
+		$this->_port = intval($options['port']);
+		$this->_user = $options['username'];
+		$this->_pass = $options['secret'];
+		$this->_cTimeout = $options['connect_timeout'];
+		$this->_rTimeout = $options['read_timeout'];
 		$this->_eventListeners = array();
 		$this->_eventFactory = new EventFactoryImpl();
 		$this->_incomingQueue = array();

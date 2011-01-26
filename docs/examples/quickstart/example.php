@@ -118,9 +118,19 @@ ini_set('display_errors', 1);
 
 try
 {
-	$a = new ClientImpl($argv[1], $argv[2], $argv[3], $argv[4], 60, 60);
+    $options = array(
+        'log4php.properties' => realpath(__DIR__) . DIRECTORY_SEPARATOR . 'log4php.properties',
+        'host' => $argv[1],
+        'port' => $argv[2],
+        'username' => $argv[3],
+        'secret' => $argv[4],
+        'connect_timeout' => 60,
+        'read_timeout' => 60
+    );
+	$a = new ClientImpl($options);
 	$a->registerEventListener(new A());
 	$a->open();
+	var_dump($a->send(new QueueStatusAction()));
 	var_dump($a->send(new ListCommandsAction()));
 	var_dump($a->send(new CoreShowChannelsAction()));
 	var_dump($a->send(new SIPPeersAction()));
@@ -202,7 +212,7 @@ try
 	//var_dump($a->send(new EventsAction()));
     //var_dump($a->send(new QueuesAction())->getRawContent());
 	$time = time();
-	while((time() - $time) < 60) // Wait for events.
+	while(true)//(time() - $time) < 60) // Wait for events.
 	{
 	    usleep(1000); // 1ms delay
 	    // Since we declare(ticks=1) at the top, the following line is not necessary

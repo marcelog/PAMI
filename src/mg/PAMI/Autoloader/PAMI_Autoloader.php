@@ -11,6 +11,23 @@
  * @version  SVN: $Id$
  * @link     http://www.noneyet.ar/
  */
+foreach (explode(PATH_SEPARATOR, ini_get('include_path')) as $path) {
+    $truePath = implode(
+        DIRECTORY_SEPARATOR,
+        array($path, 'log4php', 'Logger.php')
+    );
+    if (file_exists($truePath)) {
+        require_once $truePath;
+    }
+}
+// If not found, include our own dummy logger.
+if (!class_exists('Logger')) {
+    $truePath = implode(
+        DIRECTORY_SEPARATOR,
+        array('PAMI', 'Logger', 'Logger.php')
+    );
+    require_once $truePath;
+}
 
 /**
  * PAMI autoloader.

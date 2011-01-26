@@ -162,3 +162,19 @@ Developers
 * Available main targets: all, build, test, report.
 * Tools run: phpdoc, phploc, phpcs, phpmd, phpcpd, phpdepend, phpunit.
 --------------------------------------------------------------------------------
+Debugging, logging
+==================
+
+You need log4php (http://logging.apache.org/log4php/) if you want debugging
+output from the container. Just make sure you copy it to the include_path and
+PAGI will pick it up from there.
+
+This means that this is NOT A REQUIREMENT FOR A DEPLOY. It's not even a
+requirement at develop time (except when you really want debug output).
+You can use the included example of a log4php.properties file in
+docs/examples/quickstart.
+
+Of course it is recommended that you do not set DEBUG output in your log4php
+configuration (or remove it from the include path so PAGI will notice and not
+use it). This *will* create a difference in performance.
+--------------------------------------------------------------------------------
