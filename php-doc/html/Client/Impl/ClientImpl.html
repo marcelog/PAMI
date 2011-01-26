@@ -137,7 +137,7 @@
 								</div>
 		<div class="info-box-body">
 			<div class="var-summary">
-																																																																																																																																<div class="var-title">
+																																																																																																																																								<div class="var-title">
 					<img src="../../media/images/PrivateVariable.png" alt=" " />
 					<span class="var-type">resource</span>
 					<a href="#$_context" title="details" class="var-name">$_context</a>
@@ -176,6 +176,11 @@
 					<img src="../../media/images/PrivateVariable.png" alt=" " />
 					<span class="var-type">string</span>
 					<a href="#$_lastActionId" title="details" class="var-name">$_lastActionId</a>
+				</div>
+																<div class="var-title">
+					<img src="../../media/images/PrivateVariable.png" alt=" " />
+					<span class="var-type"><a href="../../Logger/Logger.html">Logger</a></span>
+					<a href="#$_logger" title="details" class="var-name">$_logger</a>
 				</div>
 																<div class="var-title">
 					<img src="../../media/images/PrivateVariable.png" alt=" " />
@@ -228,7 +233,7 @@
 					<img src="../../media/images/Constructor.png" alt=" "/>
 											<span class="method-result">void</span>
 										<a href="#__construct" title="details" class="method-name">__construct</a>
-											(<span class="var-type">string</span>&nbsp;<span class="var-name">$host</span>, <span class="var-type">integer</span>&nbsp;<span class="var-name">$port</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$user</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$pass</span>, <span class="var-type">integer</span>&nbsp;<span class="var-name">$cTimeout</span>, <span class="var-type">integer</span>&nbsp;<span class="var-name">$rTimeout</span>)
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$options</span>)
 									</div>
 															
 				<div class="method-definition">
@@ -319,7 +324,7 @@
 		<span class="var-title">
 			<span class="var-type">resource</span>
 			<span class="var-name">$_context</span>
-						(line <span class="line-number">97</span>)
+						(line <span class="line-number">103</span>)
 		</span>
 	</div>
 
@@ -342,7 +347,7 @@
 		<span class="var-title">
 			<span class="var-type">integer</span>
 			<span class="var-name">$_cTimeout</span>
-						(line <span class="line-number">73</span>)
+						(line <span class="line-number">79</span>)
 		</span>
 	</div>
 
@@ -365,7 +370,7 @@
 		<span class="var-title">
 			<span class="var-type">string</span>
 			<span class="var-name">$_currentProcessingMessage</span>
-						(line <span class="line-number">122</span>)
+						(line <span class="line-number">128</span>)
 		</span>
 	</div>
 
@@ -388,7 +393,7 @@
 		<span class="var-title">
 			<span class="var-type"><a href="../../Event/Factory-Impl/IEventFactory.html">IEventFactory</a></span>
 			<span class="var-name">$_eventFactory</span>
-						(line <span class="line-number">79</span>)
+						(line <span class="line-number">85</span>)
 		</span>
 	</div>
 
@@ -411,7 +416,7 @@
 		<span class="var-title">
 			<span class="var-type">IEventListener[]</span>
 			<span class="var-name">$_eventListeners</span>
-						(line <span class="line-number">103</span>)
+						(line <span class="line-number">109</span>)
 		</span>
 	</div>
 
@@ -434,7 +439,7 @@
 		<span class="var-title">
 			<span class="var-type">string</span>
 			<span class="var-name">$_host</span>
-						(line <span class="line-number">49</span>)
+						(line <span class="line-number">55</span>)
 		</span>
 	</div>
 
@@ -457,7 +462,7 @@
 		<span class="var-title">
 			<span class="var-type">IncomingMessage[]</span>
 			<span class="var-name">$_incomingQueue</span>
-						(line <span class="line-number">115</span>)
+						(line <span class="line-number">121</span>)
 		</span>
 	</div>
 
@@ -480,7 +485,7 @@
 		<span class="var-title">
 			<span class="var-type">string</span>
 			<span class="var-name">$_lastActionId</span>
-						(line <span class="line-number">129</span>)
+						(line <span class="line-number">135</span>)
 		</span>
 	</div>
 
@@ -495,15 +500,38 @@
 		
 
 </div>
-<a name="var$_outgoingQueue" id="$_outgoingQueue"><!-- --></A>
+<a name="var$_logger" id="$_logger"><!-- --></A>
 <div class="oddrow">
+
+	<div class="var-header">
+		<img src="../../media/images/PrivateVariable.png" />
+		<span class="var-title">
+			<span class="var-type"><a href="../../Logger/Logger.html">Logger</a></span>
+			<span class="var-name">$_logger</span>
+						(line <span class="line-number">49</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">log4php logger or dummy.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> private</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$_outgoingQueue" id="$_outgoingQueue"><!-- --></A>
+<div class="evenrow">
 
 	<div class="var-header">
 		<img src="../../media/images/PrivateVariable.png" />
 		<span class="var-title">
 			<span class="var-type">OutgoingMessage[]</span>
 			<span class="var-name">$_outgoingQueue</span>
-						(line <span class="line-number">109</span>)
+						(line <span class="line-number">115</span>)
 		</span>
 	</div>
 
@@ -519,14 +547,14 @@
 
 </div>
 <a name="var$_pass" id="$_pass"><!-- --></A>
-<div class="evenrow">
+<div class="oddrow">
 
 	<div class="var-header">
 		<img src="../../media/images/PrivateVariable.png" />
 		<span class="var-title">
 			<span class="var-type">string</span>
 			<span class="var-name">$_pass</span>
-						(line <span class="line-number">67</span>)
+						(line <span class="line-number">73</span>)
 		</span>
 	</div>
 
@@ -542,14 +570,14 @@
 
 </div>
 <a name="var$_port" id="$_port"><!-- --></A>
-<div class="oddrow">
+<div class="evenrow">
 
 	<div class="var-header">
 		<img src="../../media/images/PrivateVariable.png" />
 		<span class="var-title">
 			<span class="var-type">integer</span>
 			<span class="var-name">$_port</span>
-						(line <span class="line-number">55</span>)
+						(line <span class="line-number">61</span>)
 		</span>
 	</div>
 
@@ -565,14 +593,14 @@
 
 </div>
 <a name="var$_rTimeout" id="$_rTimeout"><!-- --></A>
-<div class="evenrow">
+<div class="oddrow">
 
 	<div class="var-header">
 		<img src="../../media/images/PrivateVariable.png" />
 		<span class="var-title">
 			<span class="var-type">integer</span>
 			<span class="var-name">$_rTimeout</span>
-						(line <span class="line-number">85</span>)
+						(line <span class="line-number">91</span>)
 		</span>
 	</div>
 
@@ -588,14 +616,14 @@
 
 </div>
 <a name="var$_socket" id="$_socket"><!-- --></A>
-<div class="oddrow">
+<div class="evenrow">
 
 	<div class="var-header">
 		<img src="../../media/images/PrivateVariable.png" />
 		<span class="var-title">
 			<span class="var-type">resource</span>
 			<span class="var-name">$_socket</span>
-						(line <span class="line-number">91</span>)
+						(line <span class="line-number">97</span>)
 		</span>
 	</div>
 
@@ -611,14 +639,14 @@
 
 </div>
 <a name="var$_user" id="$_user"><!-- --></A>
-<div class="evenrow">
+<div class="oddrow">
 
 	<div class="var-header">
 		<img src="../../media/images/PrivateVariable.png" />
 		<span class="var-title">
 			<span class="var-type">string</span>
 			<span class="var-name">$_user</span>
-						(line <span class="line-number">61</span>)
+						(line <span class="line-number">67</span>)
 		</span>
 	</div>
 
@@ -649,11 +677,11 @@
 		<div class="info-box-body">
 			<A NAME='method_detail'></A>
 <a name="method__construct" id="__construct"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
 		<img src="../../media/images/Constructor.png" />
-		<span class="method-title">Constructor __construct</span> (line <span class="line-number">375</span>)
+		<span class="method-title">Constructor __construct</span> (line <span class="line-number">401</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -667,38 +695,23 @@
 		<span class="method-name">
 			__construct
 		</span>
-					(<span class="var-type">string</span>&nbsp;<span class="var-name">$host</span>, <span class="var-type">integer</span>&nbsp;<span class="var-name">$port</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$user</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$pass</span>, <span class="var-type">integer</span>&nbsp;<span class="var-name">$cTimeout</span>, <span class="var-type">integer</span>&nbsp;<span class="var-name">$rTimeout</span>)
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$options</span>)
 			</div>
 	
 			<ul class="parameters">
 					<li>
-				<span class="var-type">string</span>
-				<span class="var-name">$host</span><span class="var-description">: FQDN or IP address.</span>			</li>
-					<li>
-				<span class="var-type">integer</span>
-				<span class="var-name">$port</span><span class="var-description">: TCP Port.</span>			</li>
-					<li>
-				<span class="var-type">string</span>
-				<span class="var-name">$user</span><span class="var-description">: Username.</span>			</li>
-					<li>
-				<span class="var-type">string</span>
-				<span class="var-name">$pass</span><span class="var-description">: Password.</span>			</li>
-					<li>
-				<span class="var-type">integer</span>
-				<span class="var-name">$cTimeout</span><span class="var-description">: In seconds. Max time to establish the connection.</span>			</li>
-					<li>
-				<span class="var-type">integer</span>
-				<span class="var-name">$rTimeout</span><span class="var-description">: In milliseconds. Read and write timeout.</span>			</li>
+				<span class="var-type">string[]</span>
+				<span class="var-name">$options</span><span class="var-description">: Options for ami client.</span>			</li>
 				</ul>
 		
 			
 	</div>
 <a name="methodclose" id="close"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">close</span> (line <span class="line-number">357</span>)
+		<span class="method-title">close</span> (line <span class="line-number">385</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -725,11 +738,11 @@
 			
 	</div>
 <a name="methodgetLine" id="getLine"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">getLine</span> (line <span class="line-number">180</span>)
+		<span class="method-title">getLine</span> (line <span class="line-number">189</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -750,11 +763,11 @@
 			
 	</div>
 <a name="methodgetMessage" id="getMessage"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">getMessage</span> (line <span class="line-number">190</span>)
+		<span class="method-title">getMessage</span> (line <span class="line-number">199</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -775,11 +788,11 @@
 			
 	</div>
 <a name="methodgetRelated" id="getRelated"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">getRelated</span> (line <span class="line-number">299</span>)
+		<span class="method-title">getRelated</span> (line <span class="line-number">321</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -806,11 +819,11 @@
 			
 	</div>
 <a name="methodopen" id="open"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">open</span> (line <span class="line-number">137</span>)
+		<span class="method-title">open</span> (line <span class="line-number">143</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -838,11 +851,11 @@
 			
 	</div>
 <a name="methodprocess" id="process"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">process</span> (line <span class="line-number">260</span>)
+		<span class="method-title">process</span> (line <span class="line-number">269</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -871,11 +884,11 @@
 			
 	</div>
 <a name="methodread" id="read"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">read</span> (line <span class="line-number">347</span>)
+		<span class="method-title">read</span> (line <span class="line-number">375</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -896,11 +909,11 @@
 			
 	</div>
 <a name="methodregisterEventListener" id="registerEventListener"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">registerEventListener</span> (line <span class="line-number">170</span>)
+		<span class="method-title">registerEventListener</span> (line <span class="line-number">179</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -926,11 +939,11 @@
 			
 	</div>
 <a name="methodsend" id="send"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">send</span> (line <span class="line-number">321</span>)
+		<span class="method-title">send</span> (line <span class="line-number">343</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -963,7 +976,7 @@
 
 	
 	<p class="notes" id="credit">
-		Documentation generated on Tue, 25 Jan 2011 12:43:07 -0300 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+		Documentation generated on Wed, 26 Jan 2011 10:36:36 -0300 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
 	</p>
 	</div></body>
 </html>
