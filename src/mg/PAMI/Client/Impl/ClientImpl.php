@@ -128,13 +128,6 @@ class ClientImpl implements IClient
 	private $_currentProcessingMessage;
 
 	/**
-	 * Last action Id sent. This is because sometimes asterisk do not send the
-	 * Event: or Response: headers.
-	 * @var string
-	 */
-	private $_lastActionId;
-
-	/**
 	 * Opens a tcp connection to ami.
 	 *
 	 * @throws ClientException
@@ -297,6 +290,7 @@ class ClientImpl implements IClient
         	        );
         	    }
 	        }
+/*
 	    } else { // This should not happen. Bad asterisk, bad!
 	        if ($this->_lastActionId !== false) {
     	        $response = new ResponseMessage($aMsg);
@@ -304,6 +298,7 @@ class ClientImpl implements IClient
     	        $actionId = $response->getActionId();
                 $this->_incomingQueue[$actionId] = $response;
 	        }
+*/
 	    }
 	    if ($this->_logger->isDebugEnabled()) {
    	        $this->_logger->debug('----------------');
@@ -349,7 +344,7 @@ class ClientImpl implements IClient
 	        	'------ Sending: ------ ' . "\n" . $messageToSend . '----------'
 	        );
         }
-	    $this->_lastActionId = $message->getActionId();
+	    //$this->_lastActionId = $message->getActionId();
 	    if (fwrite($this->_socket, $messageToSend) < $length) {
     	    throw new ClientException('Could not send message');
 	    }
@@ -360,7 +355,6 @@ class ClientImpl implements IClient
 	        $this->process();
 	        $response = $this->getRelated($message);
 	        if ($response != false) {
-	            $this->_lastActionId = false;
 	            return $response;
 	        }
 	        usleep(1000); // 1ms delay
