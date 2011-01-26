@@ -178,3 +178,7 @@ Of course it is recommended that you do not set DEBUG output in your log4php
 configuration (or remove it from the include path so PAGI will notice and not
 use it). This *will* create a difference in performance.
 --------------------------------------------------------------------------------
+Thanks
+------
+To Jason Blank <rumpled at github> for helping in the debugging of the queue
+functionality and some other ami inconsistencies.
