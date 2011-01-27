@@ -228,7 +228,7 @@
 		</div>
 		<div class="info-box-body">			
 			<div class="method-summary">
-																																																																																															
+																																																																																																																															
 				<div class="method-definition">
 					<img src="../../media/images/Constructor.png" alt=" "/>
 											<span class="method-result">void</span>
@@ -241,6 +241,20 @@
 											<span class="method-result">void</span>
 										<a href="#close" title="details" class="method-name">close</a>
 										()
+									</div>
+															
+				<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#dispatch" title="details" class="method-name">dispatch</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$message</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result"><a href="../../Message/Response/ResponseMessage.html">ResponseMessage</a></span>
+										<a href="#findResponse" title="details" class="method-name">findResponse</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$message</span>)
 									</div>
 															
 				<div class="method-definition">
@@ -297,6 +311,20 @@
 											<span class="method-result">void</span>
 										<a href="#send" title="details" class="method-name">send</a>
 											(<span class="var-type"></span>&nbsp;<span class="var-name">$message</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../../media/images/PrivateMethod.png" alt=" "/>
+											<span class="method-result"><a href="../../Message/Event/EventMessage.html">EventMessage</a></span>
+										<a href="#_messageToEvent" title="details" class="method-name">_messageToEvent</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$msg</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../../media/images/PrivateMethod.png" alt=" "/>
+											<span class="method-result"><a href="../../Message/Response/ResponseMessage.html">ResponseMessage</a></span>
+										<a href="#_messageToResponse" title="details" class="method-name">_messageToResponse</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$msg</span>)
 									</div>
 											</div>
 		</div>
@@ -681,7 +709,7 @@
 	
 	<div class="method-header">
 		<img src="../../media/images/Constructor.png" />
-		<span class="method-title">Constructor __construct</span> (line <span class="line-number">398</span>)
+		<span class="method-title">Constructor __construct</span> (line <span class="line-number">445</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -711,7 +739,7 @@
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">close</span> (line <span class="line-number">382</span>)
+		<span class="method-title">close</span> (line <span class="line-number">429</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -735,6 +763,66 @@
 			<dt><a href="../../Client/IClient.html#methodclose">IClient::close()</a></dt>
 						<dd>Closes the connection to ami.</dd>
 					</dl>
+			
+	</div>
+<a name="methoddispatch" id="dispatch"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">dispatch</span> (line <span class="line-number">320</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Dispatchs the incoming message to a handler.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			dispatch
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$message</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"><a href="../../Message/IncomingMessage.html">IncomingMessage</a></span>
+				<span class="var-name">$message</span><span class="var-description">: Message to dispatch.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodfindResponse" id="findResponse"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">findResponse</span> (line <span class="line-number">304</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Tries to find an associated response for the given message.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../../Message/Response/ResponseMessage.html">ResponseMessage</a></span>
+		<span class="method-name">
+			findResponse
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$message</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"><a href="../../Message/IncomingMessage.html">IncomingMessage</a></span>
+				<span class="var-name">$message</span><span class="var-description">: Message sent by asterisk.</span>			</li>
+				</ul>
+		
 			
 	</div>
 <a name="methodgetLine" id="getLine"><!-- --></a>
@@ -792,7 +880,7 @@
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">getRelated</span> (line <span class="line-number">318</span>)
+		<span class="method-title">getRelated</span> (line <span class="line-number">365</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -888,7 +976,7 @@
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">read</span> (line <span class="line-number">372</span>)
+		<span class="method-title">read</span> (line <span class="line-number">419</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -943,7 +1031,7 @@
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">send</span> (line <span class="line-number">340</span>)
+		<span class="method-title">send</span> (line <span class="line-number">387</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -970,13 +1058,73 @@
 		
 			
 	</div>
+<a name="method_messageToEvent" id="_messageToEvent"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/PrivateMethod.png" />
+		<span class="method-title">_messageToEvent</span> (line <span class="line-number">352</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns a EventMessage from a raw string that came from asterisk.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> private</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../../Message/Event/EventMessage.html">EventMessage</a></span>
+		<span class="method-name">
+			_messageToEvent
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$msg</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$msg</span><span class="var-description">: Raw string.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_messageToResponse" id="_messageToResponse"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/PrivateMethod.png" />
+		<span class="method-title">_messageToResponse</span> (line <span class="line-number">334</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns a ResponseMessage from a raw string that came from asterisk.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> private</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../../Message/Response/ResponseMessage.html">ResponseMessage</a></span>
+		<span class="method-name">
+			_messageToResponse
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$msg</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$msg</span><span class="var-description">: Raw string.</span>			</li>
+				</ul>
+		
+			
+	</div>
 						
 		</div>
 	</div>
 
 	
 	<p class="notes" id="credit">
-		Documentation generated on Wed, 26 Jan 2011 17:36:52 -0300 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+		Documentation generated on Wed, 26 Jan 2011 22:07:48 -0300 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
 	</p>
 	</div></body>
 </html>
