@@ -278,33 +278,80 @@ class ClientImpl implements IClient
 	        );
 	    }
 	    if (strstr($aMsg, 'Response:') !== false) {
-	        $response = new ResponseMessage($aMsg);
-	        $actionId = $response->getActionId();
-	        if ($actionId === null) {
-	            $actionId = $this->_lastActionId;
-	            $response->setActionId($this->_lastActionId);
-	        }
-            $this->_incomingQueue[$actionId] = $response;
+	        $response = $this->_messageToResponse($aMsg);
+            $this->_incomingQueue[$response->getActionId()] = $response;
 	    } else if (strstr($aMsg, 'Event:') !== false) {
-    	    $event = $this->_eventFactory->createFromRaw($aMsg);
-    	    $actionId = $event->getActionId();
-	        if (!isset($this->_incomingQueue[$actionId])) {
-    	        foreach ($this->_eventListeners as $listener) {
-   	                $listener->handle($event);
-    	        }
-	        } else {
-	            $response = $this->_incomingQueue[$actionId];
-	            $response->addEvent($event);
-        	    if ($this->_logger->isDebugEnabled()) {
-           	        $this->_logger->debug(
-        	        	'New ' . get_class($event) . ' related to: ' . $actionId
-        	        );
-        	    }
-	        }
+    	    $event = $this->_messageToEvent($aMsg);
+    	    $response = $this->findResponse($event);
+    	    if ($response === false) {
+                $this->dispatch($event);
+    	    } else {
+    	        $response->addEvent($event);
+    	    }
 	    }
 	    if ($this->_logger->isDebugEnabled()) {
    	        $this->_logger->debug('----------------');
 	    }
+	}
+
+	/**
+	 * Tries to find an associated response for the given message.
+	 *
+	 * @param IncomingMessage $message Message sent by asterisk.
+	 *
+	 * @return ResponseMessage
+	 */
+	protected function findResponse(IncomingMessage $message)
+	{
+	    $actionId = $message->getActionId();
+        if (isset($this->_incomingQueue[$actionId])) {
+            return $this->_incomingQueue[$actionId];
+        }
+        return false;
+	}
+
+	/**
+	 * Dispatchs the incoming message to a handler.
+	 *
+	 * @param IncomingMessage $message Message to dispatch.
+	 *
+	 * @return void
+	 */
+	protected function dispatch(IncomingMessage $message)
+	{
+        foreach ($this->_eventListeners as $listener) {
+            $listener->handle($message);
+        }
+	}
+
+	/**
+	 * Returns a ResponseMessage from a raw string that came from asterisk.
+	 *
+	 * @param string $msg Raw string.
+	 *
+	 * @return ResponseMessage
+	 */
+	private function _messageToResponse($msg)
+	{
+        $response = new ResponseMessage($msg);
+	    $actionId = $response->getActionId();
+	    if ($actionId === null) {
+	        $actionId = $this->_lastActionId;
+	        $response->setActionId($this->_lastActionId);
+	    }
+	    return $response;
+	}
+
+	/**
+	 * Returns a EventMessage from a raw string that came from asterisk.
+	 *
+	 * @param string $msg Raw string.
+	 *
+	 * @return EventMessage
+	 */
+	private function _messageToEvent($msg)
+	{
+        return $this->_eventFactory->createFromRaw($msg);
 	}
 
 	/**
