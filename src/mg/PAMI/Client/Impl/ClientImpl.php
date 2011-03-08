@@ -292,11 +292,13 @@ class ClientImpl implements IClient
 	        	'------ Received: ------ ' . "\n" . $aMsg . "\n\n"
 	        );
 	    }
-	    if (strstr($aMsg, 'Response:') !== false) {
+	    $resPos = strpos($aMsg, 'Response:');
+	    $evePos = strpos($aMsg, 'Event:');
+	    if (($resPos !== false) && (($resPos < $evePos) || $evePos === false)) {
 	        $response = $this->_messageToResponse($aMsg);
             $this->_incomingQueue[$response->getActionId()] = $response;
-	    } else if (strstr($aMsg, 'Event:') !== false) {
-    	    $event = $this->_messageToEvent($aMsg);
+	    } else if ($evePos !== false) {
+	        $event = $this->_messageToEvent($aMsg);
     	    $response = $this->findResponse($event);
     	    if ($response === false) {
                 $this->dispatch($event);
