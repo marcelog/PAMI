@@ -1,6 +1,6 @@
 <?php
 /**
- * Triggered when?
+ * Response from an async originate.
  *
  * PHP Version 5
  *
@@ -32,7 +32,7 @@ namespace PAMI\Message\Event;
 use PAMI\Message\Event\EventMessage;
 
 /**
- * Triggered when?
+ * Response from an async originate.
  *
  * PHP Version 5
  *
@@ -43,7 +43,7 @@ use PAMI\Message\Event\EventMessage;
  * @license    http://www.noneyet.ar/ Apache License 2.0
  * @link       http://www.noneyet.ar/
  */
-class NewAccountCodeEvent extends EventMessage
+class OriginateResponseEvent extends EventMessage
 {
     /**
      * Returns key: 'Privilege'.
@@ -53,6 +53,26 @@ class NewAccountCodeEvent extends EventMessage
     public function getPrivilege()
     {
         return $this->getKey('Privilege');
+    }
+
+    /**
+     * Returns key: 'Exten'.
+     *
+     * @return string
+     */
+    public function getExten()
+    {
+        return $this->getKey('Exten');
+    }
+
+    /**
+     * Returns key: 'Context'.
+     *
+     * @return string
+     */
+    public function getContext()
+    {
+        return $this->getKey('Context');
     }
 
     /**
@@ -66,6 +86,16 @@ class NewAccountCodeEvent extends EventMessage
     }
 
     /**
+     * Returns key: 'Reason'.
+     *
+     * @return string
+     */
+    public function getReason()
+    {
+        return $this->getKey('Reason');
+    }
+
+    /**
      * Returns key: 'UniqueID'.
      *
      * @return string
@@ -76,23 +106,43 @@ class NewAccountCodeEvent extends EventMessage
     }
 
     /**
-     * Returns key: 'AccountCode'.
+     * Returns key: 'ActionID'.
      *
      * @return string
      */
-    public function getAccountCode()
+    public function getActionID()
     {
-        return $this->getKey('AccountCode');
+        return $this->getKey('ActionID');
     }
 
     /**
-     * Returns key: 'OldAccountCode'.
+     * Returns key: 'Response'.
      *
      * @return string
      */
-    public function getOldAccountCode()
+    public function getResponse()
     {
-        return $this->getKey('OldAccountCode');
+        return $this->getKey('Response');
+    }
+
+    /**
+     * Returns key: 'CallerIdNum'.
+     *
+     * @return string
+     */
+    public function getCallerIdNum()
+    {
+        return $this->getKey('CallerIdNum');
+    }
+
+    /**
+     * Returns key: 'CallerIdName'.
+     *
+     * @return string
+     */
+    public function getCallerIdName()
+    {
+        return $this->getKey('CallerIdName');
     }
 
     /**

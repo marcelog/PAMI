@@ -61,6 +61,7 @@ can still catch them. If you catch one of these, please report it!
 * Newchannel
 * Newexten
 * Newstate
+* OriginateResponse
 * ParkedCallsComplete
 * PeerEntry
 * PeerlistComplete
@@ -201,7 +202,9 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 --------------------------------------------------------------------------------
-Thanks
-------
-To Jason Blank <rumpled at github> for helping in the debugging of the queue
+Thanks To
+=========
+* Jason Blank <rumpled at github> for helping in the debugging of the queue
 functionality and some other ami inconsistencies.
+
+* Francesco Usseglio Gaudi, for help in debugging the Originate action.
