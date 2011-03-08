@@ -3,7 +3,7 @@
   <html xmlns="http://www.w3.org/1999/xhtml">
 		<head>
 			<!-- template designed by Marco Von Ballmoos  -->
-			<title>Docs For Class RTPSenderStatEvent</title>
+			<title>Docs For Class OriginateResponseEvent</title>
 			<link rel="stylesheet" href="../../media/stylesheet.css" />
 						<script src="../../media/lib/classTree.js"></script>
 												<script language="javascript" type="text/javascript">
@@ -88,7 +88,7 @@
 <h2 class="class-name"><img src="../../media/images/Class_logo.png"
 														alt=" Class"
 														title=" Class"
-														style="vertical-align: middle"> RTPSenderStatEvent</h2>
+														style="vertical-align: middle"> OriginateResponseEvent</h2>
 
 <a name="sec-description"></a>
 <div class="info-box">
@@ -103,7 +103,7 @@
 			</div>
 	<div class="info-box-body">
         		<!-- ========== Info from phpDoc block ========= -->
-<p class="short-description">Event triggered when exchanging rtp stats.</p>
+<p class="short-description">Response from an async originate.</p>
 <p class="description"><p>PHP Version 5</p></p>
 	<ul class="tags">
 				<li><span class="field">author:</span> Marcelo Gornstein &lt;<a href="mailto:marcelog@gmail.com">marcelog@gmail.com</a>&gt;</li>
@@ -111,7 +111,7 @@
 				<li><span class="field">license:</span> <a href="http://www.noneyet.ar/">Apache License 2.0</a></li>
 			</ul>
 		<p class="notes">
-			Located in <a class="field" href="_Message---Event---RTPSenderStatEvent.php.html">/Message/Event/RTPSenderStatEvent.php</a> (line <span class="field">46</span>)
+			Located in <a class="field" href="_Message---Event---OriginateResponseEvent.php.html">/Message/Event/OriginateResponseEvent.php</a> (line <span class="field">46</span>)
 		</p>
 		
 				
@@ -121,7 +121,7 @@
       |
       --<a href="../../Message/Event/EventMessage.html">EventMessage</a>
          |
-         --RTPSenderStatEvent</pre>
+         --OriginateResponseEvent</pre>
 	
 			</div>
 </div>
@@ -143,7 +143,7 @@
 		</div>
 		<div class="info-box-body">			
 			<div class="method-summary">
-																																																																															
+																																																																																																							
 				<div class="method-definition">
 					<img src="../../media/images/Constructor.png" alt=" "/>
 											<span class="method-result">void</span>
@@ -154,14 +154,42 @@
 				<div class="method-definition">
 					<img src="../../media/images/Method.png" alt=" "/>
 											<span class="method-result">string</span>
-										<a href="#getJitter" title="details" class="method-name">getJitter</a>
+										<a href="#getActionID" title="details" class="method-name">getActionID</a>
 										()
 									</div>
 															
 				<div class="method-definition">
 					<img src="../../media/images/Method.png" alt=" "/>
 											<span class="method-result">string</span>
-										<a href="#getLostPackets" title="details" class="method-name">getLostPackets</a>
+										<a href="#getCallerIdName" title="details" class="method-name">getCallerIdName</a>
+										()
+									</div>
+															
+				<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getCallerIdNum" title="details" class="method-name">getCallerIdNum</a>
+										()
+									</div>
+															
+				<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getChannel" title="details" class="method-name">getChannel</a>
+										()
+									</div>
+															
+				<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getContext" title="details" class="method-name">getContext</a>
+										()
+									</div>
+															
+				<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getExten" title="details" class="method-name">getExten</a>
 										()
 									</div>
 															
@@ -175,28 +203,21 @@
 				<div class="method-definition">
 					<img src="../../media/images/Method.png" alt=" "/>
 											<span class="method-result">string</span>
-										<a href="#getRTT" title="details" class="method-name">getRTT</a>
+										<a href="#getReason" title="details" class="method-name">getReason</a>
 										()
 									</div>
 															
 				<div class="method-definition">
 					<img src="../../media/images/Method.png" alt=" "/>
 											<span class="method-result">string</span>
-										<a href="#getSentPackets" title="details" class="method-name">getSentPackets</a>
+										<a href="#getResponse" title="details" class="method-name">getResponse</a>
 										()
 									</div>
 															
 				<div class="method-definition">
 					<img src="../../media/images/Method.png" alt=" "/>
 											<span class="method-result">string</span>
-										<a href="#getSRCount" title="details" class="method-name">getSRCount</a>
-										()
-									</div>
-															
-				<div class="method-definition">
-					<img src="../../media/images/Method.png" alt=" "/>
-											<span class="method-result">string</span>
-										<a href="#getSSRC" title="details" class="method-name">getSSRC</a>
+										<a href="#getUniqueID" title="details" class="method-name">getUniqueID</a>
 										()
 									</div>
 											</div>
@@ -265,11 +286,11 @@
 		<div class="info-box-body">
 			<A NAME='method_detail'></A>
 <a name="method__construct" id="__construct"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
 		<img src="../../media/images/Constructor.png" />
-		<span class="method-title">Constructor __construct</span> (line <span class="line-number">125</span>)
+		<span class="method-title">Constructor __construct</span> (line <span class="line-number">155</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -300,16 +321,16 @@
 					</dl>
 			
 	</div>
-<a name="methodgetJitter" id="getJitter"><!-- --></a>
-<div class="evenrow">
+<a name="methodgetActionID" id="getActionID"><!-- --></a>
+<div class="oddrow">
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">getJitter</span> (line <span class="line-number">93</span>)
+		<span class="method-title">getActionID</span> (line <span class="line-number">113</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
-<p class="short-description">Returns key: 'Jitter'.</p>
+<p class="short-description">Returns key: 'ActionID'.</p>
 	<ul class="tags">
 				<li><span class="field">access:</span> public</li>
 			</ul>
@@ -317,7 +338,38 @@
 	<div class="method-signature">
 		<span class="method-result">string</span>
 		<span class="method-name">
-			getJitter
+			getActionID
+		</span>
+				()
+			</div>
+	
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../../Message/Message.html#methodgetActionID">Message::getActionID()</a></dt>
+						<dd>Returns key: 'ActionID'.</dd>
+					</dl>
+			
+	</div>
+<a name="methodgetCallerIdName" id="getCallerIdName"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">getCallerIdName</span> (line <span class="line-number">143</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns key: 'CallerIdName'.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getCallerIdName
 		</span>
 				()
 			</div>
@@ -325,16 +377,16 @@
 		
 			
 	</div>
-<a name="methodgetLostPackets" id="getLostPackets"><!-- --></a>
+<a name="methodgetCallerIdNum" id="getCallerIdNum"><!-- --></a>
 <div class="oddrow">
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">getLostPackets</span> (line <span class="line-number">83</span>)
+		<span class="method-title">getCallerIdNum</span> (line <span class="line-number">133</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
-<p class="short-description">Returns key: 'LostPackets'.</p>
+<p class="short-description">Returns key: 'CallerIdNum'.</p>
 	<ul class="tags">
 				<li><span class="field">access:</span> public</li>
 			</ul>
@@ -342,7 +394,82 @@
 	<div class="method-signature">
 		<span class="method-result">string</span>
 		<span class="method-name">
-			getLostPackets
+			getCallerIdNum
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetChannel" id="getChannel"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">getChannel</span> (line <span class="line-number">83</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns key: 'Channel'.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getChannel
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetContext" id="getContext"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">getContext</span> (line <span class="line-number">73</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns key: 'Context'.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getContext
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetExten" id="getExten"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">getExten</span> (line <span class="line-number">63</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns key: 'Exten'.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getExten
 		</span>
 				()
 			</div>
@@ -351,7 +478,7 @@
 			
 	</div>
 <a name="methodgetPrivilege" id="getPrivilege"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
@@ -375,41 +502,16 @@
 		
 			
 	</div>
-<a name="methodgetRTT" id="getRTT"><!-- --></a>
-<div class="oddrow">
-	
-	<div class="method-header">
-		<img src="../../media/images/Method.png" />
-		<span class="method-title">getRTT</span> (line <span class="line-number">103</span>)
-	</div> 
-	
-	<!-- ========== Info from phpDoc block ========= -->
-<p class="short-description">Returns key: 'RTT'.</p>
-	<ul class="tags">
-				<li><span class="field">access:</span> public</li>
-			</ul>
-	
-	<div class="method-signature">
-		<span class="method-result">string</span>
-		<span class="method-name">
-			getRTT
-		</span>
-				()
-			</div>
-	
-		
-			
-	</div>
-<a name="methodgetSentPackets" id="getSentPackets"><!-- --></a>
+<a name="methodgetReason" id="getReason"><!-- --></a>
 <div class="evenrow">
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">getSentPackets</span> (line <span class="line-number">73</span>)
+		<span class="method-title">getReason</span> (line <span class="line-number">93</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
-<p class="short-description">Returns key: 'SentPackets'.</p>
+<p class="short-description">Returns key: 'Reason'.</p>
 	<ul class="tags">
 				<li><span class="field">access:</span> public</li>
 			</ul>
@@ -417,7 +519,7 @@
 	<div class="method-signature">
 		<span class="method-result">string</span>
 		<span class="method-name">
-			getSentPackets
+			getReason
 		</span>
 				()
 			</div>
@@ -425,16 +527,16 @@
 		
 			
 	</div>
-<a name="methodgetSRCount" id="getSRCount"><!-- --></a>
+<a name="methodgetResponse" id="getResponse"><!-- --></a>
 <div class="oddrow">
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">getSRCount</span> (line <span class="line-number">113</span>)
+		<span class="method-title">getResponse</span> (line <span class="line-number">123</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
-<p class="short-description">Returns key: 'SRCount'.</p>
+<p class="short-description">Returns key: 'Response'.</p>
 	<ul class="tags">
 				<li><span class="field">access:</span> public</li>
 			</ul>
@@ -442,7 +544,7 @@
 	<div class="method-signature">
 		<span class="method-result">string</span>
 		<span class="method-name">
-			getSRCount
+			getResponse
 		</span>
 				()
 			</div>
@@ -450,16 +552,16 @@
 		
 			
 	</div>
-<a name="methodgetSSRC" id="getSSRC"><!-- --></a>
+<a name="methodgetUniqueID" id="getUniqueID"><!-- --></a>
 <div class="evenrow">
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">getSSRC</span> (line <span class="line-number">63</span>)
+		<span class="method-title">getUniqueID</span> (line <span class="line-number">103</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
-<p class="short-description">Returns key: 'SSRC'.</p>
+<p class="short-description">Returns key: 'UniqueID'.</p>
 	<ul class="tags">
 				<li><span class="field">access:</span> public</li>
 			</ul>
@@ -467,7 +569,7 @@
 	<div class="method-signature">
 		<span class="method-result">string</span>
 		<span class="method-name">
-			getSSRC
+			getUniqueID
 		</span>
 				()
 			</div>
@@ -559,7 +661,7 @@
 	</div>
 	
 	<p class="notes" id="credit">
-		Documentation generated on Tue, 08 Mar 2011 14:41:03 -0300 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+		Documentation generated on Tue, 08 Mar 2011 14:40:59 -0300 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
 	</p>
 	</div></body>
 </html>

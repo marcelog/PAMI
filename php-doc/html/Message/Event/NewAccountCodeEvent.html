@@ -3,7 +3,7 @@
   <html xmlns="http://www.w3.org/1999/xhtml">
 		<head>
 			<!-- template designed by Marco Von Ballmoos  -->
-			<title>Docs For Class QueueStatusAction</title>
+			<title>Docs For Class NewAccountCodeEvent</title>
 			<link rel="stylesheet" href="../../media/stylesheet.css" />
 						<script src="../../media/lib/classTree.js"></script>
 												<script language="javascript" type="text/javascript">
@@ -88,7 +88,7 @@
 <h2 class="class-name"><img src="../../media/images/Class_logo.png"
 														alt=" Class"
 														title=" Class"
-														style="vertical-align: middle"> QueueStatusAction</h2>
+														style="vertical-align: middle"> NewAccountCodeEvent</h2>
 
 <a name="sec-description"></a>
 <div class="info-box">
@@ -103,7 +103,7 @@
 			</div>
 	<div class="info-box-body">
         		<!-- ========== Info from phpDoc block ========= -->
-<p class="short-description">QueueStatus action message.</p>
+<p class="short-description">Triggered when?</p>
 <p class="description"><p>PHP Version 5</p></p>
 	<ul class="tags">
 				<li><span class="field">author:</span> Marcelo Gornstein &lt;<a href="mailto:marcelog@gmail.com">marcelog@gmail.com</a>&gt;</li>
@@ -111,17 +111,17 @@
 				<li><span class="field">license:</span> <a href="http://www.noneyet.ar/">Apache License 2.0</a></li>
 			</ul>
 		<p class="notes">
-			Located in <a class="field" href="_Message---Action---QueueStatusAction.php.html">/Message/Action/QueueStatusAction.php</a> (line <span class="field">44</span>)
+			Located in <a class="field" href="_Message---Event---NewAccountCodeEvent.php.html">/Message/Event/NewAccountCodeEvent.php</a> (line <span class="field">46</span>)
 		</p>
 		
 				
 		<pre><a href="../../Message/Message.html">Message</a>
    |
-   --<a href="../../Message/OutgoingMessage.html">OutgoingMessage</a>
+   --<a href="../../Message/IncomingMessage.html">IncomingMessage</a>
       |
-      --<a href="../../Message/ActionMessage.html">ActionMessage</a>
+      --<a href="../../Message/Event/EventMessage.html">EventMessage</a>
          |
-         --QueueStatusAction</pre>
+         --NewAccountCodeEvent</pre>
 	
 			</div>
 </div>
@@ -143,12 +143,47 @@
 		</div>
 		<div class="info-box-body">			
 			<div class="method-summary">
-																							
+																																																															
 				<div class="method-definition">
 					<img src="../../media/images/Constructor.png" alt=" "/>
 											<span class="method-result">void</span>
 										<a href="#__construct" title="details" class="method-name">__construct</a>
-											([<span class="var-type">string</span>&nbsp;<span class="var-name">$queue</span> = <span class="var-default">false</span>], [<span class="var-type"></span>&nbsp;<span class="var-name">$member</span> = <span class="var-default">false</span>])
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$rawContent</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getAccountCode" title="details" class="method-name">getAccountCode</a>
+										()
+									</div>
+															
+				<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getChannel" title="details" class="method-name">getChannel</a>
+										()
+									</div>
+															
+				<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getOldAccountCode" title="details" class="method-name">getOldAccountCode</a>
+										()
+									</div>
+															
+				<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getPrivilege" title="details" class="method-name">getPrivilege</a>
+										()
+									</div>
+															
+				<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getUniqueID" title="details" class="method-name">getUniqueID</a>
+										()
 									</div>
 											</div>
 		</div>
@@ -172,6 +207,13 @@
 			
 							<h4>Inherited Variables</h4>
 				<A NAME='inherited_vars'><!-- --></A>
+									<p>Inherited from <span class="classname"><a href="../../Message/IncomingMessage.html">IncomingMessage</a></span></p>
+					<blockquote>
+													<img src="../../media/images/PrivateVariable.png" />
+							<span class="var-title">
+								<span class="var-name"><a href="../../Message/IncomingMessage.html#var$_rawContent">IncomingMessage::$_rawContent</a></span><br>
+							</span>
+											</blockquote> 
 									<p>Inherited from <span class="classname"><a href="../../Message/Message.html">Message</a></span></p>
 					<blockquote>
 													<img src="../../media/images/PrivateVariable.png" />
@@ -209,11 +251,11 @@
 		<div class="info-box-body">
 			<A NAME='method_detail'></A>
 <a name="method__construct" id="__construct"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
 		<img src="../../media/images/Constructor.png" />
-		<span class="method-title">Constructor __construct</span> (line <span class="line-number">53</span>)
+		<span class="method-title">Constructor __construct</span> (line <span class="line-number">105</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -227,33 +269,167 @@
 		<span class="method-name">
 			__construct
 		</span>
-					([<span class="var-type">string</span>&nbsp;<span class="var-name">$queue</span> = <span class="var-default">false</span>], [<span class="var-type"></span>&nbsp;<span class="var-name">$member</span> = <span class="var-default">false</span>])
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$rawContent</span>)
 			</div>
 	
 			<ul class="parameters">
 					<li>
 				<span class="var-type">string</span>
-				<span class="var-name">$queue</span><span class="var-description">: The queue (optional).</span>			</li>
-					<li>
-				<span class="var-type"></span>
-				<span class="var-name">$member</span>			</li>
+				<span class="var-name">$rawContent</span><span class="var-description">: Literal message as received from ami.</span>			</li>
 				</ul>
 		
 			<hr class="separator" />
 		<div class="notes">Redefinition of:</div>
 		<dl>
-			<dt><a href="../../Message/ActionMessage.html#method__construct">ActionMessage::__construct()</a></dt>
+			<dt><a href="../../Message/Event/EventMessage.html#method__construct">EventMessage::__construct()</a></dt>
 						<dd>Constructor.</dd>
 					</dl>
+			
+	</div>
+<a name="methodgetAccountCode" id="getAccountCode"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">getAccountCode</span> (line <span class="line-number">83</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns key: 'AccountCode'.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getAccountCode
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetChannel" id="getChannel"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">getChannel</span> (line <span class="line-number">63</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns key: 'Channel'.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getChannel
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetOldAccountCode" id="getOldAccountCode"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">getOldAccountCode</span> (line <span class="line-number">93</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns key: 'OldAccountCode'.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getOldAccountCode
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetPrivilege" id="getPrivilege"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">getPrivilege</span> (line <span class="line-number">53</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns key: 'Privilege'.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getPrivilege
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetUniqueID" id="getUniqueID"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">getUniqueID</span> (line <span class="line-number">73</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns key: 'UniqueID'.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getUniqueID
+		</span>
+				()
+			</div>
+	
+		
 			
 	</div>
 							<h4>Inherited Methods</h4>
 				<a name='inherited_methods'><!-- --></a>	
 									<!-- =========== Summary =========== -->
-					<p>Inherited From <span class="classname"><a href="../../Message/ActionMessage.html">ActionMessage</a></span></p>
+					<p>Inherited From <span class="classname"><a href="../../Message/Event/EventMessage.html">EventMessage</a></span></p>
 					<blockquote>
 													<img src="../../media/images/Constructor.png" alt=" "/>
-							<span class="method-name"><a href="../../Message/ActionMessage.html#method__construct">ActionMessage::__construct()</a></span><br>
+							<span class="method-name"><a href="../../Message/Event/EventMessage.html#method__construct">EventMessage::__construct()</a></span><br>
+													<img src="../../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../../Message/Event/EventMessage.html#methodgetName">EventMessage::getName()</a></span><br>
+											</blockquote>
+									<!-- =========== Summary =========== -->
+					<p>Inherited From <span class="classname"><a href="../../Message/IncomingMessage.html">IncomingMessage</a></span></p>
+					<blockquote>
+													<img src="../../media/images/Constructor.png" alt=" "/>
+							<span class="method-name"><a href="../../Message/IncomingMessage.html#method__construct">IncomingMessage::__construct()</a></span><br>
+													<img src="../../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../../Message/IncomingMessage.html#methodgetEventList">IncomingMessage::getEventList()</a></span><br>
+													<img src="../../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../../Message/IncomingMessage.html#methodgetRawContent">IncomingMessage::getRawContent()</a></span><br>
 											</blockquote>
 									<!-- =========== Summary =========== -->
 					<p>Inherited From <span class="classname"><a href="../../Message/Message.html">Message</a></span></p>
@@ -319,7 +495,7 @@
 	</div>
 	
 	<p class="notes" id="credit">
-		Documentation generated on Tue, 08 Mar 2011 14:41:02 -0300 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+		Documentation generated on Tue, 08 Mar 2011 14:40:58 -0300 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
 	</p>
 	</div></body>
 </html>
