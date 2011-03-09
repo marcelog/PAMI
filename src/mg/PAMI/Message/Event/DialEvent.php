@@ -136,6 +136,16 @@ class DialEvent extends EventMessage
     }
 
     /**
+     * Returns key: 'DialStatus'.
+     *
+     * @return string
+     */
+    public function getDialStatus()
+    {
+        return $this->getKey('DialStatus');
+    }
+
+    /**
      * Constructor.
      *
      * @param string $rawContent Literal message as received from ami.
