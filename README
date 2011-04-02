@@ -56,6 +56,7 @@ can still catch them. If you catch one of these, please report it!
 * Hold
 * ListDialplan
 * Masquerade
+* MessageWaiting
 * NewAccountCode
 * NewCallerid
 * Newchannel
@@ -67,6 +68,8 @@ can still catch them. If you catch one of these, please report it!
 * PeerlistComplete
 * PeerStatus
 * QueueMember
+* QueueMemberAdded
+* QueueMemberRemoved
 * QueueMemberPause
 * QueueMemberStatus
 * QueueParams
@@ -161,6 +164,7 @@ Currently Supported Actions
 * Status
 * StopMonitor
 * UnpauseMonitor
+* VGMS_SMS_TX
 * VoicemailUsersList
 --------------------------------------------------------------------------------
 Developers
@@ -208,3 +212,5 @@ Thanks To
 functionality and some other ami inconsistencies.
 
 * Francesco Usseglio Gaudi, for help in debugging the Originate action.
+
+* Matías Barletta, for the vgms support.
