@@ -210,6 +210,18 @@
 								 alt=" class"
 								 title=" class"
 								 style="vertical-align: center"/>
+						
+					</td>
+					<td>
+											Whenever a ME (GSM module) changes working state, an event is generated.
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; white-space: nowrap">
+						<img src="../../media/images/Class.png"
+								 alt=" class"
+								 title=" class"
+								 style="vertical-align: center"/>
 						<a href="../../Message/Event/ListDialPlanEvent.html">ListDialPlanEvent</a>
 					</td>
 					<td>
@@ -390,10 +402,34 @@
 								 alt=" class"
 								 title=" class"
 								 style="vertical-align: center"/>
+						<a href="../../Message/Event/MessageWaitingEvent.html">MessageWaitingEvent</a>
+					</td>
+					<td>
+											Event triggered when ..?
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; white-space: nowrap">
+						<img src="../../media/images/Class.png"
+								 alt=" class"
+								 title=" class"
+								 style="vertical-align: center"/>
 						<a href="../../Message/Event/RTCPReceiverStatEvent.html">RTCPReceiverStatEvent</a>
 					</td>
 					<td>
 											Event triggered when exchanging rtp stats.
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; white-space: nowrap">
+						<img src="../../media/images/Class.png"
+								 alt=" class"
+								 title=" class"
+								 style="vertical-align: center"/>
+						<a href="../../Message/Event/QueueMemberAddedEvent.html">QueueMemberAddedEvent</a>
+					</td>
+					<td>
+											Event triggered for a QueueMemberAdd action.
 										</td>
 				</tr>
 								<tr>
@@ -510,6 +546,18 @@
 								 alt=" class"
 								 title=" class"
 								 style="vertical-align: center"/>
+						<a href="../../Message/Event/QueueMemberRemovedEvent.html">QueueMemberRemovedEvent</a>
+					</td>
+					<td>
+											Event triggered for a QueueMemberRemove action.
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; white-space: nowrap">
+						<img src="../../media/images/Class.png"
+								 alt=" class"
+								 title=" class"
+								 style="vertical-align: center"/>
 						<a href="../../Message/Event/DAHDIShowChannelsEvent.html">DAHDIShowChannelsEvent</a>
 					</td>
 					<td>
@@ -598,6 +646,18 @@
 					</td>
 					<td>
 											Event triggered when exchanging rtp stats.
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; white-space: nowrap">
+						<img src="../../media/images/Class.png"
+								 alt=" class"
+								 title=" class"
+								 style="vertical-align: center"/>
+						<a href="../../Message/Event/vgsm_sms_rxEvent.html">vgsm_sms_rxEvent</a>
+					</td>
+					<td>
+											On reception of an inbound SMS (SMS-DELIVERY) the message will also be  reported as a manager event, however, acknowledgment still relies on SMS  spooler to handle the message. This event is generated starting from 0.21.0
 										</td>
 				</tr>
 								<tr>
@@ -871,7 +931,7 @@
 		<div class="info-box-body">
 			<A NAME='method_detail'></A>
 <a name="method__construct" id="__construct"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
 		<img src="../../media/images/Constructor.png" />
@@ -926,6 +986,10 @@
 							</li>
 					<li>
 				<a href="../../Message/Event/TransferEvent.html#method__construct">TransferEvent::__construct()</a>
+								: Constructor.
+							</li>
+					<li>
+				<a href="../../Message/Event/vgsm_me_stateEvent.html#method__construct">vgsm_me_stateEvent::__construct()</a>
 								: Constructor.
 							</li>
 					<li>
@@ -989,7 +1053,15 @@
 								: Constructor.
 							</li>
 					<li>
+				<a href="../../Message/Event/MessageWaitingEvent.html#method__construct">MessageWaitingEvent::__construct()</a>
+								: Constructor.
+							</li>
+					<li>
 				<a href="../../Message/Event/RTCPReceiverStatEvent.html#method__construct">RTCPReceiverStatEvent::__construct()</a>
+								: Constructor.
+							</li>
+					<li>
+				<a href="../../Message/Event/QueueMemberAddedEvent.html#method__construct">QueueMemberAddedEvent::__construct()</a>
 								: Constructor.
 							</li>
 					<li>
@@ -1029,6 +1101,10 @@
 								: Constructor.
 							</li>
 					<li>
+				<a href="../../Message/Event/QueueMemberRemovedEvent.html#method__construct">QueueMemberRemovedEvent::__construct()</a>
+								: Constructor.
+							</li>
+					<li>
 				<a href="../../Message/Event/DAHDIShowChannelsEvent.html#method__construct">DAHDIShowChannelsEvent::__construct()</a>
 								: Constructor.
 							</li>
@@ -1058,6 +1134,10 @@
 							</li>
 					<li>
 				<a href="../../Message/Event/RTPSenderStatEvent.html#method__construct">RTPSenderStatEvent::__construct()</a>
+								: Constructor.
+							</li>
+					<li>
+				<a href="../../Message/Event/vgsm_sms_rxEvent.html#method__construct">vgsm_sms_rxEvent::__construct()</a>
 								: Constructor.
 							</li>
 					<li>
@@ -1118,7 +1198,7 @@
 				</ul>
 	</div>
 <a name="methodgetName" id="getName"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
@@ -1227,7 +1307,7 @@
 	</div>
 	
 	<p class="notes" id="credit">
-		Documentation generated on Tue, 08 Mar 2011 14:40:55 -0300 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+		Documentation generated on Fri, 01 Apr 2011 22:30:41 -0300 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
 	</p>
 	</div></body>
 </html>
