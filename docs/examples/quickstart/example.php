@@ -122,6 +122,7 @@ use PAMI\Message\Action\MeetmeListAction;
 use PAMI\Message\Action\MeetmeMuteAction;
 use PAMI\Message\Action\MeetmeUnmuteAction;
 use PAMI\Message\Action\EventsAction;
+use PAMI\Message\Action\VGMSMSTxAction;
 
 class A implements IEventListener
 {
@@ -236,6 +237,14 @@ try
 	//var_dump($a->send(new LocalOptimizeAwayAction('SIP/a-1')));
 	//var_dump($a->send(new EventsAction()));
     //var_dump($a->send(new QueuesAction())->getRawContent());
+    //
+    // SMS
+    //$sms = new VGMSMSTxAction();
+    //$sms->setContentType('text/plain; charset=ASCII');
+    //$sms->setContent($msg);
+    //$sms->setCellPhone($phone);
+    //$a->send($sms);
+
 	$time = time();
 	while(true)//(time() - $time) < 60) // Wait for events.
 	{

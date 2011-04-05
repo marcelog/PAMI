@@ -92,6 +92,9 @@ can still catch them. If you catch one of these, please report it!
 * Transfer
 * Unlink
 * VarSet
+* vgsm_me_state
+* vgsm_net_state
+* vgsm_sms_rx
 * VoicemailUserEntry
 * VoicemailUserEntryComplete
 --------------------------------------------------------------------------------
@@ -168,7 +171,7 @@ Currently Supported Actions
 * Status
 * StopMonitor
 * UnpauseMonitor
-* VGMS_SMS_TX
+* VGSM_SMS_TX
 * VoicemailUsersList
 --------------------------------------------------------------------------------
 Developers
