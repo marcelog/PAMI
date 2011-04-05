@@ -55,10 +55,12 @@ can still catch them. If you catch one of these, please report it!
 * Extension
 * Hangup
 * Hold
+* Join
 * Leave
 * ListDialplan
 * Masquerade
 * MessageWaiting
+* MusicOnHold
 * NewAccountCode
 * NewCallerid
 * Newchannel
