@@ -55,6 +55,7 @@ can still catch them. If you catch one of these, please report it!
 * Extension
 * Hangup
 * Hold
+* Leave
 * ListDialplan
 * Masquerade
 * MessageWaiting
