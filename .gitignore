@@ -1,0 +1,6 @@
+.buildpath
+.project
+.settings
+build
+docs/examples/quickstart/log.log
+
