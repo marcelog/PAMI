@@ -221,3 +221,5 @@ functionality and some other ami inconsistencies.
 * Francesco Usseglio Gaudi, for help in debugging the Originate action.
 
 * Matías Barletta, for the vgms support.
+
+* Eli Hunter, for helping in bringing in tls compatibility.
