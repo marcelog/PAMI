@@ -94,6 +94,12 @@ class ClientImpl implements IClient
 	private $_cTimeout;
 
 	/**
+	 * Connection scheme, like tcp:// or tls://
+	 * @var string
+	 */
+	private $_scheme;
+
+	/**
 	 * Event factory.
 	 * @var IEventFactory
 	 */
@@ -157,7 +163,7 @@ class ClientImpl implements IClient
 	 */
 	public function open()
 	{
-		$cString = 'tcp://' . $this->_host . ':' . $this->_port;
+		$cString = $this->_scheme . $this->_host . ':' . $this->_port;
 		$this->_context = stream_context_create();
 		$this->_socket = stream_socket_client(
 			$cString, $errno, $errstr,
@@ -471,6 +477,7 @@ class ClientImpl implements IClient
 		$this->_pass = $options['secret'];
 		$this->_cTimeout = $options['connect_timeout'];
 		$this->_rTimeout = $options['read_timeout'];
+		$this->_scheme = isset($options['scheme']) ? $options['scheme'] : 'tcp://';
 		$this->_eventListeners = array();
 		$this->_eventFactory = new EventFactoryImpl();
 		$this->_incomingQueue = array();

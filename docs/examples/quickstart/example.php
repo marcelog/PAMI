@@ -146,7 +146,8 @@ try
         'username' => $argv[3],
         'secret' => $argv[4],
         'connect_timeout' => 60,
-        'read_timeout' => 60
+        'read_timeout' => 60,
+        'scheme' => 'tls://' // try tls://
     );
 	$a = new ClientImpl($options);
 	$a->registerEventListener(new A());
