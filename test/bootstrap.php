@@ -10,4 +10,4 @@ ini_set(
     )
 );
 require_once 'PAMI/Autoloader/Autoloader.php'; // Include ding autoloader.
-Autoloader::register(); // Call autoloader register for ding autoloader.
+\PAMI\Autoloader\Autoloader::register(); // Call autoloader register for ding autoloader.
