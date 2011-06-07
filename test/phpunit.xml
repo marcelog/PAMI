@@ -8,12 +8,15 @@
 >
   <filter>
     <whitelist>
-      <directory suffix=".php">../src/mg/PAMI</directory>
+      <directory suffix=".php">../src/mg/PAGI</directory>
+      <exclude>
+          <directory suffix="Launcher.php">../src/mg/PAGI/Application</directory>
+      </exclude>
     </whitelist>
   </filter>
   <testsuites>
-    <testsuite name="Tests">
-      <directory suffix=".php">PAMI</directory>
+    <testsuite name="Client">
+      <directory suffix=".php">client</directory>
     </testsuite>
   </testsuites>
 </phpunit>
