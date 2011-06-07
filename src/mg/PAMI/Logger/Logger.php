@@ -26,7 +26,7 @@
  * limitations under the License.
  *
  */
-
+if (!class_exists('\Logger')) {
 /**
  * A dummy logger, used when log4php is not available. It's a facade.
  *
@@ -76,13 +76,85 @@ final class Logger
     }
 
     /**
+     * Dummy log.
+     *
+     * @param string $msg Message not to log.
+     *
+     * @return void
+     */
+    public final static function debug($msg)
+    {
+        return;
+    }
+
+    /**
+     * Dummy log.
+     *
+     * @param string $msg Message not to log.
+     *
+     * @return void
+     */
+    public final static function warn($msg)
+    {
+        return;
+    }
+
+    /**
+     * Dummy log.
+     *
+     * @param string $msg Message not to log.
+     *
+     * @return void
+     */
+    public final static function trace($msg)
+    {
+        return;
+    }
+
+    /**
+     * Dummy log.
+     *
+     * @param string $msg Message not to log.
+     *
+     * @return void
+     */
+    public final static function error($msg)
+    {
+        return;
+    }
+
+    /**
+     * Dummy log.
+     *
+     * @param string $msg Message not to log.
+     *
+     * @return void
+     */
+    public final static function fatal($msg)
+    {
+        return;
+    }
+
+    /**
+     * Dummy log.
+     *
+     * @param string $msg Message not to log.
+     *
+     * @return void
+     */
+    public final static function info($msg)
+    {
+        return;
+    }
+
+    /**
      * Dummy is debug enabled?
      *
      * @return false
      */
     public final function isDebugEnabled()
     {
-        return false;
+        return getenv('TEST') === 'true';
     }
 
     /**
@@ -94,4 +166,5 @@ final class Logger
     {
 
     }
+}
 }
