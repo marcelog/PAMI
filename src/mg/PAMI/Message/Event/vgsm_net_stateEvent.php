@@ -47,7 +47,7 @@ use PAMI\Message\Event\EventMessage;
  * @license    http://www.noneyet.ar/ Apache License 2.0
  * @link       http://www.noneyet.ar/
  */
-class vgsm_me_stateEvent extends EventMessage
+class vgsm_net_stateEvent extends EventMessage
 {
     /**
      * Returns key: 'Privilege'.
