@@ -8,10 +8,7 @@
 >
   <filter>
     <whitelist>
-      <directory suffix=".php">../src/mg/PAGI</directory>
-      <exclude>
-          <directory suffix="Launcher.php">../src/mg/PAGI/Application</directory>
-      </exclude>
+      <directory suffix=".php">../src/mg/PAMI</directory>
     </whitelist>
   </filter>
   <testsuites>
