@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pmd version="0.2.8RC1" timestamp="2011-06-08T14:09:35-03:00">
+  <file name="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Client/Impl/ClientImpl.php">
+    <violation beginline="58" endline="486" rule="TooManyFields" ruleset="Code Size Rules" package="PAMI\Client\Impl" externalInfoUrl="http://phpmd.org/rules/codesize.html#toomanyfields" class="ClientImpl" priority="3">
+      Too many fields
+    </violation>
+    <violation beginline="58" endline="486" rule="TooManyMethods" ruleset="Code Size Rules" package="PAMI\Client\Impl" externalInfoUrl="http://phpmd.org/rules/codesize.html#toomanymethods" class="ClientImpl" priority="3">
+      This class has too many methods, consider refactoring it.
+    </violation>
+    <violation beginline="136" endline="136" rule="UnusedPrivateField" ruleset="Unused Code Rules" externalInfoUrl="http://phpmd.org/rules/unusedcode.html#unusedprivatefield" priority="3">
+      Avoid unused private fields such as '$_outgoingQueue'.
+    </violation>
+    <violation beginline="149" endline="149" rule="LongVariable" ruleset="Naming Rules" externalInfoUrl="http://phpmd.org/rules/naming.html#longvariable" priority="3">
+      Avoid excessively long variable names like $_currentProcessingMessage
+    </violation>
+    <violation beginline="169" endline="169" rule="UnusedLocalVariable" ruleset="Unused Code Rules" externalInfoUrl="http://phpmd.org/rules/unusedcode.html#unusedlocalvariable" priority="3">
+      Avoid unused local variables such as '$errno'.
+    </violation>
+    <violation beginline="177" endline="177" rule="ShortVariable" ruleset="Naming Rules" externalInfoUrl="http://phpmd.org/rules/naming.html#shortvariable" priority="3">
+      Avoid variables with short names like $id
+    </violation>
+    <violation beginline="390" endline="390" rule="ShortVariable" ruleset="Naming Rules" externalInfoUrl="http://phpmd.org/rules/naming.html#shortvariable" priority="3">
+      Avoid variables with short names like $id
+    </violation>
+  </file>
+  <file name="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Logger/Logger.php">
+    <violation beginline="56" endline="56" rule="UnusedFormalParameter" ruleset="Unused Code Rules" externalInfoUrl="http://phpmd.org/rules/unusedcode.html#unusedformalparameter" priority="3">
+      Avoid unused parameters such as '$options'.
+    </violation>
+    <violation beginline="74" endline="74" rule="UnusedFormalParameter" ruleset="Unused Code Rules" externalInfoUrl="http://phpmd.org/rules/unusedcode.html#unusedformalparameter" priority="3">
+      Avoid unused parameters such as '$options'.
+    </violation>
+    <violation beginline="85" endline="85" rule="UnusedFormalParameter" ruleset="Unused Code Rules" externalInfoUrl="http://phpmd.org/rules/unusedcode.html#unusedformalparameter" priority="3">
+      Avoid unused parameters such as '$msg'.
+    </violation>
+    <violation beginline="97" endline="97" rule="UnusedFormalParameter" ruleset="Unused Code Rules" externalInfoUrl="http://phpmd.org/rules/unusedcode.html#unusedformalparameter" priority="3">
+      Avoid unused parameters such as '$msg'.
+    </violation>
+    <violation beginline="109" endline="109" rule="UnusedFormalParameter" ruleset="Unused Code Rules" externalInfoUrl="http://phpmd.org/rules/unusedcode.html#unusedformalparameter" priority="3">
+      Avoid unused parameters such as '$msg'.
+    </violation>
+    <violation beginline="121" endline="121" rule="UnusedFormalParameter" ruleset="Unused Code Rules" externalInfoUrl="http://phpmd.org/rules/unusedcode.html#unusedformalparameter" priority="3">
+      Avoid unused parameters such as '$msg'.
+    </violation>
+    <violation beginline="133" endline="133" rule="UnusedFormalParameter" ruleset="Unused Code Rules" externalInfoUrl="http://phpmd.org/rules/unusedcode.html#unusedformalparameter" priority="3">
+      Avoid unused parameters such as '$msg'.
+    </violation>
+    <violation beginline="145" endline="145" rule="UnusedFormalParameter" ruleset="Unused Code Rules" externalInfoUrl="http://phpmd.org/rules/unusedcode.html#unusedformalparameter" priority="3">
+      Avoid unused parameters such as '$msg'.
+    </violation>
+  </file>
+  <file name="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/AgentLogoffAction.php">
+    <violation beginline="54" endline="54" rule="UnusedFormalParameter" ruleset="Unused Code Rules" externalInfoUrl="http://phpmd.org/rules/unusedcode.html#unusedformalparameter" priority="3">
+      Avoid unused parameters such as '$agent'.
+    </violation>
+  </file>
+  <file name="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/QueueReloadAction.php">
+    <violation beginline="56" endline="66" rule="NPathComplexity" ruleset="Code Size Rules" package="PAMI\Message\Action" externalInfoUrl="http://phpmd.org/rules/codesize.html#npathcomplexity" class="QueueReloadAction" method="__construct" priority="3">
+      The method __construct() has an NPath complexity of 250.
+    </violation>
+  </file>
+  <file name="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/VGSMSMSTxAction.php">
+    <violation beginline="56" endline="56" rule="ShortVariable" ruleset="Naming Rules" externalInfoUrl="http://phpmd.org/rules/naming.html#shortvariable" priority="3">
+      Avoid variables with short names like $to
+    </violation>
+    <violation beginline="92" endline="92" rule="ShortVariable" ruleset="Naming Rules" externalInfoUrl="http://phpmd.org/rules/naming.html#shortvariable" priority="3">
+      Avoid variables with short names like $id
+    </violation>
+  </file>
+  <file name="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/QueueMemberAddedEvent.php">
+    <violation beginline="143" endline="146" rule="BooleanGetMethodName" ruleset="Naming Rules" package="PAMI\Message\Event" externalInfoUrl="http://phpmd.org/rules/naming.html#booleangetmethodname" class="QueueMemberAddedEvent" method="getPaused" priority="4">
+      The 'getPaused()' method which returns a boolean should be named 'is...()' or 'has...()'
+    </violation>
+  </file>
+  <file name="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/QueueMemberEvent.php">
+    <violation beginline="123" endline="126" rule="BooleanGetMethodName" ruleset="Naming Rules" package="PAMI\Message\Event" externalInfoUrl="http://phpmd.org/rules/naming.html#booleangetmethodname" class="QueueMemberEvent" method="getPaused" priority="4">
+      The 'getPaused()' method which returns a boolean should be named 'is...()' or 'has...()'
+    </violation>
+  </file>
+  <file name="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/QueueMemberPausedEvent.php">
+    <violation beginline="93" endline="96" rule="BooleanGetMethodName" ruleset="Naming Rules" package="PAMI\Message\Event" externalInfoUrl="http://phpmd.org/rules/naming.html#booleangetmethodname" class="QueueMemberPausedEvent" method="getPaused" priority="4">
+      The 'getPaused()' method which returns a boolean should be named 'is...()' or 'has...()'
+    </violation>
+  </file>
+  <file name="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/QueueMemberStatusEvent.php">
+    <violation beginline="133" endline="136" rule="BooleanGetMethodName" ruleset="Naming Rules" package="PAMI\Message\Event" externalInfoUrl="http://phpmd.org/rules/naming.html#booleangetmethodname" class="QueueMemberStatusEvent" method="getPause" priority="4">
+      The 'getPause()' method which returns a boolean should be named 'is...()' or 'has...()'
+    </violation>
+  </file>
+</pmd>

@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PDepend>
+  <Packages>
+    <Package name="PAMI\Autoloader">
+      <Stats>
+        <TotalClasses>1</TotalClasses>
+        <ConcreteClasses>1</ConcreteClasses>
+        <AbstractClasses>0</AbstractClasses>
+        <Ca>0</Ca>
+        <Ce>0</Ce>
+        <A>0</A>
+        <I>0</I>
+        <D>1</D>
+      </Stats>
+      <ConcreteClasses>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Autoloader/Autoloader.php">Autoloader</Class>
+      </ConcreteClasses>
+      <AbstractClasses/>
+      <DependsUpon/>
+      <UsedBy/>
+    </Package>
+    <Package name="PAMI\Client\Exception">
+      <Stats>
+        <TotalClasses>1</TotalClasses>
+        <ConcreteClasses>1</ConcreteClasses>
+        <AbstractClasses>0</AbstractClasses>
+        <Ca>1</Ca>
+        <Ce>1</Ce>
+        <A>0</A>
+        <I>0.5</I>
+        <D>0.5</D>
+      </Stats>
+      <ConcreteClasses>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Client/Exception/ClientException.php">ClientException</Class>
+      </ConcreteClasses>
+      <AbstractClasses/>
+      <DependsUpon>
+        <Package>PAMI\Exception</Package>
+      </DependsUpon>
+      <UsedBy>
+        <Package>PAMI\Client\Impl</Package>
+      </UsedBy>
+    </Package>
+    <Package name="PAMI\Client">
+      <Stats>
+        <TotalClasses>1</TotalClasses>
+        <ConcreteClasses>0</ConcreteClasses>
+        <AbstractClasses>1</AbstractClasses>
+        <Ca>1</Ca>
+        <Ce>0</Ce>
+        <A>1</A>
+        <I>0</I>
+        <D>0</D>
+      </Stats>
+      <ConcreteClasses/>
+      <AbstractClasses>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Client/IClient.php">IClient</Class>
+      </AbstractClasses>
+      <DependsUpon/>
+      <UsedBy>
+        <Package>PAMI\Client\Impl</Package>
+      </UsedBy>
+    </Package>
+    <Package name="PAMI\Client\Impl">
+      <Stats>
+        <TotalClasses>9</TotalClasses>
+        <ConcreteClasses>9</ConcreteClasses>
+        <AbstractClasses>0</AbstractClasses>
+        <Ca>0</Ca>
+        <Ce>4</Ce>
+        <A>0</A>
+        <I>1</I>
+        <D>0</D>
+      </Stats>
+      <ConcreteClasses>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Client/Impl/ClientImpl.php">ClientImpl</Class>
+      </ConcreteClasses>
+      <AbstractClasses/>
+      <DependsUpon>
+        <Package></Package>
+        <Package>PAMI\Client</Package>
+        <Package>PAMI\Client\Exception</Package>
+        <Package>PAMI\Message\Action</Package>
+      </DependsUpon>
+      <UsedBy/>
+    </Package>
+    <Package name="PAMI\Exception">
+      <Stats>
+        <TotalClasses>1</TotalClasses>
+        <ConcreteClasses>1</ConcreteClasses>
+        <AbstractClasses>0</AbstractClasses>
+        <Ca>1</Ca>
+        <Ce>1</Ce>
+        <A>0</A>
+        <I>0.5</I>
+        <D>0.5</D>
+      </Stats>
+      <ConcreteClasses>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Exception/PAMIException.php">PAMIException</Class>
+      </ConcreteClasses>
+      <AbstractClasses/>
+      <DependsUpon>
+        <Package></Package>
+      </DependsUpon>
+      <UsedBy>
+        <Package>PAMI\Client\Exception</Package>
+      </UsedBy>
+    </Package>
+    <Package name="PAMI\Listener">
+      <Stats>
+        <TotalClasses>1</TotalClasses>
+        <ConcreteClasses>0</ConcreteClasses>
+        <AbstractClasses>1</AbstractClasses>
+        <Ca>0</Ca>
+        <Ce>1</Ce>
+        <A>1</A>
+        <I>1</I>
+        <D>1</D>
+      </Stats>
+      <ConcreteClasses/>
+      <AbstractClasses>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Listener/IEventListener.php">IEventListener</Class>
+      </AbstractClasses>
+      <DependsUpon>
+        <Package>PAMI\Message\Event</Package>
+      </DependsUpon>
+      <UsedBy/>
+    </Package>
+    <Package name="Logger">
+      <Stats>
+        <TotalClasses>1</TotalClasses>
+        <ConcreteClasses>1</ConcreteClasses>
+        <AbstractClasses>0</AbstractClasses>
+        <Ca>0</Ca>
+        <Ce>0</Ce>
+        <A>0</A>
+        <I>0</I>
+        <D>1</D>
+      </Stats>
+      <ConcreteClasses>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Logger/Logger.php">Logger</Class>
+      </ConcreteClasses>
+      <AbstractClasses/>
+      <DependsUpon/>
+      <UsedBy/>
+    </Package>
+    <Package name="PAMI\Message\Action">
+      <Stats>
+        <TotalClasses>77</TotalClasses>
+        <ConcreteClasses>76</ConcreteClasses>
+        <AbstractClasses>1</AbstractClasses>
+        <Ca>1</Ca>
+        <Ce>1</Ce>
+        <A>0.012987012987</A>
+        <I>0.5</I>
+        <D>0.487012987013</D>
+      </Stats>
+      <ConcreteClasses>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/AbsoluteTimeoutAction.php">AbsoluteTimeoutAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/AgentLogoffAction.php">AgentLogoffAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/AgentsAction.php">AgentsAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/AttendedTransferAction.php">AttendedTransferAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/BridgeAction.php">BridgeAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/ChangeMonitorAction.php">ChangeMonitorAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/CommandAction.php">CommandAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/CoreSettingsAction.php">CoreSettingsAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/CoreShowChannelsAction.php">CoreShowChannelsAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/CoreStatusAction.php">CoreStatusAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/CreateConfigAction.php">CreateConfigAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/DAHDIDNDOffAction.php">DAHDIDNDOffAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/DAHDIDNDOnAction.php">DAHDIDNDOnAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/DAHDIDialOffHookAction.php">DAHDIDialOffHookAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/DAHDIHangupAction.php">DAHDIHangupAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/DAHDIRestartAction.php">DAHDIRestartAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/DAHDIShowChannelsAction.php">DAHDIShowChannelsAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/DBDelAction.php">DBDelAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/DBDelTreeAction.php">DBDelTreeAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/DBGetAction.php">DBGetAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/DBPutAction.php">DBPutAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/EventsAction.php">EventsAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/ExtensionStateAction.php">ExtensionStateAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/GetConfigAction.php">GetConfigAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/GetConfigJSONAction.php">GetConfigJSONAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/GetVarAction.php">GetVarAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/HangupAction.php">HangupAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/JabberSendAction.php">JabberSendAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/ListCategoriesAction.php">ListCategoriesAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/ListCommandsAction.php">ListCommandsAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/LocalOptimizeAwayAction.php">LocalOptimizeAwayAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/LoginAction.php">LoginAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/LogoffAction.php">LogoffAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/MailboxCountAction.php">MailboxCountAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/MailboxStatusAction.php">MailboxStatusAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/MeetmeListAction.php">MeetmeListAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/MeetmeMuteAction.php">MeetmeMuteAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/MeetmeUnmuteAction.php">MeetmeUnmuteAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/ModuleCheckAction.php">ModuleCheckAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/ModuleLoadAction.php">ModuleLoadAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/ModuleReloadAction.php">ModuleReloadAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/ModuleUnloadAction.php">ModuleUnloadAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/MonitorAction.php">MonitorAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/OriginateAction.php">OriginateAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/ParkAction.php">ParkAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/ParkedCallsAction.php">ParkedCallsAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/PauseMonitorAction.php">PauseMonitorAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/PingAction.php">PingAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/PlayDTMFAction.php">PlayDTMFAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/QueueAddAction.php">QueueAddAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/QueueLogAction.php">QueueLogAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/QueuePauseAction.php">QueuePauseAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/QueuePenaltyAction.php">QueuePenaltyAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/QueueReloadAction.php">QueueReloadAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/QueueRemoveAction.php">QueueRemoveAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/QueueResetAction.php">QueueResetAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/QueueRuleAction.php">QueueRuleAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/QueueStatusAction.php">QueueStatusAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/QueueSummaryAction.php">QueueSummaryAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/QueueUnpauseAction.php">QueueUnpauseAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/QueuesAction.php">QueuesAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/RedirectAction.php">RedirectAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/ReloadAction.php">ReloadAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/SIPNotifyAction.php">SIPNotifyAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/SIPPeersAction.php">SIPPeersAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/SIPQualifyPeerAction.php">SIPQualifyPeerAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/SIPShowPeerAction.php">SIPShowPeerAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/SIPShowRegistryAction.php">SIPShowRegistryAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/SendTextAction.php">SendTextAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/SetVarAction.php">SetVarAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/ShowDialPlanAction.php">ShowDialPlanAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/StatusAction.php">StatusAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/StopMonitorAction.php">StopMonitorAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/UnpauseMonitorAction.php">UnpauseMonitorAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/VGSMSMSTxAction.php">VGSMSMSTxAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/VoicemailUsersListAction.php">VoicemailUsersListAction</Class>
+      </ConcreteClasses>
+      <AbstractClasses>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/ActionMessage.php">ActionMessage</Class>
+      </AbstractClasses>
+      <DependsUpon>
+        <Package>PAMI\Message</Package>
+      </DependsUpon>
+      <UsedBy>
+        <Package>PAMI\Client\Impl</Package>
+      </UsedBy>
+    </Package>
+    <Package name="PAMI\Message\Event">
+      <Stats>
+        <TotalClasses>64</TotalClasses>
+        <ConcreteClasses>63</ConcreteClasses>
+        <AbstractClasses>1</AbstractClasses>
+        <Ca>2</Ca>
+        <Ce>1</Ce>
+        <A>0.015625</A>
+        <I>0.333333333333</I>
+        <D>0.651041666667</D>
+      </Stats>
+      <ConcreteClasses>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/AGIExecEvent.php">AGIExecEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/AgentConnectEvent.php">AgentConnectEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/AgentloginEvent.php">AgentloginEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/AgentlogoffEvent.php">AgentlogoffEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/AgentsCompleteEvent.php">AgentsCompleteEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/AgentsEvent.php">AgentsEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/BridgeEvent.php">BridgeEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/ChannelUpdateEvent.php">ChannelUpdateEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/CoreShowChannelEvent.php">CoreShowchannelEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/CoreShowChannelsCompleteEvent.php">CoreShowChannelsCompleteEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/DAHDIShowChannelsCompleteEvent.php">DAHDIShowChannelsCompleteEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/DAHDIShowChannelsEvent.php">DAHDIShowChannelsEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/DBGetResponseEvent.php">DBGetResponseEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/DTMFEvent.php">DTMFEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/DialEvent.php">DialEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/ExtensionStatusEvent.php">ExtensionStatusEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/HangupEvent.php">HangupEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/HoldEvent.php">HoldEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/JoinEvent.php">JoinEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/LeaveEvent.php">LeaveEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/ListDialplanEvent.php">ListDialPlanEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/MasqueradeEvent.php">MasqueradeEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/MessageWaitingEvent.php">MessageWaitingEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/MusicOnHoldEvent.php">MusicOnHoldEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/NewAccountCodeEvent.php">NewAccountCodeEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/NewCalleridEvent.php">NewCalleridEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/NewchannelEvent.php">NewchannelEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/NewextenEvent.php">NewextenEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/NewstateEvent.php">NewstateEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/OriginateResponseEvent.php">OriginateResponseEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/ParkedCallsCompleteEvent.php">ParkedCallsCompleteEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/PeerEntryEvent.php">PeerEntryEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/PeerStatusEvent.php">PeerStatusEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/PeerlistCompleteEvent.php">PeerlistCompleteEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/QueueMemberAddedEvent.php">QueueMemberAddedEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/QueueMemberEvent.php">QueueMemberEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/QueueMemberPausedEvent.php">QueueMemberPausedEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/QueueMemberRemovedEvent.php">QueueMemberRemovedEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/QueueMemberStatusEvent.php">QueueMemberStatusEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/QueueParamsEvent.php">QueueParamsEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/QueueStatusCompleteEvent.php">QueueStatusCompleteEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/QueueSummaryCompleteEvent.php">QueueSummaryCompleteEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/QueueSummaryEvent.php">QueueSummaryEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/RTCPReceivedEvent.php">RTCPReceivedEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/RTCPReceiverStatEvent.php">RTCPReceiverStatEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/RTCPSentEvent.php">RTCPSentEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/RTPReceiverStatEvent.php">RTPReceiverStatEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/RTPSenderStatEvent.php">RTPSenderStatEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/RegistrationsCompleteEvent.php">RegistrationsCompleteEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/RenameEvent.php">RenameEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/ShowDialPlanCompleteEvent.php">ShowDialPlanCompleteEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/StatusCompleteEvent.php">StatusCompleteEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/StatusEvent.php">StatusEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/TransferEvent.php">TransferEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/UnknownEvent.php">UnknownEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/UnlinkEvent.php">UnlinkEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/VarSetEvent.php">VarSetEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/VoicemailUserEntryCompleteEvent.php">VoicemailUserEntryCompleteEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/VoicemailUserEntryEvent.php">VoicemailUserEntryEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/vgsm_me_stateEvent.php">vgsm_me_stateEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/vgsm_net_stateEvent.php">vgsm_me_stateEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/vgsm_net_stateEvent.php">vgsm_net_stateEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/vgsm_sms_rxEvent.php">vgsm_sms_rxEvent</Class>
+      </ConcreteClasses>
+      <AbstractClasses>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/EventMessage.php">EventMessage</Class>
+      </AbstractClasses>
+      <DependsUpon>
+        <Package>PAMI\Message</Package>
+      </DependsUpon>
+      <UsedBy>
+        <Package>PAMI\Listener</Package>
+        <Package>PAMI\Message\Event\Factory\Impl</Package>
+      </UsedBy>
+    </Package>
+    <Package name="PAMI\Event\Message\Factory">
+      <Stats>
+        <TotalClasses>1</TotalClasses>
+        <ConcreteClasses>0</ConcreteClasses>
+        <AbstractClasses>1</AbstractClasses>
+        <Ca>0</Ca>
+        <Ce>0</Ce>
+        <A>1</A>
+        <I>0</I>
+        <D>0</D>
+      </Stats>
+      <ConcreteClasses/>
+      <AbstractClasses>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/Factory/IEventFactory.php">IEventFactory</Class>
+      </AbstractClasses>
+      <DependsUpon/>
+      <UsedBy/>
+    </Package>
+    <Package name="PAMI\Message\Event\Factory\Impl">
+      <Stats>
+        <TotalClasses>1</TotalClasses>
+        <ConcreteClasses>1</ConcreteClasses>
+        <AbstractClasses>0</AbstractClasses>
+        <Ca>0</Ca>
+        <Ce>2</Ce>
+        <A>0</A>
+        <I>1</I>
+        <D>0</D>
+      </Stats>
+      <ConcreteClasses>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/Factory/Impl/EventFactoryImpl.php">EventFactoryImpl</Class>
+      </ConcreteClasses>
+      <AbstractClasses/>
+      <DependsUpon>
+        <Package>PAMI\Message</Package>
+        <Package>PAMI\Message\Event</Package>
+      </DependsUpon>
+      <UsedBy/>
+    </Package>
+    <Package name="PAMI\Message">
+      <Stats>
+        <TotalClasses>3</TotalClasses>
+        <ConcreteClasses>0</ConcreteClasses>
+        <AbstractClasses>3</AbstractClasses>
+        <Ca>4</Ca>
+        <Ce>0</Ce>
+        <A>1</A>
+        <I>0</I>
+        <D>0</D>
+      </Stats>
+      <ConcreteClasses/>
+      <AbstractClasses>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/IncomingMessage.php">IncomingMessage</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Message.php">Message</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/OutgoingMessage.php">OutgoingMessage</Class>
+      </AbstractClasses>
+      <DependsUpon/>
+      <UsedBy>
+        <Package>PAMI\Message\Action</Package>
+        <Package>PAMI\Message\Event</Package>
+        <Package>PAMI\Message\Event\Factory\Impl</Package>
+        <Package>PAMI\Message\Response</Package>
+      </UsedBy>
+    </Package>
+    <Package name="PAMI\Message\Response">
+      <Stats>
+        <TotalClasses>2</TotalClasses>
+        <ConcreteClasses>2</ConcreteClasses>
+        <AbstractClasses>0</AbstractClasses>
+        <Ca>0</Ca>
+        <Ce>1</Ce>
+        <A>0</A>
+        <I>1</I>
+        <D>0</D>
+      </Stats>
+      <ConcreteClasses>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Response/ResponseMessage.php">ResponseMessage</Class>
+      </ConcreteClasses>
+      <AbstractClasses/>
+      <DependsUpon>
+        <Package>PAMI\Message</Package>
+      </DependsUpon>
+      <UsedBy/>
+    </Package>
+  </Packages>
+  <Cycles/>
+</PDepend>

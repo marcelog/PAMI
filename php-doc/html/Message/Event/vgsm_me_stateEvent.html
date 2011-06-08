@@ -103,7 +103,7 @@
 			</div>
 	<div class="info-box-body">
         		<!-- ========== Info from phpDoc block ========= -->
-<p class="short-description">Whenever the registration status of a GSM module changes, a  vgsm_net_state event is generated. This event is available starting  from 0.21.0.</p>
+<p class="short-description">Whenever a ME (GSM module) changes working state, an event is generated.</p>
 <p class="description"><p>PHP Version 5</p></p>
 	<ul class="tags">
 				<li><span class="field">author:</span> Marcelo Gornstein &lt;<a href="mailto:marcelog@gmail.com">marcelog@gmail.com</a>&gt;</li>
@@ -111,7 +111,7 @@
 				<li><span class="field">license:</span> <a href="http://www.noneyet.ar/">Apache License 2.0</a></li>
 			</ul>
 		<p class="notes">
-			Located in <a class="field" href="_Message---Event---vgsm_net_stateEvent.php.html">/Message/Event/vgsm_net_stateEvent.php</a> (line <span class="field">50</span>)
+			Located in <a class="field" href="_Message---Event---vgsm_me_stateEvent.php.html">/Message/Event/vgsm_me_stateEvent.php</a> (line <span class="field">46</span>)
 		</p>
 		
 				
@@ -143,7 +143,7 @@
 		</div>
 		<div class="info-box-body">			
 			<div class="method-summary">
-																																							
+																																																							
 				<div class="method-definition">
 					<img src="../../media/images/Constructor.png" alt=" "/>
 											<span class="method-result">void</span>
@@ -154,7 +154,21 @@
 				<div class="method-definition">
 					<img src="../../media/images/Method.png" alt=" "/>
 											<span class="method-result">string</span>
+										<a href="#getOldState" title="details" class="method-name">getOldState</a>
+										()
+									</div>
+															
+				<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
 										<a href="#getPrivilege" title="details" class="method-name">getPrivilege</a>
+										()
+									</div>
+															
+				<div class="method-definition">
+					<img src="../../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getReason" title="details" class="method-name">getReason</a>
 										()
 									</div>
 															
@@ -234,7 +248,7 @@
 	
 	<div class="method-header">
 		<img src="../../media/images/Constructor.png" />
-		<span class="method-title">Constructor __construct</span> (line <span class="line-number">78</span>)
+		<span class="method-title">Constructor __construct</span> (line <span class="line-number">95</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -265,12 +279,37 @@
 					</dl>
 			
 	</div>
-<a name="methodgetPrivilege" id="getPrivilege"><!-- --></a>
+<a name="methodgetOldState" id="getOldState"><!-- --></a>
 <div class="oddrow">
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">getPrivilege</span> (line <span class="line-number">57</span>)
+		<span class="method-title">getOldState</span> (line <span class="line-number">73</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns key: 'X-vGSM-ME-Old-State'.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getOldState
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetPrivilege" id="getPrivilege"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">getPrivilege</span> (line <span class="line-number">53</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -290,16 +329,41 @@
 		
 			
 	</div>
+<a name="methodgetReason" id="getReason"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../../media/images/Method.png" />
+		<span class="method-title">getReason</span> (line <span class="line-number">83</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns key: 'X-vGSM-ME-State-Change-Reason'.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getReason
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
 <a name="methodgetState" id="getState"><!-- --></a>
 <div class="evenrow">
 	
 	<div class="method-header">
 		<img src="../../media/images/Method.png" />
-		<span class="method-title">getState</span> (line <span class="line-number">67</span>)
+		<span class="method-title">getState</span> (line <span class="line-number">63</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
-<p class="short-description">Returns key: 'X-vGSM-GSM-Registration'.</p>
+<p class="short-description">Returns key: 'X-vGSM-ME-State'.</p>
 	<ul class="tags">
 				<li><span class="field">access:</span> public</li>
 			</ul>
@@ -399,7 +463,7 @@
 	</div>
 	
 	<p class="notes" id="credit">
-		Documentation generated on Tue, 10 May 2011 15:19:19 -0300 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+		Documentation generated on Wed, 08 Jun 2011 14:09:14 -0300 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
 	</p>
 	</div></body>
 </html>

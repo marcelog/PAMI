@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="Client" tests="1" assertions="0" failures="0" errors="0" time="0.000875">
+    <testsuite name="PAMI\Client\Impl\Test_Client" file="/export/users/marcelog/src/sts/PAMI/test/client/Test_Client.php" namespace="PAMI\Client\Impl" fullPackage="Test.Client" category="Pami" package="Test" subpackage="Client" tests="1" assertions="0" failures="0" errors="0" time="0.000875">
+      <testcase name="can_get_client" class="PAMI\Client\Impl\Test_Client" file="/export/users/marcelog/src/sts/PAMI/test/client/Test_Client.php" line="156" assertions="0" time="0.000875"/>
+    </testsuite>
+  </testsuite>
+</testsuites>
