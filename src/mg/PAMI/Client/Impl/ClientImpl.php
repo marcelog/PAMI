@@ -165,7 +165,9 @@ class ClientImpl implements IClient
 	{
 		$cString = $this->_scheme . $this->_host . ':' . $this->_port;
 		$this->_context = stream_context_create();
-		$this->_socket = stream_socket_client(
+		$errno = 0;
+		$errstr = '';
+		$this->_socket = @stream_socket_client(
 			$cString, $errno, $errstr,
 			$this->_cTimeout, STREAM_CLIENT_CONNECT, $this->_context
 		);

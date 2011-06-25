@@ -28,17 +28,120 @@
  *
  */
 namespace {
-    $mockFopen = false;
+    $mockTime = false;
+    $mockTimeCount = false;
+    $mockTimeReturn = false;
+    $mock_stream_socket_client = false;
+    $mock_stream_set_blocking = false;
     $mockFwrite = false;
     $mockFwriteReturn = false;
-    $mockTime = false;
+    $mockFwriteCount = 0;
     $mockFgets = false;
     $mockFgetsCount = 0;
-    $mockTimeCount = 0;
-    $mockTimeResult = 0;
-    $mockFclose = false;
     $mockFreadReturn = false;
+    $standardAMIStart = array(
+   		'Asterisk Call Manager/1.1',
+   		'Response: Success',
+   		'ActionID: 1432.123',
+   		'Message: Authentication accepted',
+        "\r\n"
+    );
+    $standardAMIStartBadLogin = array(
+   		'Asterisk Call Manager/1.1',
+   		'Response: Error',
+   		'ActionID: 1432.123',
+   		'Message: Authentication accepted',
+        "\r\n"
+    );
+}
+namespace PAMI\Message\Action {
+    function microtime() {
+        global $mockTime;
+        global $mockTimeCount;
+        global $mockTimeReturn;
+        if (isset($mockTime) && $mockTime === true) {
+            return 1432.123;
+        } else {
+            return call_user_func_array('\microtime', func_get_args());
+        }
+    }
+}
 
+namespace PAMI\Client\Impl {
+    function microtime() {
+        global $mockTime;
+        global $mockTimeCount;
+        global $mockTimeReturn;
+        if (isset($mockTime) && $mockTime === true) {
+            return 1432.123;
+        } else {
+            return call_user_func_array('\microtime', func_get_args());
+        }
+    }
+    function stream_socket_client() {
+        global $mock_stream_socket_client;
+        if (isset($mock_stream_socket_client) && $mock_stream_socket_client === true) {
+        } else {
+            return call_user_func_array('\stream_socket_client', func_get_args());
+        }
+    }
+    function stream_set_blocking() {
+        global $mock_stream_set_blocking;
+        if (isset($mock_stream_set_blocking) && $mock_stream_set_blocking === true) {
+            return true;
+        } else {
+            return call_user_func_array('\stream_set_blocking', func_get_args());
+        }
+    }
+    function fwrite() {
+        global $mockFwrite;
+        global $mockFwriteCount;
+        global $mockFwriteReturn;
+        if (isset($mockFwrite) && $mockFwrite === true) {
+            $args = func_get_args();
+            if (isset($mockFwriteReturn[$mockFwriteCount]) && $mockFwriteReturn[$mockFwriteCount] !== false) {
+                if ($mockFwriteReturn[$mockFwriteCount] === 'fwrite error') {
+                    $mockFwriteCount++;
+                    return 0;
+                }
+                $str = $mockFwriteReturn[$mockFwriteCount] . "\r\n";
+                if ($str !== $args[1]) {
+                    throw new \Exception(
+                    	'Mocked: ' . print_r($mockFwriteReturn[$mockFwriteCount], true) . ' is '
+                    	. ' different from: ' . print_r($args[1], true)
+                    );
+                }
+            }
+            $mockFwriteCount++;
+            return strlen($args[1]);
+        } else {
+            return call_user_func_array('\fwrite', func_get_args());
+        }
+    }
+    function stream_get_line() {
+        global $mockFgets;
+        global $mockFgetsCount;
+        global $mockFgetsReturn;
+        if (isset($mockFgets) && $mockFgets === true) {
+            $result = $mockFgetsReturn[$mockFgetsCount];
+            $mockFgetsCount++;
+            return is_string($result) ? $result . "\r\n" : $result;
+        } else {
+            return call_user_func_array('\stream_get_line', func_get_args());
+        }
+    }
+    function fread() {
+        global $mockFgets;
+        global $mockFgetsCount;
+        global $mockFgetsReturn;
+        if (isset($mockFgets) && $mockFgets === true) {
+            $result = $mockFgetsReturn[$mockFgetsCount];
+            $mockFgetsCount++;
+            return is_string($result) ? $result . "\r\n" : $result;
+        } else {
+            return call_user_func_array('\fread', func_get_args());
+        }
+    }
     function setFgetsMock(array $readValues, $writeValues)
     {
         global $mockFgets;
@@ -55,77 +158,6 @@ namespace {
         $mockFgetsReturn = $readValues;
         $mockFwriteCount = 0;
         $mockFwriteReturn = $writeValues;
-    }
-}
-
-namespace PAMI\Client\Impl {
-    function time() {
-        global $mockTime;
-        global $mockTimeCount;
-        global $mockTimeReturn;
-        if (isset($mockTime) && $mockTime === true) {
-            if (!isset($mockTimeReturn[$mockTimeCount])) {
-                return call_user_func_array('\time', func_get_args());
-            }
-            $result = $mockTimeReturn[$mockTimeCount];
-            $mockTimeCount++;
-            return $result;
-        } else {
-            return call_user_func_array('\time', func_get_args());
-        }
-    }
-    function fclose() {
-        global $mockFclose;
-        if (isset($mockFclose) && $mockFclose === true) {
-            return true;
-        } else {
-            return call_user_func_array('\fclose', func_get_args());
-        }
-    }
-    function fopen() {
-        global $mockFopen;
-        if (isset($mockFopen) && $mockFopen === true) {
-            return true;
-        } else {
-            return call_user_func_array('\fopen', func_get_args());
-        }
-    }
-    function fwrite() {
-        global $mockFwrite;
-        global $mockFwriteCount;
-        global $mockFwriteReturn;
-        if (isset($mockFwrite) && $mockFwrite === true) {
-            $args = func_get_args();
-            if (isset($mockFwriteReturn[$mockFwriteCount]) && $mockFwriteReturn[$mockFwriteCount] !== false) {
-                if ($mockFwriteReturn[$mockFwriteCount] === 'fwrite error') {
-                    $mockFwriteCount++;
-                    return 0;
-                }
-                $str = $mockFwriteReturn[$mockFwriteCount] . "\n";
-                if ($str !== $args[1]) {
-                    throw new \Exception(
-                    	'Mocked: ' . print_r($mockFwriteReturn[$mockFwriteCount], true) . ' is '
-                    	. ' different from: ' . print_r($args[1], true)
-                    );
-                }
-            }
-            $mockFwriteCount++;
-            return strlen($args[1]);
-        } else {
-            return call_user_func_array('\fwrite', func_get_args());
-        }
-    }
-    function fgets() {
-        global $mockFgets;
-        global $mockFgetsCount;
-        global $mockFgetsReturn;
-        if (isset($mockFgets) && $mockFgets === true) {
-            $result = $mockFgetsReturn[$mockFgetsCount];
-            $mockFgetsCount++;
-            return is_string($result) ? $result . "\n" : $result;
-        } else {
-            return call_user_func_array('\fopen', func_get_args());
-        }
     }
 /**
  * This class will test the ami client
@@ -155,8 +187,127 @@ class Test_Client extends \PHPUnit_Framework_TestCase
      */
     public function can_get_client()
     {
-        $options = array();
-	    //$a = new \PAMI\Client\Impl\ClientImpl($options);
+        $options = array(
+            'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties',
+        	'host' => 'tcp://1.1.1.1',
+        	'port' => 9999,
+        	'username' => 'asd',
+        	'secret' => 'asd',
+            'connect_timeout' => 10,
+        	'read_timeout' => 10
+        );
+	    $client = new \PAMI\Client\Impl\ClientImpl($options);
+    }
+    /**
+     * @test
+     */
+    public function can_connect_timeout()
+    {
+        $options = array(
+            'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties',
+        	'host' => '2.3.4.5',
+            'scheme' => 'tcp://',
+        	'port' => 9999,
+        	'username' => 'asd',
+        	'secret' => 'asd',
+            'connect_timeout' => 3,
+        	'read_timeout' => 10
+        );
+        $start = time();
+        try
+        {
+	        $client = new \PAMI\Client\Impl\ClientImpl($options);
+	        $client->open();
+        } catch(\Exception $e) {
+        }
+        $end = time();
+        $this->assertEquals($end - $start, 3);
+    }
+    /**
+     * @test
+     * @expectedException \PAMI\Client\Exception\ClientException
+     */
+    public function can_detect_other_peer()
+    {
+        global $mock_stream_socket_client;
+        global $mock_stream_set_blocking;
+        $mock_stream_socket_client = true;
+        $mock_stream_set_blocking = true;
+        $options = array(
+            'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties',
+        	'host' => '2.3.4.5',
+            'scheme' => 'tcp://',
+        	'port' => 9999,
+        	'username' => 'asd',
+        	'secret' => 'asd',
+            'connect_timeout' => 10,
+        	'read_timeout' => 10
+        );
+        $read = array('Whatever');
+        $write = array();
+        setFgetsMock($read, $write);
+        $client = new \PAMI\Client\Impl\ClientImpl($options);
+	    $client->open();
+    }
+
+    /**
+     * @test
+     */
+    public function can_login()
+    {
+        global $mock_stream_socket_client;
+        global $mock_stream_set_blocking;
+        global $mockTime;
+        global $standardAMIStart;
+        $mockTime = true;
+        $mock_stream_socket_client = true;
+        $mock_stream_set_blocking = true;
+        $options = array(
+            'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties',
+        	'host' => '2.3.4.5',
+            'scheme' => 'tcp://',
+        	'port' => 9999,
+        	'username' => 'asd',
+        	'secret' => 'asd',
+            'connect_timeout' => 10,
+        	'read_timeout' => 10
+        );
+        $write = array(
+        	"action: Login\r\nactionid: 1432.123\r\nusername: asd\r\nsecret: asd\r\n"
+        );
+        setFgetsMock($standardAMIStart, $write);
+        $client = new \PAMI\Client\Impl\ClientImpl($options);
+	    $client->open();
+    }
+    /**
+     * @test
+     * @expectedException \PAMI\Client\Exception\ClientException
+     */
+    public function cannot_login()
+    {
+        global $mock_stream_socket_client;
+        global $mock_stream_set_blocking;
+        global $mockTime;
+        global $standardAMIStartBadLogin;
+        $mockTime = true;
+        $mock_stream_socket_client = true;
+        $mock_stream_set_blocking = true;
+        $options = array(
+            'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties',
+        	'host' => '2.3.4.5',
+            'scheme' => 'tcp://',
+        	'port' => 9999,
+        	'username' => 'asd',
+        	'secret' => 'asd',
+            'connect_timeout' => 10,
+        	'read_timeout' => 10
+        );
+        $write = array(
+        	"action: Login\r\nactionid: 1432.123\r\nusername: asd\r\nsecret: asd\r\n"
+        );
+        setFgetsMock($standardAMIStartBadLogin, $write);
+        $client = new \PAMI\Client\Impl\ClientImpl($options);
+	    $client->open();
     }
 }
 }
