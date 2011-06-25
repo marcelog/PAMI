@@ -15,5 +15,11 @@
     <testsuite name="Client">
       <directory suffix=".php">client</directory>
     </testsuite>
+    <testsuite name="Autoloader">
+      <directory suffix=".php">autoloader</directory>
+    </testsuite>
+    <testsuite name="DummyLogger">
+      <directory suffix=".php">logger</directory>
+    </testsuite>
   </testsuites>
 </phpunit>

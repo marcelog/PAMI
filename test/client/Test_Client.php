@@ -44,12 +44,15 @@ namespace {
    		'Response: Success',
    		'ActionID: 1432.123',
    		'Message: Authentication accepted',
+        "\r\n",
+        'Response: Goodbye',
+        'ActionID: 1432.123',
+        'Message: Thanks for all the fish.',
         "\r\n"
     );
     $standardAMIStartBadLogin = array(
    		'Asterisk Call Manager/1.1',
-   		'Response: Error',
-   		'ActionID: 1432.123',
+   		'Response: Error', // also tests behavior when asterisk does not return an actionid
    		'Message: Authentication accepted',
         "\r\n"
     );
@@ -84,6 +87,9 @@ namespace PAMI\Client\Impl {
         } else {
             return call_user_func_array('\stream_socket_client', func_get_args());
         }
+    }
+    function stream_socket_shutdown() {
+        return true;
     }
     function stream_set_blocking() {
         global $mock_stream_set_blocking;
@@ -137,6 +143,10 @@ namespace PAMI\Client\Impl {
         if (isset($mockFgets) && $mockFgets === true) {
             $result = $mockFgetsReturn[$mockFgetsCount];
             $mockFgetsCount++;
+            if (is_integer($result)) {
+                sleep($result);
+                return '';
+            }
             return is_string($result) ? $result . "\r\n" : $result;
         } else {
             return call_user_func_array('\fread', func_get_args());
@@ -249,7 +259,49 @@ class Test_Client extends \PHPUnit_Framework_TestCase
         $client = new \PAMI\Client\Impl\ClientImpl($options);
 	    $client->open();
     }
-
+    /**
+     * @test
+     */
+    public function can_register_event_listener()
+    {
+        global $mock_stream_socket_client;
+        global $mock_stream_set_blocking;
+        global $mockTime;
+        global $standardAMIStart;
+        $mockTime = true;
+        $mock_stream_socket_client = true;
+        $mock_stream_set_blocking = true;
+        $options = array(
+            'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties',
+        	'host' => '2.3.4.5',
+            'scheme' => 'tcp://',
+        	'port' => 9999,
+        	'username' => 'asd',
+        	'secret' => 'asd',
+            'connect_timeout' => 10,
+        	'read_timeout' => 10
+        );
+        $write = array(
+        	"action: Login\r\nactionid: 1432.123\r\nusername: asd\r\nsecret: asd\r\n"
+        );
+        setFgetsMock($standardAMIStart, $write);
+        $client = new \PAMI\Client\Impl\ClientImpl($options);
+        $client->registerEventListener(new SomeListenerClass);
+	    $client->open();
+        $event = array(
+        	'Event: PeerStatus',
+            'Privilege: system,all',
+            'ChannelType: SIP',
+        	'Peer: SIP/someguy',
+        	'PeerStatus: Registered',
+        	"\r\n"
+        );
+	    setFgetsMock($event, $event);
+	    for($i = 0; $i < 6; $i++) {
+	        $client->process();
+	    }
+        $this->assertTrue(SomeListenerClass::$event instanceof \PAMI\Message\Event\PeerStatusEvent);
+    }
     /**
      * @test
      */
@@ -278,7 +330,39 @@ class Test_Client extends \PHPUnit_Framework_TestCase
         setFgetsMock($standardAMIStart, $write);
         $client = new \PAMI\Client\Impl\ClientImpl($options);
 	    $client->open();
+	    $client->close();
     }
+    /**
+     * @test
+     * @expectedException \PAMI\Client\Exception\ClientException
+     */
+    public function cannot_send()
+    {
+        global $mock_stream_socket_client;
+        global $mock_stream_set_blocking;
+        global $mockTime;
+        global $standardAMIStart;
+        $mockTime = true;
+        $mock_stream_socket_client = true;
+        $mock_stream_set_blocking = true;
+        $options = array(
+            'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties',
+        	'host' => '2.3.4.5',
+            'scheme' => 'tcp://',
+        	'port' => 9999,
+        	'username' => 'asd',
+        	'secret' => 'asd',
+            'connect_timeout' => 10,
+        	'read_timeout' => 10
+        );
+        $write = array(
+        	'fwrite error'
+        );
+        setFgetsMock($standardAMIStart, $write);
+        $client = new \PAMI\Client\Impl\ClientImpl($options);
+	    $client->open();
+    }
+
     /**
      * @test
      * @expectedException \PAMI\Client\Exception\ClientException
@@ -308,6 +392,133 @@ class Test_Client extends \PHPUnit_Framework_TestCase
         setFgetsMock($standardAMIStartBadLogin, $write);
         $client = new \PAMI\Client\Impl\ClientImpl($options);
 	    $client->open();
+    }
+    /**
+     * @test
+     * @expectedException \PAMI\Client\Exception\ClientException
+     */
+    public function cannot_read()
+    {
+        global $mock_stream_socket_client;
+        global $mock_stream_set_blocking;
+        global $mockTime;
+        global $standardAMIStart;
+        $mockTime = true;
+        $mock_stream_socket_client = true;
+        $mock_stream_set_blocking = true;
+        $options = array(
+            'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties',
+        	'host' => '2.3.4.5',
+            'scheme' => 'tcp://',
+        	'port' => 9999,
+        	'username' => 'asd',
+        	'secret' => 'asd',
+            'connect_timeout' => 10,
+        	'read_timeout' => 10
+        );
+        $write = array(
+        	"action: Login\r\nactionid: 1432.123\r\nusername: asd\r\nsecret: asd\r\n"
+        );
+        setFgetsMock($standardAMIStart, $write);
+        $client = new \PAMI\Client\Impl\ClientImpl($options);
+	    $client->open();
+        setFgetsMock(array(false), $write);
+        $client->send(new \PAMI\Message\Action\LoginAction('asd', 'asd'));
+    }
+    /**
+     * @test
+     * @expectedException \PAMI\Client\Exception\ClientException
+     */
+    public function cannot_read_by_read_timeout()
+    {
+        global $mock_stream_socket_client;
+        global $mock_stream_set_blocking;
+        global $mockTime;
+        global $standardAMIStart;
+        $mockTime = true;
+        $mock_stream_socket_client = true;
+        $mock_stream_set_blocking = true;
+        $options = array(
+            'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties',
+        	'host' => '2.3.4.5',
+            'scheme' => 'tcp://',
+        	'port' => 9999,
+        	'username' => 'asd',
+        	'secret' => 'asd',
+            'connect_timeout' => 10,
+        	'read_timeout' => 3
+        );
+        $write = array(
+        	"action: Login\r\nactionid: 1432.123\r\nusername: asd\r\nsecret: asd\r\n"
+        );
+        setFgetsMock($standardAMIStart, $write);
+        $client = new \PAMI\Client\Impl\ClientImpl($options);
+	    $client->open();
+        setFgetsMock(array(10, 1), $write);
+        $start = \time();
+        $client->send(new \PAMI\Message\Action\LoginAction('asd', 'asd'));
+        $this->assertEquals(\time() - $start, 10);
+    }
+    /**
+     * @test
+     */
+    public function can_get_response_with_associated_events()
+    {
+        global $mock_stream_socket_client;
+        global $mock_stream_set_blocking;
+        global $mockTime;
+        global $standardAMIStart;
+        $mockTime = true;
+        $mock_stream_socket_client = true;
+        $mock_stream_set_blocking = true;
+        $options = array(
+            'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties',
+        	'host' => '2.3.4.5',
+            'scheme' => 'tcp://',
+        	'port' => 9999,
+        	'username' => 'asd',
+        	'secret' => 'asd',
+            'connect_timeout' => 10,
+        	'read_timeout' => 10
+        );
+        $write = array(
+        	"action: Login\r\nactionid: 1432.123\r\nusername: asd\r\nsecret: asd\r\n"
+        );
+        setFgetsMock($standardAMIStart, $write);
+        $client = new \PAMI\Client\Impl\ClientImpl($options);
+        $client->registerEventListener(new SomeListenerClass);
+	    $client->open();
+        $event = array(
+			'Response: Success',
+			'ActionID: 1432.123',
+			'Eventlist: start',
+			'Message: Channels will follow',
+			"\r\n",
+			'Event: CoreShowChannelsComplete',
+			'EventList: Complete',
+			'ListItems: 0',
+			'ActionID: 1432.123',
+			"\r\n"
+        );
+        $write = array(
+        	"action: CoreShowChannels\r\nactionid: 1432.123\r\n"
+        );
+        setFgetsMock($event, $write);
+	    $result = $client->send(new \PAMI\Message\Action\CoreShowChannelsAction);
+	    $this->assertTrue($result instanceof \PAMI\Message\Response\ResponseMessage);
+	    $events = $result->getEvents();
+	    $this->assertEquals(count($events), 1);
+	    $this->assertTrue($events[0] instanceof \PAMI\Message\Event\CoreShowChannelsCompleteEvent);
+    }
+
+}
+class SomeListenerClass implements \PAMI\Listener\IEventListener
+{
+    public static $event;
+
+    public function handle(\PAMI\Message\Event\EventMessage $event)
+    {
+        self::$event = $event;
     }
 }
 }

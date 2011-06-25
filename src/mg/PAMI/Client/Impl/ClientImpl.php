@@ -224,7 +224,7 @@ class ClientImpl implements IClient
 	    // Read something.
 	    $read = fread($this->_socket, 65535);
 	    if ($read === false) {
-	        return false;
+	        throw new ClientException('Error reading');
 	    }
 	    // If we got something, add it to what we have read so far.
 	    $this->_currentProcessingMessage .= $read;
@@ -389,15 +389,16 @@ class ClientImpl implements IClient
 	 */
 	protected function getRelated(OutgoingMessage $message)
 	{
+	    $ret = false;
 	    $id = $message->getActionID('ActionID');
 	    if (isset($this->_incomingQueue[$id])) {
 	        $response = $this->_incomingQueue[$id];
 	        if ($response->isComplete()) {
     	        unset($this->_incomingQueue[$id]);
-	            return $response;
+	            $ret = $response;
 	        }
 	    }
-	    return false;
+	    return $ret;
 	}
 
 	/**
@@ -425,7 +426,8 @@ class ClientImpl implements IClient
 	    /**
 	     * @todo this should not be an infinite loop. Check read timeout.
 	     */
-	    while(true) {
+	    $read = 0;
+	    while($read < $this->_rTimeout) {
 	        $this->process();
 	        $response = $this->getRelated($message);
 	        if ($response != false) {
@@ -433,17 +435,9 @@ class ClientImpl implements IClient
 	            return $response;
 	        }
 	        usleep(1000); // 1ms delay
+	        $read++;
 	    }
-	}
-
-	/**
-	 * Receives a message from ami.
-	 *
-	 * @return IncomingMessage
-	 */
-	protected function read()
-	{
-	    return false;
+	    throw new ClientException('Read timeout');
 	}
 
 	/**
