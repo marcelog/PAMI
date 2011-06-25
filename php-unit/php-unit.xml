@@ -1,8 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="Client" tests="1" assertions="0" failures="0" errors="0" time="0.000875">
-    <testsuite name="PAMI\Client\Impl\Test_Client" file="/export/users/marcelog/src/sts/PAMI/test/client/Test_Client.php" namespace="PAMI\Client\Impl" fullPackage="Test.Client" category="Pami" package="Test" subpackage="Client" tests="1" assertions="0" failures="0" errors="0" time="0.000875">
-      <testcase name="can_get_client" class="PAMI\Client\Impl\Test_Client" file="/export/users/marcelog/src/sts/PAMI/test/client/Test_Client.php" line="156" assertions="0" time="0.000875"/>
+  <testsuite name="" tests="12" assertions="13" failures="0" errors="0" time="3.104666">
+    <testsuite name="Client" tests="10" assertions="10" failures="0" errors="0" time="3.101599">
+      <testsuite name="PAMI\Client\Impl\Test_Client" file="/export/users/marcelog/src/sts/PAMI/test/client/Test_Client.php" namespace="PAMI\Client\Impl" fullPackage="Test.Client" category="Pami" package="Test" subpackage="Client" tests="10" assertions="10" failures="0" errors="0" time="3.101599">
+        <testcase name="can_get_client" class="PAMI\Client\Impl\Test_Client" file="/export/users/marcelog/src/sts/PAMI/test/client/Test_Client.php" line="198" assertions="0" time="0.003638"/>
+        <testcase name="can_connect_timeout" class="PAMI\Client\Impl\Test_Client" file="/export/users/marcelog/src/sts/PAMI/test/client/Test_Client.php" line="214" assertions="1" time="3.007552"/>
+        <testcase name="can_detect_other_peer" class="PAMI\Client\Impl\Test_Client" file="/export/users/marcelog/src/sts/PAMI/test/client/Test_Client.php" line="240" assertions="1" time="0.003683"/>
+        <testcase name="can_register_event_listener" class="PAMI\Client\Impl\Test_Client" file="/export/users/marcelog/src/sts/PAMI/test/client/Test_Client.php" line="265" assertions="1" time="0.014308"/>
+        <testcase name="can_login" class="PAMI\Client\Impl\Test_Client" file="/export/users/marcelog/src/sts/PAMI/test/client/Test_Client.php" line="308" assertions="0" time="0.016650"/>
+        <testcase name="cannot_send" class="PAMI\Client\Impl\Test_Client" file="/export/users/marcelog/src/sts/PAMI/test/client/Test_Client.php" line="339" assertions="1" time="0.002428"/>
+        <testcase name="cannot_login" class="PAMI\Client\Impl\Test_Client" file="/export/users/marcelog/src/sts/PAMI/test/client/Test_Client.php" line="370" assertions="1" time="0.007442"/>
+        <testcase name="cannot_read" class="PAMI\Client\Impl\Test_Client" file="/export/users/marcelog/src/sts/PAMI/test/client/Test_Client.php" line="400" assertions="1" time="0.010175"/>
+        <testcase name="cannot_read_by_read_timeout" class="PAMI\Client\Impl\Test_Client" file="/export/users/marcelog/src/sts/PAMI/test/client/Test_Client.php" line="432" assertions="1" time="0.007013"/>
+        <testcase name="can_get_response_with_associated_events" class="PAMI\Client\Impl\Test_Client" file="/export/users/marcelog/src/sts/PAMI/test/client/Test_Client.php" line="465" assertions="3" time="0.028710"/>
+      </testsuite>
+    </testsuite>
+    <testsuite name="Autoloader" tests="1" assertions="1" failures="0" errors="0" time="0.001486">
+      <testsuite name="PAMI\Client\Impl\Test_Autoloader" file="/export/users/marcelog/src/sts/PAMI/test/autoloader/Test_Autoloader.php" namespace="PAMI\Client\Impl" fullPackage="Test.Autoloader" category="Pami" package="Test" subpackage="Autoloader" tests="1" assertions="1" failures="0" errors="0" time="0.001486">
+        <testcase name="can_register_autoloader" class="PAMI\Client\Impl\Test_Autoloader" file="/export/users/marcelog/src/sts/PAMI/test/autoloader/Test_Autoloader.php" line="63" assertions="1" time="0.001486"/>
+      </testsuite>
+    </testsuite>
+    <testsuite name="DummyLogger" tests="1" assertions="2" failures="0" errors="0" time="0.001581">
+      <testsuite name="Test_Logger" file="/export/users/marcelog/src/sts/PAMI/test/logger/Test_Logger.php" fullPackage="Test.Logger" category="Pami" package="Test" subpackage="Logger" tests="1" assertions="2" failures="0" errors="0" time="0.001581">
+        <testcase name="can_use_dummy_logger" class="Test_Logger" file="/export/users/marcelog/src/sts/PAMI/test/logger/Test_Logger.php" line="48" assertions="2" time="0.001581"/>
+      </testsuite>
     </testsuite>
   </testsuite>
 </testsuites>

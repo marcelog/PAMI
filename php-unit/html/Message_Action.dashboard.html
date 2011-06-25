@@ -27,7 +27,7 @@
             <h2>Class Coverage Distribution</h2>
             <canvas id="classCoverageDistribution" width="475" height="200"></canvas>
             <script>
-            var ccd = new RGraph.Bar('classCoverageDistribution', [77,0,0,0,0,0,0,0,0,0,0,0]);
+            var ccd = new RGraph.Bar('classCoverageDistribution', [73,0,0,0,0,0,0,0,0,0,0,4]);
             ccd.Set('chart.background.barcolor1', 'white');
             ccd.Set('chart.background.barcolor2', 'white');
             ccd.Set('chart.colors', ['blue']);
@@ -44,7 +44,7 @@
             <h2>Class Complexity</h2>
             <canvas id="classComplexity" width="475" height="200"></canvas>
             <script>
-            var cc = new RGraph.Scatter('classComplexity', [[0,1,"blue","AbsoluteTimeoutAction"],[0,1,"blue","ActionMessage"],[0,2,"blue","AgentLogoffAction"],[0,1,"blue","AgentsAction"],[0,1,"blue","AttendedTransferAction"],[0,2,"blue","BridgeAction"],[0,1,"blue","ChangeMonitorAction"],[0,1,"blue","CommandAction"],[0,1,"blue","CoreSettingsAction"],[0,1,"blue","CoreShowChannelsAction"],[0,1,"blue","CoreStatusAction"],[0,1,"blue","CreateConfigAction"],[0,1,"blue","DAHDIDNDOffAction"],[0,1,"blue","DAHDIDNDOnAction"],[0,1,"blue","DAHDIDialOffHookAction"],[0,1,"blue","DAHDIHangupAction"],[0,1,"blue","DAHDIRestartAction"],[0,1,"blue","DAHDIShowChannelsAction"],[0,1,"blue","DBDelAction"],[0,2,"blue","DBDelTreeAction"],[0,1,"blue","DBGetAction"],[0,1,"blue","DBPutAction"],[0,2,"blue","EventsAction"],[0,1,"blue","ExtensionStateAction"],[0,2,"blue","GetConfigAction"],[0,1,"blue","GetConfigJSONAction"],[0,2,"blue","GetVarAction"],[0,1,"blue","HangupAction"],[0,1,"blue","JabberSendAction"],[0,1,"blue","ListCategoriesAction"],[0,1,"blue","ListCommandsAction"],[0,1,"blue","LocalOptimizeAwayAction"],[0,1,"blue","LoginAction"],[0,1,"blue","LogoffAction"],[0,1,"blue","MailboxCountAction"],[0,1,"blue","MailboxStatusAction"],[0,1,"blue","MeetmeListAction"],[0,1,"blue","MeetmeMuteAction"],[0,1,"blue","MeetmeUnmuteAction"],[0,1,"blue","ModuleCheckAction"],[0,1,"blue","ModuleLoadAction"],[0,1,"blue","ModuleReloadAction"],[0,1,"blue","ModuleUnloadAction"],[0,1,"blue","MonitorAction"],[0,13,"blue","OriginateAction"],[0,3,"blue","ParkAction"],[0,1,"blue","ParkedCallsAction"],[0,1,"blue","PauseMonitorAction"],[0,1,"blue","PingAction"],[0,1,"blue","PlayDTMFAction"],[0,5,"blue","QueueAddAction"],[0,4,"blue","QueueLogAction"],[0,3,"blue","QueuePauseAction"],[0,2,"blue","QueuePenaltyAction"],[0,5,"blue","QueueReloadAction"],[0,1,"blue","QueueRemoveAction"],[0,2,"blue","QueueResetAction"],[0,2,"blue","QueueRuleAction"],[0,3,"blue","QueueStatusAction"],[0,2,"blue","QueueSummaryAction"],[0,3,"blue","QueueUnpauseAction"],[0,1,"blue","QueuesAction"],[0,5,"blue","RedirectAction"],[0,2,"blue","ReloadAction"],[0,1,"blue","SIPNotifyAction"],[0,1,"blue","SIPPeersAction"],[0,1,"blue","SIPQualifyPeerAction"],[0,1,"blue","SIPShowPeerAction"],[0,1,"blue","SIPShowRegistryAction"],[0,1,"blue","SendTextAction"],[0,2,"blue","SetVarAction"],[0,3,"blue","ShowDialPlanAction"],[0,2,"blue","StatusAction"],[0,1,"blue","StopMonitorAction"],[0,1,"blue","UnpauseMonitorAction"],[0,11,"blue","VGSMSMSTxAction"],[0,1,"blue","VoicemailUsersListAction"]]);
+            var cc = new RGraph.Scatter('classComplexity', [[0,1,"blue","AbsoluteTimeoutAction"],[100,1,"blue","ActionMessage"],[0,2,"blue","AgentLogoffAction"],[0,1,"blue","AgentsAction"],[0,1,"blue","AttendedTransferAction"],[0,2,"blue","BridgeAction"],[0,1,"blue","ChangeMonitorAction"],[0,1,"blue","CommandAction"],[0,1,"blue","CoreSettingsAction"],[100,1,"blue","CoreShowChannelsAction"],[0,1,"blue","CoreStatusAction"],[0,1,"blue","CreateConfigAction"],[0,1,"blue","DAHDIDNDOffAction"],[0,1,"blue","DAHDIDNDOnAction"],[0,1,"blue","DAHDIDialOffHookAction"],[0,1,"blue","DAHDIHangupAction"],[0,1,"blue","DAHDIRestartAction"],[0,1,"blue","DAHDIShowChannelsAction"],[0,1,"blue","DBDelAction"],[0,2,"blue","DBDelTreeAction"],[0,1,"blue","DBGetAction"],[0,1,"blue","DBPutAction"],[0,2,"blue","EventsAction"],[0,1,"blue","ExtensionStateAction"],[0,2,"blue","GetConfigAction"],[0,1,"blue","GetConfigJSONAction"],[0,2,"blue","GetVarAction"],[0,1,"blue","HangupAction"],[0,1,"blue","JabberSendAction"],[0,1,"blue","ListCategoriesAction"],[0,1,"blue","ListCommandsAction"],[0,1,"blue","LocalOptimizeAwayAction"],[100,1,"blue","LoginAction"],[100,1,"blue","LogoffAction"],[0,1,"blue","MailboxCountAction"],[0,1,"blue","MailboxStatusAction"],[0,1,"blue","MeetmeListAction"],[0,1,"blue","MeetmeMuteAction"],[0,1,"blue","MeetmeUnmuteAction"],[0,1,"blue","ModuleCheckAction"],[0,1,"blue","ModuleLoadAction"],[0,1,"blue","ModuleReloadAction"],[0,1,"blue","ModuleUnloadAction"],[0,1,"blue","MonitorAction"],[0,13,"blue","OriginateAction"],[0,3,"blue","ParkAction"],[0,1,"blue","ParkedCallsAction"],[0,1,"blue","PauseMonitorAction"],[0,1,"blue","PingAction"],[0,1,"blue","PlayDTMFAction"],[0,5,"blue","QueueAddAction"],[0,4,"blue","QueueLogAction"],[0,3,"blue","QueuePauseAction"],[0,2,"blue","QueuePenaltyAction"],[0,5,"blue","QueueReloadAction"],[0,1,"blue","QueueRemoveAction"],[0,2,"blue","QueueResetAction"],[0,2,"blue","QueueRuleAction"],[0,3,"blue","QueueStatusAction"],[0,2,"blue","QueueSummaryAction"],[0,3,"blue","QueueUnpauseAction"],[0,1,"blue","QueuesAction"],[0,5,"blue","RedirectAction"],[0,2,"blue","ReloadAction"],[0,1,"blue","SIPNotifyAction"],[0,1,"blue","SIPPeersAction"],[0,1,"blue","SIPQualifyPeerAction"],[0,1,"blue","SIPShowPeerAction"],[0,1,"blue","SIPShowRegistryAction"],[0,1,"blue","SendTextAction"],[0,2,"blue","SetVarAction"],[0,3,"blue","ShowDialPlanAction"],[0,2,"blue","StatusAction"],[0,1,"blue","StopMonitorAction"],[0,1,"blue","UnpauseMonitorAction"],[0,11,"blue","VGSMSMSTxAction"],[0,1,"blue","VoicemailUsersListAction"]]);
             cc.Set('chart.xmax', 100);
             cc.Set('chart.background.barcolor1', 'white');
             cc.Set('chart.background.barcolor2', 'white');
@@ -77,16 +77,16 @@
           <td valign="top">
             <h2>Least Tested Methods</h2>
             <ul>
-              <li><a href="Message_Action_QueueRemoveAction.php.html#54">QueueRemoveAction::__construct</a> (0%)</li>
               <li><a href="Message_Action_QueueResetAction.php.html#53">QueueResetAction::__construct</a> (0%)</li>
+              <li><a href="Message_Action_QueueRuleAction.php.html#53">QueueRuleAction::__construct</a> (0%)</li>
+              <li><a href="Message_Action_QueueRemoveAction.php.html#54">QueueRemoveAction::__construct</a> (0%)</li>
               <li><a href="Message_Action_QueueReloadAction.php.html#56">QueueReloadAction::__construct</a> (0%)</li>
               <li><a href="Message_Action_QueuePenaltyAction.php.html#54">QueuePenaltyAction::__construct</a> (0%)</li>
-              <li><a href="Message_Action_QueuePauseAction.php.html#51">QueuePauseAction::__construct</a> (0%)</li>
-              <li><a href="Message_Action_QueueRuleAction.php.html#53">QueueRuleAction::__construct</a> (0%)</li>
               <li><a href="Message_Action_QueueStatusAction.php.html#53">QueueStatusAction::__construct</a> (0%)</li>
-              <li><a href="Message_Action_RedirectAction.php.html#53">RedirectAction::setExtraChannel</a> (0%)</li>
+              <li><a href="Message_Action_QueueSummaryAction.php.html#53">QueueSummaryAction::__construct</a> (0%)</li>
               <li><a href="Message_Action_RedirectAction.php.html#65">RedirectAction::setExtraExtension</a> (0%)</li>
-              <li><a href="Message_Action_QueuesAction.php.html#51">QueuesAction::__construct</a> (0%)</li>
+              <li><a href="Message_Action_RedirectAction.php.html#77">RedirectAction::setExtraContext</a> (0%)</li>
+              <li><a href="Message_Action_RedirectAction.php.html#53">RedirectAction::setExtraChannel</a> (0%)</li>
 
             </ul>
           </td>
@@ -98,7 +98,7 @@
 
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""></td></tr>
-      <tr><td class="versionInfo">Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage 1.0.4</a> using <a href="http://www.php.net/" target="_top">PHP 5.3.3</a> and PHPUnit 3.5.13 at Wed Jun 8 14:08:48 ART 2011.</td></tr>
+      <tr><td class="versionInfo">Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage 1.0.4</a> using <a href="http://www.php.net/" target="_top">PHP 5.3.3</a> and PHPUnit 3.5.13 at Sat Jun 25 19:53:59 ART 2011.</td></tr>
     </table>
 
     <br/>

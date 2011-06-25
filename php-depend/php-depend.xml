@@ -245,14 +245,14 @@
     </Package>
     <Package name="PAMI\Message\Event">
       <Stats>
-        <TotalClasses>64</TotalClasses>
-        <ConcreteClasses>63</ConcreteClasses>
+        <TotalClasses>63</TotalClasses>
+        <ConcreteClasses>62</ConcreteClasses>
         <AbstractClasses>1</AbstractClasses>
         <Ca>2</Ca>
         <Ce>1</Ce>
-        <A>0.015625</A>
+        <A>0.015873015873</A>
         <I>0.333333333333</I>
-        <D>0.651041666667</D>
+        <D>0.650793650794</D>
       </Stats>
       <ConcreteClasses>
         <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/AGIExecEvent.php">AGIExecEvent</Class>
@@ -315,7 +315,6 @@
         <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/VoicemailUserEntryCompleteEvent.php">VoicemailUserEntryCompleteEvent</Class>
         <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/VoicemailUserEntryEvent.php">VoicemailUserEntryEvent</Class>
         <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/vgsm_me_stateEvent.php">vgsm_me_stateEvent</Class>
-        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/vgsm_net_stateEvent.php">vgsm_me_stateEvent</Class>
         <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/vgsm_net_stateEvent.php">vgsm_net_stateEvent</Class>
         <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/vgsm_sms_rxEvent.php">vgsm_sms_rxEvent</Class>
       </ConcreteClasses>

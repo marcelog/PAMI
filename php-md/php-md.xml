@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<pmd version="0.2.8RC1" timestamp="2011-06-08T14:09:35-03:00">
+<pmd version="0.2.8RC1" timestamp="2011-06-25T19:54:51-03:00">
   <file name="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Client/Impl/ClientImpl.php">
-    <violation beginline="58" endline="486" rule="TooManyFields" ruleset="Code Size Rules" package="PAMI\Client\Impl" externalInfoUrl="http://phpmd.org/rules/codesize.html#toomanyfields" class="ClientImpl" priority="3">
+    <violation beginline="58" endline="482" rule="TooManyFields" ruleset="Code Size Rules" package="PAMI\Client\Impl" externalInfoUrl="http://phpmd.org/rules/codesize.html#toomanyfields" class="ClientImpl" priority="3">
       Too many fields
-    </violation>
-    <violation beginline="58" endline="486" rule="TooManyMethods" ruleset="Code Size Rules" package="PAMI\Client\Impl" externalInfoUrl="http://phpmd.org/rules/codesize.html#toomanymethods" class="ClientImpl" priority="3">
-      This class has too many methods, consider refactoring it.
     </violation>
     <violation beginline="136" endline="136" rule="UnusedPrivateField" ruleset="Unused Code Rules" externalInfoUrl="http://phpmd.org/rules/unusedcode.html#unusedprivatefield" priority="3">
       Avoid unused private fields such as '$_outgoingQueue'.
@@ -13,13 +10,10 @@
     <violation beginline="149" endline="149" rule="LongVariable" ruleset="Naming Rules" externalInfoUrl="http://phpmd.org/rules/naming.html#longvariable" priority="3">
       Avoid excessively long variable names like $_currentProcessingMessage
     </violation>
-    <violation beginline="169" endline="169" rule="UnusedLocalVariable" ruleset="Unused Code Rules" externalInfoUrl="http://phpmd.org/rules/unusedcode.html#unusedlocalvariable" priority="3">
-      Avoid unused local variables such as '$errno'.
-    </violation>
-    <violation beginline="177" endline="177" rule="ShortVariable" ruleset="Naming Rules" externalInfoUrl="http://phpmd.org/rules/naming.html#shortvariable" priority="3">
+    <violation beginline="179" endline="179" rule="ShortVariable" ruleset="Naming Rules" externalInfoUrl="http://phpmd.org/rules/naming.html#shortvariable" priority="3">
       Avoid variables with short names like $id
     </violation>
-    <violation beginline="390" endline="390" rule="ShortVariable" ruleset="Naming Rules" externalInfoUrl="http://phpmd.org/rules/naming.html#shortvariable" priority="3">
+    <violation beginline="393" endline="393" rule="ShortVariable" ruleset="Naming Rules" externalInfoUrl="http://phpmd.org/rules/naming.html#shortvariable" priority="3">
       Avoid variables with short names like $id
     </violation>
   </file>
