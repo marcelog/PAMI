@@ -518,7 +518,18 @@ class Test_Client extends \PHPUnit_Framework_TestCase
 		    ))
 	    );
     }
-
+    /**
+     * @test
+     */
+    public function can_get_set_variable()
+    {
+        $now = time();
+        $action = new \PAMI\Message\Action\LoginAction('a', 'b');
+        $this->assertEquals($now, $action->getCreatedDate());
+        $action->setVariable('variable', 'value');
+        $this->assertEquals($action->getVariable('variable'), 'value');
+        $this->assertNull($action->getVariable('variable2'));
+    }
 }
 class SomeListenerClass implements \PAMI\Listener\IEventListener
 {

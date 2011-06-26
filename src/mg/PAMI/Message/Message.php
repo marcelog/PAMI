@@ -169,16 +169,6 @@ abstract class Message
 	}
 
 	/**
-	 * Returns the end of line token appended to the end of a given line.
-	 *
-	 * @return string
-	 */
-	protected function finishLine($line)
-	{
-		return $line . self::$EOL;
-	}
-
-	/**
 	 * Returns the end of message token appended to the end of a given message.
 	 *
 	 * @return string
