@@ -488,5 +488,265 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
 	    $action = new \PAMI\Message\Action\JabberSendAction('jabber', 'jid', 'message');
         $client = $this->_start($write, $action);
     }
+    /**
+     * @test
+     */
+    public function can_list_categories()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: ListCategories',
+            'actionid: 1432.123',
+            'filename: file.conf',
+            ''
+        )));
+	    $action = new \PAMI\Message\Action\ListCategoriesAction('file.conf');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_list_commands()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: ListCommands',
+            'actionid: 1432.123',
+            ''
+        )));
+	    $action = new \PAMI\Message\Action\ListCommandsAction;
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_local_optimize_away()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: LocalOptimizeAway',
+            'actionid: 1432.123',
+        	'channel: channel',
+            ''
+        )));
+	    $action = new \PAMI\Message\Action\LocalOptimizeAwayAction('channel');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_mailbox_count()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: MailboxCount',
+            'actionid: 1432.123',
+        	'mailbox: mailbox',
+            ''
+        )));
+	    $action = new \PAMI\Message\Action\MailboxCountAction('mailbox');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_mailbox_status()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: MailboxStatus',
+            'actionid: 1432.123',
+        	'mailbox: mailbox',
+            ''
+        )));
+	    $action = new \PAMI\Message\Action\MailboxStatusAction('mailbox');
+        $client = $this->_start($write, $action);
+    }
+
+    /**
+     * @test
+     */
+    public function can_meetme_list()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: MeetmeList',
+            'actionid: 1432.123',
+        	'conference: conference',
+            ''
+        )));
+	    $action = new \PAMI\Message\Action\MeetmeListAction('conference');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_meetme_mute()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: MeetmeMute',
+            'actionid: 1432.123',
+        	'meetme: meetme',
+        	'usernum: usernum',
+            ''
+        )));
+	    $action = new \PAMI\Message\Action\MeetmeMuteAction('meetme', 'usernum');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_meetme_unmute()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: MeetmeUnmute',
+            'actionid: 1432.123',
+        	'meetme: meetme',
+        	'usernum: usernum',
+            ''
+        )));
+	    $action = new \PAMI\Message\Action\MeetmeUnmuteAction('meetme', 'usernum');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_module_check()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: ModuleCheck',
+            'actionid: 1432.123',
+        	'module: module',
+            ''
+        )));
+	    $action = new \PAMI\Message\Action\ModuleCheckAction('module');
+        $client = $this->_start($write, $action);
+    }
+
+    /**
+     * @test
+     */
+    public function can_module_load()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: ModuleLoad',
+            'actionid: 1432.123',
+        	'module: module',
+            'loadtype: load',
+            ''
+        )));
+	    $action = new \PAMI\Message\Action\ModuleLoadAction('module');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_module_reload()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: ModuleLoad',
+            'actionid: 1432.123',
+        	'module: module',
+            'loadtype: reload',
+            ''
+        )));
+	    $action = new \PAMI\Message\Action\ModuleReloadAction('module');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_module_unload()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: ModuleLoad',
+            'actionid: 1432.123',
+        	'module: module',
+            'loadtype: unload',
+            ''
+        )));
+	    $action = new \PAMI\Message\Action\ModuleUnloadAction('module');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_monitor()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: Monitor',
+            'actionid: 1432.123',
+        	'channel: channel',
+            'mix: true',
+        	'format: wav',
+        	'file: file',
+            ''
+        )));
+	    $action = new \PAMI\Message\Action\MonitorAction('channel', 'file');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_voicemail_users_list()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: VoicemailUsersList',
+            'actionid: 1432.123',
+            ''
+        )));
+	    $action = new \PAMI\Message\Action\VoicemailUsersListAction;
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_pause_monitor()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: PauseMonitor',
+            'actionid: 1432.123',
+        	'channel: channel',
+            ''
+        )));
+	    $action = new \PAMI\Message\Action\PauseMonitorAction('channel');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_unpause_monitor()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: UnpauseMonitor',
+            'actionid: 1432.123',
+        	'channel: channel',
+            ''
+        )));
+	    $action = new \PAMI\Message\Action\UnpauseMonitorAction('channel');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_stop_monitor()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: StopMonitor',
+            'actionid: 1432.123',
+        	'channel: channel',
+            ''
+        )));
+	    $action = new \PAMI\Message\Action\StopMonitorAction('channel');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_status()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: Status',
+            'actionid: 1432.123',
+        	'channel: channel',
+            ''
+        )));
+	    $action = new \PAMI\Message\Action\StatusAction('channel');
+        $client = $this->_start($write, $action);
+    }
 }
 }
