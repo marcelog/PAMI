@@ -115,7 +115,7 @@ class VGSMSMSTxAction extends ActionMessage
      */
     public function setSmsClass($class)
     {
-        $this->setKey('X-SMS-Class ', $class);
+        $this->setKey('X-SMS-Class', $class);
     }
 
 
@@ -171,6 +171,6 @@ class VGSMSMSTxAction extends ActionMessage
      */
     public function __construct()
     {
-         $this->setKey('Action', 'vgsm_sms_tx');
+        parent::__construct('vgsm_sms_tx');
     }
 }
