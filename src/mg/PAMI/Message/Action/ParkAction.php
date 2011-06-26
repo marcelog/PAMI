@@ -59,10 +59,10 @@ class ParkAction extends ActionMessage
         $this->setKey('Channel', $channel1);
         $this->setKey('Channel2', $channel2);
         if ($timeout != false) {
-            $this->setKey('Timeout ', $timeout);
+            $this->setKey('Timeout', $timeout);
         }
         if ($lot != false) {
-            $this->setKey('Parkinglot ', $lot);
+            $this->setKey('Parkinglot', $lot);
         }
     }
 }
