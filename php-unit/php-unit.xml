@@ -1,28 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="" tests="12" assertions="13" failures="0" errors="0" time="3.104666">
-    <testsuite name="Client" tests="10" assertions="10" failures="0" errors="0" time="3.101599">
-      <testsuite name="PAMI\Client\Impl\Test_Client" file="/export/users/marcelog/src/sts/PAMI/test/client/Test_Client.php" namespace="PAMI\Client\Impl" fullPackage="Test.Client" category="Pami" package="Test" subpackage="Client" tests="10" assertions="10" failures="0" errors="0" time="3.101599">
-        <testcase name="can_get_client" class="PAMI\Client\Impl\Test_Client" file="/export/users/marcelog/src/sts/PAMI/test/client/Test_Client.php" line="198" assertions="0" time="0.003638"/>
-        <testcase name="can_connect_timeout" class="PAMI\Client\Impl\Test_Client" file="/export/users/marcelog/src/sts/PAMI/test/client/Test_Client.php" line="214" assertions="1" time="3.007552"/>
-        <testcase name="can_detect_other_peer" class="PAMI\Client\Impl\Test_Client" file="/export/users/marcelog/src/sts/PAMI/test/client/Test_Client.php" line="240" assertions="1" time="0.003683"/>
-        <testcase name="can_register_event_listener" class="PAMI\Client\Impl\Test_Client" file="/export/users/marcelog/src/sts/PAMI/test/client/Test_Client.php" line="265" assertions="1" time="0.014308"/>
-        <testcase name="can_login" class="PAMI\Client\Impl\Test_Client" file="/export/users/marcelog/src/sts/PAMI/test/client/Test_Client.php" line="308" assertions="0" time="0.016650"/>
-        <testcase name="cannot_send" class="PAMI\Client\Impl\Test_Client" file="/export/users/marcelog/src/sts/PAMI/test/client/Test_Client.php" line="339" assertions="1" time="0.002428"/>
-        <testcase name="cannot_login" class="PAMI\Client\Impl\Test_Client" file="/export/users/marcelog/src/sts/PAMI/test/client/Test_Client.php" line="370" assertions="1" time="0.007442"/>
-        <testcase name="cannot_read" class="PAMI\Client\Impl\Test_Client" file="/export/users/marcelog/src/sts/PAMI/test/client/Test_Client.php" line="400" assertions="1" time="0.010175"/>
-        <testcase name="cannot_read_by_read_timeout" class="PAMI\Client\Impl\Test_Client" file="/export/users/marcelog/src/sts/PAMI/test/client/Test_Client.php" line="432" assertions="1" time="0.007013"/>
-        <testcase name="can_get_response_with_associated_events" class="PAMI\Client\Impl\Test_Client" file="/export/users/marcelog/src/sts/PAMI/test/client/Test_Client.php" line="465" assertions="3" time="0.028710"/>
+  <testsuite name="" tests="63" assertions="65" failures="0" errors="0" time="3.893292">
+    <testsuite name="Client" tests="10" assertions="11" failures="0" errors="0" time="3.101796">
+      <testsuite name="PAMI\Client\Impl\Test_Client" file="/export/users/marcelog/src/sts/PAMI/test/client/Test_Client.php" namespace="PAMI\Client\Impl" fullPackage="Test.Client" category="Pami" package="Test" subpackage="Client" tests="10" assertions="11" failures="0" errors="0" time="3.101796">
+        <testcase name="can_get_client" class="PAMI\Client\Impl\Test_Client" file="/export/users/marcelog/src/sts/PAMI/test/client/Test_Client.php" line="198" assertions="0" time="0.003627"/>
+        <testcase name="can_connect_timeout" class="PAMI\Client\Impl\Test_Client" file="/export/users/marcelog/src/sts/PAMI/test/client/Test_Client.php" line="214" assertions="1" time="3.007554"/>
+        <testcase name="can_detect_other_peer" class="PAMI\Client\Impl\Test_Client" file="/export/users/marcelog/src/sts/PAMI/test/client/Test_Client.php" line="240" assertions="1" time="0.003675"/>
+        <testcase name="can_register_event_listener" class="PAMI\Client\Impl\Test_Client" file="/export/users/marcelog/src/sts/PAMI/test/client/Test_Client.php" line="265" assertions="1" time="0.014223"/>
+        <testcase name="can_login" class="PAMI\Client\Impl\Test_Client" file="/export/users/marcelog/src/sts/PAMI/test/client/Test_Client.php" line="308" assertions="0" time="0.016643"/>
+        <testcase name="cannot_send" class="PAMI\Client\Impl\Test_Client" file="/export/users/marcelog/src/sts/PAMI/test/client/Test_Client.php" line="339" assertions="1" time="0.002454"/>
+        <testcase name="cannot_login" class="PAMI\Client\Impl\Test_Client" file="/export/users/marcelog/src/sts/PAMI/test/client/Test_Client.php" line="370" assertions="1" time="0.007455"/>
+        <testcase name="cannot_read" class="PAMI\Client\Impl\Test_Client" file="/export/users/marcelog/src/sts/PAMI/test/client/Test_Client.php" line="400" assertions="1" time="0.010192"/>
+        <testcase name="cannot_read_by_read_timeout" class="PAMI\Client\Impl\Test_Client" file="/export/users/marcelog/src/sts/PAMI/test/client/Test_Client.php" line="432" assertions="1" time="0.006974"/>
+        <testcase name="can_get_response_with_associated_events" class="PAMI\Client\Impl\Test_Client" file="/export/users/marcelog/src/sts/PAMI/test/client/Test_Client.php" line="465" assertions="4" time="0.028999"/>
       </testsuite>
     </testsuite>
-    <testsuite name="Autoloader" tests="1" assertions="1" failures="0" errors="0" time="0.001486">
-      <testsuite name="PAMI\Client\Impl\Test_Autoloader" file="/export/users/marcelog/src/sts/PAMI/test/autoloader/Test_Autoloader.php" namespace="PAMI\Client\Impl" fullPackage="Test.Autoloader" category="Pami" package="Test" subpackage="Autoloader" tests="1" assertions="1" failures="0" errors="0" time="0.001486">
-        <testcase name="can_register_autoloader" class="PAMI\Client\Impl\Test_Autoloader" file="/export/users/marcelog/src/sts/PAMI/test/autoloader/Test_Autoloader.php" line="63" assertions="1" time="0.001486"/>
+    <testsuite name="Autoloader" tests="1" assertions="1" failures="0" errors="0" time="0.001492">
+      <testsuite name="PAMI\Client\Impl\Test_Autoloader" file="/export/users/marcelog/src/sts/PAMI/test/autoloader/Test_Autoloader.php" namespace="PAMI\Client\Impl" fullPackage="Test.Autoloader" category="Pami" package="Test" subpackage="Autoloader" tests="1" assertions="1" failures="0" errors="0" time="0.001492">
+        <testcase name="can_register_autoloader" class="PAMI\Client\Impl\Test_Autoloader" file="/export/users/marcelog/src/sts/PAMI/test/autoloader/Test_Autoloader.php" line="63" assertions="1" time="0.001492"/>
       </testsuite>
     </testsuite>
-    <testsuite name="DummyLogger" tests="1" assertions="2" failures="0" errors="0" time="0.001581">
-      <testsuite name="Test_Logger" file="/export/users/marcelog/src/sts/PAMI/test/logger/Test_Logger.php" fullPackage="Test.Logger" category="Pami" package="Test" subpackage="Logger" tests="1" assertions="2" failures="0" errors="0" time="0.001581">
-        <testcase name="can_use_dummy_logger" class="Test_Logger" file="/export/users/marcelog/src/sts/PAMI/test/logger/Test_Logger.php" line="48" assertions="2" time="0.001581"/>
+    <testsuite name="DummyLogger" tests="1" assertions="2" failures="0" errors="0" time="0.001535">
+      <testsuite name="Test_Logger" file="/export/users/marcelog/src/sts/PAMI/test/logger/Test_Logger.php" fullPackage="Test.Logger" category="Pami" package="Test" subpackage="Logger" tests="1" assertions="2" failures="0" errors="0" time="0.001535">
+        <testcase name="can_use_dummy_logger" class="Test_Logger" file="/export/users/marcelog/src/sts/PAMI/test/logger/Test_Logger.php" line="48" assertions="2" time="0.001535"/>
+      </testsuite>
+    </testsuite>
+    <testsuite name="Actions" tests="51" assertions="51" failures="0" errors="0" time="0.788469">
+      <testsuite name="PAMI\Client\Impl\Test_Actions" file="/export/users/marcelog/src/sts/PAMI/test/actions/Test_Actions.php" namespace="PAMI\Client\Impl" fullPackage="Test.Action" category="Pami" package="Test" subpackage="Action" tests="51" assertions="51" failures="0" errors="0" time="0.788469">
+        <testcase name="can_absolute_timeout" class="PAMI\Client\Impl\Test_Actions" file="/export/users/marcelog/src/sts/PAMI/test/actions/Test_Actions.php" line="92" assertions="1" time="0.015359"/>
+        <testcase name="can_agent_logoff" class="PAMI\Client\Impl\Test_Actions" file="/export/users/marcelog/src/sts/PAMI/test/actions/Test_Actions.php" line="103" assertions="1" time="0.015454"/>
+        <testcase name="can_agents" class="PAMI\Client\Impl\Test_Actions" file="/export/users/marcelog/src/sts/PAMI/test/actions/Test_Actions.php" line="118" assertions="1" time="0.015250"/>
+        <testcase name="can_atxfer" class="PAMI\Client\Impl\Test_Actions" file="/export/users/marcelog/src/sts/PAMI/test/actions/Test_Actions.php" line="131" assertions="1" time="0.015607"/>
+        <testcase name="can_bridge" class="PAMI\Client\Impl\Test_Actions" file="/export/users/marcelog/src/sts/PAMI/test/actions/Test_Actions.php" line="148" assertions="1" time="0.015536"/>
+        <testcase name="can_change_monitor" class="PAMI\Client\Impl\Test_Actions" file="/export/users/marcelog/src/sts/PAMI/test/actions/Test_Actions.php" line="164" assertions="1" time="0.015410"/>
+        <testcase name="can_command" class="PAMI\Client\Impl\Test_Actions" file="/export/users/marcelog/src/sts/PAMI/test/actions/Test_Actions.php" line="179" assertions="1" time="0.015291"/>
+        <testcase name="can_core_settings" class="PAMI\Client\Impl\Test_Actions" file="/export/users/marcelog/src/sts/PAMI/test/actions/Test_Actions.php" line="193" assertions="1" time="0.015211"/>
+        <testcase name="can_core_status" class="PAMI\Client\Impl\Test_Actions" file="/export/users/marcelog/src/sts/PAMI/test/actions/Test_Actions.php" line="206" assertions="1" time="0.015236"/>
+        <testcase name="can_create_config" class="PAMI\Client\Impl\Test_Actions" file="/export/users/marcelog/src/sts/PAMI/test/actions/Test_Actions.php" line="219" assertions="1" time="0.015331"/>
+        <testcase name="can_dahdi_dndoff" class="PAMI\Client\Impl\Test_Actions" file="/export/users/marcelog/src/sts/PAMI/test/actions/Test_Actions.php" line="233" assertions="1" time="0.015329"/>
+        <testcase name="can_dahdi_dndon" class="PAMI\Client\Impl\Test_Actions" file="/export/users/marcelog/src/sts/PAMI/test/actions/Test_Actions.php" line="247" assertions="1" time="0.015404"/>
+        <testcase name="can_dahdi_dialoffhook" class="PAMI\Client\Impl\Test_Actions" file="/export/users/marcelog/src/sts/PAMI/test/actions/Test_Actions.php" line="261" assertions="1" time="0.015466"/>
+        <testcase name="can_dahdi_hangup" class="PAMI\Client\Impl\Test_Actions" file="/export/users/marcelog/src/sts/PAMI/test/actions/Test_Actions.php" line="276" assertions="1" time="0.015303"/>
+        <testcase name="can_dahdi_restart" class="PAMI\Client\Impl\Test_Actions" file="/export/users/marcelog/src/sts/PAMI/test/actions/Test_Actions.php" line="290" assertions="1" time="0.015273"/>
+        <testcase name="can_dahdi_show_channels" class="PAMI\Client\Impl\Test_Actions" file="/export/users/marcelog/src/sts/PAMI/test/actions/Test_Actions.php" line="303" assertions="1" time="0.015383"/>
+        <testcase name="can_dbdel" class="PAMI\Client\Impl\Test_Actions" file="/export/users/marcelog/src/sts/PAMI/test/actions/Test_Actions.php" line="316" assertions="1" time="0.015399"/>
+        <testcase name="can_dbdeltree" class="PAMI\Client\Impl\Test_Actions" file="/export/users/marcelog/src/sts/PAMI/test/actions/Test_Actions.php" line="331" assertions="1" time="0.015482"/>
+        <testcase name="can_dbget" class="PAMI\Client\Impl\Test_Actions" file="/export/users/marcelog/src/sts/PAMI/test/actions/Test_Actions.php" line="346" assertions="1" time="0.015569"/>
+        <testcase name="can_dbput" class="PAMI\Client\Impl\Test_Actions" file="/export/users/marcelog/src/sts/PAMI/test/actions/Test_Actions.php" line="361" assertions="1" time="0.015552"/>
+        <testcase name="can_events_off" class="PAMI\Client\Impl\Test_Actions" file="/export/users/marcelog/src/sts/PAMI/test/actions/Test_Actions.php" line="377" assertions="1" time="0.015498"/>
+        <testcase name="can_events" class="PAMI\Client\Impl\Test_Actions" file="/export/users/marcelog/src/sts/PAMI/test/actions/Test_Actions.php" line="391" assertions="1" time="0.015053"/>
+        <testcase name="can_extension_state" class="PAMI\Client\Impl\Test_Actions" file="/export/users/marcelog/src/sts/PAMI/test/actions/Test_Actions.php" line="405" assertions="1" time="0.015416"/>
+        <testcase name="can_get_config" class="PAMI\Client\Impl\Test_Actions" file="/export/users/marcelog/src/sts/PAMI/test/actions/Test_Actions.php" line="420" assertions="1" time="0.015576"/>
+        <testcase name="can_get_configjson" class="PAMI\Client\Impl\Test_Actions" file="/export/users/marcelog/src/sts/PAMI/test/actions/Test_Actions.php" line="435" assertions="1" time="0.015525"/>
+        <testcase name="can_get_var" class="PAMI\Client\Impl\Test_Actions" file="/export/users/marcelog/src/sts/PAMI/test/actions/Test_Actions.php" line="449" assertions="1" time="0.015507"/>
+        <testcase name="can_hangup" class="PAMI\Client\Impl\Test_Actions" file="/export/users/marcelog/src/sts/PAMI/test/actions/Test_Actions.php" line="464" assertions="1" time="0.015442"/>
+        <testcase name="can_jabbersend" class="PAMI\Client\Impl\Test_Actions" file="/export/users/marcelog/src/sts/PAMI/test/actions/Test_Actions.php" line="478" assertions="1" time="0.015589"/>
+        <testcase name="can_list_categories" class="PAMI\Client\Impl\Test_Actions" file="/export/users/marcelog/src/sts/PAMI/test/actions/Test_Actions.php" line="494" assertions="1" time="0.015530"/>
+        <testcase name="can_list_commands" class="PAMI\Client\Impl\Test_Actions" file="/export/users/marcelog/src/sts/PAMI/test/actions/Test_Actions.php" line="508" assertions="1" time="0.015395"/>
+        <testcase name="can_local_optimize_away" class="PAMI\Client\Impl\Test_Actions" file="/export/users/marcelog/src/sts/PAMI/test/actions/Test_Actions.php" line="521" assertions="1" time="0.015420"/>
+        <testcase name="can_mailbox_count" class="PAMI\Client\Impl\Test_Actions" file="/export/users/marcelog/src/sts/PAMI/test/actions/Test_Actions.php" line="535" assertions="1" time="0.015459"/>
+        <testcase name="can_mailbox_status" class="PAMI\Client\Impl\Test_Actions" file="/export/users/marcelog/src/sts/PAMI/test/actions/Test_Actions.php" line="549" assertions="1" time="0.015474"/>
+        <testcase name="can_meetme_list" class="PAMI\Client\Impl\Test_Actions" file="/export/users/marcelog/src/sts/PAMI/test/actions/Test_Actions.php" line="564" assertions="1" time="0.015481"/>
+        <testcase name="can_meetme_mute" class="PAMI\Client\Impl\Test_Actions" file="/export/users/marcelog/src/sts/PAMI/test/actions/Test_Actions.php" line="578" assertions="1" time="0.015545"/>
+        <testcase name="can_meetme_unmute" class="PAMI\Client\Impl\Test_Actions" file="/export/users/marcelog/src/sts/PAMI/test/actions/Test_Actions.php" line="593" assertions="1" time="0.015517"/>
+        <testcase name="can_module_check" class="PAMI\Client\Impl\Test_Actions" file="/export/users/marcelog/src/sts/PAMI/test/actions/Test_Actions.php" line="608" assertions="1" time="0.015449"/>
+        <testcase name="can_module_load" class="PAMI\Client\Impl\Test_Actions" file="/export/users/marcelog/src/sts/PAMI/test/actions/Test_Actions.php" line="623" assertions="1" time="0.015605"/>
+        <testcase name="can_module_reload" class="PAMI\Client\Impl\Test_Actions" file="/export/users/marcelog/src/sts/PAMI/test/actions/Test_Actions.php" line="638" assertions="1" time="0.015625"/>
+        <testcase name="can_module_unload" class="PAMI\Client\Impl\Test_Actions" file="/export/users/marcelog/src/sts/PAMI/test/actions/Test_Actions.php" line="653" assertions="1" time="0.015518"/>
+        <testcase name="can_monitor" class="PAMI\Client\Impl\Test_Actions" file="/export/users/marcelog/src/sts/PAMI/test/actions/Test_Actions.php" line="668" assertions="1" time="0.015646"/>
+        <testcase name="can_voicemail_users_list" class="PAMI\Client\Impl\Test_Actions" file="/export/users/marcelog/src/sts/PAMI/test/actions/Test_Actions.php" line="685" assertions="1" time="0.015379"/>
+        <testcase name="can_pause_monitor" class="PAMI\Client\Impl\Test_Actions" file="/export/users/marcelog/src/sts/PAMI/test/actions/Test_Actions.php" line="698" assertions="1" time="0.015477"/>
+        <testcase name="can_unpause_monitor" class="PAMI\Client\Impl\Test_Actions" file="/export/users/marcelog/src/sts/PAMI/test/actions/Test_Actions.php" line="712" assertions="1" time="0.015513"/>
+        <testcase name="can_stop_monitor" class="PAMI\Client\Impl\Test_Actions" file="/export/users/marcelog/src/sts/PAMI/test/actions/Test_Actions.php" line="726" assertions="1" time="0.015719"/>
+        <testcase name="can_status" class="PAMI\Client\Impl\Test_Actions" file="/export/users/marcelog/src/sts/PAMI/test/actions/Test_Actions.php" line="740" assertions="1" time="0.015475"/>
+        <testcase name="can_show_dialplan" class="PAMI\Client\Impl\Test_Actions" file="/export/users/marcelog/src/sts/PAMI/test/actions/Test_Actions.php" line="754" assertions="1" time="0.015470"/>
+        <testcase name="can_set_var" class="PAMI\Client\Impl\Test_Actions" file="/export/users/marcelog/src/sts/PAMI/test/actions/Test_Actions.php" line="769" assertions="1" time="0.015627"/>
+        <testcase name="can_reload" class="PAMI\Client\Impl\Test_Actions" file="/export/users/marcelog/src/sts/PAMI/test/actions/Test_Actions.php" line="785" assertions="1" time="0.015637"/>
+        <testcase name="can_ping" class="PAMI\Client\Impl\Test_Actions" file="/export/users/marcelog/src/sts/PAMI/test/actions/Test_Actions.php" line="799" assertions="1" time="0.015461"/>
+        <testcase name="can_send_text" class="PAMI\Client\Impl\Test_Actions" file="/export/users/marcelog/src/sts/PAMI/test/actions/Test_Actions.php" line="812" assertions="1" time="0.015596"/>
       </testsuite>
     </testsuite>
   </testsuite>
