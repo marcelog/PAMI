@@ -54,6 +54,7 @@ class AgentLogoffAction extends ActionMessage
     public function __construct($agent, $soft = false)
     {
         parent::__construct('AgentLogoff');
+        $this->setKey('Agent', $agent);
         $this->setKey('Soft', $soft ? 'true' : 'false');
     }
 }
