@@ -1050,5 +1050,179 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
 	    $action = new \PAMI\Message\Action\QueueResetAction('queue');
         $client = $this->_start($write, $action);
     }
+    /**
+     * @test
+     */
+    public function can_queue_rule()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: QueueRule',
+            'actionid: 1432.123',
+            'rule: rule',
+        	''
+        )));
+	    $action = new \PAMI\Message\Action\QueueRuleAction('rule');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_queue_remove()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: QueueRemove',
+            'actionid: 1432.123',
+            'queue: queue',
+            'interface: interface',
+        	''
+        )));
+	    $action = new \PAMI\Message\Action\QueueRemoveAction('queue', 'interface');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_queue_reload()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: QueueReload',
+            'actionid: 1432.123',
+            'queue: queue',
+            'members: yes',
+        	'rules: yes',
+        	'parameters: yes',
+        	''
+        )));
+	    $action = new \PAMI\Message\Action\QueueReloadAction('queue', true, true, true);
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_queue_penalty()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: QueuePenalty',
+            'actionid: 1432.123',
+            'interface: interface',
+            'penalty: penalty',
+        	'queue: queue',
+        	''
+        )));
+	    $action = new \PAMI\Message\Action\QueuePenaltyAction('interface', 'penalty', 'queue');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_queue_log()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: QueueLog',
+            'actionid: 1432.123',
+        	'event: event',
+        	'queue: queue',
+        	'message: message',
+            'interface: member',
+            'uniqueid: uniqueid',
+        	''
+        )));
+	    $action = new \PAMI\Message\Action\QueueLogAction('queue', 'event');
+	    $action->setMessage('message');
+	    $action->setMemberName('member');
+	    $action->setUniqueId('uniqueid');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_queue_add()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: QueueAdd',
+            'actionid: 1432.123',
+            'interface: interface',
+        	'queue: queue',
+            'paused: true',
+            'membername: member',
+            'penalty: penalty',
+            'stateinterface: state',
+        	''
+        )));
+	    $action = new \PAMI\Message\Action\QueueAddAction('queue', 'interface');
+	    $action->setPaused('true');
+	    $action->setMemberName('member');
+	    $action->setPenalty('penalty');
+	    $action->setStateInterface('state');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_play_dtmf()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: PlayDTMF',
+            'actionid: 1432.123',
+            'channel: channel',
+            'digit: 1',
+        	''
+        )));
+	    $action = new \PAMI\Message\Action\PlayDTMFAction('channel', '1');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_park()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: Park',
+            'actionid: 1432.123',
+            'channel: channel1',
+            'channel2: channel2',
+            'timeout: timeout',
+            'parkinglot: lot',
+        	''
+        )));
+	    $action = new \PAMI\Message\Action\ParkAction('channel1', 'channel2', 'timeout', 'lot');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_originate()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: Originate',
+            'actionid: 1432.123',
+            'channel: channel',
+        	'codecs: a,b',
+            'async: true',
+            'account: account',
+            'callerid: clid',
+            'timeout: timeout',
+            'data: data',
+            'application: app',
+            'priority: priority',
+            'context: context',
+            'exten: extension',
+            'Variable: a=b',
+        	''
+        )));
+	    $action = new \PAMI\Message\Action\OriginateAction('channel');
+	    $action->setCodecs(array('a', 'b'));
+	    $action->setAsync(true);
+	    $action->setAccount('account');
+	    $action->setCallerId('clid');
+	    $action->setTimeout('timeout');
+	    $action->setData('data');
+	    $action->setApplication('app');
+	    $action->setPriority('priority');
+	    $action->setContext('context');
+	    $action->setExtension('extension');
+	    $action->setVariable('a', 'b');
+        $client = $this->_start($write, $action);
+    }
 }
 }
