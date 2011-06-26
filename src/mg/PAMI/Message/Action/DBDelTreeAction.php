@@ -53,7 +53,7 @@ class DBDelTreeAction extends ActionMessage
      */
     public function __construct($family, $key = false)
     {
-        parent::__construct('DBDel');
+        parent::__construct('DBDelTree');
         $this->setKey('Family', $family);
         if ($key != false) {
             $this->setKey('Key', $key);
