@@ -748,5 +748,78 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
 	    $action = new \PAMI\Message\Action\StatusAction('channel');
         $client = $this->_start($write, $action);
     }
+    /**
+     * @test
+     */
+    public function can_show_dialplan()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: ShowDialPlan',
+            'actionid: 1432.123',
+        	'context: context',
+        	'extension: extension',
+            ''
+        )));
+	    $action = new \PAMI\Message\Action\ShowDialPlanAction('context', 'extension');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_set_var()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: Setvar',
+            'actionid: 1432.123',
+        	'variable: variable',
+        	'value: value',
+            'channel: channel',
+            ''
+        )));
+	    $action = new \PAMI\Message\Action\SetVarAction('variable', 'value', 'channel');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_reload()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: Reload',
+            'actionid: 1432.123',
+        	'module: module',
+            ''
+        )));
+	    $action = new \PAMI\Message\Action\ReloadAction('module');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_ping()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: Ping',
+            'actionid: 1432.123',
+            ''
+        )));
+	    $action = new \PAMI\Message\Action\PingAction;
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_send_text()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: SendText',
+            'actionid: 1432.123',
+            'channel: channel',
+            'message: message',
+        	''
+        )));
+	    $action = new \PAMI\Message\Action\SendTextAction('channel', 'message');
+        $client = $this->_start($write, $action);
+    }
 }
 }
