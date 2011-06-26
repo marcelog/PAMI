@@ -130,19 +130,6 @@ class OriginateAction extends ActionMessage
     /**
      * Sets Account key.
      *
-     * @param string $name  Channel variable to set, multiple are allowed.
-     * @param string $value Variable value.
-     *
-     * @return void
-     */
-    public function setVariable($name, $value)
-    {
-        $this->setVariable($name, $value);
-    }
-
-    /**
-     * Sets Account key.
-     *
      * @param string Account code.
      *
      * @return void
