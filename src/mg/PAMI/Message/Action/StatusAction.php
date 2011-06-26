@@ -53,7 +53,7 @@ class StatusAction extends ActionMessage
     public function __construct($channel = false)
     {
         parent::__construct('Status');
-        if (!$channel) {
+        if ($channel !== false) {
             $this->setKey('Channel', $channel);
         }
     }
