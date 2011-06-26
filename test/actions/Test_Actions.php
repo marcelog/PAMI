@@ -821,5 +821,234 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
 	    $action = new \PAMI\Message\Action\SendTextAction('channel', 'message');
         $client = $this->_start($write, $action);
     }
+    /**
+     * @test
+     */
+    public function can_sip_show_registry()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: SIPshowregistry',
+            'actionid: 1432.123',
+        	''
+        )));
+	    $action = new \PAMI\Message\Action\SIPShowRegistryAction;
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_sip_peers()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: Sippeers',
+            'actionid: 1432.123',
+        	''
+        )));
+	    $action = new \PAMI\Message\Action\SIPPeersAction;
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_sip_notify()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: SIPnotify',
+            'actionid: 1432.123',
+            'channel: channel',
+        	''
+        )));
+	    $action = new \PAMI\Message\Action\SIPNotifyAction('channel');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_sip_show_peer()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: SIPshowpeer',
+            'actionid: 1432.123',
+            'peer: peer',
+        	''
+        )));
+	    $action = new \PAMI\Message\Action\SIPShowPeerAction('peer');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_sip_qualify_peer()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: Sipqualifypeer',
+            'actionid: 1432.123',
+            'peer: peer',
+        	''
+        )));
+	    $action = new \PAMI\Message\Action\SIPQualifyPeerAction('peer');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_vgsm_sms_tx()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: vgsm_sms_tx',
+            'actionid: 1432.123',
+            'account: account',
+            'x-sms-concatenate-total-messages: totalmsg',
+            'x-sms-concatenate-sequence-number: seqnum',
+            'x-sms-concatenate-refid: refid',
+            'x-sms-class: class',
+            'content: content',
+            'x-sms-me: me',
+            'content-transfer-encoding: encoding',
+            'content-type: type',
+            'to: to',
+        	''
+        )));
+	    $action = new \PAMI\Message\Action\VGSMSMSTxAction;
+	    $action->setAccount('account');
+	    $action->setConcatTotalMsg('totalmsg');
+	    $action->setConcatSeqNum('seqnum');
+	    $action->setConcatRefId('refid');
+	    $action->setSmsClass('class');
+	    $action->setContent('content');
+	    $action->setMe('me');
+	    $action->setContentEncoding('encoding');
+	    $action->setContentType('type');
+	    $action->setTo('to');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_parked_calls()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: ParkedCalls',
+            'actionid: 1432.123',
+        	''
+        )));
+	    $action = new \PAMI\Message\Action\ParkedCallsAction;
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_queues()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: Queues',
+            'actionid: 1432.123',
+        	''
+        )));
+	    $action = new \PAMI\Message\Action\QueuesAction;
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_redirect()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: Redirect',
+            'actionid: 1432.123',
+            'channel: channel',
+            'exten: extension',
+            'context: context',
+            'priority: priority',
+            'extrapriority: extrapriority',
+        	'extracontext: extracontext',
+        	'extraexten: extraextension',
+        	'extrachannel: extrachannel',
+        	''
+        )));
+	    $action = new \PAMI\Message\Action\RedirectAction('channel', 'extension', 'context', 'priority');
+	    $action->setExtraPriority('extrapriority');
+	    $action->setExtraContext('extracontext');
+	    $action->setExtraExtension('extraextension');
+	    $action->setExtraChannel('extrachannel');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_queue_unpause()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: QueuePause',
+            'actionid: 1432.123',
+            'queue: queue',
+            'reason: reason',
+            'interface: interface',
+            'paused: false',
+        	''
+        )));
+	    $action = new \PAMI\Message\Action\QueueUnpauseAction('interface', 'queue', 'reason');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_queue_pause()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: QueuePause',
+            'actionid: 1432.123',
+            'queue: queue',
+            'reason: reason',
+            'interface: interface',
+            'paused: true',
+        	''
+        )));
+	    $action = new \PAMI\Message\Action\QueuePauseAction('interface', 'queue', 'reason');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_queue_summary()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: QueueSummary',
+            'actionid: 1432.123',
+            'queue: queue',
+        	''
+        )));
+	    $action = new \PAMI\Message\Action\QueueSummaryAction('queue');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_queue_status()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: QueueStatus',
+            'actionid: 1432.123',
+            'queue: queue',
+            'member: member',
+        	''
+        )));
+	    $action = new \PAMI\Message\Action\QueueStatusAction('queue', 'member');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_queue_reset()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: QueueReset',
+            'actionid: 1432.123',
+            'queue: queue',
+        	''
+        )));
+	    $action = new \PAMI\Message\Action\QueueResetAction('queue');
+        $client = $this->_start($write, $action);
+    }
 }
 }
