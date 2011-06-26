@@ -21,5 +21,8 @@
     <testsuite name="DummyLogger">
       <directory suffix=".php">logger</directory>
     </testsuite>
+    <testsuite name="Actions">
+      <directory suffix=".php">actions</directory>
+    </testsuite>
   </testsuites>
 </phpunit>

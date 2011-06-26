@@ -44,17 +44,17 @@ namespace {
    		'Response: Success',
    		'ActionID: 1432.123',
    		'Message: Authentication accepted',
-        "\r\n",
+        '',
         'Response: Goodbye',
         'ActionID: 1432.123',
         'Message: Thanks for all the fish.',
-        "\r\n"
+        ''
     );
     $standardAMIStartBadLogin = array(
    		'Asterisk Call Manager/1.1',
    		'Response: Error', // also tests behavior when asterisk does not return an actionid
    		'Message: Authentication accepted',
-        "\r\n"
+        ''
     );
 }
 namespace PAMI\Message\Action {
@@ -294,7 +294,7 @@ class Test_Client extends \PHPUnit_Framework_TestCase
             'ChannelType: SIP',
         	'Peer: SIP/someguy',
         	'PeerStatus: Registered',
-        	"\r\n"
+        	''
         );
 	    setFgetsMock($event, $event);
 	    for($i = 0; $i < 6; $i++) {
@@ -493,12 +493,12 @@ class Test_Client extends \PHPUnit_Framework_TestCase
 			'ActionID: 1432.123',
 			'Eventlist: start',
 			'Message: Channels will follow',
-			"\r\n",
+			'',
 			'Event: CoreShowChannelsComplete',
 			'EventList: Complete',
 			'ListItems: 0',
 			'ActionID: 1432.123',
-			"\r\n"
+			''
         );
         $write = array(
         	"action: CoreShowChannels\r\nactionid: 1432.123\r\n"
@@ -509,6 +509,14 @@ class Test_Client extends \PHPUnit_Framework_TestCase
 	    $events = $result->getEvents();
 	    $this->assertEquals(count($events), 1);
 	    $this->assertTrue($events[0] instanceof \PAMI\Message\Event\CoreShowChannelsCompleteEvent);
+	    $this->assertEquals(
+	        $events[0]->getRawContent(), implode("\r\n", array(
+				'Event: CoreShowChannelsComplete',
+				'EventList: Complete',
+				'ListItems: 0',
+				'ActionID: 1432.123',
+		    ))
+	    );
     }
 
 }
