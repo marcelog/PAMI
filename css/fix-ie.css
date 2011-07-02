@@ -1,0 +1,26 @@
+.header {
+	*padding-bottom: 8px;
+}
+.search-box .search-textbox input {
+	*padding-top: 5px;
+	*padding-bottom: 9px;
+}
+* html .nav-header li {
+	background-image: url(../images/ocean/bullet-1-ie.gif);
+}
+* html .nav ul li a {
+	background: url(../images/ocean/bg-nav-active.gif) -1000em -1000em no-repeat;
+}
+* html .nav ul li a span {
+	background: url(../images/ocean/bg-nav-active.gif) -1000em -1000em no-repeat;
+}
+.comment-form-author input,
+.comment-form-email input,
+.comment-form-url input {
+	*padding-top: 6px;
+	height: 20px;
+}
+.pager li.pager-current {
+	*padding-right: 3px;
+	*margin-right: 3px;
+}

@@ -1,11 +1,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-<title>PAMI: PHP Asterisk Manager Interface OOP Event driven client</title>
+<title>PAMI: How to install</title>
 <meta name="Author" content="Marcelo Gornstein"/>
 <meta name="Keywords" content="PHP Asterisk Manager Interface ( AMI ) supports synchronous command ( action )/ responses and asynchronous events using the pattern observer-listener. Supports commands with responses with multiple events. Also supports SMS via VGMS boards. Very suitable for development of operator consoles and / or asterisk / channels / peers monitoring through SOA"/>
 <meta name="description" content="PHP Asterisk Manager Interface ( AMI ) supports synchronous command ( action )/ responses and asynchronous events using the pattern observer-listener. Supports commands with responses with multiple events. Also supports SMS via VGMS boards. Very suitable for development of operator consoles and / or asterisk / channels / peers monitoring through SOA"/>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link href='dphighlighter/SyntaxHighlighter.css' rel='stylesheet' type='text/css' />
 <link rel="shortcut icon" href="images/favicon.ico" title="favicon" />
 <link rel="stylesheet" href="css/main.css" type="text/css" media="all" />
 <!--[if IE]>
@@ -50,28 +51,41 @@
               <div class="inner set-height-1">
                 <h2>PAMI</h2>
                 <ul class="tab-title">
-                    <li class="active"><a href="index.html">About</a></li>
-                    <li><a href="install.html">Installation</a></li>
+                    <li><a href="index.html">About</a></li>
+                    <li class="active"><a href="install.html">Installation</a></li>
                     <li><a href="api.html">API</a></li>
                     <li><a href="metrics.html">Metrics</a></li>
                     <li><a href="examples.html">Examples</a></li>
                 </ul>
                 <div id="tab-content" class="tab-content">
-<H3>About PAMI</H3>
-<p>
-PAMI means PHP Asterisk Manager Interface. It is an OOP client for the Asterisk
-Manager Protocol, implemented in PHP.
+    <h3>Requirements</h3>
+    <ul>
+      <li>PHP 5.3.3+</li>
+      <li>Extensions: sockets</li>
+      <li>log4php is an optional requirement, since PAMI only logs for debug purposes. It will be used only if its found in the include_path.</li>
+    </ul>
+    <h3>Installing with pear</h3>
+    <p>
+You can now easily install PAMI by issuing:
 </p>
-<H3>Features</u></H3>
+<pre name="code" class="php">
+pear channel-discover pearhub.org
+pear install pearhub/PAMI-1.18.0
+</pre>
 <p>
-<ul>
-  <li>TCP and TLS connections.</li>
-  <li>Event Driven (the framework will dispatch events to your listener).</li>
-  <li>Lightweight, easy of use, and useful.</li>
-  <li>Supports synchronous and asynchronous events (Actions with Responses, and Responses with Events associated).</li>
-  <li>Supports SMS via VGMS boards.</li>
-</ul>
+just replace 1.18.0 by the release version you'd like to install :) <br/>
+See: <a href="http://www.pearhub.com/projects/PAMI">http://www.pearhub.com/projects/PAMI</a><br/><br/>
 </p>
+    <h3>Manual Install</h3>
+    <p>
+    You can download PAMI directly from github in the following forms:
+    <ul>
+    <li><a href="http://github.com/marcelog/PAMI/zipball/master">ZIP</a></li>
+    <li><a href="http://github.com/marcelog/PAMI/tarball/master">TAR</a></li>
+    <li>SVN: http://svn.github.com/marcelog/PAMI.git</li>
+    <li>GIT: git://github.com/marcelog/PAMI.git</li>
+    </ul>
+    </p>
                 </div>
               </div>
               <span class="bottom"><span class="bl"></span><span class="br"></span></span>
@@ -131,7 +145,7 @@ Manager Protocol, implemented in PHP.
 <script src='dphighlighter/shBrushJScript.js' type='text/javascript'></script>
 <script src='dphighlighter/shBrushCss.js' type='text/javascript'></script>
 <script language="javascript">
-    dp.SyntaxHighlighter.ClipboardSwf = '../dphighlighter/clipboard.swf';
+    dp.SyntaxHighlighter.ClipboardSwf = 'dphighlighter/clipboard.swf';
     dp.SyntaxHighlighter.HighlightAll('code');
 </script>
   <script type="text/javascript">

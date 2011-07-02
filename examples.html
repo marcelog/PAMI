@@ -1,11 +1,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-<title>PAMI: PHP Asterisk Manager Interface OOP Event driven client</title>
+<title>PAMI: Examples</title>
 <meta name="Author" content="Marcelo Gornstein"/>
 <meta name="Keywords" content="PHP Asterisk Manager Interface ( AMI ) supports synchronous command ( action )/ responses and asynchronous events using the pattern observer-listener. Supports commands with responses with multiple events. Also supports SMS via VGMS boards. Very suitable for development of operator consoles and / or asterisk / channels / peers monitoring through SOA"/>
 <meta name="description" content="PHP Asterisk Manager Interface ( AMI ) supports synchronous command ( action )/ responses and asynchronous events using the pattern observer-listener. Supports commands with responses with multiple events. Also supports SMS via VGMS boards. Very suitable for development of operator consoles and / or asterisk / channels / peers monitoring through SOA"/>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link href='dphighlighter/SyntaxHighlighter.css' rel='stylesheet' type='text/css' />
 <link rel="shortcut icon" href="images/favicon.ico" title="favicon" />
 <link rel="stylesheet" href="css/main.css" type="text/css" media="all" />
 <!--[if IE]>
@@ -50,27 +51,16 @@
               <div class="inner set-height-1">
                 <h2>PAMI</h2>
                 <ul class="tab-title">
-                    <li class="active"><a href="index.html">About</a></li>
+                    <li><a href="index.html">About</a></li>
                     <li><a href="install.html">Installation</a></li>
                     <li><a href="api.html">API</a></li>
                     <li><a href="metrics.html">Metrics</a></li>
-                    <li><a href="examples.html">Examples</a></li>
+                    <li class="active"><a href="examples.html">Examples</a></li>
                 </ul>
                 <div id="tab-content" class="tab-content">
-<H3>About PAMI</H3>
+<H3>Examples</H3>
 <p>
-PAMI means PHP Asterisk Manager Interface. It is an OOP client for the Asterisk
-Manager Protocol, implemented in PHP.
-</p>
-<H3>Features</u></H3>
-<p>
-<ul>
-  <li>TCP and TLS connections.</li>
-  <li>Event Driven (the framework will dispatch events to your listener).</li>
-  <li>Lightweight, easy of use, and useful.</li>
-  <li>Supports synchronous and asynchronous events (Actions with Responses, and Responses with Events associated).</li>
-  <li>Supports SMS via VGMS boards.</li>
-</ul>
+Please see <a href="https://github.com/marcelog/PAMI/tree/master/docs/examples">https://github.com/marcelog/PAMI/tree/master/docs/examples</a> for all (and full) examples.
 </p>
                 </div>
               </div>
@@ -131,7 +121,7 @@ Manager Protocol, implemented in PHP.
 <script src='dphighlighter/shBrushJScript.js' type='text/javascript'></script>
 <script src='dphighlighter/shBrushCss.js' type='text/javascript'></script>
 <script language="javascript">
-    dp.SyntaxHighlighter.ClipboardSwf = '../dphighlighter/clipboard.swf';
+    dp.SyntaxHighlighter.ClipboardSwf = 'dphighlighter/clipboard.swf';
     dp.SyntaxHighlighter.HighlightAll('code');
 </script>
   <script type="text/javascript">
