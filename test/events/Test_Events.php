@@ -56,7 +56,8 @@ class Test_Events extends \PHPUnit_Framework_TestCase
     public function can_report_events()
     {
         $eventNames = array(
-            'AGIExec', 'VarSet', 'Unlink'
+            'AGIExec', 'VarSet', 'Unlink', 'vgsm_sms_rx', 'vgsm_net_state',
+            'vgsm_me_state'
         );
         $eventValues = array(
             'AGIExec' => array(
@@ -83,11 +84,65 @@ class Test_Events extends \PHPUnit_Framework_TestCase
         		'UniqueID2' => 'UniqueID2',
         	    'Channel1' => 'Channel1',
         		'Channel2' => 'Channel2',
+        	),
+        	'vgsm_sms_rx' => array(
+        		'Privilege' => 'Privilege',
+        		'X-SMS-Status-Report-Indication' => 'X-SMS-Status-Report-Indication',
+        	    'X-SMS-User-Data-Header-Indicator' => 'X-SMS-User-Data-Header-Indicator',
+        	    'X-SMS-Reply-Path' => 'X-SMS-Reply-Path',
+        	    'X-SMS-More-Messages-To-Send' => 'X-SMS-More-Messages-To-Send',
+        	    'X-SMS-SMCC-Number' => 'X-SMS-SMCC-Number',
+        	    'X-SMS-SMCC-TON' => 'X-SMS-SMCC-TON',
+        	    'X-SMS-SMCC-NP' => 'X-SMS-SMCC-NP',
+        	    'X-SMS-Sender-Number' => 'X-SMS-Sender-Number',
+        	    'X-SMS-Sender-TON' => 'X-SMS-Sender-TON',
+        	    'X-SMS-Sender-NP' => 'X-SMS-Sender-NP',
+        	    'X-SMS-Message-Type' => 'X-SMS-Message-Type',
+        	    'Content' => 'Content',
+        	    'Date' => 'Date',
+        	    'Content-Transfer-Encoding' => 'ContentEncoding',
+        		'Content-Type' => 'ContentType',
+        	    'MIME-Version' => 'MIME-Version',
+        	    'Subject' => 'Subject',
+        	    'From' => 'From',
+        	    'Received' => 'Received'
+        	),
+        	'vgsm_net_state' => array(
+        		'Privilege' => 'Privilege',
+        		'X-vGSM-GSM-Registration' => 'X-vGSM-GSM-Registration',
+        	),
+        	'vgsm_me_state' => array(
+        		'Privilege' => 'Privilege',
+        	    'X-vGSM-ME-State-Change-Reason' => 'X-vGSM-ME-State-Change-Reason',
+        	    'X-vGSM-ME-Old-State' => 'X-vGSM-ME-Old-State',
+        	    'X-vGSM-ME-State' => 'X-vGSM-ME-State',
         	)
         );
         $eventGetters = array(
             'AGIExec' => array(),
             'VarSet' => array('Variable' => 'VariableName'),
+        	'vgsm_sms_rx' => array(
+        	    'X-SMS-Status-Report-Indication' => 'StatusReportIndication',
+        	    'X-SMS-User-Data-Header-Indicator' => 'DataHeaderIndicator',
+        	    'X-SMS-Reply-Path' => 'ReplyPath',
+        	    'X-SMS-More-Messages-To-Send' => 'MoreMessagesToSend',
+                'X-SMS-SMCC-Number' => 'SMCCNumber',
+        	    'X-SMS-SMCC-TON' => 'SMCCTON',
+        	    'X-SMS-SMCC-NP' => 'SMCCNP',
+        	    'X-SMS-Sender-Number' => 'SenderNumber',
+        	    'X-SMS-Sender-TON' => 'SenderTON',
+        	    'X-SMS-Sender-NP' => 'SenderNP',
+        	    'X-SMS-Message-Type' => 'MessageType',
+                'Content-Transfer-Encoding' => 'ContentEncoding',
+                'Content-Type' => 'ContentType',
+                'MIME-Version' => 'MIMEVersion'
+        	),
+        	'vgsm_net_state' => array('X-vGSM-GSM-Registration' => 'State'),
+        	'vgsm_me_state' => array(
+        		'X-vGSM-ME-State-Change-Reason' => 'Reason',
+        	    'X-vGSM-ME-Old-State' => 'OldState',
+        	    'X-vGSM-ME-State' => 'State',
+        	)
         );
         foreach ($eventNames as $eventName) {
             $this->_testEvent($eventName, $eventGetters, $eventValues[$eventName]);
