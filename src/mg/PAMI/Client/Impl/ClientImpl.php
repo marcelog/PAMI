@@ -37,7 +37,6 @@ use PAMI\Message\Action\LoginAction;
 use PAMI\Message\Action\LogoffAction;
 use PAMI\Message\Response\ResponseMessage;
 use PAMI\Message\Event\EventMessage;
-use PAMI\Message\Event\Factory\IEventFactory;
 use PAMI\Message\Event\Factory\Impl\EventFactoryImpl;
 use PAMI\Listener\IEventListener;
 use PAMI\Client\Exception\ClientException;
@@ -101,7 +100,7 @@ class ClientImpl implements IClient
 
 	/**
 	 * Event factory.
-	 * @var IEventFactory
+	 * @var EventFactoryImpl
 	 */
 	private $_eventFactory;
 
