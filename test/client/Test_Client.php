@@ -530,6 +530,48 @@ class Test_Client extends \PHPUnit_Framework_TestCase
         $this->assertEquals($action->getVariable('variable'), 'value');
         $this->assertNull($action->getVariable('variable2'));
     }
+    /**
+     * @test
+     */
+    public function can_report_unknown_event()
+    {
+        global $mock_stream_socket_client;
+        global $mock_stream_set_blocking;
+        global $mockTime;
+        global $standardAMIStart;
+        $mockTime = true;
+        $mock_stream_socket_client = true;
+        $mock_stream_set_blocking = true;
+        $options = array(
+            'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties',
+        	'host' => '2.3.4.5',
+            'scheme' => 'tcp://',
+        	'port' => 9999,
+        	'username' => 'asd',
+        	'secret' => 'asd',
+            'connect_timeout' => 10,
+        	'read_timeout' => 10
+        );
+        $write = array(
+        	"action: Login\r\nactionid: 1432.123\r\nusername: asd\r\nsecret: asd\r\n"
+        );
+        setFgetsMock($standardAMIStart, $write);
+        $client = new \PAMI\Client\Impl\ClientImpl($options);
+        $client->registerEventListener(new SomeListenerClass);
+	    $client->open();
+        $event = array(
+        	'Event: MyOwnImaginaryEvent',
+            'Privilege: system,all',
+            'ChannelType: SIP',
+        	''
+        );
+	    setFgetsMock($event, $event);
+	    for($i = 0; $i < 4; $i++) {
+	        $client->process();
+	    }
+        $this->assertTrue(SomeListenerClass::$event instanceof \PAMI\Message\Event\UnknownEvent);
+
+    }
 }
 class SomeListenerClass implements \PAMI\Listener\IEventListener
 {
