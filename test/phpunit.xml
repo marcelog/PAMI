@@ -24,5 +24,8 @@
     <testsuite name="Actions">
       <directory suffix=".php">actions</directory>
     </testsuite>
+    <testsuite name="Events">
+      <directory suffix=".php">events</directory>
+    </testsuite>
   </testsuites>
 </phpunit>
