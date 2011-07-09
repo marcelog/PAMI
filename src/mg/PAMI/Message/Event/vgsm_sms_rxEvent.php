@@ -146,7 +146,7 @@ class vgsm_sms_rxEvent extends EventMessage
      */
     public function getMessageType()
     {
-        return $this->getKey('X-SMS-Message-Type:');
+        return $this->getKey('X-SMS-Message-Type');
     }
 
     /**
