@@ -67,7 +67,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
             'QueueMemberPaused', 'QueueMember', 'QueueMemberAdded', 'PeerlistComplete',
             'PeerStatus', 'PeerEntry', 'OriginateResponse', 'Newstate', 'Newexten',
             'Newchannel', 'NewCallerid', 'NewAccountCode', 'MusicOnHold',
-            'MessageWaiting'
+            'MessageWaiting', 'Masquerade', 'ListDialplan', 'Leave'
         );
         $eventTranslatedValues = array(
             'QueueMemberStatus' => array(
@@ -84,6 +84,29 @@ class Test_Events extends \PHPUnit_Framework_TestCase
             ),
         );
         $eventValues = array(
+            'Leave' => array(
+                'Channel' => 'Channel',
+                'Privilege' => 'Privilege',
+        		'UniqueID' => 'UniqueID',
+                'Count' => 'Count',
+                'Queue' => 'Queue'
+            ),
+        	'ListDialplan' => array(
+                'AppData' => 'AppData',
+                'Application' => 'Application',
+                'Priority' => 'Priority',
+                'Extension' => 'Extension',
+                'Context' => 'Context',
+                'Registrar' => 'Registrar',
+                'IncludeContext' => 'IncludeContext'
+            ),
+            'Masquerade' => array(
+                'OriginalState' => 'OriginalState',
+                'Original' => 'Original',
+                'CloneState' => 'CloneState',
+                'Clone' => 'Clone',
+                'Privilege' => 'Privilege',
+            ),
             'MessageWaiting' => array(
         		'Privilege' => 'Privilege',
         		'Waiting' => 'Waiting',
@@ -93,7 +116,6 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'Channel' => 'Channel',
                 'Privilege' => 'Privilege',
         		'UniqueID' => 'UniqueID',
-                'Channel' => 'Channel',
         		'State' => 'State',
             ),
             'NewAccountCode' => array(
@@ -457,6 +479,9 @@ class Test_Events extends \PHPUnit_Framework_TestCase
         	),
         );
         $eventGetters = array(
+        	'ListDialplan' => array(
+                'AppData' => 'ApplicationData',
+            ),
             'NewCallerid' => array(
                 'CID-CallingPres' => 'CallerIdPres'
             ),
