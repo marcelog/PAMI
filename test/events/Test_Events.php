@@ -65,7 +65,9 @@ class Test_Events extends \PHPUnit_Framework_TestCase
             'QueueStatusComplete', 'DAHDIShowChannelsComplete', 'QueueSummary',
             'QueueParams', 'QueueMemberStatus', 'QueueMemberRemoved',
             'QueueMemberPaused', 'QueueMember', 'QueueMemberAdded', 'PeerlistComplete',
-            'PeerStatus', 'PeerEntry', 'OriginateResponse', 'Newstate', 'Newexten'
+            'PeerStatus', 'PeerEntry', 'OriginateResponse', 'Newstate', 'Newexten',
+            'Newchannel', 'NewCallerid', 'NewAccountCode', 'MusicOnHold',
+            'MessageWaiting'
         );
         $eventTranslatedValues = array(
             'QueueMemberStatus' => array(
@@ -82,7 +84,44 @@ class Test_Events extends \PHPUnit_Framework_TestCase
             ),
         );
         $eventValues = array(
-            'Newexten' => array(
+            'MessageWaiting' => array(
+        		'Privilege' => 'Privilege',
+        		'Waiting' => 'Waiting',
+        		'Mailbox' => 'Mailbox',
+            ),
+            'MusicOnHold' => array(
+                'Channel' => 'Channel',
+                'Privilege' => 'Privilege',
+        		'UniqueID' => 'UniqueID',
+                'Channel' => 'Channel',
+        		'State' => 'State',
+            ),
+            'NewAccountCode' => array(
+                'Channel' => 'Channel',
+                'Privilege' => 'Privilege',
+        		'UniqueID' => 'UniqueID',
+                'AccountCode' => 'AccountCode',
+                'OldAccountCode' => 'OldAccountCode',
+            ),
+            'NewCallerid' => array(
+        		'UniqueID' => 'UniqueID',
+                'CallerIdName' => 'CallerIdName',
+                'CallerIdNum' => 'CallerIdNum',
+                'Channel' => 'Channel',
+                'Privilege' => 'Privilege',
+                'CID-CallingPres' => 'CID-CallingPres'
+            ),
+            'Newchannel' => array(
+        		'UniqueID' => 'UniqueID',
+                'CallerIdName' => 'CallerIdName',
+                'CallerIdNum' => 'CallerIdNum',
+                'ChannelStateDesc' => 'ChannelStateDesc',
+                'ChannelState' => 'ChannelState',
+                'AccountCode' => 'AccountCode',
+                'Channel' => 'Channel',
+                'Privilege' => 'Privilege'
+            ),
+        	'Newexten' => array(
                 'Channel' => 'Channel',
                 'Privilege' => 'Privilege',
                 'AppData' => 'AppData',
@@ -418,7 +457,10 @@ class Test_Events extends \PHPUnit_Framework_TestCase
         	),
         );
         $eventGetters = array(
-            'Newexten' => array(
+            'NewCallerid' => array(
+                'CID-CallingPres' => 'CallerIdPres'
+            ),
+        	'Newexten' => array(
                 'AppData' => 'ApplicationData',
                 'Exten' => 'Extension'
             ),
