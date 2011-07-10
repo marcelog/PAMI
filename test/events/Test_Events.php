@@ -59,9 +59,189 @@ class Test_Events extends \PHPUnit_Framework_TestCase
             'AGIExec', 'VarSet', 'Unlink', 'vgsm_sms_rx', 'vgsm_net_state',
             'vgsm_me_state', 'DTMF', 'Bridge', 'VoicemailUserEntryComplete',
             'StatusComplete', 'ParkedCallsComplete', 'DBGetResponse',
-            'VoicemailUserEntry', 'Transfer', 'Status'
+            'VoicemailUserEntry', 'Transfer', 'Status', 'ShowDialPlanComplete',
+            'Rename', 'RegistrationsComplete', 'RTPSenderStat', 'RTPReceiverStat',
+            'RTCPSent', 'RTCPReceiverStat', 'RTCPReceived', 'QueueSummaryComplete',
+            'QueueStatusComplete', 'DAHDIShowChannelsComplete', 'QueueSummary',
+            'QueueParams', 'QueueMemberStatus', 'QueueMemberRemoved',
+            'QueueMemberPaused', 'QueueMember', 'QueueMemberAdded', 'PeerlistComplete',
+            'PeerStatus', 'PeerEntry'
+        );
+        $eventTranslatedValues = array(
+            'QueueMemberStatus' => array(
+                'Paused' => true
+            ),
+            'QueueMemberPaused' => array(
+                'Paused' => true
+            ),
+            'QueueMember' => array(
+                'Paused' => true
+            ),
+            'QueueMemberAdded' => array(
+                'Paused' => true
+            ),
         );
         $eventValues = array(
+            'PeerEntry' => array(
+                'RealtimeDevice' => 'RealtimeDevice',
+                'Status' => 'Status',
+                'ACL' => 'ACL',
+                'TextSupport' => 'TextSupport',
+                'VideoSupport' => 'VideoSupport',
+                'NatSupport' => 'NatSupport',
+                'Dynamic' => 'Dynamic',
+                'IPPort' => 'IPPort',
+                'IPAddress' => 'IPAddress',
+                'ChanObjectType' => 'ChanObjectType',
+                'ObjectName' => 'ObjectName',
+                'ChannelType' => 'ChannelType',
+            ),
+        	'PeerStatus' => array(
+                'Privilege' => 'Privilege',
+                'ChannelType' => 'ChannelType',
+                'Peer' => 'Peer',
+                'PeerStatus' => 'PeerStatus'
+            ),
+            'QueueMemberRemoved' => array(
+                'MemberName' => 'MemberName',
+                'Location' => 'Location',
+                'Queue' => 'Queue',
+                'Privilege' => 'Privilege'
+            ),
+            'QueueMemberPaused' => array(
+                'MemberName' => 'MemberName',
+                'Location' => 'Location',
+                'Queue' => 'Queue',
+                'Privilege' => 'Privilege',
+            	'Paused' => 1,
+            ),
+            'QueueMember' => array(
+                'Name' => 'Name',
+                'Location' => 'Location',
+                'Queue' => 'Queue',
+            	'Paused' => 1,
+                'Status' => 'Status',
+                'CallsTaken' => 'CallsTaken',
+                'Penalty' => 'Penalty',
+            	'Membership' => 'Membership',
+            ),
+            'QueueMemberAdded' => array(
+                'MemberName' => 'MemberName',
+                'LastCall' => 'LastCall',
+                'Location' => 'Location',
+                'Queue' => 'Queue',
+            	'Paused' => 1,
+                'Status' => 'Status',
+                'CallsTaken' => 'CallsTaken',
+                'Penalty' => 'Penalty',
+            	'Membership' => 'Membership',
+                'Privilege' => 'Privilege'
+            ),
+            'QueueMemberStatus' => array(
+                'Paused' => 1,
+                'Status' => 'Status',
+                'CallsTaken' => 'CallsTaken',
+                'Penalty' => 'Penalty',
+                'Membership' => 'Membership',
+                'MemberName' => 'MemberName',
+                'Location' => 'Location',
+                'Queue' => 'Queue',
+                'Privilege' => 'Privilege'
+            ),
+        	'QueueParams' => array(
+                'Completed' => '4',
+        		'HoldTime' => '5',
+                'Calls' => '6',
+                'Strategy' => 'Strategy',
+                'Max' => '6',
+                'Queue' => 'Queue',
+                'Weight' => '2',
+                'ServiceLevelPerf' => 'ServiceLevelPerf',
+                'ServiceLevel' => '1',
+                'Abandoned' => '3'
+            ),
+            'QueueSummaryComplete' => array(),
+        	'QueueSummary' => array(
+                'LongestHoldTime' => 'LongestHoldTime',
+                'HoldTime' => 'HoldTime',
+                'Callers' => 'Callers',
+                'Available' => 'Available',
+                'LoggedIn' => 'LoggedIn',
+                'Queue' => 'Queue',
+            ),
+            'QueueStatusComplete' => array(),
+        	'DAHDIShowChannelsComplete' => array('items' => 'ListItems'),
+        	'PeerlistComplete' => array('ListItems' => 'ListItems'),
+            'RTCPReceived' => array(
+                'DLSR' => 'DLSR',
+                'RTT' => 'RTT',
+                'LastSR' => 'LastSR',
+                'IAJitter' => 'IAJitter',
+                'SequenceNumberCycles' => 'SequenceNumberCycles',
+                'HighestSequence' => 'HighestSequence',
+                'PacketsLost' => 'PacketsLost',
+                'FractionLost' => 'FractionLost',
+                'SenderSSRC' => 'SenderSSRC',
+                'ReceptionReports' => 'ReceptionReports',
+                'PT' => 'PT',
+                'Privilege' => 'Privilege',
+                'From' => 'From',
+            ),
+            'RTCPReceiverStat' => array(
+                'RRCount' => 'RRCount',
+                'Jitter' => 'Jitter',
+                'LostPackets' => 'LostPackets',
+                'ReceivedPackets' => 'ReceivedPackets',
+                'SSRC' => 'SSRC',
+                'Privilege' => 'Privilege',
+                'Transit' => 'Transit'
+            ),
+            'RTCPSent' => array(
+                'DLSR' => 'DLSR',
+                'TheirLastSR' => 'TheirLastSR',
+                'IAJitter' => 'IAJitter',
+                'CumulativeLoss' => 'CumulativeLoss',
+                'FractionLost' => 'FractionLost',
+                'ReportBlock' => 'ReportBlock',
+                'SentOctets' => 'SentOctets',
+                'SentPackets' => 'SentPackets',
+                'SentRTP' => 'SentRTP',
+                'SentNTP' => 'SentNTP',
+                'OurSSRC' => 'OurSSRC',
+                'To' => 'To',
+                'Privilege' => 'Privilege'
+            ),
+            'RTPSenderStat' => array(
+                'SRCount' => 'SRCount',
+                'RTT' => 'RTT',
+                'Jitter' => 'Jitter',
+                'LostPackets' => 'LostPackets',
+                'SentPackets' => 'SentPackets',
+                'SSRC' => 'SSRC',
+                'Privilege' => 'Privilege'
+            ),
+            'RTPReceiverStat' => array(
+                'RRCount' => 'RRCount',
+                'Jitter' => 'Jitter',
+                'LostPackets' => 'LostPackets',
+                'ReceivedPackets' => 'ReceivedPackets',
+                'SSRC' => 'SSRC',
+                'Privilege' => 'Privilege',
+                'Transit' => 'Transit'
+            ),
+            'Rename' => array(
+                'UniqueID' => 'UniqueID',
+                'Newname' => 'Newname',
+                'Channel' => 'Channel',
+                'Privilege' => 'Privilege'
+            ),
+            'ShowDialPlanComplete' => array(
+                'listcontexts' => 'listcontexts',
+                'listpriorities' => 'listpriorities',
+                'listextensions' => 'listextensions',
+                'listitems' => 'listitems',
+                'privilege' => 'privilege'
+            ),
             'Status' => array(
                 'BridgedUniqueID' => 'BridgedUniqueID',
                 'BridgedChannel' => 'BridgedChannel',
@@ -127,6 +307,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
             ),
         	'ParkedCallsComplete' => array(),
         	'StatusComplete' => array('Items' => 'Items'),
+            'RegistrationsComplete' => array('ListItems' => 'ListItems'),
             'DTMF' => array(
             	'Privilege' => 'Privilege',
         		'UniqueID' => 'UniqueID',
@@ -203,16 +384,23 @@ class Test_Events extends \PHPUnit_Framework_TestCase
         	    'X-vGSM-ME-State-Change-Reason' => 'X-vGSM-ME-State-Change-Reason',
         	    'X-vGSM-ME-Old-State' => 'X-vGSM-ME-Old-State',
         	    'X-vGSM-ME-State' => 'X-vGSM-ME-State',
-        	)
+        	),
         );
         $eventGetters = array(
-            'AGIExec' => array(),
+            'QueueMemberStatus' => array(
+                'Paused' => 'Pause'
+            ),
+            'QueueMember' => array(
+                'Name' => 'MemberName'
+            ),
+        	'AGIExec' => array(),
             'Transfer' => array(
                 'SIP-Callid' => 'SipCallID',
             ),
             'VoicemailUserEntry' => array(
                 'VmContext' => 'VoicemailContext',
             ),
+            'PeerEntry' => array('ChanObjectType' => 'ChannelObjectType'),
             'VarSet' => array('Variable' => 'VariableName'),
         	'StatusComplete' => array('Items' => 'ListItems'),
             'DBGetResponse' => array('Key' => 'KeyName', 'Val' => 'Value'),
@@ -232,6 +420,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'Content-Type' => 'ContentType',
                 'MIME-Version' => 'MIMEVersion'
         	),
+        	'DAHDIShowChannelsComplete' => array('items' => 'ListItems'),
         	'vgsm_net_state' => array('X-vGSM-GSM-Registration' => 'State'),
         	'vgsm_me_state' => array(
         		'X-vGSM-ME-State-Change-Reason' => 'Reason',
@@ -240,11 +429,11 @@ class Test_Events extends \PHPUnit_Framework_TestCase
         	)
         );
         foreach ($eventNames as $eventName) {
-            $this->_testEvent($eventName, $eventGetters, $eventValues[$eventName]);
+            $this->_testEvent($eventName, $eventGetters, $eventValues[$eventName], $eventTranslatedValues);
         }
     }
 
-    private function _testEvent($eventName, array $getters, array $values)
+    private function _testEvent($eventName, array $getters, array $values, array $translatedValues)
     {
         global $mock_stream_socket_client;
         global $mock_stream_set_blocking;
@@ -288,6 +477,9 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 $methodName = 'get' . $getters[$eventName][$key];
             } else {
                 $methodName = 'get' . $key;
+            }
+            if (isset($translatedValues[$eventName][$key])) {
+                $value = $translatedValues[$eventName][$key];
             }
             $this->assertEquals($event->$methodName(), $value);
         }
