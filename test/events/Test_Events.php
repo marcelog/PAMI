@@ -67,7 +67,10 @@ class Test_Events extends \PHPUnit_Framework_TestCase
             'QueueMemberPaused', 'QueueMember', 'QueueMemberAdded', 'PeerlistComplete',
             'PeerStatus', 'PeerEntry', 'OriginateResponse', 'Newstate', 'Newexten',
             'Newchannel', 'NewCallerid', 'NewAccountCode', 'MusicOnHold',
-            'MessageWaiting', 'Masquerade', 'ListDialplan', 'Leave'
+            'MessageWaiting', 'Masquerade', 'ListDialplan', 'Leave', 'Join',
+            'Hold', 'Hangup', 'ExtensionStatus', 'Dial', 'DAHDIShowChannels',
+            'CoreShowChannelsComplete', 'CoreShowChannel', 'ChannelUpdate',
+            'Agents', 'AgentsComplete', 'Agentlogoff', 'Agentlogin', 'AgentConnect'
         );
         $eventTranslatedValues = array(
             'QueueMemberStatus' => array(
@@ -84,6 +87,116 @@ class Test_Events extends \PHPUnit_Framework_TestCase
             ),
         );
         $eventValues = array(
+            'AgentConnect' => array(
+                'HoldTime' => 'HoldTime',
+                'Privilege' => 'Privilege',
+                'BridgedChannel' => 'BridgedChannel',
+                'RingTime' => 'RingTime',
+                'Member' => 'Member',
+                'MemberName' => 'MemberName',
+                'UniqueID' => 'UniqueID',
+                'Channel' => 'Channel',
+                'Queue' => 'Queue'
+            ),
+            'Agentlogoff' => array(
+                'Logintime' => 'Logintime',
+                'UniqueID' => 'UniqueID',
+                'Agent' => 'Agent',
+                'Privilege' => 'Privilege',
+            ),
+            'Agentlogin' => array(
+                'UniqueID' => 'UniqueID',
+                'Agent' => 'Agent',
+                'Privilege' => 'Privilege',
+                'Channel' => 'Channel',
+            ),
+            'AgentsComplete' => array(),
+            'Agents' => array(
+                'TalkingToChannel' => 'TalkingToChannel',
+                'TalkingTo' => 'TalkingTo',
+                'LoggedInTime' => 'LoggedInTime',
+                'LoggedInChan' => 'LoggedInChan',
+                'Name' => 'Name',
+                'Status' => 'Status',
+                'Agent' => 'Agent'
+            ),
+            'ChannelUpdate' => array(
+                'Privilege' => 'Privilege',
+                'Channel' => 'Channel',
+                'ChannelType' => 'ChannelType',
+        		'UniqueID' => 'UniqueID',
+                'SIPfullcontact' => 'SIPfullcontact',
+                'SIPcallid' => 'SIPcallid'
+            ),
+            'CoreShowChannel' => array(
+        		'UniqueID' => 'UniqueID',
+                'Privilege' => 'Privilege',
+                'Channel' => 'Channel',
+                'AccountCode' => 'AccountCode',
+                'Priority' => 'Priority',
+                'Extension' => 'Extension',
+                'Context' => 'Context',
+                'CallerIDNum' => 'CallerIDNum',
+                'ChannelStateDesc' => 'ChannelStateDesc',
+                'ChannelState' => 'ChannelState',
+                'ApplicationData' => 'ApplicationData',
+                'Application' => 'Application',
+                'BridgedUniqueID' => 'BridgedUniqueID',
+                'BridgedChannel' => 'BridgedChannel',
+                'Duration' => 'Duration',
+            ),
+            'DAHDIShowChannels' => array(
+                'Channel' => 'Channel',
+                'Context' => 'Context',
+                'Alarm' => 'Alarm',
+                'DND' => 'DND',
+                'SignallingCode' => 'SignallingCode',
+                'Signalling' => 'Signalling'
+            ),
+            'Dial' => array(
+                'Privilege' => 'Privilege',
+                'Destination' => 'Destination',
+                'SubEvent' => 'SubEvent',
+        		'CallerIdName' => 'CallerIdName',
+                'CallerIdNum' => 'CallerIdNum',
+                'Channel' => 'Channel',
+        		'DialStatus' => 'DialStatus',
+                'DialString' => 'DialString',
+        		'UniqueID' => 'UniqueID',
+        		'DestUniqueID' => 'DestUniqueID',
+            ),
+            'ExtensionStatus' => array(
+                'Privilege' => 'Privilege',
+                'Status' => 'Status',
+                'Exten' => 'Extension',
+                'Hint' => 'Hint',
+        		'Context' => 'Context',
+            ),
+            'Hangup' => array(
+                'CallerIdName' => 'CallerIdName',
+                'CallerIdNum' => 'CallerIdNum',
+                'Channel' => 'Channel',
+                'Privilege' => 'Privilege',
+        		'UniqueID' => 'UniqueID',
+                'Cause' => 'Cause',
+                'cause-txt' => 'cause-txt'
+            ),
+            'Hold' => array(
+                'Privilege' => 'Privilege',
+        		'UniqueID' => 'UniqueID',
+                'Status' => 'Status',
+                'Channel' => 'Channel',
+            ),
+        	'Join' => array(
+                'CallerIdName' => 'CallerIdName',
+                'CallerIdNum' => 'CallerIdNum',
+        		'UniqueID' => 'UniqueID',
+                'Position' => 'Position',
+                'Queue' => 'Queue',
+                'Channel' => 'Channel',
+                'Privilege' => 'Privilege',
+                'Count' => 'Count',
+            ),
             'Leave' => array(
                 'Channel' => 'Channel',
                 'Privilege' => 'Privilege',
@@ -264,6 +377,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
             'QueueStatusComplete' => array(),
         	'DAHDIShowChannelsComplete' => array('items' => 'ListItems'),
         	'PeerlistComplete' => array('ListItems' => 'ListItems'),
+            'CoreShowChannelsComplete' => array('ListItems' => 'ListItems'),
             'RTCPReceived' => array(
                 'DLSR' => 'DLSR',
                 'RTT' => 'RTT',
@@ -479,6 +593,15 @@ class Test_Events extends \PHPUnit_Framework_TestCase
         	),
         );
         $eventGetters = array(
+            'Agents' => array(
+                'LoggedInChan' => 'Channel'
+            ),
+        	'ExtensionStatus' => array(
+                'Exten' => 'Extension'
+            ),
+            'Hangup' => array(
+                'cause-txt' => 'CauseText'
+             ),
         	'ListDialplan' => array(
                 'AppData' => 'ApplicationData',
             ),

@@ -76,11 +76,23 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
         setFgetsMock($standardAMIStart, $writeLogin);
         $client = new \PAMI\Client\Impl\ClientImpl($options);
 	    $client->open();
-        $event = array(
-            'Response: Success',
-            'ActionID: 1432.123',
-        	''
-        );
+	    if ($action instanceof \PAMI\Message\Action\DBGetAction) {
+            $event = array(
+	        	'Response: Success',
+                'EventList: start',
+                'ActionID: 1432.123',
+        		'',
+	            'Event: DBGetResponse',
+            	'ActionID: 1432.123',
+                ''
+	        );
+	    } else {
+            $event = array(
+                'Response: Success',
+                'ActionID: 1432.123',
+        		''
+            );
+	    }
 	    setFgetsMock($event, $write);
 	    $result = $client->send($action);
 	    $this->assertTrue($result instanceof \PAMI\Message\Response\ResponseMessage);
