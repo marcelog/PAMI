@@ -57,9 +57,21 @@ class Test_Events extends \PHPUnit_Framework_TestCase
     {
         $eventNames = array(
             'AGIExec', 'VarSet', 'Unlink', 'vgsm_sms_rx', 'vgsm_net_state',
-            'vgsm_me_state'
+            'vgsm_me_state', 'DTMF', 'Bridge', 'VoicemailUserEntryComplete',
+            'StatusComplete'
         );
         $eventValues = array(
+            'VoicemailUserEntryComplete' => array(),
+        	'StatusComplete' => array('Items' => 'Items'),
+            'DTMF' => array(
+            	'Privilege' => 'Privilege',
+        		'UniqueID' => 'UniqueID',
+                'Channel' => 'Channel',
+                'Direction' => 'Direction',
+                'End' => 'End',
+                'Begin' => 'Begin',
+                'Digit' => 'Digit'
+        	),
             'AGIExec' => array(
             	'Privilege' => 'Privilege',
             	'CommandId' => 'CommandId',
@@ -84,6 +96,17 @@ class Test_Events extends \PHPUnit_Framework_TestCase
         		'UniqueID2' => 'UniqueID2',
         	    'Channel1' => 'Channel1',
         		'Channel2' => 'Channel2',
+        	),
+        	'Bridge' => array(
+        		'Privilege' => 'Privilege',
+        	    'CallerID1' => 'CallerID1',
+        	    'CallerID2' => 'CallerID2',
+        	    'UniqueID1' => 'UniqueID1',
+        		'UniqueID2' => 'UniqueID2',
+        	    'Channel1' => 'Channel1',
+        		'Channel2' => 'Channel2',
+        	    'BridgeState' => 'BridgeStart',
+        	    'BridgeType' => 'BridgeType'
         	),
         	'vgsm_sms_rx' => array(
         		'Privilege' => 'Privilege',
@@ -121,6 +144,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
         $eventGetters = array(
             'AGIExec' => array(),
             'VarSet' => array('Variable' => 'VariableName'),
+        	'StatusComplete' => array('Items' => 'ListItems'),
         	'vgsm_sms_rx' => array(
         	    'X-SMS-Status-Report-Indication' => 'StatusReportIndication',
         	    'X-SMS-User-Data-Header-Indicator' => 'DataHeaderIndicator',
