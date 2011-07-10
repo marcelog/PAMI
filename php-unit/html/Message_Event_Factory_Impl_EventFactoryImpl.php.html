@@ -239,20 +239,20 @@
 <span class="lineNum" id="container58"><a name="58"></a><a href="#58" id="line58">      58</a> </span>                :      */                                                                     
 <span class="lineNum" id="container59"><a name="59"></a><a href="#59" id="line59">      59</a> </span>                :     public static function createFromRaw($message)                          
 <span class="lineNum" id="container60"><a name="60"></a><a href="#60" id="line60">      60</a> </span>                :     {                                                                       
-<span class="lineNum" id="container61"><a name="61"></a><a href="#61" id="line61">      61</a> </span><span class="lineCov">              4 :         $eventStart = strpos($message, 'Event: ') + 7;                      </span>
+<span class="lineNum" id="container61"><a name="61"></a><a href="#61" id="line61">      61</a> </span><span class="lineCov">              5 :         $eventStart = strpos($message, 'Event: ') + 7;                      </span>
 <span class="lineNum" id="container62"><a name="62"></a><a href="#62" id="line62">      62</a> </span>                : /*                                                                          
 <span class="lineNum" id="container63"><a name="63"></a><a href="#63" id="line63">      63</a> </span>                :         if ($eventStart &gt; strlen($message)) {                               
 <span class="lineNum" id="container64"><a name="64"></a><a href="#64" id="line64">      64</a> </span>                :             return new UnknownEvent($message);                              
 <span class="lineNum" id="container65"><a name="65"></a><a href="#65" id="line65">      65</a> </span>                :         }                                                                   
 <span class="lineNum" id="container66"><a name="66"></a><a href="#66" id="line66">      66</a> </span>                : */                                                                          
-<span class="lineNum" id="container67"><a name="67"></a><a href="#67" id="line67">      67</a> </span><span class="lineCov">              4 :         $eventEnd = strpos($message, Message::EOL, $eventStart);            </span>
-<span class="lineNum" id="container68"><a name="68"></a><a href="#68" id="line68">      68</a> </span><span class="lineCov">              4 :         if ($eventEnd === false) {                                          </span>
+<span class="lineNum" id="container67"><a name="67"></a><a href="#67" id="line67">      67</a> </span><span class="lineCov">              5 :         $eventEnd = strpos($message, Message::EOL, $eventStart);            </span>
+<span class="lineNum" id="container68"><a name="68"></a><a href="#68" id="line68">      68</a> </span><span class="lineCov">              5 :         if ($eventEnd === false) {                                          </span>
 <span class="lineNum" id="container69"><a name="69"></a><a href="#69" id="line69">      69</a> </span><span class="lineCov">              1 :             $eventEnd = strlen($message);                                   </span>
 <span class="lineNum" id="container70"><a name="70"></a><a href="#70" id="line70">      70</a> </span><span class="lineCov">              1 :         }                                                                   </span>
-<span class="lineNum" id="container71"><a name="71"></a><a href="#71" id="line71">      71</a> </span><span class="lineCov">              4 :         $name = substr($message, $eventStart, $eventEnd - $eventStart);     </span>
-<span class="lineNum" id="container72"><a name="72"></a><a href="#72" id="line72">      72</a> </span><span class="lineCov">              4 :         $className = '\\PAMI\\Message\\Event\\' . $name . 'Event';          </span>
-<span class="lineNum" id="container73"><a name="73"></a><a href="#73" id="line73">      73</a> </span><span class="lineCov">              4 :         if (class_exists($className, true)) {                               </span>
-<span class="lineNum" id="container74"><a name="74"></a><a href="#74" id="line74">      74</a> </span><span class="lineCov">              3 :             return new $className($message);                                </span>
+<span class="lineNum" id="container71"><a name="71"></a><a href="#71" id="line71">      71</a> </span><span class="lineCov">              5 :         $name = substr($message, $eventStart, $eventEnd - $eventStart);     </span>
+<span class="lineNum" id="container72"><a name="72"></a><a href="#72" id="line72">      72</a> </span><span class="lineCov">              5 :         $className = '\\PAMI\\Message\\Event\\' . $name . 'Event';          </span>
+<span class="lineNum" id="container73"><a name="73"></a><a href="#73" id="line73">      73</a> </span><span class="lineCov">              5 :         if (class_exists($className, true)) {                               </span>
+<span class="lineNum" id="container74"><a name="74"></a><a href="#74" id="line74">      74</a> </span><span class="lineCov">              4 :             return new $className($message);                                </span>
 <span class="lineNum" id="container75"><a name="75"></a><a href="#75" id="line75">      75</a> </span><span class="lineDeadCode">                :         }                                                                   </span>
 <span class="lineNum" id="container76"><a name="76"></a><a href="#76" id="line76">      76</a> </span><span class="lineCov">              1 :         return new UnknownEvent($message);                                  </span>
 <span class="lineNum" id="container77"><a name="77"></a><a href="#77" id="line77">      77</a> </span><span class="lineDeadCode">                :     }                                                                       </span>
@@ -274,7 +274,7 @@
 
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""></td></tr>
-      <tr><td class="versionInfo">Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage 1.0.4</a> using <a href="http://www.php.net/" target="_top">PHP 5.3.3</a> and PHPUnit 3.5.13 at Sat Jul 9 21:48:40 ART 2011.</td></tr>
+      <tr><td class="versionInfo">Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage 1.0.4</a> using <a href="http://www.php.net/" target="_top">PHP 5.3.3</a> and PHPUnit 3.5.13 at Sun Jul 10 18:14:12 ART 2011.</td></tr>
     </table>
 
     <br />
@@ -290,18 +290,18 @@
           "footer": ""
         },
         "panel61": {
-          "header": "4 tests cover line 61",
-          "body": "<ul><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_register_event_listener</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_get_response_with_associated_events</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_report_unknown_event</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Events::can_report_events</li></ul>",
+          "header": "5 tests cover line 61",
+          "body": "<ul><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_register_event_listener</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_get_response_with_associated_events</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_report_unknown_event</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Actions::can_dbget</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Events::can_report_events</li></ul>",
           "footer": ""
         },
         "panel67": {
-          "header": "4 tests cover line 67",
-          "body": "<ul><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_register_event_listener</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_get_response_with_associated_events</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_report_unknown_event</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Events::can_report_events</li></ul>",
+          "header": "5 tests cover line 67",
+          "body": "<ul><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_register_event_listener</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_get_response_with_associated_events</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_report_unknown_event</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Actions::can_dbget</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Events::can_report_events</li></ul>",
           "footer": ""
         },
         "panel68": {
-          "header": "4 tests cover line 68",
-          "body": "<ul><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_register_event_listener</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_get_response_with_associated_events</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_report_unknown_event</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Events::can_report_events</li></ul>",
+          "header": "5 tests cover line 68",
+          "body": "<ul><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_register_event_listener</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_get_response_with_associated_events</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_report_unknown_event</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Actions::can_dbget</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Events::can_report_events</li></ul>",
           "footer": ""
         },
         "panel69": {
@@ -315,23 +315,23 @@
           "footer": ""
         },
         "panel71": {
-          "header": "4 tests cover line 71",
-          "body": "<ul><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_register_event_listener</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_get_response_with_associated_events</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_report_unknown_event</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Events::can_report_events</li></ul>",
+          "header": "5 tests cover line 71",
+          "body": "<ul><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_register_event_listener</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_get_response_with_associated_events</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_report_unknown_event</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Actions::can_dbget</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Events::can_report_events</li></ul>",
           "footer": ""
         },
         "panel72": {
-          "header": "4 tests cover line 72",
-          "body": "<ul><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_register_event_listener</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_get_response_with_associated_events</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_report_unknown_event</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Events::can_report_events</li></ul>",
+          "header": "5 tests cover line 72",
+          "body": "<ul><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_register_event_listener</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_get_response_with_associated_events</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_report_unknown_event</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Actions::can_dbget</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Events::can_report_events</li></ul>",
           "footer": ""
         },
         "panel73": {
-          "header": "4 tests cover line 73",
-          "body": "<ul><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_register_event_listener</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_get_response_with_associated_events</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_report_unknown_event</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Events::can_report_events</li></ul>",
+          "header": "5 tests cover line 73",
+          "body": "<ul><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_register_event_listener</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_get_response_with_associated_events</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_report_unknown_event</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Actions::can_dbget</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Events::can_report_events</li></ul>",
           "footer": ""
         },
         "panel74": {
-          "header": "3 tests cover line 74",
-          "body": "<ul><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_register_event_listener</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_get_response_with_associated_events</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Events::can_report_events</li></ul>",
+          "header": "4 tests cover line 74",
+          "body": "<ul><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_register_event_listener</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_get_response_with_associated_events</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Actions::can_dbget</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Events::can_report_events</li></ul>",
           "footer": ""
         },
         "panel76": {

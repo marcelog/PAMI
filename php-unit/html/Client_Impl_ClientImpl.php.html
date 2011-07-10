@@ -739,14 +739,14 @@
 <span class="lineNum" id="container305"><a name="305"></a><a href="#305" id="line305">     305</a> </span><span class="lineCov">             81 :             $response = $this-&gt;_messageToResponse($aMsg);                              </span>
 <span class="lineNum" id="container306"><a name="306"></a><a href="#306" id="line306">     306</a> </span><span class="lineCov">             81 :             $this-&gt;_incomingQueue[$response-&gt;getActionId()] = $response;               </span>
 <span class="lineNum" id="container307"><a name="307"></a><a href="#307" id="line307">     307</a> </span><span class="lineCov">             81 :         } else if ($evePos !== false) {                                                </span>
-<span class="lineNum" id="container308"><a name="308"></a><a href="#308" id="line308">     308</a> </span><span class="lineCov">              4 :             $event = $this-&gt;_messageToEvent($aMsg);                                    </span>
-<span class="lineNum" id="container309"><a name="309"></a><a href="#309" id="line309">     309</a> </span><span class="lineCov">              4 :             $response = $this-&gt;findResponse($event);                                   </span>
-<span class="lineNum" id="container310"><a name="310"></a><a href="#310" id="line310">     310</a> </span><span class="lineCov">              4 :             if ($response === false) {                                                 </span>
+<span class="lineNum" id="container308"><a name="308"></a><a href="#308" id="line308">     308</a> </span><span class="lineCov">              5 :             $event = $this-&gt;_messageToEvent($aMsg);                                    </span>
+<span class="lineNum" id="container309"><a name="309"></a><a href="#309" id="line309">     309</a> </span><span class="lineCov">              5 :             $response = $this-&gt;findResponse($event);                                   </span>
+<span class="lineNum" id="container310"><a name="310"></a><a href="#310" id="line310">     310</a> </span><span class="lineCov">              5 :             if ($response === false) {                                                 </span>
 <span class="lineNum" id="container311"><a name="311"></a><a href="#311" id="line311">     311</a> </span><span class="lineCov">              3 :                 $this-&gt;dispatch($event);                                               </span>
 <span class="lineNum" id="container312"><a name="312"></a><a href="#312" id="line312">     312</a> </span><span class="lineCov">              3 :             } else {                                                                   </span>
-<span class="lineNum" id="container313"><a name="313"></a><a href="#313" id="line313">     313</a> </span><span class="lineCov">              1 :                 $response-&gt;addEvent($event);                                           </span>
+<span class="lineNum" id="container313"><a name="313"></a><a href="#313" id="line313">     313</a> </span><span class="lineCov">              2 :                 $response-&gt;addEvent($event);                                           </span>
 <span class="lineNum" id="container314"><a name="314"></a><a href="#314" id="line314">     314</a> </span>                :             }                                                                          
-<span class="lineNum" id="container315"><a name="315"></a><a href="#315" id="line315">     315</a> </span><span class="lineCov">              4 :         }                                                                              </span>
+<span class="lineNum" id="container315"><a name="315"></a><a href="#315" id="line315">     315</a> </span><span class="lineCov">              5 :         }                                                                              </span>
 <span class="lineNum" id="container316"><a name="316"></a><a href="#316" id="line316">     316</a> </span><span class="lineCov">             81 :         if ($this-&gt;_logger-&gt;isDebugEnabled()) {                                        </span>
 <span class="lineNum" id="container317"><a name="317"></a><a href="#317" id="line317">     317</a> </span><span class="lineCov">             81 :                $this-&gt;_logger-&gt;debug('----------------');                              </span>
 <span class="lineNum" id="container318"><a name="318"></a><a href="#318" id="line318">     318</a> </span><span class="lineCov">             81 :         }                                                                              </span>
@@ -761,9 +761,9 @@
 <span class="lineNum" id="container327"><a name="327"></a><a href="#327" id="line327">     327</a> </span>                :      */                                                                                
 <span class="lineNum" id="container328"><a name="328"></a><a href="#328" id="line328">     328</a> </span>                :     protected function findResponse(IncomingMessage $message)                          
 <span class="lineNum" id="container329"><a name="329"></a><a href="#329" id="line329">     329</a> </span>                :     {                                                                                  
-<span class="lineNum" id="container330"><a name="330"></a><a href="#330" id="line330">     330</a> </span><span class="lineCov">              4 :         $actionId = $message-&gt;getActionId();                                           </span>
-<span class="lineNum" id="container331"><a name="331"></a><a href="#331" id="line331">     331</a> </span><span class="lineCov">              4 :         if (isset($this-&gt;_incomingQueue[$actionId])) {                                 </span>
-<span class="lineNum" id="container332"><a name="332"></a><a href="#332" id="line332">     332</a> </span><span class="lineCov">              1 :             return $this-&gt;_incomingQueue[$actionId];                                   </span>
+<span class="lineNum" id="container330"><a name="330"></a><a href="#330" id="line330">     330</a> </span><span class="lineCov">              5 :         $actionId = $message-&gt;getActionId();                                           </span>
+<span class="lineNum" id="container331"><a name="331"></a><a href="#331" id="line331">     331</a> </span><span class="lineCov">              5 :         if (isset($this-&gt;_incomingQueue[$actionId])) {                                 </span>
+<span class="lineNum" id="container332"><a name="332"></a><a href="#332" id="line332">     332</a> </span><span class="lineCov">              2 :             return $this-&gt;_incomingQueue[$actionId];                                   </span>
 <span class="lineNum" id="container333"><a name="333"></a><a href="#333" id="line333">     333</a> </span><span class="lineDeadCode">                :         }                                                                              </span>
 <span class="lineNum" id="container334"><a name="334"></a><a href="#334" id="line334">     334</a> </span><span class="lineCov">              3 :         return false;                                                                  </span>
 <span class="lineNum" id="container335"><a name="335"></a><a href="#335" id="line335">     335</a> </span><span class="lineDeadCode">                :     }                                                                                  </span>
@@ -809,7 +809,7 @@
 <span class="lineNum" id="container375"><a name="375"></a><a href="#375" id="line375">     375</a> </span>                :      */                                                                                
 <span class="lineNum" id="container376"><a name="376"></a><a href="#376" id="line376">     376</a> </span>                :     private function _messageToEvent($msg)                                             
 <span class="lineNum" id="container377"><a name="377"></a><a href="#377" id="line377">     377</a> </span>                :     {                                                                                  
-<span class="lineNum" id="container378"><a name="378"></a><a href="#378" id="line378">     378</a> </span><span class="lineCov">              4 :         return $this-&gt;_eventFactory-&gt;createFromRaw($msg);                              </span>
+<span class="lineNum" id="container378"><a name="378"></a><a href="#378" id="line378">     378</a> </span><span class="lineCov">              5 :         return $this-&gt;_eventFactory-&gt;createFromRaw($msg);                              </span>
 <span class="lineNum" id="container379"><a name="379"></a><a href="#379" id="line379">     379</a> </span><span class="lineDeadCode">                :     }                                                                                  </span>
 <span class="lineNum" id="container380"><a name="380"></a><a href="#380" id="line380">     380</a> </span>                :                                                                                        
 <span class="lineNum" id="container381"><a name="381"></a><a href="#381" id="line381">     381</a> </span>                :     /**                                                                                
@@ -921,7 +921,7 @@
 
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""></td></tr>
-      <tr><td class="versionInfo">Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage 1.0.4</a> using <a href="http://www.php.net/" target="_top">PHP 5.3.3</a> and PHPUnit 3.5.13 at Sat Jul 9 21:48:40 ART 2011.</td></tr>
+      <tr><td class="versionInfo">Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage 1.0.4</a> using <a href="http://www.php.net/" target="_top">PHP 5.3.3</a> and PHPUnit 3.5.13 at Sun Jul 10 18:14:12 ART 2011.</td></tr>
     </table>
 
     <br />
@@ -1202,18 +1202,18 @@
           "footer": ""
         },
         "panel308": {
-          "header": "4 tests cover line 308",
-          "body": "<ul><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_register_event_listener</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_get_response_with_associated_events</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_report_unknown_event</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Events::can_report_events</li></ul>",
+          "header": "5 tests cover line 308",
+          "body": "<ul><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_register_event_listener</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_get_response_with_associated_events</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_report_unknown_event</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Actions::can_dbget</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Events::can_report_events</li></ul>",
           "footer": ""
         },
         "panel309": {
-          "header": "4 tests cover line 309",
-          "body": "<ul><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_register_event_listener</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_get_response_with_associated_events</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_report_unknown_event</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Events::can_report_events</li></ul>",
+          "header": "5 tests cover line 309",
+          "body": "<ul><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_register_event_listener</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_get_response_with_associated_events</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_report_unknown_event</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Actions::can_dbget</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Events::can_report_events</li></ul>",
           "footer": ""
         },
         "panel310": {
-          "header": "4 tests cover line 310",
-          "body": "<ul><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_register_event_listener</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_get_response_with_associated_events</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_report_unknown_event</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Events::can_report_events</li></ul>",
+          "header": "5 tests cover line 310",
+          "body": "<ul><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_register_event_listener</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_get_response_with_associated_events</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_report_unknown_event</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Actions::can_dbget</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Events::can_report_events</li></ul>",
           "footer": ""
         },
         "panel311": {
@@ -1227,13 +1227,13 @@
           "footer": ""
         },
         "panel313": {
-          "header": "1 test covers line 313",
-          "body": "<ul><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_get_response_with_associated_events</li></ul>",
+          "header": "2 tests cover line 313",
+          "body": "<ul><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_get_response_with_associated_events</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Actions::can_dbget</li></ul>",
           "footer": ""
         },
         "panel315": {
-          "header": "4 tests cover line 315",
-          "body": "<ul><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_register_event_listener</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_get_response_with_associated_events</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_report_unknown_event</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Events::can_report_events</li></ul>",
+          "header": "5 tests cover line 315",
+          "body": "<ul><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_register_event_listener</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_get_response_with_associated_events</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_report_unknown_event</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Actions::can_dbget</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Events::can_report_events</li></ul>",
           "footer": ""
         },
         "panel316": {
@@ -1257,18 +1257,18 @@
           "footer": ""
         },
         "panel330": {
-          "header": "4 tests cover line 330",
-          "body": "<ul><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_register_event_listener</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_get_response_with_associated_events</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_report_unknown_event</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Events::can_report_events</li></ul>",
+          "header": "5 tests cover line 330",
+          "body": "<ul><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_register_event_listener</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_get_response_with_associated_events</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_report_unknown_event</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Actions::can_dbget</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Events::can_report_events</li></ul>",
           "footer": ""
         },
         "panel331": {
-          "header": "4 tests cover line 331",
-          "body": "<ul><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_register_event_listener</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_get_response_with_associated_events</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_report_unknown_event</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Events::can_report_events</li></ul>",
+          "header": "5 tests cover line 331",
+          "body": "<ul><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_register_event_listener</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_get_response_with_associated_events</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_report_unknown_event</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Actions::can_dbget</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Events::can_report_events</li></ul>",
           "footer": ""
         },
         "panel332": {
-          "header": "1 test covers line 332",
-          "body": "<ul><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_get_response_with_associated_events</li></ul>",
+          "header": "2 tests cover line 332",
+          "body": "<ul><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_get_response_with_associated_events</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Actions::can_dbget</li></ul>",
           "footer": ""
         },
         "panel334": {
@@ -1332,8 +1332,8 @@
           "footer": ""
         },
         "panel378": {
-          "header": "4 tests cover line 378",
-          "body": "<ul><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_register_event_listener</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_get_response_with_associated_events</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_report_unknown_event</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Events::can_report_events</li></ul>",
+          "header": "5 tests cover line 378",
+          "body": "<ul><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_register_event_listener</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_get_response_with_associated_events</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Client::can_report_unknown_event</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Actions::can_dbget</li><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Events::can_report_events</li></ul>",
           "footer": ""
         },
         "panel391": {
