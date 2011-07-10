@@ -58,10 +58,68 @@ class Test_Events extends \PHPUnit_Framework_TestCase
         $eventNames = array(
             'AGIExec', 'VarSet', 'Unlink', 'vgsm_sms_rx', 'vgsm_net_state',
             'vgsm_me_state', 'DTMF', 'Bridge', 'VoicemailUserEntryComplete',
-            'StatusComplete', 'ParkedCallsComplete', 'DBGetResponse'
+            'StatusComplete', 'ParkedCallsComplete', 'DBGetResponse',
+            'VoicemailUserEntry', 'Transfer', 'Status'
         );
         $eventValues = array(
+            'Status' => array(
+                'BridgedUniqueID' => 'BridgedUniqueID',
+                'BridgedChannel' => 'BridgedChannel',
+                'Seconds' => 'Seconds',
+                'AccountCode' => 'AccountCode',
+                'Duration' => 'Duration',
+                'CallerIDNum' => 'CallerIDNum',
+                'ApplicationData' => 'ApplicationData',
+                'Application' => 'Application',
+                'ChannelStateDesc' => 'ChannelStateDesc',
+                'ChannelState' => 'ChannelState',
+                'Priority' => 'Priority',
+                'Extension' => 'Extension',
+                'Context' => 'Context',
+                'UniqueID' => 'UniqueID',
+        		'Privilege' => 'Privilege',
+                'Channel' => 'Channel'
+            ),
+            'Transfer' => array(
+                'TransferContext' => 'TransferContext',
+                'TransferExten' => 'TransferExten',
+                'TargetUniqueid' => 'TargetUniqueid',
+                'UniqueID' => 'UniqueID',
+                'SIP-Callid' => 'SIP-Callid',
+                'TargetChannel' => 'TargetChannel',
+                'Channel' => 'Channel',
+                'TransferType' => 'TransferType',
+                'TransferMethod' => 'TransferMethod',
+                'Privilege' => 'Privilege'
+            ),
             'VoicemailUserEntryComplete' => array(),
+            'VoicemailUserEntry' => array(
+                'VmContext' => 'VmContext',
+                'VoicemailBox' => 'VoicemailBox',
+                'Fullname' => 'Fullname',
+                'Email' => 'Email',
+                'Pager' => 'Pager',
+                'ServerEmail' => 'ServerEmail',
+                'MailCommand' => 'MailCommand',
+                'Language' => 'Language',
+                'Timezone' => 'Timezone',
+                'Callback' => 'Callback',
+                'DialOut' => 'DialOut',
+                'UniqueID' => 'UniqueID',
+                'ExitContext' => 'ExitContext',
+                'SayDurationMin' => 'SayDurationMin',
+                'SayEnvelope' => 'SayEnvelope',
+                'SayCID' => 'SayCID',
+                'AttachMessage' => 'AttachMessage',
+                'AttachmentFormat' => 'AttachmentFormat',
+                'DeleteMessage' => 'DeleteMessage',
+                'VolumeGain' => 'VolumeGain',
+                'CanReview' => 'CanReview',
+                'CallOperator' => 'CallOperator',
+                'MaxMessageCount' => 'MaxMessageCount',
+                'MaxMessageLength' => 'MaxMessageLength',
+                'NewMessageCount' => 'NewMessageCount'
+            ),
             'DBGetResponse' => array(
                 'Family' => 'Family',
                 'Key' => 'Key',
@@ -149,6 +207,12 @@ class Test_Events extends \PHPUnit_Framework_TestCase
         );
         $eventGetters = array(
             'AGIExec' => array(),
+            'Transfer' => array(
+                'SIP-Callid' => 'SipCallID',
+            ),
+            'VoicemailUserEntry' => array(
+                'VmContext' => 'VoicemailContext',
+            ),
             'VarSet' => array('Variable' => 'VariableName'),
         	'StatusComplete' => array('Items' => 'ListItems'),
             'DBGetResponse' => array('Key' => 'KeyName', 'Val' => 'Value'),
