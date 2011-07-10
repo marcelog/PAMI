@@ -329,24 +329,6 @@
         <Package>PAMI\Message\Event\Factory\Impl</Package>
       </UsedBy>
     </Package>
-    <Package name="PAMI\Event\Message\Factory">
-      <Stats>
-        <TotalClasses>1</TotalClasses>
-        <ConcreteClasses>0</ConcreteClasses>
-        <AbstractClasses>1</AbstractClasses>
-        <Ca>0</Ca>
-        <Ce>0</Ce>
-        <A>1</A>
-        <I>0</I>
-        <D>0</D>
-      </Stats>
-      <ConcreteClasses/>
-      <AbstractClasses>
-        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/Factory/IEventFactory.php">IEventFactory</Class>
-      </AbstractClasses>
-      <DependsUpon/>
-      <UsedBy/>
-    </Package>
     <Package name="PAMI\Message\Event\Factory\Impl">
       <Stats>
         <TotalClasses>1</TotalClasses>
