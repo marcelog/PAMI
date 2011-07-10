@@ -58,10 +58,16 @@ class Test_Events extends \PHPUnit_Framework_TestCase
         $eventNames = array(
             'AGIExec', 'VarSet', 'Unlink', 'vgsm_sms_rx', 'vgsm_net_state',
             'vgsm_me_state', 'DTMF', 'Bridge', 'VoicemailUserEntryComplete',
-            'StatusComplete'
+            'StatusComplete', 'ParkedCallsComplete', 'DBGetResponse'
         );
         $eventValues = array(
             'VoicemailUserEntryComplete' => array(),
+            'DBGetResponse' => array(
+                'Family' => 'Family',
+                'Key' => 'Key',
+                'Val' => 'Val'
+            ),
+        	'ParkedCallsComplete' => array(),
         	'StatusComplete' => array('Items' => 'Items'),
             'DTMF' => array(
             	'Privilege' => 'Privilege',
@@ -145,6 +151,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
             'AGIExec' => array(),
             'VarSet' => array('Variable' => 'VariableName'),
         	'StatusComplete' => array('Items' => 'ListItems'),
+            'DBGetResponse' => array('Key' => 'KeyName', 'Val' => 'Value'),
         	'vgsm_sms_rx' => array(
         	    'X-SMS-Status-Report-Indication' => 'StatusReportIndication',
         	    'X-SMS-User-Data-Header-Indicator' => 'DataHeaderIndicator',

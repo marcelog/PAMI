@@ -300,7 +300,9 @@ class Test_Client extends \PHPUnit_Framework_TestCase
 	    for($i = 0; $i < 6; $i++) {
 	        $client->process();
 	    }
-        $this->assertTrue(SomeListenerClass::$event instanceof \PAMI\Message\Event\PeerStatusEvent);
+	    $event = SomeListenerClass::$event;
+	    $this->assertEquals($event->getName(), 'PeerStatus');
+        $this->assertTrue($event instanceof \PAMI\Message\Event\PeerStatusEvent);
     }
     /**
      * @test
