@@ -65,6 +65,9 @@ class EventFactoryImpl
         }
 */
         $eventEnd = strpos($message, Message::EOL, $eventStart);
+        if ($eventEnd === false) {
+            $eventEnd = strlen($message);
+        }
         $name = substr($message, $eventStart, $eventEnd - $eventStart);
         $className = '\\PAMI\\Message\\Event\\' . $name . 'Event';
         if (class_exists($className, true)) {
