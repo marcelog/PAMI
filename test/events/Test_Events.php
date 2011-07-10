@@ -65,7 +65,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
             'QueueStatusComplete', 'DAHDIShowChannelsComplete', 'QueueSummary',
             'QueueParams', 'QueueMemberStatus', 'QueueMemberRemoved',
             'QueueMemberPaused', 'QueueMember', 'QueueMemberAdded', 'PeerlistComplete',
-            'PeerStatus', 'PeerEntry'
+            'PeerStatus', 'PeerEntry', 'OriginateResponse', 'Newstate', 'Newexten'
         );
         $eventTranslatedValues = array(
             'QueueMemberStatus' => array(
@@ -82,6 +82,37 @@ class Test_Events extends \PHPUnit_Framework_TestCase
             ),
         );
         $eventValues = array(
+            'Newexten' => array(
+                'Channel' => 'Channel',
+                'Privilege' => 'Privilege',
+                'AppData' => 'AppData',
+                'Application' => 'Application',
+                'Priority' => 'Priority',
+                'Exten' => 'Exten',
+                'Context' => 'Context',
+        		'UniqueID' => 'UniqueID',
+            ),
+        	'Newstate' => array(
+                'CallerIdName' => 'CallerIdName',
+                'CallerIdNum' => 'CallerIdNum',
+                'UniqueID' => 'UniqueID',
+                'ChannelStateDesc' => 'ChannelStateDesc',
+                'ChannelState' => 'ChannelState',
+                'Channel' => 'Channel',
+                'Privilege' => 'Privilege'
+            ),
+            'OriginateResponse' => array(
+                'CallerIdName' => 'CallerIdName',
+                'CallerIdNum' => 'CallerIdNum',
+                'Response' => 'Response',
+                'ActionID' => 'ActionID',
+                'UniqueID' => 'UniqueID',
+                'Reason' => 'Reason',
+                'Channel' => 'Channel',
+                'Context' => 'Context',
+                'Exten' => 'Exten',
+                'Privilege' => 'Privilege'
+            ),
             'PeerEntry' => array(
                 'RealtimeDevice' => 'RealtimeDevice',
                 'Status' => 'Status',
@@ -387,6 +418,10 @@ class Test_Events extends \PHPUnit_Framework_TestCase
         	),
         );
         $eventGetters = array(
+            'Newexten' => array(
+                'AppData' => 'ApplicationData',
+                'Exten' => 'Extension'
+            ),
             'QueueMemberStatus' => array(
                 'Paused' => 'Pause'
             ),
