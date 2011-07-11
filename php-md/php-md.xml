@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<pmd version="0.2.8RC1" timestamp="2011-07-10T18:14:57-03:00">
+<pmd version="0.2.8RC1" timestamp="2011-07-10T21:09:35-03:00">
   <file name="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Client/Impl/ClientImpl.php">
-    <violation beginline="57" endline="481" rule="TooManyFields" ruleset="Code Size Rules" package="PAMI\Client\Impl" externalInfoUrl="http://phpmd.org/rules/codesize.html#toomanyfields" class="ClientImpl" priority="3">
+    <violation beginline="57" endline="483" rule="TooManyFields" ruleset="Code Size Rules" package="PAMI\Client\Impl" externalInfoUrl="http://phpmd.org/rules/codesize.html#toomanyfields" class="ClientImpl" priority="3">
       Too many fields
     </violation>
     <violation beginline="135" endline="135" rule="UnusedPrivateField" ruleset="Unused Code Rules" externalInfoUrl="http://phpmd.org/rules/unusedcode.html#unusedprivatefield" priority="3">

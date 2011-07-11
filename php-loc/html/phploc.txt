@@ -3,10 +3,10 @@ phploc 1.5.1 by Sebastian Bergmann.
 Directories:                                         11
 Files:                                              159
 
-Lines of Code (LOC):                              14129
+Lines of Code (LOC):                              14131
   Cyclomatic Complexity / Lines of Code:           0.02
 Comment Lines of Code (CLOC):                      9823
-Non-Comment Lines of Code (NCLOC):                 4306
+Non-Comment Lines of Code (NCLOC):                 4308
 
 Namespaces:                                          11
 Interfaces:                                           2
