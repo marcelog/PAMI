@@ -448,7 +448,7 @@ class Test_Client extends \PHPUnit_Framework_TestCase
         	'username' => 'asd',
         	'secret' => 'asd',
             'connect_timeout' => 10,
-        	'read_timeout' => 3
+        	'read_timeout' => 1
         );
         $write = array(
         	"action: Login\r\nactionid: 1432.123\r\nusername: asd\r\nsecret: asd\r\n"
@@ -456,7 +456,7 @@ class Test_Client extends \PHPUnit_Framework_TestCase
         setFgetsMock($standardAMIStart, $write);
         $client = new \PAMI\Client\Impl\ClientImpl($options);
 	    $client->open();
-        setFgetsMock(array(10, 1), $write);
+        setFgetsMock(array(10, 4), $write);
         $start = \time();
         $client->send(new \PAMI\Message\Action\LoginAction('asd', 'asd'));
         $this->assertEquals(\time() - $start, 10);

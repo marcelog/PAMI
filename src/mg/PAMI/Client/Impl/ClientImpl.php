@@ -426,7 +426,7 @@ class ClientImpl implements IClient
 	     * @todo this should not be an infinite loop. Check read timeout.
 	     */
 	    $read = 0;
-	    while($read < $this->_rTimeout) {
+	    while($read <= $this->_rTimeout) {
 	        $this->process();
 	        $response = $this->getRelated($message);
 	        if ($response != false) {
@@ -434,7 +434,9 @@ class ClientImpl implements IClient
 	            return $response;
 	        }
 	        usleep(1000); // 1ms delay
-	        $read++;
+	        if ($this->_rTimeout > 0) {
+	            $read++;
+	        }
 	    }
 	    throw new ClientException('Read timeout');
 	}
