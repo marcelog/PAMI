@@ -42,7 +42,7 @@ if (!class_exists('Logger')) {
 if (!class_exists('Logger')) {
     $truePath = implode(
         DIRECTORY_SEPARATOR,
-        array('PAGI', 'Logger', 'Logger.php')
+        array('PAMI', 'Logger', 'Logger.php')
     );
     require_once $truePath;
 }
