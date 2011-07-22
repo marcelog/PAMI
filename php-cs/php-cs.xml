@@ -866,6 +866,14 @@
   <error line="30" column="16" severity="error" message="Constants must be uppercase; expected MESSAGE but found Message" source="Generic.NamingConventions.UpperCaseConstantNameSniff"/>
   <error line="30" column="24" severity="error" message="Constants must be uppercase; expected ACTION but found Action" source="Generic.NamingConventions.UpperCaseConstantNameSniff"/>
  </file>
+ <file name="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/DongleResetAction.php">
+  <error line="30" column="16" severity="error" message="Constants must be uppercase; expected MESSAGE but found Message" source="Generic.NamingConventions.UpperCaseConstantNameSniff"/>
+  <error line="30" column="24" severity="error" message="Constants must be uppercase; expected ACTION but found Action" source="Generic.NamingConventions.UpperCaseConstantNameSniff"/>
+ </file>
+ <file name="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/DongleRestartAction.php">
+  <error line="30" column="16" severity="error" message="Constants must be uppercase; expected MESSAGE but found Message" source="Generic.NamingConventions.UpperCaseConstantNameSniff"/>
+  <error line="30" column="24" severity="error" message="Constants must be uppercase; expected ACTION but found Action" source="Generic.NamingConventions.UpperCaseConstantNameSniff"/>
+ </file>
  <file name="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/DongleSendSMSAction.php">
   <error line="30" column="16" severity="error" message="Constants must be uppercase; expected MESSAGE but found Message" source="Generic.NamingConventions.UpperCaseConstantNameSniff"/>
   <error line="30" column="24" severity="error" message="Constants must be uppercase; expected ACTION but found Action" source="Generic.NamingConventions.UpperCaseConstantNameSniff"/>
