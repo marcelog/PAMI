@@ -56,7 +56,10 @@ can still catch them. If you catch one of these, please report it!
 * CoreShowChannelComplete
 * DAHDIShowChannel
 * DAHDIShowChannelsComplete
-* DongleSendSMS
+* FullyBooted
+* DongleSMSStatus
+* DongleDeviceEntry
+* DongleShowDevicesComplete
 * DBGetResponse
 * Dial
 * DTMF
@@ -128,7 +131,7 @@ Currently Supported Actions
 * DBPut
 * DBDel
 * DBDelTree
-* DongleSMSStatus
+* DongleSendSMS
 * ExtensionState
 * CreateConfig
 * GetConfig

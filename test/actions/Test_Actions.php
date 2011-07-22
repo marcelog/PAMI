@@ -215,6 +215,19 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
+    public function can_dongle_show_devices()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: DongleShowDevices',
+            'actionid: 1432.123',
+            ''
+        )));
+	    $action = new \PAMI\Message\Action\DongleShowDevicesAction;
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
     public function can_dongle_sms_send()
     {
         $write = array(implode("\r\n", array(
