@@ -72,6 +72,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
             'CoreShowChannelsComplete', 'CoreShowChannel', 'ChannelUpdate',
             'Agents', 'AgentsComplete', 'Agentlogoff', 'Agentlogin', 'AgentConnect',
             'DongleSMSStatus', 'FullyBooted', 'DongleShowDevicesComplete', 'DongleDeviceEntry',
+            'DongleNewUSSDBase64', 'DongleNewUSSD', 'DongleUSSDStatus', 'DongleNewCUSD',
             'DongleStatus'
         );
         $eventTranslatedValues = array(
@@ -90,6 +91,27 @@ class Test_Events extends \PHPUnit_Framework_TestCase
         );
         $eventValues = array(
             'FullyBooted' => array(),
+            'DongleUSSDStatus' => array(
+                'Privilege' => 'Privilege',
+        		'Id' => 'Id',
+        		'Device' => 'Device',
+                'Status' => 'Status'
+             ),
+        	'DongleNewUSSDBase64' => array(
+                'Device' => 'Device',
+                'Message' => 'Message',
+                'Privilege' => 'Privilege'
+            ),
+        	'DongleNewCUSD' => array(
+                'Device' => 'Device',
+                'Message' => 'Message',
+                'Privilege' => 'Privilege'
+            ),
+            'DongleNewUSSD' => array(
+                'Device' => 'Device',
+                'LineCount' => 'LineCount',
+                'Privilege' => 'Privilege'
+            ),
             'DongleDeviceEntry' => array(
                 'Device' => 'Device',
                 'AudioSetting' => 'AudioSetting',

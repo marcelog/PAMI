@@ -58,6 +58,10 @@ can still catch them. If you catch one of these, please report it!
 * DAHDIShowChannelsComplete
 * FullyBooted
 * DongleSMSStatus
+* DongleUSSDStatus
+* DongleNewUSSD
+* DongleNewUSSDBase64
+* DongleNewCUSD
 * DongleStatus
 * DongleDeviceEntry
 * DongleShowDevicesComplete
@@ -133,6 +137,8 @@ Currently Supported Actions
 * DBDel
 * DBDelTree
 * DongleSendSMS
+* DongleSendUSSD
+* DongleSendPDU
 * DongleReload
 * DongleStop
 * DongleStart

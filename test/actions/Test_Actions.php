@@ -271,6 +271,36 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
+    public function can_dongle_send_pdu()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: DongleSendPDU',
+            'actionid: 1432.123',
+            'device: device',
+        	'pdu: pdu',
+            ''
+        )));
+	    $action = new \PAMI\Message\Action\DongleSendPDUAction('device', 'pdu');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_dongle_send_ussd()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: DongleSendUSSD',
+            'actionid: 1432.123',
+            'device: device',
+        	'ussd: ussd',
+            ''
+        )));
+	    $action = new \PAMI\Message\Action\DongleSendUSSDAction('device', 'ussd');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
     public function can_dongle_stop()
     {
         $write = array(implode("\r\n", array(

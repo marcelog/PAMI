@@ -130,6 +130,8 @@ use PAMI\Message\Action\DongleStartAction;
 use PAMI\Message\Action\DongleRestartAction;
 use PAMI\Message\Action\DongleStopAction;
 use PAMI\Message\Action\DongleResetAction;
+use PAMI\Message\Action\DongleSendUSSDAction;
+use PAMI\Message\Action\DongleSendPDUAction;
 
 class A implements IEventListener
 {
@@ -159,6 +161,8 @@ try
 	$a = new ClientImpl($options);
 	$a->registerEventListener(new A());
 	$a->open();
+	var_dump($a->send(new DongleSendUSSDAction('dongle01', '*101#')));
+	var_dump($a->send(new DongleSendPDUAction('dongle01', 'AT+CSMS=0 ')));
 	var_dump($a->send(new DongleRestartAction('now', 'dongle01')));
 	var_dump($a->send(new DongleResetAction('dongle01')));
 	var_dump($a->send(new DongleReloadAction('now')));
