@@ -71,7 +71,8 @@ class Test_Events extends \PHPUnit_Framework_TestCase
             'Hold', 'Hangup', 'ExtensionStatus', 'Dial', 'DAHDIShowChannels',
             'CoreShowChannelsComplete', 'CoreShowChannel', 'ChannelUpdate',
             'Agents', 'AgentsComplete', 'Agentlogoff', 'Agentlogin', 'AgentConnect',
-            'DongleSMSStatus', 'FullyBooted', 'DongleShowDevicesComplete', 'DongleDeviceEntry'
+            'DongleSMSStatus', 'FullyBooted', 'DongleShowDevicesComplete', 'DongleDeviceEntry',
+            'DongleStatus'
         );
         $eventTranslatedValues = array(
             'QueueMemberStatus' => array(
@@ -154,6 +155,11 @@ class Test_Events extends \PHPUnit_Framework_TestCase
             'DongleSMSStatus' => array(
                 'Privilege' => 'Privilege',
         		'Id' => 'Id',
+        		'Device' => 'Device',
+                'Status' => 'Status'
+            ),
+            'DongleStatus' => array(
+                'Privilege' => 'Privilege',
         		'Device' => 'Device',
                 'Status' => 'Status'
             ),

@@ -228,6 +228,49 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
+    public function can_dongle_reload()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: DongleReload',
+            'actionid: 1432.123',
+            'when: when',
+            ''
+        )));
+	    $action = new \PAMI\Message\Action\DongleReloadAction('when');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_dongle_stop()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: DongleStop',
+            'actionid: 1432.123',
+            'when: when',
+            'device: device',
+            ''
+        )));
+	    $action = new \PAMI\Message\Action\DongleStopAction('when', 'device');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_dongle_start()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: DongleStart',
+            'actionid: 1432.123',
+            'device: device',
+            ''
+        )));
+	    $action = new \PAMI\Message\Action\DongleStartAction('device');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
     public function can_dongle_sms_send()
     {
         $write = array(implode("\r\n", array(

@@ -125,6 +125,9 @@ use PAMI\Message\Action\EventsAction;
 use PAMI\Message\Action\VGMSMSTxAction;
 use PAMI\Message\Action\DongleSendSMSAction;
 use PAMI\Message\Action\DongleShowDevicesAction;
+use PAMI\Message\Action\DongleReloadAction;
+use PAMI\Message\Action\DongleStartAction;
+use PAMI\Message\Action\DongleStopAction;
 
 class A implements IEventListener
 {
@@ -154,8 +157,9 @@ try
 	$a = new ClientImpl($options);
 	$a->registerEventListener(new A());
 	$a->open();
-	var_dump($a->send(new DongleShowDevicesAction));
-	/*
+	var_dump($a->send(new DongleReloadAction('now')));
+	var_dump($a->send(new DongleStopAction('now', 'dongle01')));
+	var_dump($a->send(new DongleStartAction('dongle01')));
 	var_dump($a->send(new DongleSendSMSAction('dongle01', '+666666666', 'a message')));
 	var_dump($a->send(new ListCommandsAction()));
 	var_dump($a->send(new QueueStatusAction()));
@@ -252,7 +256,7 @@ try
     //$sms->setContent($msg);
     //$sms->setCellPhone($phone);
     //$a->send($sms);
-*/
+
 	$time = time();
 	while(true)//(time() - $time) < 60) // Wait for events.
 	{
