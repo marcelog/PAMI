@@ -242,6 +242,35 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
+    public function can_dongle_restart()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: DongleRestart',
+            'actionid: 1432.123',
+            'when: when',
+            'device: device',
+            ''
+        )));
+	    $action = new \PAMI\Message\Action\DongleRestartAction('when', 'device');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_dongle_reset()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: DongleReset',
+            'actionid: 1432.123',
+            'device: device',
+            ''
+        )));
+	    $action = new \PAMI\Message\Action\DongleResetAction('device');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
     public function can_dongle_stop()
     {
         $write = array(implode("\r\n", array(
