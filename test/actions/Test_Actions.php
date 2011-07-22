@@ -215,6 +215,22 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
+    public function can_dongle_sms_send()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: DongleSendSMS',
+            'actionid: 1432.123',
+            'device: device',
+            'number: number',
+            'message: message',
+            ''
+        )));
+	    $action = new \PAMI\Message\Action\DongleSendSMSAction('device', 'number', 'message');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
     public function can_core_status()
     {
         $write = array(implode("\r\n", array(

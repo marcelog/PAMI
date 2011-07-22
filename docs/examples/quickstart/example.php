@@ -26,8 +26,8 @@
  * limitations under the License.
  *
  */
-if ($argc != 5) {
-    echo "Use: $argv[0] <host> <port> <user> <pass>";
+if ($argc != 7) {
+    echo "Use: $argv[0] <host> <port> <user> <pass> <connect timeout> <read timeout>";
     exit (254);
 }
 
@@ -37,8 +37,8 @@ ini_set(
     implode(
         PATH_SEPARATOR,
         array(
+            implode(DIRECTORY_SEPARATOR, array('..', '..', '..', 'src', 'mg')),
             ini_get('include_path'),
-            implode(DIRECTORY_SEPARATOR, array('..', '..', '..', 'src', 'mg'))
         )
     )
 );
@@ -123,6 +123,7 @@ use PAMI\Message\Action\MeetmeMuteAction;
 use PAMI\Message\Action\MeetmeUnmuteAction;
 use PAMI\Message\Action\EventsAction;
 use PAMI\Message\Action\VGMSMSTxAction;
+use PAMI\Message\Action\DongleSendSMSAction;
 
 class A implements IEventListener
 {
@@ -145,15 +146,18 @@ try
         'port' => $argv[2],
         'username' => $argv[3],
         'secret' => $argv[4],
-        'connect_timeout' => 60,
-        'read_timeout' => 60,
+        'connect_timeout' => $argv[5],
+        'read_timeout' => $argv[6],
         'scheme' => 'tcp://' // try tls://
     );
 	$a = new ClientImpl($options);
 	$a->registerEventListener(new A());
 	$a->open();
-	var_dump($a->send(new QueueStatusAction()));
+	var_dump($a->send(new DongleSendSMSAction('dongle01', '+666666666', 'a message')));
 	var_dump($a->send(new ListCommandsAction()));
+	var_dump($a->send(new QueueStatusAction()));
+	var_dump($a->send(new QueueStatusAction()));
+	var_dum($a->send(new QueueStatusAction()));
 	var_dump($a->send(new CoreShowChannelsAction()));
 	var_dump($a->send(new SIPPeersAction()));
 	var_dump($a->send(new StatusAction()));

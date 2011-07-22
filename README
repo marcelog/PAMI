@@ -56,6 +56,7 @@ can still catch them. If you catch one of these, please report it!
 * CoreShowChannelComplete
 * DAHDIShowChannel
 * DAHDIShowChannelsComplete
+* DongleSendSMS
 * DBGetResponse
 * Dial
 * DTMF
@@ -127,6 +128,7 @@ Currently Supported Actions
 * DBPut
 * DBDel
 * DBDelTree
+* DongleSMSStatus
 * ExtensionState
 * CreateConfig
 * GetConfig
@@ -230,3 +232,5 @@ functionality and some other ami inconsistencies.
 * Matías Barletta, for the vgms support.
 
 * Eli Hunter, for helping in bringing in tls compatibility.
+
+* Freddy dafredmail at googlemail, for his help and testing environment to add dongle support.
