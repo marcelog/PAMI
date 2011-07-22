@@ -146,14 +146,14 @@
     </Package>
     <Package name="PAMI\Message\Action">
       <Stats>
-        <TotalClasses>79</TotalClasses>
-        <ConcreteClasses>78</ConcreteClasses>
+        <TotalClasses>82</TotalClasses>
+        <ConcreteClasses>81</ConcreteClasses>
         <AbstractClasses>1</AbstractClasses>
         <Ca>1</Ca>
         <Ce>1</Ce>
-        <A>0.0126582278481</A>
+        <A>0.0121951219512</A>
         <I>0.5</I>
-        <D>0.487341772152</D>
+        <D>0.487804878049</D>
       </Stats>
       <ConcreteClasses>
         <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/AbsoluteTimeoutAction.php">AbsoluteTimeoutAction</Class>
@@ -177,8 +177,11 @@
         <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/DBDelTreeAction.php">DBDelTreeAction</Class>
         <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/DBGetAction.php">DBGetAction</Class>
         <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/DBPutAction.php">DBPutAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/DongleReloadAction.php">DongleReloadAction</Class>
         <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/DongleSendSMSAction.php">DongleSendSMSAction</Class>
         <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/DongleShowDevicesAction.php">DongleShowDevicesAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/DongleStartAction.php">DongleStartAction</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/DongleStopAction.php">DongleStopAction</Class>
         <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/EventsAction.php">EventsAction</Class>
         <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/ExtensionStateAction.php">ExtensionStateAction</Class>
         <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/GetConfigAction.php">GetConfigAction</Class>
@@ -247,14 +250,14 @@
     </Package>
     <Package name="PAMI\Message\Event">
       <Stats>
-        <TotalClasses>67</TotalClasses>
-        <ConcreteClasses>66</ConcreteClasses>
+        <TotalClasses>68</TotalClasses>
+        <ConcreteClasses>67</ConcreteClasses>
         <AbstractClasses>1</AbstractClasses>
         <Ca>2</Ca>
         <Ce>1</Ce>
-        <A>0.0149253731343</A>
+        <A>0.0147058823529</A>
         <I>0.333333333333</I>
-        <D>0.651741293532</D>
+        <D>0.651960784314</D>
       </Stats>
       <ConcreteClasses>
         <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/AGIExecEvent.php">AGIExecEvent</Class>
@@ -275,6 +278,7 @@
         <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/DongleDeviceEntryEvent.php">DongleDeviceEntryEvent</Class>
         <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/DongleSMSStatusEvent.php">DongleSMSStatusEvent</Class>
         <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/DongleShowDevicesCompleteEvent.php">DongleShowDevicesCompleteEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/DongleStatusEvent.php">DongleStatusEvent</Class>
         <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/ExtensionStatusEvent.php">ExtensionStatusEvent</Class>
         <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/FullyBootedEvent.php">FullyBootedEvent</Class>
         <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/HangupEvent.php">HangupEvent</Class>
