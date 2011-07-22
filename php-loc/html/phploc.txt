@@ -1,28 +1,28 @@
 phploc 1.5.1 by Sebastian Bergmann.
 
 Directories:                                         11
-Files:                                              161
+Files:                                              165
 
-Lines of Code (LOC):                              14290
+Lines of Code (LOC):                              15122
   Cyclomatic Complexity / Lines of Code:           0.02
-Comment Lines of Code (CLOC):                      9939
-Non-Comment Lines of Code (NCLOC):                 4351
+Comment Lines of Code (CLOC):                     10429
+Non-Comment Lines of Code (NCLOC):                 4693
 
 Namespaces:                                          11
 Interfaces:                                           2
-Classes:                                            152
-  Abstract:                                           5 (3.29%)
-  Concrete:                                         147 (96.71%)
-  Average Class Length (NCLOC):                      28
-Methods:                                            628
+Classes:                                            156
+  Abstract:                                           5 (3.21%)
+  Concrete:                                         151 (96.79%)
+  Average Class Length (NCLOC):                      30
+Methods:                                            692
   Scope:
-    Non-Static:                                     617 (98.25%)
-    Static:                                          11 (1.75%)
+    Non-Static:                                     681 (98.41%)
+    Static:                                          11 (1.59%)
   Visibility:
-    Public:                                         609 (96.97%)
-    Non-Public:                                      19 (3.03%)
+    Public:                                         673 (97.25%)
+    Non-Public:                                      19 (2.75%)
   Average Method Length (NCLOC):                      6
-  Cyclomatic Complexity / Number of Methods:       1.11
+  Cyclomatic Complexity / Number of Methods:       1.10
 
 Anonymous Functions:                                  0
 Functions:                                            0
