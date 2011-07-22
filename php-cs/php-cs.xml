@@ -862,6 +862,10 @@
   <error line="30" column="16" severity="error" message="Constants must be uppercase; expected MESSAGE but found Message" source="Generic.NamingConventions.UpperCaseConstantNameSniff"/>
   <error line="30" column="24" severity="error" message="Constants must be uppercase; expected ACTION but found Action" source="Generic.NamingConventions.UpperCaseConstantNameSniff"/>
  </file>
+ <file name="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/DongleSendSMSAction.php">
+  <error line="30" column="16" severity="error" message="Constants must be uppercase; expected MESSAGE but found Message" source="Generic.NamingConventions.UpperCaseConstantNameSniff"/>
+  <error line="30" column="24" severity="error" message="Constants must be uppercase; expected ACTION but found Action" source="Generic.NamingConventions.UpperCaseConstantNameSniff"/>
+ </file>
  <file name="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/EventsAction.php">
   <error line="30" column="16" severity="error" message="Constants must be uppercase; expected MESSAGE but found Message" source="Generic.NamingConventions.UpperCaseConstantNameSniff"/>
   <error line="30" column="24" severity="error" message="Constants must be uppercase; expected ACTION but found Action" source="Generic.NamingConventions.UpperCaseConstantNameSniff"/>
@@ -1223,6 +1227,13 @@
   <error line="32" column="24" severity="error" message="Constants must be uppercase; expected EVENTMESSAGE but found EventMessage" source="Generic.NamingConventions.UpperCaseConstantNameSniff"/>
  </file>
  <file name="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/DialEvent.php">
+  <error line="30" column="16" severity="error" message="Constants must be uppercase; expected MESSAGE but found Message" source="Generic.NamingConventions.UpperCaseConstantNameSniff"/>
+  <error line="30" column="24" severity="error" message="Constants must be uppercase; expected EVENT but found Event" source="Generic.NamingConventions.UpperCaseConstantNameSniff"/>
+  <error line="32" column="10" severity="error" message="Constants must be uppercase; expected MESSAGE but found Message" source="Generic.NamingConventions.UpperCaseConstantNameSniff"/>
+  <error line="32" column="18" severity="error" message="Constants must be uppercase; expected EVENT but found Event" source="Generic.NamingConventions.UpperCaseConstantNameSniff"/>
+  <error line="32" column="24" severity="error" message="Constants must be uppercase; expected EVENTMESSAGE but found EventMessage" source="Generic.NamingConventions.UpperCaseConstantNameSniff"/>
+ </file>
+ <file name="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/DongleSMSStatusEvent.php">
   <error line="30" column="16" severity="error" message="Constants must be uppercase; expected MESSAGE but found Message" source="Generic.NamingConventions.UpperCaseConstantNameSniff"/>
   <error line="30" column="24" severity="error" message="Constants must be uppercase; expected EVENT but found Event" source="Generic.NamingConventions.UpperCaseConstantNameSniff"/>
   <error line="32" column="10" severity="error" message="Constants must be uppercase; expected MESSAGE but found Message" source="Generic.NamingConventions.UpperCaseConstantNameSniff"/>
