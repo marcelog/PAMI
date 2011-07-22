@@ -138,6 +138,7 @@ Currently Supported Actions
 * DongleStart
 * DongleRestart
 * DongleReset
+* DongleShowDevices
 * ExtensionState
 * CreateConfig
 * GetConfig
