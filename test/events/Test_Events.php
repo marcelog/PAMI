@@ -352,6 +352,8 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'ChannelState' => 'ChannelState',
                 'AccountCode' => 'AccountCode',
                 'Channel' => 'Channel',
+                'Context' => 'Context',
+                'Exten' => 'Exten',
                 'Privilege' => 'Privilege'
             ),
         	'Newexten' => array(
@@ -706,6 +708,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
             'NewCallerid' => array(
                 'CID-CallingPres' => 'CallerIdPres'
             ),
+            'Newchannel' => array('Exten' => 'Extension'),
         	'Newexten' => array(
                 'AppData' => 'ApplicationData',
                 'Exten' => 'Extension'

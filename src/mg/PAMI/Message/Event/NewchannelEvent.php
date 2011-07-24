@@ -126,6 +126,27 @@ class NewchannelEvent extends EventMessage
     }
 
     /**
+     * Returns key: 'Context'.
+     *
+     * @return string
+     */
+    public function getContext()
+    {
+        return $this->getKey('Context');
+    }
+
+    /**
+     * Returns key: 'Exten'.
+     *
+     * @return string
+     */
+    public function getExtension()
+    {
+        return $this->getKey('Exten');
+    }
+
+
+    /**
      * Constructor.
      *
      * @param string $rawContent Literal message as received from ami.
