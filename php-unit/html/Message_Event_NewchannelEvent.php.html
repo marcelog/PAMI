@@ -72,7 +72,7 @@
             </table>
           </td>
           <td class="coverPerHi">100.00%</td>
-          <td class="coverNumHi">9 / 9</td>
+          <td class="coverNumHi">11 / 11</td>
           <td class="crap"><acronym title="Change Risk Anti-Patterns (CRAP) Index">CRAP</acronym></td>
           <td class="coverBar" align="center" width="100">
             <table border="0" cellspacing="0" cellpadding="1">
@@ -82,7 +82,7 @@
             </table>
           </td>
           <td class="coverPerHi">100.00%</td>
-          <td class="coverNumHi">11 / 11</td>
+          <td class="coverNumHi">13 / 13</td>
         </tr>
 
         <tr>
@@ -107,7 +107,7 @@
             </table>
           </td>
           <td class="coverPerHi">100.00%</td>
-          <td class="coverNumHi">9 / 9</td>
+          <td class="coverNumHi">11 / 11</td>
           <td class="crap"></td>
           <td class="coverBar" align="center" width="100">
             <table border="0" cellspacing="0" cellpadding="1">
@@ -117,7 +117,7 @@
             </table>
           </td>
           <td class="coverPerHi">100.00%</td>
-          <td class="coverNumHi">11 / 11</td>
+          <td class="coverNumHi">13 / 13</td>
         </tr>
 
         <tr>
@@ -305,7 +305,53 @@
         </tr>
 
         <tr>
-          <td class="coverFile" colspan="4">&nbsp;<a href="#135">__construct($rawContent)</a></td>
+          <td class="coverFile" colspan="4">&nbsp;<a href="#133">getContext()</a></td>
+          <td class="coverBar" align="center" width="100">
+            <table border="0" cellspacing="0" cellpadding="1">
+              <tr>
+                <td class="coverBarOutline"><img src="chameleon.png" width="100" height="10" alt="100.00%"><img src="snow.png" width="0" height="10" alt="100.00%"></td>
+              </tr>
+            </table>
+          </td>
+          <td class="coverPerHi">100.00%</td>
+          <td class="coverNumHi">1 / 1</td>
+          <td class="crap">1</td>
+          <td class="coverBar" align="center" width="100">
+            <table border="0" cellspacing="0" cellpadding="1">
+              <tr>
+                <td class="coverBarOutline"><img src="chameleon.png" width="100" height="10" alt="100.00%"><img src="snow.png" width="0" height="10" alt="100.00%"></td>
+              </tr>
+            </table>
+          </td>
+          <td class="coverPerHi">100.00%</td>
+          <td class="coverNumHi">1 / 1</td>
+        </tr>
+
+        <tr>
+          <td class="coverFile" colspan="4">&nbsp;<a href="#143">getExtension()</a></td>
+          <td class="coverBar" align="center" width="100">
+            <table border="0" cellspacing="0" cellpadding="1">
+              <tr>
+                <td class="coverBarOutline"><img src="chameleon.png" width="100" height="10" alt="100.00%"><img src="snow.png" width="0" height="10" alt="100.00%"></td>
+              </tr>
+            </table>
+          </td>
+          <td class="coverPerHi">100.00%</td>
+          <td class="coverNumHi">1 / 1</td>
+          <td class="crap">1</td>
+          <td class="coverBar" align="center" width="100">
+            <table border="0" cellspacing="0" cellpadding="1">
+              <tr>
+                <td class="coverBarOutline"><img src="chameleon.png" width="100" height="10" alt="100.00%"><img src="snow.png" width="0" height="10" alt="100.00%"></td>
+              </tr>
+            </table>
+          </td>
+          <td class="coverPerHi">100.00%</td>
+          <td class="coverNumHi">1 / 1</td>
+        </tr>
+
+        <tr>
+          <td class="coverFile" colspan="4">&nbsp;<a href="#156">__construct($rawContent)</a></td>
           <td class="coverBar" align="center" width="100">
             <table border="0" cellspacing="0" cellpadding="1">
               <tr>
@@ -468,16 +514,38 @@
 <span class="lineNum" id="container126"><a name="126"></a><a href="#126" id="line126">     126</a> </span><span class="lineDeadCode">                :     }                                                                      </span>
 <span class="lineNum" id="container127"><a name="127"></a><a href="#127" id="line127">     127</a> </span>                :                                                                            
 <span class="lineNum" id="container128"><a name="128"></a><a href="#128" id="line128">     128</a> </span>                :     /**                                                                    
-<span class="lineNum" id="container129"><a name="129"></a><a href="#129" id="line129">     129</a> </span>                :      * Constructor.                                                        
+<span class="lineNum" id="container129"><a name="129"></a><a href="#129" id="line129">     129</a> </span>                :      * Returns key: 'Context'.                                             
 <span class="lineNum" id="container130"><a name="130"></a><a href="#130" id="line130">     130</a> </span>                :      *                                                                     
-<span class="lineNum" id="container131"><a name="131"></a><a href="#131" id="line131">     131</a> </span>                :      * @param string $rawContent Literal message as received from ami.     
-<span class="lineNum" id="container132"><a name="132"></a><a href="#132" id="line132">     132</a> </span>                :      *                                                                     
-<span class="lineNum" id="container133"><a name="133"></a><a href="#133" id="line133">     133</a> </span>                :      * @return void                                                        
-<span class="lineNum" id="container134"><a name="134"></a><a href="#134" id="line134">     134</a> </span>                :      */                                                                    
-<span class="lineNum" id="container135"><a name="135"></a><a href="#135" id="line135">     135</a> </span>                :     public function __construct($rawContent)                               
-<span class="lineNum" id="container136"><a name="136"></a><a href="#136" id="line136">     136</a> </span>                :     {                                                                      
-<span class="lineNum" id="container137"><a name="137"></a><a href="#137" id="line137">     137</a> </span><span class="lineCov">              1 :         parent::__construct($rawContent);                                  </span>
-<span class="lineNum" id="container138"><a name="138"></a><a href="#138" id="line138">     138</a> </span><span class="lineCov">              1 :     }                                                                      </span>
+<span class="lineNum" id="container131"><a name="131"></a><a href="#131" id="line131">     131</a> </span>                :      * @return string                                                      
+<span class="lineNum" id="container132"><a name="132"></a><a href="#132" id="line132">     132</a> </span>                :      */                                                                    
+<span class="lineNum" id="container133"><a name="133"></a><a href="#133" id="line133">     133</a> </span>                :     public function getContext()                                           
+<span class="lineNum" id="container134"><a name="134"></a><a href="#134" id="line134">     134</a> </span>                :     {                                                                      
+<span class="lineNum" id="container135"><a name="135"></a><a href="#135" id="line135">     135</a> </span><span class="lineCov">              1 :         return $this-&gt;getKey('Context');                                   </span>
+<span class="lineNum" id="container136"><a name="136"></a><a href="#136" id="line136">     136</a> </span><span class="lineDeadCode">                :     }                                                                      </span>
+<span class="lineNum" id="container137"><a name="137"></a><a href="#137" id="line137">     137</a> </span>                :                                                                            
+<span class="lineNum" id="container138"><a name="138"></a><a href="#138" id="line138">     138</a> </span>                :     /**                                                                    
+<span class="lineNum" id="container139"><a name="139"></a><a href="#139" id="line139">     139</a> </span>                :      * Returns key: 'Exten'.                                               
+<span class="lineNum" id="container140"><a name="140"></a><a href="#140" id="line140">     140</a> </span>                :      *                                                                     
+<span class="lineNum" id="container141"><a name="141"></a><a href="#141" id="line141">     141</a> </span>                :      * @return string                                                      
+<span class="lineNum" id="container142"><a name="142"></a><a href="#142" id="line142">     142</a> </span>                :      */                                                                    
+<span class="lineNum" id="container143"><a name="143"></a><a href="#143" id="line143">     143</a> </span>                :     public function getExtension()                                         
+<span class="lineNum" id="container144"><a name="144"></a><a href="#144" id="line144">     144</a> </span>                :     {                                                                      
+<span class="lineNum" id="container145"><a name="145"></a><a href="#145" id="line145">     145</a> </span><span class="lineCov">              1 :         return $this-&gt;getKey('Exten');                                     </span>
+<span class="lineNum" id="container146"><a name="146"></a><a href="#146" id="line146">     146</a> </span><span class="lineDeadCode">                :     }                                                                      </span>
+<span class="lineNum" id="container147"><a name="147"></a><a href="#147" id="line147">     147</a> </span>                :                                                                            
+<span class="lineNum" id="container148"><a name="148"></a><a href="#148" id="line148">     148</a> </span>                :                                                                            
+<span class="lineNum" id="container149"><a name="149"></a><a href="#149" id="line149">     149</a> </span>                :     /**                                                                    
+<span class="lineNum" id="container150"><a name="150"></a><a href="#150" id="line150">     150</a> </span>                :      * Constructor.                                                        
+<span class="lineNum" id="container151"><a name="151"></a><a href="#151" id="line151">     151</a> </span>                :      *                                                                     
+<span class="lineNum" id="container152"><a name="152"></a><a href="#152" id="line152">     152</a> </span>                :      * @param string $rawContent Literal message as received from ami.     
+<span class="lineNum" id="container153"><a name="153"></a><a href="#153" id="line153">     153</a> </span>                :      *                                                                     
+<span class="lineNum" id="container154"><a name="154"></a><a href="#154" id="line154">     154</a> </span>                :      * @return void                                                        
+<span class="lineNum" id="container155"><a name="155"></a><a href="#155" id="line155">     155</a> </span>                :      */                                                                    
+<span class="lineNum" id="container156"><a name="156"></a><a href="#156" id="line156">     156</a> </span>                :     public function __construct($rawContent)                               
+<span class="lineNum" id="container157"><a name="157"></a><a href="#157" id="line157">     157</a> </span>                :     {                                                                      
+<span class="lineNum" id="container158"><a name="158"></a><a href="#158" id="line158">     158</a> </span><span class="lineCov">              1 :         parent::__construct($rawContent);                                  </span>
+<span class="lineNum" id="container159"><a name="159"></a><a href="#159" id="line159">     159</a> </span><span class="lineCov">              1 :     }                                                                      </span>
+<span class="lineNum" id="container160"><a name="160"></a><a href="#160" id="line160">     160</a> </span>                : }                                                                          
 
 </pre>
         </td>
@@ -486,7 +554,7 @@
 
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""></td></tr>
-      <tr><td class="versionInfo">Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage 1.0.4</a> using <a href="http://www.php.net/" target="_top">PHP 5.3.3</a> and PHPUnit 3.5.13 at Fri Jul 22 17:22:31 ART 2011.</td></tr>
+      <tr><td class="versionInfo">Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage 1.0.4</a> using <a href="http://www.php.net/" target="_top">PHP 5.3.3</a> and PHPUnit 3.5.13 at Sun Jul 24 17:00:41 ART 2011.</td></tr>
     </table>
 
     <br />
@@ -541,13 +609,23 @@
           "body": "<ul><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Events::can_report_events</li></ul>",
           "footer": ""
         },
-        "panel137": {
-          "header": "1 test covers line 137",
+        "panel135": {
+          "header": "1 test covers line 135",
           "body": "<ul><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Events::can_report_events</li></ul>",
           "footer": ""
         },
-        "panel138": {
-          "header": "1 test covers line 138",
+        "panel145": {
+          "header": "1 test covers line 145",
+          "body": "<ul><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Events::can_report_events</li></ul>",
+          "footer": ""
+        },
+        "panel158": {
+          "header": "1 test covers line 158",
+          "body": "<ul><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Events::can_report_events</li></ul>",
+          "footer": ""
+        },
+        "panel159": {
+          "header": "1 test covers line 159",
           "body": "<ul><li class=\"testPassed\">PAMI\\Client\\Impl\\Test_Events::can_report_events</li></ul>",
           "footer": ""
         },
