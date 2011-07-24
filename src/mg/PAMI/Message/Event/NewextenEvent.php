@@ -72,7 +72,7 @@ class NewextenEvent extends EventMessage
      */
     public function getExtension()
     {
-        return $this->getKey('Exten');
+        return $this->getKey('Extension');
     }
 
     /**

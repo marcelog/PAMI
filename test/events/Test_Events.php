@@ -362,7 +362,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'AppData' => 'AppData',
                 'Application' => 'Application',
                 'Priority' => 'Priority',
-                'Exten' => 'Exten',
+                'Extension' => 'Extension',
                 'Context' => 'Context',
         		'UniqueID' => 'UniqueID',
             ),
@@ -711,7 +711,6 @@ class Test_Events extends \PHPUnit_Framework_TestCase
             'Newchannel' => array('Exten' => 'Extension'),
         	'Newexten' => array(
                 'AppData' => 'ApplicationData',
-                'Exten' => 'Extension'
             ),
             'QueueMemberStatus' => array(
                 'Paused' => 'Pause'
