@@ -149,7 +149,7 @@ abstract class Message
 	 *
 	 * @return string
 	 */
-	protected function getKey($key)
+	public function getKey($key)
 	{
 	    $key = strtolower($key);
 	    if (!isset($this->keys[$key])) {
