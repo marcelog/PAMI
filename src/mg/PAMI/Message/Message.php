@@ -163,7 +163,7 @@ abstract class Message
 	 *
 	 * @return string[]
 	 */
-	protected function getKeys()
+	public function getKeys()
 	{
 	    return $this->keys;
 	}
@@ -173,7 +173,7 @@ abstract class Message
 	 *
 	 * @return string[]
 	 */
-	protected function getVariables()
+	public function getVariables()
 	{
 	    return $this->variables;
 	}
