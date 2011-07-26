@@ -187,9 +187,9 @@
 		<div class="info-box-body">
 			<div class="var-summary">
 																								<div class="var-title">
-					<img src="../media/images/PrivateVariable.png" alt=" " />
+					<img src="../media/images/Variable.png" alt=" " />
 					<span class="var-type">string</span>
-					<a href="#$_rawContent" title="details" class="var-name">$_rawContent</a>
+					<a href="#$rawContent" title="details" class="var-name">$rawContent</a>
 				</div>
 											</div>
 		</div>
@@ -210,7 +210,7 @@
 		</div>
 		<div class="info-box-body">			
 			<div class="method-summary">
-																																							
+																																															
 				<div class="method-definition">
 					<img src="../media/images/Constructor.png" alt=" "/>
 											<span class="method-result">void</span>
@@ -229,6 +229,13 @@
 					<img src="../media/images/Method.png" alt=" "/>
 											<span class="method-result">string</span>
 										<a href="#getRawContent" title="details" class="method-name">getRawContent</a>
+										()
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string[]</span>
+										<a href="#__sleep" title="details" class="method-name">__sleep</a>
 										()
 									</div>
 											</div>
@@ -252,14 +259,14 @@
 					</div>
 		<div class="info-box-body">
 			
-<a name="var$_rawContent" id="$_rawContent"><!-- --></A>
+<a name="var$rawContent" id="$rawContent"><!-- --></A>
 <div class="oddrow">
 
 	<div class="var-header">
-		<img src="../media/images/PrivateVariable.png" />
+		<img src="../media/images/Variable.png" />
 		<span class="var-title">
 			<span class="var-type">string</span>
-			<span class="var-name">$_rawContent</span>
+			<span class="var-name">$rawContent</span>
 						(line <span class="line-number">48</span>)
 		</span>
 	</div>
@@ -267,7 +274,7 @@
 	<!-- ========== Info from phpDoc block ========= -->
 <p class="short-description">Holds original message.</p>
 	<ul class="tags">
-				<li><span class="field">access:</span> private</li>
+				<li><span class="field">access:</span> protected</li>
 			</ul>
 	
 	
@@ -279,21 +286,21 @@
 				<A NAME='inherited_vars'><!-- --></A>
 									<p>Inherited from <span class="classname"><a href="../Message/Message.html">Message</a></span></p>
 					<blockquote>
-													<img src="../media/images/PrivateVariable.png" />
+													<img src="../media/images/Variable.png" />
 							<span class="var-title">
-								<span class="var-name"><a href="../Message/Message.html#var$_createdDate">Message::$_createdDate</a></span><br>
+								<span class="var-name"><a href="../Message/Message.html#var$createdDate">Message::$createdDate</a></span><br>
 							</span>
-													<img src="../media/images/PrivateVariable.png" />
+													<img src="../media/images/Variable.png" />
 							<span class="var-title">
-								<span class="var-name"><a href="../Message/Message.html#var$_keys">Message::$_keys</a></span><br>
+								<span class="var-name"><a href="../Message/Message.html#var$keys">Message::$keys</a></span><br>
 							</span>
-													<img src="../media/images/PrivateVariable.png" />
+													<img src="../media/images/Variable.png" />
 							<span class="var-title">
-								<span class="var-name"><a href="../Message/Message.html#var$_lines">Message::$_lines</a></span><br>
+								<span class="var-name"><a href="../Message/Message.html#var$lines">Message::$lines</a></span><br>
 							</span>
-													<img src="../media/images/PrivateVariable.png" />
+													<img src="../media/images/Variable.png" />
 							<span class="var-title">
-								<span class="var-name"><a href="../Message/Message.html#var$_variables">Message::$_variables</a></span><br>
+								<span class="var-name"><a href="../Message/Message.html#var$variables">Message::$variables</a></span><br>
 							</span>
 											</blockquote> 
 										
@@ -319,7 +326,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Constructor.png" />
-		<span class="method-title">Constructor __construct</span> (line <span class="line-number">78</span>)
+		<span class="method-title">Constructor __construct</span> (line <span class="line-number">90</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -650,7 +657,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">getEventList</span> (line <span class="line-number">56</span>)
+		<span class="method-title">getEventList</span> (line <span class="line-number">68</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -675,7 +682,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">getRawContent</span> (line <span class="line-number">66</span>)
+		<span class="method-title">getRawContent</span> (line <span class="line-number">78</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -694,6 +701,45 @@
 	
 		
 			
+	</div>
+<a name="method__sleep" id="__sleep"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">__sleep</span> (line <span class="line-number">55</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Serialize function.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string[]</span>
+		<span class="method-name">
+			__sleep
+		</span>
+				()
+			</div>
+	
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../Message/Message.html#method__sleep">Message::__sleep()</a></dt>
+						<dd>Serialize function.</dd>
+					</dl>
+			
+			<hr class="separator" />
+		<div class="notes">Redefined in descendants as:</div>
+		<ul class="redefinitions">
+					<li>
+				<a href="../Message/Response/ResponseMessage.html#method__sleep">ResponseMessage::__sleep()</a>
+								: Serialize function.
+							</li>
+				</ul>
 	</div>
 							<h4>Inherited Methods</h4>
 				<a name='inherited_methods'><!-- --></a>	
@@ -722,6 +768,8 @@
 							<span class="method-name"><a href="../Message/Message.html#methodsetKey">Message::setKey()</a></span><br>
 													<img src="../media/images/Method.png" alt=" "/>
 							<span class="method-name"><a href="../Message/Message.html#methodsetVariable">Message::setVariable()</a></span><br>
+													<img src="../media/images/Method.png" alt=" "/>
+							<span class="method-name"><a href="../Message/Message.html#method__sleep">Message::__sleep()</a></span><br>
 											</blockquote>
 										
 		</div>
@@ -760,7 +808,7 @@
 	</div>
 	
 	<p class="notes" id="credit">
-		Documentation generated on Sun, 24 Jul 2011 19:04:59 -0300 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+		Documentation generated on Tue, 26 Jul 2011 10:37:36 -0300 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
 	</p>
 	</div></body>
 </html>
