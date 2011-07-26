@@ -45,7 +45,19 @@ abstract class IncomingMessage extends Message
      * Holds original message.
      * @var string
      */
-    private $_rawContent;
+    protected $rawContent;
+
+    /**
+     * Serialize function.
+     *
+     * @return string[]
+     */
+    public function __sleep()
+    {
+        $ret = parent::__sleep();
+        $ret[] = 'rawContent';
+        return $ret;
+    }
 
     /**
      * Returns key 'EventList'. In respones, this will surely be a "start". In
@@ -65,7 +77,7 @@ abstract class IncomingMessage extends Message
      */
     public function getRawContent()
     {
-        return $this->_rawContent;
+        return $this->rawContent;
     }
 
     /**
@@ -78,7 +90,7 @@ abstract class IncomingMessage extends Message
     public function __construct($rawContent)
     {
         parent::__construct();
-        $this->_rawContent = $rawContent;
+        $this->rawContent = $rawContent;
         $lines = explode(Message::EOL, $rawContent);
         foreach ($lines as $line) {
             $content = explode(':', $line);

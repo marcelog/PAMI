@@ -523,6 +523,59 @@ class Test_Client extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
+    public function can_serialize_response_and_events()
+    {
+        global $mock_stream_socket_client;
+        global $mock_stream_set_blocking;
+        global $mockTime;
+        global $standardAMIStart;
+        $mockTime = true;
+        $mock_stream_socket_client = true;
+        $mock_stream_set_blocking = true;
+        $options = array(
+            'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties',
+        	'host' => '2.3.4.5',
+            'scheme' => 'tcp://',
+        	'port' => 9999,
+        	'username' => 'asd',
+        	'secret' => 'asd',
+            'connect_timeout' => 10,
+        	'read_timeout' => 10
+        );
+        $write = array(
+        	"action: Login\r\nactionid: 1432.123\r\nusername: asd\r\nsecret: asd\r\n"
+        );
+        setFgetsMock($standardAMIStart, $write);
+        $client = new \PAMI\Client\Impl\ClientImpl($options);
+        $client->registerEventListener(new SomeListenerClass);
+	    $client->open();
+        $event = array(
+			'Response: Success',
+			'ActionID: 1432.123',
+			'Eventlist: start',
+			'Message: Channels will follow',
+			'',
+			'Event: CoreShowChannelsComplete',
+			'EventList: Complete',
+			'ListItems: 0',
+			'ActionID: 1432.123',
+			''
+        );
+        $write = array(
+        	"action: CoreShowChannels\r\nactionid: 1432.123\r\n"
+        );
+        setFgetsMock($event, $write);
+	    $result = $client->send(new \PAMI\Message\Action\CoreShowChannelsAction);
+        $ser = serialize($result);
+        $result2 = unserialize($ser);
+        $events = $result2->getEvents();
+        $this->assertEquals($result2->getMessage(), 'Channels will follow');
+        $this->assertEquals($events[0]->getName(), 'CoreShowChannelsComplete');
+        $this->assertEquals($events[0]->getListItems(), 0);
+    }
+    /**
+     * @test
+     */
     public function can_get_set_variable()
     {
         $now = time();

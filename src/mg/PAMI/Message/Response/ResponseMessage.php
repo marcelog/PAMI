@@ -60,6 +60,19 @@ class ResponseMessage extends IncomingMessage
     private $_completed;
 
     /**
+     * Serialize function.
+     *
+     * @return string[]
+     */
+    public function __sleep()
+    {
+        $ret = parent::__sleep();
+        $ret[] = '_completed';
+        $ret[] = '_events';
+        return $ret;
+    }
+
+    /**
      * True if this response is complete. A response is considered complete
      * if it's not a list OR it's a list with its last child event containing
      * an EventList = Complete.

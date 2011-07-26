@@ -58,25 +58,35 @@ abstract class Message
 	 * or received literally.
 	 * @var string[]
 	 */
-	private $_lines;
+	protected $lines;
 
 	/**
 	 * Metadata. Message variables (key/value).
 	 * @var string[]
 	 */
-	private $_variables;
+	protected $variables;
 
 	/**
 	 * Metadata. Message "keys" i.e: Action: login
 	 * @var string[]
 	 */
-	private $_keys;
+	protected $keys;
 
 	/**
 	 * Created date (unix timestamp).
 	 * @var integer
 	 */
-	private $_createdDate;
+	protected $createdDate;
+
+    /**
+     * Serialize function.
+     *
+     * @return string[]
+     */
+    public function __sleep()
+    {
+        return array('lines', 'variables', 'keys', 'createdDate');
+    }
 
 	/**
 	 * Returns created date.
@@ -85,7 +95,7 @@ abstract class Message
 	 */
 	public function getCreatedDate()
 	{
-	    return $this->_createdDate;
+	    return $this->createdDate;
 	}
 
 	/**
@@ -99,7 +109,7 @@ abstract class Message
 	public function setVariable($key, $value)
 	{
 	    $key = strtolower($key);
-	    $this->_variables[$key] = $value;
+	    $this->variables[$key] = $value;
 	}
 
 	/**
@@ -112,10 +122,10 @@ abstract class Message
 	public function getVariable($key)
 	{
 	    $key = strtolower($key);
-		if (!isset($this->_variables[$key])) {
+		if (!isset($this->variables[$key])) {
 		    return null;
 		}
-		return $this->_variables[$key];
+		return $this->variables[$key];
 	}
 
 	/**
@@ -129,7 +139,7 @@ abstract class Message
 	protected function setKey($key, $value)
 	{
 	    $key = strtolower((string)$key);
-	    $this->_keys[$key] = (string)$value;
+	    $this->keys[$key] = (string)$value;
 	}
 
 	/**
@@ -142,10 +152,10 @@ abstract class Message
 	protected function getKey($key)
 	{
 	    $key = strtolower($key);
-	    if (!isset($this->_keys[$key])) {
+	    if (!isset($this->keys[$key])) {
 		    return null;
 		}
-		return (string)$this->_keys[$key];
+		return (string)$this->keys[$key];
 	}
 
 	/**
@@ -155,7 +165,7 @@ abstract class Message
 	 */
 	protected function getKeys()
 	{
-	    return $this->_keys;
+	    return $this->keys;
 	}
 
 	/**
@@ -165,7 +175,7 @@ abstract class Message
 	 */
 	protected function getVariables()
 	{
-	    return $this->_variables;
+	    return $this->variables;
 	}
 
 	/**
@@ -214,9 +224,9 @@ abstract class Message
 	 */
 	public function __construct()
 	{
-		$this->_lines = array();
-		$this->_variables = array();
-		$this->_keys = array();
-		$this->_createdDate = time();
+		$this->lines = array();
+		$this->variables = array();
+		$this->keys = array();
+		$this->createdDate = time();
 	}
 }
