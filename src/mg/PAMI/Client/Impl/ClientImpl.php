@@ -312,6 +312,12 @@ class ClientImpl implements IClient
     	    } else {
     	        $response->addEvent($event);
     	    }
+	    } else { // broken ami.. sending a response with events without Event and ActionId
+            $bMsg = 'Event: ResponseEvent' . "\r\n";
+            $bMsg .= 'ActionId: ' . $this->_lastActionId . "\r\n" . $aMsg;
+            $event = $this->_messageToEvent($bMsg);
+            $response = $this->findResponse($event);
+            $response->addEvent($event);
 	    }
 	    if ($this->_logger->isDebugEnabled()) {
    	        $this->_logger->debug('----------------');
