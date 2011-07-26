@@ -404,220 +404,211 @@
   <error line="314" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
   <error line="315" column="6" severity="error" message="Line indented incorrectly; expected at least 8 spaces, found 5" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
   <error line="315" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="316" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="316" column="6" severity="error" message="Line indented incorrectly; expected 8 spaces, found 5" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="317" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="318" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="319" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="321" column="2" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 1" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="315" column="8" severity="error" message="Line indented incorrectly; expected 8 spaces, found 5" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="315" column="15" severity="warning" message="Line exceeds 80 characters; contains 87 characters" source="PEAR.Files.LineLengthSniff"/>
   <error line="321" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="322" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="323" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="324" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="325" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="326" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="327" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="328" column="2" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 1" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="328" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="328" column="12" severity="error" message="Line indented incorrectly; expected 4 spaces, found 1" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="329" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="330" column="6" severity="error" message="Line indented incorrectly; expected at least 8 spaces, found 5" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="330" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="322" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="322" column="6" severity="error" message="Line indented incorrectly; expected 8 spaces, found 5" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="323" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="324" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="325" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="327" column="2" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 1" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="327" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="328" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="329" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="330" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="331" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="332" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="333" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="334" column="2" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 1" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="334" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="334" column="12" severity="error" message="Line indented incorrectly; expected 4 spaces, found 1" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
   <error line="335" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="337" column="2" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 1" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="337" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="338" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="339" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="340" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="341" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="342" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="343" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="344" column="2" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 1" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="344" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="344" column="12" severity="error" message="Line indented incorrectly; expected 4 spaces, found 1" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="345" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="349" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="351" column="2" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 1" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="336" column="6" severity="error" message="Line indented incorrectly; expected at least 8 spaces, found 5" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="336" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="341" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="343" column="2" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 1" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="343" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="344" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="345" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="346" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="347" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="348" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="349" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="350" column="2" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 1" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="350" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="350" column="12" severity="error" message="Line indented incorrectly; expected 4 spaces, found 1" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
   <error line="351" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="352" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="353" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="354" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="355" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="356" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="357" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="358" column="2" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 1" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="358" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="358" column="10" severity="error" message="Line indented incorrectly; expected 4 spaces, found 1" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="359" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="361" column="6" severity="error" message="Line indented incorrectly; expected at least 8 spaces, found 5" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="361" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="362" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="362" column="6" severity="error" message="Line indented incorrectly; expected 8 spaces, found 5" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="363" column="10" severity="error" message="Line indented incorrectly; expected at least 12 spaces, found 9" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="363" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="364" column="10" severity="error" message="Line indented incorrectly; expected at least 12 spaces, found 9" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="355" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="357" column="2" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 1" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="357" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="358" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="359" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="360" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="361" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="362" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="363" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="364" column="2" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 1" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
   <error line="364" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="364" column="10" severity="error" message="Line indented incorrectly; expected 4 spaces, found 1" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
   <error line="365" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="366" column="6" severity="error" message="Line indented incorrectly; expected at least 8 spaces, found 5" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="366" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="367" column="6" severity="error" message="Line indented incorrectly; expected at least 8 spaces, found 5" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
   <error line="367" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="369" column="2" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 1" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="368" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="368" column="6" severity="error" message="Line indented incorrectly; expected 8 spaces, found 5" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="369" column="10" severity="error" message="Line indented incorrectly; expected at least 12 spaces, found 9" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
   <error line="369" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="370" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="371" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="372" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="373" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="374" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="375" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="376" column="2" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 1" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="376" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="376" column="10" severity="error" message="Line indented incorrectly; expected 4 spaces, found 1" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="377" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="379" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="381" column="2" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 1" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="381" column="2" severity="error" message="Doc comment for &quot;$message&quot; missing" source="PEAR.Commenting.FunctionCommentSniff"/>
-  <error line="381" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="382" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="383" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="384" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="385" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="386" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="387" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="370" column="10" severity="error" message="Line indented incorrectly; expected at least 12 spaces, found 9" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="370" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="371" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="372" column="6" severity="error" message="Line indented incorrectly; expected at least 8 spaces, found 5" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="372" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="373" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="375" column="2" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 1" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="375" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="376" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="377" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="378" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="379" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="380" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="381" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="382" column="2" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 1" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="382" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="382" column="10" severity="error" message="Line indented incorrectly; expected 4 spaces, found 1" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="383" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="385" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="387" column="2" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 1" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="387" column="2" severity="error" message="Doc comment for &quot;$message&quot; missing" source="PEAR.Commenting.FunctionCommentSniff"/>
+  <error line="387" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
   <error line="388" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="389" column="2" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 1" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="389" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="389" column="12" severity="error" message="Line indented incorrectly; expected 4 spaces, found 1" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="390" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="391" column="6" severity="error" message="Line indented incorrectly; expected at least 8 spaces, found 5" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="391" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="392" column="6" severity="error" message="Line indented incorrectly; expected at least 8 spaces, found 5" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="392" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="393" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="393" column="6" severity="error" message="Line indented incorrectly; expected 8 spaces, found 5" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="394" column="10" severity="error" message="Line indented incorrectly; expected at least 12 spaces, found 9" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="394" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="389" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="390" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="391" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="392" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="393" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="394" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="395" column="2" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 1" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
   <error line="395" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="395" column="10" severity="error" message="Line indented incorrectly; expected 12 spaces, found 9" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="396" column="14" severity="error" message="Line indented incorrectly; expected at least 16 spaces, found 13" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="395" column="12" severity="error" message="Line indented incorrectly; expected 4 spaces, found 1" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
   <error line="396" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="397" column="14" severity="error" message="Line indented incorrectly; expected at least 16 spaces, found 13" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="397" column="6" severity="error" message="Line indented incorrectly; expected at least 8 spaces, found 5" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
   <error line="397" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="398" column="6" severity="error" message="Line indented incorrectly; expected at least 8 spaces, found 5" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
   <error line="398" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
   <error line="399" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="400" column="6" severity="error" message="Line indented incorrectly; expected at least 8 spaces, found 5" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="399" column="6" severity="error" message="Line indented incorrectly; expected 8 spaces, found 5" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="400" column="10" severity="error" message="Line indented incorrectly; expected at least 12 spaces, found 9" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
   <error line="400" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
   <error line="401" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="403" column="2" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 1" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="401" column="10" severity="error" message="Line indented incorrectly; expected 12 spaces, found 9" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="402" column="14" severity="error" message="Line indented incorrectly; expected at least 16 spaces, found 13" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="402" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="403" column="14" severity="error" message="Line indented incorrectly; expected at least 16 spaces, found 13" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
   <error line="403" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="404" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="405" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="406" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="407" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="408" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="409" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="404" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="405" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="406" column="6" severity="error" message="Line indented incorrectly; expected at least 8 spaces, found 5" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="406" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="407" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="409" column="2" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 1" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="409" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
   <error line="410" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
   <error line="411" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="412" column="2" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 1" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="412" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="412" column="9" severity="error" message="Line indented incorrectly; expected 4 spaces, found 1" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="413" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="414" column="6" severity="error" message="Line indented incorrectly; expected at least 8 spaces, found 5" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="414" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="415" column="6" severity="error" message="Line indented incorrectly; expected at least 8 spaces, found 5" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="415" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="416" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="416" column="6" severity="error" message="Line indented incorrectly; expected 8 spaces, found 5" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="417" column="10" severity="error" message="Line indented incorrectly; expected at least 12 spaces, found 9" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="417" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="418" column="11" severity="error" message="Line indented incorrectly; expected at least 12 spaces, found 10" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="418" column="1" severity="error" message="Multi-line function call not indented correctly; expected 13 spaces but found 10" source="PEAR.Functions.FunctionCallSignatureSniff"/>
+  <error line="412" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="413" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="414" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="415" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="416" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="417" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="418" column="2" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 1" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
   <error line="418" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="419" column="10" severity="error" message="Line indented incorrectly; expected at least 12 spaces, found 9" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="418" column="9" severity="error" message="Line indented incorrectly; expected 4 spaces, found 1" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
   <error line="419" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="420" column="9" severity="error" message="Closing brace indented incorrectly; expected 5 spaces, found 8" source="PEAR.WhiteSpace.ScopeClosingBraceSniff"/>
+  <error line="420" column="6" severity="error" message="Line indented incorrectly; expected at least 8 spaces, found 5" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="420" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
   <error line="421" column="6" severity="error" message="Line indented incorrectly; expected at least 8 spaces, found 5" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
   <error line="421" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
   <error line="422" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
   <error line="422" column="6" severity="error" message="Line indented incorrectly; expected 8 spaces, found 5" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
   <error line="423" column="10" severity="error" message="Line indented incorrectly; expected at least 12 spaces, found 9" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
   <error line="423" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="424" column="11" severity="error" message="Line indented incorrectly; expected at least 12 spaces, found 10" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="424" column="1" severity="error" message="Multi-line function call not indented correctly; expected 13 spaces but found 10" source="PEAR.Functions.FunctionCallSignatureSniff"/>
   <error line="424" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="425" column="6" severity="error" message="Line indented incorrectly; expected at least 8 spaces, found 5" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="425" column="10" severity="error" message="Line indented incorrectly; expected at least 12 spaces, found 9" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
   <error line="425" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="426" column="1" severity="error" message="Line indented incorrectly; expected at least 8 spaces, found 6" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="427" column="1" severity="error" message="Line indented incorrectly; expected at least 8 spaces, found 6" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="428" column="6" severity="error" message="Line indented incorrectly; expected at least 8 spaces, found 5" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="426" column="9" severity="error" message="Closing brace indented incorrectly; expected 5 spaces, found 8" source="PEAR.WhiteSpace.ScopeClosingBraceSniff"/>
+  <error line="427" column="6" severity="error" message="Line indented incorrectly; expected at least 8 spaces, found 5" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="427" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
   <error line="428" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="428" column="6" severity="error" message="Line indented incorrectly; expected 8 spaces, found 5" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="429" column="10" severity="error" message="Line indented incorrectly; expected at least 12 spaces, found 9" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
   <error line="429" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="429" column="6" severity="error" message="Expected &quot;while (...) {\n&quot;; found &quot;while(...) {\n&quot;" source="PEAR.ControlStructures.ControlSignatureSniff"/>
-  <error line="429" column="6" severity="error" message="Line indented incorrectly; expected 8 spaces, found 5" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="430" column="10" severity="error" message="Line indented incorrectly; expected at least 12 spaces, found 9" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
   <error line="430" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="431" column="10" severity="error" message="Line indented incorrectly; expected at least 12 spaces, found 9" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="431" column="6" severity="error" message="Line indented incorrectly; expected at least 8 spaces, found 5" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
   <error line="431" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="432" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="432" column="10" severity="error" message="Line indented incorrectly; expected 12 spaces, found 9" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="433" column="14" severity="error" message="Line indented incorrectly; expected at least 16 spaces, found 13" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="433" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="434" column="14" severity="error" message="Line indented incorrectly; expected at least 16 spaces, found 13" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="432" column="1" severity="error" message="Line indented incorrectly; expected at least 8 spaces, found 6" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="433" column="1" severity="error" message="Line indented incorrectly; expected at least 8 spaces, found 6" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="434" column="6" severity="error" message="Line indented incorrectly; expected at least 8 spaces, found 5" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
   <error line="434" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
   <error line="435" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="435" column="6" severity="error" message="Expected &quot;while (...) {\n&quot;; found &quot;while(...) {\n&quot;" source="PEAR.ControlStructures.ControlSignatureSniff"/>
+  <error line="435" column="6" severity="error" message="Line indented incorrectly; expected 8 spaces, found 5" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
   <error line="436" column="10" severity="error" message="Line indented incorrectly; expected at least 12 spaces, found 9" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
   <error line="436" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="437" column="10" severity="error" message="Line indented incorrectly; expected at least 12 spaces, found 9" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
   <error line="437" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="437" column="10" severity="error" message="Line indented incorrectly; expected 12 spaces, found 9" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="438" column="14" severity="error" message="Line indented incorrectly; expected at least 16 spaces, found 13" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
   <error line="438" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="438" column="10" severity="error" message="Line indented incorrectly; expected 12 spaces, found 9" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="439" column="14" severity="error" message="Line indented incorrectly; expected at least 16 spaces, found 13" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
   <error line="439" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="440" column="14" severity="error" message="Line indented incorrectly; expected at least 16 spaces, found 13" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
   <error line="440" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="441" column="6" severity="error" message="Line indented incorrectly; expected at least 8 spaces, found 5" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
   <error line="441" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="442" column="10" severity="error" message="Line indented incorrectly; expected at least 12 spaces, found 9" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
   <error line="442" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="444" column="2" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 1" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="443" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="443" column="10" severity="error" message="Line indented incorrectly; expected 12 spaces, found 9" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="444" column="14" severity="error" message="Line indented incorrectly; expected at least 16 spaces, found 13" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
   <error line="444" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="445" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="446" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="447" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="448" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="449" column="2" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 1" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="449" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="449" column="9" severity="error" message="Line indented incorrectly; expected 4 spaces, found 1" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="445" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="446" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="447" column="6" severity="error" message="Line indented incorrectly; expected at least 8 spaces, found 5" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="447" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="448" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="450" column="2" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 1" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
   <error line="450" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="451" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="451" column="6" severity="error" message="Line indented incorrectly; expected 8 spaces, found 5" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="452" column="10" severity="error" message="Line indented incorrectly; expected at least 12 spaces, found 9" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="452" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="453" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="454" column="6" severity="error" message="Line indented incorrectly; expected at least 8 spaces, found 5" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="454" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="455" column="3" severity="error" message="Line indented incorrectly; expected at least 8 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="451" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="452" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="453" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="454" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="455" column="2" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 1" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
   <error line="455" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="455" column="9" severity="error" message="Line indented incorrectly; expected 4 spaces, found 1" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
   <error line="456" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="458" column="2" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 1" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="457" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="457" column="6" severity="error" message="Line indented incorrectly; expected 8 spaces, found 5" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="458" column="10" severity="error" message="Line indented incorrectly; expected at least 12 spaces, found 9" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
   <error line="458" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="459" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="460" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="461" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="462" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="463" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="464" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="465" column="2" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 1" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="465" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="465" column="9" severity="error" message="Line indented incorrectly; expected 4 spaces, found 1" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="466" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="471" column="6" severity="error" message="Line indented incorrectly; expected at least 8 spaces, found 5" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="459" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="460" column="6" severity="error" message="Line indented incorrectly; expected at least 8 spaces, found 5" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="460" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="461" column="3" severity="error" message="Line indented incorrectly; expected at least 8 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="461" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="462" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="464" column="2" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 1" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="464" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="465" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="466" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="467" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="468" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="469" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="470" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="471" column="2" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 1" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
   <error line="471" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="472" column="3" severity="error" message="Line indented incorrectly; expected at least 8 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="471" column="9" severity="error" message="Line indented incorrectly; expected 4 spaces, found 1" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
   <error line="472" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="473" column="3" severity="error" message="Line indented incorrectly; expected at least 8 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="473" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="474" column="3" severity="error" message="Line indented incorrectly; expected at least 8 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="474" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="475" column="3" severity="error" message="Line indented incorrectly; expected at least 8 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="475" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="476" column="3" severity="error" message="Line indented incorrectly; expected at least 8 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
-  <error line="476" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="477" column="3" severity="error" message="Line indented incorrectly; expected at least 8 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="477" column="6" severity="error" message="Line indented incorrectly; expected at least 8 spaces, found 5" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
   <error line="477" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
   <error line="478" column="3" severity="error" message="Line indented incorrectly; expected at least 8 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
   <error line="478" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
@@ -627,7 +618,19 @@
   <error line="480" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
   <error line="481" column="3" severity="error" message="Line indented incorrectly; expected at least 8 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
   <error line="481" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="482" column="3" severity="error" message="Line indented incorrectly; expected at least 8 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
   <error line="482" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="483" column="3" severity="error" message="Line indented incorrectly; expected at least 8 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="483" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="484" column="3" severity="error" message="Line indented incorrectly; expected at least 8 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="484" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="485" column="3" severity="error" message="Line indented incorrectly; expected at least 8 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="485" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="486" column="3" severity="error" message="Line indented incorrectly; expected at least 8 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="486" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="487" column="3" severity="error" message="Line indented incorrectly; expected at least 8 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="487" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
+  <error line="488" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
  </file>
  <file name="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Exception/PAMIException.php">
   <error line="29" column="16" severity="error" message="Constants must be uppercase; expected EXCEPTION but found Exception" source="Generic.NamingConventions.UpperCaseConstantNameSniff"/>
@@ -1825,7 +1828,7 @@
   <error line="151" column="1" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 2" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
   <error line="152" column="2" severity="error" message="Line indented incorrectly; expected at least 4 spaces, found 1" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
   <error line="152" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
-  <error line="152" column="12" severity="error" message="Line indented incorrectly; expected 4 spaces, found 1" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
+  <error line="152" column="9" severity="error" message="Line indented incorrectly; expected 4 spaces, found 1" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
   <error line="153" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
   <error line="154" column="6" severity="error" message="Line indented incorrectly; expected at least 8 spaces, found 5" source="PEAR.WhiteSpace.ScopeIndentSniff"/>
   <error line="154" column="1" severity="error" message="Spaces must be used to indent lines; tabs are not allowed" source="Generic.WhiteSpace.DisallowTabIndentSniff"/>
