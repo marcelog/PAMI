@@ -172,7 +172,7 @@ try
 	var_dump($a->send(new ListCommandsAction()));
 	var_dump($a->send(new QueueStatusAction()));
 	var_dump($a->send(new QueueStatusAction()));
-	var_dum($a->send(new QueueStatusAction()));
+	var_dump($a->send(new QueueStatusAction()));
 	var_dump($a->send(new CoreShowChannelsAction()));
 	var_dump($a->send(new SIPPeersAction()));
 	var_dump($a->send(new StatusAction()));
