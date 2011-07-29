@@ -27,26 +27,6 @@
  *
  */
 namespace PAMI\Autoloader;
-if (!class_exists('Logger')) {
-    foreach (explode(PATH_SEPARATOR, ini_get('include_path')) as $path) {
-        $truePath = implode(
-            DIRECTORY_SEPARATOR,
-            array($path, 'log4php', 'Logger.php')
-        );
-        if (file_exists($truePath)) {
-            require_once $truePath;
-        }
-    }
-}
-// If not found, include our own dummy logger.
-if (!class_exists('Logger')) {
-    $truePath = implode(
-        DIRECTORY_SEPARATOR,
-        array('PAMI', 'Logger', 'Logger.php')
-    );
-    require_once $truePath;
-}
-
 
 /**
  * PAMI autoloader.
@@ -66,6 +46,11 @@ class Autoloader
      * @var string
      */
     private static $_myPath;
+    /**
+     * Include path.
+     * @var string[]
+     */
+    private static $_includePath;
 
     /**
      * Called by php to load a given class. Returns true if the class was
@@ -77,18 +62,18 @@ class Autoloader
      */
     public static function load($class)
     {
-        $file = implode(
-            DIRECTORY_SEPARATOR,
-            array(
-                self::$_myPath,
-                str_replace('\\', DIRECTORY_SEPARATOR, $class) . '.php'
-            )
-        );
-        if (!file_exists($file)) {
-            return false;
+        foreach (self::$_includePath as $path) {
+            $file
+                = $path
+                . DIRECTORY_SEPARATOR
+                . str_replace('\\', DIRECTORY_SEPARATOR, $class) . '.php'
+            ;
+            if (file_exists($file)) {
+                include_once $file;
+                return true;
+            }
         }
-        include_once realpath($file);
-        return true;
+        return false;
     }
 
     /**
@@ -104,6 +89,7 @@ class Autoloader
             DIRECTORY_SEPARATOR,
             array(realpath(dirname(__FILE__)), '..', '..')
         );
+        self::$_includePath = explode(PATH_SEPARATOR, ini_get('include_path'));
         return spl_autoload_register('\PAMI\Autoloader\Autoloader::load');
     }
 }

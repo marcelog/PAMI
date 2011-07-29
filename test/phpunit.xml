@@ -18,9 +18,6 @@
     <testsuite name="Autoloader">
       <directory suffix=".php">autoloader</directory>
     </testsuite>
-    <testsuite name="DummyLogger">
-      <directory suffix=".php">logger</directory>
-    </testsuite>
     <testsuite name="Actions">
       <directory suffix=".php">actions</directory>
     </testsuite>
