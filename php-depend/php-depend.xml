@@ -126,24 +126,6 @@
       </DependsUpon>
       <UsedBy/>
     </Package>
-    <Package name="Logger">
-      <Stats>
-        <TotalClasses>1</TotalClasses>
-        <ConcreteClasses>1</ConcreteClasses>
-        <AbstractClasses>0</AbstractClasses>
-        <Ca>0</Ca>
-        <Ce>0</Ce>
-        <A>0</A>
-        <I>0</I>
-        <D>1</D>
-      </Stats>
-      <ConcreteClasses>
-        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Logger/Logger.php">Logger</Class>
-      </ConcreteClasses>
-      <AbstractClasses/>
-      <DependsUpon/>
-      <UsedBy/>
-    </Package>
     <Package name="PAMI\Message\Action">
       <Stats>
         <TotalClasses>86</TotalClasses>
