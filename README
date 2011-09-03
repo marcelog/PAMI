@@ -3,6 +3,8 @@ Introduction
 
 Note: PAMI Requires PHP 5.3+
 
+A port for nodejs is available at: http://marcelog.github.com/Nami
+
 PAMI means PHP Asterisk Manager Interface. As its name suggests its just a
 set of php classes that will let you issue commands to an ami and/or receive
 events, using an observer-listener pattern.
