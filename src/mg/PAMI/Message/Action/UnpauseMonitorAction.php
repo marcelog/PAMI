@@ -46,7 +46,7 @@ class UnpauseMonitorAction extends ActionMessage
     /**
      * Constructor.
      *
-     * @param string $channel Channel monitored to pause.
+     * @param string $channel Channel monitored to unpause.
      *
      * @return void
      */
