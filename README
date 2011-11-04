@@ -25,10 +25,14 @@ interested in using DI, AOP, and other stuff in your telephony applications.
 Available via PEAR
 ------------------
 You can now easily install PAMI by issuing:
-# pear channel-discover pearhub.org
-# pear install pearhub/PAMI-1.17.0
-just replace 1.17.0 by the release version you'd like to install :)
-See: http://www.pearhub.com/projects/PAMI
+# pear channel-discover marcelog.pear.name
+# pear install marcelog/PAMI
+
+or
+
+# pear install marcelog/PAMI-1.31.0
+just replace 1.31.0 by the release version you'd like to install :)
+See: http://pear.marcelog.name/
 --------------------------------------------------------------------------------
 Asterisk versions supported
 ===========================
