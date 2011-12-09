@@ -1122,7 +1122,7 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
     public function can_queue_unpause()
     {
         $write = array(implode("\r\n", array(
-        	'action: QueuePause',
+        	'action: QueueUnpause',
             'actionid: 1432.123',
             'queue: queue',
             'reason: reason',
