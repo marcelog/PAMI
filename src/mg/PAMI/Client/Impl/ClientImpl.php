@@ -218,26 +218,25 @@ class ClientImpl implements IClient
 	 *
 	 * @return string
 	 */
-	protected function getMessage()
+	protected function getMessages()
 	{
+	    $msgs = array();
 	    // Read something.
 	    $read = fread($this->_socket, 65535);
 	    if ($read === false) {
 	        throw new ClientException('Error reading');
 	    }
-	    // If we got something, add it to what we have read so far.
 	    $this->_currentProcessingMessage .= $read;
 	    // If we have a complete message, then return it. Save the rest for
 	    // later.
-	    $marker = strpos($this->_currentProcessingMessage, Message::EOM);
-	    if($marker === false) {
-	        return false;
+	    while (($marker = strpos($this->_currentProcessingMessage, Message::EOM))) {
+    	    $msg = substr($this->_currentProcessingMessage, 0, $marker);
+    	    $this->_currentProcessingMessage = substr(
+    	        $this->_currentProcessingMessage, $marker + strlen(Message::EOM)
+    	    );
+    	    $msgs[] = $msg;
 	    }
-	    $msg = substr($this->_currentProcessingMessage, 0, $marker);
-	    $this->_currentProcessingMessage = substr(
-	        $this->_currentProcessingMessage, $marker + strlen(Message::EOM)
-	    );
-	    return $msg;
+	    return $msgs;
 	}
 
 	/**
@@ -290,37 +289,36 @@ class ClientImpl implements IClient
 	 */
 	public function process()
 	{
-	    $aMsg = $this->getMessage();
-	    if ($aMsg == false) {
-	        return;
-	    }
-	    if ($this->_logger->isDebugEnabled()) {
-   	        $this->_logger->debug(
-	        	'------ Received: ------ ' . "\n" . $aMsg . "\n\n"
-	        );
-	    }
-	    $resPos = strpos($aMsg, 'Response:');
-	    $evePos = strpos($aMsg, 'Event:');
-	    if (($resPos !== false) && (($resPos < $evePos) || $evePos === false)) {
-	        $response = $this->_messageToResponse($aMsg);
-            $this->_incomingQueue[$response->getActionId()] = $response;
-	    } else if ($evePos !== false) {
-	        $event = $this->_messageToEvent($aMsg);
-    	    $response = $this->findResponse($event);
-    	    if ($response === false) {
-                $this->dispatch($event);
-    	    } else {
-    	        $response->addEvent($event);
+	    $msgs = $this->getMessages();
+	    foreach ($msgs as $aMsg) {
+    	    if ($this->_logger->isDebugEnabled()) {
+       	        $this->_logger->debug(
+    	        	'------ Received: ------ ' . "\n" . $aMsg . "\n\n"
+    	        );
     	    }
-	    } else { // broken ami.. sending a response with events without Event and ActionId
-            $bMsg = 'Event: ResponseEvent' . "\r\n";
-            $bMsg .= 'ActionId: ' . $this->_lastActionId . "\r\n" . $aMsg;
-            $event = $this->_messageToEvent($bMsg);
-            $response = $this->findResponse($event);
-            $response->addEvent($event);
-	    }
-	    if ($this->_logger->isDebugEnabled()) {
-   	        $this->_logger->debug('----------------');
+    	    $resPos = strpos($aMsg, 'Response:');
+    	    $evePos = strpos($aMsg, 'Event:');
+    	    if (($resPos !== false) && (($resPos < $evePos) || $evePos === false)) {
+    	        $response = $this->_messageToResponse($aMsg);
+                $this->_incomingQueue[$response->getActionId()] = $response;
+    	    } else if ($evePos !== false) {
+    	        $event = $this->_messageToEvent($aMsg);
+        	    $response = $this->findResponse($event);
+        	    if ($response === false) {
+                    $this->dispatch($event);
+        	    } else {
+        	        $response->addEvent($event);
+        	    }
+    	    } else { // broken ami.. sending a response with events without Event and ActionId
+                $bMsg = 'Event: ResponseEvent' . "\r\n";
+                $bMsg .= 'ActionId: ' . $this->_lastActionId . "\r\n" . $aMsg;
+                $event = $this->_messageToEvent($bMsg);
+                $response = $this->findResponse($event);
+                $response->addEvent($event);
+    	    }
+    	    if ($this->_logger->isDebugEnabled()) {
+       	        $this->_logger->debug('----------------');
+    	    }
 	    }
 	}
 
