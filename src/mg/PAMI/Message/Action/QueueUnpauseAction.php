@@ -50,7 +50,7 @@ class QueueUnpauseAction extends ActionMessage
      */
     public function __construct($interface, $queue = false, $reason = false)
     {
-        parent::__construct('QueueUnpause');
+        parent::__construct('QueuePause');
         if ($queue !== false) {
             $this->setKey('Queue', $queue);
         }
