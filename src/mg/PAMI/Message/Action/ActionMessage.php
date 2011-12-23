@@ -56,4 +56,16 @@ abstract class ActionMessage extends OutgoingMessage
         $this->setKey('Action', $what);
         $this->setKey('ActionID', microtime(true));
     }
+    
+    /**
+     * Sets the Action ID.
+     * 
+     * @param string $actionId The Action ID.
+     * 
+     * @return void
+     */
+    public function setActionID($actionId)
+    {
+        $this->setKey('ActionID', $actionId);
+    }
 }
