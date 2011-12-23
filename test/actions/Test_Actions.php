@@ -137,6 +137,26 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
 	    $action = new \PAMI\Message\Action\AgentsAction;
         $client = $this->_start($write, $action);
     }
+    
+    /**
+     * @test
+     */
+    public function can_agi()
+    {
+        $write = array(implode("\r\n", array(
+            'action: AGI',
+            'actionid: 1432.123',
+            'channel: somechannel',
+            'command: noop',
+            'commandid: noopCommandTest',
+            '',
+        )));
+        
+        $action = new \PAMI\Message\Action\AGIAction('somechannel', 'noop');
+        $action->setCommandId('noopCommandTest');
+        $client = $this->_start($write, $action);
+    }
+    
     /**
      * @test
      */
