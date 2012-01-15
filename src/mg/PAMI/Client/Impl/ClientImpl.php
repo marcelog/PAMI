@@ -9,9 +9,9 @@ declare(ticks=1);
  * @package    Client
  * @subpackage Impl
  * @author     Marcelo Gornstein <marcelog@gmail.com>
- * @license    http://www.noneyet.ar/ Apache License 2.0
+ * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
  * @version    SVN: $Id$
- * @link       http://www.noneyet.ar/
+ * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
  *
@@ -51,8 +51,8 @@ use PAMI\Client\IClient;
  * @package    Client
  * @subpackage Impl
  * @author     Marcelo Gornstein <marcelog@gmail.com>
- * @license    http://www.noneyet.ar/ Apache License 2.0
- * @link       http://www.noneyet.ar/
+ * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
+ * @link       http://marcelog.github.com/PAMI/
  */
 class ClientImpl implements IClient
 {
@@ -192,17 +192,33 @@ class ClientImpl implements IClient
 	}
 
 	/**
-	 * Registers the given listener so it can receive events.
+	 * Registers the given listener so it can receive events. Returns the generated
+	 * id for this new listener.
 	 *
 	 * @param IEventListener $listener
 	 *
-	 * @return void
+	 * @return string
 	 */
 	public function registerEventListener(IEventListener $listener)
 	{
-	    $this->_eventListeners[] = $listener;
+	    $id = uniqid('PamiListener');
+	    $this->_eventListeners[$id] = $listener;
+	    return $id;
 	}
 
+	/**
+	 * Unregisters an event listener.
+	 *
+	 * @param string $id The id returned by registerEventListener.
+	 *
+	 * @return void
+	 */
+	public function unregisterEventListener($id)
+	{
+	    if (isset($this->_eventListeners[$id])) {
+	        unset($this->_eventListeners[$id]);
+	    }
+	}
 	/**
 	 * Reads a line over the stream until EOL.
 	 *

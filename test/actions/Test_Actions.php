@@ -27,6 +27,7 @@
  * limitations under the License.
  *
  */
+
 namespace PAMI\Client\Impl {
 /**
  * This class will test some actions.
@@ -46,9 +47,11 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
+        global $mockTime;
         $this->_properties = array(
             'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties'
         );
+        $mockTime = true;
     }
 
     private function _start(array $write, \PAMI\Message\Action\ActionMessage $action)
@@ -57,7 +60,6 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
         global $mock_stream_set_blocking;
         global $mockTime;
         global $standardAMIStart;
-        $mockTime = true;
         $mock_stream_socket_client = true;
         $mock_stream_set_blocking = true;
         $options = array(
@@ -1329,6 +1331,22 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
         	''
         )));
 	    $action = new \PAMI\Message\Action\ParkAction('channel1', 'channel2', 'timeout', 'lot');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_agi()
+    {
+        $write = array(implode("\r\n", array(
+        	'action: AGI',
+            'actionid: 1432.123',
+            'channel: channel1',
+            'command: an agi command',
+            'commandid: blah',
+        	''
+        )));
+	    $action = new \PAMI\Message\Action\AGIAction('channel1', 'an agi command', 'blah');
         $client = $this->_start($write, $action);
     }
     /**

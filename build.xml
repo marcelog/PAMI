@@ -3,10 +3,11 @@
 
   <target name="prepare" depends="clean">
     <mkdir dir="${dir.output}"/>
+    <mkdir dir="${dir.tmp}"/>
   </target>
 
   <target name="clean">
-	<delete dir="${dir.output}"/>
+    <delete dir="${dir.output}"/>
   </target>
 
   <target name="phpdepend">
@@ -46,6 +47,11 @@
       command="${phpunit.exec} ${phpunit.args}"
       dir="${project.basedir}/test"
       passthru="true"
+    />
+    <xslt
+      file="${phpunit.output.xml.file}"
+      tofile="${junit.output.xml.file}"
+      style="${junit.style}"
     />
   </target>
 
@@ -97,8 +103,117 @@
     />
   </target>
 
-  <target name="all" depends="clean, prepare, report"/>
-  <target name="build" depends="test"/>
-  <target name="test" depends="phpunit"/>
+  <target name="package">
+    <mkdir dir="${package.output.dir}"/>
+    <exec
+      command="${genphar.exec} ${genphar.args}"
+      dir="${project.basedir}"
+      passthru="true"
+    />
+  </target>
+
+  <target name="install-dependencies">
+    <mkdir dir="${dir.vendor}"/>
+    <exec
+      command="${defaultpear.bin} config-create ${dir.vendor} ${dir.vendor}/.pearrc"
+      passthru="true"
+    />
+    <exec
+      command="${defaultpear.exec} config-set php_bin ${php.bin}"
+      passthru="true"
+    />
+    <exec
+      command="${defaultpear.exec} config-set php_dir ${dir.vendor}/php"
+      passthru="true"
+    />
+    <exec
+      command="${defaultpear.exec} config-set bin_dir ${dir.vendor}/bin"
+      passthru="true"
+    />
+    <exec
+      command="${defaultpear.exec} config-set cache_dir ${dir.vendor}/cache"
+      passthru="true"
+    />
+    <exec
+      command="${defaultpear.exec} config-set cfg_dir ${dir.vendor}/cfg"
+      passthru="true"
+    />
+    <exec
+      command="${defaultpear.exec} config-set data_dir ${dir.vendor}/data"
+      passthru="true"
+    />
+    <exec
+      command="${defaultpear.exec} config-set download_dir ${dir.vendor}/download"
+      passthru="true"
+    />
+    <exec
+      command="${defaultpear.exec} config-set temp_dir ${dir.vendor}/tmp"
+      passthru="true"
+    />
+    <exec
+      command="${defaultpear.exec} config-set doc_dir ${dir.vendor}/doc"
+      passthru="true"
+    />
+    <exec
+      command="${defaultpear.exec} config-set test_dir ${dir.vendor}/test"
+      passthru="true"
+    />
+    <exec
+      command="${defaultpear.exec} config-set www_dir ${dir.vendor}/www"
+      passthru="true"
+    />
+    <exec
+      command="${defaultpear.exec} config-set auto_discover 1"
+      passthru="true"
+    />
+    <exec
+      command="${defaultpear.exec} install pear"
+      passthru="true"
+    />
+    <exec
+      command="${pear.exec} install --alldeps pear.phpunit.de/PHPUnit"
+      passthru="true"
+    />
+    <exec
+      command="${pear.exec} install --alldeps pear.marcelog.name/PAGI"
+      passthru="true"
+    />
+    <exec
+      command="${pear.exec} install --alldeps phpunit/phploc"
+      passthru="true"
+    />
+    <exec
+      command="${pear.exec} install --alldeps pear.docblox-project.org/DocBlox"
+      passthru="true"
+    />
+    <exec
+      command="${pear.exec} install --alldeps pear.pdepend.org/PHP_Depend-beta"
+      passthru="true"
+    />
+    <exec
+      command="${pear.exec} install --alldeps pear.phpmd.org/PHP_PMD"
+      passthru="true"
+    />
+    <exec
+      command="${pear.exec} install --alldeps pear.phpunit.de/phpcpd"
+      passthru="true"
+    />
+    <exec
+      command="${pear.exec} install --alldeps PHP_CodeSniffer"
+      passthru="true"
+    />
+    <exec
+      command="${pear.exec} install --alldeps https://svn.apache.org/repos/asf/logging/log4php/releases/pear/Apache_log4php-2.1.0-pear.tgz"
+      passthru="true"
+    />
+  </target>
+
+  <target name="clean-dependencies">
+    <delete dir="${dir.vendor}"/>
+  </target>
+
+  <target name="all" depends="clean, prepare, package, report"/>
+  <target name="build" depends="prepare, test"/>
+  <target name="test" depends="prepare, phpunit"/>
   <target name="report" depends="build, phploc, phpdoc, phpdepend, phpcs, phpmd, phpcpd"/>
 </project>

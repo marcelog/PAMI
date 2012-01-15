@@ -56,7 +56,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
     public function can_report_events()
     {
         $eventNames = array(
-            'AGIExec', 'VarSet', 'Unlink', 'vgsm_sms_rx', 'vgsm_net_state',
+            'AsyncAGI', 'AGIExec', 'VarSet', 'Unlink', 'vgsm_sms_rx', 'vgsm_net_state',
             'vgsm_me_state', 'DTMF', 'Bridge', 'VoicemailUserEntryComplete',
             'StatusComplete', 'ParkedCallsComplete', 'DBGetResponse',
             'VoicemailUserEntry', 'Transfer', 'Status', 'ShowDialPlanComplete',
@@ -90,6 +90,14 @@ class Test_Events extends \PHPUnit_Framework_TestCase
             ),
         );
         $eventValues = array(
+            'AsyncAGI' => array(
+                'Env' => 'Env',
+                'Channel' => 'Channel',
+                'CommandId' => 'CommandId',
+                'Privilege' => 'Privilege',
+                'SubEvent' => 'SubEvent',
+                'Result' => 'Result'
+            ),
             'FullyBooted' => array(),
             'DongleUSSDStatus' => array(
                 'Privilege' => 'Privilege',
@@ -693,6 +701,9 @@ class Test_Events extends \PHPUnit_Framework_TestCase
         	),
         );
         $eventGetters = array(
+            'AsyncAGI' => array(
+                'Env' => 'Environment'
+            ),
             'Agents' => array(
                 'LoggedInChan' => 'Channel'
             ),

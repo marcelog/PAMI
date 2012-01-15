@@ -30,8 +30,8 @@ You can now easily install PAMI by issuing:
 
 or
 
-# pear install marcelog/PAMI-1.31.0
-just replace 1.31.0 by the release version you'd like to install :)
+# pear install marcelog/PAMI-1.50.0
+just replace 1.50.0 by the release version you'd like to install :)
 See: http://pear.marcelog.name/
 --------------------------------------------------------------------------------
 Asterisk versions supported
@@ -46,6 +46,8 @@ Please see docs/examples/quickstart/example.php for a very basic example.
 AsterTrace is a full application: https://github.com/marcelog/AsterTrace.
 
 Also, you might want to look at this article: http://marcelog.github.com/articles/php_asterisk_listener_example_using_pami_and_ding.html
+
+For an example of using asynchronous AGI with PAMI, see docs/examples/asyncagi
 --------------------------------------------------------------------------------
 Currently Supported Events
 ==========================
@@ -60,6 +62,7 @@ can still catch them. If you catch one of these, please report it!
 * Agentlogin
 * Agentlogoff
 * AGIExec
+* AsyncAGI
 * Bridge
 * ChannelUpdate
 * CoreShowChannel
@@ -127,6 +130,7 @@ can still catch them. If you catch one of these, please report it!
 Currently Supported Actions
 ===========================
 * AbsoluteTimeout
+* AGI
 * Agents
 * AgentLogoff
 * Atxfer (asterisk 1.8?)
@@ -215,6 +219,11 @@ Developers
 * It's very possible that you may need to edit build.properties.
 * Available main targets: all, build, test, report.
 * Tools run: phpdoc, phploc, phpcs, phpmd, phpcpd, phpdepend, phpunit.
+* Setup your installation by editing pear and php paths in build.properties
+* Run phing install-dependencies this will install pear and everything needed
+to run ding tests and metrics.
+* Run phing all
+* Check the API at http://marcelog.github.com/PAMI/api.html
 --------------------------------------------------------------------------------
 Debugging, logging
 ==================
@@ -252,3 +261,5 @@ functionality and some other ami inconsistencies.
 * Freddy dafredmail at googlemail, for his help and testing environment to add dongle support.
 
 * Joshua Elson for his help in trying and debugging in loaded asterisk servers.
+
+* Jacob Kiers for his help in bringing in and testing async agi functionality.

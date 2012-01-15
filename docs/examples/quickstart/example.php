@@ -161,6 +161,7 @@ try
 	$a = new ClientImpl($options);
 	$a->registerEventListener(new A());
 	$a->open();
+/*
 	var_dump($a->send(new DongleSendUSSDAction('dongle01', '*101#')));
 	var_dump($a->send(new DongleSendPDUAction('dongle01', 'AT+CSMS=0 ')));
 	var_dump($a->send(new DongleRestartAction('now', 'dongle01')));
@@ -214,6 +215,7 @@ try
 	var_dump($a->send(new QueuePenaltyAction('Agent/123', '123')));
 	var_dump($a->send(new QueueResetAction('a')));
 	var_dump($a->send(new QueueRuleAction('a')));
+*/
 	//var_dump($a->send(new QueueReloadAction('a', true, true, true)));
 	//
 	// The following are commented just in case you run it in the wrong box ;)
