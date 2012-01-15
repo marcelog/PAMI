@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd-cpd version="phpcpd 1.3.1">
+<pmd-cpd version="phpcpd 1.3.5">
   <duplication lines="50" tokens="40">
-    <file path="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/StatusEvent.php" line="46"/>
     <file path="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/CoreShowChannelEvent.php" line="46"/>
-    <codefragment>class StatusEvent extends EventMessage
+    <file path="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/StatusEvent.php" line="46"/>
+    <codefragment>class CoreShowchannelEvent extends EventMessage
 {
     /**
      * Returns key: 'Privilege'.

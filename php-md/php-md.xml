@@ -1,19 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<pmd version="0.2.8RC1" timestamp="2011-12-09T14:55:29-03:00">
+<pmd version="1.2.0" timestamp="2012-01-15T16:39:29-03:00">
+  <file name="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/AsyncAgi/AsyncClientImpl.php">
+    <violation beginline="53" endline="53" rule="UnusedPrivateField" ruleset="Unused Code Rules" externalInfoUrl="http://phpmd.org/rules/unusedcode.html#unusedprivatefield" priority="3">
+      Avoid unused private fields such as '$_instance'.
+    </violation>
+  </file>
   <file name="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Client/Impl/ClientImpl.php">
-    <violation beginline="57" endline="487" rule="TooManyFields" ruleset="Code Size Rules" package="PAMI\Client\Impl" externalInfoUrl="http://phpmd.org/rules/codesize.html#toomanyfields" class="ClientImpl" priority="3">
+    <violation beginline="57" endline="503" rule="TooManyFields" ruleset="Code Size Rules" package="PAMI\Client\Impl" externalInfoUrl="http://phpmd.org/rules/codesize.html#toomanyfields" class="ClientImpl" priority="3">
       Too many fields
+    </violation>
+    <violation beginline="57" endline="503" rule="TooManyMethods" ruleset="Code Size Rules" package="PAMI\Client\Impl" externalInfoUrl="http://phpmd.org/rules/codesize.html#toomanymethods" class="ClientImpl" priority="3">
+      This class has too many methods, consider refactoring it.
     </violation>
     <violation beginline="135" endline="135" rule="UnusedPrivateField" ruleset="Unused Code Rules" externalInfoUrl="http://phpmd.org/rules/unusedcode.html#unusedprivatefield" priority="3">
       Avoid unused private fields such as '$_outgoingQueue'.
     </violation>
-    <violation beginline="148" endline="148" rule="LongVariable" ruleset="Naming Rules" externalInfoUrl="http://phpmd.org/rules/naming.html#longvariable" priority="3">
-      Avoid excessively long variable names like $_currentProcessingMessage
-    </violation>
     <violation beginline="178" endline="178" rule="ShortVariable" ruleset="Naming Rules" externalInfoUrl="http://phpmd.org/rules/naming.html#shortvariable" priority="3">
       Avoid variables with short names like $id
     </violation>
-    <violation beginline="396" endline="396" rule="ShortVariable" ruleset="Naming Rules" externalInfoUrl="http://phpmd.org/rules/naming.html#shortvariable" priority="3">
+    <violation beginline="204" endline="204" rule="ShortVariable" ruleset="Naming Rules" externalInfoUrl="http://phpmd.org/rules/naming.html#shortvariable" priority="3">
+      Avoid variables with short names like $id
+    </violation>
+    <violation beginline="216" endline="216" rule="ShortVariable" ruleset="Naming Rules" externalInfoUrl="http://phpmd.org/rules/naming.html#shortvariable" priority="3">
+      Avoid variables with short names like $id
+    </violation>
+    <violation beginline="412" endline="412" rule="ShortVariable" ruleset="Naming Rules" externalInfoUrl="http://phpmd.org/rules/naming.html#shortvariable" priority="3">
       Avoid variables with short names like $id
     </violation>
   </file>
@@ -30,12 +41,17 @@
       Avoid variables with short names like $id
     </violation>
   </file>
+  <file name="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/AsyncAGIEvent.php">
+    <violation beginline="48" endline="48" rule="UnusedPrivateField" ruleset="Unused Code Rules" externalInfoUrl="http://phpmd.org/rules/unusedcode.html#unusedprivatefield" priority="3">
+      Avoid unused private fields such as '$_envVariables'.
+    </violation>
+  </file>
   <file name="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/DongleDeviceEntryEvent.php">
     <violation beginline="46" endline="649" rule="ExcessivePublicCount" ruleset="Code Size Rules" package="PAMI\Message\Event" externalInfoUrl="http://phpmd.org/rules/codesize.html#excessivepubliccount" class="DongleDeviceEntryEvent" priority="3">
       This class has a bunch of public methods and attributes
     </violation>
     <violation beginline="46" endline="649" rule="ExcessiveClassComplexity" ruleset="Code Size Rules" package="PAMI\Message\Event" externalInfoUrl="http://phpmd.org/rules/codesize.html#excessiveclasscomplexity" class="DongleDeviceEntryEvent" priority="3">
-      This class DongleDeviceEntryEvent has an overall complexity of 60 which is very high. The configured complexity threshold is 50.
+      The class DongleDeviceEntryEvent has an overall complexity of 60 which is very high. The configured complexity threshold is 50.
     </violation>
   </file>
   <file name="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/QueueMemberAddedEvent.php">

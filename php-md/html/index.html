@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>PMD 0.2.8RC1 Report</title>
+<title>PMD 1.2.0 Report</title>
 <script type="text/javascript" src="sorttable.js"></script><style type="text/css">
         body { margin-left: 2%; margin-right: 2%; font:normal verdana,arial,helvetica; color:#000000; }
         table.sortable tr th { font-weight: bold; text-align:left; background:#a6caf0; }
@@ -27,8 +27,8 @@
 </head>
 <body>
 <H1><div class="top">
-<div class="left">PMD 0.2.8RC1 Report</div>
-<div class="right">2011-12-09 - </div>
+<div class="left">PMD 1.2.0 Report</div>
+<div class="right">2012-01-15 - </div>
 </div></H1>
 <hr>
 <h2>Summary</h2>
@@ -43,11 +43,11 @@
 <th>Priority 5</th>
 </tr>
 <tr>
-<td>8</td>
-<td>14</td>
+<td>10</td>
+<td>18</td>
 <td><div class="p1">0</div></td>
 <td><div class="p2">0</div></td>
-<td><div class="p3">10</div></td>
+<td><div class="p3">14</div></td>
 <td><div class="p4">4</div></td>
 <td><div class="p5">0</div></td>
 </tr>
@@ -63,9 +63,25 @@
 <tr>
 <td style="padding: 3px" align="right"><div class="p3">3</div></td>
 <td style="padding: 3px" align="left"></td>
+<td style="padding: 3px" align="right">53</td>
+<td style="padding: 3px" align="left" width="100%"><a href="http://phpmd.org/rules/unusedcode.html#unusedprivatefield">
+      Avoid unused private fields such as '$_instance'.
+    </a></td>
+</tr>
+<tr>
+<td style="padding: 3px" align="right"><div class="p3">3</div></td>
+<td style="padding: 3px" align="left"></td>
 <td style="padding: 3px" align="right">57</td>
 <td style="padding: 3px" align="left" width="100%"><a href="http://phpmd.org/rules/codesize.html#toomanyfields">
       Too many fields
+    </a></td>
+</tr>
+<tr>
+<td style="padding: 3px" align="right"><div class="p3">3</div></td>
+<td style="padding: 3px" align="left"></td>
+<td style="padding: 3px" align="right">57</td>
+<td style="padding: 3px" align="left" width="100%"><a href="http://phpmd.org/rules/codesize.html#toomanymethods">
+      This class has too many methods, consider refactoring it.
     </a></td>
 </tr>
 <tr>
@@ -79,14 +95,6 @@
 <tr>
 <td style="padding: 3px" align="right"><div class="p3">3</div></td>
 <td style="padding: 3px" align="left"></td>
-<td style="padding: 3px" align="right">148</td>
-<td style="padding: 3px" align="left" width="100%"><a href="http://phpmd.org/rules/naming.html#longvariable">
-      Avoid excessively long variable names like $_currentProcessingMessage
-    </a></td>
-</tr>
-<tr>
-<td style="padding: 3px" align="right"><div class="p3">3</div></td>
-<td style="padding: 3px" align="left"></td>
 <td style="padding: 3px" align="right">178</td>
 <td style="padding: 3px" align="left" width="100%"><a href="http://phpmd.org/rules/naming.html#shortvariable">
       Avoid variables with short names like $id
@@ -95,7 +103,23 @@
 <tr>
 <td style="padding: 3px" align="right"><div class="p3">3</div></td>
 <td style="padding: 3px" align="left"></td>
-<td style="padding: 3px" align="right">396</td>
+<td style="padding: 3px" align="right">204</td>
+<td style="padding: 3px" align="left" width="100%"><a href="http://phpmd.org/rules/naming.html#shortvariable">
+      Avoid variables with short names like $id
+    </a></td>
+</tr>
+<tr>
+<td style="padding: 3px" align="right"><div class="p3">3</div></td>
+<td style="padding: 3px" align="left"></td>
+<td style="padding: 3px" align="right">216</td>
+<td style="padding: 3px" align="left" width="100%"><a href="http://phpmd.org/rules/naming.html#shortvariable">
+      Avoid variables with short names like $id
+    </a></td>
+</tr>
+<tr>
+<td style="padding: 3px" align="right"><div class="p3">3</div></td>
+<td style="padding: 3px" align="left"></td>
+<td style="padding: 3px" align="right">412</td>
 <td style="padding: 3px" align="left" width="100%"><a href="http://phpmd.org/rules/naming.html#shortvariable">
       Avoid variables with short names like $id
     </a></td>
@@ -127,6 +151,14 @@
 <tr>
 <td style="padding: 3px" align="right"><div class="p3">3</div></td>
 <td style="padding: 3px" align="left"></td>
+<td style="padding: 3px" align="right">48</td>
+<td style="padding: 3px" align="left" width="100%"><a href="http://phpmd.org/rules/unusedcode.html#unusedprivatefield">
+      Avoid unused private fields such as '$_envVariables'.
+    </a></td>
+</tr>
+<tr>
+<td style="padding: 3px" align="right"><div class="p3">3</div></td>
+<td style="padding: 3px" align="left"></td>
 <td style="padding: 3px" align="right">46</td>
 <td style="padding: 3px" align="left" width="100%"><a href="http://phpmd.org/rules/codesize.html#excessivepubliccount">
       This class has a bunch of public methods and attributes
@@ -137,7 +169,7 @@
 <td style="padding: 3px" align="left"></td>
 <td style="padding: 3px" align="right">46</td>
 <td style="padding: 3px" align="left" width="100%"><a href="http://phpmd.org/rules/codesize.html#excessiveclasscomplexity">
-      This class DongleDeviceEntryEvent has an overall complexity of 60 which is very high. The configured complexity threshold is 50.
+      The class DongleDeviceEntryEvent has an overall complexity of 60 which is very high. The configured complexity threshold is 50.
     </a></td>
 </tr>
 <tr>
@@ -173,6 +205,6 @@
     </a></td>
 </tr>
 </table>
-<br><p>Generated by <a href="http://pmd.sourceforge.net">PMD <b>0.2.8RC1</b></a> on 2011-12-09 - .</p>
+<br><p>Generated by <a href="http://pmd.sourceforge.net">PMD <b>1.2.0</b></a> on 2012-01-15 - .</p>
 </body>
 </html>

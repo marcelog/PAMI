@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PDepend>
   <Packages>
+    <Package name="PAMI\AsyncAgi">
+      <Stats>
+        <TotalClasses>1</TotalClasses>
+        <ConcreteClasses>1</ConcreteClasses>
+        <AbstractClasses>0</AbstractClasses>
+        <Ca>0</Ca>
+        <Ce>5</Ce>
+        <A>0</A>
+        <I>1</I>
+        <D>0</D>
+      </Stats>
+      <ConcreteClasses>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/AsyncAgi/AsyncClientImpl.php">AsyncClientImpl</Class>
+      </ConcreteClasses>
+      <AbstractClasses/>
+      <DependsUpon>
+        <Package></Package>
+        <Package>PAGI\Client</Package>
+        <Package>PAMI\Listener</Package>
+        <Package>PAMI\Message\Action</Package>
+        <Package>PAMI\Message\Event</Package>
+      </DependsUpon>
+      <UsedBy/>
+    </Package>
     <Package name="PAMI\Autoloader">
       <Stats>
         <TotalClasses>1</TotalClasses>
@@ -63,11 +87,11 @@
     </Package>
     <Package name="PAMI\Client\Impl">
       <Stats>
-        <TotalClasses>9</TotalClasses>
-        <ConcreteClasses>9</ConcreteClasses>
+        <TotalClasses>1</TotalClasses>
+        <ConcreteClasses>1</ConcreteClasses>
         <AbstractClasses>0</AbstractClasses>
         <Ca>0</Ca>
-        <Ce>4</Ce>
+        <Ce>8</Ce>
         <A>0</A>
         <I>1</I>
         <D>0</D>
@@ -80,7 +104,11 @@
         <Package></Package>
         <Package>PAMI\Client</Package>
         <Package>PAMI\Client\Exception</Package>
+        <Package>PAMI\Listener</Package>
+        <Package>PAMI\Message</Package>
         <Package>PAMI\Message\Action</Package>
+        <Package>PAMI\Message\Event\Factory\Impl</Package>
+        <Package>PAMI\Message\Response</Package>
       </DependsUpon>
       <UsedBy/>
     </Package>
@@ -111,11 +139,11 @@
         <TotalClasses>1</TotalClasses>
         <ConcreteClasses>0</ConcreteClasses>
         <AbstractClasses>1</AbstractClasses>
-        <Ca>0</Ca>
+        <Ca>2</Ca>
         <Ce>1</Ce>
         <A>1</A>
-        <I>1</I>
-        <D>1</D>
+        <I>0.33333333333333</I>
+        <D>0.33333333333333</D>
       </Stats>
       <ConcreteClasses/>
       <AbstractClasses>
@@ -124,20 +152,24 @@
       <DependsUpon>
         <Package>PAMI\Message\Event</Package>
       </DependsUpon>
-      <UsedBy/>
+      <UsedBy>
+        <Package>PAMI\AsyncAgi</Package>
+        <Package>PAMI\Client\Impl</Package>
+      </UsedBy>
     </Package>
     <Package name="PAMI\Message\Action">
       <Stats>
-        <TotalClasses>86</TotalClasses>
-        <ConcreteClasses>85</ConcreteClasses>
+        <TotalClasses>87</TotalClasses>
+        <ConcreteClasses>86</ConcreteClasses>
         <AbstractClasses>1</AbstractClasses>
-        <Ca>1</Ca>
+        <Ca>2</Ca>
         <Ce>1</Ce>
-        <A>0.0116279069767</A>
-        <I>0.5</I>
-        <D>0.488372093023</D>
+        <A>0.011494252873563</A>
+        <I>0.33333333333333</I>
+        <D>0.6551724137931</D>
       </Stats>
       <ConcreteClasses>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/AGIAction.php">AGIAction</Class>
         <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/AbsoluteTimeoutAction.php">AbsoluteTimeoutAction</Class>
         <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/AgentLogoffAction.php">AgentLogoffAction</Class>
         <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Action/AgentsAction.php">AgentsAction</Class>
@@ -231,19 +263,20 @@
         <Package>PAMI\Message</Package>
       </DependsUpon>
       <UsedBy>
+        <Package>PAMI\AsyncAgi</Package>
         <Package>PAMI\Client\Impl</Package>
       </UsedBy>
     </Package>
     <Package name="PAMI\Message\Event">
       <Stats>
-        <TotalClasses>72</TotalClasses>
-        <ConcreteClasses>71</ConcreteClasses>
+        <TotalClasses>73</TotalClasses>
+        <ConcreteClasses>72</ConcreteClasses>
         <AbstractClasses>1</AbstractClasses>
-        <Ca>2</Ca>
+        <Ca>4</Ca>
         <Ce>1</Ce>
-        <A>0.0138888888889</A>
-        <I>0.333333333333</I>
-        <D>0.652777777778</D>
+        <A>0.013698630136986</A>
+        <I>0.2</I>
+        <D>0.78630136986301</D>
       </Stats>
       <ConcreteClasses>
         <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/AGIExecEvent.php">AGIExecEvent</Class>
@@ -252,6 +285,7 @@
         <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/AgentlogoffEvent.php">AgentlogoffEvent</Class>
         <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/AgentsCompleteEvent.php">AgentsCompleteEvent</Class>
         <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/AgentsEvent.php">AgentsEvent</Class>
+        <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/AsyncAGIEvent.php">AsyncAGIEvent</Class>
         <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/BridgeEvent.php">BridgeEvent</Class>
         <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/ChannelUpdateEvent.php">ChannelUpdateEvent</Class>
         <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/CoreShowChannelEvent.php">CoreShowchannelEvent</Class>
@@ -325,8 +359,10 @@
         <Package>PAMI\Message</Package>
       </DependsUpon>
       <UsedBy>
+        <Package>PAMI\AsyncAgi</Package>
         <Package>PAMI\Listener</Package>
         <Package>PAMI\Message\Event\Factory\Impl</Package>
+        <Package>PAMI\Message\Response</Package>
       </UsedBy>
     </Package>
     <Package name="PAMI\Message\Event\Factory\Impl">
@@ -334,11 +370,11 @@
         <TotalClasses>1</TotalClasses>
         <ConcreteClasses>1</ConcreteClasses>
         <AbstractClasses>0</AbstractClasses>
-        <Ca>0</Ca>
+        <Ca>1</Ca>
         <Ce>2</Ce>
         <A>0</A>
-        <I>1</I>
-        <D>0</D>
+        <I>0.66666666666667</I>
+        <D>0.33333333333333</D>
       </Stats>
       <ConcreteClasses>
         <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Event/Factory/Impl/EventFactoryImpl.php">EventFactoryImpl</Class>
@@ -348,14 +384,16 @@
         <Package>PAMI\Message</Package>
         <Package>PAMI\Message\Event</Package>
       </DependsUpon>
-      <UsedBy/>
+      <UsedBy>
+        <Package>PAMI\Client\Impl</Package>
+      </UsedBy>
     </Package>
     <Package name="PAMI\Message">
       <Stats>
         <TotalClasses>3</TotalClasses>
         <ConcreteClasses>0</ConcreteClasses>
         <AbstractClasses>3</AbstractClasses>
-        <Ca>4</Ca>
+        <Ca>5</Ca>
         <Ce>0</Ce>
         <A>1</A>
         <I>0</I>
@@ -369,6 +407,7 @@
       </AbstractClasses>
       <DependsUpon/>
       <UsedBy>
+        <Package>PAMI\Client\Impl</Package>
         <Package>PAMI\Message\Action</Package>
         <Package>PAMI\Message\Event</Package>
         <Package>PAMI\Message\Event\Factory\Impl</Package>
@@ -377,14 +416,14 @@
     </Package>
     <Package name="PAMI\Message\Response">
       <Stats>
-        <TotalClasses>2</TotalClasses>
-        <ConcreteClasses>2</ConcreteClasses>
+        <TotalClasses>1</TotalClasses>
+        <ConcreteClasses>1</ConcreteClasses>
         <AbstractClasses>0</AbstractClasses>
-        <Ca>0</Ca>
-        <Ce>1</Ce>
+        <Ca>1</Ca>
+        <Ce>2</Ce>
         <A>0</A>
-        <I>1</I>
-        <D>0</D>
+        <I>0.66666666666667</I>
+        <D>0.33333333333333</D>
       </Stats>
       <ConcreteClasses>
         <Class sourceFile="/export/users/marcelog/src/sts/PAMI/src/mg/PAMI/Message/Response/ResponseMessage.php">ResponseMessage</Class>
@@ -392,8 +431,11 @@
       <AbstractClasses/>
       <DependsUpon>
         <Package>PAMI\Message</Package>
+        <Package>PAMI\Message\Event</Package>
       </DependsUpon>
-      <UsedBy/>
+      <UsedBy>
+        <Package>PAMI\Client\Impl</Package>
+      </UsedBy>
     </Package>
   </Packages>
   <Cycles/>

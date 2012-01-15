@@ -4,11 +4,63 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title></title>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <!--[if IE]><script src="excanvas.compressed.js"></script><![endif]-->
-    <script src="RGraph.common.core.js" ></script>
-    <script src="RGraph.common.tooltips.js" ></script>
-    <script src="RGraph.bar.js" ></script>
-    <script src="RGraph.scatter.js" ></script>
+    <script src="jquery.min.js" type="text/javascript"></script>
+    <script src="highcharts.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+          var classCoverageDistribution = new Highcharts.Chart({
+             chart: {
+                renderTo: 'classCoverageDistribution',
+                type: 'column'
+             },
+             title: {text: ''},
+             legend: {enabled: false},
+             credits: {enabled: false},
+             tooltip: {enabled: false},
+             xAxis: {
+                 labels: {style: {fontSize: '8px'}},
+                 categories: [
+                 '0%','0-10%','10-20%','20-30%','30-40%','40-50%','50-60%','60-70%','70-80%','80-90%','90-100%','100%'
+                 ]
+            },
+            yAxis: {
+                title: '',
+                labels: {style: {fontSize: '8px'}},
+            },
+            series: [{
+                data: [1,0,0,0,0,0,0,0,0,0,0,169]
+            }],
+          });
+
+        var classComplexity = new Highcharts.Chart({
+            chart: {
+              renderTo: 'classComplexity',
+              type: 'scatter'
+            },
+            title: {text: ''},
+            legend: {enabled: false},
+            credits: {enabled: false},
+            xAxis: {
+               labels: {enabled: false},
+            },
+            yAxis: {
+              title: '',
+              labels: {enabled: false},
+            },
+            tooltip: {
+                formatter: function() {
+                    return this.point.config[2];
+                }
+            },
+            series: [{
+              data: [[0,13,"<a href=\"AsyncAgi_AsyncClientImpl.php.html#47\">AsyncClientImpl<\/a>"],[100,4,"<a href=\"Autoloader_Autoloader.php.html#42\">Autoloader<\/a>"],[100,0,"<a href=\"Client_Exception_ClientException.php.html#46\">ClientException<\/a>"],[100,42,"<a href=\"Client_Impl_ClientImpl.php.html#57\">ClientImpl<\/a>"],[100,0,"<a href=\"Exception_PAMIException.php.html#42\">PAMIException<\/a>"],[100,2,"<a href=\"Message_Action_AGIAction.php.html#44\">AGIAction<\/a>"],[100,1,"<a href=\"Message_Action_AbsoluteTimeoutAction.php.html#44\">AbsoluteTimeoutAction<\/a>"],[100,1,"<a href=\"Message_Action_ActionMessage.php.html#44\">ActionMessage<\/a>"],[100,2,"<a href=\"Message_Action_AgentLogoffAction.php.html#44\">AgentLogoffAction<\/a>"],[100,1,"<a href=\"Message_Action_AgentsAction.php.html#44\">AgentsAction<\/a>"],[100,1,"<a href=\"Message_Action_AttendedTransferAction.php.html#44\">AttendedTransferAction<\/a>"],[100,2,"<a href=\"Message_Action_BridgeAction.php.html#44\">BridgeAction<\/a>"],[100,1,"<a href=\"Message_Action_ChangeMonitorAction.php.html#44\">ChangeMonitorAction<\/a>"],[100,1,"<a href=\"Message_Action_CommandAction.php.html#44\">CommandAction<\/a>"],[100,1,"<a href=\"Message_Action_CoreSettingsAction.php.html#44\">CoreSettingsAction<\/a>"],[100,1,"<a href=\"Message_Action_CoreShowChannelsAction.php.html#44\">CoreShowChannelsAction<\/a>"],[100,1,"<a href=\"Message_Action_CoreStatusAction.php.html#44\">CoreStatusAction<\/a>"],[100,1,"<a href=\"Message_Action_CreateConfigAction.php.html#44\">CreateConfigAction<\/a>"],[100,1,"<a href=\"Message_Action_DAHDIDNDOffAction.php.html#44\">DAHDIDNDOffAction<\/a>"],[100,1,"<a href=\"Message_Action_DAHDIDNDOnAction.php.html#44\">DAHDIDNDOnAction<\/a>"],[100,1,"<a href=\"Message_Action_DAHDIDialOffHookAction.php.html#44\">DAHDIDialOffHookAction<\/a>"],[100,1,"<a href=\"Message_Action_DAHDIHangupAction.php.html#44\">DAHDIHangupAction<\/a>"],[100,1,"<a href=\"Message_Action_DAHDIRestartAction.php.html#44\">DAHDIRestartAction<\/a>"],[100,1,"<a href=\"Message_Action_DAHDIShowChannelsAction.php.html#44\">DAHDIShowChannelsAction<\/a>"],[100,1,"<a href=\"Message_Action_DBDelAction.php.html#44\">DBDelAction<\/a>"],[100,2,"<a href=\"Message_Action_DBDelTreeAction.php.html#44\">DBDelTreeAction<\/a>"],[100,1,"<a href=\"Message_Action_DBGetAction.php.html#44\">DBGetAction<\/a>"],[100,1,"<a href=\"Message_Action_DBPutAction.php.html#44\">DBPutAction<\/a>"],[100,1,"<a href=\"Message_Action_DongleReloadAction.php.html#44\">DongleReloadAction<\/a>"],[100,1,"<a href=\"Message_Action_DongleResetAction.php.html#44\">DongleResetAction<\/a>"],[100,1,"<a href=\"Message_Action_DongleRestartAction.php.html#44\">DongleRestartAction<\/a>"],[100,1,"<a href=\"Message_Action_DongleSendPDUAction.php.html#44\">DongleSendPDUAction<\/a>"],[100,1,"<a href=\"Message_Action_DongleSendSMSAction.php.html#44\">DongleSendSMSAction<\/a>"],[100,1,"<a href=\"Message_Action_DongleSendUSSDAction.php.html#44\">DongleSendUSSDAction<\/a>"],[100,1,"<a href=\"Message_Action_DongleShowDevicesAction.php.html#44\">DongleShowDevicesAction<\/a>"],[100,1,"<a href=\"Message_Action_DongleStartAction.php.html#44\">DongleStartAction<\/a>"],[100,1,"<a href=\"Message_Action_DongleStopAction.php.html#44\">DongleStopAction<\/a>"],[100,2,"<a href=\"Message_Action_EventsAction.php.html#44\">EventsAction<\/a>"],[100,1,"<a href=\"Message_Action_ExtensionStateAction.php.html#44\">ExtensionStateAction<\/a>"],[100,2,"<a href=\"Message_Action_GetConfigAction.php.html#44\">GetConfigAction<\/a>"],[100,1,"<a href=\"Message_Action_GetConfigJSONAction.php.html#44\">GetConfigJSONAction<\/a>"],[100,2,"<a href=\"Message_Action_GetVarAction.php.html#44\">GetVarAction<\/a>"],[100,1,"<a href=\"Message_Action_HangupAction.php.html#44\">HangupAction<\/a>"],[100,1,"<a href=\"Message_Action_JabberSendAction.php.html#44\">JabberSendAction<\/a>"],[100,1,"<a href=\"Message_Action_ListCategoriesAction.php.html#44\">ListCategoriesAction<\/a>"],[100,1,"<a href=\"Message_Action_ListCommandsAction.php.html#44\">ListCommandsAction<\/a>"],[100,1,"<a href=\"Message_Action_LocalOptimizeAwayAction.php.html#44\">LocalOptimizeAwayAction<\/a>"],[100,1,"<a href=\"Message_Action_LoginAction.php.html#44\">LoginAction<\/a>"],[100,1,"<a href=\"Message_Action_LogoffAction.php.html#44\">LogoffAction<\/a>"],[100,1,"<a href=\"Message_Action_MailboxCountAction.php.html#44\">MailboxCountAction<\/a>"],[100,1,"<a href=\"Message_Action_MailboxStatusAction.php.html#44\">MailboxStatusAction<\/a>"],[100,1,"<a href=\"Message_Action_MeetmeListAction.php.html#44\">MeetmeListAction<\/a>"],[100,1,"<a href=\"Message_Action_MeetmeMuteAction.php.html#44\">MeetmeMuteAction<\/a>"],[100,1,"<a href=\"Message_Action_MeetmeUnmuteAction.php.html#44\">MeetmeUnmuteAction<\/a>"],[100,1,"<a href=\"Message_Action_ModuleCheckAction.php.html#44\">ModuleCheckAction<\/a>"],[100,1,"<a href=\"Message_Action_ModuleLoadAction.php.html#44\">ModuleLoadAction<\/a>"],[100,1,"<a href=\"Message_Action_ModuleReloadAction.php.html#44\">ModuleReloadAction<\/a>"],[100,1,"<a href=\"Message_Action_ModuleUnloadAction.php.html#44\">ModuleUnloadAction<\/a>"],[100,1,"<a href=\"Message_Action_MonitorAction.php.html#52\">MonitorAction<\/a>"],[100,12,"<a href=\"Message_Action_OriginateAction.php.html#44\">OriginateAction<\/a>"],[100,3,"<a href=\"Message_Action_ParkAction.php.html#44\">ParkAction<\/a>"],[100,1,"<a href=\"Message_Action_ParkedCallsAction.php.html#44\">ParkedCallsAction<\/a>"],[100,1,"<a href=\"Message_Action_PauseMonitorAction.php.html#44\">PauseMonitorAction<\/a>"],[100,1,"<a href=\"Message_Action_PingAction.php.html#44\">PingAction<\/a>"],[100,1,"<a href=\"Message_Action_PlayDTMFAction.php.html#44\">PlayDTMFAction<\/a>"],[100,5,"<a href=\"Message_Action_QueueAddAction.php.html#44\">QueueAddAction<\/a>"],[100,4,"<a href=\"Message_Action_QueueLogAction.php.html#44\">QueueLogAction<\/a>"],[100,3,"<a href=\"Message_Action_QueuePauseAction.php.html#44\">QueuePauseAction<\/a>"],[100,2,"<a href=\"Message_Action_QueuePenaltyAction.php.html#44\">QueuePenaltyAction<\/a>"],[100,5,"<a href=\"Message_Action_QueueReloadAction.php.html#44\">QueueReloadAction<\/a>"],[100,1,"<a href=\"Message_Action_QueueRemoveAction.php.html#44\">QueueRemoveAction<\/a>"],[100,2,"<a href=\"Message_Action_QueueResetAction.php.html#44\">QueueResetAction<\/a>"],[100,2,"<a href=\"Message_Action_QueueRuleAction.php.html#44\">QueueRuleAction<\/a>"],[100,3,"<a href=\"Message_Action_QueueStatusAction.php.html#44\">QueueStatusAction<\/a>"],[100,2,"<a href=\"Message_Action_QueueSummaryAction.php.html#44\">QueueSummaryAction<\/a>"],[100,3,"<a href=\"Message_Action_QueueUnpauseAction.php.html#44\">QueueUnpauseAction<\/a>"],[100,1,"<a href=\"Message_Action_QueuesAction.php.html#44\">QueuesAction<\/a>"],[100,5,"<a href=\"Message_Action_RedirectAction.php.html#44\">RedirectAction<\/a>"],[100,2,"<a href=\"Message_Action_ReloadAction.php.html#44\">ReloadAction<\/a>"],[100,1,"<a href=\"Message_Action_SIPNotifyAction.php.html#44\">SIPNotifyAction<\/a>"],[100,1,"<a href=\"Message_Action_SIPPeersAction.php.html#44\">SIPPeersAction<\/a>"],[100,1,"<a href=\"Message_Action_SIPQualifyPeerAction.php.html#44\">SIPQualifyPeerAction<\/a>"],[100,1,"<a href=\"Message_Action_SIPShowPeerAction.php.html#44\">SIPShowPeerAction<\/a>"],[100,1,"<a href=\"Message_Action_SIPShowRegistryAction.php.html#44\">SIPShowRegistryAction<\/a>"],[100,1,"<a href=\"Message_Action_SendTextAction.php.html#44\">SendTextAction<\/a>"],[100,2,"<a href=\"Message_Action_SetVarAction.php.html#44\">SetVarAction<\/a>"],[100,3,"<a href=\"Message_Action_ShowDialPlanAction.php.html#44\">ShowDialPlanAction<\/a>"],[100,2,"<a href=\"Message_Action_StatusAction.php.html#44\">StatusAction<\/a>"],[100,1,"<a href=\"Message_Action_StopMonitorAction.php.html#44\">StopMonitorAction<\/a>"],[100,1,"<a href=\"Message_Action_UnpauseMonitorAction.php.html#44\">UnpauseMonitorAction<\/a>"],[100,11,"<a href=\"Message_Action_VGSMSMSTxAction.php.html#47\">VGSMSMSTxAction<\/a>"],[100,1,"<a href=\"Message_Action_VoicemailUsersListAction.php.html#44\">VoicemailUsersListAction<\/a>"],[100,8,"<a href=\"Message_Event_AGIExecEvent.php.html#46\">AGIExecEvent<\/a>"],[100,10,"<a href=\"Message_Event_AgentConnectEvent.php.html#46\">AgentConnectEvent<\/a>"],[100,5,"<a href=\"Message_Event_AgentloginEvent.php.html#46\">AgentloginEvent<\/a>"],[100,5,"<a href=\"Message_Event_AgentlogoffEvent.php.html#46\">AgentlogoffEvent<\/a>"],[100,1,"<a href=\"Message_Event_AgentsCompleteEvent.php.html#46\">AgentsCompleteEvent<\/a>"],[100,8,"<a href=\"Message_Event_AgentsEvent.php.html#46\">AgentsEvent<\/a>"],[100,7,"<a href=\"Message_Event_AsyncAGIEvent.php.html#46\">AsyncAGIEvent<\/a>"],[100,10,"<a href=\"Message_Event_BridgeEvent.php.html#46\">BridgeEvent<\/a>"],[100,7,"<a href=\"Message_Event_ChannelUpdateEvent.php.html#46\">ChannelUpdateEvent<\/a>"],[100,16,"<a href=\"Message_Event_CoreShowChannelEvent.php.html#46\">CoreShowchannelEvent<\/a>"],[100,2,"<a href=\"Message_Event_CoreShowChannelsCompleteEvent.php.html#48\">CoreShowChannelsCompleteEvent<\/a>"],[100,2,"<a href=\"Message_Event_DAHDIShowChannelsCompleteEvent.php.html#48\">DAHDIShowChannelsCompleteEvent<\/a>"],[100,7,"<a href=\"Message_Event_DAHDIShowChannelsEvent.php.html#46\">DAHDIShowChannelsEvent<\/a>"],[100,4,"<a href=\"Message_Event_DBGetResponseEvent.php.html#46\">DBGetResponseEvent<\/a>"],[100,8,"<a href=\"Message_Event_DTMFEvent.php.html#46\">DTMFEvent<\/a>"],[100,11,"<a href=\"Message_Event_DialEvent.php.html#46\">DialEvent<\/a>"],[100,60,"<a href=\"Message_Event_DongleDeviceEntryEvent.php.html#46\">DongleDeviceEntryEvent<\/a>"],[100,4,"<a href=\"Message_Event_DongleNewCUSDEvent.php.html#46\">DongleNewCUSDEvent<\/a>"],[100,4,"<a href=\"Message_Event_DongleNewUSSDBase64Event.php.html#46\">DongleNewUSSDBase64Event<\/a>"],[100,4,"<a href=\"Message_Event_DongleNewUSSDEvent.php.html#46\">DongleNewUSSDEvent<\/a>"],[100,5,"<a href=\"Message_Event_DongleSMSStatusEvent.php.html#46\">DongleSMSStatusEvent<\/a>"],[100,2,"<a href=\"Message_Event_DongleShowDevicesCompleteEvent.php.html#46\">DongleShowDevicesCompleteEvent<\/a>"],[100,4,"<a href=\"Message_Event_DongleStatusEvent.php.html#46\">DongleStatusEvent<\/a>"],[100,5,"<a href=\"Message_Event_DongleUSSDStatusEvent.php.html#46\">DongleUSSDStatusEvent<\/a>"],[100,2,"<a href=\"Message_Event_EventMessage.php.html#46\">EventMessage<\/a>"],[100,6,"<a href=\"Message_Event_ExtensionStatusEvent.php.html#46\">ExtensionStatusEvent<\/a>"],[100,4,"<a href=\"Message_Event_Factory_Impl_EventFactoryImpl.php.html#50\">EventFactoryImpl<\/a>"],[100,1,"<a href=\"Message_Event_FullyBootedEvent.php.html#46\">FullyBootedEvent<\/a>"],[100,8,"<a href=\"Message_Event_HangupEvent.php.html#46\">HangupEvent<\/a>"],[100,5,"<a href=\"Message_Event_HoldEvent.php.html#46\">HoldEvent<\/a>"],[100,9,"<a href=\"Message_Event_JoinEvent.php.html#46\">JoinEvent<\/a>"],[100,6,"<a href=\"Message_Event_LeaveEvent.php.html#46\">LeaveEvent<\/a>"],[100,8,"<a href=\"Message_Event_ListDialplanEvent.php.html#46\">ListDialPlanEvent<\/a>"],[100,6,"<a href=\"Message_Event_MasqueradeEvent.php.html#46\">MasqueradeEvent<\/a>"],[100,4,"<a href=\"Message_Event_MessageWaitingEvent.php.html#46\">MessageWaitingEvent<\/a>"],[100,5,"<a href=\"Message_Event_MusicOnHoldEvent.php.html#46\">MusicOnHoldEvent<\/a>"],[100,6,"<a href=\"Message_Event_NewAccountCodeEvent.php.html#46\">NewAccountCodeEvent<\/a>"],[100,7,"<a href=\"Message_Event_NewCalleridEvent.php.html#46\">NewCalleridEvent<\/a>"],[100,11,"<a href=\"Message_Event_NewchannelEvent.php.html#46\">NewchannelEvent<\/a>"],[100,9,"<a href=\"Message_Event_NewextenEvent.php.html#46\">NewextenEvent<\/a>"],[100,8,"<a href=\"Message_Event_NewstateEvent.php.html#46\">NewstateEvent<\/a>"],[100,11,"<a href=\"Message_Event_OriginateResponseEvent.php.html#46\">OriginateResponseEvent<\/a>"],[100,1,"<a href=\"Message_Event_ParkedCallsCompleteEvent.php.html#48\">ParkedCallsCompleteEvent<\/a>"],[100,13,"<a href=\"Message_Event_PeerEntryEvent.php.html#46\">PeerEntryEvent<\/a>"],[100,5,"<a href=\"Message_Event_PeerStatusEvent.php.html#46\">PeerStatusEvent<\/a>"],[100,2,"<a href=\"Message_Event_PeerlistCompleteEvent.php.html#46\">PeerlistCompleteEvent<\/a>"],[100,11,"<a href=\"Message_Event_QueueMemberAddedEvent.php.html#46\">QueueMemberAddedEvent<\/a>"],[100,9,"<a href=\"Message_Event_QueueMemberEvent.php.html#46\">QueueMemberEvent<\/a>"],[100,6,"<a href=\"Message_Event_QueueMemberPausedEvent.php.html#46\">QueueMemberPausedEvent<\/a>"],[100,5,"<a href=\"Message_Event_QueueMemberRemovedEvent.php.html#46\">QueueMemberRemovedEvent<\/a>"],[100,10,"<a href=\"Message_Event_QueueMemberStatusEvent.php.html#46\">QueueMemberStatusEvent<\/a>"],[100,11,"<a href=\"Message_Event_QueueParamsEvent.php.html#46\">QueueParamsEvent<\/a>"],[100,1,"<a href=\"Message_Event_QueueStatusCompleteEvent.php.html#48\">QueueStatusCompleteEvent<\/a>"],[100,1,"<a href=\"Message_Event_QueueSummaryCompleteEvent.php.html#48\">QueueSummaryCompleteEvent<\/a>"],[100,7,"<a href=\"Message_Event_QueueSummaryEvent.php.html#46\">QueueSummaryEvent<\/a>"],[100,14,"<a href=\"Message_Event_RTCPReceivedEvent.php.html#46\">RTCPReceivedEvent<\/a>"],[100,8,"<a href=\"Message_Event_RTCPReceiverStatEvent.php.html#46\">RTCPReceiverStatEvent<\/a>"],[100,14,"<a href=\"Message_Event_RTCPSentEvent.php.html#46\">RTCPSentEvent<\/a>"],[100,8,"<a href=\"Message_Event_RTPReceiverStatEvent.php.html#46\">RTPReceiverStatEvent<\/a>"],[100,8,"<a href=\"Message_Event_RTPSenderStatEvent.php.html#46\">RTPSenderStatEvent<\/a>"],[100,2,"<a href=\"Message_Event_RegistrationsCompleteEvent.php.html#48\">RegistrationsCompleteEvent<\/a>"],[100,5,"<a href=\"Message_Event_RenameEvent.php.html#46\">RenameEvent<\/a>"],[100,6,"<a href=\"Message_Event_ShowDialPlanCompleteEvent.php.html#46\">ShowDialPlanCompleteEvent<\/a>"],[100,2,"<a href=\"Message_Event_StatusCompleteEvent.php.html#46\">StatusCompleteEvent<\/a>"],[100,17,"<a href=\"Message_Event_StatusEvent.php.html#46\">StatusEvent<\/a>"],[100,11,"<a href=\"Message_Event_TransferEvent.php.html#46\">TransferEvent<\/a>"],[100,1,"<a href=\"Message_Event_UnknownEvent.php.html#46\">UnknownEvent<\/a>"],[100,8,"<a href=\"Message_Event_UnlinkEvent.php.html#46\">UnlinkEvent<\/a>"],[100,6,"<a href=\"Message_Event_VarSetEvent.php.html#46\">VarSetEvent<\/a>"],[100,1,"<a href=\"Message_Event_VoicemailUserEntryCompleteEvent.php.html#48\">VoicemailUserEntryCompleteEvent<\/a>"],[100,26,"<a href=\"Message_Event_VoicemailUserEntryEvent.php.html#44\">VoicemailUserEntryEvent<\/a>"],[100,5,"<a href=\"Message_Event_vgsm_me_stateEvent.php.html#46\">vgsm_me_stateEvent<\/a>"],[100,3,"<a href=\"Message_Event_vgsm_net_stateEvent.php.html#50\">vgsm_net_stateEvent<\/a>"],[100,21,"<a href=\"Message_Event_vgsm_sms_rxEvent.php.html#50\">vgsm_sms_rxEvent<\/a>"],[100,6,"<a href=\"Message_IncomingMessage.php.html#42\">IncomingMessage<\/a>"],[100,16,"<a href=\"Message_Message.php.html#42\">Message<\/a>"],[100,0,"<a href=\"Message_OutgoingMessage.php.html#42\">OutgoingMessage<\/a>"],[100,13,"<a href=\"Message_Response_ResponseMessage.php.html#48\">ResponseMessage<\/a>"]],
+              marker: {
+                  symbol: 'diamond'
+              }
+            }],
+        });
+    });
+    </script>
   </head>
 
   <body>
@@ -25,41 +77,19 @@
         <tr>
           <td valign="top">
             <h2>Class Coverage Distribution</h2>
-            <canvas id="classCoverageDistribution" width="475" height="200"></canvas>
-            <script>
-            var ccd = new RGraph.Bar('classCoverageDistribution', [0,0,0,0,0,0,0,0,0,0,0,167]);
-            ccd.Set('chart.background.barcolor1', 'white');
-            ccd.Set('chart.background.barcolor2', 'white');
-            ccd.Set('chart.colors', ['blue']);
-            ccd.Set('chart.shadow', true);
-            ccd.Set('chart.shadow.offsetx', 3);
-            ccd.Set('chart.shadow.offsety', 3);
-            ccd.Set('chart.labels', ['0%','0-10%','10-20%','20-30%','30-40%','40-50%','50-60%','60-70%','70-80%','80-90%','90-100%','100%']);
-            ccd.Set('chart.text.size', 5);
-            ccd.Draw();
-            </script>
+            <div id="classCoverageDistribution"></div>
           </td>
 
           <td valign="top">
             <h2>Class Complexity</h2>
-            <canvas id="classComplexity" width="475" height="200"></canvas>
-            <script>
-            var cc = new RGraph.Scatter('classComplexity', [[100,4,"blue","Autoloader"],[100,0,"blue","ClientException"],[100,40,"blue","ClientImpl"],[100,0,"blue","PAMIException"],[100,1,"blue","AbsoluteTimeoutAction"],[100,1,"blue","ActionMessage"],[100,2,"blue","AgentLogoffAction"],[100,1,"blue","AgentsAction"],[100,1,"blue","AttendedTransferAction"],[100,2,"blue","BridgeAction"],[100,1,"blue","ChangeMonitorAction"],[100,1,"blue","CommandAction"],[100,1,"blue","CoreSettingsAction"],[100,1,"blue","CoreShowChannelsAction"],[100,1,"blue","CoreStatusAction"],[100,1,"blue","CreateConfigAction"],[100,1,"blue","DAHDIDNDOffAction"],[100,1,"blue","DAHDIDNDOnAction"],[100,1,"blue","DAHDIDialOffHookAction"],[100,1,"blue","DAHDIHangupAction"],[100,1,"blue","DAHDIRestartAction"],[100,1,"blue","DAHDIShowChannelsAction"],[100,1,"blue","DBDelAction"],[100,2,"blue","DBDelTreeAction"],[100,1,"blue","DBGetAction"],[100,1,"blue","DBPutAction"],[100,1,"blue","DongleReloadAction"],[100,1,"blue","DongleResetAction"],[100,1,"blue","DongleRestartAction"],[100,1,"blue","DongleSendPDUAction"],[100,1,"blue","DongleSendSMSAction"],[100,1,"blue","DongleSendUSSDAction"],[100,1,"blue","DongleShowDevicesAction"],[100,1,"blue","DongleStartAction"],[100,1,"blue","DongleStopAction"],[100,2,"blue","EventsAction"],[100,1,"blue","ExtensionStateAction"],[100,2,"blue","GetConfigAction"],[100,1,"blue","GetConfigJSONAction"],[100,2,"blue","GetVarAction"],[100,1,"blue","HangupAction"],[100,1,"blue","JabberSendAction"],[100,1,"blue","ListCategoriesAction"],[100,1,"blue","ListCommandsAction"],[100,1,"blue","LocalOptimizeAwayAction"],[100,1,"blue","LoginAction"],[100,1,"blue","LogoffAction"],[100,1,"blue","MailboxCountAction"],[100,1,"blue","MailboxStatusAction"],[100,1,"blue","MeetmeListAction"],[100,1,"blue","MeetmeMuteAction"],[100,1,"blue","MeetmeUnmuteAction"],[100,1,"blue","ModuleCheckAction"],[100,1,"blue","ModuleLoadAction"],[100,1,"blue","ModuleReloadAction"],[100,1,"blue","ModuleUnloadAction"],[100,1,"blue","MonitorAction"],[100,12,"blue","OriginateAction"],[100,3,"blue","ParkAction"],[100,1,"blue","ParkedCallsAction"],[100,1,"blue","PauseMonitorAction"],[100,1,"blue","PingAction"],[100,1,"blue","PlayDTMFAction"],[100,5,"blue","QueueAddAction"],[100,4,"blue","QueueLogAction"],[100,3,"blue","QueuePauseAction"],[100,2,"blue","QueuePenaltyAction"],[100,5,"blue","QueueReloadAction"],[100,1,"blue","QueueRemoveAction"],[100,2,"blue","QueueResetAction"],[100,2,"blue","QueueRuleAction"],[100,3,"blue","QueueStatusAction"],[100,2,"blue","QueueSummaryAction"],[100,3,"blue","QueueUnpauseAction"],[100,1,"blue","QueuesAction"],[100,5,"blue","RedirectAction"],[100,2,"blue","ReloadAction"],[100,1,"blue","SIPNotifyAction"],[100,1,"blue","SIPPeersAction"],[100,1,"blue","SIPQualifyPeerAction"],[100,1,"blue","SIPShowPeerAction"],[100,1,"blue","SIPShowRegistryAction"],[100,1,"blue","SendTextAction"],[100,2,"blue","SetVarAction"],[100,3,"blue","ShowDialPlanAction"],[100,2,"blue","StatusAction"],[100,1,"blue","StopMonitorAction"],[100,1,"blue","UnpauseMonitorAction"],[100,11,"blue","VGSMSMSTxAction"],[100,1,"blue","VoicemailUsersListAction"],[100,8,"blue","AGIExecEvent"],[100,10,"blue","AgentConnectEvent"],[100,5,"blue","AgentloginEvent"],[100,5,"blue","AgentlogoffEvent"],[100,1,"blue","AgentsCompleteEvent"],[100,8,"blue","AgentsEvent"],[100,10,"blue","BridgeEvent"],[100,7,"blue","ChannelUpdateEvent"],[100,16,"blue","CoreShowchannelEvent"],[100,2,"blue","CoreShowChannelsCompleteEvent"],[100,2,"blue","DAHDIShowChannelsCompleteEvent"],[100,7,"blue","DAHDIShowChannelsEvent"],[100,4,"blue","DBGetResponseEvent"],[100,8,"blue","DTMFEvent"],[100,11,"blue","DialEvent"],[100,60,"blue","DongleDeviceEntryEvent"],[100,4,"blue","DongleNewCUSDEvent"],[100,4,"blue","DongleNewUSSDBase64Event"],[100,4,"blue","DongleNewUSSDEvent"],[100,5,"blue","DongleSMSStatusEvent"],[100,2,"blue","DongleShowDevicesCompleteEvent"],[100,4,"blue","DongleStatusEvent"],[100,5,"blue","DongleUSSDStatusEvent"],[100,2,"blue","EventMessage"],[100,6,"blue","ExtensionStatusEvent"],[100,4,"blue","EventFactoryImpl"],[100,1,"blue","FullyBootedEvent"],[100,8,"blue","HangupEvent"],[100,5,"blue","HoldEvent"],[100,9,"blue","JoinEvent"],[100,6,"blue","LeaveEvent"],[100,8,"blue","ListDialPlanEvent"],[100,6,"blue","MasqueradeEvent"],[100,4,"blue","MessageWaitingEvent"],[100,5,"blue","MusicOnHoldEvent"],[100,6,"blue","NewAccountCodeEvent"],[100,7,"blue","NewCalleridEvent"],[100,11,"blue","NewchannelEvent"],[100,9,"blue","NewextenEvent"],[100,8,"blue","NewstateEvent"],[100,11,"blue","OriginateResponseEvent"],[100,1,"blue","ParkedCallsCompleteEvent"],[100,13,"blue","PeerEntryEvent"],[100,5,"blue","PeerStatusEvent"],[100,2,"blue","PeerlistCompleteEvent"],[100,11,"blue","QueueMemberAddedEvent"],[100,9,"blue","QueueMemberEvent"],[100,6,"blue","QueueMemberPausedEvent"],[100,5,"blue","QueueMemberRemovedEvent"],[100,10,"blue","QueueMemberStatusEvent"],[100,11,"blue","QueueParamsEvent"],[100,1,"blue","QueueStatusCompleteEvent"],[100,1,"blue","QueueSummaryCompleteEvent"],[100,7,"blue","QueueSummaryEvent"],[100,14,"blue","RTCPReceivedEvent"],[100,8,"blue","RTCPReceiverStatEvent"],[100,14,"blue","RTCPSentEvent"],[100,8,"blue","RTPReceiverStatEvent"],[100,8,"blue","RTPSenderStatEvent"],[100,2,"blue","RegistrationsCompleteEvent"],[100,5,"blue","RenameEvent"],[100,6,"blue","ShowDialPlanCompleteEvent"],[100,2,"blue","StatusCompleteEvent"],[100,17,"blue","StatusEvent"],[100,11,"blue","TransferEvent"],[100,1,"blue","UnknownEvent"],[100,8,"blue","UnlinkEvent"],[100,6,"blue","VarSetEvent"],[100,1,"blue","VoicemailUserEntryCompleteEvent"],[100,26,"blue","VoicemailUserEntryEvent"],[100,5,"blue","vgsm_me_stateEvent"],[100,3,"blue","vgsm_net_stateEvent"],[100,21,"blue","vgsm_sms_rxEvent"],[100,6,"blue","IncomingMessage"],[100,16,"blue","Message"],[100,0,"blue","OutgoingMessage"],[100,13,"blue","ResponseMessage"]]);
-            cc.Set('chart.xmax', 100);
-            cc.Set('chart.background.barcolor1', 'white');
-            cc.Set('chart.background.barcolor2', 'white');
-            cc.Set('chart.tickmarks', 'plus');
-            cc.Set('chart.ticksize', 5);
-            cc.Set('chart.text.size', 5);
-            cc.Set('chart.ylabels', false);
-            cc.Draw();
-            </script>
+            <div id="classComplexity"></div>
           </td>
         </tr>
         <tr>
           <td valign="top">
             <h2>Top Project Risks</h2>
             <ul>
+              <li><a href="AsyncAgi_AsyncClientImpl.php.html#47">AsyncClientImpl</a> (182)</li>
 
             </ul>
           </td>
@@ -67,6 +97,11 @@
           <td valign="top">
             <h2>Least Tested Methods</h2>
             <ul>
+              <li><a href="AsyncAgi_AsyncClientImpl.php.html#171">AsyncClientImpl::__construct</a> (0%)</li>
+              <li><a href="AsyncAgi_AsyncClientImpl.php.html#150">AsyncClientImpl::close</a> (0%)</li>
+              <li><a href="AsyncAgi_AsyncClientImpl.php.html#128">AsyncClientImpl::open</a> (0%)</li>
+              <li><a href="AsyncAgi_AsyncClientImpl.php.html#108">AsyncClientImpl::send</a> (0%)</li>
+              <li><a href="AsyncAgi_AsyncClientImpl.php.html#95">AsyncClientImpl::handle</a> (0%)</li>
 
             </ul>
           </td>
@@ -78,7 +113,7 @@
 
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""></td></tr>
-      <tr><td class="versionInfo">Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage 1.0.4</a> using <a href="http://www.php.net/" target="_top">PHP 5.3.3</a> and PHPUnit 3.5.13 at Fri Dec 9 14:54:33 ART 2011.</td></tr>
+      <tr><td class="versionInfo">Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage 1.1.1</a> using <a href="http://www.php.net/" target="_top">PHP 5.3.3</a> and PHPUnit 3.6.7 at Sun Jan 15 16:38:19 ART 2012.</td></tr>
     </table>
 
     <br/>

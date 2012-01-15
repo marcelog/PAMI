@@ -1,0 +1,173 @@
+<html>
+    <head>
+        <script
+            type="text/javascript"
+            src="../../../js/jquery-1.4.2.min.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../syntax_highlighter/scripts/shCore.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../syntax_highlighter/scripts/shBrushJScript.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../syntax_highlighter/scripts/shBrushPhp.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../syntax_highlighter/scripts/shBrushXml.js">
+        </script>
+        <link
+            href="../../../syntax_highlighter/styles/shCore.css" rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="../../../syntax_highlighter/styles/shCoreEclipse.css"
+            rel="stylesheet" type="text/css"
+        />
+        <link
+            href="../../../syntax_highlighter/styles/shThemeWordpress.css"
+            rel="stylesheet" type="text/css"
+        />
+    </head>
+    <body>
+        <pre class="brush: php">&lt;?php
+/**
+ * Event triggered when exchanging rtp stats.
+ *
+ * PHP Version 5
+ *
+ * @category   Pami
+ * @package    Message
+ * @subpackage Event
+ * @author     Marcelo Gornstein &lt;marcelog@gmail.com&gt;
+ * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
+ * @version    SVN: $Id$
+ * @link       http://marcelog.github.com/PAMI/
+ *
+ * Copyright 2011 Marcelo Gornstein &lt;marcelog@gmail.com&gt;
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
+namespace PAMI\Message\Event;
+
+use PAMI\Message\Event\EventMessage;
+
+/**
+ * Event triggered when exchanging rtp stats.
+ *
+ * PHP Version 5
+ *
+ * @category   Pami
+ * @package    Message
+ * @subpackage Event
+ * @author     Marcelo Gornstein &lt;marcelog@gmail.com&gt;
+ * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
+ * @link       http://marcelog.github.com/PAMI/
+ */
+class RTPSenderStatEvent extends EventMessage
+{
+    /**
+     * Returns key: 'Privilege'.
+     *
+     * @return string
+     */
+    public function getPrivilege()
+    {
+        return $this-&gt;getKey('Privilege');
+    }
+
+    /**
+     * Returns key: 'SSRC'.
+     *
+     * @return string
+     */
+    public function getSSRC()
+    {
+        return $this-&gt;getKey('SSRC');
+    }
+
+    /**
+     * Returns key: 'SentPackets'.
+     *
+     * @return string
+     */
+    public function getSentPackets()
+    {
+        return $this-&gt;getKey('SentPackets');
+    }
+
+    /**
+     * Returns key: 'LostPackets'.
+     *
+     * @return string
+     */
+    public function getLostPackets()
+    {
+        return $this-&gt;getKey('LostPackets');
+    }
+
+    /**
+     * Returns key: 'Jitter'.
+     *
+     * @return string
+     */
+    public function getJitter()
+    {
+        return $this-&gt;getKey('Jitter');
+    }
+
+    /**
+     * Returns key: 'RTT'.
+     *
+     * @return string
+     */
+    public function getRTT()
+    {
+        return $this-&gt;getKey('RTT');
+    }
+
+    /**
+     * Returns key: 'SRCount'.
+     *
+     * @return string
+     */
+    public function getSRCount()
+    {
+        return $this-&gt;getKey('SRCount');
+    }
+
+    /**
+     * Constructor.
+     *
+     * @param string $rawContent Literal message as received from ami.
+     *
+     * @return void
+     */
+    public function __construct($rawContent)
+    {
+        parent::__construct($rawContent);
+    }
+}</pre>
+        <script type="text/javascript">
+             SyntaxHighlighter.all()
+             jQuery('.gutter div').each(function(key, data){
+                jQuery(data).prepend('<a name="L'+jQuery(data).text()+'"/>');
+             });
+        </script>
+    </body>
+</html>

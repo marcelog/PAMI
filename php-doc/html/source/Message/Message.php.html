@@ -1,0 +1,277 @@
+<html>
+    <head>
+        <script
+            type="text/javascript"
+            src="../../js/jquery-1.4.2.min.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../syntax_highlighter/scripts/shCore.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../syntax_highlighter/scripts/shBrushJScript.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../syntax_highlighter/scripts/shBrushPhp.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../syntax_highlighter/scripts/shBrushXml.js">
+        </script>
+        <link
+            href="../../syntax_highlighter/styles/shCore.css" rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="../../syntax_highlighter/styles/shCoreEclipse.css"
+            rel="stylesheet" type="text/css"
+        />
+        <link
+            href="../../syntax_highlighter/styles/shThemeWordpress.css"
+            rel="stylesheet" type="text/css"
+        />
+    </head>
+    <body>
+        <pre class="brush: php">&lt;?php
+/**
+ * A generic ami message, in-or-outbound.
+ *
+ * PHP Version 5
+ *
+ * @category Pami
+ * @package  Message
+ * @author   Marcelo Gornstein &lt;marcelog@gmail.com&gt;
+ * @license  http://marcelog.github.com/PAMI/ Apache License 2.0
+ * @version  SVN: $Id$
+ * @link     http://marcelog.github.com/PAMI/
+ *
+ * Copyright 2011 Marcelo Gornstein &lt;marcelog@gmail.com&gt;
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
+namespace PAMI\Message;
+
+/**
+ * A generic ami message, in-or-outbound.
+ *
+ * PHP Version 5
+ *
+ * @category Pami
+ * @package  Message
+ * @author   Marcelo Gornstein &lt;marcelog@gmail.com&gt;
+ * @license  http://marcelog.github.com/PAMI/ Apache License 2.0
+ * @link     http://marcelog.github.com/PAMI/
+ */
+abstract class Message
+{
+	/**
+	 * End Of Line means this token.
+	 * @var string
+	 */
+	const EOL = &quot;\r\n&quot;;
+
+	/**
+	 * End Of Message means this token.
+	 * @var string
+	 */
+	const EOM = &quot;\r\n\r\n&quot;;
+
+	/**
+	 * Message content, line by line. This is what it gets sent
+	 * or received literally.
+	 * @var string[]
+	 */
+	protected $lines;
+
+	/**
+	 * Metadata. Message variables (key/value).
+	 * @var string[]
+	 */
+	protected $variables;
+
+	/**
+	 * Metadata. Message &quot;keys&quot; i.e: Action: login
+	 * @var string[]
+	 */
+	protected $keys;
+
+	/**
+	 * Created date (unix timestamp).
+	 * @var integer
+	 */
+	protected $createdDate;
+
+    /**
+     * Serialize function.
+     *
+     * @return string[]
+     */
+    public function __sleep()
+    {
+        return array('lines', 'variables', 'keys', 'createdDate');
+    }
+
+	/**
+	 * Returns created date.
+	 *
+	 * @return integer
+	 */
+	public function getCreatedDate()
+	{
+	    return $this-&gt;createdDate;
+	}
+
+	/**
+	 * Adds a variable to this message.
+	 *
+	 * @param string $key   Variable name.
+	 * @param string $value Variable value.
+	 *
+	 * @return void
+	 */
+	public function setVariable($key, $value)
+	{
+	    $key = strtolower($key);
+	    $this-&gt;variables[$key] = $value;
+	}
+
+	/**
+	 * Returns a variable by name.
+	 *
+	 * @param string $key Variable name.
+	 *
+	 * @return string
+	 */
+	public function getVariable($key)
+	{
+	    $key = strtolower($key);
+		if (!isset($this-&gt;variables[$key])) {
+		    return null;
+		}
+		return $this-&gt;variables[$key];
+	}
+
+	/**
+	 * Adds a variable to this message.
+	 *
+	 * @param string $key   Key name (i.e: Action).
+	 * @param string $value Key value.
+	 *
+	 * @return void
+	 */
+	protected function setKey($key, $value)
+	{
+	    $key = strtolower((string)$key);
+	    $this-&gt;keys[$key] = (string)$value;
+	}
+
+	/**
+	 * Returns a key by name.
+	 *
+	 * @param string $key Key name (i.e: Action).
+	 *
+	 * @return string
+	 */
+	public function getKey($key)
+	{
+	    $key = strtolower($key);
+	    if (!isset($this-&gt;keys[$key])) {
+		    return null;
+		}
+		return (string)$this-&gt;keys[$key];
+	}
+
+	/**
+	 * Returns all keys for this message.
+	 *
+	 * @return string[]
+	 */
+	public function getKeys()
+	{
+	    return $this-&gt;keys;
+	}
+
+	/**
+	 * Returns all variabels for this message.
+	 *
+	 * @return string[]
+	 */
+	public function getVariables()
+	{
+	    return $this-&gt;variables;
+	}
+
+	/**
+	 * Returns the end of message token appended to the end of a given message.
+	 *
+	 * @return string
+	 */
+	protected function finishMessage($message)
+	{
+		return $message . self::EOL . self::EOL;
+	}
+
+	/**
+	 * Gives a string representation for this message, ready to be sent to
+	 * ami.
+	 *
+	 * @return string
+	 */
+	public function serialize()
+	{
+	    $result = array();
+	    foreach ($this-&gt;getKeys() as $k =&gt; $v) {
+	        $result[] = $k . ': ' . $v;
+	    }
+	    foreach ($this-&gt;getVariables() as $k =&gt; $v) {
+	        $result[] = 'Variable: ' . $k . '=' . $v;
+	    }
+	    $mStr = $this-&gt;finishMessage(implode(self::EOL, $result));
+	    return $mStr;
+	}
+
+	/**
+     * Returns key: 'ActionID'.
+     *
+     * @return string
+     */
+    public function getActionID()
+    {
+        return $this-&gt;getKey('ActionID');
+    }
+
+	/**
+	 * Constructor.
+	 *
+	 * @return void
+	 */
+	public function __construct()
+	{
+		$this-&gt;lines = array();
+		$this-&gt;variables = array();
+		$this-&gt;keys = array();
+		$this-&gt;createdDate = time();
+	}
+}
+</pre>
+        <script type="text/javascript">
+             SyntaxHighlighter.all()
+             jQuery('.gutter div').each(function(key, data){
+                jQuery(data).prepend('<a name="L'+jQuery(data).text()+'"/>');
+             });
+        </script>
+    </body>
+</html>

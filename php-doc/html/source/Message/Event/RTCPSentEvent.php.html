@@ -1,0 +1,233 @@
+<html>
+    <head>
+        <script
+            type="text/javascript"
+            src="../../../js/jquery-1.4.2.min.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../syntax_highlighter/scripts/shCore.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../syntax_highlighter/scripts/shBrushJScript.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../syntax_highlighter/scripts/shBrushPhp.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../syntax_highlighter/scripts/shBrushXml.js">
+        </script>
+        <link
+            href="../../../syntax_highlighter/styles/shCore.css" rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="../../../syntax_highlighter/styles/shCoreEclipse.css"
+            rel="stylesheet" type="text/css"
+        />
+        <link
+            href="../../../syntax_highlighter/styles/shThemeWordpress.css"
+            rel="stylesheet" type="text/css"
+        />
+    </head>
+    <body>
+        <pre class="brush: php">&lt;?php
+/**
+ * Event triggered when exchanging rtp stats.
+ *
+ * PHP Version 5
+ *
+ * @category   Pami
+ * @package    Message
+ * @subpackage Event
+ * @author     Marcelo Gornstein &lt;marcelog@gmail.com&gt;
+ * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
+ * @version    SVN: $Id$
+ * @link       http://marcelog.github.com/PAMI/
+ *
+ * Copyright 2011 Marcelo Gornstein &lt;marcelog@gmail.com&gt;
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
+namespace PAMI\Message\Event;
+
+use PAMI\Message\Event\EventMessage;
+
+/**
+ * Event triggered when exchanging rtp stats.
+ *
+ * PHP Version 5
+ *
+ * @category   Pami
+ * @package    Message
+ * @subpackage Event
+ * @author     Marcelo Gornstein &lt;marcelog@gmail.com&gt;
+ * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
+ * @link       http://marcelog.github.com/PAMI/
+ */
+class RTCPSentEvent extends EventMessage
+{
+    /**
+     * Returns key: 'Privilege'.
+     *
+     * @return string
+     */
+    public function getPrivilege()
+    {
+        return $this-&gt;getKey('Privilege');
+    }
+
+    /**
+     * Returns key: 'To'.
+     *
+     * @return string
+     */
+    public function getTo()
+    {
+        return $this-&gt;getKey('To');
+    }
+
+    /**
+     * Returns key: 'OurSSRC'.
+     *
+     * @return string
+     */
+    public function getOurSSRC()
+    {
+        return $this-&gt;getKey('OurSSRC');
+    }
+
+    /**
+     * Returns key: 'SentNTP'.
+     *
+     * @return string
+     */
+    public function getSentNTP()
+    {
+        return $this-&gt;getKey('SentNTP');
+    }
+
+    /**
+     * Returns key: 'SentRTP'.
+     *
+     * @return string
+     */
+    public function getSentRTP()
+    {
+        return $this-&gt;getKey('SentRTP');
+    }
+
+    /**
+     * Returns key: 'SentPackets'.
+     *
+     * @return string
+     */
+    public function getSentPackets()
+    {
+        return $this-&gt;getKey('SentPackets');
+    }
+
+    /**
+     * Returns key: 'SentOctets'.
+     *
+     * @return string
+     */
+    public function getSentOctets()
+    {
+        return $this-&gt;getKey('SentOctets');
+    }
+
+    /**
+     * Returns key: 'ReportBlock'.
+     *
+     * @return string
+     */
+    public function getReportBlock()
+    {
+        return $this-&gt;getKey('ReportBlock');
+    }
+
+    /**
+     * Returns key: 'FractionLost'.
+     *
+     * @return string
+     */
+    public function getFractionLost()
+    {
+        return $this-&gt;getKey('FractionLost');
+    }
+
+    /**
+     * Returns key: 'CumulativeLoss'.
+     *
+     * @return string
+     */
+    public function getCumulativeLoss()
+    {
+        return $this-&gt;getKey('CumulativeLoss');
+    }
+
+    /**
+     * Returns key: 'IAJitter'.
+     *
+     * @return string
+     */
+    public function getIAJitter()
+    {
+        return $this-&gt;getKey('IAJitter');
+    }
+
+    /**
+     * Returns key: 'TheirLastSR'.
+     *
+     * @return string
+     */
+    public function getTheirLastSR()
+    {
+        return $this-&gt;getKey('TheirLastSR');
+    }
+
+    /**
+     * Returns key: 'DLSR'.
+     *
+     * @return string
+     */
+    public function getDLSR()
+    {
+        return $this-&gt;getKey('DLSR');
+    }
+
+    /**
+     * Constructor.
+     *
+     * @param string $rawContent Literal message as received from ami.
+     *
+     * @return void
+     */
+    public function __construct($rawContent)
+    {
+        parent::__construct($rawContent);
+    }
+}</pre>
+        <script type="text/javascript">
+             SyntaxHighlighter.all()
+             jQuery('.gutter div').each(function(key, data){
+                jQuery(data).prepend('<a name="L'+jQuery(data).text()+'"/>');
+             });
+        </script>
+    </body>
+</html>
