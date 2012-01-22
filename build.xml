@@ -11,6 +11,9 @@
   </target>
 
   <target name="phpdepend">
+    <exec command="${phing} _phpdepend" passthru="true"/>
+  </target>
+  <target name="_phpdepend">
     <mkdir dir="${phpdepend.output.xml.dir}"/>
     <mkdir dir="${phpdepend.output.html.dir}"/>
     <exec
@@ -26,6 +29,9 @@
   </target>
 
   <target name="phpcs">
+    <exec command="${phing} _phpcs" passthru="true"/>
+  </target>
+  <target name="_phpcs">
     <mkdir dir="${phpcs.output.xml.dir}"/>
     <mkdir dir="${phpcs.output.html.dir}"/>
     <exec
@@ -41,6 +47,9 @@
   </target>
 
   <target name="phpunit">
+    <exec command="${phing} _phpunit" passthru="true"/>
+  </target>
+  <target name="_phpunit">
     <mkdir dir="${phpunit.output.xml.dir}"/>
     <mkdir dir="${phpunit.output.html.dir}"/>
     <exec
@@ -56,6 +65,9 @@
   </target>
 
   <target name="phpmd">
+    <exec command="${phing} _phpmd" passthru="true"/>
+  </target>
+  <target name="_phpmd">
     <mkdir dir="${phpmd.output.xml.dir}"/>
     <mkdir dir="${phpmd.output.html.dir}"/>
     <exec
@@ -71,6 +83,9 @@
   </target>
 
   <target name="phpcpd">
+    <exec command="${phing} _phpcpd" passthru="true"/>
+  </target>
+  <target name="_phpcpd">
     <mkdir dir="${phpcpd.output.xml.dir}"/>
     <mkdir dir="${phpcpd.output.html.dir}"/>
     <exec
@@ -86,6 +101,9 @@
   </target>
 
   <target name="phpdoc">
+    <exec command="${phing} _phpdoc" passthru="true"/>
+  </target>
+  <target name="_phpdoc">
     <mkdir dir="${phpdoc.output.html.dir}"/>
     <exec
       command="${phpdoc.exec} ${phpdoc.args}"
@@ -95,6 +113,9 @@
   </target>
 
   <target name="phploc">
+    <exec command="${phing} _phploc" passthru="true"/>
+  </target>
+  <target name="_phploc">
     <mkdir dir="${phploc.output.html.dir}"/>
     <exec
       command="${phploc.exec} ${phploc.args} > ${phploc.output.html.file}"
@@ -104,6 +125,9 @@
   </target>
 
   <target name="package">
+    <exec command="${phing} _package" passthru="true"/>
+  </target>
+  <target name="_package">
     <mkdir dir="${package.output.dir}"/>
     <exec
       command="${genphar.exec} ${genphar.args}"
@@ -200,6 +224,10 @@
     />
     <exec
       command="${pear.exec} install --alldeps PHP_CodeSniffer"
+      passthru="true"
+    />
+    <exec
+      command="${pear.exec} install --alldeps pear.phing.info/phing"
       passthru="true"
     />
     <exec
