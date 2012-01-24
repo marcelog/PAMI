@@ -107,7 +107,7 @@
     <mkdir dir="${phpdoc.output.html.dir}"/>
     <exec
       command="${phpdoc.exec} ${phpdoc.args}"
-      dir="${project.basedir}/src/mg/PAMI"
+      dir="${project.basedir}"
       passthru="true"
     />
   </target>
