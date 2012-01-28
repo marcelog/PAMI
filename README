@@ -22,6 +22,11 @@ Checkout the api (phpdoc) at: http://marcelog.github.com/PAMI/php-doc/html/index
 You may want to take a look at Ding https://github.com/marcelog/Ding if you're
 interested in using DI, AOP, and other stuff in your telephony applications.
 --------------------------------------------------------------------------------
+CI Server
+---------
+Take a look at the Jenkins CI Server (http://ci.marcelog.name/) to check out the
+docs, metrics, and pear and phar packages available.
+--------------------------------------------------------------------------------
 Available via PEAR
 ------------------
 You can now easily install PAMI by issuing:
