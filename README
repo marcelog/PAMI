@@ -35,8 +35,8 @@ You can now easily install PAMI by issuing:
 
 or
 
-# pear install marcelog/PAMI-1.50.0
-just replace 1.50.0 by the release version you'd like to install :)
+# pear install marcelog/PAMI-1.60.0
+just replace 1.60.0 by the release version you'd like to install :)
 See: http://pear.marcelog.name/
 --------------------------------------------------------------------------------
 Asterisk versions supported
@@ -67,7 +67,21 @@ $client->registerEventListener(array($listener, 'handle'));
 
 // Register an IEventListener:
 $client->registerEventListener($listener);
+--------------------------------------------------------------------------------
+Using Predicates
+================
+A second (optional) argument can be used when registering the event listener: a
+closure that will be evaluated before calling the callback. The callback will be
+called only if this predicate returns true:
 
+use PAMI\Message\Event\DialEvent;
+
+$client->registerEventListener(
+    array($listener, 'handleDialStart'),
+    function ($event) {
+        return $event instanceof DialEvent && $event->getSubEvent() == 'Begin';
+    })
+);
 --------------------------------------------------------------------------------
 Example
 =======

@@ -451,6 +451,58 @@ class Test_Client extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
+    public function can_filter_with_predicate()
+    {
+        global $mock_stream_socket_client;
+        global $mock_stream_set_blocking;
+        global $mockTime;
+        global $standardAMIStart;
+        $mockTime = true;
+        $mock_stream_socket_client = true;
+        $mock_stream_set_blocking = true;
+        $options = array(
+            'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties',
+        	'host' => '2.3.4.5',
+            'scheme' => 'tcp://',
+        	'port' => 9999,
+        	'username' => 'asd',
+        	'secret' => 'asd',
+            'connect_timeout' => 10,
+        	'read_timeout' => 10
+        );
+        $write = array(
+        	"action: Login\r\nactionid: 1432.123\r\nusername: asd\r\nsecret: asd\r\n"
+        );
+        setFgetsMock($standardAMIStart, $write);
+        $client = new \PAMI\Client\Impl\ClientImpl($options);
+        $resultVariable = false;
+        $client->registerEventListener(
+            function ($event) use (&$resultVariable) {
+                $resultVariable = $event;
+            },
+            function ($event) {
+                return false;
+            }
+        );
+	    $client->open();
+        $event = array(
+        	'Event: PeerStatus',
+            'Privilege: system,all',
+            'ChannelType: SIP',
+        	'Peer: SIP/someguy',
+        	'PeerStatus: Registered',
+        	''
+        );
+	    setFgetsMock($event, $event);
+	    for($i = 0; $i < 6; $i++) {
+	        $client->process();
+	    }
+        $this->assertFalse($resultVariable);
+    }
+
+    /**
+     * @test
+     */
     public function can_login()
     {
         global $mock_stream_socket_client;

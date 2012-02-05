@@ -200,10 +200,10 @@ class ClientImpl implements IClient
 	 *
 	 * @return string
 	 */
-	public function registerEventListener($listener)
+	public function registerEventListener($listener, $predicate = null)
 	{
 	    $id = uniqid('PamiListener');
-	    $this->_eventListeners[$id] = $listener;
+	    $this->_eventListeners[$id] = array($listener, $predicate);
 	    return $id;
 	}
 
@@ -364,7 +364,12 @@ class ClientImpl implements IClient
 	 */
 	protected function dispatch(IncomingMessage $message)
 	{
-        foreach ($this->_eventListeners as $listener) {
+        foreach ($this->_eventListeners as $data) {
+            $listener = $data[0];
+            $predicate = $data[1];
+            if ($predicate !== null && !$predicate($message)) {
+                continue;
+            }
             if ($listener instanceof \Closure) {
                 $listener($message);
             } else if (is_array($listener)) {
