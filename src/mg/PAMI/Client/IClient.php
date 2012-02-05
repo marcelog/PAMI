@@ -64,13 +64,15 @@ interface IClient
 	/**
 	 * Registers the given listener so it can receive events. Returns the generated
 	 * id for this new listener. You can pass in a an IEventListener, a Closure,
-	 * and an array containing the object and name of the method to invoke.
+	 * and an array containing the object and name of the method to invoke. Can specify
+	 * an optional predicate to invoke before calling the callback.
 	 *
 	 * @param mixed $listener
+	 * @param Closure|null $predicate
 	 *
 	 * @return string
 	 */
-	public function registerEventListener($listener);
+	public function registerEventListener($listener, $predicate = null);
 
 	/**
 	 * Unregisters an event listener.
