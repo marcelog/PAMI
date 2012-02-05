@@ -58,6 +58,46 @@
                     <li class="active"><a href="examples.html">Examples</a></li>
                 </ul>
                 <div id="tab-content" class="tab-content">
+<H3>Quickstart</H3>
+<pre name="code" class="php">
+$options = array(
+    'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties',
+    'host' => '2.3.4.5',
+    'scheme' => 'tcp://',
+    'port' => 9999,
+    'username' => 'asd',
+    'secret' => 'asd',
+    'connect_timeout' => 10,
+    'read_timeout' => 10
+);
+$client = new \PAMI\Client\Impl\ClientImpl($options);
+
+// Registering a closure
+$client->registerEventListener(function ($event) {
+});
+
+// Register a specific method of an object for event listening
+$client->registerEventListener(array($listener, 'handle'));
+
+// Register an IEventListener:
+$client->registerEventListener($listener);
+</pre>
+<h3>Using Predicates to control events flow</h3>
+<p>
+A second (optional) argument can be used when registering the event listener: a
+closure that will be evaluated before calling the callback. The callback will be
+called only if this predicate returns true:
+</p>
+<pre name="code" class="php">
+use PAMI\Message\Event\DialEvent;
+
+$client->registerEventListener(
+    array($listener, 'handleDialStart'),
+    function ($event) {
+        return $event instanceof DialEvent && $event->getSubEvent() == 'Begin';
+    })
+);
+</pre>
 <H3>Examples</H3>
 <p>
 <strong>NOTE:</strong> You will need to have log4php installed and in your include path (the src/main/php directory of the source distribution).
