@@ -62,6 +62,26 @@ interface IClient
 	public function process();
 
 	/**
+	 * Registers the given listener so it can receive events. Returns the generated
+	 * id for this new listener. You can pass in a an IEventListener, a Closure,
+	 * and an array containing the object and name of the method to invoke.
+	 *
+	 * @param mixed $listener
+	 *
+	 * @return string
+	 */
+	public function registerEventListener($listener);
+
+	/**
+	 * Unregisters an event listener.
+	 *
+	 * @param string $id The id returned by registerEventListener.
+	 *
+	 * @return void
+	 */
+	public function unregisterEventListener($id);
+
+	/**
 	 * Closes the connection to ami.
 	 *
 	 * @return void

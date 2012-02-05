@@ -308,6 +308,102 @@ class Test_Client extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
+    public function can_register_closure_event_listener()
+    {
+        global $mock_stream_socket_client;
+        global $mock_stream_set_blocking;
+        global $mockTime;
+        global $standardAMIStart;
+        $mockTime = true;
+        $mock_stream_socket_client = true;
+        $mock_stream_set_blocking = true;
+        $options = array(
+            'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties',
+        	'host' => '2.3.4.5',
+            'scheme' => 'tcp://',
+        	'port' => 9999,
+        	'username' => 'asd',
+        	'secret' => 'asd',
+            'connect_timeout' => 10,
+        	'read_timeout' => 10
+        );
+        $write = array(
+        	"action: Login\r\nactionid: 1432.123\r\nusername: asd\r\nsecret: asd\r\n"
+        );
+        setFgetsMock($standardAMIStart, $write);
+        $client = new \PAMI\Client\Impl\ClientImpl($options);
+        $resultVariable = false;
+        $client->registerEventListener(function ($event) use (&$resultVariable) {
+            $resultVariable = $event;
+        });
+	    $client->open();
+        $event = array(
+        	'Event: PeerStatus',
+            'Privilege: system,all',
+            'ChannelType: SIP',
+        	'Peer: SIP/someguy',
+        	'PeerStatus: Registered',
+        	''
+        );
+	    setFgetsMock($event, $event);
+	    for($i = 0; $i < 6; $i++) {
+	        $client->process();
+	    }
+	    $this->assertEquals($resultVariable->getName(), 'PeerStatus');
+        $this->assertTrue($resultVariable instanceof \PAMI\Message\Event\PeerStatusEvent);
+    }
+
+    /**
+     * @test
+     */
+    public function can_register_method_event_listener()
+    {
+        global $mock_stream_socket_client;
+        global $mock_stream_set_blocking;
+        global $mockTime;
+        global $standardAMIStart;
+        $mockTime = true;
+        $mock_stream_socket_client = true;
+        $mock_stream_set_blocking = true;
+        $options = array(
+            'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties',
+        	'host' => '2.3.4.5',
+            'scheme' => 'tcp://',
+        	'port' => 9999,
+        	'username' => 'asd',
+        	'secret' => 'asd',
+            'connect_timeout' => 10,
+        	'read_timeout' => 10
+        );
+        $write = array(
+        	"action: Login\r\nactionid: 1432.123\r\nusername: asd\r\nsecret: asd\r\n"
+        );
+        setFgetsMock($standardAMIStart, $write);
+        $client = new \PAMI\Client\Impl\ClientImpl($options);
+        $resultVariable = false;
+        $listener = new SomeListenerClass;
+        $client->registerEventListener(array($listener, 'handle'));
+	    $client->open();
+        $event = array(
+        	'Event: PeerStatus',
+            'Privilege: system,all',
+            'ChannelType: SIP',
+        	'Peer: SIP/someguy',
+        	'PeerStatus: Registered',
+        	''
+        );
+	    setFgetsMock($event, $event);
+	    for($i = 0; $i < 6; $i++) {
+	        $client->process();
+	    }
+	    $event = SomeListenerClass::$event;
+	    $this->assertEquals($event->getName(), 'PeerStatus');
+        $this->assertTrue($event instanceof \PAMI\Message\Event\PeerStatusEvent);
+    }
+
+    /**
+     * @test
+     */
     public function can_unregister_event_listener()
     {
         global $mock_stream_socket_client;

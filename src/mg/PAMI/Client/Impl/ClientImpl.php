@@ -193,13 +193,14 @@ class ClientImpl implements IClient
 
 	/**
 	 * Registers the given listener so it can receive events. Returns the generated
-	 * id for this new listener.
+	 * id for this new listener. You can pass in a an IEventListener, a Closure,
+	 * and an array containing the object and name of the method to invoke.
 	 *
-	 * @param IEventListener $listener
+	 * @param mixed $listener
 	 *
 	 * @return string
 	 */
-	public function registerEventListener(IEventListener $listener)
+	public function registerEventListener($listener)
 	{
 	    $id = uniqid('PamiListener');
 	    $this->_eventListeners[$id] = $listener;
@@ -364,7 +365,13 @@ class ClientImpl implements IClient
 	protected function dispatch(IncomingMessage $message)
 	{
         foreach ($this->_eventListeners as $listener) {
-            $listener->handle($message);
+            if ($listener instanceof \Closure) {
+                $listener($message);
+            } else if (is_array($listener)) {
+                $listener[0]->$listener[1]($message);
+            } else {
+                $listener->handle($message);
+            }
         }
 	}
 
