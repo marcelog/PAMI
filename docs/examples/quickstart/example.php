@@ -159,6 +159,14 @@ try
         'scheme' => 'tcp://' // try tls://
     );
 	$a = new ClientImpl($options);
+    // Registering a closure
+    //$client->registerEventListener(function ($event) {
+    //});
+
+    // Register a specific method of an object for event listening
+    //$client->registerEventListener(array($listener, 'handle'));
+
+    // Register an IEventListener:
 	$a->registerEventListener(new A());
 	$a->open();
 /*
