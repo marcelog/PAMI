@@ -42,36 +42,18 @@ namespace PAMI\Autoloader;
 class Autoloader
 {
     /**
-     * Holds current realpath.
-     * @var string
-     */
-    private static $_myPath;
-    /**
-     * Include path.
-     * @var string[]
-     */
-    private static $_includePath;
-
-    /**
      * Called by php to load a given class. Returns true if the class was
      * successfully loaded.
-     *
-     * @todo Performance: Try to get rid of implode() and str_replace() here.
      *
      * @return boolean
      */
     public static function load($class)
     {
-        foreach (self::$_includePath as $path) {
-            $file
-                = $path
-                . DIRECTORY_SEPARATOR
-                . str_replace('\\', DIRECTORY_SEPARATOR, $class) . '.php'
-            ;
-            if (file_exists($file)) {
-                include_once $file;
-                return true;
-            }
+        $classFile = str_replace('\\', DIRECTORY_SEPARATOR, $class) . '.php';
+        $file = stream_resolve_include_path($classFile);
+        if ($file && file_exists($file)) {
+            require_once $file;
+            return true;
         }
         return false;
     }
@@ -85,11 +67,6 @@ class Autoloader
      */
     public static function register()
     {
-        self::$_myPath = implode(
-            DIRECTORY_SEPARATOR,
-            array(realpath(dirname(__FILE__)), '..', '..')
-        );
-        self::$_includePath = explode(PATH_SEPARATOR, ini_get('include_path'));
         return spl_autoload_register('\PAMI\Autoloader\Autoloader::load');
     }
 }
