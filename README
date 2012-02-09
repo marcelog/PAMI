@@ -44,6 +44,8 @@ I use in my boxes. If you need support for other versions, please contact me.
 --------------------------------------------------------------------------------
 QuickStart
 ==========
+For an in-depth tutorial: http://marcelog.github.com/articles/pami_introduction_tutorial_how_to_install.html
+
 $options = array(
     'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties',
     'host' => '2.3.4.5',
