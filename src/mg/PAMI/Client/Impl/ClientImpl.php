@@ -323,7 +323,7 @@ class ClientImpl implements IClient
     	    } else if ($evePos !== false) {
     	        $event = $this->_messageToEvent($aMsg);
         	    $response = $this->findResponse($event);
-        	    if ($response === false) {
+        	    if ($response === false || $response->isComplete()) {
                     $this->dispatch($event);
         	    } else {
         	        $response->addEvent($event);
