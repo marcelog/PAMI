@@ -129,8 +129,6 @@ class AsyncClientImpl extends PagiClient implements IEventListener
     {
         $environment = $this->_asyncAgiEvent->getEnvironment();
         $this->_channel = $this->_asyncAgiEvent->getChannel();
-        $this->_variables = array();
-        $this->_arguments = $this->_variables; // Just reusing an empty array.
         foreach (explode("\n", $environment) as $line) {
             if ($this->isEndOfEnvironmentVariables($line)) {
                 break;
