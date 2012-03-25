@@ -136,6 +136,14 @@ namespace PAMI\Client\Impl {
             return call_user_func_array('\stream_get_line', func_get_args());
         }
     }
+    function feof($resource) {
+        global $mockFgets;
+        if (isset($mockFgets) && $mockFgets === true) {
+            return false;
+        }
+        return \feof($resource);
+    }
+
     function fread() {
         global $mockFgets;
         global $mockFgetsCount;
