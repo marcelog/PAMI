@@ -33,8 +33,8 @@ You can now easily install PAMI by issuing:
 
 or
 
-# pear install marcelog/PAMI-1.60.1
-just replace 1.60.1 by the release version you'd like to install :)
+# pear install marcelog/PAMI-1.60.2
+just replace 1.60.2 by the release version you'd like to install :)
 See: http://pear.marcelog.name/
 --------------------------------------------------------------------------------
 Asterisk versions supported
@@ -307,3 +307,5 @@ functionality and some other ami inconsistencies.
 * Joshua Elson for his help in trying and debugging in loaded asterisk servers.
 
 * Jacob Kiers for his help in bringing in and testing async agi functionality.
+
+* Richard Baar for noticing the lack of eof support when reading from socket.
