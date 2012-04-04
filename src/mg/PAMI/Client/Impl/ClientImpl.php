@@ -173,7 +173,6 @@ class ClientImpl implements IClient
 		if ($this->_socket === false) {
 			throw new ClientException('Error connecting to ami: ' . $errstr);
 		}
-		//stream_set_timeout($this->_socket, 0, $this->_rTimeout * 1000);
 	    $msg = new LoginAction($this->_user, $this->_pass);
 	    $id = $this->getLine();
 	    if (strstr($id, 'Asterisk') === false) {
