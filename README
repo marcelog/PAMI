@@ -1,7 +1,9 @@
 Introduction
 ============
 
-Note: PAMI Requires PHP 5.3+
+Note: PAMI Requires PHP 5.3+. PHP versions 5.3.9 and 5.3.10 WILL NOT WORK due
+to a bug introduced in stream_get_line() in 5.3.9. Please use 5.3.11+ or up
+to 5.3.8.
 
 A port for nodejs is available at: http://marcelog.github.com/Nami
 
@@ -309,3 +311,6 @@ functionality and some other ami inconsistencies.
 * Jacob Kiers for his help in bringing in and testing async agi functionality.
 
 * Richard Baar for noticing the lack of eof support when reading from socket.
+
+* Scot Opell for helping in debugging stream_get_line() in 5.3.9 and 5.3.10
+
