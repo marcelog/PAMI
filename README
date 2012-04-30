@@ -14,11 +14,6 @@ events, using an observer-listener pattern.
 The idea behind this, is to easily implement operator consoles, monitors, etc.
 either via SOA or ajax.
 
-Currently there is no manual or comprehensive documentation, so please refer
-to the examples, it's really all there (I will write the documentation as
-soon as possible). Please contact me if you have any comments, doubts, or
-any kind of feedback. Send an email to: marcelog@gmail.com
-
 You may want to take a look at Ding https://github.com/marcelog/Ding if you're
 interested in using DI, AOP, and other stuff in your telephony applications.
 --------------------------------------------------------------------------------
@@ -41,8 +36,9 @@ See: http://pear.marcelog.name/
 --------------------------------------------------------------------------------
 Asterisk versions supported
 ===========================
-PAMI is tested in asterisk 1.6 versions, just because this is the version
-I use in my boxes. If you need support for other versions, please contact me.
+PAMI is tested in asterisk 1.6, 1.4, and 1.8 versions, just because this are the
+versions I use in my boxes. If you need support for other versions, please
+contact me.
 --------------------------------------------------------------------------------
 QuickStart
 ==========
