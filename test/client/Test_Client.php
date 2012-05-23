@@ -848,6 +848,30 @@ class Test_Client extends \PHPUnit_Framework_TestCase
         $this->assertEquals($action->getVariable('variable'), 'value');
         $this->assertNull($action->getVariable('variable2'));
     }
+
+    /**
+     * @test
+     */
+    public function can_get_set_variable_with_multiple_values()
+    {
+        global $mockTime;
+        $mockTime = true;
+        $now = time();
+        $action = new \PAMI\Message\Action\LoginAction('a', 'b');
+        $this->assertEquals($now, $action->getCreatedDate());
+        $action->setVariable('variable', array('value1', 'value2'));
+        $text
+            = "action: Login\r\n"
+            . "actionid: 1432.123\r\n"
+            . "username: a\r\n"
+            . "secret: b\r\n"
+            . "Variable: variable=value1\r\n"
+            . "Variable: variable=value2\r\n"
+            . "\r\n"
+        ;
+        $this->assertEquals($text, $action->serialize());
+    }
+
     /**
      * @test
      */

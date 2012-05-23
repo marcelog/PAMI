@@ -189,6 +189,19 @@ abstract class Message
 	}
 
 	/**
+	 * Returns the string representation for an ami action variable.
+	 *
+	 * @param string $key
+	 * @param string $value
+	 *
+	 * @return string
+	 */
+	private function serializeVariable($key, $value)
+	{
+		return "Variable: $key=$value";
+	}
+
+	/**
 	 * Gives a string representation for this message, ready to be sent to
 	 * ami.
 	 *
@@ -201,7 +214,13 @@ abstract class Message
 	        $result[] = $k . ': ' . $v;
 	    }
 	    foreach ($this->getVariables() as $k => $v) {
-	        $result[] = 'Variable: ' . $k . '=' . $v;
+            if (is_array($v)) {
+                foreach ($v as $singleValue) {
+        	        $result[] = $this->serializeVariable($k, $singleValue);
+                }
+            } else {
+        	    $result[] = $this->serializeVariable($k, $v);
+            }
 	    }
 	    $mStr = $this->finishMessage(implode(self::EOL, $result));
 	    return $mStr;
