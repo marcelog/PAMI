@@ -455,9 +455,6 @@ class ClientImpl implements IClient
 	    if (fwrite($this->_socket, $messageToSend) < $length) {
     	    throw new ClientException('Could not send message');
 	    }
-	    /**
-	     * @todo this should not be an infinite loop. Check read timeout.
-	     */
 	    $read = 0;
 	    while($read <= $this->_rTimeout) {
 	        $this->process();
