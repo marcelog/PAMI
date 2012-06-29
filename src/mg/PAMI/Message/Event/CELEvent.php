@@ -1,13 +1,13 @@
 <?php
 /**
- * Event triggered when an async agi is executed.
+ * Event triggered when a CEL log message is generated
  *
  * PHP Version 5
  *
  * @category   Pami
  * @package    Message
  * @subpackage Event
- * @author     Marcelo Gornstein <marcelog@gmail.com>
+ * @author     Jacob Kiers <jacob@alphacomm.nl>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
  * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
@@ -32,14 +32,14 @@ namespace PAMI\Message\Event;
 use PAMI\Message\Event\EventMessage;
 
 /**
- * Event triggered when an async agi is executed.
+ * Event triggered when a CEL log message is generated
  *
  * PHP Version 5
  *
  * @category   Pami
  * @package    Message
  * @subpackage Event
- * @author     Marcelo Gornstein <marcelog@gmail.com>
+ * @author     Jacob Kiers <jacob@alphacomm.nl>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
  * @link       http://marcelog.github.com/PAMI/
  */
