@@ -113,8 +113,8 @@ namespace PAMI\Client\Impl {
                 $str = $mockFwriteReturn[$mockFwriteCount] . "\r\n";
                 if ($str !== $args[1]) {
                     throw new \Exception(
-                    	'Mocked: ' . print_r($mockFwriteReturn[$mockFwriteCount], true) . ' is '
-                    	. ' different from: ' . print_r($args[1], true)
+                    	'Mocked: ' . PHP_EOL . PHP_EOL .  print_r($mockFwriteReturn[$mockFwriteCount], true) . PHP_EOL . PHP_EOL
+                        . ' is different from: ' . PHP_EOL . PHP_EOL . print_r($args[1], true)
                     );
                 }
             }
