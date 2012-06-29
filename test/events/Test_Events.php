@@ -807,7 +807,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
 	        $client->process();
 	    }
 	    $event = SomeListenerClass::$event;
-        $this->assertTrue($event instanceof $eventClass);
+        $this->assertTrue($event instanceof $eventClass, "Class '" . get_class($event) . "' is not an instance of '$eventClass'");
         foreach ($values as $key => $value) {
             if (isset($getters[$eventName][$key])) {
                 $methodName = 'get' . $getters[$eventName][$key];
