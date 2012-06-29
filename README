@@ -107,6 +107,7 @@ can still catch them. If you catch one of these, please report it!
 * AGIExec
 * AsyncAGI
 * Bridge
+* CEL
 * ChannelUpdate
 * CoreShowChannel
 * CoreShowChannelComplete
@@ -305,7 +306,8 @@ functionality and some other ami inconsistencies.
 
 * Joshua Elson for his help in trying and debugging in loaded asterisk servers.
 
-* Jacob Kiers for his help in bringing in and testing async agi functionality.
+* Jacob Kiers for his help in bringing in and testing async agi functionality, and CEL event
+support.
 
 * Richard Baar for noticing the lack of eof support when reading from socket.
 
