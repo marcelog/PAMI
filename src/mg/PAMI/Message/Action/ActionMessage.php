@@ -73,9 +73,14 @@ abstract class ActionMessage extends OutgoingMessage
      */
     public function setActionID($actionID)
     {
+        if (0 == strlen($actionID)) {
+            throw new PAMIException('ActionID cannot be empty.');
+        }
+
         if (strlen($actionID) > 69) {
             throw new PAMIException('ActionID can be at most 69 characters long.');
         }
+
         $this->setKey('ActionID', $actionID);
     }
 }
