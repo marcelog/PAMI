@@ -1387,50 +1387,40 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
         $client = $this->_start($write, $action);
     }
 
-
     /**
      * @test
      */
     public function can_set_actionid()
     {
-        try {
-            $action = new \PAMI\Message\Action\PingAction();
-            $actionID = '121234567890123456789012345678901234567890';
-            $action->setActionID($actionID);
-            $this->assertSame($actionID, $action->getActionID());
-        } catch(\PAMI\Exception\PAMIException $e) {
-            $this->fail('ActionID cannot be set when it should');
-        }
+        $action = new \PAMI\Message\Action\PingAction();
+        // ActionID is between 0 and 69 characters long.
+        $actionID = '121234567890123456789012345678901234567890';
+        $action->setActionID($actionID);
+        $this->assertSame($actionID, $action->getActionID());
     }
 
     /**
      * @test
+     * @expectedException \PAMI\Exception\PAMIException
      */
     public function cannot_set_actionid_longer_than_69_characters()
     {
-        try {
-            $action = new \PAMI\Message\Action\PingAction();
-            // A 70-character long ActionID
-            $action->setActionID('1234567890123456789012345678901234567890123456789012345678901234567890');
-            $this->fail('ActionID should no be able to be longer then 69 characters.');
-        } catch(\PAMI\Exception\PAMIException $e) {
-            // Exception expected, so do nothing
-        }
+        $action = new \PAMI\Message\Action\PingAction();
+        // A 70-character long ActionID
+        $action->setActionID('1234567890123456789012345678901234567890123456789012345678901234567890');
+        $this->fail('ActionID should no be able to be longer then 69 characters.');
     }
 
     /**
      * @test
+     * @expectedException \PAMI\Exception\PAMIException
      */
     public function cannot_set_empty_actionid()
     {
-        try {
-            $action = new \PAMI\Message\Action\PingAction();
-            // A 70-character long ActionID
-            $action->setActionID('');
-            $this->fail('ActionID cannot be empty.');
-        } catch(\PAMI\Exception\PAMIException $e) {
-            // Exception expected, so do nothing
-        }
+        $action = new \PAMI\Message\Action\PingAction();
+        // An empty ActionID
+        $action->setActionID('');
+        $this->fail('ActionID cannot be empty.');
     }
 }
 }
