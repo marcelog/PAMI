@@ -1385,5 +1385,20 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
 	    $action->setVariable('a', 'b');
         $client = $this->_start($write, $action);
     }
+
+    /**
+     * @test
+     */
+    public function can_set_actionid()
+    {
+        try {
+            $action = new \PAMI\Message\Action\PingAction();
+            // A 70-character long ActionID
+            $action->setActionID('1234567890123456789012345678901234567890123456789012345678901234567890');
+            $this->fail('ActionID cannot be longer then 69 characters.');
+        } catch(\PAMI\Exception\PAMIException $e) {
+            // Exception expected, so do nothing
+        }
+    }
 }
 }
