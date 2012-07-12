@@ -1407,7 +1407,6 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
         $action = new \PAMI\Message\Action\PingAction();
         // A 70-character long ActionID
         $action->setActionID('1234567890123456789012345678901234567890123456789012345678901234567890');
-        $this->fail('ActionID should no be able to be longer then 69 characters.');
     }
 
     /**
@@ -1419,7 +1418,6 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
         $action = new \PAMI\Message\Action\PingAction();
         // An empty ActionID
         $action->setActionID('');
-        $this->fail('ActionID cannot be empty.');
     }
 }
 }
