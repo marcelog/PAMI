@@ -54,16 +54,4 @@ class DongleShowDevicesCompleteEvent extends EventMessage
     {
         return $this->getKey('listitems');
     }
-
-    /**
-     * Constructor.
-     *
-     * @param string $rawContent Literal message as received from ami.
-     *
-     * @return void
-     */
-    public function __construct($rawContent)
-    {
-        parent::__construct($rawContent);
-    }
 }

@@ -144,16 +144,4 @@ class QueueParamsEvent extends EventMessage
     {
         return intval($this->getKey('Weight'));
     }
-
-    /**
-     * Constructor.
-     *
-     * @param string $rawContent Literal message as received from ami.
-     *
-     * @return void
-     */
-    public function __construct($rawContent)
-    {
-        parent::__construct($rawContent);
-    }
 }

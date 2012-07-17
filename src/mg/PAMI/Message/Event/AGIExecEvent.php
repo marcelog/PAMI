@@ -114,16 +114,4 @@ class AGIExecEvent extends EventMessage
     {
         return $this->getKey('ResultCode');
     }
-
-    /**
-     * Constructor.
-     *
-     * @param string $rawContent Literal message as received from ami.
-     *
-     * @return void
-     */
-    public function __construct($rawContent)
-    {
-        parent::__construct($rawContent);
-    }
 }

@@ -124,16 +124,4 @@ class QueueMemberEvent extends EventMessage
     {
         return intval($this->getKey('Paused')) != 0;
     }
-
-    /**
-     * Constructor.
-     *
-     * @param string $rawContent Literal message as received from ami.
-     *
-     * @return void
-     */
-    public function __construct($rawContent)
-    {
-        parent::__construct($rawContent);
-    }
 }

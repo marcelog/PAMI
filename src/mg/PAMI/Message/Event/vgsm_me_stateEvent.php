@@ -84,16 +84,4 @@ class vgsm_me_stateEvent extends EventMessage
     {
         return $this->getKey('X-vGSM-ME-State-Change-Reason');
     }
-
-    /**
-     * Constructor.
-     *
-     * @param string $rawContent Literal message as received from ami.
-     *
-     * @return void
-     */
-    public function __construct($rawContent)
-    {
-        parent::__construct($rawContent);
-    }
 }

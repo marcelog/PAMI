@@ -114,16 +114,4 @@ class RTPReceiverStatEvent extends EventMessage
     {
         return $this->getKey('RRCount');
     }
-
-    /**
-     * Constructor.
-     *
-     * @param string $rawContent Literal message as received from ami.
-     *
-     * @return void
-     */
-    public function __construct($rawContent)
-    {
-        parent::__construct($rawContent);
-    }
 }

@@ -74,16 +74,4 @@ class DongleNewCUSDEvent extends EventMessage
     {
         return $this->getKey('Message');
     }
-
-    /**
-     * Constructor.
-     *
-     * @param string $rawContent Literal message as received from ami.
-     *
-     * @return void
-     */
-    public function __construct($rawContent)
-    {
-        parent::__construct($rawContent);
-    }
 }

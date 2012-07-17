@@ -47,15 +47,4 @@ use PAMI\Message\Event\EventMessage;
  */
 class VoicemailUserEntryCompleteEvent extends EventMessage
 {
-    /**
-     * Constructor.
-     *
-     * @param string $rawContent Literal message as received from ami.
-     *
-     * @return void
-     */
-    public function __construct($rawContent)
-    {
-        parent::__construct($rawContent);
-    }
 }

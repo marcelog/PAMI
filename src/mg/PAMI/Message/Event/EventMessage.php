@@ -54,16 +54,4 @@ abstract class EventMessage extends IncomingMessage
     {
         return $this->getKey('Event');
     }
-
-    /**
-     * Constructor.
-     *
-     * @param string $rawContent Literal message as received from ami.
-     *
-     * @return void
-     */
-    public function __construct($rawContent)
-    {
-        parent::__construct($rawContent);
-    }
 }

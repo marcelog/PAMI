@@ -45,8 +45,4 @@ use PAMI\Message\IncomingMessage;
  */
 class UnknownEvent extends EventMessage
 {
-    public function __construct($rawContent)
-    {
-        parent::__construct($rawContent);
-    }
 }

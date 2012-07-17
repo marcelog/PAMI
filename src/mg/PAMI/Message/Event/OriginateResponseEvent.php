@@ -144,16 +144,4 @@ class OriginateResponseEvent extends EventMessage
     {
         return $this->getKey('CallerIdName');
     }
-
-    /**
-     * Constructor.
-     *
-     * @param string $rawContent Literal message as received from ami.
-     *
-     * @return void
-     */
-    public function __construct($rawContent)
-    {
-        parent::__construct($rawContent);
-    }
 }
