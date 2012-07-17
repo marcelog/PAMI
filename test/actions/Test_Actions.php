@@ -627,6 +627,7 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
             'actionid: 1432.123',
         	'jabber: jabber',
         	'jid: jid',
+            'screenname: jid',
             'message: message',
             ''
         )));

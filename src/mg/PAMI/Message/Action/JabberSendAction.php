@@ -57,6 +57,7 @@ class JabberSendAction extends ActionMessage
         parent::__construct('JabberSend');
         $this->setKey('Jabber', $jabber);
         $this->setKey('JID', $jid);
+        $this->setKey('ScreenName', $jid);
         $this->setKey('Message', $message);
     }
 }

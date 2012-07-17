@@ -17,12 +17,12 @@ either via SOA or ajax.
 
 You may want to take a look at Ding https://github.com/marcelog/Ding if you're
 interested in using DI, AOP, and other stuff in your telephony applications.
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 CI Server
 ---------
-Take a look at the Jenkins CI Server (http://ci.marcelog.name/) to check out the
-docs, metrics, and pear and phar packages available.
---------------------------------------------------------------------------------
+Take a look at the Jenkins CI Server (http://ci.marcelog.name/) to check out
+the docs, metrics, and pear and phar packages available.
+-------------------------------------------------------------------------------
 Available via PEAR
 ------------------
 You can now easily install PAMI by issuing:
@@ -34,19 +34,20 @@ or
 # pear install marcelog/PAMI-1.62.0
 just replace 1.62.0 by the release version you'd like to install :)
 See: http://pear.marcelog.name/
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 Asterisk versions supported
 ===========================
-PAMI is tested in asterisk 1.6, 1.4, and 1.8 versions, just because this are the
-versions I use in my boxes. If you need support for other versions, please
+PAMI is tested in asterisk 1.6, 1.4, and 1.8 versions, just because this are
+the versions I use in my boxes. If you need support for other versions, please
 contact me.
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 QuickStart
 ==========
 For an in-depth tutorial: http://marcelog.github.com/articles/pami_introduction_tutorial_how_to_install.html
 
 $options = array(
-    'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties',
+    'log4php.properties' =>
+         RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties',
     'host' => '2.3.4.5',
     'scheme' => 'tcp://',
     'port' => 9999,
@@ -66,12 +67,12 @@ $client->registerEventListener(array($listener, 'handle'));
 
 // Register an IEventListener:
 $client->registerEventListener($listener);
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 Using Predicates
 ================
 A second (optional) argument can be used when registering the event listener: a
-closure that will be evaluated before calling the callback. The callback will be
-called only if this predicate returns true:
+closure that will be evaluated before calling the callback. The callback will 
+be called only if this predicate returns true:
 
 use PAMI\Message\Event\DialEvent;
 
@@ -81,7 +82,7 @@ $client->registerEventListener(
         return $event instanceof DialEvent && $event->getSubEvent() == 'Begin';
     })
 );
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 Example
 =======
 Please see docs/examples/quickstart/example.php for a very basic example.
@@ -91,7 +92,7 @@ AsterTrace is a full application: https://github.com/marcelog/AsterTrace.
 Also, you might want to look at this article: http://marcelog.github.com/articles/php_asterisk_listener_example_using_pami_and_ding.html
 
 For an example of using asynchronous AGI with PAMI, see docs/examples/asyncagi
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 Currently Supported Events
 ==========================
 More events will be added with time. I can only add the ones I can test for and
@@ -128,6 +129,7 @@ can still catch them. If you catch one of these, please report it!
 * Extension
 * Hangup
 * Hold
+* JabberEvent
 * Join
 * Leave
 * ListDialplan
@@ -170,7 +172,7 @@ can still catch them. If you catch one of these, please report it!
 * vgsm_sms_rx
 * VoicemailUserEntry
 * VoicemailUserEntryComplete
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 Currently Supported Actions
 ===========================
 * AbsoluteTimeout
@@ -256,7 +258,7 @@ Currently Supported Actions
 * UnpauseMonitor
 * VGSM_SMS_TX
 * VoicemailUsersList
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 Developers
 ==========
 * build.xml is a phing build file, not ant.
@@ -268,13 +270,13 @@ Developers
 to run ding tests and metrics.
 * Run phing all
 * Check the API at http://marcelog.github.com/PAMI/api.html
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 Debugging, logging
 ==================
 
 You need log4php (http://logging.apache.org/log4php/). Just make sure you copy
 it to the include_path and PAMI will pick it up from there.
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 LICENSE
 =======
 Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -290,7 +292,7 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 Thanks To
 =========
 * Jason Blank <rumpled at github> for helping in the debugging of the queue
@@ -302,14 +304,17 @@ functionality and some other ami inconsistencies.
 
 * Eli Hunter, for helping in bringing in tls compatibility.
 
-* Freddy dafredmail at googlemail, for his help and testing environment to add dongle support.
+* Freddy dafredmail at googlemail, for his help and testing environment to add
+dongle support.
 
 * Joshua Elson for his help in trying and debugging in loaded asterisk servers.
 
-* Jacob Kiers for his help in bringing in and testing async agi functionality, and CEL event
+* Jacob Kiers for his help in bringing in and testing async agi functionality,
+and CEL event
 support.
 
-* Richard Baar for noticing the lack of eof support when reading from socket.
+* Richard Baar for noticing the lack of eof support when reading from socket,
+the JabberEvent, and the ScreenName in JabberAction.
 
 * Scot Opell for helping in debugging stream_get_line() in 5.3.9 and 5.3.10
 
