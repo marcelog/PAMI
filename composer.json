@@ -1,0 +1,9 @@
+{
+    "name": "jacobkiers/pami",
+    "description": "PAMI library",
+    "type": "library",
+    "require": {
+        "php": ">=5.3.3",
+        "pear-log4php/Apache_log4php": "2.2.*"
+    }
+}
