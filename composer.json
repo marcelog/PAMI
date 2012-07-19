@@ -4,7 +4,7 @@
     "type": "library",
     "require": {
         "php": ">=5.3.3",
-        "pear-log4php/Apache_log4php": "2.2.*"
+        "monolog/monolog":"1.*@stable"
     },
     "autoload": {
         "psr-0": {
