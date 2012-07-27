@@ -1386,5 +1386,39 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
 	    $action->setVariable('a', 'b');
         $client = $this->_start($write, $action);
     }
+
+    /**
+     * @test
+     */
+    public function can_set_actionid()
+    {
+        $action = new \PAMI\Message\Action\PingAction();
+        // ActionID is between 0 and 69 characters long.
+        $actionID = '121234567890123456789012345678901234567890';
+        $action->setActionID($actionID);
+        $this->assertSame($actionID, $action->getActionID());
+    }
+
+    /**
+     * @test
+     * @expectedException \PAMI\Exception\PAMIException
+     */
+    public function cannot_set_actionid_longer_than_69_characters()
+    {
+        $action = new \PAMI\Message\Action\PingAction();
+        // A 70-character long ActionID
+        $action->setActionID('1234567890123456789012345678901234567890123456789012345678901234567890');
+    }
+
+    /**
+     * @test
+     * @expectedException \PAMI\Exception\PAMIException
+     */
+    public function cannot_set_empty_actionid()
+    {
+        $action = new \PAMI\Message\Action\PingAction();
+        // An empty ActionID
+        $action->setActionID('');
+    }
 }
 }
