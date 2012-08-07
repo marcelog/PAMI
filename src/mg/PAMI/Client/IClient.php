@@ -28,6 +28,8 @@
  */
 namespace PAMI\Client;
 
+use PAMI\Message\OutgoingMessage;
+
 /**
  * Interface for an ami client.
  *
@@ -45,7 +47,7 @@ interface IClient
 	/**
 	 * Opens a tcp connection to ami.
 	 *
-	 * @throws ClientException
+	 * @throws PAMI\Client\Exception\ClientException
 	 * @return void
 	 */
 	public function open();
@@ -54,8 +56,6 @@ interface IClient
 	 * Main processing loop. Also called from send(), you should call this in
 	 * your own application in order to continue reading events and responses
 	 * from ami.
-	 *
-	 * @todo not suitable for multithreaded applications.
 	 *
 	 * @return void
 	 */
@@ -89,4 +89,15 @@ interface IClient
 	 * @return void
 	 */
 	public function close();
+
+	/**
+	 * Sends a message to ami.
+	 *
+	 * @param OutgoingMessage $message Message to send.
+	 *
+	 * @see ClientImpl::send()
+	 * @throws PAMI\Client\Exception\ClientException
+	 * @return PAMI\Message\Response\ResponseMessage
+	 */
+	public function send(OutgoingMessage $message);
 }

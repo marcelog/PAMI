@@ -157,7 +157,7 @@ class ClientImpl implements IClient
 	/**
 	 * Opens a tcp connection to ami.
 	 *
-	 * @throws ClientException
+	 * @throws PAMI\Client\Exception\ClientException
 	 * @return void
 	 */
 	public function open()
@@ -260,50 +260,7 @@ class ClientImpl implements IClient
 	/**
 	 * Main processing loop. Also called from send(), you should call this in
 	 * your own application in order to continue reading events and responses
-	 * from ami. You may also declare(ticks=1) in your main source code.
-	 *
-	 * Taken from: http://www.voip-info.org/wiki/view/Asterisk+manager+API
-	 *
-	 * The type of a packet is determined by the existence of one of the
-	 * following keys:
-	 * Action: A packet sent by the connected client to Asterisk, requesting a
-	 * particular Action be performed. There are a finite (but extendable) set
-	 * of actions available to the client, determined by the modules presently
-	 * loaded in the Asterisk engine. Only one action may be outstanding at a
-	 * time. The Action packet contains the name of the operation to be
-	 * performed as well as all required parameters.
-	 * Response: the response sent by Asterisk to the last action sent by the
-	 * client.
-	 * Event: data pertaining to an event generated from within the Asterisk
-	 * core or an extension module.
-	 * Generally the client sends Action packets to the Asterisk server, the
-	 * Asterisk server performs the requested operation and returns the result
-	 * (often only success or failure) in a Response packet. As there is no
-	 * guarantee regarding the order of Response packets the client usually
-	 * includes an ActionID parameter in every Action packet that is sent back
-	 * by Asterisk in the corresponding Response packet. That way the client
-	 * can easily match Action and Response packets while sending Actions at
-	 * any desired rate without having to wait for outstanding Response packets
-	 * before sending the next action.
-	 * Event packets are used in two different contexts: On the one hand they
-	 * inform clients about state changes in Asterisk (like new channels being
-	 * created and hung up or agents being logged in and out) on the other hand
-	 * they are used to transport the response payload for actions that return
-	 * a list of data (event generating actions). When a client sends an event
-	 * generating action Asterisk sends a Response packed indicating success
-	 * and containing a "Response: Follows" line. Then it sends zero or more
-	 * events that contain the actual payload and finally an action complete
-	 * event indicating that all data has been sent. The events sent in
-	 * response to an event generating action and the action complete event
-	 * contain the ActionID of the Action packet that triggered them, so you
-	 * can easily match them the same way as Response packets. An example of an
-	 * event generating action is the Status action that triggers Status events
-	 * for each active channel. When all Status events have been sent a
-	 * terminating a StatusComplete event is sent.
-	 *
-	 * @todo not suitable for multithreaded applications.
-	 *
-	 * @return void
+	 * from ami. 
 	 */
 	public function process()
 	{
@@ -327,7 +284,9 @@ class ClientImpl implements IClient
         	    } else {
         	        $response->addEvent($event);
         	    }
-    	    } else { // broken ami.. sending a response with events without Event and ActionId
+    	    } else {
+    	    	// broken ami.. sending a response with events without
+    	    	// Event and ActionId
                 $bMsg = 'Event: ResponseEvent' . "\r\n";
                 $bMsg .= 'ActionId: ' . $this->_lastActionId . "\r\n" . $aMsg;
                 $event = $this->_messageToEvent($bMsg);
@@ -345,7 +304,7 @@ class ClientImpl implements IClient
 	 *
 	 * @param IncomingMessage $message Message sent by asterisk.
 	 *
-	 * @return ResponseMessage
+	 * @return PAMI\Message\Response\ResponseMessage
 	 */
 	protected function findResponse(IncomingMessage $message)
 	{
@@ -359,7 +318,7 @@ class ClientImpl implements IClient
 	/**
 	 * Dispatchs the incoming message to a handler.
 	 *
-	 * @param IncomingMessage $message Message to dispatch.
+	 * @param PAMI\Message\IncomingMessage $message Message to dispatch.
 	 *
 	 * @return void
 	 */
@@ -386,7 +345,7 @@ class ClientImpl implements IClient
 	 *
 	 * @param string $msg Raw string.
 	 *
-	 * @return ResponseMessage
+	 * @return PAMI\Message\Response\ResponseMessage
 	 */
 	private function _messageToResponse($msg)
 	{
@@ -404,7 +363,7 @@ class ClientImpl implements IClient
 	 *
 	 * @param string $msg Raw string.
 	 *
-	 * @return EventMessage
+	 * @return PAMI\Message\Event\EventMessage
 	 */
 	private function _messageToEvent($msg)
 	{
@@ -417,7 +376,7 @@ class ClientImpl implements IClient
 	 *
 	 * @todo not suitable for multithreaded applications.
 	 *
-	 * @return IncomingMessage
+	 * @return PAMI\Message\IncomingMessage
 	 */
 	protected function getRelated(OutgoingMessage $message)
 	{
@@ -436,11 +395,11 @@ class ClientImpl implements IClient
 	/**
 	 * Sends a message to ami.
 	 *
-	 * @param OutgoingMessage $message Message to send.
+	 * @param PAMI\Message\OutgoingMessage $message Message to send.
 	 *
 	 * @see ClientImpl::send()
-	 * @throws ClientException
-	 * @return void
+	 * @throws PAMI\Client\Exception\ClientException
+	 * @return PAMI\Message\Response\ResponseMessage
 	 */
 	public function send(OutgoingMessage $message)
 	{
