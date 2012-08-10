@@ -174,7 +174,7 @@ class ClientImpl implements IClient
 			throw new ClientException('Error connecting to ami: ' . $errstr);
 		}
 	    $msg = new LoginAction($this->_user, $this->_pass);
-	    $id = $this->getLine();
+	    $id = @stream_get_line($this->_socket, 1024, Message::EOL);
 	    if (strstr($id, 'Asterisk') === false) {
 	        throw new ClientException('Unknown peer. Is this an ami?: ' . $id);
 	    }
@@ -220,15 +220,6 @@ class ClientImpl implements IClient
 	    if (isset($this->_eventListeners[$id])) {
 	        unset($this->_eventListeners[$id]);
 	    }
-	}
-	/**
-	 * Reads a line over the stream until EOL.
-	 *
-	 * @return string
-	 */
-	protected function getLine()
-	{
-        return @stream_get_line($this->_socket, 1024, Message::EOL);
 	}
 
 	/**
