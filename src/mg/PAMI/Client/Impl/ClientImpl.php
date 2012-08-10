@@ -174,7 +174,7 @@ class ClientImpl implements IClient
 			throw new ClientException('Error connecting to ami: ' . $errstr);
 		}
 	    $msg = new LoginAction($this->_user, $this->_pass);
-	    $id = $this->getLine();
+	    $id = @stream_get_line($this->_socket, 1024, Message::EOL);
 	    if (strstr($id, 'Asterisk') === false) {
 	        throw new ClientException('Unknown peer. Is this an ami?: ' . $id);
 	    }
@@ -182,7 +182,7 @@ class ClientImpl implements IClient
 	    if (!$response->isSuccess()) {
 	        throw new ClientException('Could not connect: ' . $response->getMessage());
 	    }
-	    stream_set_blocking($this->_socket, 0);
+	    @stream_set_blocking($this->_socket, 0);
 	    $this->_currentProcessingMessage = '';
 	    //register_tick_function(array($this, 'process'));
 	    if ($this->_logger) {
@@ -221,15 +221,6 @@ class ClientImpl implements IClient
 	        unset($this->_eventListeners[$id]);
 	    }
 	}
-	/**
-	 * Reads a line over the stream until EOL.
-	 *
-	 * @return string
-	 */
-	protected function getLine()
-	{
-        return stream_get_line($this->_socket, 1024, Message::EOL);
-	}
 
 	/**
 	 * Reads a complete message over the stream until EOM.
@@ -240,8 +231,8 @@ class ClientImpl implements IClient
 	{
 	    $msgs = array();
 	    // Read something.
-	    $read = fread($this->_socket, 65535);
-	    if ($read === false || feof($this->_socket)) {
+	    $read = @fread($this->_socket, 65535);
+	    if ($read === false || @feof($this->_socket)) {
 	        throw new ClientException('Error reading');
 	    }
 	    $this->_currentProcessingMessage .= $read;
@@ -441,7 +432,7 @@ class ClientImpl implements IClient
 	        $this->_logger->debug('Closing connection to asterisk.');
 	    }
 	    $this->send(new LogoffAction());
-		stream_socket_shutdown($this->_socket, STREAM_SHUT_RDWR);
+		@stream_socket_shutdown($this->_socket, STREAM_SHUT_RDWR);
 	}
 
 	/**
