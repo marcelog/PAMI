@@ -411,7 +411,7 @@ class ClientImpl implements IClient
 	        );
         }
 	    $this->_lastActionId = $message->getActionId();
-	    if (fwrite($this->_socket, $messageToSend) < $length) {
+	    if (@fwrite($this->_socket, $messageToSend) < $length) {
     	    throw new ClientException('Could not send message');
 	    }
 	    $read = 0;
