@@ -262,12 +262,14 @@ Currently Supported Actions
 Developers
 ==========
 * build.xml is a phing build file, not ant.
-* It's very possible that you may need to edit build.properties.
+* It's very possible that you may need to edit build.properties and change
+php.bin and pear.bin properties.
 * Available main targets: all, build, test, report.
 * Tools run: phpdoc, phploc, phpcs, phpmd, phpcpd, phpdepend, phpunit.
 * Setup your installation by editing pear and php paths in build.properties
 * Run phing install-dependencies this will install pear and everything needed
-to run ding tests and metrics.
+to run phing tests and metrics.
+* Copy resources/php.ini.example to resources/php.ini and edit it.
 * Run phing all
 * Check the API at http://marcelog.github.com/PAMI/api.html
 -------------------------------------------------------------------------------
