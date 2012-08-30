@@ -45,8 +45,8 @@ You can now easily install PAMI by issuing:
 
 or
 
-# pear install marcelog/PAMI-1.62.0
-just replace 1.62.0 by the release version you'd like to install :)
+# pear install marcelog/PAMI-1.62.1
+just replace 1.62.1 by the release version you'd like to install :)
 See: http://pear.marcelog.name/
 -------------------------------------------------------------------------------
 Available as PHAR
