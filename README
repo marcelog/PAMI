@@ -23,6 +23,20 @@ CI Server
 Take a look at the Jenkins CI Server (http://ci.marcelog.name/) to check out
 the docs, metrics, and pear and phar packages available.
 -------------------------------------------------------------------------------
+Available via Composer
+----------------------
+Just add the package "marcelog/pami":
+{
+    "require": {
+        "marcelog/pami": "dev-master"
+    }
+}
+
+Note that since log4php is a dependency and does not have a composer
+installation available, you will need to add it to your own composer.json file.
+
+Packagist URL: http://packagist.org/packages/marcelog/pami
+-------------------------------------------------------------------------------
 Available via PEAR
 ------------------
 You can now easily install PAMI by issuing:
@@ -34,6 +48,11 @@ or
 # pear install marcelog/PAMI-1.62.0
 just replace 1.62.0 by the release version you'd like to install :)
 See: http://pear.marcelog.name/
+-------------------------------------------------------------------------------
+Available as PHAR
+-----------------
+Just go to the Jenkins server at http://ci.marcelog.name and grab the latest
+phar distribution from the PAMI job.
 -------------------------------------------------------------------------------
 Asterisk versions supported
 ===========================
