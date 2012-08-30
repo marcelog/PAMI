@@ -68,6 +68,23 @@
       <li>Extensions: sockets</li>
       <li>log4php (just put the src/main/php directory of the src distribution in your path).</li>
     </ul>
+    <h3>Installing with composer</h3>
+<p>
+Just add the package "marcelog/pami":
+</p>
+<pre name="code" class="php">
+{
+    "require": {
+        "marcelog/pami": "dev-master"
+    }
+}
+</pre>
+<p>
+Note that since log4php is a dependency and does not have a composer
+installation available, you will need to add it to your own composer.json file.
+
+Packagist URL: <a href="http://packagist.org/packages/marcelog/pami">http://packagist.org/packages/marcelog/pami</a>
+</p>
     <h3>Installing with pear</h3>
     <p>
 You can now easily install PAMI by issuing:
@@ -85,7 +102,7 @@ just replace 1.62.0 by the release version you'd like to install :) <br/>
 See: <a href="http://pear.marcelog.name/">http://pear.marcelog.name/</a><br/><br/>
 
 
-<h3>CI Server</h3>
+<h3>CI Server (PHAR and PEAR)</h3>
 <p>
 You can also take a look at the <a href="http://ci.marcelog.name/">Jenkins CI Server</a> to get the phar and pear packages directly.
 </p>
