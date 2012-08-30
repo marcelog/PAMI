@@ -31,10 +31,6 @@ Just add the package "marcelog/pami":
         "marcelog/pami": "dev-master"
     }
 }
-
-Note that since log4php is a dependency and does not have a composer
-installation available, you will need to add it to your own composer.json file.
-
 Packagist URL: http://packagist.org/packages/marcelog/pami
 -------------------------------------------------------------------------------
 Available via PEAR

@@ -13,12 +13,18 @@
       "role": "Developer"
     }
   ],
+  "repositories": [
+  {
+    "type": "pear",
+    "url": "http://pear.apache.org/log4php/"
+  }],
   "autoload": {
     "psr-0": {
       "PAMI": "src/mg"
     }
   },
   "require": {
-    "php": ">=5.3.3"
+    "php": ">=5.3.3",
+    "pear-log4php/Apache_log4php": ">=2.1.0"
   }
 }
