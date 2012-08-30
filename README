@@ -29,7 +29,12 @@ Just add the package "marcelog/pami":
 {
     "require": {
         "marcelog/pami": "dev-master"
-    }
+    },
+    "repositories": [
+    {
+      "type": "pear",
+      "url": "http://pear.apache.org/log4php/"
+    }]
 }
 Packagist URL: http://packagist.org/packages/marcelog/pami
 -------------------------------------------------------------------------------
