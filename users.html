@@ -1,10 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-<title>PAMI: Examples</title>
+<title>PAMI: Success Stories</title>
 <meta name="Author" content="Marcelo Gornstein"/>
-<meta name="Keywords" content="PHP Asterisk Manager Interface ( AMI ) supports synchronous command ( action )/ responses and asynchronous events using the pattern observer-listener. Supports commands with responses with multiple events. Also supports SMS via VGMS boards. Very suitable for development of operator consoles and / or asterisk / channels / peers monitoring through SOA"/>
-<meta name="description" content="PHP Asterisk Manager Interface ( AMI ) supports synchronous command ( action )/ responses and asynchronous events using the pattern observer-listener. Supports commands with responses with multiple events. Also supports SMS via VGMS boards. Very suitable for development of operator consoles and / or asterisk / channels / peers monitoring through SOA"/>
+<meta name="Keywords" content="Who uses PAMI? Read about some of the case studies and success stories from some of its users"/>
+<meta name="description" content="Who uses PAMI? Read about some of the case studies and success stories from some of its users"/>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <link href='dphighlighter/SyntaxHighlighter.css' rel='stylesheet' type='text/css' />
 <link rel="shortcut icon" href="images/favicon.ico" title="favicon" />
@@ -39,7 +39,7 @@
        <g:plusone></g:plusone>
       </div>
    	</div>
-    <div class="breadcrumb">You are here &nbsp;&raquo;&nbsp; <a href="/index.html">Home Page</a>  &nbsp;&raquo;&nbsp;  <a href="/software.html">Software</a>  &nbsp;&raquo;&nbsp;  PAMI</div>
+    <div class="breadcrumb">You are here &nbsp;&raquo;&nbsp; <a href="/index.html">Home Page</a>  &nbsp;&raquo;&nbsp;  <a href="/software.html">Software</a>  &nbsp;&raquo;&nbsp;  PAGI</div>
   </div>
   <div class="main-outer">
   	<div class="main-inner">
@@ -55,68 +55,15 @@
                     <li><a href="install.html">Installation</a></li>
                     <li><a href="api.html">API</a></li>
                     <li><a href="metrics.html">Metrics</a></li>
-                    <li class="active"><a href="examples.html">Examples</a></li>
-                    <li><a href="users.html">Who uses it?</a></li>
+                    <li><a href="examples.html">Examples</a></li>
+                    <li class="active"><a href="users.html">Who uses PAMI?</a></li>
                 </ul>
                 <div id="tab-content" class="tab-content">
-                <h3>Tutorial</h3>
-                <p>
-                For an in-depth tutorial, read <a href="http://marcelog.github.com/articles/pami_introduction_tutorial_how_to_install.html">this</a>.
-                </p>
-
-<H3>Quickstart</H3>
-<pre name="code" class="php">
-$options = array(
-    'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties',
-    'host' => '2.3.4.5',
-    'scheme' => 'tcp://',
-    'port' => 9999,
-    'username' => 'asd',
-    'secret' => 'asd',
-    'connect_timeout' => 10,
-    'read_timeout' => 10
-);
-$client = new \PAMI\Client\Impl\ClientImpl($options);
-
-// Registering a closure
-$client->registerEventListener(function ($event) {
-});
-
-// Register a specific method of an object for event listening
-$client->registerEventListener(array($listener, 'handle'));
-
-// Register an IEventListener:
-$client->registerEventListener($listener);
-</pre>
-<h3>Using Predicates to control events flow</h3>
+<H3>Success stories</u></H3>
 <p>
-A second (optional) argument can be used when registering the event listener: a
-closure that will be evaluated before calling the callback. The callback will be
-called only if this predicate returns true:
+Are you using PAMI in your company and/or personal projects? Want to tell the world how cool it is? Please send an email to <a href="mailto:marcelog@gmail.com">marcelog@gmail.com</a>
 </p>
-<pre name="code" class="php">
-use PAMI\Message\Event\DialEvent;
-
-$client->registerEventListener(
-    array($listener, 'handleDialStart'),
-    function ($event) {
-        return $event instanceof DialEvent && $event->getSubEvent() == 'Begin';
-    })
-);
-</pre>
-<H3>Examples</H3>
-<p>
-<strong>NOTE:</strong> You will need to have log4php installed and in your include path (the src/main/php directory of the source distribution).
-</p>
-<p>
-For a very raw quickstart: <a href="https://github.com/marcelog/PAMI/tree/master/docs/examples">https://github.com/marcelog/PAMI/tree/master/docs/examples</a> for all (and full) examples.
-</p>
-<p>
-Also, for a more elegant example, mixing Ding and PAMI, Please see <a href="https://github.com/marcelog/AsterTrace">https://github.com/marcelog/AsterTrace</a>
-</p>
-<p>
-Also, you might want to look at this <a href="http://marcelog.github.com/articles/php_asterisk_listener_example_using_pami_and_ding.html"> article</a>.
-</p>
+<hr/>
                 </div>
               </div>
               <span class="bottom"><span class="bl"></span><span class="br"></span></span>
@@ -130,7 +77,7 @@ Also, you might want to look at this <a href="http://marcelog.github.com/article
                 <div class="hr-1"><hr /></div>
                 <ul class="simple-list">
                   <li><a href="/Ding">Ding</a></li>
-                  <li><a href="/PAGI">PAGI</a></li>
+                  <li><a href="/PAMI">PAMI</a></li>
                   <li><a href="/Nami">NAMI</a></li>
                   <li><a href="https://github.com/marcelog/erlagi">Erlagi</a></li>
                   <li><a href="https://github.com/marcelog/erlami">Erlami</a></li>
