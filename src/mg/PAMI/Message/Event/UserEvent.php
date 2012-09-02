@@ -50,7 +50,7 @@ class UserEvent extends EventMessage
      *
      * @return string
      */
-    public function getName()
+    public function getUserEventName()
     {
         return $this->getKey('UserEvent');
     }
