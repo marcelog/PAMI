@@ -73,7 +73,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
             'Agents', 'AgentsComplete', 'Agentlogoff', 'Agentlogin', 'AgentConnect',
             'DongleSMSStatus', 'FullyBooted', 'DongleShowDevicesComplete', 'DongleDeviceEntry',
             'DongleNewUSSDBase64', 'DongleNewUSSD', 'DongleUSSDStatus', 'DongleNewCUSD',
-            'DongleStatus', 'CEL', 'JabberEvent'
+            'DongleStatus', 'CEL', 'JabberEvent', 'Registry', 'UserEvent'
         );
         $eventTranslatedValues = array(
             'QueueMemberStatus' => array(
@@ -90,6 +90,16 @@ class Test_Events extends \PHPUnit_Framework_TestCase
             ),
         );
         $eventValues = array(
+            'UserEvent' => array(
+                'Privilege' => 'Privilege',
+                'UniqueID' => 'UniqueID',
+                'UserEvent' => 'UserEvent'
+            ),
+            'Registry' => array(
+                'Channel' => 'Channel',
+                'Domain' => 'Domain',
+                'Status' => 'Status'
+            ),
             'JabberEvent' => array(
                 'Privilege' => 'Privilege',
                 'Account' => 'Account',
@@ -731,6 +741,9 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 ),
         );
         $eventGetters = array(
+            'UserEvent' => array(
+                'UserEvent' => 'UserEventName'
+            ),
             'AsyncAGI' => array(
                 'Env' => 'Environment'
             ),
