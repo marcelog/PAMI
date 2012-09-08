@@ -431,7 +431,6 @@ class ClientImpl implements IClient
 	    if ($this->_logger->isDebugEnabled()) {
 	        $this->_logger->debug('Closing connection to asterisk.');
 	    }
-	    $this->send(new LogoffAction());
 		@stream_socket_shutdown($this->_socket, STREAM_SHUT_RDWR);
 	}
 
