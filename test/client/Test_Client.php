@@ -238,8 +238,8 @@ class Test_Client extends \PHPUnit_Framework_TestCase
 	        $client->open();
         } catch(\Exception $e) {
         }
-        $end = time();
-        $this->assertEquals($end - $start, 3);
+        $length = time() - $start;
+        $this->assertTrue($length >= 2 && $length <= 5);
     }
     /**
      * @test

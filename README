@@ -1,13 +1,5 @@
 Introduction
 ============
-
-Note: PAMI Requires PHP 5.3+. PHP versions 5.3.9 and 5.3.10 WILL NOT WORK due
-to a bug introduced in stream_get_line() in 5.3.9. Please use 5.3.11+ or up
-to 5.3.8 (see README.PHP-5.3.9-and-5.3.10).
-
-A port for nodejs is available at: http://marcelog.github.com/Nami
-A port for erlang is available at: https://github.com/marcelog/erlami
-
 PAMI means PHP Asterisk Manager Interface. As its name suggests its just a
 set of php classes that will let you issue commands to an ami and/or receive
 events, using an observer-listener pattern.
@@ -15,13 +7,40 @@ events, using an observer-listener pattern.
 The idea behind this, is to easily implement operator consoles, monitors, etc.
 either via SOA or ajax.
 
-You may want to take a look at Ding https://github.com/marcelog/Ding if you're
-interested in using DI, AOP, and other stuff in your telephony applications.
+A port for nodejs is available at: http://marcelog.github.com/Nami
+A port for erlang is available at: https://github.com/marcelog/erlami
+-------------------------------------------------------------------------------
+Contact me
+----------
+If you have any questions, issues, feature requests, or just want to report
+your "success story", or maybe even say hi, please send an email to
+marcelog@gmail.com
+-------------------------------------------------------------------------------
+PHP Versions
+------------
+Note: PAMI Requires PHP 5.3+. PHP versions 5.3.9 and 5.3.10 WILL NOT WORK due
+to a bug introduced in stream_get_line() in 5.3.9. Please use 5.3.11+ or up
+to 5.3.8 (see README.PHP-5.3.9-and-5.3.10).
 -------------------------------------------------------------------------------
 CI Server
 ---------
 Take a look at the Jenkins CI Server (http://ci.marcelog.name/) to check out
 the docs, metrics, and pear and phar packages available.
+-------------------------------------------------------------------------------
+Available via Composer
+----------------------
+Just add the package "marcelog/pami":
+{
+    "require": {
+        "marcelog/pami": "dev-master"
+    },
+    "repositories": [
+    {
+      "type": "pear",
+      "url": "http://pear.apache.org/log4php/"
+    }]
+}
+Packagist URL: http://packagist.org/packages/marcelog/pami
 -------------------------------------------------------------------------------
 Available via PEAR
 ------------------
@@ -31,9 +50,14 @@ You can now easily install PAMI by issuing:
 
 or
 
-# pear install marcelog/PAMI-1.62.0
-just replace 1.62.0 by the release version you'd like to install :)
+# pear install marcelog/PAMI-1.70.0
+just replace 1.70.0 by the release version you'd like to install :)
 See: http://pear.marcelog.name/
+-------------------------------------------------------------------------------
+Available as PHAR
+-----------------
+Just go to the Jenkins server at http://ci.marcelog.name and grab the latest
+phar distribution from the PAMI job.
 -------------------------------------------------------------------------------
 Asterisk versions supported
 ===========================
@@ -155,6 +179,7 @@ can still catch them. If you catch one of these, please report it!
 * QueueStatusComplete
 * QueueSummaryComplete
 * RegistrationsComplete
+* Registry
 * Rename
 * RTCPReceived
 * RTCPReceiver
@@ -166,6 +191,7 @@ can still catch them. If you catch one of these, please report it!
 * StatusComplete
 * Transfer
 * Unlink
+* UserEvent
 * VarSet
 * vgsm_me_state
 * vgsm_net_state
@@ -262,12 +288,14 @@ Currently Supported Actions
 Developers
 ==========
 * build.xml is a phing build file, not ant.
-* It's very possible that you may need to edit build.properties.
+* It's very possible that you may need to edit build.properties and change
+php.bin and pear.bin properties.
 * Available main targets: all, build, test, report.
 * Tools run: phpdoc, phploc, phpcs, phpmd, phpcpd, phpdepend, phpunit.
 * Setup your installation by editing pear and php paths in build.properties
 * Run phing install-dependencies this will install pear and everything needed
-to run ding tests and metrics.
+to run phing tests and metrics.
+* Copy resources/php.ini.example to resources/php.ini and edit it.
 * Run phing all
 * Check the API at http://marcelog.github.com/PAMI/api.html
 -------------------------------------------------------------------------------

@@ -245,7 +245,7 @@
       passthru="true"
     />
     <exec
-      command="${pear.exec} install --alldeps https://svn.apache.org/repos/asf/logging/log4php/releases/pear/Apache_log4php-2.1.0-pear.tgz"
+      command="${pear.exec} install --alldeps pear.apache.org/log4php/Apache_log4php"
       passthru="true"
     />
   </target>
