@@ -48,6 +48,12 @@ abstract class IncomingMessage extends Message
     protected $rawContent;
 
     /**
+     * Holds original message as an array.
+     * @var array
+     */
+    protected $rawEventArray = array();
+
+    /**
      * Serialize function.
      *
      * @return string[]
@@ -81,6 +87,16 @@ abstract class IncomingMessage extends Message
     }
 
     /**
+     * Returns the original message converted to an array.
+     *
+     * @return array
+     */
+    public function getRawEventArray()
+    {
+        return $this->rawEventArray;
+    }
+
+    /**
      * Constructor.
      *
      * @param string $rawContent Original message as received from ami.
@@ -93,11 +109,13 @@ abstract class IncomingMessage extends Message
         $this->rawContent = $rawContent;
         $lines = explode(Message::EOL, $rawContent);
         foreach ($lines as $line) {
-            $content = explode(':', $line);
-            $name = strtolower(trim($content[0]));
-            unset($content[0]);
-            $value = isset($content[1]) ? trim(implode(':', $content)) : '';
+            $content = explode(':', $line, 2);
+
+            $raw_name = trim($content[0]);
+            $name = strtolower($raw_name);
+            $value = isset($content[1]) ? trim($content[1]) : '';
             $this->setKey($name, $value);
+            $this->rawEventArray[$raw_name] = isset($content[1]) ? trim($content[1]) : '';
         }
     }
 }
