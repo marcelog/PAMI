@@ -1,8 +1,0 @@
-NOTE
-----
-PAMI's autoloader has been renamed to the namespace PAMI\Autoloader and the
-class name is now \PAMI\Autoloader\Autoloader so we now honor namespace to
-filesystem convention for classes. Thus, change your code to:
-
-require_once 'PAMI/Autoloader/Autoloader.php'; // Include pami autoloader.
-\PAMI\Autoloader\Autoloader::register(); // Call autoloader register for pami autoloader.
