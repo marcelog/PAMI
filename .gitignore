@@ -1,8 +1,4 @@
-vendor
-.buildpath
-.project
-.settings
-build
-docs/examples/quickstart/log.log
-resources/php.ini
-
+/phpunit.xml
+/vendor
+/build
+/composer.lock
