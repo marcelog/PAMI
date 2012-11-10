@@ -1,47 +1,18 @@
 <?php
-/**
- * Event triggered when a CEL log message is generated
+
+/*
+ * This file is part of the PAMI package.
  *
- * PHP Version 5
+ * (c) Marcelo Gornstein <marcelog@gmail.com>
  *
- * @category   Pami
- * @package    Message
- * @subpackage Event
- * @author     Jacob Kiers <jacob@alphacomm.nl>
- * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
- * @link       http://marcelog.github.com/PAMI/
- *
- * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
+
 namespace PAMI\Message\Event;
 
-use PAMI\Message\Event\EventMessage;
-
 /**
- * Event triggered when a CEL log message is generated
- *
- * PHP Version 5
- *
- * @category   Pami
- * @package    Message
- * @subpackage Event
- * @author     Jacob Kiers <jacob@alphacomm.nl>
- * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @link       http://marcelog.github.com/PAMI/
+ * Event triggered when a CEL log message is generated.
  */
 class CELEvent extends EventMessage
 {
@@ -55,7 +26,6 @@ class CELEvent extends EventMessage
         return $this->getKey('AMAFlags');
     }
 
-
     /**
      * Returns key: 'AccountCode'.
      *
@@ -65,7 +35,6 @@ class CELEvent extends EventMessage
     {
         return $this->getKey('AccountCode');
     }
-
 
     /**
      * Returns key: 'AppData'.
@@ -77,7 +46,6 @@ class CELEvent extends EventMessage
         return $this->getKey('AppData');
     }
 
-
     /**
      * Returns key: 'Application'.
      *
@@ -87,7 +55,6 @@ class CELEvent extends EventMessage
     {
         return $this->getKey('Application');
     }
-
 
     /**
      * Returns key: 'CallerIDani'.
@@ -99,7 +66,6 @@ class CELEvent extends EventMessage
         return $this->getKey('CallerIDani');
     }
 
-
     /**
      * Returns key: 'CallerIDdnid'.
      *
@@ -109,7 +75,6 @@ class CELEvent extends EventMessage
     {
         return $this->getKey('CallerIDdnid');
     }
-
 
     /**
      * Returns key: 'CallerIDname'.
@@ -121,7 +86,6 @@ class CELEvent extends EventMessage
         return $this->getKey('CallerIDname');
     }
 
-
     /**
      * Returns key: 'CallerIDnum'.
      *
@@ -131,7 +95,6 @@ class CELEvent extends EventMessage
     {
         return $this->getKey('CallerIDnum');
     }
-
 
     /**
      * Returns key: 'CallerIDrdnis'.
@@ -143,7 +106,6 @@ class CELEvent extends EventMessage
         return $this->getKey('CallerIDrdnis');
     }
 
-
     /**
      * Returns key: 'Channel'.
      *
@@ -153,7 +115,6 @@ class CELEvent extends EventMessage
     {
         return $this->getKey('Channel');
     }
-
 
     /**
      * Returns key: 'Context'.
@@ -165,7 +126,6 @@ class CELEvent extends EventMessage
         return $this->getKey('Context');
     }
 
-
     /**
      * Returns key: 'Event'.
      *
@@ -175,7 +135,6 @@ class CELEvent extends EventMessage
     {
         return $this->getKey('Event');
     }
-
 
     /**
      * Returns key: 'EventName'.
@@ -187,7 +146,6 @@ class CELEvent extends EventMessage
         return $this->getKey('EventName');
     }
 
-
     /**
      * Returns key: 'EventTime'.
      *
@@ -197,7 +155,6 @@ class CELEvent extends EventMessage
     {
         return $this->getKey('EventTime');
     }
-
 
     /**
      * Returns key: 'Exten'.
@@ -209,7 +166,6 @@ class CELEvent extends EventMessage
         return $this->getKey('Exten');
     }
 
-
     /**
      * Returns key: 'Extra'.
      *
@@ -219,7 +175,6 @@ class CELEvent extends EventMessage
     {
         return $this->getKey('Extra');
     }
-
 
     /**
      * Returns key: 'LinkedID'.
@@ -231,7 +186,6 @@ class CELEvent extends EventMessage
         return $this->getKey('LinkedID');
     }
 
-
     /**
      * Returns key: 'Peer'.
      *
@@ -241,7 +195,6 @@ class CELEvent extends EventMessage
     {
         return $this->getKey('Peer');
     }
-
 
     /**
      * Returns key: 'PeerAccount'.
@@ -253,7 +206,6 @@ class CELEvent extends EventMessage
         return $this->getKey('PeerAccount');
     }
 
-
     /**
      * Returns key: 'Privilege'.
      *
@@ -263,7 +215,6 @@ class CELEvent extends EventMessage
     {
         return $this->getKey('Privilege');
     }
-
 
     /**
      * Returns key: 'Timestamp'.
@@ -275,7 +226,6 @@ class CELEvent extends EventMessage
         return $this->getKey('Timestamp');
     }
 
-
     /**
      * Returns key: 'UniqueID'.
      *
@@ -285,7 +235,6 @@ class CELEvent extends EventMessage
     {
         return $this->getKey('UniqueID');
     }
-
 
     /**
      * Returns key: 'Userfield'.

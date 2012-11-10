@@ -1,54 +1,39 @@
 <?php
-/**
- * QueueLog action message.
+
+/*
+ * This file is part of the PAMI package.
  *
- * PHP Version 5
+ * (c) Marcelo Gornstein <marcelog@gmail.com>
  *
- * @category   Pami
- * @package    Message
- * @subpackage Action
- * @author     Marcelo Gornstein <marcelog@gmail.com>
- * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
- * @link       http://marcelog.github.com/PAMI/
- *
- * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
+
 namespace PAMI\Message\Action;
 
 /**
  * QueueLog action message.
- *
- * PHP Version 5
- *
- * @category   Pami
- * @package    Message
- * @subpackage Action
- * @author     Marcelo Gornstein <marcelog@gmail.com>
- * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @link       http://marcelog.github.com/PAMI/
  */
 class QueueLogAction extends ActionMessage
 {
     /**
+     * Constructor.
+     *
+     * @param string $queue Queue name
+     * @param string $event Event
+     */
+    public function __construct($queue, $event)
+    {
+        parent::__construct('QueueLog');
+
+        $this->setKey('Event', $event);
+        $this->setKey('Queue', $queue);
+    }
+
+    /**
      * Sets penalty. Key: 'UniqueId'.
      *
-     * @param string $uniqueId Unique Id.
-     *
-     * @return void
+     * @param string $uniqueId Unique Id
      */
     public function setUniqueId($uniqueId)
     {
@@ -58,40 +43,20 @@ class QueueLogAction extends ActionMessage
     /**
      * Sets member name. Key: 'Interface'.
      *
-     * @param string $interface Interface.
-     *
-     * @return void
+     * @param string $interface Interface
      */
     public function setMemberName($interface)
     {
         $this->setKey('Interface', $interface);
     }
 
-
     /**
      * Sets paused. Key: 'Message'.
      *
-     * @param string $message Message.
-     *
-     * @return void
+     * @param string $message Message
      */
     public function setMessage($message)
     {
         $this->setKey('Message', $message);
-    }
-
-    /**
-     * Constructor.
-     *
-     * @param string $queue Queue name.
-     * @param string $event Event.
-     *
-     * @return void
-     */
-    public function __construct($queue, $event)
-    {
-        parent::__construct('QueueLog');
-        $this->setKey('Event', $event);
-        $this->setKey('Queue', $queue);
     }
 }

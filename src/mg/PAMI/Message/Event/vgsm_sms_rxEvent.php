@@ -1,51 +1,20 @@
 <?php
-/**
- * On reception of an inbound SMS (SMS-DELIVERY) the message will also be
- * reported as a manager event, however, acknowledgment still relies on SMS
- * spooler to handle the message. This event is generated starting from 0.21.0
+
+/*
+ * This file is part of the PAMI package.
  *
- * PHP Version 5
+ * (c) Marcelo Gornstein <marcelog@gmail.com>
  *
- * @category   Pami
- * @package    Message
- * @subpackage Event
- * @author     Marcelo Gornstein <marcelog@gmail.com>
- * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
- * @link       http://marcelog.github.com/PAMI/
- *
- * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
+
 namespace PAMI\Message\Event;
 
-use PAMI\Message\Event\EventMessage;
-
 /**
  * On reception of an inbound SMS (SMS-DELIVERY) the message will also be
  * reported as a manager event, however, acknowledgment still relies on SMS
  * spooler to handle the message. This event is generated starting from 0.21.0
- *
- * PHP Version 5
- *
- * @category   Pami
- * @package    Message
- * @subpackage Event
- * @author     Marcelo Gornstein <marcelog@gmail.com>
- * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @link       http://marcelog.github.com/PAMI/
  */
 class vgsm_sms_rxEvent extends EventMessage
 {
