@@ -80,7 +80,7 @@ $options = array(
     'connect_timeout' => 10,
     'read_timeout' => 10
 );
-$client = new \PAMI\Client\Impl\ClientImpl($options);
+$client = new \PAMI\Client\Client($options);
 
 // Registering a closure
 $client->registerEventListener(function ($event) {
@@ -89,13 +89,13 @@ $client->registerEventListener(function ($event) {
 // Register a specific method of an object for event listening
 $client->registerEventListener(array($listener, 'handle'));
 
-// Register an IEventListener:
+// Register an EventListenerInterface:
 $client->registerEventListener($listener);
 -------------------------------------------------------------------------------
 Using Predicates
 ================
 A second (optional) argument can be used when registering the event listener: a
-closure that will be evaluated before calling the callback. The callback will 
+closure that will be evaluated before calling the callback. The callback will
 be called only if this predicate returns true:
 
 use PAMI\Message\Event\DialEvent;

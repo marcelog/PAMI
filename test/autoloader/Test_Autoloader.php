@@ -28,7 +28,7 @@
  *
  */
 
-namespace PAMI\Client\Impl {
+namespace PAMI\Client {
 /**
  * This class will test the autoloader.
  *

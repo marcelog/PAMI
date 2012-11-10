@@ -1,32 +1,14 @@
 <?php
-/**
- * A generic response message from ami.
+
+/*
+ * This file is part of the PAMI package.
  *
- * PHP Version 5
+ * (c) Marcelo Gornstein <marcelog@gmail.com>
  *
- * @category   Pami
- * @package    Message
- * @subpackage Response
- * @author     Marcelo Gornstein <marcelog@gmail.com>
- * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
- * @link       http://marcelog.github.com/PAMI/
- *
- * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
+
 namespace PAMI\Message\Response;
 
 use PAMI\Message\Message;
@@ -35,41 +17,49 @@ use PAMI\Message\Event\EventMessage;
 
 /**
  * A generic response message from ami.
- *
- * PHP Version 5
- *
- * @category   Pami
- * @package    Message
- * @subpackage Response
- * @author     Marcelo Gornstein <marcelog@gmail.com>
- * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @link       http://marcelog.github.com/PAMI/
  */
 class ResponseMessage extends IncomingMessage
 {
     /**
      * Child events.
-     * @var EventMessage[]
+     *
+     * @var array
      */
-    private $_events;
+    private $events;
 
     /**
      * Is this response completed? (with all its events).
-     * @var boolean
+     *
+     * @var Boolean
      */
-    private $_completed;
+    private $completed;
+
+    /**
+     * Constructor.
+     *
+     * @param string $rawContent Literal message as received from ami
+     */
+    public function __construct($rawContent)
+    {
+        parent::__construct($rawContent);
+
+        $this->_events = array();
+        $this->_eventsCount = 0;
+        $this->_completed = !$this->isList();
+    }
 
     /**
      * Serialize function.
      *
-     * @return string[]
+     * @return array
      */
     public function __sleep()
     {
-        $ret = parent::__sleep();
-        $ret[] = '_completed';
-        $ret[] = '_events';
-        return $ret;
+        $result = parent::__sleep();
+        $result[] = '_completed';
+        $result[] = '_events';
+
+        return $result;
     }
 
     /**
@@ -77,7 +67,7 @@ class ResponseMessage extends IncomingMessage
      * if it's not a list OR it's a list with its last child event containing
      * an EventList = Complete.
      *
-     * @return boolean
+     * @return Boolean
      */
     public function isComplete()
     {
@@ -87,9 +77,7 @@ class ResponseMessage extends IncomingMessage
     /**
      * Adds an event to this response.
      *
-     * @param EventMessage $event Child event to add.
-     *
-     * @return void
+     * @param EventMessage $event Child event to add
      */
     public function addEvent(EventMessage $event)
     {
@@ -106,7 +94,7 @@ class ResponseMessage extends IncomingMessage
     /**
      * Returns all associated events for this response.
      *
-     * @return EventMessage[]
+     * @return array
      */
     public function getEvents()
     {
@@ -116,7 +104,7 @@ class ResponseMessage extends IncomingMessage
     /**
      * Checks if the Response field has the word Error in it.
      *
-     * @return boolean
+     * @return Boolean
      */
     public function isSuccess()
     {
@@ -128,7 +116,7 @@ class ResponseMessage extends IncomingMessage
      * word 'start' in it. Another way is to have a Message key, like:
      * Message: Result will follow
      *
-     * @return boolean
+     * @return Boolean
      */
     public function isList()
     {
@@ -152,27 +140,10 @@ class ResponseMessage extends IncomingMessage
      * Sets an action id. This should not be necessary, but asterisk sometimes
      * decides to not send the Response: or Event: headers.
      *
-     * @param string $actionId New ActionId.
-     *
-     * @return void
+     * @param string $actionId New ActionId
      */
     public function setActionId($actionId)
     {
         $this->setKey('ActionId', $actionId);
-    }
-
-    /**
-     * Constructor.
-     *
-     * @param string $rawContent Literal message as received from ami.
-     *
-     * @return void
-     */
-    public function __construct($rawContent)
-    {
-        parent::__construct($rawContent);
-        $this->_events = array();
-        $this->_eventsCount = 0;
-        $this->_completed = !$this->isList();
     }
 }

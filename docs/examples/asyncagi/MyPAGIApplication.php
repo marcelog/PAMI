@@ -41,10 +41,10 @@
  * limitations under the License.
  *
  */
-use PAGI\Application\PAGIApplication;
+use PAGI\Application\Application;
 use PAGI\Client\ChannelStatus;
 use PAGI\CallSpool\CallFile;
-use PAGI\CallSpool\Impl\CallSpoolImpl;
+use PAGI\CallSpool\CallSpool;
 declare(ticks=1);
 /**
  * PAGI basic use example. Please see run.sh in this same directory for an
@@ -71,11 +71,11 @@ declare(ticks=1);
  * @license    http://www.noneyet.ar/ Apache License 2.0
  * @link       http://www.noneyet.ar/
  */
-class MyPAGIApplication extends PAGIApplication
+class MyPAGIApplication extends Application
 {
     /**
      * (non-PHPdoc)
-     * @see PAGI\Application.PAGIApplication::init()
+     * @see PAGI\Application.Application::init()
      */
     public function init()
     {
@@ -101,7 +101,7 @@ class MyPAGIApplication extends PAGIApplication
 
     /**
      * (non-PHPdoc)
-     * @see PAGI\Application.PAGIApplication::shutdown()
+     * @see PAGI\Application.Application::shutdown()
      */
     public function shutdown()
     {
@@ -117,7 +117,7 @@ class MyPAGIApplication extends PAGIApplication
 
     /**
      * (non-PHPdoc)
-     * @see PAGI\Application.PAGIApplication::run()
+     * @see PAGI\Application.Application::run()
      */
     public function run()
     {
@@ -286,7 +286,7 @@ class MyPAGIApplication extends PAGIApplication
 
     /**
      * (non-PHPdoc)
-     * @see PAGI\Application.PAGIApplication::errorHandler()
+     * @see PAGI\Application.Application::errorHandler()
      */
     public function errorHandler($type, $message, $file, $line)
     {
@@ -298,7 +298,7 @@ class MyPAGIApplication extends PAGIApplication
 
     /**
      * (non-PHPdoc)
-     * @see PAGI\Application.PAGIApplication::signalHandler()
+     * @see PAGI\Application.Application::signalHandler()
      */
     public function signalHandler($signal)
     {

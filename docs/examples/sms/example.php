@@ -54,8 +54,8 @@ ini_set(
 ////////////////////////////////////////////////////////////////////////////////
 require_once 'PAMI/Autoloader/Autoloader.php'; // Include PAMI autoloader.
 \PAMI\Autoloader\Autoloader::register(); // Call autoloader register for PAMI autoloader.
-use PAMI\Client\Impl\ClientImpl;
-use PAMI\Listener\IEventListener;
+use PAMI\Client\Client;
+use PAMI\Listener\EventListenerInterface;
 use PAMI\Message\Event\EventMessage;
 use PAMI\Message\Action\ListCommandsAction;
 use PAMI\Message\Action\ListCategoriesAction;
@@ -64,7 +64,7 @@ use PAMI\Message\Event\vgsm_sms_rxEvent;
 use PAMI\Message\Action\VGSMSMSTxAction;
 
 
-class A implements IEventListener
+class A implements EventListenerInterface
 {
     public function handle(EventMessage $event)
     {
@@ -106,7 +106,7 @@ try
         'connect_timeout' => 60,
         'read_timeout' => 60
     );
-    $a = new ClientImpl($options);
+    $a = new Client($options);
     $a->registerEventListener(new A());
     $a->open();
 
