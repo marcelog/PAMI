@@ -70,7 +70,7 @@ namespace PAMI\Message\Action {
     }
 }
 
-namespace PAMI\Client\Impl {
+namespace PAMI\Client {
     function microtime() {
         global $mockTime;
         global $mockTimeCount;
@@ -214,7 +214,7 @@ class Test_Client extends \PHPUnit_Framework_TestCase
             'connect_timeout' => 10,
         	'read_timeout' => 10
         );
-	    $client = new \PAMI\Client\Impl\ClientImpl($options);
+	    $client = new \PAMI\Client\Client($options);
     }
     /**
      * @test
@@ -234,7 +234,7 @@ class Test_Client extends \PHPUnit_Framework_TestCase
         $start = time();
         try
         {
-	        $client = new \PAMI\Client\Impl\ClientImpl($options);
+	        $client = new \PAMI\Client\Client($options);
 	        $client->open();
         } catch(\Exception $e) {
         }
@@ -264,7 +264,7 @@ class Test_Client extends \PHPUnit_Framework_TestCase
         $read = array('Whatever');
         $write = array();
         setFgetsMock($read, $write);
-        $client = new \PAMI\Client\Impl\ClientImpl($options);
+        $client = new \PAMI\Client\Client($options);
 	    $client->open();
     }
     /**
@@ -293,7 +293,7 @@ class Test_Client extends \PHPUnit_Framework_TestCase
         	"action: Login\r\nactionid: 1432.123\r\nusername: asd\r\nsecret: asd\r\n"
         );
         setFgetsMock($standardAMIStart, $write);
-        $client = new \PAMI\Client\Impl\ClientImpl($options);
+        $client = new \PAMI\Client\Client($options);
         $client->registerEventListener(new SomeListenerClass);
 	    $client->open();
         $event = array(
@@ -339,7 +339,7 @@ class Test_Client extends \PHPUnit_Framework_TestCase
         	"action: Login\r\nactionid: 1432.123\r\nusername: asd\r\nsecret: asd\r\n"
         );
         setFgetsMock($standardAMIStart, $write);
-        $client = new \PAMI\Client\Impl\ClientImpl($options);
+        $client = new \PAMI\Client\Client($options);
         $resultVariable = false;
         $client->registerEventListener(function ($event) use (&$resultVariable) {
             $resultVariable = $event;
@@ -387,7 +387,7 @@ class Test_Client extends \PHPUnit_Framework_TestCase
         	"action: Login\r\nactionid: 1432.123\r\nusername: asd\r\nsecret: asd\r\n"
         );
         setFgetsMock($standardAMIStart, $write);
-        $client = new \PAMI\Client\Impl\ClientImpl($options);
+        $client = new \PAMI\Client\Client($options);
         $resultVariable = false;
         $listener = new SomeListenerClass;
         $client->registerEventListener(array($listener, 'handle'));
@@ -435,7 +435,7 @@ class Test_Client extends \PHPUnit_Framework_TestCase
         	"action: Login\r\nactionid: 1432.123\r\nusername: asd\r\nsecret: asd\r\n"
         );
         setFgetsMock($standardAMIStart, $write);
-        $client = new \PAMI\Client\Impl\ClientImpl($options);
+        $client = new \PAMI\Client\Client($options);
         SomeListenerClass::$event = null;
         $id = $client->registerEventListener(new SomeListenerClass);
 	    $client->open();
@@ -482,7 +482,7 @@ class Test_Client extends \PHPUnit_Framework_TestCase
         	"action: Login\r\nactionid: 1432.123\r\nusername: asd\r\nsecret: asd\r\n"
         );
         setFgetsMock($standardAMIStart, $write);
-        $client = new \PAMI\Client\Impl\ClientImpl($options);
+        $client = new \PAMI\Client\Client($options);
         $resultVariable = false;
         $client->registerEventListener(
             function ($event) use (&$resultVariable) {
@@ -534,7 +534,7 @@ class Test_Client extends \PHPUnit_Framework_TestCase
         	"action: Login\r\nactionid: 1432.123\r\nusername: asd\r\nsecret: asd\r\n"
         );
         setFgetsMock($standardAMIStart, $write);
-        $client = new \PAMI\Client\Impl\ClientImpl($options);
+        $client = new \PAMI\Client\Client($options);
 	    $client->open();
 	    $client->close();
     }
@@ -565,7 +565,7 @@ class Test_Client extends \PHPUnit_Framework_TestCase
         	'fwrite error'
         );
         setFgetsMock($standardAMIStart, $write);
-        $client = new \PAMI\Client\Impl\ClientImpl($options);
+        $client = new \PAMI\Client\Client($options);
 	    $client->open();
     }
 
@@ -596,7 +596,7 @@ class Test_Client extends \PHPUnit_Framework_TestCase
         	"action: Login\r\nactionid: 1432.123\r\nusername: asd\r\nsecret: asd\r\n"
         );
         setFgetsMock($standardAMIStartBadLogin, $write);
-        $client = new \PAMI\Client\Impl\ClientImpl($options);
+        $client = new \PAMI\Client\Client($options);
 	    $client->open();
     }
     /**
@@ -626,7 +626,7 @@ class Test_Client extends \PHPUnit_Framework_TestCase
         	"action: Login\r\nactionid: 1432.123\r\nusername: asd\r\nsecret: asd\r\n"
         );
         setFgetsMock($standardAMIStart, $write);
-        $client = new \PAMI\Client\Impl\ClientImpl($options);
+        $client = new \PAMI\Client\Client($options);
 	    $client->open();
         setFgetsMock(array(false), $write);
         $client->send(new \PAMI\Message\Action\LoginAction('asd', 'asd'));
@@ -658,7 +658,7 @@ class Test_Client extends \PHPUnit_Framework_TestCase
         	"action: Login\r\nactionid: 1432.123\r\nusername: asd\r\nsecret: asd\r\n"
         );
         setFgetsMock($standardAMIStart, $write);
-        $client = new \PAMI\Client\Impl\ClientImpl($options);
+        $client = new \PAMI\Client\Client($options);
 	    $client->open();
         setFgetsMock(array(10, 4), $write);
         $start = \time();
@@ -691,7 +691,7 @@ class Test_Client extends \PHPUnit_Framework_TestCase
         	"action: Login\r\nactionid: 1432.123\r\nusername: asd\r\nsecret: asd\r\n"
         );
         setFgetsMock($standardAMIStart, $write);
-        $client = new \PAMI\Client\Impl\ClientImpl($options);
+        $client = new \PAMI\Client\Client($options);
         $client->registerEventListener(new SomeListenerClass);
 	    $client->open();
         $event = array(
@@ -751,7 +751,7 @@ class Test_Client extends \PHPUnit_Framework_TestCase
         	"action: Login\r\nactionid: 1432.123\r\nusername: asd\r\nsecret: asd\r\n"
         );
         setFgetsMock($standardAMIStart, $write);
-        $client = new \PAMI\Client\Impl\ClientImpl($options);
+        $client = new \PAMI\Client\Client($options);
         $client->registerEventListener(new SomeListenerClass);
 	    $client->open();
         $event = array(
@@ -805,7 +805,7 @@ class Test_Client extends \PHPUnit_Framework_TestCase
         	"action: Login\r\nactionid: 1432.123\r\nusername: asd\r\nsecret: asd\r\n"
         );
         setFgetsMock($standardAMIStart, $write);
-        $client = new \PAMI\Client\Impl\ClientImpl($options);
+        $client = new \PAMI\Client\Client($options);
         $client->registerEventListener(new SomeListenerClass);
 	    $client->open();
         $event = array(
@@ -898,7 +898,7 @@ class Test_Client extends \PHPUnit_Framework_TestCase
         	"action: Login\r\nactionid: 1432.123\r\nusername: asd\r\nsecret: asd\r\n"
         );
         setFgetsMock($standardAMIStart, $write);
-        $client = new \PAMI\Client\Impl\ClientImpl($options);
+        $client = new \PAMI\Client\Client($options);
         $client->registerEventListener(new SomeListenerClass);
 	    $client->open();
         $event = array(

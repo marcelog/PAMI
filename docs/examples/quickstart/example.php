@@ -48,8 +48,8 @@ ini_set(
 ////////////////////////////////////////////////////////////////////////////////
 require_once 'PAMI/Autoloader/Autoloader.php'; // Include PAMI autoloader.
 \PAMI\Autoloader\Autoloader::register(); // Call autoloader register for PAMI autoloader.
-use PAMI\Client\Impl\ClientImpl;
-use PAMI\Listener\IEventListener;
+use PAMI\Client\\Client;
+use PAMI\Listener\EventListenerInterface;
 use PAMI\Message\Event\EventMessage;
 use PAMI\Message\Action\ListCommandsAction;
 use PAMI\Message\Action\ListCategoriesAction;
@@ -133,7 +133,7 @@ use PAMI\Message\Action\DongleResetAction;
 use PAMI\Message\Action\DongleSendUSSDAction;
 use PAMI\Message\Action\DongleSendPDUAction;
 
-class A implements IEventListener
+class A implements EventListenerInterface
 {
     public function handle(EventMessage $event)
     {
@@ -158,7 +158,7 @@ try
         'read_timeout' => $argv[6],
         'scheme' => 'tcp://' // try tls://
     );
-	$a = new ClientImpl($options);
+	$a = new Client($options);
     // Registering a closure
     //$client->registerEventListener(function ($event) {
     //});
@@ -166,7 +166,7 @@ try
     // Register a specific method of an object for event listening
     //$client->registerEventListener(array($listener, 'handle'));
 
-    // Register an IEventListener:
+    // Register an EventListenerInterface:
 	$a->registerEventListener(new A());
 	$a->open();
 /*

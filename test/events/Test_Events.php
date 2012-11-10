@@ -27,7 +27,7 @@
  * limitations under the License.
  *
  */
-namespace PAMI\Client\Impl {
+namespace PAMI\Client {
 /**
  * This class will test some events.
  *
@@ -836,7 +836,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
         	"action: Login\r\nactionid: 1432.123\r\nusername: asd\r\nsecret: asd\r\n"
         );
         setFgetsMock($standardAMIStart, $write);
-        $client = new \PAMI\Client\Impl\ClientImpl($options);
+        $client = new \PAMI\Client\Client($options);
         $client->registerEventListener(new SomeListenerClass);
 	    $client->open();
 	    $message = array();

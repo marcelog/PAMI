@@ -28,7 +28,7 @@
  *
  */
 
-namespace PAMI\Client\Impl {
+namespace PAMI\Client {
 /**
  * This class will test some actions.
  *
@@ -76,7 +76,7 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
         	"action: Login\r\nactionid: 1432.123\r\nusername: asd\r\nsecret: asd\r\n"
         );
         setFgetsMock($standardAMIStart, $writeLogin);
-        $client = new \PAMI\Client\Impl\ClientImpl($options);
+        $client = new \PAMI\Client\Client($options);
 	    $client->open();
 	    if ($action instanceof \PAMI\Message\Action\DBGetAction) {
             $event = array(

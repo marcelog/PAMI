@@ -48,17 +48,17 @@ ini_set(
 ////////////////////////////////////////////////////////////////////////////////
 require_once 'PAMI/Autoloader/Autoloader.php'; // Include PAMI autoloader.
 \PAMI\Autoloader\Autoloader::register(); // Call autoloader register for PAMI autoloader.
-use PAMI\Client\Impl\ClientImpl;
-use PAMI\Listener\IEventListener;
+use PAMI\Client\Client;
+use PAMI\Listener\EventListenerInterface;
 use PAMI\Message\Event\EventMessage;
 use PAMI\Message\Action\AGIAction;
 use PAMI\Message\Event\NewextenEvent;
-use PAGI\Application\PAGIApplication;
+use PAGI\Application\Application;
 use PAGI\Client\AbstractClient;
 
 require_once __DIR__ . '/MyPAGIApplication.php';
 
-class ListenerTest implements IEventListener
+class ListenerTest implements EventListenerInterface
 {
     private $_client;
     private $_id;
@@ -72,9 +72,9 @@ class ListenerTest implements IEventListener
                 {
                     case 0:
                         $logger = \Logger::getLogger(__CLASS__);
-                        $this->_client = new ClientImpl($this->_pamiOptions);
+                        $this->_client = new Client($this->_pamiOptions);
                         $this->_client->open();
-                        $agi = new \PAMI\AsyncAgi\AsyncClientImpl(array(
+                        $agi = new \PAMI\AsyncAgi\AsyncClient(array(
                             'pamiClient' => $this->_client,
                             'asyncAgiEvent' => $event
                         ));
@@ -91,14 +91,14 @@ class ListenerTest implements IEventListener
                         //$agi->indicateCongestion(10);
                         //$agi->hangup();
                         $this->_client->close();
-                        echo "Application finished\n";
+                        echo "PAGIApplication finished\n";
                         exit(0);
                         break;
                     case -1:
                         echo "Could not fork application\n";
                         break;
                     default:
-                        echo "Forked Application\n";
+                        echo "Forked PAGIApplication\n";
                         break;
                 }
             }
@@ -117,7 +117,7 @@ class ListenerTest implements IEventListener
     public function __construct(array $pamiOptions)
     {
         $this->_pamiOptions = $pamiOptions;
-        $this->_client = new ClientImpl($pamiOptions);
+        $this->_client = new Client($pamiOptions);
         $this->_id = $this->_client->registerEventListener($this);
     }
 }
