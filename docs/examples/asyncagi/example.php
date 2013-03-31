@@ -38,11 +38,13 @@ ini_set(
         PATH_SEPARATOR,
         array(
             implode(DIRECTORY_SEPARATOR, array('..', '..', '..', 'src', 'mg')),
+            '../../../vendor/php/log4php', '../../../vendor/php',
             ini_get('include_path'),
         )
     )
 );
 
+date_default_timezone_set('America/Buenos_Aires');
 ////////////////////////////////////////////////////////////////////////////////
 // Mandatory stuff to bootstrap.
 ////////////////////////////////////////////////////////////////////////////////
@@ -111,6 +113,7 @@ class ListenerTest implements IEventListener
     	{
     	    usleep(1000);
     	    $this->_client->process();
+            pcntl_wait($status);
     	}
     	$this->_client->close();
     }
