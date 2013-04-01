@@ -346,3 +346,5 @@ the JabberEvent, and the ScreenName in JabberAction.
 
 * Scot Opell for helping in debugging stream_get_line() in 5.3.9 and 5.3.10
 
+* Brian (wormling) for trying and fixing bugs on asyncagi
+
