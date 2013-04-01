@@ -113,8 +113,11 @@ class AsyncClientImpl extends PagiClient implements IEventListener
         $this->_lastCommandId = uniqid(__CLASS__);
         $action = new \PAMI\Message\Action\AGIAction($this->_channel, $text, $this->_lastCommandId);
         $this->_lastAgiResult = false;
-        $this->_pamiClient->send($action);
-        while($this->_lastAgiResult === false) {
+        $response = $this->_pamiClient->send($action);
+        if (!$response->isSuccess()) {
+            throw new \PAGI\Exception\ChannelDownException($response->getMessage());
+        }
+        while ($this->_lastAgiResult === false) {
             $this->_pamiClient->process();
             usleep(1000);
         }
