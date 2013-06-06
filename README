@@ -45,7 +45,7 @@ Packagist URL: http://packagist.org/packages/marcelog/pami
 Available via PEAR
 ------------------
 You can now easily install PAMI by issuing:
-# pear channel-discover marcelog.pear.name
+# pear channel-discover pear.marcelog.name
 # pear install marcelog/PAMI
 
 or
