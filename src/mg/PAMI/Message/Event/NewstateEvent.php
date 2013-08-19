@@ -2,6 +2,8 @@
 /**
  * Event triggered when a channel changes its status.
  *
+ * NOTE: For correct callerid values: see: https://issues.asterisk.org/jira/browse/ASTERISK-16910
+ *
  * PHP Version 5
  *
  * @category   Pami
@@ -86,7 +88,7 @@ class NewstateEvent extends EventMessage
     }
 
     /**
-     * Returns key: 'CallerIDNum'.
+     * Returns key: 'CallerIDNum'. Asterisk < 1.8.
      *
      * @return string
      */
@@ -96,7 +98,7 @@ class NewstateEvent extends EventMessage
     }
 
     /**
-     * Returns key: 'CallerIDName'.
+     * Returns key: 'CallerIDName'. Asterisk < 1.8.
      *
      * @return string
      */
@@ -116,7 +118,7 @@ class NewstateEvent extends EventMessage
     }
 
    /**
-     * Returns key: 'ConnectedLineNum'.
+     * Returns key: 'ConnectedLineNum'. Asterisk >= 1.8.
      * 
      * @return string
      */
@@ -126,7 +128,7 @@ class NewstateEvent extends EventMessage
     }
 
     /**
-     * Returns key: 'ConnectedLineName'.
+     * Returns key: 'ConnectedLineName'. Asterisk >= 1.8.
      * 
      * @return string
      */
