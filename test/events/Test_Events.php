@@ -396,7 +396,9 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'ChannelStateDesc' => 'ChannelStateDesc',
                 'ChannelState' => 'ChannelState',
                 'Channel' => 'Channel',
-                'Privilege' => 'Privilege'
+                'Privilege' => 'Privilege',
+                'ConnectedLineNum' => 'ConnectedLineNum',
+                'ConnectedLineName' => 'ConnectedLineName'
             ),
             'OriginateResponse' => array(
                 'CallerIdName' => 'CallerIdName',

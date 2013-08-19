@@ -348,3 +348,4 @@ the JabberEvent, and the ScreenName in JabberAction.
 
 * Brian (wormling) for trying and fixing bugs on asyncagi
 
+* Henning Bragge for helping with newstate event and queues.

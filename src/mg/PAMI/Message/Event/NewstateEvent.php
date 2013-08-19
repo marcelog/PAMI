@@ -114,4 +114,24 @@ class NewstateEvent extends EventMessage
     {
         return $this->getKey('UniqueID');
     }
+
+   /**
+     * Returns key: 'ConnectedLineNum'.
+     * 
+     * @return string
+     */
+    public function getConnectedLineNum()
+    {
+        return $this->getKey('ConnectedLineNum');
+    }
+
+    /**
+     * Returns key: 'ConnectedLineName'.
+     * 
+     * @return string
+     */
+    public function getConnectedLineName()
+    {
+        return $this->getKey('ConnectedLineName');
+    }
 }
