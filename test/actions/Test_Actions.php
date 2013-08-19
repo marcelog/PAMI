@@ -1390,6 +1390,20 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
+    public function can_logoff()
+    {
+        $write = array(implode("\r\n", array(
+            'action: Logoff',
+            'actionid: 1432.123',
+            ''
+        )));
+        $action = new \PAMI\Message\Action\LogoffAction();
+        $client = $this->_start($write, $action);
+    }
+
+    /**
+     * @test
+     */
     public function can_set_actionid()
     {
         $action = new \PAMI\Message\Action\PingAction();
