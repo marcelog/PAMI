@@ -56,13 +56,13 @@ class RenameEvent extends EventMessage
     }
 
     /**
-     * Returns key: 'Channel'.
+     * Returns key: 'Oldname'.
      *
      * @return string
      */
-    public function getChannel()
+    public function getOldname()
     {
-        return $this->getKey('Channel');
+        return $this->getKey('Oldname');
     }
 
     /**
