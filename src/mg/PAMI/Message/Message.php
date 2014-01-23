@@ -66,6 +66,12 @@ abstract class Message
 	 */
 	protected $variables;
 
+    /**
+     * Metadata. Channel variables (channel/key/value).
+     * @var string[string][]
+     */
+    protected $channel_variables;
+
 	/**
 	 * Metadata. Message "keys" i.e: Action: login
 	 * @var string[]
@@ -85,7 +91,7 @@ abstract class Message
      */
     public function __sleep()
     {
-        return array('lines', 'variables', 'keys', 'createdDate');
+        return array('lines', 'channel_variables', 'variables', 'keys', 'createdDate');
     }
 
 	/**
@@ -127,6 +133,39 @@ abstract class Message
 		}
 		return $this->variables[$key];
 	}
+
+    /**
+     * Adds a channel variable to this message.
+     *
+     * @param string $channel Channel name.
+     * @param string $key     Variable name.
+     * @param string $value   Variable value.
+     *
+     * @return void
+     */
+    public function setChannelVariable($channel, $key, $value)
+    {
+        if (!isset($this->channel_variables[$channel])) {
+            $this->channel_variables[$channel] = array();
+        }
+        $this->channel_variables[$channel][$key] = $value;
+    }
+
+    /**
+     * Returns a channel variable by channel/name.
+     *
+     * @param string $channel Channel name.
+     * @param string $key     Variable name.
+     *
+     * @return string
+     */
+    public function getChannelVariable($channel, $key)
+    {
+        if (!isset($this->channel_variables[$channel][$key])) {
+            return null;
+        }
+        return $this->channel_variables[$channel][$key];
+    }
 
 	/**
 	 * Adds a variable to this message.
@@ -179,6 +218,15 @@ abstract class Message
 	}
 
 	/**
+	 * Returns all channel variables for this message.
+	 * @return string[string][]
+	 */
+	public function getChannelVariables()
+	{
+		return $this->channel_variables;
+	}
+
+	/**
 	 * Returns the end of message token appended to the end of a given message.
 	 *
 	 * @return string
@@ -199,6 +247,17 @@ abstract class Message
 	private function serializeVariable($key, $value)
 	{
 		return "Variable: $key=$value";
+	}
+	/**
+	 * Returns the string representation for an channel event variable.
+	 * @param  string $channel
+	 * @param  string $key
+	 * @param  string $value
+	 * @return string
+	 */
+	private function serializeChannelVariable($channel, $key, $value)
+	{
+		return "ChanVariable({$channel}): {$key}={$value}";
 	}
 
 	/**
@@ -221,6 +280,13 @@ abstract class Message
             } else {
         	    $result[] = $this->serializeVariable($k, $v);
             }
+	    }
+
+	    foreach ($this->getChannelVariables() as $channel => $channel_variables) {
+	    	foreach ($channel_variables as $k => $v) {
+	    		$result[] = $this->serializeChannelVariable($channel, $k, $v);
+	    	}
+
 	    }
 	    $mStr = $this->finishMessage(implode(self::EOL, $result));
 	    return $mStr;
@@ -245,6 +311,7 @@ abstract class Message
 	{
 		$this->lines = array();
 		$this->variables = array();
+		$this->channel_variables = array();
 		$this->keys = array();
 		$this->createdDate = time();
 	}
