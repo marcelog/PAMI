@@ -93,11 +93,18 @@ abstract class IncomingMessage extends Message
         $this->rawContent = $rawContent;
         $lines = explode(Message::EOL, $rawContent);
         foreach ($lines as $line) {
-            $content = explode(':', $line);
-            $name = strtolower(trim($content[0]));
-            unset($content[0]);
-            $value = isset($content[1]) ? trim(implode(':', $content)) : '';
-            $this->setKey($name, $value);
+            if (preg_match('/ChanVariable\((.*)\): (.*)=(.*)/', $line, $matches)) {
+                $channel = $matches[1];
+                $name    = trim($matches[2]);
+                $value   = trim($matches[3]);
+                $this->setChannelVariable($channel, $name, $value);
+            } else {
+                $content = explode(':', $line);
+                $name = strtolower(trim($content[0]));
+                unset($content[0]);
+                $value = isset($content[1]) ? trim(implode(':', $content)) : '';
+                $this->setKey($name, $value);
+            }
         }
     }
 }
