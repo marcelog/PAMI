@@ -174,7 +174,11 @@ class ClientImpl implements IClient
 			throw new ClientException('Error connecting to ami: ' . $errstr);
 		}
 	    $msg = new LoginAction($this->_user, $this->_pass);
-	    $id = @stream_get_line($this->_socket, 1024, Message::EOL);
+		if (version_compare(PHP_VERSION, '5.3.9', '>=') && version_compare(PHP_VERSION, '5.3.11', '<')) {
+			$id = @fgets($this->_socket);
+		} else {
+			$id = @stream_get_line($this->_socket, 1024, Message::EOL);
+		}
 	    if (strstr($id, 'Asterisk') === false) {
 	        throw new ClientException('Unknown peer. Is this an ami?: ' . $id);
 	    }
