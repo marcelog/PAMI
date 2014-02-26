@@ -1,17 +1,51 @@
 {
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
+    ],
     "hash": "e5a66c91ba6c2c477f46659e75dcd162",
     "packages": [
         {
-            "package": "pear-pear.apache.org/log4php/Apache_log4php",
-            "version": "2.2.1"
+            "name": "pear-pear.apache.org/log4php/Apache_log4php",
+            "version": "2.3.0",
+            "dist": {
+                "type": "file",
+                "url": "http://pear.apache.org/log4php/get/Apache_log4php-2.3.0.tgz",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "php": ">=5.2.0.0"
+            },
+            "replace": {
+                "pear-log4php/apache_log4php": "== 2.3.0.0"
+            },
+            "type": "pear-library",
+            "autoload": {
+                "classmap": [
+                    ""
+                ]
+            },
+            "include-path": [
+                "/"
+            ],
+            "description": "Apache log4php is a versatile logging framework for PHP at the Apache Software Foundation (ASF)."
         }
     ],
-    "packages-dev": null,
+    "packages-dev": [
+
+    ],
     "aliases": [
 
     ],
     "minimum-stability": "stable",
     "stability-flags": [
+
+    ],
+    "platform": {
+        "php": ">=5.3.3"
+    },
+    "platform-dev": [
 
     ]
 }
