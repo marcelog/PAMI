@@ -52,8 +52,8 @@ You can now easily install PAMI by issuing:
 
 or
 
-# pear install marcelog/PAMI-1.70.1
-just replace 1.70.1 by the release version you'd like to install :)
+# pear install marcelog/PAMI-1.70.2
+just replace 1.70.2 by the release version you'd like to install :)
 See: http://pear.marcelog.name/
 -------------------------------------------------------------------------------
 Available as PHAR
@@ -168,6 +168,7 @@ can still catch them. If you catch one of these, please report it!
 * Newexten
 * Newstate
 * OriginateResponse
+* ParkedCall
 * ParkedCallsComplete
 * PeerEntry
 * PeerlistComplete
@@ -193,6 +194,7 @@ can still catch them. If you catch one of these, please report it!
 * StatusComplete
 * Transfer
 * Unlink
+* UnParkedCall
 * UserEvent
 * VarSet
 * vgsm_me_state
@@ -351,3 +353,5 @@ the JabberEvent, and the ScreenName in JabberAction.
 * Brian (wormling) for trying and fixing bugs on asyncagi
 
 * Henning Bragge for helping with newstate event and queues.
+
+* mbonneau for ParkedCall and UnParkedCall events.
