@@ -768,15 +768,15 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'UniqueID' => 'UniqueID',
                 'Exten' => 'Exten'
             ),
-			'Link' => array(
-        		'Privilege' => 'Privilege',
-        	    'CallerID1' => 'CallerID1',
-        	    'CallerID2' => 'CallerID2',
-        	    'UniqueID1' => 'UniqueID1',
-        		'UniqueID2' => 'UniqueID2',
-        	    'Channel1' => 'Channel1',
-        		'Channel2' => 'Channel2'
-			),
+            'Link' => array(
+                'Privilege' => 'Privilege',
+                'CallerID1' => 'CallerID1',
+                'CallerID2' => 'CallerID2',
+                'UniqueID1' => 'UniqueID1',
+                'UniqueID2' => 'UniqueID2',
+                'Channel1' => 'Channel1',
+                'Channel2' => 'Channel2'
+            ),
         );
         $eventGetters = array(
             'UserEvent' => array(
