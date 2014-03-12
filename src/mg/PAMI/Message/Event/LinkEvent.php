@@ -1,6 +1,6 @@
 <?php
 /**
- * Event triggered when renaming a channel.
+ * Event triggered when linking (connecting) two channels.
  *
  * PHP Version 5
  *
@@ -32,7 +32,7 @@ namespace PAMI\Message\Event;
 use PAMI\Message\Event\EventMessage;
 
 /**
- * Event triggered when renaming a channel.
+ * Event triggered when linking (connecting) two channels.
  *
  * PHP Version 5
  *
@@ -43,7 +43,7 @@ use PAMI\Message\Event\EventMessage;
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
  * @link       http://marcelog.github.com/PAMI/
  */
-class RenameEvent extends EventMessage
+class LinkEvent extends EventMessage
 {
     /**
      * Returns key: 'Privilege'.
@@ -56,42 +56,62 @@ class RenameEvent extends EventMessage
     }
 
     /**
-     * Returns key: 'Channel'.
+     * Returns key: 'Channel1'.
      *
      * @return string
      */
-    public function getChannel()
+    public function getChannel1()
     {
-        return $this->getKey('Channel');
-    }
-
-     /**
-     * Returns key: 'Oldname'.
-     *
-     * @return string
-     */
-    public function getOldname()
-    {
-        return $this->getKey('Oldname');
-    }
-
-   /**
-     * Returns key: 'Newname'.
-     *
-     * @return string
-     */
-    public function getNewname()
-    {
-        return $this->getKey('Newname');
+        return $this->getKey('Channel1');
     }
 
     /**
-     * Returns key: 'UniqueID'.
+     * Returns key: 'Channel2'.
      *
      * @return string
      */
-    public function getUniqueID()
+    public function getChannel2()
     {
-        return $this->getKey('UniqueID');
+        return $this->getKey('Channel2');
+    }
+
+    /**
+     * Returns key: 'CallerID1'.
+     *
+     * @return string
+     */
+    public function getCallerID1()
+    {
+        return $this->getKey('CallerID1');
+    }
+
+    /**
+     * Returns key: 'CallerID2'.
+     *
+     * @return string
+     */
+    public function getCallerID2()
+    {
+        return $this->getKey('CallerID2');
+    }
+
+    /**
+     * Returns key: 'UniqueID1'.
+     *
+     * @return string
+     */
+    public function getUniqueID1()
+    {
+        return $this->getKey('UniqueID1');
+    }
+
+    /**
+     * Returns key: 'UniqueID2'.
+     *
+     * @return string
+     */
+    public function getUniqueID2()
+    {
+        return $this->getKey('UniqueID2');
     }
 }

@@ -74,7 +74,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
             'DongleSMSStatus', 'FullyBooted', 'DongleShowDevicesComplete', 'DongleDeviceEntry',
             'DongleNewUSSDBase64', 'DongleNewUSSD', 'DongleUSSDStatus', 'DongleNewCUSD',
             'DongleStatus', 'CEL', 'JabberEvent', 'Registry', 'UserEvent',
-            'ParkedCall', 'UnParkedCall'
+            'ParkedCall', 'UnParkedCall', 'Link'
         );
         $eventTranslatedValues = array(
             'QueueMemberStatus' => array(
@@ -563,6 +563,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
             ),
             'Rename' => array(
                 'UniqueID' => 'UniqueID',
+                'Oldname' => 'Oldname',
                 'Newname' => 'Newname',
                 'Channel' => 'Channel',
                 'Privilege' => 'Privilege'
@@ -766,7 +767,16 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'CallerIDName' => 'CallerIDName',
                 'UniqueID' => 'UniqueID',
                 'Exten' => 'Exten'
-            )
+            ),
+            'Link' => array(
+                'Privilege' => 'Privilege',
+                'CallerID1' => 'CallerID1',
+                'CallerID2' => 'CallerID2',
+                'UniqueID1' => 'UniqueID1',
+                'UniqueID2' => 'UniqueID2',
+                'Channel1' => 'Channel1',
+                'Channel2' => 'Channel2'
+            ),
         );
         $eventGetters = array(
             'UserEvent' => array(
