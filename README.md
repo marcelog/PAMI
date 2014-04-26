@@ -27,6 +27,7 @@ PHP Versions
 Note: PAMI Requires PHP 5.3+. PHP versions 5.3.9 and 5.3.10 WILL NOT WORK due
 to a bug introduced in stream_get_line() in 5.3.9. Please use 5.3.11+ or up
 to 5.3.8 (see README.PHP-5.3.9-and-5.3.10).
+
 -------------------------------------------------------------------------------
 
 CI Server
