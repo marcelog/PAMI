@@ -9,7 +9,9 @@ either via SOA or ajax.
 
 A port for nodejs is available at: http://marcelog.github.com/Nami
 A port for erlang is available at: https://github.com/marcelog/erlami
+
 -------------------------------------------------------------------------------
+
 Contact me
 ----------
 If you have any questions, issues, feature requests, or just want to report
@@ -17,60 +19,73 @@ your "success story", or maybe even say hi, please send an email to
 marcelog@gmail.com
 
 Also, checkout the [Complete PAGI/PAMI talk for the PHP Conference Argentina 2013](http://www.slideshare.net/mgornstein/phpconf-2013). Check the slide notes for the complete text :)
+
 -------------------------------------------------------------------------------
+
 PHP Versions
 ------------
 Note: PAMI Requires PHP 5.3+. PHP versions 5.3.9 and 5.3.10 WILL NOT WORK due
 to a bug introduced in stream_get_line() in 5.3.9. Please use 5.3.11+ or up
 to 5.3.8 (see README.PHP-5.3.9-and-5.3.10).
+
 -------------------------------------------------------------------------------
+
 CI Server
 ---------
 Take a look at the Jenkins CI Server (http://ci.marcelog.name/) to check out
 the docs, metrics, and pear and phar packages available.
+
 -------------------------------------------------------------------------------
+
 Available via Composer
 ----------------------
 Just add the package "marcelog/pami":
-{
+```
     "require": {
         "marcelog/pami": "dev-master"
-    },
-    "repositories": [
-    {
-      "type": "pear",
-      "url": "http://pear.apache.org/log4php/"
-    }]
-}
+    }
+```
 Packagist URL: http://packagist.org/packages/marcelog/pami
+
 -------------------------------------------------------------------------------
+
 Available via PEAR
 ------------------
 You can now easily install PAMI by issuing:
+```
 # pear channel-discover pear.marcelog.name
 # pear install marcelog/PAMI
+```
 
 or
-
+```
 # pear install marcelog/PAMI-1.70.2
+```
 just replace 1.70.2 by the release version you'd like to install :)
 See: http://pear.marcelog.name/
+
 -------------------------------------------------------------------------------
+
 Available as PHAR
 -----------------
 Just go to the Jenkins server at http://ci.marcelog.name and grab the latest
 phar distribution from the PAMI job.
+
 -------------------------------------------------------------------------------
+
 Asterisk versions supported
 ===========================
 PAMI is tested in asterisk 1.6, 1.4, and 1.8 versions, just because this are
 the versions I use in my boxes. If you need support for other versions, please
 contact me.
+
 -------------------------------------------------------------------------------
+
 QuickStart
 ==========
 For an in-depth tutorial: http://marcelog.github.com/articles/pami_introduction_tutorial_how_to_install.html
 
+```
 $options = array(
     'log4php.properties' =>
          RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties',
@@ -93,13 +108,17 @@ $client->registerEventListener(array($listener, 'handle'));
 
 // Register an IEventListener:
 $client->registerEventListener($listener);
+```
+
 -------------------------------------------------------------------------------
+
 Using Predicates
 ================
 A second (optional) argument can be used when registering the event listener: a
 closure that will be evaluated before calling the callback. The callback will 
 be called only if this predicate returns true:
 
+```
 use PAMI\Message\Event\DialEvent;
 
 $client->registerEventListener(
@@ -108,7 +127,10 @@ $client->registerEventListener(
         return $event instanceof DialEvent && $event->getSubEvent() == 'Begin';
     })
 );
+```
+
 -------------------------------------------------------------------------------
+
 Example
 =======
 Please see docs/examples/quickstart/example.php for a very basic example.
@@ -120,7 +142,9 @@ Also, you might want to look at this article: http://marcelog.github.com/article
 For an example of using asynchronous AGI with PAMI, see docs/examples/asyncagi
 
 The [march edition](http://sdjournal.org/a-practical-introduction-to-functional-programming-with-php-sdj-issue-released/) of [Software Developer Journal](http://sdjournal.org/) features a complete article about writing telephony applications with PAMI and PAGI.
+
 -------------------------------------------------------------------------------
+
 Currently Supported Events
 ==========================
 More events will be added with time. I can only add the ones I can test for and
@@ -205,7 +229,9 @@ can still catch them. If you catch one of these, please report it!
 * vgsm_sms_rx
 * VoicemailUserEntry
 * VoicemailUserEntryComplete
+
 -------------------------------------------------------------------------------
+
 Currently Supported Actions
 ===========================
 * AbsoluteTimeout
@@ -291,9 +317,12 @@ Currently Supported Actions
 * UnpauseMonitor
 * VGSM_SMS_TX
 * VoicemailUsersList
+
 -------------------------------------------------------------------------------
+
 Developers
 ==========
+
 * build.xml is a phing build file, not ant.
 * It's very possible that you may need to edit build.properties and change
 php.bin and pear.bin properties.
@@ -305,13 +334,17 @@ to run phing tests and metrics.
 * Copy resources/php.ini.example to resources/php.ini and edit it.
 * Run phing all
 * Check the API at http://marcelog.github.com/PAMI/api.html
+
 -------------------------------------------------------------------------------
+
 Debugging, logging
 ==================
 
 You need log4php (http://logging.apache.org/log4php/). Just make sure you copy
 it to the include_path and PAMI will pick it up from there.
+
 -------------------------------------------------------------------------------
+
 LICENSE
 =======
 Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -327,9 +360,12 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
+
 -------------------------------------------------------------------------------
+
 Thanks To
 =========
+
 * Jason Blank <rumpled at github> for helping in the debugging of the queue
 functionality and some other ami inconsistencies.
 
