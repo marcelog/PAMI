@@ -242,6 +242,8 @@ Currently Supported Actions
 * Bridge
 * ChangeMonitor
 * Command
+* ConfbridgeMute
+* ConfbridgeUnmute
 * CoreSettings
 * CoreShowChannels
 * CoreStatus
@@ -281,6 +283,7 @@ Currently Supported Actions
 * MeetmeList
 * MeetmeMute
 * MeetmeUnmute
+* MixMonitor
 * ModuleCheck
 * ModuleLoad (split in ModuleLoad, ModuleUnload, and ModuleReload)
 * Monitor
@@ -313,6 +316,7 @@ Currently Supported Actions
 * Sipshowpeer
 * Sipshowregistry
 * Status
+* StopMixMonitor
 * StopMonitor
 * UnpauseMonitor
 * VGSM_SMS_TX
