@@ -937,9 +937,11 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
             'action: StopMixMonitor',
             'actionid: 1432.123',
             'channel: channel',
+            'mixmonitorid: mix_monitor',
             ''
         )));
         $action = new \PAMI\Message\Action\StopMixMonitorAction('channel');
+        $action->setMixMonitorId('mix_monitor');
         $client = $this->_start($write, $action);
     }
     /**
