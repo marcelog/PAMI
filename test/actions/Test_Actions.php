@@ -204,6 +204,36 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
+    public function can_confbridge_mute()
+    {
+        $write = array(implode("\r\n", array(
+            'action: ConfbridgeMute',
+            'actionid: 1432.123',
+            'channel: channel',
+            'conference: conference',
+            ''
+        )));
+        $action = new \PAMI\Message\Action\ConfbridgeMuteAction('channel', 'conference');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_confbridge_unmute()
+    {
+        $write = array(implode("\r\n", array(
+            'action: ConfbridgeUnmute',
+            'actionid: 1432.123',
+            'channel: channel',
+            'conference: conference',
+            ''
+        )));
+        $action = new \PAMI\Message\Action\ConfbridgeUnmuteAction('channel', 'conference');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
     public function can_core_settings()
     {
         $write = array(implode("\r\n", array(
@@ -751,6 +781,24 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
+    public function can_mix_monitor()
+    {
+        $write = array(implode("\r\n", array(
+            'action: MixMonitor',
+            'actionid: 1432.123',
+            'channel: channel',
+            'file: file',
+            'options: options',
+            ''
+        )));
+        $action = new \PAMI\Message\Action\MixMonitorAction('channel');
+        $action->setFile('file');
+        $action->setOptions(array('o', 'p', 't', 'i', 'o', 'n', 's'));
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
     public function can_module_check()
     {
         $write = array(implode("\r\n", array(
@@ -878,6 +926,22 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
             ''
         )));
 	    $action = new \PAMI\Message\Action\StopMonitorAction('channel');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_stop_mix_monitor()
+    {
+        $write = array(implode("\r\n", array(
+            'action: StopMixMonitor',
+            'actionid: 1432.123',
+            'channel: channel',
+            'mixmonitorid: mix_monitor',
+            ''
+        )));
+        $action = new \PAMI\Message\Action\StopMixMonitorAction('channel');
+        $action->setMixMonitorId('mix_monitor');
         $client = $this->_start($write, $action);
     }
     /**
