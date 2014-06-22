@@ -318,7 +318,7 @@ class ClientImpl implements IClient
         foreach ($this->_eventListeners as $data) {
             $listener = $data[0];
             $predicate = $data[1];
-            if ($predicate !== null && !$predicate($message)) {
+            if (is_callable($predicate) && !call_user_func($predicate, $message)) {
                 continue;
             }
             if ($listener instanceof \Closure) {
