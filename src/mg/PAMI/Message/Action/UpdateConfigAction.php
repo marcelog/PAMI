@@ -7,7 +7,7 @@
  * @category   Pami
  * @package    Message
  * @subpackage Action
- * @author     Denis Rybakov <shinomontaz@gmail.com>
+ * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
  * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
@@ -88,7 +88,7 @@ class UpdateConfigAction extends ActionMessage
     public function setAction($input)
     {
         UpdateConfigAction::$counter++;
-        $this->setKey('Action-'.str_pad(UpdateConfigAction::$counter, 6, '0', STR_PAD_LEFT), $input);
+        $this->setKey('Action-'.$this->_getPaddedCounter(), $input);
     }
 
     /**
@@ -100,7 +100,7 @@ class UpdateConfigAction extends ActionMessage
      */
     public function setCat($input)
     {
-        $this->setKey('Cat-'.str_pad(UpdateConfigAction::$counter, 6, '0', STR_PAD_LEFT), $input);
+        $this->setKey('Cat-'.$this->_getPaddedCounter(), $input);
     }
 
     /**
@@ -112,7 +112,7 @@ class UpdateConfigAction extends ActionMessage
      */
     public function setVar($input)
     {
-        $this->setKey('Var-'.str_pad(UpdateConfigAction::$counter, 6, '0', STR_PAD_LEFT), $input);
+        $this->setKey('Var-'.$this->_getPaddedCounter(), $input);
     }
 
     /**
@@ -124,6 +124,15 @@ class UpdateConfigAction extends ActionMessage
      */
     public function setValue($input)
     {
-        $this->setKey('Value-'.str_pad(UpdateConfigAction::$counter, 6, '0', STR_PAD_LEFT), $input);
+        $this->setKey('Value-'.$this->_getPaddedCounter(), $input);
+    }
+
+    /**
+     * Returns the string representation for counter with leading zeroes in UpdateConfig action format.
+     *
+     * @return string
+     */
+    protected function _getPaddedCounter() {
+        return str_pad(UpdateConfigAction::$counter, 6, '0', STR_PAD_LEFT);
     }
 }

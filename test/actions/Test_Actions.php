@@ -1498,5 +1498,46 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
         // An empty ActionID
         $action->setActionID('');
     }
+
+    /**
+     * @test
+     * @expectedException \PAMI\Exception\PAMIException
+     */
+    public function cannot_set_updateconfig()
+    {
+        $number = 9876;
+        $action = new \PAMI\Message\Action\UpdateConfigAction();
+
+        $action->setSrcFilename('sip.conf');
+        $action->setDstFilename('sip.conf');
+
+
+        $action->setAction('NewCat');
+        $action->setCat($number);
+
+        $action->setAction('Append');
+        $action->setCat($number);
+        $action->setVar('username');
+        $action->setValue('test');
+
+        $write = [ implode("\r\n", [
+            'action: UpdateConfig',
+            'actionid: 1432.123',
+            'channel: channel',
+            'srcfilename: sip.conf',
+            'dstfilename: sip.conf',
+            'action-000000: NewCat',
+            'cat-000000: '.$number,
+            'action-000001: NewCat',
+            'cat-000001: '.$number,
+            'var-000001: username',
+            'value-000001: test',
+            ''
+        ]) ];
+
+        $action = new \PAMI\Message\Action\LogoffAction();
+        $client = $this->_start($write, $action);
+
+    }
 }
 }
