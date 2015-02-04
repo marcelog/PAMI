@@ -1520,7 +1520,7 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
         $action->setVar('username');
         $action->setValue('test');
 
-        $write = [ implode("\r\n", [
+        $write = array( implode("\r\n", array(
             'action: UpdateConfig',
             'actionid: 1432.123',
             'channel: channel',
@@ -1533,11 +1533,8 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
             'var-000001: username',
             'value-000001: test',
             ''
-        ]) ];
-
-        $action = new \PAMI\Message\Action\LogoffAction();
+        )) );
         $client = $this->_start($write, $action);
-
     }
 }
 }
