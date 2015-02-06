@@ -1501,26 +1501,11 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @expectedException \PAMI\Exception\PAMIException
      */
-    public function cannot_set_updateconfig()
+    public function can_update_config()
     {
         $number = 9876;
-        $action = new \PAMI\Message\Action\UpdateConfigAction();
-
-        $action->setSrcFilename('sip.conf');
-        $action->setDstFilename('sip.conf');
-
-
-        $action->setAction('NewCat');
-        $action->setCat($number);
-
-        $action->setAction('Append');
-        $action->setCat($number);
-        $action->setVar('username');
-        $action->setValue('test');
-
-        $write = array( implode("\r\n", array(
+        $writeCreate = array( implode("\r\n", array(
             'action: UpdateConfig',
             'actionid: 1432.123',
             'channel: channel',
@@ -1528,13 +1513,58 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
             'dstfilename: sip.conf',
             'action-000000: NewCat',
             'cat-000000: '.$number,
-            'action-000001: NewCat',
+            'action-000001: Append',
             'cat-000001: '.$number,
             'var-000001: username',
             'value-000001: test',
+            'action-000002: Append',
+            'cat-000002: '.$number,
+            'var-000002: secret',
+            'value-000002: secret',
             ''
         )) );
-        $client = $this->_start($write, $action);
+
+        $actionCreate = new \PAMI\Message\Action\UpdateConfigAction();
+
+        $actionCreate->setSrcFilename('sip.conf');
+        $actionCreate->setDstFilename('sip.conf');
+        
+        $actionCreate->setAction('NewCat');
+        $actionCreate->setCat($number);
+
+        $actionCreate->setAction('Append');
+        $actionCreate->setCat($number);
+        $actionCreate->setVar('username');
+        $actionCreate->setValue('test');
+
+        $actionCreate->setAction('Append');
+        $actionCreate->setCat($number);
+        $actionCreate->setVar('secret');
+        $actionCreate->setValue('secret');
+
+        $client = $this->_start($writeCreate, $actionCreate);
+        
+        $writeDelete = array( implode("\r\n", array(
+            'action: UpdateConfig',
+            'actionid: 1432.123',
+            'channel: channel',
+            'srcfilename: sip.conf',
+            'dstfilename: sip.conf',
+            'Reload: yes'
+            'action-000000: DelCat',
+            'cat-000000: '.$number,
+            ''
+        )) );
+
+        $actionDelete = new \PAMI\Message\Action\UpdateConfigAction();
+
+        $actionDelete->setSrcFilename('sip.conf');
+        $actionDelete->setDstFilename('sip.conf');
+        $actionDelete->setReload(true);
+        $actionDelete->setAction('DelCat');
+        $actionDelete->setCat($number);
+
+        $client = $this->_start($writeDelete, $actionDelete);
     }
 }
 }

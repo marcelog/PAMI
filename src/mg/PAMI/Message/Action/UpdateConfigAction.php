@@ -62,7 +62,8 @@ class UpdateConfigAction extends ActionMessage
      *
      * @return void
      */
-    public function setSrcFilename( $filename ) {
+    public function setSrcFilename( $filename )
+    {
         $this->setKey('SrcFilename', $filename);
     }
 
@@ -73,8 +74,21 @@ class UpdateConfigAction extends ActionMessage
      *
      * @return void
      */
-    public function setDstFilename( $filename ) {
+    public function setDstFilename( $filename )
+    {
         $this->setKey('DstFilename', $filename);
+    }
+    
+     /**
+     * Sets Reload key.
+     *
+     * @param string $input.
+     *
+     * @return void
+     */
+    public function setReload($reload)
+    {
+        $this->setKey('Reload', $reload ? 'yes' : 'no');
     }
 
     /**
@@ -126,13 +140,38 @@ class UpdateConfigAction extends ActionMessage
     {
         $this->setKey('Value-'.$this->_getPaddedCounter(), $input);
     }
+    
+     /**
+     * Sets Match-XXXXXX key.
+     *
+     * @param string $input.
+     *
+     * @return void
+     */
+    public function setMatch($input)
+    {
+        $this->setKey('Match-'.$this->_getPaddedCounter(), $input);
+    }
+
+     /**
+     * Sets Line-XXXXXX key.
+     *
+     * @param string $input.
+     *
+     * @return void
+     */
+    public function setLine($input)
+    {
+        $this->setKey('Line-'.$this->_getPaddedCounter(), $input);
+    }
 
     /**
      * Returns the string representation for counter with leading zeroes in UpdateConfig action format.
      *
      * @return string
      */
-    protected function _getPaddedCounter() {
+    protected function _getPaddedCounter()
+    {
         return str_pad(UpdateConfigAction::$counter, 6, '0', STR_PAD_LEFT);
     }
 }
