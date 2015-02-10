@@ -1508,7 +1508,6 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
         $writeCreate = array( implode("\r\n", array(
             'action: UpdateConfig',
             'actionid: 1432.123',
-            'channel: channel',
             'srcfilename: sip.conf',
             'dstfilename: sip.conf',
             'action-000000: NewCat',
@@ -1547,10 +1546,9 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
         $writeDelete = array( implode("\r\n", array(
             'action: UpdateConfig',
             'actionid: 1432.123',
-            'channel: channel',
             'srcfilename: sip.conf',
             'dstfilename: sip.conf',
-            'Reload: yes'
+            'Reload: yes',
             'action-000000: DelCat',
             'cat-000000: '.$number,
             ''
