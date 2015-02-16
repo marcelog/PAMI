@@ -1527,7 +1527,7 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
 
         $actionCreate->setSrcFilename('sip.conf');
         $actionCreate->setDstFilename('sip.conf');
-        
+
         $actionCreate->setAction('NewCat');
         $actionCreate->setCat($number);
 
@@ -1542,13 +1542,13 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
         $actionCreate->setValue('secret');
 
         $client = $this->_start($writeCreate, $actionCreate);
-        
+
         $writeDelete = array( implode("\r\n", array(
             'action: UpdateConfig',
             'actionid: 1432.123',
             'srcfilename: sip.conf',
             'dstfilename: sip.conf',
-            'Reload: yes',
+            'reload: yes',
             'action-000000: DelCat',
             'cat-000000: '.$number,
             ''

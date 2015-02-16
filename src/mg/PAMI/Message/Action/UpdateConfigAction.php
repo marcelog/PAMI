@@ -53,6 +53,7 @@ class UpdateConfigAction extends ActionMessage
     public function __construct()
     {
         parent::__construct('UpdateConfig');
+        self::$counter = -1;
     }
 
     /**
@@ -78,7 +79,7 @@ class UpdateConfigAction extends ActionMessage
     {
         $this->setKey('DstFilename', $filename);
     }
-    
+
      /**
      * Sets Reload key.
      *
@@ -140,7 +141,7 @@ class UpdateConfigAction extends ActionMessage
     {
         $this->setKey('Value-'.$this->_getPaddedCounter(), $input);
     }
-    
+
      /**
      * Sets Match-XXXXXX key.
      *
