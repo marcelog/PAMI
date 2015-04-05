@@ -860,7 +860,7 @@ class SCCP_Test_Events extends \PHPUnit_Framework_TestCase
                 'Old' => '0',
                 'Sub' => 'YES',
             ),
-            'SCCPShowMailboxSubscribersComplete' => array(
+            'SCCPShowMWISubscriptionsComplete' => array(
                 'ListItems' => '1',
             ),
         );
@@ -870,7 +870,7 @@ class SCCP_Test_Events extends \PHPUnit_Framework_TestCase
                 'Old' => 0,
                 'Sub' => true,
             ),
-            'SCCPShowMailboxSubscribersComplete' => array(
+            'SCCPShowMWISubscriptionsComplete' => array(
                 'ListItems' => 1,
             ),
         );
