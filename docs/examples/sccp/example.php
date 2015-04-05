@@ -121,22 +121,20 @@ try
 
 /*
 	var_dump($a->send(new ListCommandsAction()));
-*/
-/*
 	var_dump($a->send(new GetConfigJSONAction("sip.conf")));
+
 	$response = $a->send(new GetConfigJSONAction("sip.conf"));
 	var_dump($response->getJSON());
-*/	
-/*
+
 	$response = $a->send(new SCCPConfigMetaDataAction());
 	print_r($response->getJSON());
+
 	$response = $a->send(new SCCPConfigMetaDataAction("general"));
 	print_r($response->getJSON());
+
 	$response = $a->send(new SCCPConfigMetaDataAction("device"));
 	print_r($response->getJSON());
-*/
 
-/*
 	$response = $a->send(new SCCPShowGlobalsAction());
 	if ($response->isList()) {
 		$events = $response->getEvents();
@@ -150,12 +148,8 @@ try
 			}
 		}
  	}
-	//print_r($response);
-	//var_dump($response );
-*/
 
 	var_dump($a->send(new SCCPShowDevicesAction()));
-/*
 	$response = $a->send(new SCCPShowDevicesAction());
 	if ($response->isList()) {
 		$events = $response->getEvents();
@@ -165,10 +159,8 @@ try
 			}
 		} 
 	}
-*/
 
 	var_dump($a->send(new SCCPShowLinesAction()));
-/*
 	$response = $a->send(new SCCPShowLinesAction());
 	if ($response->isList()) {
 		$events = $response->getEvents();
@@ -178,7 +170,7 @@ try
 			}
 		} 
 	}
-*/
+
 	var_dump($a->send(new SCCPShowDeviceAction("SEP0023043403F9")));
 	$response = $a->send(new SCCPShowDeviceAction("SEP0023043403F9"));
 	if ($response->isList()) {
@@ -192,7 +184,6 @@ try
 		print ("\nPrefs:\n");
 		print_r ($mainevent->getCodecsPreference());
 	}
-/*
 	$tableNames = $response->getTableNames();
 	foreach ($tableNames as $tableName) {
 		print "Table: $tableName\n";
@@ -202,19 +193,12 @@ try
 	foreach ($buttontable as $button) {
 		print_r ($button);
 	} 
-*/
 
 	var_dump($a->send(new SCCPShowLineAction("98011")));
 	var_dump($a->send(new SCCPShowChannelsAction()));
 	var_dump($a->send(new SCCPShowSessionsAction()));
+*/
 
-/*	$time = time();
-	while(true)//(time() - $time) < 60) // Wait for events.
-	{
-	    usleep(1000); // 1ms delay
-	    // Since we declare(ticks=1) at the top, the following line is not necessary
-	    $a->process();
-	}*/
 	$a->close(); // send logoff and close the connection.
 } catch (Exception $e) {
 	echo $e->getMessage() . "\n";

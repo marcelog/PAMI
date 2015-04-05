@@ -60,6 +60,18 @@ class ResponseMessage extends IncomingMessage
     private $_completed;
 
     /**
+     * Child Tables
+     * @var EventMessage[]
+     */
+    private $_tables;
+
+    /**
+     * Catch All incoming Events into current Table.
+     * @var Array
+     */
+    private $_table;
+
+    /**
      * Serialize function.
      *
      * @return string[]
@@ -69,6 +81,7 @@ class ResponseMessage extends IncomingMessage
         $ret = parent::__sleep();
         $ret[] = '_completed';
         $ret[] = '_events';
+        $res[] = '_tables';
         return $ret;
     }
 
@@ -93,7 +106,27 @@ class ResponseMessage extends IncomingMessage
      */
     public function addEvent(EventMessage $event)
     {
-        $this->_events[] = $event;
+    	/* Handle TableStart/TableEnd Differently */
+        if (stristr($event->getName(), 'TableStart') != false) {
+        	
+            $this->_table = array();
+            $this->_table['Name'] = $event->getTableName();
+            $this->_table['Entries'] = array();
+        } else if (is_array($this->_table)) {
+            if (stristr($event->getName(), 'TableEnd') != false) {
+            	if (!is_array($this->_tables)) {
+            		$this->_tables = array();
+            	}
+                $this->_tables[$event->getTableName()] = $this->_table;
+                unset($this->table);
+            } else {
+                $this->_table['Entries'][] = $event;
+            }
+        } else {
+            $this->_events[] = $event;
+        }
+        
+        //$this->_events[] = $event;
         if (
             stristr($event->getEventList(), 'complete') !== false
             || stristr($event->getName(), 'complete') !== false
@@ -111,6 +144,27 @@ class ResponseMessage extends IncomingMessage
     public function getEvents()
     {
         return $this->_events;
+    }
+
+    /**
+     * Returns all eventtabless for this response.
+     *
+     * @return EventMessage[]
+     */
+    public function getTableNames()
+    {
+    	return array_keys($this->_tables);
+    }
+
+
+    /**
+     * Returns all associated events for this response->tablename.
+     *
+     * @return EventMessage[]
+     */
+    public function getTable($tablename)
+    {
+        return $this->_tables[$tablename];
     }
 
     /**
@@ -139,6 +193,21 @@ class ResponseMessage extends IncomingMessage
     }
 
     /**
+     * Returns true if this response contains the key EventList with the
+     * word 'start' in it. Another way is to have a Message key, like:
+     * Message: Result will follow
+     *
+     * @return boolean
+     */
+    public function isTable()
+    {
+        return
+            stristr($this->getKey('Event'), 'TableStart') !== false
+            || stristr($this->getKey('Event'), 'TableEnd') !== false
+        ;
+    }
+
+    /**
      * Returns key: 'Privilege'.
      *
      * @return string
@@ -146,6 +215,16 @@ class ResponseMessage extends IncomingMessage
     public function getMessage()
     {
         return $this->getKey('Message');
+    }
+
+    /**
+     * Returns decodec version of the 'JSON' key if present. 
+     *
+     * @return array
+     */
+    public function getJSON()
+    {
+    	return json_decode($this->getKey('JSON'), true);
     }
 
     /**
