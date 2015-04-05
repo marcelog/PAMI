@@ -843,7 +843,7 @@ class Test_Client extends \PHPUnit_Framework_TestCase
     {
         $now = time();
         $action = new \PAMI\Message\Action\LoginAction('a', 'b');
-        $this->assertEquals($now, $action->getCreatedDate());
+        $this->assertGreaterThanOrEquals($now, $action->getCreatedDate());
         $action->setVariable('variable', 'value');
         $this->assertEquals($action->getVariable('variable'), 'value');
         $this->assertNull($action->getVariable('variable2'));
