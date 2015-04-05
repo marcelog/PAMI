@@ -738,6 +738,168 @@ class SCCP_Test_Events extends \PHPUnit_Framework_TestCase
         }
     }
 
+   public function can_SCCPConference_events()
+    {
+        $eventValues = array(
+            'SCCPConferenceEntry' => array(
+                'ChannelType' => 'SCCP',
+                'ChannelObjectType' => 'Conference',
+                'Id' => '100',
+                'Participants' => '1',
+                'Moderators' => '1',
+                'Announce' => 'Yes',
+                'MuteOnEntry' => 'Yes',
+            ),
+            'SCCPShowSCCPConferenceComplete' => array(
+                'ListItems' => '1',
+            ),
+        );
+        $eventTranslatedValues = array(
+            'SCCPConferenceEntry' => array(
+                'Id' => 100,
+                'Participants' => 1,
+                'Moderators' => 1,
+                'Announce' => true,
+                'MuteOnEntry' => true,
+            ),
+            'SCCPShowSCCPConferenceComplete' => array(
+                'ListItems' => 1,
+            ),
+        );
+        $eventGetters = array(
+        );
+        foreach (array_keys($eventValues) as $eventName) {
+            $this->_testEvent($eventName, $eventGetters, $eventValues[$eventName], $eventTranslatedValues);
+        }
+	}
+
+    public function can_SCCPHintLineState_events()
+    {
+        $eventValues = array(
+            'SCCPHintLineStateEntry' => array(
+                'ChannelType' => 'SCCP',
+                'ChannelObjectType' => 'HintLineState',
+                'LineName' => '98099',
+                'State' => 'ONHOOK',
+                'CallInfoNumber:' => '',
+                'CallInfoName:' => '',
+                'Direction' => 'INACTIVE',
+            ),
+            'SCCPShowSCCPHintLineStateComplete' => array(
+                'ListItems' => '1',
+            ),
+        );
+        $eventTranslatedValues = array(
+            'SCCPShowSCCPHintLineStateComplete' => array(
+                'ListItems' => 1,
+            ),
+        );
+        $eventGetters = array(
+        );
+        foreach (array_keys($eventValues) as $eventName) {
+            $this->_testEvent($eventName, $eventGetters, $eventValues[$eventName], $eventTranslatedValues);
+        }
+	}
+
+    public function can_SCCPHintSubscription_events()
+    {
+        $eventValues = array(
+            'SCCPHintSubscriptionEntry' => array(
+                'ChannelType' => 'SCCP',
+                'ChannelObjectType' => 'HintSubscription',
+                'Exten' => '1234',
+                'Context' => 'hints',
+                'Hint' => 'SIP/1234',
+                'State' => 'CONGESTION',
+                'CallInfoNumber:' => '',
+                'CallInfoName:' => '',
+                'Direction:' => '',
+                'Subs' => '1',
+            ),
+            'SCCPShowSCCPHintSubscriptionComplete' => array(
+                'ListItems' => '1',
+            ),
+        );
+        $eventTranslatedValues = array(
+            'SCCPHintSubscriptionEntry' => array(
+                'Subs' => 1,
+            ),
+            'SCCPShowSCCPHintSubscriptionComplete' => array(
+                'ListItems' => 1,
+            ),
+        );
+        $eventGetters = array(
+        );
+        foreach (array_keys($eventValues) as $eventName) {
+            $this->_testEvent($eventName, $eventGetters, $eventValues[$eventName], $eventTranslatedValues);
+        }
+	}
+
+    public function can_SCCPMailboxSubscriber_events()
+    {
+        $eventValues = array(
+            'SCCPMailboxSubscriberEntry' => array(
+                'ChannelType' => 'SCCP',
+                'ChannelObjectType' => 'MailboxSubscriber',
+                'Mailbox' => '98041',
+                'LineName' => '98041',
+                'Context' => 'default',
+                'New' => '0',
+                'Old' => '0',
+                'Sub' => 'YES',
+            ),
+            'SCCPShowSCCPMailboxSubscriberComplete' => array(
+                'ListItems' => '1',
+            ),
+        );
+        $eventTranslatedValues = array(
+            'SCCPMailboxSubscriberEntry' => array(
+                'New' => 0,
+                'Old' => 0,
+                'Sub' => true,
+            ),
+            'SCCPShowSCCPMailboxSubscriberComplete' => array(
+                'ListItems' => 1,
+            ),
+        );
+        $eventGetters = array(
+        );
+        foreach (array_keys($eventValues) as $eventName) {
+            $this->_testEvent($eventName, $eventGetters, $eventValues[$eventName], $eventTranslatedValues);
+        }
+	}
+
+    public function can_SCCPSoftKeySet_events()
+    {
+        $eventValues = array(
+            'SCCPSoftKeySetEntry' => array(
+                'ChannelType' => 'SCCP',
+                'ChannelObjectType' => 'SoftKeySet',
+                'Set' => 'default',
+                'Mode' => 'ONHOOK',
+                'Description' => 'On Hook',
+                'LblID' => '0',
+                'Label' => 'Redial',
+            ),
+            'SCCPShowSCCPSoftKeySetComplete' => array(
+                'ListItems' => '1',
+            ),
+        );
+        $eventTranslatedValues = array(
+            'SCCPSoftKeySetEntry' => array(
+                'LblID' => 0,
+            ),
+            'SCCPShowSCCPSoftKeySetComplete' => array(
+                'ListItems' => 1,
+            ),
+        );
+        $eventGetters = array(
+        );
+        foreach (array_keys($eventValues) as $eventName) {
+            $this->_testEvent($eventName, $eventGetters, $eventValues[$eventName], $eventTranslatedValues);
+        }
+	}
+
     /**
      * @test
      */
@@ -748,27 +910,9 @@ class SCCP_Test_Events extends \PHPUnit_Framework_TestCase
             	'Name' => 'Test',
             	'Value' => 'Something',
             ),
-            'SCCPShowDeviceComplete' => array(
-            	'ListItems' => '1',
-            ),
-            'SCCPShowLinesComplete' => array(
-            	'ListItems' => '1',
-            ),
-            'SCCPShowChannelsComplete' => array(
-            	'ListItems' => '1',
-            ),
-            'SCCPShowDeviceComplete' => array(
-            	'ListItems' => '1',
-            ),
         );
         $eventTranslatedValues = array(
             'SCCPShowLinesComplete' => array(
-            	'ListItems' => 1,
-            ),
-            'SCCPShowChannelsComplete' => array(
-            	'ListItems' => 1,
-            ),
-            'SCCPShowDeviceComplete' => array(
             	'ListItems' => 1,
             ),
         );

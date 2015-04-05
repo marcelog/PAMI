@@ -358,5 +358,82 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 		$action = new \PAMI\Message\Action\SCCPShowSessionsAction();
 		$result = $this->_start($write, $action);
 	}
+
+	/**
+	 * Test SCCPShowMWISubscriptions  action message.
+	 * @test
+	 */
+	public function can_get_SCCPShowMWISubscriptions()
+	{
+		$write = array(implode("\r\n", array(
+			'action: SCCPShowMWISubscriptions',
+			'actionid: 1432.123',
+			''
+		)));
+		$action = new \PAMI\Message\Action\SCCPShowMWISubscriptionsAction();
+		$result = $this->_start($write, $action);
+	}
+
+	/**
+	 * Test SCCPShowSoftkeySets  action message.
+	 * @test
+	 */
+	public function can_get_SCCPShowSoftkeySets()
+	{
+		$write = array(implode("\r\n", array(
+			'action: SCCPShowSoftkeySets',
+			'actionid: 1432.123',
+			''
+		)));
+		$action = new \PAMI\Message\Action\SCCPShowSoftkeySetsAction();
+		$result = $this->_start($write, $action);
+	}
+
+	/**
+	 * Test SCCPShowConferences  action message.
+	 * @test
+	 */
+	public function can_get_SCCPShowConferences()
+	{
+		$write = array(implode("\r\n", array(
+			'action: SCCPShowConferences',
+			'actionid: 1432.123',
+			''
+		)));
+		$action = new \PAMI\Message\Action\SCCPShowConferencesAction();
+		$result = $this->_start($write, $action);
+	}
+
+	/**
+	 * Test SCCPShowHintLineStates  action message.
+	 * @test
+	 */
+	public function can_get_SCCPShowHintLineStates()
+	{
+		$write = array(implode("\r\n", array(
+			'action: SCCPShowHintLineStates',
+			'actionid: 1432.123',
+			''
+		)));
+		$action = new \PAMI\Message\Action\SCCPShowHintLineStatesAction();
+		$result = $this->_start($write, $action);
+	}
+
+	/**
+	 * Test SCCPShowHintSubscriptions  action message.
+	 * @test
+	 */
+	public function can_get_SCCPShowHintSubscriptions()
+	{
+		$write = array(implode("\r\n", array(
+			'action: SCCPShowHintSubscriptions',
+			'actionid: 1432.123',
+			''
+		)));
+		$action = new \PAMI\Message\Action\SCCPShowHintSubscriptionsAction();
+		$result = $this->_start($write, $action);
+	}
+
+
 }
 }
