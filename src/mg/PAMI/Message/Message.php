@@ -159,6 +159,20 @@ abstract class Message
 	}
 
 	/**
+	 * Returns a key by name as boolean.
+	 *
+	 * @param string $key Key name (i.e: Action).
+	 *
+	 * @return boolean
+	 */
+	public function getBoolKey($key)
+	{
+		$val = $this->getKey($key);
+		$boolval = ( is_string($val) ? filter_var($val, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE) : (bool) $val );
+		return ( $boolval===null ? false : $boolval );
+	}
+
+	/**
 	 * Returns all keys for this message.
 	 *
 	 * @return string[]
