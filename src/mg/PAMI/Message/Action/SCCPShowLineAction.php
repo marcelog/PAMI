@@ -46,6 +46,8 @@ class SCCPShowLineAction extends ActionMessage
     /**
      * Constructor.
      *
+     * @param string $LineName Line Name
+     *
      * @return void
      */
     public function __construct($linename)
