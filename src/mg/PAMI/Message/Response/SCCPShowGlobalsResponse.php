@@ -1,18 +1,18 @@
 <?php
 /**
- * SCCPShowChannels action message.
+ * A generic response message from ami.
  *
  * PHP Version 5
  *
  * @category   Pami
  * @package    Message
- * @subpackage Action
- * @author     Diederik de Groot <ddegroot@users.sf.net>
+ * @subpackage Response
+ * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
  * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
- * Copyright 2015 Diederik de Groot ddegroot@users.sf.net>, Marcelo Gornstein <marcelog@gmail.com>
+ * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,32 +27,33 @@
  * limitations under the License.
  *
  */
-namespace PAMI\Message\Action;
+namespace PAMI\Message\Response;
+
+use PAMI\Message\Response\ResponseMessage;
 
 /**
- * Hangup action message.
+ * A generic response message from ami.
  *
  * PHP Version 5
  *
  * @category   Pami
  * @package    Message
- * @subpackage Action
- * @author     Diederik de Groot <ddegroot@users.sf.net>
+ * @subpackage Response
+ * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
  * @link       http://marcelog.github.com/PAMI/
  */
-class SCCPShowChannelsAction extends ActionMessage
+class SCCPShowGlobalsResponse extends SCCPGenericResponse
 {
     /**
      * Constructor.
      *
+     * @param string $rawContent Literal message as received from ami.
+     *
      * @return void
      */
-    public function __construct()
+    public function __construct($rawContent)
     {
-        parent::__construct('SCCPShowChannels');
-
-        /* manually overwrite the responsehandler */
-        $this->setResponseHandler('SCCPGeneric');
+        parent::__construct($rawContent);
     }
 }

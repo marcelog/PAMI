@@ -29,13 +29,10 @@
  */
 namespace PAMI\Message\Response;
 
-use PAMI\Message\Message;
-use PAMI\Message\IncomingMessage;
+use PAMI\Message\Response\ResponseMessage;
 use PAMI\Message\Event\EventMessage;
-use PAMI\Exception\PAMIException;
-
 /**
- * A generic response message from ami.
+ * A generic SCCP response message from ami.
  *
  * PHP Version 5
  *
@@ -46,45 +43,19 @@ use PAMI\Exception\PAMIException;
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
  * @link       http://marcelog.github.com/PAMI/
  */
-abstract class ResponseMessage extends IncomingMessage
+class SCCPGenericResponse extends ResponseMessage
 {
     /**
-     * Child events.
+     * Child Tables
      * @var EventMessage[]
      */
-    protected $_events;
+    protected $_tables;
 
     /**
-     * Is this response completed? (with all its events).
-     * @var boolean
+     * Catch All incoming Events into current Table.
+     * @var Array
      */
-    protected $_completed;
-
-    /**
-     * Serialize function.
-     *
-     * @return string[]
-     */
-    public function __sleep()
-    {
-        $ret = parent::__sleep();
-        $ret[] = '_completed';
-        $ret[] = '_events';
-        $res[] = '_tables';
-        return $ret;
-    }
-
-    /**
-     * True if this response is complete. A response is considered complete
-     * if it's not a list OR it's a list with its last child event containing
-     * an EventList = Complete.
-     *
-     * @return boolean
-     */
-    public function isComplete()
-    {
-        return $this->_completed;
-    }
+    protected $_table;
 
     /**
      * Adds an event to this response.
@@ -95,7 +66,25 @@ abstract class ResponseMessage extends IncomingMessage
      */
     public function addEvent(EventMessage $event)
     {
-        $this->_events[] = $event;
+    	// Handle TableStart/TableEnd Differently 
+        if (stristr($event->getName(), 'TableStart') != false) {
+            $this->_table = array();
+            $this->_table['Name'] = $event->getTableName();
+            $this->_table['Entries'] = array();
+        } else if (is_array($this->_table)) {
+            if (stristr($event->getName(), 'TableEnd') != false) {
+            	if (!is_array($this->_tables)) {
+            		$this->_tables = array();
+            	}
+                $this->_tables[$event->getTableName()] = $this->_table;
+                unset($this->table);
+            } else {
+                $this->_table['Entries'][] = $event;
+            }
+        } else {
+            $this->_events[] = $event;
+        }
+        
         if (
             stristr($event->getEventList(), 'complete') !== false
             || stristr($event->getName(), 'complete') !== false
@@ -105,24 +94,26 @@ abstract class ResponseMessage extends IncomingMessage
         }
     }
 
+
     /**
-     * Returns all associated events for this response.
+     * Returns all eventtabless for this response.
      *
      * @return EventMessage[]
      */
-    public function getEvents()
+    public function getTableNames()
     {
-        return $this->_events;
+    	return array_keys($this->_tables);
     }
 
+
     /**
-     * Checks if the Response field has the word Error in it.
+     * Returns all associated events for this response->tablename.
      *
-     * @return boolean
+     * @return EventMessage[]
      */
-    public function isSuccess()
+    public function getTable($tablename)
     {
-        return stristr($this->getKey('Response'), 'Error') === false;
+        return $this->_tables[$tablename];
     }
 
     /**
@@ -132,36 +123,27 @@ abstract class ResponseMessage extends IncomingMessage
      *
      * @return boolean
      */
-    public function isList()
+    public function isTable()
     {
         return
-            stristr($this->getKey('EventList'), 'start') !== false
-            || stristr($this->getMessage(), 'follow') !== false
+            stristr($this->getKey('Event'), 'TableStart') !== false
+            || stristr($this->getKey('Event'), 'TableEnd') !== false
         ;
     }
 
     /**
-     * Returns key: 'Privilege'.
+     * Returns decodec version of the 'JSON' key if present. 
      *
-     * @return string
+     * @return array
      */
-    public function getMessage()
+    public function getJSON()
     {
-        return $this->getKey('Message');
-    }
-
-    /**
-     * Sets an action id. This should not be necessary, but asterisk sometimes
-     * decides to not send the Response: or Event: headers.
-     *
-     * @param string $actionId New ActionId.
-     *
-     * @return void
-     */
-    public function setActionId($actionId)
-    {
-        $this->setKey('ActionId', $actionId);
-    }
+		if ($this->getKey('JSON')) {
+			return json_decode($this->getKey('JSON'), true);
+		} else {
+			throw new PAMIException("No JSON Key found to return.");
+		}
+	}
 
     /**
      * Constructor.
@@ -173,8 +155,5 @@ abstract class ResponseMessage extends IncomingMessage
     public function __construct($rawContent)
     {
         parent::__construct($rawContent);
-        $this->_events = array();
-        $this->_eventsCount = 0;
-        $this->_completed = !$this->isList();
     }
 }
