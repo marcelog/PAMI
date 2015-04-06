@@ -359,7 +359,15 @@ class ClientImpl implements IClient
 	private function _messageToResponse($msg)
 	{
         //$response = new ResponseMessage($msg);
-		$response = $this->_responseFactory->createFromRaw($this->_logger, $msg, $this->_lastActionClass, $this->_lastResponseHandler);
+		try {
+			$response = $this->_responseFactory->createFromRaw($this->_logger, $msg, $this->_lastActionClass, $this->_lastResponseHandler);
+        } catch (PAMIException $e) {
+			if ($this->_logger->isDebugEnabled()) {
+				$this->_logger->debug(
+					'------ ResponseException: ------ ' . "\n" . $e . '----------'
+				);
+			}
+        }
 	    $actionId = $response->getActionId();
 	    if ($actionId === null) {
 	        $actionId = $this->_lastActionId;
@@ -377,7 +385,17 @@ class ClientImpl implements IClient
 	 */
 	private function _messageToEvent($msg)
 	{
-        return $this->_eventFactory->createFromRaw($msg);
+		$event;
+		try {
+			$event = $this->_eventFactory->createFromRaw($msg);
+        } catch (PAMIException $e) {
+			if ($this->_logger->isDebugEnabled()) {
+				$this->_logger->debug(
+					'------ EventException: ------ ' . "\n" . $e . '----------'
+				);
+			}
+        }
+        return $event;
 	}
 
 	/**

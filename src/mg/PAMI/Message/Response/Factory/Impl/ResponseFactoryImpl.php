@@ -69,10 +69,17 @@ class ResponseFactoryImpl
 				if ($logger->isDebugEnabled()) {
 					$logger->debug('ResponseFactoryImpl::createFromRaw, returning class: ' . $className . "\n");
 				}
+			try {
 				return new $className($message);
+			} catch (PAMIException $e) {
+				throw $e;
 			}
 		}
-		return new GenericResponse($message);
+		try {
+			return new GenericResponse($message);
+		} catch (PAMIException $e) {
+			throw $e;
+		}
 	}
 
 	/**

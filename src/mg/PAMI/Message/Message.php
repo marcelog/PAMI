@@ -154,7 +154,7 @@ abstract class Message
 			} else if (filter_var($value, FILTER_SANITIZE_STRING, FILTER_NULL_ON_FAILURE)) {
 				return (string)$value;
 			} else {
-				throw new PAMIException("Incoming String is not clean. Skipping: '" . $value . "' for key: '" .$key . "'");
+				throw new PAMIException("Incoming String is not clean. Skipping: '" . $value . "'\n");
 			}
 		} else if (is_resource($value)) {
 			// failure ?
@@ -163,7 +163,7 @@ abstract class Message
 			// failure ?
 			return (object)$value;
 		} else {
-			throw new PAMIException("Don't know how to convert: " . $value . " for key: " .$key);
+			throw new PAMIException("Don't know how to convert: '" . $value . "'\n");
 		}
 	}
 

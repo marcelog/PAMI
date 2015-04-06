@@ -28,6 +28,7 @@
  */
 namespace PAMI\Message;
 
+use PAMI\Exception\PAMIException;
 /**
  * A generic incoming message.
  *
@@ -97,7 +98,11 @@ abstract class IncomingMessage extends Message
             $name = strtolower(trim($content[0]));
             unset($content[0]);
             $value = isset($content[1]) ? trim(implode(':', $content)) : '';
-            $this->setSanitizedKey($name, $value);
+			try {
+				$this->setSanitizedKey($name, $value);
+			} catch (PAMIException $e) {
+				throw new PAMIException("Error: '" . $e . "'\n Dump RawContent:\n"  . $this->rawContent ."\n");
+			}
         }
     }
 }
