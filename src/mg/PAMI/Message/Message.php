@@ -130,7 +130,7 @@ abstract class Message
 	}
 
 	/**
-	 * Sanitinze incoming value
+	 * Sanitize incoming value
 	 *
 	 * @param string $value Key value.
 	 *
@@ -154,7 +154,7 @@ abstract class Message
 			} else if (filter_var($value, FILTER_SANITIZE_STRING, FILTER_NULL_ON_FAILURE)) {
 				return (string)$value;
 			} else {
-				throw new PAMIException("Incoming String is not clean. Skipping: '" . $value . "'\n");
+				throw new PAMIException("Incoming String is not sanitary. Skipping: '" . $value . "'\n");
 			}
 		} else if (is_resource($value)) {
 			// failure ?
