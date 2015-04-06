@@ -28,6 +28,7 @@
  */
 namespace PAMI\Message;
 
+use PAMI\Exception\PAMIException;
 /**
  * A generic ami message, in-or-outbound.
  *
@@ -135,11 +136,54 @@ abstract class Message
 	 * @param string $value Key value.
 	 *
 	 * @return void
+	 * @deprecated
 	 */
 	protected function setKey($key, $value)
 	{
 	    $key = strtolower((string)$key);
 	    $this->keys[$key] = (string)$value;
+	}
+
+	/**
+	 * Adds a sanitized & typed variable to this message.
+	 *
+	 * @param string $key   Key name (i.e: Action).
+	 * @param string $value Key value.
+	 *
+	 * @return void
+	 */
+	protected function setKeyTypedValue($key, $value)
+	{
+	    $key = strtolower((string)$key);
+	    if (!isset($value) || $value === NULL || strlen($value) == 0) {
+	    	$this->keys[$key] = NULL;
+  	    } else if ($key === 'actionid') {
+  	    	$this->keys[$key] = (string)$value;
+		} else if (is_numeric($value)) {
+			if (filter_var($value, FILTER_VALIDATE_INT, FILTER_FLAG_ALLOW_HEX | FILTER_FLAG_ALLOW_OCTAL)) {
+				$this->keys[$key] = intval($value, 0);
+			} else if (filter_var($value, FILTER_VALIDATE_FLOAT, FILTER_FLAG_ALLOW_FRACTION | FILTER_FLAG_ALLOW_THOUSAND | FILTER_FLAG_ALLOW_SCIENTIFIC)) {
+				$this->keys[$key] = (float)$value;
+			} else {
+				$this->keys[$key] = (double)$value;
+			}
+	    } else if (is_string($value)) {
+	    	if (filter_var($value, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE)) {
+	    		$this->keys[$key] = (boolean)$value;
+	    	} else if (filter_var($value, FILTER_SANITIZE_STRING, FILTER_NULL_ON_FAILURE)) {
+	    		$this->keys[$key] = (string)$value;
+			} else {
+				throw new PAMIException("Incoming String is not clean. Skipping: '" . $value . "' for key: '" .$key . "'");
+			}
+		} else if (is_resource($value)) {
+			// failure ?
+			$this->keys[$key] = $value;
+		} else if (is_object($value)) {
+			// failure ?
+			$this->keys[$key] = (object)$value;
+		} else {
+			throw new PAMIException("Don't know how to convert: " . $value . " for key: " .$key);
+		}
 	}
 
 	/**
@@ -155,7 +199,22 @@ abstract class Message
 	    if (!isset($this->keys[$key])) {
 		    return null;
 		}
-		return (string)$this->keys[$key];
+		//return (string)$this->keys[$key];
+		return $this->keys[$key];
+	}
+
+	/**
+	 * Returns a key by name as boolean.
+	 *
+	 * @param string $key Key name (i.e: Action).
+	 *
+	 * @return boolean
+	 */
+	public function getBoolKey($key)
+	{
+		$val = $this->getKey($key);
+		$boolval = ( is_string($val) ? filter_var($val, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE) : (bool) $val );
+		return ( $boolval===null ? false : $boolval );
 	}
 
 	/**
