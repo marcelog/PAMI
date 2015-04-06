@@ -434,6 +434,730 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 		$result = $this->_start($write, $action);
 	}
 
+	/**
+	 * @test
+	 */
+	public function can_SCCPAnswerCall()
+	{
+		$write = array(implode("\r\n", array(
+			'action: SCCPAnswerCall1',
+			'actionid: 1432.123',
+			'channelid: 98011',
+			'deviceid: SEP0011223344',
+			''
+		)));
+		$action = new \PAMI\Message\Action\SCCPAnswerCallAction('98011', 'SEP0011223344');
+		$client = $this->_start($write, $action);
+	}
+
+	/**
+	 * @test
+	 */
+	public function can_SCCPConference_Endconf()
+	{
+		$write = array(implode("\r\n", array(
+			'action: SCCPConference',
+			'actionid: 1432.123',
+			'conferenceid: 100',
+			'participantid: 1',
+			'command: endconf',
+			''
+		)));
+		$action = new \PAMI\Message\Action\SCCPConferenceAction('100', '1', 'endconf');
+		$client = $this->_start($write, $action);
+	}
+
+	/**
+	 * @test
+	 */
+	public function can_SCCPConference_Kick()
+	{
+		$write = array(implode("\r\n", array(
+			'action: SCCPConference',
+			'actionid: 1432.123',
+			'conferenceid: 100',
+			'participantid: 1',
+			'command: kick',
+			''
+		)));
+		$action = new \PAMI\Message\Action\SCCPConferenceAction('100', '1', 'Kick');
+		$client = $this->_start($write, $action);
+	}
+
+	/**
+	 * @test
+	 */
+	public function can_SCCPConference_Mute()
+	{
+		$write = array(implode("\r\n", array(
+			'action: SCCPConference',
+			'actionid: 1432.123',
+			'conferenceid: 100',
+			'participantid: 1',
+			'command: mute',
+			''
+		)));
+		$action = new \PAMI\Message\Action\SCCPConferenceAction('100', '1', 'Mute');
+		$client = $this->_start($write, $action);
+	}
+
+	/**
+	 * @test
+	 */
+	public function can_SCCPConference_Invite()
+	{
+		$write = array(implode("\r\n", array(
+			'action: SCCPConference',
+			'actionid: 1432.123',
+			'conferenceid: 100',
+			'participantid: 1',
+			'command: invite',
+			''
+		)));
+		$action = new \PAMI\Message\Action\SCCPConferenceAction('100', '1', 'Invite');
+		$client = $this->_start($write, $action);
+	}
+
+	/**
+	 * @test
+	 */
+	public function can_SCCPConference_Moderate()
+	{
+		$write = array(implode("\r\n", array(
+			'action: SCCPConference',
+			'actionid: 1432.123',
+			'conferenceid: 100',
+			'participantid: 1',
+			'command: moderate',
+			''
+		)));
+		$action = new \PAMI\Message\Action\SCCPConferenceAction('100', '1', 'moderate');
+		$client = $this->_start($write, $action);
+	}
+
+	/**
+	 * @test
+	 * @expectedException \PAMI\Exception\PAMIException
+	 *
+	 * Need to exten so it parses the returned error
+	 * Response: Error
+	 * ActionID: 1432.123
+	 * Message: Conference 100 not found
+	 */
+	public function can_SCCPConference_Error()
+	{
+		$write = array(implode("\r\n", array(
+			'action: SCCPConference',
+			'actionid: 1432.123',
+			'conferenceid: 100',
+			'participantid: 1',
+			'command: hangup',
+			''
+		)));
+		$action = new \PAMI\Message\Action\SCCPConferenceAction('100', '1', 'hangup');
+		$client = $this->_start($write, $action);
+	}
+
+	/**
+	 * @test
+	 */
+	public function can_SCCPDeviceAddLine()
+	{
+		$write = array(implode("\r\n", array(
+			'action: SCCPDeviceAddLine',
+			'actionid: 1432.123',
+			'devicename: SEP0011223344',
+			'linename: 12345',
+			''
+		)));
+		$action = new \PAMI\Message\Action\SCCPDeviceAddLineAction('SEP0011223344', '12345');
+		$client = $this->_start($write, $action);
+	}
+
+	/**
+	 * @test
+	 */
+	public function can_SCCPDeviceRestart_restart()
+	{
+		$write = array(implode("\r\n", array(
+			'action: SCCPDeviceRestart',
+			'actionid: 1432.123',
+			'devicename: SEP0011223344',
+			'type: restart',
+			''
+		)));
+		$action = new \PAMI\Message\Action\SCCPDeviceRestartAction('SEP0011223344','restart');
+		$client = $this->_start($write, $action);
+	}
+
+	/**
+	 * @test
+	 */
+	public function can_SCCPDeviceRestart_full()
+	{
+		$write = array(implode("\r\n", array(
+			'action: SCCPDeviceRestart',
+			'actionid: 1432.123',
+			'devicename: SEP0011223344',
+			'type: full',
+			''
+		)));
+		$action = new \PAMI\Message\Action\SCCPDeviceRestartAction('SEP0011223344','full');
+		$client = $this->_start($write, $action);
+	}
+
+	/**
+	 * @test
+	 */
+	public function can_SCCPDeviceRestart_reset()
+	{
+		$write = array(implode("\r\n", array(
+			'action: SCCPDeviceRestart',
+			'actionid: 1432.123',
+			'devicename: SEP0011223344',
+			'type: reset',
+			''
+		)));
+		$action = new \PAMI\Message\Action\SCCPDeviceRestartAction('SEP0011223344','reset');
+		$client = $this->_start($write, $action);
+	}
+
+	/**
+	 * @test
+	 * @expectedException \PAMI\Exception\PAMIException
+	 */
+	public function can_SCCPDeviceRestart_Fail()
+	{
+		$write = array(implode("\r\n", array(
+			'action: SCCPDeviceRestart',
+			'actionid: 1432.123',
+			'devicename: SEP0011223344',
+			'type: boo',
+			''
+		)));
+		$action = new \PAMI\Message\Action\SCCPDeviceRestartAction('SEP0011223344','boo');
+		$client = $this->_start($write, $action);
+	}
+
+	/**
+	 * @test
+	 */
+	public function can_SCCPDeviceSetDND_on()
+	{
+		$write = array(implode("\r\n", array(
+			'action: SCCPDeviceSetDND',
+			'actionid: 1432.123',
+			'devicename: SEP0011223344',
+			'dndstate: on',
+			''
+		)));
+		$action = new \PAMI\Message\Action\SCCPDeviceSetDNDAction('SEP0011223344', 'on');
+		$client = $this->_start($write, $action);
+	}
+
+	/**
+	 * @test
+	 */
+	public function can_SCCPDeviceSetDND_reject()
+	{
+		$write = array(implode("\r\n", array(
+			'action: SCCPDeviceSetDND',
+			'actionid: 1432.123',
+			'devicename: SEP0011223344',
+			'dndstate: reject',
+			''
+		)));
+		$action = new \PAMI\Message\Action\SCCPDeviceSetDNDAction('SEP0011223344', 'reject');
+		$client = $this->_start($write, $action);
+	}
+
+	/**
+	 * @test
+	 */
+	public function can_SCCPDeviceSetDND_silent()
+	{
+		$write = array(implode("\r\n", array(
+			'action: SCCPDeviceSetDND',
+			'actionid: 1432.123',
+			'devicename: SEP0011223344',
+			'dndstate: silent',
+			''
+		)));
+		$action = new \PAMI\Message\Action\SCCPDeviceSetDNDAction('SEP0011223344', 'silent');
+		$client = $this->_start($write, $action);
+	}
+
+	/**
+	 * @test
+	 */
+	public function can_SCCPDeviceSetDND_off()
+	{
+		$write = array(implode("\r\n", array(
+			'action: SCCPDeviceSetDND',
+			'actionid: 1432.123',
+			'devicename: SEP0011223344',
+			'dndstate: off',
+			''
+		)));
+		$action = new \PAMI\Message\Action\SCCPDeviceSetDNDAction('SEP0011223344', 'off');
+		$client = $this->_start($write, $action);
+	}
+
+	/**
+	 * @test
+	 * @expectedException \PAMI\Exception\PAMIException
+	 */
+	public function can_SCCPDeviceSetDND_fail()
+	{
+		$write = array(implode("\r\n", array(
+			'action: SCCPDeviceSetDND',
+			'actionid: 1432.123',
+			'devicename: SEP0011223344',
+			'dndstate: boo',
+			''
+		)));
+		$action = new \PAMI\Message\Action\SCCPDeviceSetDNDAction('SEP0011223344', 'boo');
+		$client = $this->_start($write, $action);
+	}
+
+	/**
+	 * @test
+	 */
+	public function can_SCCPDeviceUpdate()
+	{
+		$write = array(implode("\r\n", array(
+			'action: SCCPDeviceUpdate',
+			'actionid: 1432.123',
+			'devicename: SEP0011223344',
+			''
+		)));
+		$action = new \PAMI\Message\Action\SCCPDeviceUpdateAction('SEP0011223344');
+		$client = $this->_start($write, $action);
+	}
+
+	/**
+	 * @test
+	 */
+	public function can_SCCPDndDevice_off()
+	{
+		$write = array(implode("\r\n", array(
+			'action: SCCPDndDevice',
+			'actionid: 1432.123',
+			'deviceid: SEP0011223344',
+			'state: off',
+			''
+		)));
+		$action = new \PAMI\Message\Action\SCCPDndDeviceAction('SEP0011223344', 'off');
+		$client = $this->_start($write, $action);
+	}
+
+	/**
+	 * @test
+	 */
+	public function can_SCCPDndDevice_reject()
+	{
+		$write = array(implode("\r\n", array(
+			'action: SCCPDndDevice',
+			'actionid: 1432.123',
+			'deviceid: SEP0011223344',
+			'state: reject',
+			''
+		)));
+		$action = new \PAMI\Message\Action\SCCPDndDeviceAction('SEP0011223344', 'reject');
+		$client = $this->_start($write, $action);
+	}
+
+	/**
+	 * @test
+	 */
+	public function can_SCCPDndDevice_silent()
+	{
+		$write = array(implode("\r\n", array(
+			'action: SCCPDndDevice',
+			'actionid: 1432.123',
+			'deviceid: SEP0011223344',
+			'state: silent',
+			''
+		)));
+		$action = new \PAMI\Message\Action\SCCPDndDeviceAction('SEP0011223344', 'silent');
+		$client = $this->_start($write, $action);
+	}
+
+	/**
+	 * @test
+	 * @expectedException \PAMI\Exception\PAMIException
+	 */
+	public function can_SCCPDndDevice_fail()
+	{
+		$write = array(implode("\r\n", array(
+			'action: SCCPDndDevice',
+			'actionid: 1432.123',
+			'deviceid: SEP0011223344',
+			'state: boo',
+			''
+		)));
+		$action = new \PAMI\Message\Action\SCCPDndDeviceAction('SEP0011223344', 'boo');
+		$client = $this->_start($write, $action);
+	}
+
+	/**
+	 * @test
+	 */
+	public function can_SCCPHangupCall()
+	{
+		$write = array(implode("\r\n", array(
+			'action: SCCPHangupCall',
+			'actionid: 1432.123',
+			'channelid: SCCP/003423-432',
+			''
+		)));
+		$action = new \PAMI\Message\Action\SCCPHangupCallAction('SCCP/003423-432');
+		$client = $this->_start($write, $action);
+	}
+
+	/**
+	 * @test
+	 */
+	public function can_SCCPHoldCall_hold()
+	{
+		$write = array(implode("\r\n", array(
+			'action: SCCPHoldCall',
+			'actionid: 1432.123',
+			'channelid: SCCP/003423-432',
+			'devicename: SEP0011223344',
+			'hold: on',
+			'swapchannels: off',
+			''
+		)));
+		$action = new \PAMI\Message\Action\SCCPHoldCallAction('SCCP/003423-432', 'SEP0011223344', true);
+		$client = $this->_start($write, $action);
+	}
+
+
+	/**
+	 * @test
+	 */
+	public function can_SCCPHoldCall_resume()
+	{
+		$write = array(implode("\r\n", array(
+			'action: SCCPHoldCall',
+			'actionid: 1432.123',
+			'channelid: SCCP/003423-432',
+			'devicename: SEP0011223344',
+			'hold: off',
+			'swapchannels: on',
+			''
+		)));
+		$action = new \PAMI\Message\Action\SCCPHoldCallAction('SCCP/003423-432', 'SEP0011223344', false, true);
+		$client = $this->_start($write, $action);
+	}
+
+	/**
+	 * @test
+	 * @expectedException \PAMI\Exception\PAMIException
+	 */
+	public function can_SCCPHoldCall_hold_fail()
+	{
+		$write = array(implode("\r\n", array(
+			'action: SCCPHoldCall',
+			'actionid: 1432.123',
+			'channelid: SCCP/003423-432',
+			'devicename: SEP0011223344',
+			'hold: on',
+			'swapchannels: on',
+			''
+		)));
+		$action = new \PAMI\Message\Action\SCCPHoldCallAction('SCCP/003423-432', 'SEP0011223344', true, true);
+		$client = $this->_start($write, $action);
+	}
+
+	/**
+	 * @test
+	 */
+	public function can_SCCPLineForwardUpdate_ForwardAll()
+	{
+		$write = array(implode("\r\n", array(
+			'action: SCCPLineForwardUpdate',
+			'actionid: 1432.123',
+			'devicename: SEP0011223344',
+			'linename: 12345',
+			'forwardtype: all',
+			'number: 666',
+			''
+		)));
+		$action = new \PAMI\Message\Action\SCCPLineForwardUpdateAction('SEP0011223344','12345','all',false, '666');
+		$client = $this->_start($write, $action);
+	}
+
+	/**
+	 * @test
+	 */
+	public function can_SCCPLineForwardUpdate_ForwardBusy()
+	{
+		$write = array(implode("\r\n", array(
+			'action: SCCPLineForwardUpdate',
+			'actionid: 1432.123',
+			'devicename: SEP0011223344',
+			'linename: 12345',
+			'forwardtype: busy',
+			'number: 666',
+			''
+		)));
+		$action = new \PAMI\Message\Action\SCCPLineForwardUpdateAction('SEP0011223344','12345','busy',false,'666');
+		$client = $this->_start($write, $action);
+	}
+
+	/**
+	 * @test
+	 * @expectedException \PAMI\Exception\PAMIException
+	 */
+	public function can_SCCPLineForwardUpdate_ForwardTypeBoo_Fail()
+	{
+		$write = array(implode("\r\n", array(
+			'action: SCCPLineForwardUpdate',
+			'actionid: 1432.123',
+			'devicename: SEP0011223344',
+			'linename: 12345',
+			'forwardtype: boo',
+			'number: 666',
+			''
+		)));
+		$action = new \PAMI\Message\Action\SCCPLineForwardUpdateAction('SEP0011223344','12345','boo',false,'666');
+		$client = $this->_start($write, $action);
+	}
+
+
+
+	/**
+	 * @test
+	 */
+	public function can_SCCPLineForwardUpdate_Disable()
+	{
+		$write = array(implode("\r\n", array(
+			'action: SCCPLineForwardUpdate',
+			'actionid: 1432.123',
+			'devicename: SEP0011223344',
+			'linename: 12345',
+			'forwardtype: all',
+			'disable: on',
+			''
+		)));
+		$action = new \PAMI\Message\Action\SCCPLineForwardUpdateAction('SEP0011223344','12345','all',true);
+		$client = $this->_start($write, $action);
+	}
+
+	/**
+	 * @test
+	 * @expectedException \PAMI\Exception\PAMIException
+	 */
+	public function can_SCCPLineForwardUpdate_FailOnNumber()
+	{
+		$write = array(implode("\r\n", array(
+			'action: SCCPLineForwardUpdate',
+			'actionid: 1432.123',
+			'devicename: SEP0011223344',
+			'linename: 12345',
+			'forwardtype: all',
+			'disable: on',
+			''
+		)));
+		$action = new \PAMI\Message\Action\SCCPLineForwardUpdateAction('SEP0011223344','12345','all',true,'666');
+		$client = $this->_start($write, $action);
+	}
+
+	/**
+	 * @test
+	 */
+	public function can_SCCPMessageDevices()
+	{
+		$write = array(implode("\r\n", array(
+			'action: SCCPMessageDevices',
+			'actionid: 1432.123',
+			'messagetext: Text to send to all devices',
+			''
+		)));
+		$action = new \PAMI\Message\Action\SCCPMessageDevicesAction('Text to send to all devices', false, false);
+		$client = $this->_start($write, $action);
+	}
+
+	/**
+	 * @test
+	 */
+	public function can_SCCPMessageDevices_beep()
+	{
+		$write = array(implode("\r\n", array(
+			'action: SCCPMessageDevices',
+			'actionid: 1432.123',
+			'messagetext: Text to send to all devices',
+			'beep: beep',
+			''
+		)));
+		$action = new \PAMI\Message\Action\SCCPMessageDevicesAction('Text to send to all devices', true, false);
+		$client = $this->_start($write, $action);
+	}
+
+	/**
+	 * @test
+	 */
+	public function can_SCCPMessageDevices_beep_timeout()
+	{
+		$write = array(implode("\r\n", array(
+			'action: SCCPMessageDevices',
+			'actionid: 1432.123',
+			'messagetext: Text to send to all devices',
+			'beep: beep',
+			'timeout: 10',
+			''
+		)));
+		$action = new \PAMI\Message\Action\SCCPMessageDevicesAction('Text to send to all devices', true, 10);
+		$client = $this->_start($write, $action);
+	}
+
+	/**
+	 * @test
+	 */
+	public function can_SCCPMessageDevice()
+	{
+		$write = array(implode("\r\n", array(
+			'action: SCCPMessageDevice',
+			'actionid: 1432.123',
+			'deviceid: SEP0011223344',
+			'messagetext: Text to send to all devices',
+			''
+		)));
+		$action = new \PAMI\Message\Action\SCCPMessageDeviceAction('SEP0011223344', 'Text to send to all devices', false, false);
+		$client = $this->_start($write, $action);
+	}
+
+	/**
+	 * @test
+	 */
+	public function can_SCCPMessageDevice_beep()
+	{
+		$write = array(implode("\r\n", array(
+			'action: SCCPMessageDevice',
+			'actionid: 1432.123',
+			'deviceid: SEP0011223344',
+			'messagetext: Text to send to all devices',
+			'beep: beep',
+			''
+		)));
+		$action = new \PAMI\Message\Action\SCCPMessageDeviceAction('SEP0011223344', 'Text to send to all devices', true, false);
+		$client = $this->_start($write, $action);
+	}
+	/**
+	 * @test
+	 */
+	public function can_SCCPMessageDevice_beep_timeout()
+	{
+		$write = array(implode("\r\n", array(
+			'action: SCCPMessageDevice',
+			'actionid: 1432.123',
+			'deviceid: SEP0011223344',
+			'messagetext: Text to send to all devices',
+			'beep: beep',
+			'timeout: 10',
+			''
+		)));
+		$action = new \PAMI\Message\Action\SCCPMessageDeviceAction('SEP0011223344', 'Text to send to all devices', true, 10);
+		$client = $this->_start($write, $action);
+	}
+
+	/**
+	 * @test
+	 */
+	public function can_SCCPSystemMessage()
+	{
+		$write = array(implode("\r\n", array(
+			'action: SCCPSystemMessage',
+			'actionid: 1432.123',
+			'messagetext: Text to send to all devices',
+			''
+		)));
+		$action = new \PAMI\Message\Action\SCCPSystemMessageAction('Text to send to all devices', false, false);
+		$client = $this->_start($write, $action);
+	}
+
+	/**
+	 * @test
+	 */
+	public function can_SCCPSystemMessage_beep()
+	{
+		$write = array(implode("\r\n", array(
+			'action: SCCPSystemMessage',
+			'actionid: 1432.123',
+			'messagetext: Text to send to all devices',
+			'beep: beep',
+			''
+		)));
+		$action = new \PAMI\Message\Action\SCCPSystemMessageAction('Text to send to all devices', true, false);
+		$client = $this->_start($write, $action);
+	}
+
+	/**
+	 * @test
+	 */
+	public function can_SCCPSystemMessage_timeout()
+	{
+		$write = array(implode("\r\n", array(
+			'action: SCCPSystemMessage',
+			'actionid: 1432.123',
+			'messagetext: Text to send to all devices',
+			'beep: beep',
+			'timeout: 10',
+			''
+		)));
+		$action = new \PAMI\Message\Action\SCCPSystemMessageAction('Text to send to all devices', true, 10);
+		$client = $this->_start($write, $action);
+	}
+
+
+	/**
+	 * @test
+	 */
+	public function can_SCCPShowConference()
+	{
+		$write = array(implode("\r\n", array(
+			'action: SCCPShowConference',
+			'actionid: 1432.123',
+			'conferenceid: 100',
+			''
+		)));
+		$action = new \PAMI\Message\Action\SCCPShowConferenceAction(100);
+		$client = $this->_start($write, $action);
+	}
+
+	/**
+	 * @test
+	 */
+	public function can_SCCPStartCall()
+	{
+		$write = array(implode("\r\n", array(
+			'action: SCCPStartCall',
+			'actionid: 1432.123',
+			'devicename: SEP0011223344',
+			'linename: 98011',
+			'number: 666',
+			''
+		)));
+		$action = new \PAMI\Message\Action\SCCPStartCallAction('SEP0011223344','98011','666');
+		$client = $this->_start($write, $action);
+	}
+
+	/**
+	 * @test
+	 */
+	public function can_SCCPTokenAck()
+	{
+		$write = array(implode("\r\n", array(
+			'action: SCCPTokenAck',
+			'actionid: 1432.123',
+			'deviceid: SEP0011223344',
+			''
+		)));
+		$action = new \PAMI\Message\Action\SCCPTokenAckAction('SEP0011223344');
+		$client = $this->_start($write, $action);
+	}
 
 }
 }
