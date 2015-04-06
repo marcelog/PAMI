@@ -38,6 +38,7 @@ use PAMI\Message\Action\LogoffAction;
 use PAMI\Message\Response\ResponseMessage;
 use PAMI\Message\Event\EventMessage;
 use PAMI\Message\Event\Factory\Impl\EventFactoryImpl;
+use PAMI\Message\Response\Factory\Impl\ResponseFactoryImpl;
 use PAMI\Listener\IEventListener;
 use PAMI\Client\Exception\ClientException;
 use PAMI\Client\IClient;
@@ -105,6 +106,12 @@ class ClientImpl implements IClient
 	private $_eventFactory;
 
 	/**
+	 * Event factory.
+	 * @var EventFactoryImpl
+	 */
+	private $_responseFactory;
+
+	/**
 	 * R/W timeout, in milliseconds.
 	 * @var integer
 	 */
@@ -153,6 +160,16 @@ class ClientImpl implements IClient
 	 * @var string
 	 */
 	private $_lastActionId;
+
+	/**
+	 * @var string
+	 */
+	private $_lastResponseHandler;
+
+	/**
+	 * @var className
+	 */
+	private $_lastActionClass;
 
 	/**
 	 * Opens a tcp connection to ami.
@@ -253,7 +270,7 @@ class ClientImpl implements IClient
 	 * your own application in order to continue reading events and responses
 	 * from ami. 
 	 */
-	public function process()
+	public function process($outgoingMessageClass=false)
 	{
 	    $msgs = $this->getMessages();
 	    foreach ($msgs as $aMsg) {
@@ -267,6 +284,7 @@ class ClientImpl implements IClient
     	    if (($resPos !== false) && (($resPos < $evePos) || $evePos === false)) {
     	        $response = $this->_messageToResponse($aMsg);
                 $this->_incomingQueue[$response->getActionId()] = $response;
+				// unset($this->_outgoingQueue[$response->getActionId()]); pop
     	    } else if ($evePos !== false) {
     	        $event = $this->_messageToEvent($aMsg);
         	    $response = $this->findResponse($event);
@@ -340,7 +358,8 @@ class ClientImpl implements IClient
 	 */
 	private function _messageToResponse($msg)
 	{
-        $response = new ResponseMessage($msg);
+        //$response = new ResponseMessage($msg);
+		$response = $this->_responseFactory->createFromRaw($this->_logger, $msg, $this->_lastActionClass, $this->_lastResponseHandler);
 	    $actionId = $response->getActionId();
 	    if ($actionId === null) {
 	        $actionId = $this->_lastActionId;
@@ -401,7 +420,12 @@ class ClientImpl implements IClient
 	        	'------ Sending: ------ ' . "\n" . $messageToSend . '----------'
 	        );
         }
-	    $this->_lastActionId = $message->getActionId();
+		// If there are multiple outgoing messages in flight, we might have to add this information to a queue instead
+		//$this->_outgoingQueue[$this->_lastActionId] == array('ResponseHandler' => $message->getResponseHandler()); // push
+		$this->_lastActionId = $message->getActionId();
+		$this->_lastResponseHandler = $message->getResponseHandler();
+		$this->_lastActionClass = get_class($message);
+
 	    if (@fwrite($this->_socket, $messageToSend) < $length) {
     	    throw new ClientException('Could not send message');
 	    }
@@ -456,6 +480,7 @@ class ClientImpl implements IClient
 		$this->_scheme = isset($options['scheme']) ? $options['scheme'] : 'tcp://';
 		$this->_eventListeners = array();
 		$this->_eventFactory = new EventFactoryImpl();
+		$this->_responseFactory = new ResponseFactoryImpl();
 		$this->_incomingQueue = array();
 		$this->_lastActionId = false;
 	}
