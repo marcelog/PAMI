@@ -135,20 +135,30 @@ try
 	$response = $a->send(new SCCPConfigMetaDataAction("device"));
 	print_r($response->getJSON());
 
+	//var_dump($a->send(new SCCPShowGlobalsAction()));
 	$response = $a->send(new SCCPShowGlobalsAction());
-	if ($response->isList()) {
-		$events = $response->getEvents();
-		foreach ($events as $event) {
-			if ($event->getName() == "SCCPGlobalSettings") {
-				print "KeepAlive: " . $event->getKeepAlive() . "\n";
-				print "ConfigFile: " . $event->getConfigFile() . "\n";
-				print "CodecsPreference: ";
-				print_r ($event->getCodecsPreference());
-				print "\n";
+	if ($response->isSuccess()) {
+		print "op\n";
+		print "KeepAlive: " . $response->getKey("KeepAlive") . "\n";
+		print "ConfigFile: " . $response->getKey("ConfigFile") . "\n";
+		print "CodecsPreference: ";
+		print_r ($response->getKey("CodecsPreference"));
+		print "\n";
+		if ($response->isList()) {
+			print "ok\n";
+			$events = $response->getEvents();
+			foreach ($events as $event) {
+				if ($event->getName() == "SCCPGlobalSettings") {
+					print "KeepAlive: " . $event->getKeepAlive() . "\n";
+					print "ConfigFile: " . $event->getConfigFile() . "\n";
+					print "CodecsPreference: ";
+					print_r ($event->getCodecsPreference());
+					print "\n";
+				}
 			}
 		}
- 	}
-
+		print_r($response->getJSON());
+	}
 	var_dump($a->send(new SCCPShowDevicesAction()));
 	$response = $a->send(new SCCPShowDevicesAction());
 	if ($response->isList()) {
