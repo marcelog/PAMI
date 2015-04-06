@@ -32,6 +32,7 @@ namespace PAMI\Message\Response;
 use PAMI\Message\Message;
 use PAMI\Message\IncomingMessage;
 use PAMI\Message\Event\EventMessage;
+use PAMI\Exception\PAMIException;
 
 /**
  * A generic response message from ami.
@@ -108,7 +109,6 @@ class ResponseMessage extends IncomingMessage
     {
     	/* Handle TableStart/TableEnd Differently */
         if (stristr($event->getName(), 'TableStart') != false) {
-        	
             $this->_table = array();
             $this->_table['Name'] = $event->getTableName();
             $this->_table['Entries'] = array();
@@ -224,8 +224,12 @@ class ResponseMessage extends IncomingMessage
      */
     public function getJSON()
     {
-    	return json_decode($this->getKey('JSON'), true);
-    }
+		if ($this->getKey('JSON')) {
+			return json_decode($this->getKey('JSON'), true);
+		} else {
+			throw new PAMIException("No JSON Key found to return.");
+		}
+	}
 
     /**
      * Sets an action id. This should not be necessary, but asterisk sometimes
