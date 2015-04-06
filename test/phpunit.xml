@@ -24,5 +24,11 @@
     <testsuite name="Events">
       <directory suffix=".php">events</directory>
     </testsuite>
+    <testsuite name="SCCPActions">
+      <directory suffix=".php">sccp_actions</directory>
+    </testsuite>
+    <testsuite name="SCCPEvents">
+      <directory suffix=".php">sccp_events</directory>
+    </testsuite>
   </testsuites>
 </phpunit>
