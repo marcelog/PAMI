@@ -613,6 +613,7 @@ class SCCP_Test_Events extends \PHPUnit_Framework_TestCase
             'SCCPShowLine' => array(
 				'ID' => 5,
 				'Pin' => 9944,
+				'MeetMeEnabled' => true,
 				'AmaFlags' => 0,
 				'CallGroup' => array(1, 2),
 				'PickupGroup' => array(1, 3),

@@ -118,11 +118,11 @@ class SCCPShowLineEvent extends EventMessage
     /**
      * Returns key: 'MeetMeEnabled'.
      *
-     * @return string
+     * @return boolean
      */
     public function getMeetMeEnabled()
     {
-        return $this->getKey('MeetMeEnabled');
+        return $this->getBoolKey('MeetMeEnabled');
     }
 
     /**
