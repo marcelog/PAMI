@@ -51,5 +51,6 @@ class SCCPShowDevicesAction extends ActionMessage
     public function __construct()
     {
         parent::__construct('SCCPShowDevices');
+        $this->setResponseHandler("SCCPGeneric");
     }
 }

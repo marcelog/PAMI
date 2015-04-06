@@ -51,5 +51,6 @@ class SCCPShowMWISubscriptionsAction extends ActionMessage
     public function __construct()
     {
         parent::__construct('SCCPShowMWISubscriptions');
+        $this->setResponseHandler("SCCPGeneric");
     }
 }

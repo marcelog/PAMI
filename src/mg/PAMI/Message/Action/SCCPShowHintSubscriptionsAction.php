@@ -51,5 +51,6 @@ class SCCPShowHintSubscriptionsAction extends ActionMessage
     public function __construct()
     {
         parent::__construct('SCCPShowHintSubscriptions');
+        $this->setResponseHandler("SCCPGeneric");
     }
 }

@@ -51,5 +51,6 @@ class SCCPShowSessionsAction extends ActionMessage
     public function __construct()
     {
         parent::__construct('SCCPShowSessions');
+        $this->setResponseHandler("SCCPGeneric");
     }
 }

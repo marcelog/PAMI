@@ -54,6 +54,6 @@ class SCCPConfigMetaDataAction extends ActionMessage
         if ($segment != false) {
         	$this->setKey('Segment', $segment);
         }
-        $this->setResponseHandler('SCCPGeneric');
+        $this->setResponseHandler("SCCPGeneric");
     }
 }

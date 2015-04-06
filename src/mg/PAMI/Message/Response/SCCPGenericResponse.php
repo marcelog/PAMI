@@ -138,11 +138,12 @@ class SCCPGenericResponse extends ResponseMessage
      */
     public function getJSON()
     {
-		if ($this->getKey('JSON')) {
-			return json_decode($this->getKey('JSON'), true);
-		} else {
-			throw new PAMIException("No JSON Key found to return.");
+		if (strlen($this->getKey('JSON')) > 0) {
+			if (($json = json_decode($this->getKey('JSON'), true)) != false) {
+				return $json;
+			}
 		}
+		throw new PAMIException("No JSON Key found to return.");
 	}
 
     /**
