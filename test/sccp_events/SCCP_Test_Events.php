@@ -50,7 +50,8 @@ class SCCP_Test_Events extends \PHPUnit_Framework_TestCase
             'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties'
         );
     }
-    /**
+
+	/**
      * @test
      */
     public function can_table_events()
@@ -64,127 +65,6 @@ class SCCP_Test_Events extends \PHPUnit_Framework_TestCase
 			),
         );
         $eventTranslatedValues = array(
-        );
-        $eventGetters = array(
-        );
-        foreach (array_keys($eventValues) as $eventName) {
-            $this->_testEvent($eventName, $eventGetters, $eventValues[$eventName], $eventTranslatedValues);
-        }
-    }
-    /**
-     * @test
-     */
-    public function can_globalsettings_events()
-    {
-        $eventValues = array(
-        	'SCCPGlobalSettings' => array(
-				'ConfigFile' => 'sccp.conf',
-				'PlatformByteOrder' => 'LITTLE ENDIAN',
-				'ServerName' => 'moviebox',
-				'BindAddress' => '[::]:2000',
-				'ExternIP' => 'Not Set -> Using Incoming IP-addres.',
-				'Localnet' => 'permit:127.0.0.0/255.0.0.0,permit:10.0.0.0/255.0.0.0,permit:172.0.0.0/255.224.0.0,permit:192.168.0.0/255.255.0.0,',
-				'DenyPermit' => 'deny:0.0.0.0/0.0.0.0,permit:10.15.15.0/255.255.255.0,permit:127.0.0.0/255.255.255.0,',
-				'DirectRTP' => 'off',
-				'Nat' => 'Auto',
-				'Keepalive' => '60',
-				'Debug' => '(1153) none,core,channel,feature',
-				'DateFormat' => 'M/D/YA',
-				'FirstDigitTimeout' => '10',
-				'DigitTimeout' => '4',
-				'DigitTimeoutChar' => '#',
-				'SCCPTosSignaling' => '104',
-				'SCCPCosSignaling' => '4',
-				'AUDIOTosRtp' => '184',
-				'AUDIOCosRtp' => '6',
-				'VIDEOTosVrtp' => '136',
-				'VIDEOCosVrtp' => '5',
-				'Context' => 'sccp (exists)',
-				'Language' => 'en',
-				'Accountcode' => 'skinny',
-				'Musicclass' => 'default',
-				'AMAFlags' => '3 (DOCUMENTATION)',
-				'Callgroup' => '1,2',
-				'Pickupgroup' => '1,3',
-				'PickupModeAnswer' => 'on',
-				'CodecsPreference' => '(g722/64k (6), g722/56k (7), g722/48k (8))',
-				'CFWDALL' => 'on',
-				'CFWDBUSY' => 'on',
-				'CFWDNOANSWER' => 'on',
-				'CallEvents' => 'on',
-				'DNDFeatureEnabled' => 'on',
-				'Park' => 'off',
-				'PrivateSoftkey' => 'on',
-				'EchoCancel' => 'on',
-				'SilenceSuppression' => 'off',
-				'EarlyRTP' => 'Ringout',
-				'AutoAnswerRingtime' => '1',
-				'AutoAnswerTone' => '0',
-				'RemoteHangupTone' => '50',
-				'TransferTone' => '0',
-				'TransferOnHangup' => 'on',
-				'CallwaitingTone' => '45',
-				'CallwaitingInterval' => '5',
-				'RegistrationContext' => 'sccpregistration',
-				'JitterbufferEnabled' => 'on',
-				'JitterbufferForced' => 'off',
-				'JitterbufferMaxSize' => '200',
-				'JitterbufferResync' => '1000',
-				'JitterbufferImpl' => 'fixed',
-				'JitterbufferLog' => 'off',
-				'TokenFallBack' => '/usr/local/asterisk-11-branch/etc/asterisk/tokenack.sh',
-				'TokenBackoffTime' => '0',
-				'HotlineEnabled' => 'on',
-				'HotlineContext' => 'default',
-				'HotlineExten' => '500',
-				'ThreadpoolSize' => '0/2',
-			),
-            'SCCPShowGlobalsComplete' => array(
-            	'ListItems' => '1',
-            ),
-        );
-        $eventTranslatedValues = array(
-        	'SCCPGlobalSettings' => array(
-				'Keepalive' => 60,
-				'FirstDigitTimeout' => 10,
-				'DigitTimeout' => 4,
-				'SCCPTosSignaling' => 104,
-				'SCCPCosSignaling' => 4,
-				'AUDIOTosRtp' => 184,
-				'AUDIOCosRtp' => 6,
-				'VIDEOTosVrtp' => 136,
-				'VIDEOCosVrtp' => 5,
-				'Callgroup' => array(1,2),
-				'Pickupgroup' => array(1,3),
-				'PickupModeAnswer' => true,
-				'CodecsPreference' => array(array('name'=>'g722/64k','value'=>6), array('name'=>'g722/56k', 'value'=>7), array('name'=>'g722/48k', 'value'=>8)),
-				'CFWDALL' => true,
-				'CFWDBUSY' => true,
-				'CFWDNOANSWER' => true,
-				'CallEvents' => true,
-				'DNDFeatureEnabled' => true,
-				'Park' => false,
-				'PrivateSoftkey' => true,
-				'EchoCancel' => true,
-				'SilenceSuppression' => false,
-				'AutoAnswerRingtime' => 1,
-				'AutoAnswerTone' => 0,
-				'RemoteHangupTone' => 50,
-				'TransferTone' => 0,
-				'TransferOnHangup' => true,
-				'CallwaitingTone' => 45,
-				'CallwaitingInterval' => 5,
-				'JitterbufferEnabled' => true,
-				'JitterbufferForced' => false,
-				'JitterbufferMaxSize' => 200,
-				'JitterbufferResync' => 1000,
-				'JitterbufferLog' => false,
-				'TokenBackoffTime' => 0,
-				'HotlineEnabled' => true,
-			),
-            'SCCPShowGlobalsComplete' => array(
-            	'ListItems' => 1,
-            ),
         );
         $eventGetters = array(
         );
