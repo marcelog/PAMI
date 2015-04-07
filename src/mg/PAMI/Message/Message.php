@@ -153,6 +153,8 @@ abstract class Message
 				return (boolean)$value;
 			} else if (filter_var($value, FILTER_SANITIZE_STRING, FILTER_NULL_ON_FAILURE)) {
 				return (string)$value;
+			} else if (filter_var($value, FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_NULL_ON_FAILURE)) {
+				return (string)htmlspecialchars($value, ENT_QUOTES);
 			} else {
 				throw new PAMIException("Incoming String is not sanitary. Skipping: '" . $value . "'\n");
 			}
