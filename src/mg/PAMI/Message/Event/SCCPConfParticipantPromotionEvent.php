@@ -68,11 +68,11 @@ class SCCPConfParticipantPromotionEvent extends EventMessage
 	/**
 	 * Returns key: 'Moderator'.
 	 *
-	 * @return string
+	 * @return boolean
 	 */
 	public function getModerator()
 	{
-      return $this->getKey('Moderator');
+      return $this->getBoolKey('Moderator');
 	}
 
 }

@@ -1,6 +1,6 @@
 <?php
 /**
- * Event triggered when the 'SCCP CallForward' Event arrives.
+ * Event triggered when the 'SCCPCallForward' Event arrives.
  *
  * PHP Version 5
  *
@@ -32,7 +32,7 @@ namespace PAMI\Message\Event;
 use PAMI\Message\Event\EventMessage;
 
 /**
- * Event triggered when the 'SCCP CallForward' Event arrives.
+ * Event triggered when the 'SCCPCallForward' Event arrives.
  *
  * PHP Version 5
  *
@@ -78,9 +78,21 @@ class CallForwardEvent extends EventMessage
 	/**
 	 * Returns key: 'Status'.
 	 *
+	 * @return boolean
 	 */
 	public function getStatus()
 	{
+      return $this->getBoolKey('Status');
+	}
+
+	/**
+	 * Returns key: 'Extension'.
+	 *
+	 * @return string
+	 */
+	public function getExtension()
+	{
+      return $this->getKey('Extension');
 	}
 
 	/**

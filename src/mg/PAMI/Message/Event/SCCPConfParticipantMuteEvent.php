@@ -68,11 +68,11 @@ class SCCPConfParticipantMuteEvent extends EventMessage
 	/**
 	 * Returns key: 'Mute'.
 	 *
-	 * @return string
+	 * @return boolean
 	 */
 	public function getMute()
 	{
-      return $this->getKey('Mute');
+      return $this->getBoolKey('Mute');
 	}
 
 }

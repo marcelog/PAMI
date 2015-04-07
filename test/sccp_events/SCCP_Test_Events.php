@@ -939,6 +939,357 @@ class SCCP_Test_Events extends \PHPUnit_Framework_TestCase
         }
     }
 
+    /**
+     * @test
+     */
+    public function can_CallAnswered_events()
+    {
+        $eventValues = array(
+            'CallAnswered' => array(
+                'Channel' => 'SCCP/00112244-100',
+                'SCCPLine' => '98011',
+                'SCCPDevice' => 'SEP0011223344',
+                'Uniqueid' => '12345678',
+                'CallingPartyNumber' => '666',
+                'CallingPartyName' => 'His Majesty',
+                'originalCallingParty' => 'The One',
+                'lastRedirectingParty' => 'Someone',
+            ),
+        );
+        $eventTranslatedValues = array(
+            'CallAnswered' => array(
+            ),
+        );
+        $eventGetters = array(
+        );
+        foreach (array_keys($eventValues) as $eventName) {
+            $this->_testEvent($eventName, $eventGetters, $eventValues[$eventName], $eventTranslatedValues);
+        }
+	}
+
+    /**
+     * @test
+     */
+    public function can_DeviceStatus_events()
+    {
+        $eventValues = array(
+            'DeviceStatus' => array(
+                'ChannelType' => 'SCCP',
+                'ChannelObjectType' => 'DeviceStatus',
+                'DeviceStatus' => 'REGISTERED',
+                'SCCPDevice' => 'SEP0011223344',
+            ),
+        );
+        $eventTranslatedValues = array(
+            'DeviceStatus' => array(
+            ),
+        );
+        $eventGetters = array(
+        );
+        foreach (array_keys($eventValues) as $eventName) {
+            $this->_testEvent($eventName, $eventGetters, $eventValues[$eventName], $eventTranslatedValues);
+        }
+	}
+
+    /**
+     * @test
+     */
+    public function can_DND_events()
+    {
+        $eventValues = array(
+            'DND' => array(
+                'ChannelType' => 'SCCP',
+                'ChannelObjectType' => 'Device',
+                'Feature' => 'Do not disturb',
+                'Status' => 'On',
+                'SCCPDevice' => 'SEP0011223344',
+            ),
+        );
+        $eventTranslatedValues = array(
+            'DND' => array(
+            	'Status' => true,
+            ),
+        );
+        $eventGetters = array(
+        );
+        foreach (array_keys($eventValues) as $eventName) {
+            $this->_testEvent($eventName, $eventGetters, $eventValues[$eventName], $eventTranslatedValues);
+        }
+	}
+
+    /**
+     * @test
+     */
+    public function can_CallForward_events()
+    {
+        $eventValues = array(
+            'CallForward' => array(
+                'ChannelType' => 'SCCP',
+                'ChannelObjectType' => 'Device',
+                'Feature' => 'Cfwd',
+                'Status' => 'On',
+                'Extension' => '1234',
+                'SCCPLine' => '98011',
+                'SCCPDevice' => 'SEP0011223344',
+            ),
+        );
+        $eventTranslatedValues = array(
+            'CallForward' => array(
+            	'Status' => true,
+            ),
+        );
+        $eventGetters = array(
+        );
+        foreach (array_keys($eventValues) as $eventName) {
+            $this->_testEvent($eventName, $eventGetters, $eventValues[$eventName], $eventTranslatedValues);
+        }
+	}
+
+    /**
+     * @test
+     */
+    public function can_SCCPConfEnd_events()
+    {
+        $eventValues = array(
+            'SCCPConfEnd' => array(
+                'ConfId' => '100',
+            ),
+        );
+        $eventTranslatedValues = array(
+            'SCCPConfEnd' => array(
+                'ConfId' => 100,
+            ),
+        );
+        $eventGetters = array(
+        );
+        foreach (array_keys($eventValues) as $eventName) {
+            $this->_testEvent($eventName, $eventGetters, $eventValues[$eventName], $eventTranslatedValues);
+        }
+	}
+
+    /**
+     * @test
+     */
+    public function can_SCCPConfLeave_events()
+    {
+        $eventValues = array(
+            'SCCPConfLeave' => array(
+                'ConfId' => '111',
+                'PartId' => '1',
+                'Channel' => 'SCCP/00112244-100',
+                'Uniqueid' => '12345678',
+            ),
+        );
+        $eventTranslatedValues = array(
+            'SCCPConfLeave' => array(
+                'ConfId' => 111,
+                'PartId' => 1,
+            ),
+        );
+        $eventGetters = array(
+        );
+        foreach (array_keys($eventValues) as $eventName) {
+            $this->_testEvent($eventName, $eventGetters, $eventValues[$eventName], $eventTranslatedValues);
+        }
+	}
+
+    /**
+     * @test
+     */
+    public function can_SCCPConfStart_events()
+    {
+        $eventValues = array(
+            'SCCPConfStart' => array(
+                'ConfId' => '100',
+                'SCCPDevice' => 'SEP0011223344',
+            ),
+        );
+        $eventTranslatedValues = array(
+            'SCCPConfStart' => array(
+                'ConfId' => 100,
+            ),
+        );
+        $eventGetters = array(
+        );
+        foreach (array_keys($eventValues) as $eventName) {
+            $this->_testEvent($eventName, $eventGetters, $eventValues[$eventName], $eventTranslatedValues);
+        }
+	}
+
+    /**
+     * @test
+     */
+    public function can_SCCPConfEntered_events()
+    {
+        $eventValues = array(
+            'SCCPConfEntered' => array(
+                'ConfId' => '100',
+                'PartId' => '1',
+                'Channel' => 'SCCP/00112244-100',
+                'Uniqueid' => '12345678',
+            ),
+        );
+        $eventTranslatedValues = array(
+            'SCCPConfEntered' => array(
+                'ConfId' => 100,
+                'PartId' => 1,
+            ),
+        );
+        $eventGetters = array(
+        );
+        foreach (array_keys($eventValues) as $eventName) {
+            $this->_testEvent($eventName, $eventGetters, $eventValues[$eventName], $eventTranslatedValues);
+        }
+	}
+
+    /**
+     * @test
+     */
+    public function can_SCCPConfLeft_events()
+    {
+        $eventValues = array(
+            'SCCPConfLeft' => array(
+                'ConfId' => '100',
+                'PartId' => '1',
+                'Channel' => 'SCCP/00112244-100',
+                'Uniqueid' => '12345678',
+            ),
+        );
+        $eventTranslatedValues = array(
+            'SCCPConfLeft' => array(
+                'ConfId' => 100,
+                'PartId' => 1,
+            ),
+        );
+        $eventGetters = array(
+        );
+        foreach (array_keys($eventValues) as $eventName) {
+            $this->_testEvent($eventName, $eventGetters, $eventValues[$eventName], $eventTranslatedValues);
+        }
+	}
+
+    /**
+     * @test
+     */
+    public function can_SCCPConfStarted_events()
+    {
+        $eventValues = array(
+            'SCCPConfStarted' => array(
+                'ConfId' => '100',
+            ),
+        );
+        $eventTranslatedValues = array(
+            'SCCPConfStarted' => array(
+                'ConfId' => 100,
+            ),
+        );
+        $eventGetters = array(
+        );
+        foreach (array_keys($eventValues) as $eventName) {
+            $this->_testEvent($eventName, $eventGetters, $eventValues[$eventName], $eventTranslatedValues);
+        }
+	}
+
+    /**
+     * @test
+     */
+    public function can_SCCPConfParticipantKicked_events()
+    {
+        $eventValues = array(
+            'SCCPConfParticipantKicked' => array(
+                'ConfId' => '100',
+                'PartId' => '1',
+            ),
+        );
+        $eventTranslatedValues = array(
+            'SCCPConfParticipantKicked' => array(
+                'ConfId' => 100,
+                'PartId' => 1,
+            ),
+        );
+        $eventGetters = array(
+        );
+        foreach (array_keys($eventValues) as $eventName) {
+            $this->_testEvent($eventName, $eventGetters, $eventValues[$eventName], $eventTranslatedValues);
+        }
+	}
+
+    /**
+     * @test
+     */
+    public function can_SCCPConfLock_events()
+    {
+        $eventValues = array(
+            'SCCPConfLock' => array(
+                'ConfId' => '100',
+                'Enabled' => 'Yes',
+            ),
+        );
+        $eventTranslatedValues = array(
+            'SCCPConfLock' => array(
+                'ConfId' => 100,
+                'Enabled' => true,
+            ),
+        );
+        $eventGetters = array(
+        );
+        foreach (array_keys($eventValues) as $eventName) {
+            $this->_testEvent($eventName, $eventGetters, $eventValues[$eventName], $eventTranslatedValues);
+        }
+	}
+
+    /**
+     * @test
+     */
+    public function can_SCCPConfParticipantMute_events()
+    {
+        $eventValues = array(
+            'SCCPConfParticipantMute' => array(
+                'ConfId' => '100',
+                'PartId' => '1',
+                'Mute' => 'Yes',
+            ),
+        );
+        $eventTranslatedValues = array(
+            'SCCPConfParticipantMute' => array(
+                'ConfId' => 100,
+                'PartId' => 1,
+                'Mute' => true,
+            ),
+        );
+        $eventGetters = array(
+        );
+        foreach (array_keys($eventValues) as $eventName) {
+            $this->_testEvent($eventName, $eventGetters, $eventValues[$eventName], $eventTranslatedValues);
+        }
+	}
+
+    /**
+     * @test
+     */
+    public function can_SCCPConfParticipantPromotion_events()
+    {
+        $eventValues = array(
+            'SCCPConfParticipantPromotion' => array(
+                'ConfId' => '100',
+                'PartId' => '1',
+                'Moderator' => 'Yes',
+            ),
+        );
+        $eventTranslatedValues = array(
+            'SCCPConfParticipantPromotion' => array(
+                'ConfId' => 100,
+                'PartId' => 1,
+                'Moderator' => true,
+            ),
+        );
+        $eventGetters = array(
+        );
+        foreach (array_keys($eventValues) as $eventName) {
+            $this->_testEvent($eventName, $eventGetters, $eventValues[$eventName], $eventTranslatedValues);
+        }
+	}
+
     private function _testEvent($eventName, array $getters, array $values, array $translatedValues)
     {
         global $mock_stream_socket_client;

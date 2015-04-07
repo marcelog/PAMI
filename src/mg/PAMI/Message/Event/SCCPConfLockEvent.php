@@ -58,11 +58,11 @@ class SCCPConfLockEvent extends EventMessage
 	/**
 	 * Returns key: 'Enabled'.
 	 *
-	 * @return string
+	 * @return integer
 	 */
 	public function getEnabled()
 	{
-      return $this->getKey('Enabled');
+      return $this->getBoolKey('Enabled');
 	}
 
 }
