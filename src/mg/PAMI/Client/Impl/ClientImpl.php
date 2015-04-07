@@ -254,18 +254,25 @@ class ClientImpl implements IClient
 	{
 	    $msgs = array();
 	    // Read something.
-        $this->_resetTimeout = FALSE;
-	    $read = @fread($this->_socket, 65535);
-	    if ($read === false || @feof($this->_socket)) {
-	        throw new ClientException('Error reading');
-	    }
-        if (strlen($read) > 0) {
-	        /* we made progress (but no full message yet) */
-	        $this->_readretries = 0;
+	    $readsocket=array($this->_socket);
+	    if (($socket_ret = @socket_select($readsocket,NULL,NULL, $this->_rTimeout ? $this->_rTimeout : 1) ) > 0) {
+			$read = @fread($this->_socket, 8192);
+			if ($read === false || @feof($this->_socket)) {
+				throw new ClientException('Error reading');
+			}
+		} else {
+			if ($socket_ret == 0) {
+				throw new ClientException('Socket timeout occured');
+			} else {
+				throw new ClientException('Error stream select error while reading from socket');
+			}
+		}
+		if (strlen($read) > 0) {
+			// we made progress... reset readtries
+			$this->_readretries = 0;
         }
 	    $this->_currentProcessingMessage .= $read;
-	    // If we have a complete message, then return it. Save the rest for
-	    // later.
+	    // If we have a complete message, then return it. Save the rest for later.
 	    while (($marker = strpos($this->_currentProcessingMessage, Message::EOM))) {
            $msg = substr($this->_currentProcessingMessage, 0, $marker);
            $this->_currentProcessingMessage = substr(
@@ -458,19 +465,16 @@ class ClientImpl implements IClient
 	    if (@fwrite($this->_socket, $messageToSend) < $length) {
     	    throw new ClientException('Could not send message');
 	    }
-	    while($this->_readretries <= $this->_rTimeout) {
-	        $this->process();
-	        $response = $this->getRelated($message);
-	        if ($response != false) {
-	            $this->_lastActionId = false;
-	            return $response;
-	        }
-	        if ($this->_rTimeout > 0) {
-		        usleep(1000); // 1ms delay
-	            $this->_readretries++;
-	        }
-	    }
-	    throw new ClientException("Read waittime: " . ($this->_rTimeout) . " exceeded (timeout). num retries: " . $this->_readretries);
+	    while ($this->_readretries <= $this->_rTimeout) {
+			$this->process();
+			$response = $this->getRelated($message);
+			if ($response != false) {
+				$this->_lastActionId = false;
+				return $response;
+			}
+			$this->_readretries++;
+		}
+		throw new ClientException("Read waittime: " . ($this->_rTimeout) . " exceeded (timeout). Num retries: " . $this->_readretries);
 	}
 
 	/**
