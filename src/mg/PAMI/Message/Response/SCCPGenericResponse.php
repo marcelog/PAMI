@@ -31,6 +31,7 @@ namespace PAMI\Message\Response;
 
 use PAMI\Message\Response\ResponseMessage;
 use PAMI\Message\Event\EventMessage;
+use PAMI\Exception\PAMIException;
 /**
  * A generic SCCP response message from ami.
  *
@@ -55,7 +56,7 @@ class SCCPGenericResponse extends ResponseMessage
      * Catch All incoming Events into current Table.
      * @var Array
      */
-    protected $_table;
+    private $_temptable;
 
     /**
      * Adds an event to this response.
@@ -68,18 +69,18 @@ class SCCPGenericResponse extends ResponseMessage
     {
     	// Handle TableStart/TableEnd Differently 
         if (stristr($event->getName(), 'TableStart') != false) {
-            $this->_table = array();
-            $this->_table['Name'] = $event->getTableName();
-            $this->_table['Entries'] = array();
-        } else if (is_array($this->_table)) {
+            $this->_temptable = array();
+            $this->_temptable['Name'] = $event->getTableName();
+            $this->_temptable['Entries'] = array();
+        } else if (is_array($this->_temptable)) {
             if (stristr($event->getName(), 'TableEnd') != false) {
             	if (!is_array($this->_tables)) {
             		$this->_tables = array();
             	}
-                $this->_tables[$event->getTableName()] = $this->_table;
-                unset($this->table);
+                $this->_tables[$event->getTableName()] = $this->_temptable;
+                unset($this->_temptable);
             } else {
-                $this->_table['Entries'][] = $event;
+                $this->_temptable['Entries'][] = $event;
             }
         } else {
             $this->_events[] = $event;
