@@ -69,7 +69,7 @@ class SCCPGenericResponse extends ResponseMessage
     {
     	// Handle TableStart/TableEnd Differently 
         if (stristr($event->getName(), 'TableStart') != false) {
-            $this->_temptable = array();
+            //$this->_temptable = array();
             $this->_temptable['Name'] = $event->getTableName();
             $this->_temptable['Entries'] = array();
         } else if (is_array($this->_temptable)) {
@@ -79,6 +79,7 @@ class SCCPGenericResponse extends ResponseMessage
             	}
                 $this->_tables[$event->getTableName()] = $this->_temptable;
                 unset($this->_temptable);
+                $this->_temptable = array();
             } else {
                 $this->_temptable['Entries'][] = $event;
             }
@@ -157,5 +158,6 @@ class SCCPGenericResponse extends ResponseMessage
     public function __construct($rawContent)
     {
         parent::__construct($rawContent);
+        $this->_temptable = array();
     }
 }
