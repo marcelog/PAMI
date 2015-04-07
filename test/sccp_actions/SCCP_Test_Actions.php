@@ -544,7 +544,7 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 	 * ActionID: 1432.123
 	 * Message: Conference 100 not found
 	 */
-	public function can_SCCPConference_Error()
+	public function cannot_SCCPConference_Error()
 	{
 		$write = array(implode("\r\n", array(
 			'action: SCCPConference',
@@ -626,7 +626,7 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 	 * @test
 	 * @expectedException \PAMI\Exception\PAMIException
 	 */
-	public function can_SCCPDeviceRestart_Fail()
+	public function cannot_SCCPDeviceRestart_Fail()
 	{
 		$write = array(implode("\r\n", array(
 			'action: SCCPDeviceRestart',
@@ -707,7 +707,7 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 	 * @test
 	 * @expectedException \PAMI\Exception\PAMIException
 	 */
-	public function can_SCCPDeviceSetDND_fail()
+	public function cannot_SCCPDeviceSetDND_fail()
 	{
 		$write = array(implode("\r\n", array(
 			'action: SCCPDeviceSetDND',
@@ -787,7 +787,7 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 	 * @test
 	 * @expectedException \PAMI\Exception\PAMIException
 	 */
-	public function can_SCCPDndDevice_fail()
+	public function cannot_SCCPDndDevice_fail()
 	{
 		$write = array(implode("\r\n", array(
 			'action: SCCPDndDevice',
@@ -856,7 +856,7 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 	 * @test
 	 * @expectedException \PAMI\Exception\PAMIException
 	 */
-	public function can_SCCPHoldCall_hold_fail()
+	public function cannot_SCCPHoldCall_hold_fail()
 	{
 		$write = array(implode("\r\n", array(
 			'action: SCCPHoldCall',
@@ -911,7 +911,7 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 	 * @test
 	 * @expectedException \PAMI\Exception\PAMIException
 	 */
-	public function can_SCCPLineForwardUpdate_ForwardTypeBoo_Fail()
+	public function cannot_SCCPLineForwardUpdate_ForwardTypeBoo_Fail()
 	{
 		$write = array(implode("\r\n", array(
 			'action: SCCPLineForwardUpdate',
@@ -950,7 +950,7 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 	 * @test
 	 * @expectedException \PAMI\Exception\PAMIException
 	 */
-	public function can_SCCPLineForwardUpdate_FailOnNumber()
+	public function cannot_SCCPLineForwardUpdate_FailOnNumber()
 	{
 		$write = array(implode("\r\n", array(
 			'action: SCCPLineForwardUpdate',
