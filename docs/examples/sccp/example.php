@@ -1,5 +1,5 @@
 <?php
-//declare(ticks=1);
+declare(ticks=1);
 /**
  * PAMI basic use example.
  *
@@ -131,12 +131,13 @@ try
 
 	$response = $a->send(new SCCPConfigMetaDataAction("general"));
 	print_r($response->getJSON());
+*/
 
-	$response = $a->send(new SCCPConfigMetaDataAction("device"));
+/*	$response = $a->send(new SCCPConfigMetaDataAction("device"));
 	print_r($response->getJSON());
-
-	//var_dump($a->send(new SCCPShowGlobalsAction()));
-	$response = $a->send(new SCCPShowGlobalsAction());
+*/	
+//	var_dump($a->send(new SCCPShowGlobalsAction()));
+/*	$response = $a->send(new SCCPShowGlobalsAction());
 	if ($response->isSuccess()) {
 		print "op\n";
 		print "KeepAlive: " . $response->getKey("KeepAlive") . "\n";
@@ -157,9 +158,11 @@ try
 				}
 			}
 		}
-		print_r($response->getJSON());
+		//print_r($response->getJSON());
 	}
-	var_dump($a->send(new SCCPShowDevicesAction()));
+*/
+//	var_dump($a->send(new SCCPShowDevicesAction()));
+/*
 	$response = $a->send(new SCCPShowDevicesAction());
 	if ($response->isList()) {
 		$events = $response->getEvents();
@@ -169,8 +172,9 @@ try
 			}
 		} 
 	}
-
-	var_dump($a->send(new SCCPShowLinesAction()));
+*/
+//	var_dump($a->send(new SCCPShowLinesAction()));
+/*
 	$response = $a->send(new SCCPShowLinesAction());
 	if ($response->isList()) {
 		$events = $response->getEvents();
@@ -180,9 +184,9 @@ try
 			}
 		} 
 	}
-
-	var_dump($a->send(new SCCPShowDeviceAction("SEP0023043403F9")));
-	$response = $a->send(new SCCPShowDeviceAction("SEP0023043403F9"));
+*/
+//	var_dump($a->send(new SCCPShowDeviceAction("SEP0023043403F9")));
+/*	$response = $a->send(new SCCPShowDeviceAction("SEP0023043403F9"));
 	if ($response->isList()) {
 		$events = $response->getEvents(); 
 		$mainevent = $events[0];
@@ -203,11 +207,18 @@ try
 	foreach ($buttontable as $button) {
 		print_r ($button);
 	} 
-
+*/
 	var_dump($a->send(new SCCPShowLineAction("98011")));
 	var_dump($a->send(new SCCPShowChannelsAction()));
 	var_dump($a->send(new SCCPShowSessionsAction()));
-*/
+
+    $time = time();
+    while(( time() - $time) < $argv[5]) // Wait for events.
+    {
+        usleep(1000); // 1ms delay
+        // Since we declare(ticks=1) at the top, the following line is not necessary
+        $a->process();
+    }
 
 	$a->close(); // send logoff and close the connection.
 } catch (Exception $e) {
