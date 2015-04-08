@@ -231,21 +231,24 @@ class ClientImpl implements IClient
 	{
 	    $msgs = array();
 	    // Read something.
-	    $read = @fread($this->_socket, 65535);
-	    if ($read === false || @feof($this->_socket)) {
-	        throw new ClientException('Error reading');
-	    }
-	    $this->_currentProcessingMessage .= $read;
-	    // If we have a complete message, then return it. Save the rest for
-	    // later.
-	    while (($marker = strpos($this->_currentProcessingMessage, Message::EOM))) {
-    	    $msg = substr($this->_currentProcessingMessage, 0, $marker);
-    	    $this->_currentProcessingMessage = substr(
-    	        $this->_currentProcessingMessage, $marker + strlen(Message::EOM)
-    	    );
-    	    $msgs[] = $msg;
-	    }
-	    return $msgs;
+		$read = @fread($this->_socket, 8192);
+		if ($read === false || @feof($this->_socket)) {
+			throw new ClientException('Error During Socket Read');
+		}
+		//if (strlen($read) > 0) {
+			// we made progress... reset _readtries
+			//$this->_readretries = true;
+		//}
+		$this->_currentProcessingMessage .= $read;
+		// If we have a complete message, then return it. Save the rest for later.
+		while (($marker = strpos($this->_currentProcessingMessage, Message::EOM))) {
+		   $msg = substr($this->_currentProcessingMessage, 0, $marker);
+		   $this->_currentProcessingMessage = substr(
+			   $this->_currentProcessingMessage, $marker + strlen(Message::EOM)
+		   );
+		   $msgs[] = $msg;
+		}
+		return $msgs;
 	}
 
 	/**
@@ -404,21 +407,26 @@ class ClientImpl implements IClient
 	    $this->_lastActionId = $message->getActionId();
 	    if (@fwrite($this->_socket, $messageToSend) < $length) {
     	    throw new ClientException('Could not send message');
-	    }
-	    $read = 0;
-	    while($read <= $this->_rTimeout) {
-	        $this->process();
-	        $response = $this->getRelated($message);
-	        if ($response != false) {
-	            $this->_lastActionId = false;
-	            return $response;
-	        }
-	        usleep(1000); // 1ms delay
-	        if ($this->_rTimeout > 0) {
-	            $read++;
-	        }
-	    }
-	    throw new ClientException('Read timeout');
+		}
+		while (1) {
+			if ($this->_logger->isDebugEnabled()) $this->_logger->debug('-Reading/Process: rTimeout:' . $this->_rTimeout . "\n");
+			@stream_set_timeout($this->_socket, $this->_rTimeout ? $this->_rTimeout : 1);
+			$this->process();
+			$info = @stream_get_meta_data($this->_socket);
+			if ($this->_logger->isDebugEnabled()) $this->_logger->debug('-stream_get_meta_data returned: [' . print_r($info) . "]\n");
+			if ($info['timed_out'] == false) {
+				if ($this->_logger->isDebugEnabled()) $this->_logger->debug("-process response-\n");
+				$response = $this->getRelated($message);
+				if ($response != false) {
+					$this->_lastActionId = false;
+					return $response;
+				}
+			} else {
+				if ($this->_logger->isDebugEnabled()) $this->_logger->debug("-timedout-\n");
+				break;
+			}
+		}
+		throw new ClientException("Read waittime: " . ($this->_rTimeout) . " exceeded (timeout).\n");
 	}
 
 	/**
@@ -452,7 +460,7 @@ class ClientImpl implements IClient
 		$this->_user = $options['username'];
 		$this->_pass = $options['secret'];
 		$this->_cTimeout = $options['connect_timeout'];
-		$this->_rTimeout = $options['read_timeout'];
+		$this->_rTimeout = isset($options['read_timeout']) ? isset($options['read_timeout']) : 1;
 		$this->_scheme = isset($options['scheme']) ? $options['scheme'] : 'tcp://';
 		$this->_eventListeners = array();
 		$this->_eventFactory = new EventFactoryImpl();
