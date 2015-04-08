@@ -235,10 +235,6 @@ class ClientImpl implements IClient
 		if ($read === false || @feof($this->_socket)) {
 			throw new ClientException('Error During Socket Read');
 		}
-		//if (strlen($read) > 0) {
-			// we made progress... reset _readtries
-			//$this->_readretries = true;
-		//}
 		$this->_currentProcessingMessage .= $read;
 		// If we have a complete message, then return it. Save the rest for later.
 		while (($marker = strpos($this->_currentProcessingMessage, Message::EOM))) {
@@ -409,20 +405,16 @@ class ClientImpl implements IClient
     	    throw new ClientException('Could not send message');
 		}
 		while (1) {
-			if ($this->_logger->isDebugEnabled()) $this->_logger->debug('-Reading/Process: rTimeout:' . $this->_rTimeout . "\n");
 			@stream_set_timeout($this->_socket, $this->_rTimeout ? $this->_rTimeout : 1);
 			$this->process();
 			$info = @stream_get_meta_data($this->_socket);
-			if ($this->_logger->isDebugEnabled()) $this->_logger->debug('-stream_get_meta_data returned: [' . print_r($info) . "]\n");
 			if ($info['timed_out'] == false) {
-				if ($this->_logger->isDebugEnabled()) $this->_logger->debug("-process response-\n");
 				$response = $this->getRelated($message);
 				if ($response != false) {
 					$this->_lastActionId = false;
 					return $response;
 				}
 			} else {
-				if ($this->_logger->isDebugEnabled()) $this->_logger->debug("-timedout-\n");
 				break;
 			}
 		}
