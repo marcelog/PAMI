@@ -69,31 +69,36 @@ class SCCPGenericResponse extends ResponseMessage
      */
     public function addEvent(EventMessage $event)
     {
-    	// Handle TableStart/TableEnd Differently 
-        if (stristr($event->getName(), 'TableStart') != false) {
-            $this->_temptable['Name'] = $event->getTableName();
-            $this->_temptable['Entries'] = array();
-        } else if (is_array($this->_temptable)) {
-            if (stristr($event->getName(), 'TableEnd') != false) {
-            	if (!is_array($this->_tables)) {
-            		$this->_tables = array();
-            	}
-                $this->_tables[$event->getTableName()] = $this->_temptable;
-                unset($this->_temptable);
-                $this->_temptable = array();
-            } else {
-                $this->_temptable['Entries'][] = $event;
-            }
-        } else {
-            $this->_events[] = $event;
-        }
-        
-        if (
-            stristr($event->getEventList(), 'complete') !== false
-            || stristr($event->getName(), 'complete') !== false
+    	// not eventlist (start/complete)
+        if (stristr($event->getEventList(), 'start') === false
+            && stristr($event->getEventList(), 'complete') === false
+            && stristr($event->getName(), 'complete') === false
         ) {
-            $this->_completed = true;
+			// Handle TableStart/TableEnd Differently 
+			if (stristr($event->getName(), 'TableStart') != false) {
+				$this->_temptable = array();
+				$this->_temptable['Name'] = $event->getTableName();
+				$this->_temptable['Entries'] = array();
+			} else if (stristr($event->getName(), 'TableEnd') != false) {
+				if (!is_array($this->_tables)) {
+					$this->_tables = array();
+				}
+				$this->_tables[$event->getTableName()] = $this->_temptable;
+				unset($this->_temptable);
+			} else if (is_array($this->_temptable)) {
+				$this->_temptable['Entries'][] = $event;
+			} else {
+				// add regular event
+				$this->_events[] = $event;
+			}
         }
+        // finish eventlist
+        if (
+            stristr($event->getEventList(), 'complete') != false
+            || stristr($event->getName(), 'complete') != false
+		) {
+            $this->_completed = true;
+		}
     }
 
     /**
@@ -158,6 +163,5 @@ class SCCPGenericResponse extends ResponseMessage
     public function __construct($rawContent)
     {
         parent::__construct($rawContent);
-        $this->_temptable = array();
     }
 }

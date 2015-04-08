@@ -1,6 +1,6 @@
 <?php
 /**
- * A generic response message from ami.
+ * A sccp show globals response message from ami.
  *
  * PHP Version 5
  *
@@ -32,7 +32,7 @@ namespace PAMI\Message\Response;
 use PAMI\Message\Response\ResponseMessage;
 
 /**
- * A generic response message from ami.
+ * A sccp show globals response message from ami.
  *
  * PHP Version 5
  *

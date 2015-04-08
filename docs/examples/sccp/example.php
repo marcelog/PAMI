@@ -185,32 +185,30 @@ try
 		} 
 	}
 */
-//	var_dump($a->send(new SCCPShowDeviceAction("SEP0023043403F9")));
-/*	$response = $a->send(new SCCPShowDeviceAction("SEP0023043403F9"));
+	//var_dump($a->send(new SCCPShowDeviceAction("SEP0023043403F9")));
+	$response = $a->send(new SCCPShowDeviceAction("SEP0023043403F9"));
 	if ($response->isList()) {
 		$events = $response->getEvents(); 
-		$mainevent = $events[0];
-		print ("DeviceName" . $mainevent->getDeviceName() . "\n");
+		print ("DeviceName" . $response->getDeviceName() . "\n");
 		print ("\nDenyPermit:\n");
-		print_r ($mainevent->getDenyPermit());
+		print_r ($response->getDenyPermit());
 		print ("\nCaps:\n");
-		print_r ($mainevent->getCapabilities());
+		print_r ($response->getCapabilities());
 		print ("\nPrefs:\n");
-		print_r ($mainevent->getCodecsPreference());
+		print_r ($response->getCodecsPreference());
 	}
 	$tableNames = $response->getTableNames();
 	foreach ($tableNames as $tableName) {
 		print "Table: $tableName\n";
 	}
-	$buttontable = $response->getTable('DeviceButtons');
+	$buttontable = $response->getButtons();
 	print("TableName: " . $buttontable['Name'] . "\n");
 	foreach ($buttontable as $button) {
 		print_r ($button);
 	} 
-*/
-	var_dump($a->send(new SCCPShowLineAction("98011")));
-	var_dump($a->send(new SCCPShowChannelsAction()));
-	var_dump($a->send(new SCCPShowSessionsAction()));
+//	var_dump($a->send(new SCCPShowLineAction("98011")));
+//	var_dump($a->send(new SCCPShowChannelsAction()));
+//	var_dump($a->send(new SCCPShowSessionsAction()));
 
     $time = time();
     while(( time() - $time) < $argv[5]) // Wait for events.
