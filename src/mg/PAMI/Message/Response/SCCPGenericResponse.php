@@ -74,19 +74,25 @@ class SCCPGenericResponse extends ResponseMessage
             && stristr($event->getEventList(), 'complete') === false
             && stristr($event->getName(), 'complete') === false
         ) {
-			// Handle TableStart/TableEnd Differently 
-			if (stristr($event->getName(), 'TableStart') != false) {
-				$this->_temptable = array();
-				$this->_temptable['Name'] = $event->getTableName();
-				$this->_temptable['Entries'] = array();
-			} else if (stristr($event->getName(), 'TableEnd') != false) {
-				if (!is_array($this->_tables)) {
-					$this->_tables = array();
+        	$unknownevent = "PAMI\\Message\\Event\\UnknownEvent";
+        	if (!($event instanceof $unknownevent)) {
+				// Handle TableStart/TableEnd Differently 
+				if (stristr($event->getName(), 'TableStart') != false) {
+					$this->_temptable = array();
+					$this->_temptable['Name'] = $event->getTableName();
+					$this->_temptable['Entries'] = array();
+				} else if (stristr($event->getName(), 'TableEnd') != false) {
+					if (!is_array($this->_tables)) {
+						$this->_tables = array();
+					}
+					$this->_tables[$event->getTableName()] = $this->_temptable;
+					unset($this->_temptable);
+				} else if (is_array($this->_temptable)) {
+					$this->_temptable['Entries'][] = $event;
+				} else {
+					// add regular event
+					$this->_events[] = $event;
 				}
-				$this->_tables[$event->getTableName()] = $this->_temptable;
-				unset($this->_temptable);
-			} else if (is_array($this->_temptable)) {
-				$this->_temptable['Entries'][] = $event;
 			} else {
 				// add regular event
 				$this->_events[] = $event;
