@@ -1325,6 +1325,7 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 		$action = new \PAMI\Message\Action\SCCPMessageDeviceAction('SEP001122334455', 'Text to send to all devices', true, false);
 		$client = $this->_start($write, $action);
 	}
+
 	/**
 	 * @test
 	 */
