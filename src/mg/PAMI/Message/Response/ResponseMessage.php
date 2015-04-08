@@ -32,6 +32,7 @@ namespace PAMI\Message\Response;
 use PAMI\Message\Message;
 use PAMI\Message\IncomingMessage;
 use PAMI\Message\Event\EventMessage;
+use PAMI\Exception\PAMIException;
 
 /**
  * A generic response message from ami.
@@ -45,19 +46,19 @@ use PAMI\Message\Event\EventMessage;
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
  * @link       http://marcelog.github.com/PAMI/
  */
-class ResponseMessage extends IncomingMessage
+abstract class ResponseMessage extends IncomingMessage
 {
     /**
      * Child events.
      * @var EventMessage[]
      */
-    private $_events;
+    protected $_events;
 
     /**
      * Is this response completed? (with all its events).
      * @var boolean
      */
-    private $_completed;
+    protected $_completed;
 
     /**
      * Serialize function.

@@ -33,6 +33,7 @@ namespace PAMI\Message\Event\Factory\Impl;
 use PAMI\Message\Event\EventMessage;
 use PAMI\Message\Event\UnknownEvent;
 use PAMI\Message\Message;
+use PAMI\Exception\PAMIException;
 
 /**
  * This factory knows which event to return according to a given raw message
@@ -70,10 +71,18 @@ class EventFactoryImpl
         }
         $name = substr($message, $eventStart, $eventEnd - $eventStart);
         $className = '\\PAMI\\Message\\Event\\' . $name . 'Event';
-        if (class_exists($className, true)) {
-            return new $className($message);
-        }
-	    return new UnknownEvent($message);
+		if (class_exists($className, true)) {
+			try {
+				return new $className($message);
+			} catch (PAMIException $e) {
+				throw $e;
+			}
+		}
+		try {
+			return new UnknownEvent($message);
+		} catch (PAMIException $e) {
+			throw $e;
+		}
     }
 
     /**
