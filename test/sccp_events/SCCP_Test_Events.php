@@ -54,7 +54,7 @@ class SCCP_Test_Events extends \PHPUnit_Framework_TestCase
 	/**
      * @test
      */
-    public function can_table_events()
+    public function can_get_table_events()
     {
         $eventValues = array(
         	'TableStart' => array(
@@ -76,7 +76,7 @@ class SCCP_Test_Events extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function can_showdevices_events()
+    public function can_get_showdevices_events()
     {
         $eventValues = array(
         	'SCCPDeviceEntry' => array(
@@ -119,7 +119,7 @@ class SCCP_Test_Events extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function can_showdevice_events()
+    public function can_get_showdevice_events()
     {
         $eventValues = array(
             'SCCPShowDevice' => array(
@@ -386,7 +386,7 @@ class SCCP_Test_Events extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function can_showlines_events()
+    public function can_get_showlines_events()
     {
         $eventValues = array(
         	'SCCPLineEntry' => array(
@@ -425,7 +425,7 @@ class SCCP_Test_Events extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function can_showline_events()
+    public function can_get_showline_events()
     {
         $eventValues = array(
             'SCCPShowLine' => array(
@@ -527,7 +527,7 @@ class SCCP_Test_Events extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function can_showchannels_events()
+    public function can_get_showchannels_events()
     {
         $eventValues = array(
         	'SCCPChannelEntry' => array(
@@ -576,7 +576,7 @@ class SCCP_Test_Events extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function can_session_events()
+    public function can_get_session_events()
     {
         $eventValues = array(
             'SCCPSessionEntry' => array(
@@ -622,7 +622,7 @@ class SCCP_Test_Events extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-   public function can_SCCPConference_events()
+   public function can_get_SCCPConference_events()
     {
         $eventValues = array(
             'SCCPConferenceEntry' => array(
@@ -660,7 +660,7 @@ class SCCP_Test_Events extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function can_SCCPHintLineState_events()
+    public function can_get_SCCPHintLineState_events()
     {
         $eventValues = array(
             'SCCPHintLineStateEntry' => array(
@@ -691,7 +691,7 @@ class SCCP_Test_Events extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function can_SCCPHintSubscription_events()
+    public function can_get_SCCPHintSubscription_events()
     {
         $eventValues = array(
             'SCCPHintSubscriptionEntry' => array(
@@ -728,7 +728,7 @@ class SCCP_Test_Events extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function can_SCCPMailboxSubscriber_events()
+    public function can_get_SCCPMailboxSubscriber_events()
     {
         $eventValues = array(
             'SCCPMailboxSubscriberEntry' => array(
@@ -765,7 +765,7 @@ class SCCP_Test_Events extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function can_SCCPSoftKeySet_events()
+    public function can_get_SCCPSoftKeySet_events()
     {
         $eventValues = array(
             'SCCPSoftKeySetEntry' => array(
@@ -799,30 +799,7 @@ class SCCP_Test_Events extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function can_report_events()
-    {
-        $eventValues = array(
-            'SCCPVariablesEntry' => array(
-            	'Name' => 'Test',
-            	'Value' => 'Something',
-            ),
-        );
-        $eventTranslatedValues = array(
-            'SCCPShowLinesComplete' => array(
-            	'ListItems' => 1,
-            ),
-        );
-        $eventGetters = array(
-        );
-        foreach (array_keys($eventValues) as $eventName) {
-            $this->_testEvent($eventName, $eventGetters, $eventValues[$eventName], $eventTranslatedValues);
-        }
-    }
-
-    /**
-     * @test
-     */
-    public function can_CallAnswered_events()
+    public function can_get_CallAnswered_events()
     {
         $eventValues = array(
             'CallAnswered' => array(
@@ -850,7 +827,7 @@ class SCCP_Test_Events extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function can_DeviceStatus_events()
+    public function can_get_DeviceStatus_events()
     {
         $eventValues = array(
             'DeviceStatus' => array(
@@ -874,7 +851,7 @@ class SCCP_Test_Events extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function can_DND_events()
+    public function can_get_DND_events()
     {
         $eventValues = array(
             'DND' => array(
@@ -900,7 +877,7 @@ class SCCP_Test_Events extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function can_CallForward_events()
+    public function can_get_CallForward_events()
     {
         $eventValues = array(
             'CallForward' => array(
@@ -928,7 +905,7 @@ class SCCP_Test_Events extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function can_SCCPConfEnd_events()
+    public function can_get_SCCPConfEnd_events()
     {
         $eventValues = array(
             'SCCPConfEnd' => array(
@@ -950,7 +927,7 @@ class SCCP_Test_Events extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function can_SCCPConfLeave_events()
+    public function can_get_SCCPConfLeave_events()
     {
         $eventValues = array(
             'SCCPConfLeave' => array(
@@ -976,7 +953,7 @@ class SCCP_Test_Events extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function can_SCCPConfStart_events()
+    public function can_get_SCCPConfStart_events()
     {
         $eventValues = array(
             'SCCPConfStart' => array(
@@ -999,7 +976,7 @@ class SCCP_Test_Events extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function can_SCCPConfEntered_events()
+    public function can_get_SCCPConfEntered_events()
     {
         $eventValues = array(
             'SCCPConfEntered' => array(
@@ -1025,7 +1002,7 @@ class SCCP_Test_Events extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function can_SCCPConfLeft_events()
+    public function can_get_SCCPConfLeft_events()
     {
         $eventValues = array(
             'SCCPConfLeft' => array(
@@ -1051,7 +1028,7 @@ class SCCP_Test_Events extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function can_SCCPConfStarted_events()
+    public function can_get_SCCPConfStarted_events()
     {
         $eventValues = array(
             'SCCPConfStarted' => array(
@@ -1073,7 +1050,7 @@ class SCCP_Test_Events extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function can_SCCPConfParticipantKicked_events()
+    public function can_get_SCCPConfParticipantKicked_events()
     {
         $eventValues = array(
             'SCCPConfParticipantKicked' => array(
@@ -1097,7 +1074,7 @@ class SCCP_Test_Events extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function can_SCCPConfLock_events()
+    public function can_get_SCCPConfLock_events()
     {
         $eventValues = array(
             'SCCPConfLock' => array(
@@ -1121,7 +1098,7 @@ class SCCP_Test_Events extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function can_SCCPConfParticipantMute_events()
+    public function can_get_SCCPConfParticipantMute_events()
     {
         $eventValues = array(
             'SCCPConfParticipantMute' => array(
@@ -1147,7 +1124,7 @@ class SCCP_Test_Events extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function can_SCCPConfParticipantPromotion_events()
+    public function can_get_SCCPConfParticipantPromotion_events()
     {
         $eventValues = array(
             'SCCPConfParticipantPromotion' => array(

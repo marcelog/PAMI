@@ -55,7 +55,9 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 		$mockTime = true;
 	}
 
-
+	/** 
+	 * Test Helper
+	 */
 	private function _start_action(array $write, \PAMI\Message\Action\ActionMessage $action, $response, $mocktime=true)
 	{
 		global $mock_stream_socket_client;
@@ -87,6 +89,9 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 		return $result;
 	}
 
+	/** 
+	 * Test Helper
+	 */
 	private function _start(array $write, \PAMI\Message\Action\ActionMessage $action)
 	{
 		if ($action instanceof \PAMI\Message\Action\DBGetAction) {
@@ -818,13 +823,8 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 	/**
 	 * @test
 	 * @expectedException \PAMI\Exception\PAMIException
-	 *
-	 * Need to exten so it parses the returned error
-	 * Response: Error
-	 * ActionID: 1432.123
-	 * Message: Conference 100 not found
 	 */
-	public function cannot_SCCPConference_Error()
+	public function cannot_SCCPConference_with_wrong_comand()
 	{
 		$write = array(implode("\r\n", array(
 			'action: SCCPConference',
@@ -835,13 +835,36 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 			''
 		)));
 		$action = new \PAMI\Message\Action\SCCPConferenceAction('100', '1', 'hangup');
-		$client = $this->_start($write, $action);
+		$result = $this->_start($write, $action);
 	}
 
 	/**
 	 * @test
 	 */
-	public function can_SCCPDeviceAddLine()
+	public function cannot_SCCPConference_with_wrong_conferenceid_handle_error_returned()
+	{
+		$write = array(implode("\r\n", array(
+			'action: SCCPConference',
+			'actionid: 1432.123',
+			'conferenceid: 100',
+			'participantid: 1',
+			'command: kick',
+			''
+		)));
+		$response = array(
+			'Response: Error',
+			'ActionID: 1432.123',
+			'Message: Conference 100 not found',
+			'',
+		);
+		$action = new \PAMI\Message\Action\SCCPConferenceAction('100', '1', 'kick');
+		$result = $this->_start_action($write, $action, $response);
+	}
+
+	/**
+	 * @test
+	 */
+	public function can_get_SCCPDeviceAddLine()
 	{
 		$write = array(implode("\r\n", array(
 			'action: SCCPDeviceAddLine',
@@ -857,7 +880,7 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 	/**
 	 * @test
 	 */
-	public function can_SCCPDeviceRestart_restart()
+	public function can_get_SCCPDeviceRestart_restart()
 	{
 		$write = array(implode("\r\n", array(
 			'action: SCCPDeviceRestart',
@@ -873,7 +896,7 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 	/**
 	 * @test
 	 */
-	public function can_SCCPDeviceRestart_full()
+	public function can_get_SCCPDeviceRestart_full()
 	{
 		$write = array(implode("\r\n", array(
 			'action: SCCPDeviceRestart',
@@ -889,7 +912,7 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 	/**
 	 * @test
 	 */
-	public function can_SCCPDeviceRestart_reset()
+	public function can_get_SCCPDeviceRestart_reset()
 	{
 		$write = array(implode("\r\n", array(
 			'action: SCCPDeviceRestart',
@@ -906,7 +929,7 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 	 * @test
 	 * @expectedException \PAMI\Exception\PAMIException
 	 */
-	public function cannot_SCCPDeviceRestart_Fail()
+	public function cannot_SCCPDeviceRestart_with_wrong_Type()
 	{
 		$write = array(implode("\r\n", array(
 			'action: SCCPDeviceRestart',
@@ -922,7 +945,7 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 	/**
 	 * @test
 	 */
-	public function can_SCCPDeviceSetDND_on()
+	public function can_get_SCCPDeviceSetDND_on()
 	{
 		$write = array(implode("\r\n", array(
 			'action: SCCPDeviceSetDND',
@@ -938,7 +961,7 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 	/**
 	 * @test
 	 */
-	public function can_SCCPDeviceSetDND_reject()
+	public function can_get_SCCPDeviceSetDND_reject()
 	{
 		$write = array(implode("\r\n", array(
 			'action: SCCPDeviceSetDND',
@@ -954,7 +977,7 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 	/**
 	 * @test
 	 */
-	public function can_SCCPDeviceSetDND_silent()
+	public function can_get_SCCPDeviceSetDND_silent()
 	{
 		$write = array(implode("\r\n", array(
 			'action: SCCPDeviceSetDND',
@@ -970,7 +993,7 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 	/**
 	 * @test
 	 */
-	public function can_SCCPDeviceSetDND_off()
+	public function can_get_SCCPDeviceSetDND_off()
 	{
 		$write = array(implode("\r\n", array(
 			'action: SCCPDeviceSetDND',
@@ -987,7 +1010,7 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 	 * @test
 	 * @expectedException \PAMI\Exception\PAMIException
 	 */
-	public function cannot_SCCPDeviceSetDND_fail()
+	public function cannot_SCCPDeviceSetDND_with_wrong_dndstate()
 	{
 		$write = array(implode("\r\n", array(
 			'action: SCCPDeviceSetDND',
@@ -1003,7 +1026,7 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 	/**
 	 * @test
 	 */
-	public function can_SCCPDeviceUpdate()
+	public function can_get_SCCPDeviceUpdate()
 	{
 		$write = array(implode("\r\n", array(
 			'action: SCCPDeviceUpdate',
@@ -1018,7 +1041,7 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 	/**
 	 * @test
 	 */
-	public function can_SCCPDndDevice_off()
+	public function can_get_SCCPDndDevice_off()
 	{
 		$write = array(implode("\r\n", array(
 			'action: SCCPDndDevice',
@@ -1034,7 +1057,7 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 	/**
 	 * @test
 	 */
-	public function can_SCCPDndDevice_reject()
+	public function can_get_SCCPDndDevice_reject()
 	{
 		$write = array(implode("\r\n", array(
 			'action: SCCPDndDevice',
@@ -1050,7 +1073,7 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 	/**
 	 * @test
 	 */
-	public function can_SCCPDndDevice_silent()
+	public function can_get_SCCPDndDevice_silent()
 	{
 		$write = array(implode("\r\n", array(
 			'action: SCCPDndDevice',
@@ -1067,7 +1090,7 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 	 * @test
 	 * @expectedException \PAMI\Exception\PAMIException
 	 */
-	public function cannot_SCCPDndDevice_fail()
+	public function cannot_SCCPDndDevice_with_wrong_state()
 	{
 		$write = array(implode("\r\n", array(
 			'action: SCCPDndDevice',
@@ -1083,7 +1106,7 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 	/**
 	 * @test
 	 */
-	public function can_SCCPHangupCall()
+	public function can_get_SCCPHangupCall()
 	{
 		$write = array(implode("\r\n", array(
 			'action: SCCPHangupCall',
@@ -1098,7 +1121,7 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 	/**
 	 * @test
 	 */
-	public function can_SCCPHoldCall_hold()
+	public function can_get_SCCPHoldCall_hold()
 	{
 		$write = array(implode("\r\n", array(
 			'action: SCCPHoldCall',
@@ -1117,7 +1140,7 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 	/**
 	 * @test
 	 */
-	public function can_SCCPHoldCall_resume()
+	public function can_get_SCCPHoldCall_resume()
 	{
 		$write = array(implode("\r\n", array(
 			'action: SCCPHoldCall',
@@ -1136,7 +1159,7 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 	 * @test
 	 * @expectedException \PAMI\Exception\PAMIException
 	 */
-	public function cannot_SCCPHoldCall_hold_fail()
+	public function cannot_SCCPHoldCall_hold_and_swapchannels()
 	{
 		$write = array(implode("\r\n", array(
 			'action: SCCPHoldCall',
@@ -1154,7 +1177,7 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 	/**
 	 * @test
 	 */
-	public function can_SCCPLineForwardUpdate_ForwardAll()
+	public function can_get_SCCPLineForwardUpdate_ForwardAll()
 	{
 		$write = array(implode("\r\n", array(
 			'action: SCCPLineForwardUpdate',
@@ -1172,7 +1195,7 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 	/**
 	 * @test
 	 */
-	public function can_SCCPLineForwardUpdate_ForwardBusy()
+	public function can_get_SCCPLineForwardUpdate_ForwardBusy()
 	{
 		$write = array(implode("\r\n", array(
 			'action: SCCPLineForwardUpdate',
@@ -1191,7 +1214,7 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 	 * @test
 	 * @expectedException \PAMI\Exception\PAMIException
 	 */
-	public function cannot_SCCPLineForwardUpdate_ForwardTypeBoo_Fail()
+	public function cannot_SCCPLineForwardUpdate_forward_with_wrong_type()
 	{
 		$write = array(implode("\r\n", array(
 			'action: SCCPLineForwardUpdate',
@@ -1211,7 +1234,7 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 	/**
 	 * @test
 	 */
-	public function can_SCCPLineForwardUpdate_Disable()
+	public function can_get_SCCPLineForwardUpdate_Disable()
 	{
 		$write = array(implode("\r\n", array(
 			'action: SCCPLineForwardUpdate',
@@ -1248,7 +1271,7 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 	/**
 	 * @test
 	 */
-	public function can_SCCPMessageDevices()
+	public function can_get_SCCPMessageDevices()
 	{
 		$write = array(implode("\r\n", array(
 			'action: SCCPMessageDevices',
@@ -1263,7 +1286,7 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 	/**
 	 * @test
 	 */
-	public function can_SCCPMessageDevices_beep()
+	public function can_get_SCCPMessageDevices_beep()
 	{
 		$write = array(implode("\r\n", array(
 			'action: SCCPMessageDevices',
@@ -1279,7 +1302,7 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 	/**
 	 * @test
 	 */
-	public function can_SCCPMessageDevices_beep_timeout()
+	public function can_get_SCCPMessageDevices_beep_timeout()
 	{
 		$write = array(implode("\r\n", array(
 			'action: SCCPMessageDevices',
@@ -1296,7 +1319,7 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 	/**
 	 * @test
 	 */
-	public function can_SCCPMessageDevice()
+	public function can_get_SCCPMessageDevice()
 	{
 		$write = array(implode("\r\n", array(
 			'action: SCCPMessageDevice',
@@ -1312,7 +1335,7 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 	/**
 	 * @test
 	 */
-	public function can_SCCPMessageDevice_beep()
+	public function can_get_SCCPMessageDevice_beep()
 	{
 		$write = array(implode("\r\n", array(
 			'action: SCCPMessageDevice',
@@ -1329,7 +1352,7 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 	/**
 	 * @test
 	 */
-	public function can_SCCPMessageDevice_beep_timeout()
+	public function can_get_SCCPMessageDevice_beep_timeout()
 	{
 		$write = array(implode("\r\n", array(
 			'action: SCCPMessageDevice',
@@ -1347,7 +1370,7 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 	/**
 	 * @test
 	 */
-	public function can_SCCPSystemMessage()
+	public function can_get_SCCPSystemMessage()
 	{
 		$write = array(implode("\r\n", array(
 			'action: SCCPSystemMessage',
@@ -1362,7 +1385,7 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 	/**
 	 * @test
 	 */
-	public function can_SCCPSystemMessage_beep()
+	public function can_get_SCCPSystemMessage_beep()
 	{
 		$write = array(implode("\r\n", array(
 			'action: SCCPSystemMessage',
@@ -1378,7 +1401,7 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 	/**
 	 * @test
 	 */
-	public function can_SCCPSystemMessage_timeout()
+	public function can_get_SCCPSystemMessage_timeout()
 	{
 		$write = array(implode("\r\n", array(
 			'action: SCCPSystemMessage',
@@ -1396,7 +1419,7 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 	/**
 	 * @test
 	 */
-	public function can_SCCPShowConference()
+	public function can_get_SCCPShowConference()
 	{
 		$write = array(implode("\r\n", array(
 			'action: SCCPShowConference',
@@ -1411,7 +1434,7 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 	/**
 	 * @test
 	 */
-	public function can_SCCPStartCall()
+	public function can_get_SCCPStartCall()
 	{
 		$write = array(implode("\r\n", array(
 			'action: SCCPStartCall',
@@ -1428,7 +1451,7 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 	/**
 	 * @test
 	 */
-	public function can_SCCPTokenAck()
+	public function can_get_SCCPTokenAck()
 	{
 		$write = array(implode("\r\n", array(
 			'action: SCCPTokenAck',
