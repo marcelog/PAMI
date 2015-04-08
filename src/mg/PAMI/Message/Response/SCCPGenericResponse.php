@@ -61,6 +61,8 @@ class SCCPGenericResponse extends ResponseMessage
     /**
      * Adds an event to this response.
      *
+     * If we encounter StartTable/EndTable Events we will move the events into the _tables['TableName'] array
+     *
      * @param EventMessage $event Child event to add.
      *
      * @return void
@@ -69,7 +71,6 @@ class SCCPGenericResponse extends ResponseMessage
     {
     	// Handle TableStart/TableEnd Differently 
         if (stristr($event->getName(), 'TableStart') != false) {
-            //$this->_temptable = array();
             $this->_temptable['Name'] = $event->getTableName();
             $this->_temptable['Entries'] = array();
         } else if (is_array($this->_temptable)) {
@@ -90,12 +91,23 @@ class SCCPGenericResponse extends ResponseMessage
         if (
             stristr($event->getEventList(), 'complete') !== false
             || stristr($event->getName(), 'complete') !== false
-            || stristr($event->getName(), 'DBGetResponse') !== false
         ) {
             $this->_completed = true;
         }
     }
 
+    /**
+     * Returns true if this Response Message contains an events tables (TableStart/TableEnd)
+     *
+     * @return boolean
+     */
+    public function hasTable()
+    {
+		if (is_array($this->_tables)) {
+			return true;
+		}
+		return false;
+    }
 
     /**
      * Returns all eventtabless for this response.
@@ -115,26 +127,14 @@ class SCCPGenericResponse extends ResponseMessage
      */
     public function getTable($tablename)
     {
-        return $this->_tables[$tablename];
+        if ($this->hasTable() && array_key_exists($tablename, $this->_tables)) {
+        	return $this->_tables[$tablename];
+        }
+		throw new PAMIException("No such table.");        
     }
 
     /**
-     * Returns true if this response contains the key EventList with the
-     * word 'start' in it. Another way is to have a Message key, like:
-     * Message: Result will follow
-     *
-     * @return boolean
-     */
-    public function isTable()
-    {
-        return
-            stristr($this->getKey('Event'), 'TableStart') !== false
-            || stristr($this->getKey('Event'), 'TableEnd') !== false
-        ;
-    }
-
-    /**
-     * Returns decodec version of the 'JSON' key if present. 
+     * Returns decoded version of the 'JSON' key if present. 
      *
      * @return array
      */
