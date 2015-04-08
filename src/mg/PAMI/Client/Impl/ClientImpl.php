@@ -38,6 +38,7 @@ use PAMI\Message\Action\LogoffAction;
 use PAMI\Message\Response\ResponseMessage;
 use PAMI\Message\Event\EventMessage;
 use PAMI\Message\Event\Factory\Impl\EventFactoryImpl;
+use PAMI\Message\Response\Factory\Impl\ResponseFactoryImpl;
 use PAMI\Listener\IEventListener;
 use PAMI\Client\Exception\ClientException;
 use PAMI\Client\IClient;
@@ -105,6 +106,12 @@ class ClientImpl implements IClient
 	private $_eventFactory;
 
 	/**
+	 * Event factory.
+	 * @var EventFactoryImpl
+	 */
+	private $_responseFactory;
+
+	/**
 	 * R/W timeout, in milliseconds.
 	 * @var integer
 	 */
@@ -153,6 +160,16 @@ class ClientImpl implements IClient
 	 * @var string
 	 */
 	private $_lastActionId;
+
+	/**
+	 * @var string
+	 */
+	private $_lastResponseHandler;
+
+	/**
+	 * @var className
+	 */
+	private $_lastActionClass;
 
 	/**
 	 * Opens a tcp connection to ami.
@@ -235,10 +252,6 @@ class ClientImpl implements IClient
 		if ($read === false || @feof($this->_socket)) {
 			throw new ClientException('Error During Socket Read');
 		}
-		//if (strlen($read) > 0) {
-			// we made progress... reset _readtries
-			//$this->_readretries = true;
-		//}
 		$this->_currentProcessingMessage .= $read;
 		// If we have a complete message, then return it. Save the rest for later.
 		while (($marker = strpos($this->_currentProcessingMessage, Message::EOM))) {
@@ -256,7 +269,7 @@ class ClientImpl implements IClient
 	 * your own application in order to continue reading events and responses
 	 * from ami. 
 	 */
-	public function process()
+	public function process($outgoingMessageClass=false)
 	{
 	    $msgs = $this->getMessages();
 	    foreach ($msgs as $aMsg) {
@@ -343,7 +356,16 @@ class ClientImpl implements IClient
 	 */
 	private function _messageToResponse($msg)
 	{
-        $response = new ResponseMessage($msg);
+        //$response = new ResponseMessage($msg);
+		//try {
+			$response = $this->_responseFactory->createFromRaw($this->_logger, $msg, $this->_lastActionClass, $this->_lastResponseHandler);
+        //} catch (PAMIException $e) {
+		//	if ($this->_logger->isDebugEnabled()) {
+		//		$this->_logger->debug(
+		//			'------ ResponseException: ------ ' . "\n" . $e . '----------'
+		//		);
+		//	}
+        //}
 	    $actionId = $response->getActionId();
 	    if ($actionId === null) {
 	        $actionId = $this->_lastActionId;
@@ -361,7 +383,17 @@ class ClientImpl implements IClient
 	 */
 	private function _messageToEvent($msg)
 	{
-        return $this->_eventFactory->createFromRaw($msg);
+		$event;
+		//try {
+			$event = $this->_eventFactory->createFromRaw($msg);
+        //} catch (PAMIException $e) {
+		//	if ($this->_logger->isDebugEnabled()) {
+		//		$this->_logger->debug(
+		//			'------ EventException: ------ ' . "\n" . $e . '----------'
+		//		);
+		//	}
+        //}
+        return $event;
 	}
 
 	/**
@@ -404,25 +436,30 @@ class ClientImpl implements IClient
 	        	'------ Sending: ------ ' . "\n" . $messageToSend . '----------'
 	        );
         }
-	    $this->_lastActionId = $message->getActionId();
+		// If there are multiple outgoing messages in flight, we might have to add this information to a queue instead
+		//$this->_outgoingQueue[$this->_lastActionId] == array('ResponseHandler' => $message->getResponseHandler()); // push
+		$this->_lastActionId = $message->getActionId();
+		$this->_lastResponseHandler = $message->getResponseHandler();
+		$this->_lastActionClass = get_class($message);
+
 	    if (@fwrite($this->_socket, $messageToSend) < $length) {
     	    throw new ClientException('Could not send message');
 		}
 		while (1) {
-			if ($this->_logger->isDebugEnabled()) $this->_logger->debug('-Reading/Process: rTimeout:' . $this->_rTimeout . "\n");
+			//if ($this->_logger->isDebugEnabled()) $this->_logger->debug('-Reading/Process: rTimeout:' . $this->_rTimeout . "\n");
 			@stream_set_timeout($this->_socket, $this->_rTimeout ? $this->_rTimeout : 1);
 			$this->process();
 			$info = @stream_get_meta_data($this->_socket);
-			if ($this->_logger->isDebugEnabled()) $this->_logger->debug('-stream_get_meta_data returned: [' . print_r($info) . "]\n");
+			//if ($this->_logger->isDebugEnabled()) $this->_logger->debug('-stream_get_meta_data returned: [' . print_r($info) . "]\n");
 			if ($info['timed_out'] == false) {
-				if ($this->_logger->isDebugEnabled()) $this->_logger->debug("-process response-\n");
+				//if ($this->_logger->isDebugEnabled()) $this->_logger->debug("-process response-\n");
 				$response = $this->getRelated($message);
 				if ($response != false) {
 					$this->_lastActionId = false;
 					return $response;
 				}
 			} else {
-				if ($this->_logger->isDebugEnabled()) $this->_logger->debug("-timedout-\n");
+				//if ($this->_logger->isDebugEnabled()) $this->_logger->debug("-timedout-\n");
 				break;
 			}
 		}
@@ -464,6 +501,7 @@ class ClientImpl implements IClient
 		$this->_scheme = isset($options['scheme']) ? $options['scheme'] : 'tcp://';
 		$this->_eventListeners = array();
 		$this->_eventFactory = new EventFactoryImpl();
+		$this->_responseFactory = new ResponseFactoryImpl();
 		$this->_incomingQueue = array();
 		$this->_lastActionId = false;
 	}
