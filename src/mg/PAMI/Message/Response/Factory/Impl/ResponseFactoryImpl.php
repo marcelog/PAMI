@@ -30,6 +30,7 @@
  */
 namespace PAMI\Message\Response\Factory\Impl;
 
+use PAMI\Exception\PAMIException;
 use PAMI\Message\Response\ResponseMessage;
 use PAMI\Message\Response\GenericResponse;
 use PAMI\Message\Message;
@@ -53,34 +54,29 @@ class ResponseFactoryImpl
 	 * This is our factory method.
 	 *
 	 * @param string $message Literal message as received from ami.
-	 * @param string $outgoingMessageClass ClassName
+	 * @param string $requestingaction
 	 * @param string $responseHandler
 	 *
 	 * @return EventMessage
 	 */
-	public static function createFromRaw($logger, $message, $outgoingMessageClass = false, $responseHandler = false)
+	public static function createFromRaw($message, $requestingaction = false, $responseHandler = false)
 	{
-		if ($outgoingMessageClass != false && $responseHandler == false) {
-			$responseHandler = substr($outgoingMessageClass, 20, -6);
-		}
+		$_className = false;
+		
 		if ($responseHandler != false) {
-			$className = '\\PAMI\\Message\\Response\\' . $responseHandler . 'Response';
-			if (class_exists($className, true)) {
-				if ($logger->isDebugEnabled()) {
-					$logger->debug('ResponseFactoryImpl::createFromRaw, returning class: ' . $className . "\n");
-				}
-				try {
-					return new $className($message);
-				} catch (PAMIException $e) {
-					throw $e;
-				}
+			$_className = $responseHandler;
+		} else if ($requestingaction != false) {
+			$_className = substr(get_class($requestingaction), 20, -6);
+		}
+		if ($_className) {
+			$responseclass = '\\PAMI\\Message\\Response\\' . $_className . 'Response';
+			if (class_exists($responseclass, true)) {
+				return new $responseclass($message);
+			} else if ($responseHandler != false){
+				throw new PAMIException('Response Class Not Found');
 			}
 		}
-		try {
-			return new GenericResponse($message);
-		} catch (PAMIException $e) {
-			throw $e;
-		}
+		return new GenericResponse($message);
 	}
 
 	/**

@@ -886,7 +886,9 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 	        	$getmethod = 'get' . $subtablename;
 	        	$this->assertTrue(is_array($result->$getmethod()));
 	        }
-        	$this->assertTrue(is_array($result->$getVariables()));
+	        $variables = $result->getVariables();
+        	$this->assertTrue(is_array($variables));
+        	$this->assertEquals($variables, array());
 			$this->assertEquals('DeviceButtons', $result->getButtons()['Name']);
 		}
 	}

@@ -164,10 +164,10 @@ class ClientImpl implements IClient
 	/**
 	 * @var string
 	 */
-	private $_lastResponseHandler;
+	private $_lastRequestedResponseHandler;
 
 	/**
-	 * @var className
+	 * @object class
 	 */
 	private $_lastActionClass;
 
@@ -283,7 +283,6 @@ class ClientImpl implements IClient
     	    if (($resPos !== false) && (($resPos < $evePos) || $evePos === false)) {
     	        $response = $this->_messageToResponse($aMsg);
                 $this->_incomingQueue[$response->getActionId()] = $response;
-				// unset($this->_outgoingQueue[$response->getActionId()]); pop
     	    } else if ($evePos !== false) {
     	        $event = $this->_messageToEvent($aMsg);
         	    $response = $this->findResponse($event);
@@ -357,16 +356,7 @@ class ClientImpl implements IClient
 	 */
 	private function _messageToResponse($msg)
 	{
-        //$response = new ResponseMessage($msg);
-		//try {
-			$response = $this->_responseFactory->createFromRaw($this->_logger, $msg, $this->_lastActionClass, $this->_lastResponseHandler);
-        //} catch (PAMIException $e) {
-		//	if ($this->_logger->isDebugEnabled()) {
-		//		$this->_logger->debug(
-		//			'------ ResponseException: ------ ' . "\n" . $e . '----------'
-		//		);
-		//	}
-        //}
+		$response = $this->_responseFactory->createFromRaw($msg, $this->_lastActionClass, $this->_lastRequestedResponseHandler);
 	    $actionId = $response->getActionId();
 	    if ($actionId === null) {
 	        $actionId = $this->_lastActionId;
@@ -385,15 +375,7 @@ class ClientImpl implements IClient
 	private function _messageToEvent($msg)
 	{
 		$event;
-		//try {
-			$event = $this->_eventFactory->createFromRaw($msg);
-        //} catch (PAMIException $e) {
-		//	if ($this->_logger->isDebugEnabled()) {
-		//		$this->_logger->debug(
-		//			'------ EventException: ------ ' . "\n" . $e . '----------'
-		//		);
-		//	}
-        //}
+		$event = $this->_eventFactory->createFromRaw($msg);
         return $event;
 	}
 
@@ -440,27 +422,23 @@ class ClientImpl implements IClient
 		// If there are multiple outgoing messages in flight, we might have to add this information to a queue instead
 		//$this->_outgoingQueue[$this->_lastActionId] == array('ResponseHandler' => $message->getResponseHandler()); // push
 		$this->_lastActionId = $message->getActionId();
-		$this->_lastResponseHandler = $message->getResponseHandler();
-		$this->_lastActionClass = get_class($message);
+		$this->_lastRequestedResponseHandler = $message->getResponseHandler();
+		$this->_lastActionClass = $message;
 
 	    if (@fwrite($this->_socket, $messageToSend) < $length) {
     	    throw new ClientException('Could not send message');
 		}
 		while (1) {
-			//if ($this->_logger->isDebugEnabled()) $this->_logger->debug('-Reading/Process: rTimeout:' . $this->_rTimeout . "\n");
 			@stream_set_timeout($this->_socket, $this->_rTimeout ? $this->_rTimeout : 1);
 			$this->process();
 			$info = @stream_get_meta_data($this->_socket);
-			//if ($this->_logger->isDebugEnabled()) $this->_logger->debug('-stream_get_meta_data returned: [' . print_r($info) . "]\n");
 			if ($info['timed_out'] == false) {
-				//if ($this->_logger->isDebugEnabled()) $this->_logger->debug("-process response-\n");
 				$response = $this->getRelated($message);
 				if ($response != false) {
 					$this->_lastActionId = false;
 					return $response;
 				}
 			} else {
-				//if ($this->_logger->isDebugEnabled()) $this->_logger->debug("-timedout-\n");
 				break;
 			}
 		}
