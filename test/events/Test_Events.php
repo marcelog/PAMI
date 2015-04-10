@@ -742,19 +742,6 @@ class Test_Events extends \PHPUnit_Framework_TestCase
 				'Channel1' => 'Channel1',
 				'Channel2' => 'Channel2'
 			),
-			'SuccessfulAuth' => array(
-				'Privilege' => 'security,all',
-				'EventTV' => '2015-04-04T21:04:12.937+0200',
-				'Severity' => 'Informational',
-				'Service' => 'AMI',
-				'EventVersion' => '1',
-				'AccountID' => 'admin',
-				'SessionID' => '0x7fa9d41418c8',
-				'LocalAddress' => 'IPV4/TCP/127.0.0.1/5038',
-				'RemoteAddress' => 'IPV4/TCP/127.0.0.1/48658',
-				'UsingPassword' => '0',
-				'SessionTV' => '2015-04-04T21:04:12.937+0200',
-			),
 			'RequestBadFormat' => array(
 				'Privilege' => 'security,all',
 				'EventTV' => '2015-04-04T21:04:12.937+0200',
@@ -781,10 +768,6 @@ class Test_Events extends \PHPUnit_Framework_TestCase
 			),
 			'QueueMemberAdded' => array(
 				'Paused' => true
-			),
-			'SuccessfulAuth' => array(
-				'EventVersion' => 1,
-				'UsingPassword' => false,
 			),
 			'RequestBadFormat' => array(
 				'EventVersion' => 1,

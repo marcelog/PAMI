@@ -72,17 +72,9 @@ class EventFactoryImpl
         $name = substr($message, $eventStart, $eventEnd - $eventStart);
         $className = '\\PAMI\\Message\\Event\\' . $name . 'Event';
 		if (class_exists($className, true)) {
-			try {
-				return new $className($message);
-			} catch (PAMIException $e) {
-				throw $e;
-			}
+			return new $className($message);
 		}
-		try {
-			return new UnknownEvent($message);
-		} catch (PAMIException $e) {
-			throw $e;
-		}
+		return new UnknownEvent($message);
     }
 
     /**
