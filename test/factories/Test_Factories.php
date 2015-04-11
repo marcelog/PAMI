@@ -44,6 +44,7 @@ namespace PAMI\Client\Impl {
 	class Test_ResponseFactory extends \PHPUnit_Framework_TestCase
 	{
 		private $_properties = array();
+		private $_logger;
 
 		public function setUp()
 		{
