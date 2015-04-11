@@ -38,6 +38,7 @@ use PAMI\Message\Action\LogoffAction;
 use PAMI\Message\Response\ResponseMessage;
 use PAMI\Message\Event\EventMessage;
 use PAMI\Message\Event\Factory\Impl\EventFactoryImpl;
+use PAMI\Message\Response\Factory\Impl\ResponseFactoryImpl;
 use PAMI\Listener\IEventListener;
 use PAMI\Client\Exception\ClientException;
 use PAMI\Client\IClient;
@@ -105,6 +106,12 @@ class ClientImpl implements IClient
 	private $_eventFactory;
 
 	/**
+	 * Event factory.
+	 * @var EventFactoryImpl
+	 */
+	private $_responseFactory;
+
+	/**
 	 * R/W timeout, in milliseconds.
 	 * @var integer
 	 */
@@ -153,6 +160,16 @@ class ClientImpl implements IClient
 	 * @var string
 	 */
 	private $_lastActionId;
+
+	/**
+	 * @var string
+	 */
+	private $_lastRequestedResponseHandler;
+
+	/**
+	 * @object class
+	 */
+	private $_lastActionClass;
 
 	/**
 	 * Opens a tcp connection to ami.
@@ -231,21 +248,20 @@ class ClientImpl implements IClient
 	{
 	    $msgs = array();
 	    // Read something.
-	    $read = @fread($this->_socket, 65535);
-	    if ($read === false || @feof($this->_socket)) {
-	        throw new ClientException('Error reading');
-	    }
-	    $this->_currentProcessingMessage .= $read;
-	    // If we have a complete message, then return it. Save the rest for
-	    // later.
-	    while (($marker = strpos($this->_currentProcessingMessage, Message::EOM))) {
-    	    $msg = substr($this->_currentProcessingMessage, 0, $marker);
-    	    $this->_currentProcessingMessage = substr(
-    	        $this->_currentProcessingMessage, $marker + strlen(Message::EOM)
-    	    );
-    	    $msgs[] = $msg;
-	    }
-	    return $msgs;
+		$read = @fread($this->_socket, 8192);
+		if ($read === false || @feof($this->_socket)) {
+			throw new ClientException('Error During Socket Read');
+		}
+		$this->_currentProcessingMessage .= $read;
+		// If we have a complete message, then return it. Save the rest for later.
+		while (($marker = strpos($this->_currentProcessingMessage, Message::EOM))) {
+		   $msg = substr($this->_currentProcessingMessage, 0, $marker);
+		   $this->_currentProcessingMessage = substr(
+			   $this->_currentProcessingMessage, $marker + strlen(Message::EOM)
+		   );
+		   $msgs[] = $msg;
+		}
+		return $msgs;
 	}
 
 	/**
@@ -253,7 +269,7 @@ class ClientImpl implements IClient
 	 * your own application in order to continue reading events and responses
 	 * from ami. 
 	 */
-	public function process()
+	public function process($outgoingMessageClass=false)
 	{
 	    $msgs = $this->getMessages();
 	    foreach ($msgs as $aMsg) {
@@ -340,7 +356,7 @@ class ClientImpl implements IClient
 	 */
 	private function _messageToResponse($msg)
 	{
-        $response = new ResponseMessage($msg);
+		$response = $this->_responseFactory->createFromRaw($msg, $this->_lastActionClass, $this->_lastRequestedResponseHandler);
 	    $actionId = $response->getActionId();
 	    if ($actionId === null) {
 	        $actionId = $this->_lastActionId;
@@ -358,7 +374,9 @@ class ClientImpl implements IClient
 	 */
 	private function _messageToEvent($msg)
 	{
-        return $this->_eventFactory->createFromRaw($msg);
+		$event;
+		$event = $this->_eventFactory->createFromRaw($msg);
+        return $event;
 	}
 
 	/**
@@ -401,24 +419,30 @@ class ClientImpl implements IClient
 	        	'------ Sending: ------ ' . "\n" . $messageToSend . '----------'
 	        );
         }
-	    $this->_lastActionId = $message->getActionId();
+		// If there are multiple outgoing messages in flight, we might have to add this information to a queue instead
+		//$this->_outgoingQueue[$this->_lastActionId] == array('ResponseHandler' => $message->getResponseHandler()); // push
+		$this->_lastActionId = $message->getActionId();
+		$this->_lastRequestedResponseHandler = $message->getResponseHandler();
+		$this->_lastActionClass = $message;
+
 	    if (@fwrite($this->_socket, $messageToSend) < $length) {
     	    throw new ClientException('Could not send message');
-	    }
-	    $read = 0;
-	    while($read <= $this->_rTimeout) {
-	        $this->process();
-	        $response = $this->getRelated($message);
-	        if ($response != false) {
-	            $this->_lastActionId = false;
-	            return $response;
-	        }
-	        usleep(1000); // 1ms delay
-	        if ($this->_rTimeout > 0) {
-	            $read++;
-	        }
-	    }
-	    throw new ClientException('Read timeout');
+		}
+		while (1) {
+			@stream_set_timeout($this->_socket, $this->_rTimeout ? $this->_rTimeout : 1);
+			$this->process();
+			$info = @stream_get_meta_data($this->_socket);
+			if ($info['timed_out'] == false) {
+				$response = $this->getRelated($message);
+				if ($response != false) {
+					$this->_lastActionId = false;
+					return $response;
+				}
+			} else {
+				break;
+			}
+		}
+		throw new ClientException("Read waittime: " . ($this->_rTimeout) . " exceeded (timeout).\n");
 	}
 
 	/**
@@ -452,10 +476,11 @@ class ClientImpl implements IClient
 		$this->_user = $options['username'];
 		$this->_pass = $options['secret'];
 		$this->_cTimeout = $options['connect_timeout'];
-		$this->_rTimeout = $options['read_timeout'];
+		$this->_rTimeout = isset($options['read_timeout']) ? isset($options['read_timeout']) : 1;
 		$this->_scheme = isset($options['scheme']) ? $options['scheme'] : 'tcp://';
 		$this->_eventListeners = array();
-		$this->_eventFactory = new EventFactoryImpl();
+		$this->_eventFactory = new EventFactoryImpl(\Logger::getLogger('EventFactory'));
+		$this->_responseFactory = new ResponseFactoryImpl(\Logger::getLogger('ResponseFactory'));
 		$this->_incomingQueue = array();
 		$this->_lastActionId = false;
 	}
