@@ -479,8 +479,8 @@ class ClientImpl implements IClient
 		$this->_rTimeout = $options['read_timeout'];
 		$this->_scheme = isset($options['scheme']) ? $options['scheme'] : 'tcp://';
 		$this->_eventListeners = array();
-		$this->_eventFactory = new EventFactoryImpl();
-		$this->_responseFactory = new ResponseFactoryImpl();
+		$this->_eventFactory = new EventFactoryImpl(\Logger::getLogger('EventFactory'));
+		$this->_responseFactory = new ResponseFactoryImpl(\Logger::getLogger('ResponseFactory'));
 		$this->_incomingQueue = array();
 		$this->_lastActionId = false;
 	}
