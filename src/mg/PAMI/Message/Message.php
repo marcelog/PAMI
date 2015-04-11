@@ -158,12 +158,6 @@ abstract class Message
 			} else {
 				throw new PAMIException("Incoming String is not sanitary. Skipping: '" . $value . "'\n");
 			}
-		} else if (is_resource($value)) {
-			// failure ?
-			return $value;
-		} else if (is_object($value)) {
-			// failure ?
-			return (object)$value;
 		} else {
 			throw new PAMIException("Don't know how to convert: '" . $value . "'\n");
 		}
