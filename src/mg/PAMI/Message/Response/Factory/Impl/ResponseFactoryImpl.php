@@ -30,6 +30,7 @@
  */
 namespace PAMI\Message\Response\Factory\Impl;
 
+use PAMI\Exception\PAMIException;
 use PAMI\Message\Response\ResponseMessage;
 use PAMI\Message\Response\GenericResponse;
 use PAMI\Message\Message;
@@ -49,38 +50,36 @@ use PAMI\Message\Message;
  */
 class ResponseFactoryImpl
 {
+	private $_logger;
 	/**
 	 * This is our factory method.
 	 *
 	 * @param string $message Literal message as received from ami.
-	 * @param string $outgoingMessageClass ClassName
+	 * @param string $requestingaction
 	 * @param string $responseHandler
 	 *
 	 * @return EventMessage
 	 */
-	public static function createFromRaw($logger, $message, $outgoingMessageClass = false, $responseHandler = false)
+	//public static function createFromRaw($message, $requestingaction = false, $responseHandler = false)
+	public function createFromRaw($message, $requestingaction = false, $responseHandler = false)
 	{
-		if ($outgoingMessageClass != false && $responseHandler == false) {
-			$responseHandler = substr($outgoingMessageClass, 20, -6);
-		}
+		$responseclass = '\\PAMI\\Message\\Response\\GenericResponse';
+
+		$_className = false;
 		if ($responseHandler != false) {
-			$className = '\\PAMI\\Message\\Response\\' . $responseHandler . 'Response';
-			if (class_exists($className, true)) {
-				if ($logger->isDebugEnabled()) {
-					$logger->debug('ResponseFactoryImpl::createFromRaw, returning class: ' . $className . "\n");
-				}
-				try {
-					return new $className($message);
-				} catch (PAMIException $e) {
-					throw $e;
-				}
+			$_className = '\\PAMI\\Message\\Response\\' . $responseHandler . 'Response';
+		} else if ($requestingaction != false) {
+			$_className = '\\PAMI\\Message\\Response\\' . substr(get_class($requestingaction), 20, -6) . 'Response';
+		}
+		if ($_className) {
+			if (class_exists($_className, true)) {
+				$responseclass = $_className;
+			} else if ($responseHandler != false){
+				throw new PAMIException('Response Class ' . $_className . '  requested via responseHandler, could not be found');
 			}
 		}
-		try {
-			return new GenericResponse($message);
-		} catch (PAMIException $e) {
-			throw $e;
-		}
+		if ($this->_logger->isDebugEnabled()) $this->_logger->debug('Created: ' . $responseclass . "\n");
+		return new $responseclass($message);
 	}
 
 	/**
@@ -88,7 +87,12 @@ class ResponseFactoryImpl
 	 *
 	 * @return void
 	 */
-	public function __construct()
-	{
-	}
+//    public function __construct($logger)
+//    {
+//        $this->_logger = $logger;
+    public function __construct($logger)
+    {
+        $this->_logger = $logger ? $logger : \Logger::getLogger(__CLASS__);
+		if ($this->_logger->isDebugEnabled()) $this->_logger->debug('------ Response Factory Created: ------ ' . "\n");
+    }
 }

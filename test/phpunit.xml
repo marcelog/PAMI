@@ -15,6 +15,9 @@
     <testsuite name="Client">
       <directory suffix=".php">client</directory>
     </testsuite>
+    <testsuite name="Factories">
+      <directory suffix=".php">factories</directory>
+    </testsuite>
     <testsuite name="Autoloader">
       <directory suffix=".php">autoloader</directory>
     </testsuite>
