@@ -738,64 +738,69 @@ class SCCPShowDeviceResponse extends SCCPGenericResponse
      */
 	public function getButtons()
 	{
-		if ($this->hasTable() && array_key_exists('DeviceButtons', $this->_tables)) {
-			return $this->_tables['DeviceButtons'];
+		$res = array();
+		if ($this->hasTable() && array_key_exists('Buttons', $this->_tables)) {
+			$res = $this->_tables['Buttons'];
 		}
-		return array();
+		return $res;
 	}
 
     /**
-     * Returns events[] related to LineButtons from the tables['DeviceLineButtons']
+     * Returns events[] related to LineButtons from the tables['LineButtons']
      *
      * @return events[]
      */
 	public function getLineButtons()
 	{
-		if ($this->hasTable() && array_key_exists('DeviceLineButtons', $this->_tables)) {
-			return $this->_tables['DeviceLineButtons'];
+		$res = array();
+		if ($this->hasTable() && array_key_exists('LineButtons', $this->_tables)) {
+			$res = $this->_tables['LineButtons'];
 		}
-		return array();
+		return $res;
 	}
 
     /**
-     * Returns events[] related to SpeeddialButtons from the tables['DeviceSpeeddialButtons']
+     * Returns events[] related to SpeeddialButtons from the tables['SpeeddialButtons']
      *
      * @return events[]
      */
 	public function getSpeeddialButtons()
 	{
-		if ($this->hasTable() && array_key_exists('DeviceSpeeddialButtons', $this->_tables)) {
-			return $this->_tables['DeviceSpeeddialButtons'];
+		$res = array();
+		if ($this->hasTable() && array_key_exists('SpeeddialButtons', $this->_tables)) {
+			$res = $this->_tables['SpeeddialButtons'];
 		}
-		return array();
+		return $res;
 	}
 
 
     /**
-     * Returns events[] related to ServiceURLButtons from the tables['DeviceServiceURLs']
+     * Returns events[] related to ServiceURLButtons from the tables['ServiceURLs']
      *
      * @return events[]
      */
 	public function getServiceURLButtons()
 	{
-		if ($this->hasTable() && array_key_exists('DeviceServiceURLs', $this->_tables)) {
-			return $this->_tables['DeviceServiceURLs'];
+		$res = array();
+		if ($this->hasTable() && array_key_exists('ServiceURLs', $this->_tables)) {
+			$res = $this->_tables['ServiceURLs'];
 		}
-		return array();
+		return $res;
 	}
 
 
     /**
-     * Returns events[] related to FeatureButtons from the tables['DeviceFeatureButtons']
+     * Returns events[] related to FeatureButtons from the tables['FeatureButtons']
      *
      * @return events[]
      */
 	public function getFeatureButtons()
 	{
-		if ($this->hasTable() && array_key_exists('DeviceFeatureButtons', $this->_tables)) {
-			return $this->_tables['DeviceFeatureButtons'];
+		$res = array();
+		if ($this->hasTable() && array_key_exists('FeatureButtons', $this->_tables)) {
+			$res = $this->_tables['FeatureButtons'];
 		}
-		return array();
+		return $res;
 	}
 
 
@@ -806,23 +811,25 @@ class SCCPShowDeviceResponse extends SCCPGenericResponse
      */
 	public function getVariables()
 	{
+		$res = array();
 		if ($this->hasTable() && array_key_exists('Variables', $this->_tables)) {
-			return $this->_tables['Variables'];
+			$res = $this->_tables['Variables'];
 		}
-		return array();
+		return $res;
 	}
 
     /**
-     * Returns events[] related to DeviceCallStatistics from the tables['DeviceCallStatistics']
+     * Returns events[] related to DeviceCallStatistics from the tables['CallStatistics']
      *
      * @return events[]
      */
 	public function getCallStatistics()
 	{
-		if ($this->hasTable() && array_key_exists('DeviceCallStatistics', $this->_tables)) {
-			return $this->_tables['DeviceCallStatistics'];
+		$res = array();
+		if ($this->hasTable() && array_key_exists('CallStatistics', $this->_tables)) {
+			$res = $this->_tables['CallStatistics'];
 		}
-		return array();
+		return $res;
 	}
 
 }

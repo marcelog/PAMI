@@ -542,11 +542,11 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 		$response = array(
 			'Response: Success',
 			'EventList: start',
-			'actionid: 1432.123',
+			'ActionId: 1432.123',
 			'Message: SCCPShowDevice list will follow',
 			'',
 			'Event: SCCPShowDevice',
-			'actionid: 1432.123',
+			'ActionId: 1432.123',
 			'MACAddress: SEP0023043403F9',
 			'ProtocolVersion: Supported \'22\', In Use \'22\'',
 			'ProtocolInUse: SCCP Version 22',
@@ -613,11 +613,11 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 			'conflistActive: off',
 			'',
 			'Event: TableStart',
-			'actionid: 1432.123',
-			'TableName: DeviceButtons',
+			'ActionId: 1432.123',
+			'TableName: Buttons',
 			'',
 			'Event: SCCPDeviceButtonEntry',
-			'actionid: 1432.123',
+			'ActionId: 1432.123',
 			'ChannelType: SCCP',
 			'ChannelObjectType: DeviceButton',
 			'Id: 1',
@@ -629,7 +629,7 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 			'Default: Yes',
 			'',
 			'Event: SCCPDeviceButtonEntry',
-			'actionid: 1432.123',
+			'ActionId: 1432.123',
 			'ChannelType: SCCP',
 			'ChannelObjectType: DeviceButton',
 			'Id: 2',
@@ -641,16 +641,16 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 			'Default: No',
 			'',
 			'Event: TableEnd',
-			'actionid: 1432.123',
-			'TableName: DeviceButtons',
+			'ActionId: 1432.123',
+			'TableName: Buttons',
 			'TableEntries: 2',
 			'',
 			'Event: TableStart',
-			'actionid: 1432.123',
-			'TableName: DeviceLineButtons',
+			'ActionId: 1432.123',
+			'TableName: LineButtons',
 			'',
 			'Event: SCCPDeviceLineEntry',
-			'actionid: 1432.123',
+			'ActionId: 1432.123',
 			'ChannelType: SCCP',
 			'ChannelObjectType: DeviceLine',
 			'Id: 1',
@@ -660,8 +660,8 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 			'CfwdType: None',
 			'CfwdNumber: ',
 			'',
-			'Event:  SCCPDeviceLineEntry',
-			'actionid: 1432.123',
+			'Event: SCCPDeviceLineEntry',
+			'ActionId: 1432.123',
 			'ChannelType: SCCP',
 			'ChannelObjectType: DeviceLine',
 			'Id: 2',
@@ -671,17 +671,17 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 			'CfwdType: None',
 			'CfwdNumber: ',
 			'',
-			'Event:  TableEnd',
-			'actionid: 1432.123',
-			'TableName: DeviceLineButtons',
+			'Event: TableEnd',
+			'ActionId: 1432.123',
+			'TableName: LineButtons',
 			'TableEntries: 2',
 			'',
-			'Event:  TableStart',
-			'actionid: 1432.123',
-			'TableName: DeviceSpeeddialButtons',
+			'Event: TableStart',
+			'ActionId: 1432.123',
+			'TableName: SpeeddialButtons',
 			'',
-			'Event:  SCCPDeviceSpeeddialEntry',
-			'actionid: 1432.123',
+			'Event: SCCPDeviceSpeeddialEntry',
+			'ActionId: 1432.123',
 			'ChannelType: SCCP',
 			'ChannelObjectType: DeviceSpeeddial',
 			'Id: 3',
@@ -689,8 +689,8 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 			'Number: 98011',
 			'Hint: 98011@hints',
 			'',
-			'Event:  SCCPDeviceSpeeddialEntry',
-			'actionid: 1432.123',
+			'Event: SCCPDeviceSpeeddialEntry',
+			'ActionId: 1432.123',
 			'ChannelType: SCCP',
 			'ChannelObjectType: DeviceSpeeddial',
 			'Id: 4',
@@ -698,17 +698,17 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 			'Number: 98031',
 			'Hint: 98031@hints',
 			'',
-			'Event:  TableEnd',
-			'actionid: 1432.123',
-			'TableName: DeviceSpeeddialButtons',
+			'Event: TableEnd',
+			'ActionId: 1432.123',
+			'TableName: SpeeddialButtons',
 			'TableEntries: 2',
 			'',
-			'Event:  TableStart',
-			'actionid: 1432.123',
-			'TableName: DeviceFeatureButtons',
+			'Event: TableStart',
+			'ActionId: 1432.123',
+			'TableName: FeatureButtons',
 			'',
-			'Event:  SCCPDeviceFeatureEntry',
-			'actionid: 1432.123',
+			'Event: SCCPDeviceFeatureEntry',
+			'ActionId: 1432.123',
 			'ChannelType: SCCP',
 			'ChannelObjectType: DeviceFeature',
 			'Id: 8',
@@ -716,26 +716,26 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 			'Options: 500',
 			'Status: 0',
 			'',
-			'Event:  TableEnd',
-			'actionid: 1432.123',
-			'TableName: DeviceFeatureButtons',
+			'Event: TableEnd',
+			'ActionId: 1432.123',
+			'TableName: FeatureButtons',
 			'TableEntries: 1',
 			'',
-			'Event:  TableStart',
-			'actionid: 1432.123',
-			'TableName: DeviceServiceURLButtons',
+			'Event: TableStart',
+			'ActionId: 1432.123',
+			'TableName: ServiceURLButtons',
 			'',
-			'Event:  TableEnd',
-			'actionid: 1432.123',
-			'TableName: DeviceServiceURLButtons',
+			'Event: TableEnd',
+			'ActionId: 1432.123',
+			'TableName: ServiceURLButtons',
 			'TableEntries: 0',
 			'',
-			'Event:  TableStart',
-			'actionid: 1432.123',
-			'TableName: DeviceCallStatistics',
+			'Event: TableStart',
+			'ActionId: 1432.123',
+			'TableName: CallStatistics',
 			'',
-			'Event:  SCCPDeviceStatisticsEntry',
-			'actionid: 1432.123',
+			'Event: SCCPDeviceStatisticsEntry',
+			'ActionId: 1432.123',
 			'ChannelType: SCCP',
 			'ChannelObjectType: DeviceStatistics',
 			'Type: LAST',
@@ -752,8 +752,8 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 			'rConceal: 0.000000',
 			'sConceal: 0',
 			'',
-			'Event:  SCCPDeviceStatisticsEntry',
-			'actionid: 1432.123',
+			'Event: SCCPDeviceStatisticsEntry',
+			'ActionId: 1432.123',
 			'ChannelType: SCCP',
 			'ChannelObjectType: DeviceStatistics',
 			'Type: AVG',
@@ -770,13 +770,13 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 			'rConceal: 0.000000',
 			'sConceal: 0',
 			'',
-			'Event:  TableEnd',
-			'actionid: 1432.123',
-			'TableName: DeviceCallStatistics',
+			'Event: TableEnd',
+			'ActionId: 1432.123',
+			'TableName: CallStatistics',
 			'TableEntries: 2',
 			'',
-			'Event:  SCCPShowDeviceComplete',
-			'actionid: 1432.123',
+			'Event: SCCPShowDeviceComplete',
+			'ActionId: 1432.123',
 			'EventList: Complete',
 			'ListItems: 291',
 			'ListTableItems: 6',
@@ -863,7 +863,7 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 		$this->assertTrue(is_array($result->getCodecsPreference()));
 
 		$this->assertTrue($result->hasTable());
-//		$this->assertEquals(array('DeviceButtons','DeviceLineButtons','DeviceSpeeddialButtons','DeviceFeatureButtons','DeviceServiceURLButtons','DeviceCallStatistics'), $result->getTableNames());
+		$this->assertEquals(array('Buttons','LineButtons','SpeeddialButtons','FeatureButtons','ServiceURLButtons','CallStatistics'), $result->getTableNames());
 		$this->assertTrue(is_array($result->getTableNames()));
 		$subtablenamess=array('Buttons','LineButtons','SpeeddialButtons','FeatureButtons','ServiceURLButtons','CallStatistics'); 
 		foreach ($subtablenamess as $subtablename) {
@@ -873,7 +873,7 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 		$variables = $result->getVariables();
 		$this->assertTrue(is_array($variables));
 		$this->assertEquals($variables, array());
-		$this->assertEquals('DeviceButtons', $result->getButtons()['Name']);
+		$this->assertEquals('Buttons', $result->getButtons()['Name']);
 	}
 
 
@@ -1055,20 +1055,18 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 			$method='get' . $key;
 			$this->assertEquals($result->$method(), $value, 'value[' . $result->$method() . '] of key: "' . $key . '" does not match expected ['. $value . "]\n");
 		} 
-//		$this->assertTrue(is_array($result->getDenyPermit()));
-//		$this->assertTrue(is_array($result->getCapabilities()));
-//		$this->assertTrue(is_array($result->getCodecsPreference()));
+		$this->assertTrue(is_array($result->getCallGroup()));
+		$this->assertTrue(is_array($result->getPickupGroup()));
+		$this->assertTrue(is_array($result->getNamedCallGroup()));
+		$this->assertTrue(is_array($result->getNamedPickupGroup()));
 
 		$this->assertTrue($result->hasTable());
 		$this->assertTrue(is_array($result->getTableNames()));
-//	    $subtablenamess=array('Buttons','LineButtons','SpeeddialButtons','FeatureButtons','ServiceURLButtons','CallStatistics'); 
-//	    foreach ($subtablenamess as $subtablename) {
-//	       	$getmethod = 'get' . $subtablename;
-//	       	$this->assertTrue(is_array($result->$getmethod()));
-//	    }
+		$this->assertTrue(is_array($result->getMailboxes()));
+		$this->assertTrue(is_array($result->getAttachedDevices()));
 		$variables = $result->getVariables();
 		$this->assertTrue(is_array($variables));
-		$this->assertEquals($variables, array());
+		$this->assertEquals($variables, array());		// no variabled defined on this line so an empty array is returned
 	}
 
 

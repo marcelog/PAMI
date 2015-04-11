@@ -200,12 +200,12 @@ try
 	$tableNames = $response->getTableNames();
 	foreach ($tableNames as $tableName) {
 		print "Table: $tableName\n";
+		$method = 'get' . $tableName;
+		$table = $response->$method();
+		foreach ($table as $entry) {
+			print_r ($entry);
+		} 
 	}
-	$buttontable = $response->getButtons();
-	print("TableName: " . $buttontable['Name'] . "\n");
-	foreach ($buttontable as $button) {
-		print_r ($button);
-	} 
 //	var_dump($a->send(new SCCPShowLineAction("98011")));
 //	var_dump($a->send(new SCCPShowChannelsAction()));
 //	var_dump($a->send(new SCCPShowSessionsAction()));

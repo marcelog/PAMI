@@ -446,4 +446,46 @@ class SCCPShowLineResponse extends SCCPGenericResponse
     {
         return intval($this->_getEventKey('MessageWaitingOld'));
     }
+
+	/**
+	 * Returns events[] related to AttachedDevices from the tables['AttachedDevices']
+	 *
+	 * @return events[]
+	 */
+	public function getAttachedDevices()
+	{
+		$res = array();
+		if ($this->hasTable() && array_key_exists('AttachedDevices', $this->_tables)) {
+			$res = $this->_tables['AttachedDevices'];
+		}
+		return $res;
+	}
+
+	/**
+	 * Returns events[] related to Mailboxes from the tables['Mailboxes']
+	 *
+	 * @return events[]
+	 */
+	public function getMailboxes()
+	{
+		$res = array();
+		if ($this->hasTable() && array_key_exists('Mailboxes', $this->_tables)) {
+			$res = $this->_tables['Mailboxes'];
+		}
+		return $res;
+	}
+
+	/**
+	 * Returns events[] related to Variables from the tables['Variables']
+	 *
+	 * @return events[]
+	 */
+	public function getVariables()
+	{
+		$res = array();
+		if ($this->hasTable() && array_key_exists('Variables', $this->_tables)) {
+			$res = $this->_tables['Variables'];
+		}
+		return $res;
+	}
 }
