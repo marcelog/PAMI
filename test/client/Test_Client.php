@@ -39,6 +39,8 @@ namespace {
     $mockFgets = false;
     $mockFgetsCount = 0;
     $mockFreadReturn = false;
+    $mock_stream_timeout = false;
+    $mockRTimeout = 0;
     $standardAMIStart = array(
    		'Asterisk Call Manager/1.1',
    		'Response: Success',
@@ -91,14 +93,30 @@ namespace PAMI\Client\Impl {
     function stream_socket_shutdown() {
         return true;
     }
-    function stream_set_blocking() {
-        global $mock_stream_set_blocking;
-        if (isset($mock_stream_set_blocking) && $mock_stream_set_blocking === true) {
-            return true;
-        } else {
-            return call_user_func_array('\stream_set_blocking', func_get_args());
-        }
-    }
+	function stream_set_blocking() {
+		global $mock_stream_set_blocking;
+		if (isset($mock_stream_set_blocking) && $mock_stream_set_blocking === true) {
+			return true;
+		} else {
+			return call_user_func_array('\stream_set_blocking', func_get_args());
+		}
+	}
+	function stream_set_timeout() {
+		global $mockRTimeout;
+		$args = func_get_args();
+		$mockRTimeout = $args[1];
+		return true;
+	}
+	function stream_get_meta_data() {
+		global $mockRTimeout;
+		global $mock_stream_timeout;
+		if (isset($mock_stream_timeout) && $mock_stream_timeout === true) {
+			sleep($mockRTimeout);
+			return array('timed_out' => true);
+		} else {
+			return call_user_func_array('\stream_get_meta_data', func_get_args());
+		}
+	}
     function fwrite() {
         global $mockFwrite;
         global $mockFwriteCount;
@@ -160,6 +178,7 @@ namespace PAMI\Client\Impl {
             return call_user_func_array('\fread', func_get_args());
         }
     }
+
     function setFgetsMock(array $readValues, $writeValues)
     {
         global $mockFgets;
@@ -639,11 +658,13 @@ class Test_Client extends \PHPUnit_Framework_TestCase
     {
         global $mock_stream_socket_client;
         global $mock_stream_set_blocking;
+        global $mock_stream_timeout;
         global $mockTime;
         global $standardAMIStart;
         $mockTime = true;
         $mock_stream_socket_client = true;
         $mock_stream_set_blocking = true;
+        $mock_stream_timeout = true;
         $options = array(
             'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties',
         	'host' => '2.3.4.5',
@@ -651,7 +672,7 @@ class Test_Client extends \PHPUnit_Framework_TestCase
         	'port' => 9999,
         	'username' => 'asd',
         	'secret' => 'asd',
-            'connect_timeout' => 10,
+            'connect_timeout' => 3,
         	'read_timeout' => 1
         );
         $write = array(
@@ -663,7 +684,7 @@ class Test_Client extends \PHPUnit_Framework_TestCase
         setFgetsMock(array(10, 4), $write);
         $start = \time();
         $client->send(new \PAMI\Message\Action\LoginAction('asd', 'asd'));
-        $this->assertEquals(\time() - $start, 10);
+        $this->assertEquals(\time() - $start, 3);
     }
     /**
      * @test
@@ -843,7 +864,7 @@ class Test_Client extends \PHPUnit_Framework_TestCase
     {
         $now = time();
         $action = new \PAMI\Message\Action\LoginAction('a', 'b');
-        $this->assertEquals($now, $action->getCreatedDate());
+        $this->assertGreaterThanOrEqual($now, $action->getCreatedDate());
         $action->setVariable('variable', 'value');
         $this->assertEquals($action->getVariable('variable'), 'value');
         $this->assertNull($action->getVariable('variable2'));
