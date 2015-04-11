@@ -248,11 +248,6 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
      */
     public function can_get_SCCPShowGlobals_Skipped()
     {
-        $write = array(implode("\r\n", array(
-            'action: SCCPShowGlobals',
-            'actionid: 1432.123',
-            ''
-        )));
         $response = array(
             'Response: Success',
             'Message: SCCPShowGlobals',
@@ -271,6 +266,11 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
      */
     public function can_get_SCCPShowGlobals()
     {
+        $write = array(implode("\r\n", array(
+            'action: SCCPShowGlobals',
+            'actionid: 1432.123',
+            ''
+        )));
         $responseValues = array(
         	'SCCPShowGlobals' => array(
 				'ConfigFile' => 'sccp.conf',
@@ -539,40 +539,363 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 			'devicename: SEP001122334455',
 			''
 		)));
-		$action = new \PAMI\Message\Action\SCCPShowDeviceAction('SEP001122334455');
-		$result = $this->_start($write, $action);
-	}
-
-	/**
-	 * @test
-	 */
-	public function can_get_SCCPShowDevice_Additional()
-	{
-		$write = array(implode("\r\n", array(
-			'action: SCCPShowDevice',
-			'actionid: 1432.123',
-			'devicename: SEP001122334455',
-			''
-		)));
 		$response = array(
 			'Response: Success',
 			'EventList: start',
-			'ActionID: 1432.123',
+			'ActionId: 1432.123',
 			'Message: SCCPShowDevice list will follow',
 			'',
 			'Event: SCCPShowDevice',
-			'ActionID: 1432.123',
+			'ActionId: 1432.123',
 			'MACAddress: SEP0023043403F9',
+			'ProtocolVersion: Supported \'22\', In Use \'22\'',
+			'ProtocolInUse: SCCP Version 22',
+			'DeviceFeatures: 0x85720016,10000101011100100000000000010110',
+			'Tokenstate: No Token',
+			'Keepalive: 60',
+			'RegistrationState: OK(5)',
+			'State: On Hook(0)',
+			'MWILight: On(2)',
+			'MWIHandsetLight: off',
+			'Description: Phone Féour',
+			'ConfigPhoneType: bl7970',
+			'SkinnyPhoneType: Cisco 7970(30006)',
+			'SoftkeySupport: yes',
+			'Softkeyset: my_softkeyset (0x7f2f08020af0)',
+			'BTemplateSupport: yes',
+			'linesRegistered: yes',
+			'ImageVersion: term70.default',
+			'TimezoneOffset: 0',
+			'Capabilities: (slin16 (25), g722/64k (6), ulaw/64k (4), alaw/64k (2), g722/56k (7), g722/48k (8), g729b (15), g729ab (16), g729 (11), g729a (12), rfc2833 (257))',
+			'CodecsPreference: (g722/64k (6), g722/56k (7), g722/48k (8), alaw/64k (2), alaw/56k (3), ulaw/64k (4), ulaw/56k (5), g729 (11), g729a (12), g729b (15), g729ab (16), g729/annex/b (85))',
+			'AudioTOS: 184',
+			'AudioCOS: 6',
+			'VideoTOS: 136',
+			'VideoCOS: 5',
+			'DNDFeatureEnabled: yes',
+			'DNDStatus: Disabled',
+			'DNDAction: Reject',
+			'CanTransfer: on',
+			'CanPark: on',
+			'CanCFWDALL: on',
+			'CanCFWBUSY: off',
+			'CanCFWNOANSWER: off',
+			'AllowRinginNotification: no',
+			'PrivateSoftkey: on',
+			'DtmfMode: RFC2833',
+			'Nat: (Auto)Off',
+			'Videosupport: no',
+			'DirectRTP: off',
+			'TrustPhoneIpDeprecated: off',
+			'BindAddress: [::ffff:10.15.15.205]:52899',
+			'ServerAddress: [::ffff:10.15.15.195]:52781',
+			'DenyPermit: deny:0.0.0.0/0.0.0.0,permit:10.15.15.0/255.255.255.0,permit:127.0.0.0/255.255.255.0,',
+			'PermitHosts: ',
+			'EarlyRTP: Ringout',
+			'DeviceStateAcc: Off Hook',
+			'LastUsedAccessory: Handset',
+			'LastDialedNumber: ',
+			'DefaultLineInstance: 1',
+			'CustomBackgroundImage: http://10.15.15.195:8088/static/strand.png',
+			'CustomRingTone: ---',
+			'UsePlacedCalls: on',
+			'PendingUpdate: off',
+			'PendingDelete: off',
+			'DirectedPickup: on',
+			'PickupContext: sccp (exists)',
+			'PickupModeAnswer: on',
+			'allowConference: on',
+			'confPlayGeneralAnnounce: on',
+			'confPlayPartAnnounce: on',
+			'confMuteOnEntry: on',
+			'confMusicOnHoldClass: default',
+			'confShowConflist: on',
+			'conflistActive: off',
+			'',
+			'Event: TableStart',
+			'ActionId: 1432.123',
+			'TableName: Buttons',
+			'',
+			'Event: SCCPDeviceButtonEntry',
+			'ActionId: 1432.123',
+			'ChannelType: SCCP',
+			'ChannelObjectType: DeviceButton',
+			'Id: 1',
+			'Inst: 1',
+			'TypeStr: Line',
+			'Type: 0',
+			'pendUpdt: No',
+			'pendDel: No',
+			'Default: Yes',
+			'',
+			'Event: SCCPDeviceButtonEntry',
+			'ActionId: 1432.123',
+			'ChannelType: SCCP',
+			'ChannelObjectType: DeviceButton',
+			'Id: 2',
+			'Inst: 2',
+			'TypeStr: Line',
+			'Type: 0',
+			'pendUpdt: No',
+			'pendDel: No',
+			'Default: No',
+			'',
+			'Event: TableEnd',
+			'ActionId: 1432.123',
+			'TableName: Buttons',
+			'TableEntries: 2',
+			'',
+			'Event: TableStart',
+			'ActionId: 1432.123',
+			'TableName: LineButtons',
+			'',
+			'Event: SCCPDeviceLineEntry',
+			'ActionId: 1432.123',
+			'ChannelType: SCCP',
+			'ChannelObjectType: DeviceLine',
+			'Id: 1',
+			'Name: 98041',
+			'Suffix: ',
+			'Label: Phone 4 Line 1',
+			'CfwdType: None',
+			'CfwdNumber: ',
+			'',
+			'Event: SCCPDeviceLineEntry',
+			'ActionId: 1432.123',
+			'ChannelType: SCCP',
+			'ChannelObjectType: DeviceLine',
+			'Id: 2',
+			'Name: 98099',
+			'Suffix: 4',
+			'Label: Shared',
+			'CfwdType: None',
+			'CfwdNumber: ',
+			'',
+			'Event: TableEnd',
+			'ActionId: 1432.123',
+			'TableName: LineButtons',
+			'TableEntries: 2',
+			'',
+			'Event: TableStart',
+			'ActionId: 1432.123',
+			'TableName: SpeeddialButtons',
+			'',
+			'Event: SCCPDeviceSpeeddialEntry',
+			'ActionId: 1432.123',
+			'ChannelType: SCCP',
+			'ChannelObjectType: DeviceSpeeddial',
+			'Id: 3',
+			'Name: 98011',
+			'Number: 98011',
+			'Hint: 98011@hints',
+			'',
+			'Event: SCCPDeviceSpeeddialEntry',
+			'ActionId: 1432.123',
+			'ChannelType: SCCP',
+			'ChannelObjectType: DeviceSpeeddial',
+			'Id: 4',
+			'Name: 98031',
+			'Number: 98031',
+			'Hint: 98031@hints',
+			'',
+			'Event: TableEnd',
+			'ActionId: 1432.123',
+			'TableName: SpeeddialButtons',
+			'TableEntries: 2',
+			'',
+			'Event: TableStart',
+			'ActionId: 1432.123',
+			'TableName: FeatureButtons',
+			'',
+			'Event: SCCPDeviceFeatureEntry',
+			'ActionId: 1432.123',
+			'ChannelType: SCCP',
+			'ChannelObjectType: DeviceFeature',
+			'Id: 8',
+			'Name: call forwared',
+			'Options: 500',
+			'Status: 0',
+			'',
+			'Event: TableEnd',
+			'ActionId: 1432.123',
+			'TableName: FeatureButtons',
+			'TableEntries: 1',
+			'',
+			'Event: TableStart',
+			'ActionId: 1432.123',
+			'TableName: ServiceURLButtons',
+			'',
+			'Event: TableEnd',
+			'ActionId: 1432.123',
+			'TableName: ServiceURLButtons',
+			'TableEntries: 0',
+			'',
+			'Event: TableStart',
+			'TableName: Variables',
+			'ActionID: 1432.123',
+			'',
+			'Event: SCCPVariableEntry',
+			'ChannelType: SCCP',
+			'ChannelObjectType: Variable',
+			'ActionID: 1432.123',
+			'Name: testvariable1',
+			'Value: myval1',
+			'',
+			'Event: SCCPVariableEntry',
+			'ChannelType: SCCP',
+			'ChannelObjectType: Variable',
+			'ActionID: 1432.123',
+			'Name: testvariable2',
+			'Value: myval2',
+			'',
+			'Event: TableEnd',
+			'TableName: Variables',
+			'TableEntries: 2',
+			'ActionID: 1432.123',
+			'',
+			'Event: TableStart',
+			'ActionId: 1432.123',
+			'TableName: CallStatistics',
+			'',
+			'Event: SCCPDeviceStatisticsEntry',
+			'ActionId: 1432.123',
+			'ChannelType: SCCP',
+			'ChannelObjectType: DeviceStatistics',
+			'Type: LAST',
+			'Calls: 0',
+			'PcktSnt: 0',
+			'PcktRcvd: 0',
+			'Lost: 0',
+			'Jitter: 0',
+			'Latency: 0',
+			'Quality: 0.000000',
+			'avgQual: 0.000000',
+			'meanQual: 0.000000',
+			'maxQual: 0.000000',
+			'rConceal: 0.000000',
+			'sConceal: 0',
+			'',
+			'Event: SCCPDeviceStatisticsEntry',
+			'ActionId: 1432.123',
+			'ChannelType: SCCP',
+			'ChannelObjectType: DeviceStatistics',
+			'Type: AVG',
+			'Calls: 0',
+			'PcktSnt: 0',
+			'PcktRcvd: 0',
+			'Lost: 0',
+			'Jitter: 0',
+			'Latency: 0',
+			'Quality: 0.000000',
+			'avgQual: 0.000000',
+			'meanQual: 0.000000',
+			'maxQual: 0.000000',
+			'rConceal: 0.000000',
+			'sConceal: 0',
+			'',
+			'Event: TableEnd',
+			'ActionId: 1432.123',
+			'TableName: CallStatistics',
+			'TableEntries: 2',
 			'',
 			'Event: SCCPShowDeviceComplete',
-			'ActionID: 1432.123',
+			'ActionId: 1432.123',
 			'EventList: Complete',
-			'ListItems: 304',
-			'',
+			'ListItems: 291',
+			'ListTableItems: 6',
+			''
 		);
 		$action = new \PAMI\Message\Action\SCCPShowDeviceAction('SEP001122334455');
 		$result = $this->_start_action($write, $action, $response);
+		$this->assertTrue($result instanceof \PAMI\Message\Response\SCCPShowDeviceResponse);
+        $this->assertTrue($result->isSuccess());
+        $this->assertTrue($result->isList());
+		$events = $result->getEvents(); 
+		$keyvalues = array(
+			'MACAddress' => 'SEP0023043403F9',
+			'ProtocolVersion' => 'Supported \'22\', In Use \'22\'',
+			'ProtocolInUse' => 'SCCP Version 22',
+			'DeviceFeatures' => '0x85720016,10000101011100100000000000010110',
+			'Tokenstate' => 'No Token',
+			'Keepalive' => 60,
+			'RegistrationState' => 'OK(5)',
+			'State' => 'On Hook(0)',
+			'MWILight' => 'On(2)',
+			'MWIHandsetLight' => false,
+			'Description' => 'Phone Féour',
+			'ConfigPhoneType' => 'bl7970',
+			'SkinnyPhoneType' => 'Cisco 7970(30006)',
+			'SoftkeySupport' => true,
+			'Softkeyset' => 'my_softkeyset (0x7f2f08020af0)',
+			'BTemplateSupport' => true,
+			'linesRegistered' => true,
+			'ImageVersion' => 'term70.default',
+			'TimezoneOffset' => 0,
+			//				'Capabilities' => '(slin16 (25), g722/64k (6), ulaw/64k (4), alaw/64k (2), g722/56k (7), g722/48k (8), g729b (15), g729ab (16), g729 (11), g729a (12), rfc2833 (257))',
+			//				'CodecsPreference' => '(g722/64k (6), g722/56k (7), g722/48k (8), alaw/64k (2), alaw/56k (3), ulaw/64k (4), ulaw/56k (5), g729 (11), g729a (12), g729b (15), g729ab (16), g729/annex/b (85))',
+			'AudioTOS' => 184,
+			'AudioCOS' => 6,
+			'VideoTOS' => 136,
+			'VideoCOS' => 5,
+			'DNDFeatureEnabled' => true,
+			'DNDStatus' => 'Disabled',
+			'DNDAction' => 'Reject',
+			'CanTransfer' => true,
+			'CanPark' => true,
+			'CanCFWDALL' => true,
+			'CanCFWBUSY' => false,
+			'CanCFWNOANSWER' => false,
+			'AllowRinginNotification' => false,
+			'PrivateSoftkey' => true,
+			'DtmfMode' => 'RFC2833',
+			'Nat' => '(Auto)Off',
+			'Videosupport' => false,
+			'DirectRTP' => false,
+			'BindAddress' => '[::ffff:10.15.15.205]:52899',
+			'ServerAddress' => '[::ffff:10.15.15.195]:52781',
+			//				'DenyPermit' => 'deny:0.0.0.0/0.0.0.0,permit:10.15.15.0/255.255.255.0,permit:127.0.0.0/255.255.255.0,',
+			'PermitHosts' => '',
+			'EarlyRTP' => 'Ringout',
+			'DeviceStateAcc' => 'Off Hook',
+			'LastUsedAccessory' => 'Handset',
+			'LastDialedNumber' => '',
+			'DefaultLineInstance' => 1,
+			'CustomBackgroundImage' => 'http://10.15.15.195:8088/static/strand.png',
+			'CustomRingTone' => '---',
+			'UsePlacedCalls' => true,
+			'PendingUpdate' => false,
+			'PendingDelete' => false,
+			'DirectedPickup' => true,
+			'PickupContext' => 'sccp (exists)',
+			'PickupModeAnswer' => true,
+			'allowConference' => true,
+			'confPlayGeneralAnnounce' => true,
+			'confPlayPartAnnounce' => true,
+			'confMuteOnEntry' => true,
+			'confMusicOnHoldClass' => 'default',
+			'confShowConflist' => true,
+			'conflistActive' => false
+		);
+		$this->assertEquals($result->getDeviceName(), "SEP0023043403F9"); 
+		foreach ($keyvalues as $key => $value) {
+			$method='get' . $key;
+			$this->assertEquals($result->$method(), $value, 'value[' . $result->$method() . '] of key: "' . $key . '" does not match expected ['. $value . "]\n");
+		} 
+		$this->assertTrue(is_array($result->getDenyPermit()));
+		$this->assertTrue(is_array($result->getCapabilities()));
+		$this->assertTrue(is_array($result->getCodecsPreference()));
+
+		$this->assertTrue($result->hasTable());
+		$this->assertEquals(array('Buttons','LineButtons','SpeeddialButtons','FeatureButtons','ServiceURLButtons','Variables','CallStatistics'), $result->getTableNames());
+		$this->assertTrue(is_array($result->getTableNames()));
+		$subtablenamess=array('Buttons','LineButtons','SpeeddialButtons','FeatureButtons','ServiceURLButtons','Variables','CallStatistics'); 
+		foreach ($subtablenamess as $subtablename) {
+			$getmethod = 'get' . $subtablename;
+			$this->assertTrue(is_array($result->$getmethod()));
+		}
+		$this->assertEquals('Buttons', $result->getButtons()['Name']);
 	}
+
 
 	/**
 	 * @test
@@ -589,9 +912,9 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
-	 * @test
+	 * @\\test
 	 */
-	public function can_get_SCCPShowLine()
+	public function can_get_SCCPShowLine_bak()
 	{
 		$write = array(implode("\r\n", array(
 			'action: SCCPShowLine',
@@ -602,6 +925,192 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 		$action = new \PAMI\Message\Action\SCCPShowLineAction('MyLine');
 		$result = $this->_start($write, $action);
 	}
+
+	/**
+	 * @test
+	 */
+	public function can_get_SCCPShowLine()
+	{
+		$write = array(implode("\r\n", array(
+			'action: SCCPShowLine',
+			'actionid: 1432.123',
+			'linename: 98011',
+			''
+		)));
+		$response = array(
+			'Response: Success',
+			'ActionID: 1432.123',
+			'EventList: start',
+			'Message: SCCPShowLine list will follow',
+			'',
+			'Event: SCCPShowLine',
+			'ActionID: 1432.123',
+			'Name: 98011',
+			'Description: chan-sccp.net',
+			'Label: Diederik de Groot (98011)',
+			'ID: 0005',
+			'Pin: 9944',
+			'VoiceMailNumber: *998011',
+			'TransferToVoicemail: 699',
+			'MeetMeEnabled: on',
+			'MeetMeNumber: ',
+			'MeetMeOptions: qxd',
+			'Context: sccp (exists)',
+			'Language: nl',
+			'AccountCode: 98011',
+			'Musicclass: default',
+			'AmaFlags: 0',
+			'CallGroup: 1',
+			'PickupGroup: 1',
+			'NamedCallGroup: engineering,sales,netgroup,protgroup',
+			'NamedPickupGroup: sales',
+			'ParkingLot: default',
+			'CallerIDName: Diederik de Groot (98011)',
+			'CallerIDNumber: 98011',
+			'IncomingCallsLimit: 3',
+			'ActiveChannelCount: 0',
+			'SecDialtoneDigits: 9',
+			'SecDialtone: 0x22',
+			'EchoCancellation: on',
+			'SilenceSuppression: off',
+			'CanTransfer: on',
+			'DNDAction: Reject',
+			'IsRealtimeLine: on',
+			'PendingDelete: off',
+			'PendingUpdate: off',
+			'RegistrationExtension: ',
+			'RegistrationContext: ',
+			'AdhocNumberAssigned: on',
+			'MessageWaitingNew: 0',
+			'MessageWaitingOld: 0',
+			'',
+			'Event: TableStart',
+			'TableName: AttachedDevices',
+			'ActionID: 1432.123',
+			'',
+			'Event: SCCPAttachedDeviceEntry',
+			'ChannelType: SCCP',
+			'ChannelObjectType: AttachedDevice',
+			'ActionID: 1432.123',
+			'DeviceName: SEP001B54CA499B',
+			'CfwdType: ',
+			'CfwdNumber: ',
+			'',
+			'Event: TableEnd',
+			'TableName: AttachedDevices',
+			'TableEntries: 1',
+			'ActionID: 1432.123',
+			'',
+			'Event: TableStart',
+			'TableName: Mailboxes',
+			'ActionID: 1432.123',
+			'',
+			'Event: SCCPMailboxEntry',
+			'ChannelType: SCCP',
+			'ChannelObjectType: Mailbox',
+			'ActionID: 1432.123',
+			'mailbox: 98011',
+			'context: default',
+			'',
+			'Event: TableEnd',
+			'TableName: Mailboxes',
+			'TableEntries: 1',
+			'ActionID: 1432.123',
+			'',
+			'Event: TableStart',
+			'TableName: Variables',
+			'ActionID: 1432.123',
+			'',
+			'Event: SCCPVariableEntry',
+			'ChannelType: SCCP',
+			'ChannelObjectType: Variable',
+			'ActionID: 1432.123',
+			'Name: testvariable1',
+			'Value: myval1',
+			'',
+			'Event: SCCPVariableEntry',
+			'ChannelType: SCCP',
+			'ChannelObjectType: Variable',
+			'ActionID: 1432.123',
+			'Name: testvariable2',
+			'Value: myval2',
+			'',
+			'Event: TableEnd',
+			'TableName: Variables',
+			'TableEntries: 2',
+			'ActionID: 1432.123',
+			'',
+			'Event: SCCPShowLineComplete',
+			'EventList: Complete',
+			'ListItems: 68',
+			'ListTableItems: 2',
+			'ActionID: 1432.123',
+			''
+		);
+		$action = new \PAMI\Message\Action\SCCPShowLineAction('98011');
+		$result = $this->_start_action($write, $action, $response);
+		$this->assertTrue($result instanceof \PAMI\Message\Response\SCCPShowLineResponse);
+        $this->assertTrue($result->isSuccess());
+		$this->assertTrue($result->isList());
+		$events = $result->getEvents(); 
+		$keyvalues = array(
+			'Name' => '98011',
+			'Description' => 'chan-sccp.net',
+			'Label' => 'Diederik de Groot (98011)',
+			'ID' => '0005',
+			'Pin' => '9944',
+			'VoiceMailNumber' => '*998011',
+			'TransferToVoicemail' => '699',
+			'MeetMeEnabled' => true,
+			'MeetMeNumber' => '',
+			'MeetMeOptions' => 'qxd',
+			'Context' => 'sccp (exists)',
+			'Language' => 'nl',
+			'AccountCode' => '98011',
+			'Musicclass' => 'default',
+			'AmaFlags' => 0,
+			//'CallGroup' => 1,
+			//'PickupGroup' => 1,
+			//'NamedCallGroup' => 'engineering,sales,netgroup,protgroup',
+			//'NamedPickupGroup' => 'sales',
+			'ParkingLot' => 'default',
+			'CallerIDName' => 'Diederik de Groot (98011)',
+			'CallerIDNumber' => '98011',
+			'IncomingCallsLimit' => 3,
+			'ActiveChannelCount' => 0,
+			'SecDialtoneDigits' => 9,
+			'SecDialtone' => '0x22',
+			'EchoCancellation' => true,
+			'SilenceSuppression' => false,
+			'CanTransfer' => true,
+			'DNDAction' => 'Reject',
+			'IsRealtimeLine' => true,
+			'PendingDelete' => false,
+			'PendingUpdate' => false,
+			'RegistrationExtension' => '',
+			'RegistrationContext' => '',
+			'AdhocNumberAssigned' => true,
+			'MessageWaitingNew' => 0,
+			'MessageWaitingOld' => 0,
+		);
+		$this->assertEquals($result->getName(), "98011"); 
+		foreach ($keyvalues as $key => $value) {
+			$method='get' . $key;
+			$this->assertEquals($result->$method(), $value, 'value[' . $result->$method() . '] of key: "' . $key . '" does not match expected ['. $value . "]\n");
+		} 
+		$this->assertTrue(is_array($result->getCallGroup()));
+		$this->assertTrue(is_array($result->getPickupGroup()));
+		$this->assertTrue(is_array($result->getNamedCallGroup()));
+		$this->assertTrue(is_array($result->getNamedPickupGroup()));
+
+		$this->assertTrue($result->hasTable());
+		$this->assertEquals(array('AttachedDevices','Mailboxes','Variables'), $result->getTableNames());
+		$this->assertTrue(is_array($result->getTableNames()));
+		$this->assertTrue(is_array($result->getAttachedDevices()));
+		$this->assertTrue(is_array($result->getMailboxes()));
+		$this->assertTrue(is_array($result->getVariables()));
+	}
+
 
 	/**
 	 * @test
@@ -1481,7 +1990,7 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 	    }
 	    $response[] = '';
 
-		$action = new $actionClass;
+		$action = new $actionClass();
 		$result = $this->_start_action($write, $action, $response, true);
 
 		// cheating on timeout ?...

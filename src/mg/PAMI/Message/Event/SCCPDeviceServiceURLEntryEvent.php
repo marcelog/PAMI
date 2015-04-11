@@ -95,14 +95,4 @@ class SCCPDeviceServiceURLEntryEvent extends EventMessage
         return $this->getKey('URL');
     }
 
-    /**
-     * Returns key: 'Status'.
-     *
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->getKey('Status');
-    }
-
 }

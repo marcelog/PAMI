@@ -44,6 +44,7 @@ namespace PAMI\Client\Impl {
 	class Test_ResponseFactory extends \PHPUnit_Framework_TestCase
 	{
 		private $_properties = array();
+		private $_logger;
 
 		public function setUp()
 		{
@@ -53,7 +54,6 @@ namespace PAMI\Client\Impl {
 			if (isset($_properties['log4php.properties'])) {
 				\Logger::configure($_properties['log4php.properties']);
 			}
-			
 			$this->_logger = \Logger::getLogger('ResponseFactory');
 		}
 
