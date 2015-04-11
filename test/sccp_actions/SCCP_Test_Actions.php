@@ -731,6 +731,29 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 			'TableEntries: 0',
 			'',
 			'Event: TableStart',
+			'TableName: Variables',
+			'ActionID: 1432.123',
+			'',
+			'Event: SCCPVariableEntry',
+			'ChannelType: SCCP',
+			'ChannelObjectType: Variable',
+			'ActionID: 1432.123',
+			'Name: testvariable1',
+			'Value: myval1',
+			'',
+			'Event: SCCPVariableEntry',
+			'ChannelType: SCCP',
+			'ChannelObjectType: Variable',
+			'ActionID: 1432.123',
+			'Name: testvariable2',
+			'Value: myval2',
+			'',
+			'Event: TableEnd',
+			'TableName: Variables',
+			'TableEntries: 2',
+			'ActionID: 1432.123',
+			'',
+			'Event: TableStart',
 			'ActionId: 1432.123',
 			'TableName: CallStatistics',
 			'',
@@ -863,16 +886,13 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 		$this->assertTrue(is_array($result->getCodecsPreference()));
 
 		$this->assertTrue($result->hasTable());
-		$this->assertEquals(array('Buttons','LineButtons','SpeeddialButtons','FeatureButtons','ServiceURLButtons','CallStatistics'), $result->getTableNames());
+		$this->assertEquals(array('Buttons','LineButtons','SpeeddialButtons','FeatureButtons','ServiceURLButtons','Variables','CallStatistics'), $result->getTableNames());
 		$this->assertTrue(is_array($result->getTableNames()));
-		$subtablenamess=array('Buttons','LineButtons','SpeeddialButtons','FeatureButtons','ServiceURLButtons','CallStatistics'); 
+		$subtablenamess=array('Buttons','LineButtons','SpeeddialButtons','FeatureButtons','ServiceURLButtons','Variables','CallStatistics'); 
 		foreach ($subtablenamess as $subtablename) {
 			$getmethod = 'get' . $subtablename;
 			$this->assertTrue(is_array($result->$getmethod()));
 		}
-		$variables = $result->getVariables();
-		$this->assertTrue(is_array($variables));
-		$this->assertEquals($variables, array());
 		$this->assertEquals('Buttons', $result->getButtons()['Name']);
 	}
 
@@ -997,6 +1017,29 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 			'TableEntries: 1',
 			'ActionID: 1432.123',
 			'',
+			'Event: TableStart',
+			'TableName: Variables',
+			'ActionID: 1432.123',
+			'',
+			'Event: SCCPVariableEntry',
+			'ChannelType: SCCP',
+			'ChannelObjectType: Variable',
+			'ActionID: 1432.123',
+			'Name: testvariable1',
+			'Value: myval1',
+			'',
+			'Event: SCCPVariableEntry',
+			'ChannelType: SCCP',
+			'ChannelObjectType: Variable',
+			'ActionID: 1432.123',
+			'Name: testvariable2',
+			'Value: myval2',
+			'',
+			'Event: TableEnd',
+			'TableName: Variables',
+			'TableEntries: 2',
+			'ActionID: 1432.123',
+			'',
 			'Event: SCCPShowLineComplete',
 			'EventList: Complete',
 			'ListItems: 68',
@@ -1061,12 +1104,11 @@ class SCCP_Test_Actions extends \PHPUnit_Framework_TestCase
 		$this->assertTrue(is_array($result->getNamedPickupGroup()));
 
 		$this->assertTrue($result->hasTable());
+		$this->assertEquals(array('AttachedDevices','Mailboxes','Variables'), $result->getTableNames());
 		$this->assertTrue(is_array($result->getTableNames()));
-		$this->assertTrue(is_array($result->getMailboxes()));
 		$this->assertTrue(is_array($result->getAttachedDevices()));
-		$variables = $result->getVariables();
-		$this->assertTrue(is_array($variables));
-		$this->assertEquals($variables, array());		// no variabled defined on this line so an empty array is returned
+		$this->assertTrue(is_array($result->getMailboxes()));
+		$this->assertTrue(is_array($result->getVariables()));
 	}
 
 
