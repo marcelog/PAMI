@@ -50,12 +50,11 @@ namespace PAMI\Client\Impl {
 			$this->_properties = array(
 				'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties'
 			);
-/*			if (isset($_properties['log4php.properties'])) {
+			if (isset($_properties['log4php.properties'])) {
 				\Logger::configure($_properties['log4php.properties']);
 			}
 			
 			$this->_logger = \Logger::getLogger('ResponseFactory');
-*/			
 		}
 
 		/**
@@ -65,7 +64,7 @@ namespace PAMI\Client\Impl {
 		 */
 		public function can_create_genericresponse_with_empty_message()
 		{
-			$factory = new \PAMI\Message\Response\Factory\Impl\ResponseFactoryImpl();
+			$factory = new \PAMI\Message\Response\Factory\Impl\ResponseFactoryImpl($this->_logger);
 			$responseExpect = "PAMI\\Message\\Response\\GenericResponse";
 			
 			$response = $factory->createFromRaw('', false, false);
@@ -79,7 +78,7 @@ namespace PAMI\Client\Impl {
 		 */
 		public function can_create_genericresponse_using_responsefactory()
 		{
-			$factory = new \PAMI\Message\Response\Factory\Impl\ResponseFactoryImpl();
+			$factory = new \PAMI\Message\Response\Factory\Impl\ResponseFactoryImpl($this->_logger);
 			$responseExpect = "PAMI\\Message\\Response\\GenericResponse";
 			
 			$response = $factory->createFromRaw('Response: Success\r\nMessage: Imaginary\r\n\r\n', false, false);
@@ -91,7 +90,7 @@ namespace PAMI\Client\Impl {
 		 */
 		public function can_create_genericresponse_by_responsehandler()
 		{
-			$factory = new \PAMI\Message\Response\Factory\Impl\ResponseFactoryImpl();
+			$factory = new \PAMI\Message\Response\Factory\Impl\ResponseFactoryImpl($this->_logger);
 			$responseExpect = "PAMI\\Message\\Response\\GenericResponse";
 			
 			$response = $factory->createFromRaw('Response: Success\r\nMessage: Imaginary\r\n\r\n', false, 'Generic');
@@ -103,7 +102,7 @@ namespace PAMI\Client\Impl {
 		 */
 		public function can_create_genericresponse_by_outgoingMessageClass()
 		{
-			$factory = new \PAMI\Message\Response\Factory\Impl\ResponseFactoryImpl();
+			$factory = new \PAMI\Message\Response\Factory\Impl\ResponseFactoryImpl($this->_logger);
 			$actionClass = "\\PAMI\\Message\\Action\\LoginAction";
 			$action = new $actionClass('test', 'boo');
 			$responseExpect = "PAMI\\Message\\Response\\GenericResponse";
@@ -118,7 +117,7 @@ namespace PAMI\Client\Impl {
 		 */
 		public function can_get_exception_using_responsefactory_with_outgoingMessageClass()
 		{
-			$factory = new \PAMI\Message\Response\Factory\Impl\ResponseFactoryImpl();
+			$factory = new \PAMI\Message\Response\Factory\Impl\ResponseFactoryImpl($this->_logger);
 			$responseExpect = "PAMI\\Message\\Response\\BooResponse";
 			$response = $factory->createFromRaw('Response: Success\r\nMessage: Imaginary\r\n\r\n', false, "boo");
 			$this->assertFalse($response instanceof $responseExpect, 'Expected Class: ' . $responseExpect .  ', But got class: ' . get_class($response));

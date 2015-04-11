@@ -50,6 +50,7 @@ use PAMI\Message\Message;
  */
 class ResponseFactoryImpl
 {
+	private $_logger;
 	/**
 	 * This is our factory method.
 	 *
@@ -59,24 +60,26 @@ class ResponseFactoryImpl
 	 *
 	 * @return EventMessage
 	 */
-	public static function createFromRaw($message, $requestingaction = false, $responseHandler = false)
+	//public static function createFromRaw($message, $requestingaction = false, $responseHandler = false)
+	public function createFromRaw($message, $requestingaction = false, $responseHandler = false)
 	{
+		$responseclass = '\\PAMI\\Message\\Response\\GenericResponse';
+
 		$_className = false;
-		
 		if ($responseHandler != false) {
-			$_className = $responseHandler;
+			$_className = '\\PAMI\\Message\\Response\\' . $responseHandler . 'Response';
 		} else if ($requestingaction != false) {
-			$_className = substr(get_class($requestingaction), 20, -6);
+			$_className = '\\PAMI\\Message\\Response\\' . substr(get_class($requestingaction), 20, -6) . 'Response';
 		}
 		if ($_className) {
-			$responseclass = '\\PAMI\\Message\\Response\\' . $_className . 'Response';
-			if (class_exists($responseclass, true)) {
-				return new $responseclass($message);
+			if (class_exists($_className, true)) {
+				$responseclass = $_className;
 			} else if ($responseHandler != false){
-				throw new PAMIException('Response Class Not Found');
+				throw new PAMIException('Response Class ' . $_className . '  requested via responseHandler, could not be found');
 			}
 		}
-		return new GenericResponse($message);
+		if ($this->_logger->isDebugEnabled()) $this->_logger->debug('Created: ' . $responseclass . "\n");
+		return new $responseclass($message);
 	}
 
 	/**
@@ -84,7 +87,12 @@ class ResponseFactoryImpl
 	 *
 	 * @return void
 	 */
-	public function __construct()
-	{
-	}
+//    public function __construct($logger)
+//    {
+//        $this->_logger = $logger;
+    public function __construct($logger)
+    {
+        $this->_logger = $logger ? $logger : \Logger::getLogger(__CLASS__);
+		if ($this->_logger->isDebugEnabled()) $this->_logger->debug('------ Response Factory Created: ------ ' . "\n");
+    }
 }
