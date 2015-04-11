@@ -782,8 +782,8 @@ class SCCPShowDeviceResponse extends SCCPGenericResponse
 	public function getServiceURLButtons()
 	{
 		$res = array();
-		if ($this->hasTable() && array_key_exists('ServiceURLs', $this->_tables)) {
-			$res = $this->_tables['ServiceURLs'];
+		if ($this->hasTable() && array_key_exists('ServiceURLButtons', $this->_tables)) {
+			$res = $this->_tables['ServiceURLButtons'];
 		}
 		return $res;
 	}
