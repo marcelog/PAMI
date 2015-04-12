@@ -405,13 +405,12 @@ class ClientImpl implements IClient
 	    if (@fwrite($this->_socket, $messageToSend) < $length) {
     	    throw new ClientException('Could not send message');
 	    }
-	    $read = 0;
-		while(1) {
-			@stream_set_timeout($this->_socket, $this->_rTimeout ? $this->_rTimeout : 1);
+	    while (1) {
+	    	@stream_set_timeout($this->_socket, $this->_rTimeout ? $this->_rTimeout : 1);
 			$this->process();
 			$info = @stream_get_meta_data($this->_socket);
 			if ($info['timed_out'] == false) {
-				$response = $this->getRelated($message);
+				response = $this->getRelated($message);
 				if ($response != false) {
 					$this->_lastActionId = false;
 					return $response;
@@ -420,7 +419,7 @@ class ClientImpl implements IClient
 				break;
 			}
 		}
-	    throw new ClientException("Read waittime: " . ($this->_rTimeout) . " exceeded (timeout).\n");
+		trow new ClientException("Read waittime: " . ($this->_rTimeout) . " exceeded (timeout).\n");
 	}
 
 	/**
