@@ -93,30 +93,30 @@ namespace PAMI\Client\Impl {
     function stream_socket_shutdown() {
         return true;
     }
-	function stream_set_blocking() {
-		global $mock_stream_set_blocking;
-		if (isset($mock_stream_set_blocking) && $mock_stream_set_blocking === true) {
-			return true;
-		} else {
-			return call_user_func_array('\stream_set_blocking', func_get_args());
-		}
-	}
-	function stream_set_timeout() {
-		global $mockRTimeout;
-		$args = func_get_args();
-		$mockRTimeout = $args[1];
-		return true;
-	}
-	function stream_get_meta_data() {
-		global $mockRTimeout;
-		global $mock_stream_timeout;
-		if (isset($mock_stream_timeout) && $mock_stream_timeout === true) {
-			sleep($mockRTimeout);
-			return array('timed_out' => true);
-		} else {
-			return call_user_func_array('\stream_get_meta_data', func_get_args());
-		}
-	}
+    function stream_set_blocking() {
+        global $mock_stream_set_blocking;
+        if (isset($mock_stream_set_blocking) && $mock_stream_set_blocking === true) {
+            return true;
+        } else {
+            return call_user_func_array('\stream_set_blocking', func_get_args());
+        }
+    }
+    function stream_set_timeout() {
+        global $mockRTimeout;
+        $args = func_get_args();
+        $mockRTimeout = $args[1];
+        return true;
+    }
+    function stream_get_meta_data() {
+        global $mockRTimeout;
+        global $mock_stream_timeout;
+        if (isset($mock_stream_timeout) && $mock_stream_timeout === true) {
+            sleep($mockRTimeout);
+            return array('timed_out' => true);
+        } else {
+            return call_user_func_array('\stream_get_meta_data', func_get_args());
+        }
+    }
     function fwrite() {
         global $mockFwrite;
         global $mockFwriteCount;
@@ -178,7 +178,6 @@ namespace PAMI\Client\Impl {
             return call_user_func_array('\fread', func_get_args());
         }
     }
-
     function setFgetsMock(array $readValues, $writeValues)
     {
         global $mockFgets;
