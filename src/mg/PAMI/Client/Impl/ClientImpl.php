@@ -419,7 +419,7 @@ class ClientImpl implements IClient
 				break;
 			}
 		}
-		trow new ClientException("Read waittime: " . ($this->_rTimeout) . " exceeded (timeout).\n");
+		throw new ClientException("Read waittime: " . ($this->_rTimeout) . " exceeded (timeout).");
 	}
 
 	/**
