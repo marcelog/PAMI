@@ -428,9 +428,9 @@ class ClientImpl implements IClient
             throw new ClientException('Could not send message');
         }
         while (1) {
-            @stream_set_timeout($this->_socket, $this->_rTimeout ? $this->_rTimeout : 1);
+            stream_set_timeout($this->_socket, $this->_rTimeout ? $this->_rTimeout : 1);
             $this->process();
-            $info = @stream_get_meta_data($this->_socket);
+            $info = stream_get_meta_data($this->_socket);
             if ($info['timed_out'] == false) {
                 $response = $this->getRelated($message);
                 if ($response != false) {
