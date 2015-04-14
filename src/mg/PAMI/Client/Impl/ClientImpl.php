@@ -38,6 +38,7 @@ use PAMI\Message\Action\LogoffAction;
 use PAMI\Message\Response\ResponseMessage;
 use PAMI\Message\Event\EventMessage;
 use PAMI\Message\Event\Factory\Impl\EventFactoryImpl;
+use PAMI\Message\Response\Factory\Impl\ResponseFactoryImpl;
 use PAMI\Listener\IEventListener;
 use PAMI\Client\Exception\ClientException;
 use PAMI\Client\IClient;
@@ -105,6 +106,12 @@ class ClientImpl implements IClient
 	private $_eventFactory;
 
 	/**
+	 * Response factory.
+	 * @var ResponseFactoryImpl
+	 */
+	private $_responseFactory;
+
+	/**
 	 * R/W timeout, in milliseconds.
 	 * @var integer
 	 */
@@ -153,6 +160,13 @@ class ClientImpl implements IClient
 	 * @var string
 	 */
 	private $_lastActionId;
+
+	/**
+	 * Contains a reference to the last execute action
+	 *
+	 * @var object
+	 */
+	private $_lastActionClass;
 
 	/**
 	 * Opens a tcp connection to ami.
@@ -340,7 +354,7 @@ class ClientImpl implements IClient
 	 */
 	private function _messageToResponse($msg)
 	{
-        $response = new ResponseMessage($msg);
+        $response = $this->_responseFactory->createFromRaw($msg, $this->_lastActionClass);
 	    $actionId = $response->getActionId();
 	    if ($actionId === null) {
 	        $actionId = $this->_lastActionId;
@@ -402,6 +416,10 @@ class ClientImpl implements IClient
 	        );
         }
 	    $this->_lastActionId = $message->getActionId();
+	    // If there are multiple outgoing messages in flight, we might have to add this information to a queue instead, like:
+	    // $this->_outgoingQueue[$this->_lastActionId] == array('ResponseHandler' => $message->getResponseHandler()); // push
+	    $this->_lastActionClass = $message;
+
 	    if (@fwrite($this->_socket, $messageToSend) < $length) {
     	    throw new ClientException('Could not send message');
 	    }
@@ -456,6 +474,7 @@ class ClientImpl implements IClient
 		$this->_scheme = isset($options['scheme']) ? $options['scheme'] : 'tcp://';
 		$this->_eventListeners = array();
 		$this->_eventFactory = new EventFactoryImpl();
+		$this->_responseFactory = new ResponseFactoryImpl(\Logger::getLogger('ResponseFactory'));
 		$this->_incomingQueue = array();
 		$this->_lastActionId = false;
 	}

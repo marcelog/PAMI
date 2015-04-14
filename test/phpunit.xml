@@ -18,6 +18,9 @@
     <testsuite name="Autoloader">
       <directory suffix=".php">autoloader</directory>
     </testsuite>
+    <testsuite name="Factories">
+      <directory suffix=".php">factories</directory>
+    </testsuite>
     <testsuite name="Actions">
       <directory suffix=".php">actions</directory>
     </testsuite>
