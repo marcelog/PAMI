@@ -405,20 +405,21 @@ class ClientImpl implements IClient
 	    if (@fwrite($this->_socket, $messageToSend) < $length) {
     	    throw new ClientException('Could not send message');
 	    }
-	    $read = 0;
-	    while($read <= $this->_rTimeout) {
-	        $this->process();
-	        $response = $this->getRelated($message);
-	        if ($response != false) {
-	            $this->_lastActionId = false;
-	            return $response;
-	        }
-	        usleep(1000); // 1ms delay
-	        if ($this->_rTimeout > 0) {
-	            $read++;
-	        }
-	    }
-	    throw new ClientException('Read timeout');
+	    while (1) {
+	    	stream_set_timeout($this->_socket, $this->_rTimeout ? $this->_rTimeout : 1);
+			$this->process();
+			$info = stream_get_meta_data($this->_socket);
+			if ($info['timed_out'] == false) {
+				$response = $this->getRelated($message);
+				if ($response != false) {
+					$this->_lastActionId = false;
+					return $response;
+				}
+			} else {
+				break;
+			}
+		}
+		throw new ClientException("Read waittime: " . ($this->_rTimeout) . " exceeded (timeout).");
 	}
 
 	/**
