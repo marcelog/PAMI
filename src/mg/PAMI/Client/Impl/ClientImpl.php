@@ -30,6 +30,7 @@ declare(ticks=1);
  */
 namespace PAMI\Client\Impl;
 
+use PAMI\Logger\Log4PhpAdapter;
 use PAMI\Message\OutgoingMessage;
 use PAMI\Message\Message;
 use PAMI\Message\IncomingMessage;
@@ -41,6 +42,8 @@ use PAMI\Message\Event\Factory\Impl\EventFactoryImpl;
 use PAMI\Listener\IEventListener;
 use PAMI\Client\Exception\ClientException;
 use PAMI\Client\IClient;
+use Psr\Log\LoggerAwareInterface;
+use Psr\Log\LoggerInterface;
 
 /**
  * TCP Client implementation for AMI.
@@ -54,11 +57,12 @@ use PAMI\Client\IClient;
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
  * @link       http://marcelog.github.com/PAMI/
  */
-class ClientImpl implements IClient
+class ClientImpl implements IClient, LoggerAwareInterface
 {
     /**
      * log4php logger or dummy.
-     * @var Logger
+	 *
+     * @var LoggerInterface
      */
     private $_logger;
 
@@ -185,9 +189,7 @@ class ClientImpl implements IClient
 	    @stream_set_blocking($this->_socket, 0);
 	    $this->_currentProcessingMessage = '';
 	    //register_tick_function(array($this, 'process'));
-	    if ($this->_logger->isDebugEnabled()) {
-	        $this->_logger->debug('Logged in successfully to ami.');
-	    }
+	    $this->_logger->debug('Logged in successfully to ami.');
 	}
 
 	/**
@@ -251,17 +253,15 @@ class ClientImpl implements IClient
 	/**
 	 * Main processing loop. Also called from send(), you should call this in
 	 * your own application in order to continue reading events and responses
-	 * from ami. 
+	 * from ami.
 	 */
 	public function process()
 	{
 	    $msgs = $this->getMessages();
 	    foreach ($msgs as $aMsg) {
-    	    if ($this->_logger->isDebugEnabled()) {
-       	        $this->_logger->debug(
-    	        	'------ Received: ------ ' . "\n" . $aMsg . "\n\n"
-    	        );
-    	    }
+            $this->_logger->debug(
+                '------ Received: ------ '."\n".$aMsg."\n\n"
+            );
     	    $resPos = strpos($aMsg, 'Response:');
     	    $evePos = strpos($aMsg, 'Event:');
     	    if (($resPos !== false) && (($resPos < $evePos) || $evePos === false)) {
@@ -284,9 +284,7 @@ class ClientImpl implements IClient
                 $response = $this->findResponse($event);
                 $response->addEvent($event);
     	    }
-    	    if ($this->_logger->isDebugEnabled()) {
-       	        $this->_logger->debug('----------------');
-    	    }
+            $this->_logger->debug('----------------');
 	    }
 	}
 
@@ -396,11 +394,11 @@ class ClientImpl implements IClient
 	{
 	    $messageToSend = $message->serialize();
 	    $length = strlen($messageToSend);
-	    if ($this->_logger->isDebugEnabled()) {
-	        $this->_logger->debug(
-	        	'------ Sending: ------ ' . "\n" . $messageToSend . '----------'
-	        );
-        }
+
+        $this->_logger->debug(
+            '------ Sending: ------ '."\n".$messageToSend.'----------'
+        );
+
 	    $this->_lastActionId = $message->getActionId();
 	    if (@fwrite($this->_socket, $messageToSend) < $length) {
     	    throw new ClientException('Could not send message');
@@ -428,9 +426,7 @@ class ClientImpl implements IClient
 	 */
 	public function close()
 	{
-	    if ($this->_logger->isDebugEnabled()) {
-	        $this->_logger->debug('Closing connection to asterisk.');
-	    }
+		$this->_logger->debug('Closing connection to asterisk.');
 		@stream_socket_shutdown($this->_socket, STREAM_SHUT_RDWR);
 	}
 
@@ -443,11 +439,14 @@ class ClientImpl implements IClient
 	 */
 	public function __construct(array $options)
 	{
-        if (isset($options['log4php.properties'])) {
-            \Logger::configure($options['log4php.properties']);
-        }
-        $this->_logger = \Logger::getLogger('Pami.ClientImpl');
-	    $this->_host = $options['host'];
+		$this->setLogger(
+			new Log4phpAdapter(
+				'Pami.ClientImpl',
+				isset($options['log4php.properties']) ? $options['log4php.properties'] : null
+			)
+		);
+
+		$this->_host = $options['host'];
 		$this->_port = intval($options['port']);
 		$this->_user = $options['username'];
 		$this->_pass = $options['secret'];
@@ -458,5 +457,17 @@ class ClientImpl implements IClient
 		$this->_eventFactory = new EventFactoryImpl();
 		$this->_incomingQueue = array();
 		$this->_lastActionId = false;
+	}
+
+	/**
+	 * Sets a logger instance on the object
+	 *
+	 * @param LoggerInterface $logger
+	 *
+	 * @return null
+	 */
+	public function setLogger(LoggerInterface $logger)
+	{
+        $this->_logger = $logger;
 	}
 }
