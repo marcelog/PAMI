@@ -436,17 +436,19 @@ class ClientImpl implements IClient, LoggerAwareInterface
 	 * Constructor.
 	 *
 	 * @param string[] $options Options for ami client.
-	 *
-	 * @return void
 	 */
 	public function __construct(array $options)
 	{
-		$this->setLogger(
-			new Log4phpAdapter(
-				'Pami.ClientImpl',
-				isset($options['log4php.properties']) ? $options['log4php.properties'] : null
-			)
-		);
+		if (isset($options['psr3_logger'])) {
+		    $this->setLogger($options['psr3_logger']);
+		} else {
+		    $this->setLogger(
+		        new Log4phpAdapter(
+		            'Pami.ClientImpl',
+		            isset($options['log4php.properties']) ? $options['log4php.properties'] : null
+		        )
+		    );
+		}
 
 		$this->_host = $options['host'];
 		$this->_port = intval($options['port']);
