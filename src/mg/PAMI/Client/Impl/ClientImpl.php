@@ -260,7 +260,8 @@ class ClientImpl implements IClient, LoggerAwareInterface
 	    $msgs = $this->getMessages();
 	    foreach ($msgs as $aMsg) {
             $this->_logger->debug(
-                '------ Received: ------ '."\n".$aMsg."\n\n"
+                "------ Received: ------ \n{message}\n\n",
+                array('message' => $aMsg,)
             );
     	    $resPos = strpos($aMsg, 'Response:');
     	    $evePos = strpos($aMsg, 'Event:');
@@ -396,7 +397,8 @@ class ClientImpl implements IClient, LoggerAwareInterface
 	    $length = strlen($messageToSend);
 
         $this->_logger->debug(
-            '------ Sending: ------ '."\n".$messageToSend.'----------'
+            "------ Sending: ------ \n{message}----------\n\n",
+            array('message' => $messageToSend)
         );
 
 	    $this->_lastActionId = $message->getActionId();
