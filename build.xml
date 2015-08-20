@@ -143,122 +143,15 @@
   <target name="_package">
     <mkdir dir="${package.output.dir}"/>
     <exec
-      command="${pear.exec} channel-discover pear.marcelog.name"
-      dir="${project.basedir}" passthru="true"
-    />
-    <exec
       command="${genphar.exec} ${genphar.args}"
       dir="${project.basedir}"
       passthru="true"
     />
-    <exec
-      command="${genpear.exec}" dir="${project.basedir}" passthru="true"
-      output="${dir.output}/package.xml"
-     />
-    <copy file="${dir.output}/package.xml" tofile="${dir.src}/package.xml" />
-    <exec
-      command="${pear.exec} package" dir="${dir.src}" passthru="true"
-    />
-    <delete file="${dir.src}/package.xml" />
-    <move file="${dir.src}/${peartgz}" tofile="${dir.output}/${peartgz}" overwrite="true"/>
   </target>
 
   <target name="install-dependencies">
-    <mkdir dir="${dir.vendor}"/>
     <exec
-      command="${defaultpear.bin} config-create ${dir.vendor} ${dir.vendor}/.pearrc"
-      passthru="true"
-    />
-    <exec
-      command="${defaultpear.exec} config-set php_bin ${php.bin}"
-      passthru="true"
-    />
-    <exec
-      command="${defaultpear.exec} config-set php_dir ${dir.vendor}/php"
-      passthru="true"
-    />
-    <exec
-      command="${defaultpear.exec} config-set bin_dir ${dir.vendor}/bin"
-      passthru="true"
-    />
-    <exec
-      command="${defaultpear.exec} config-set cache_dir ${dir.vendor}/cache"
-      passthru="true"
-    />
-    <exec
-      command="${defaultpear.exec} config-set cfg_dir ${dir.vendor}/cfg"
-      passthru="true"
-    />
-    <exec
-      command="${defaultpear.exec} config-set data_dir ${dir.vendor}/data"
-      passthru="true"
-    />
-    <exec
-      command="${defaultpear.exec} config-set download_dir ${dir.vendor}/download"
-      passthru="true"
-    />
-    <exec
-      command="${defaultpear.exec} config-set temp_dir ${dir.vendor}/tmp"
-      passthru="true"
-    />
-    <exec
-      command="${defaultpear.exec} config-set doc_dir ${dir.vendor}/doc"
-      passthru="true"
-    />
-    <exec
-      command="${defaultpear.exec} config-set test_dir ${dir.vendor}/test"
-      passthru="true"
-    />
-    <exec
-      command="${defaultpear.exec} config-set www_dir ${dir.vendor}/www"
-      passthru="true"
-    />
-    <exec
-      command="${defaultpear.exec} config-set auto_discover 1"
-      passthru="true"
-    />
-    <exec
-      command="${defaultpear.exec} install pear"
-      passthru="true"
-    />
-    <exec
-      command="${pear.exec} install --alldeps pear.phpunit.de/PHPUnit"
-      passthru="true"
-    />
-    <exec
-      command="${pear.exec} install --alldeps pear.marcelog.name/PAGI"
-      passthru="true"
-    />
-    <exec
-      command="${pear.exec} install --alldeps phpunit/phploc"
-      passthru="true"
-    />
-    <exec
-      command="${pear.exec} install --alldeps pear.docblox-project.org/DocBlox"
-      passthru="true"
-    />
-    <exec
-      command="${pear.exec} install --alldeps pear.pdepend.org/PHP_Depend-beta"
-      passthru="true"
-    />
-    <exec
-      command="${pear.exec} install --alldeps pear.phpmd.org/PHP_PMD"
-      passthru="true"
-    />
-    <exec
-      command="${pear.exec} install --alldeps pear.phpunit.de/phpcpd"
-      passthru="true"
-    />
-    <exec
-      command="${pear.exec} install --alldeps PHP_CodeSniffer"
-      passthru="true"
-    />
-    <exec
-      command="${pear.exec} install --alldeps pear.phing.info/phing"
-      passthru="true"
-    />
-    <exec
-      command="${pear.exec} install --alldeps pear.apache.org/log4php/Apache_log4php"
+      command="${composer.bin} install"
       passthru="true"
     />
   </target>
