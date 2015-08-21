@@ -46,6 +46,19 @@
     />
   </target>
 
+  <target name="phpunitfast">
+    <exec command="${phing} _phpunitfast" passthru="true"/>
+  </target>
+  <target name="_phpunitfast">
+    <mkdir dir="${phpunit.output.xml.dir}"/>
+    <mkdir dir="${phpunit.output.html.dir}"/>
+    <exec
+      command="${phpunit.exec} ${phpunit.argsfast}"
+      dir="${project.basedir}/test"
+      passthru="true"
+    />
+  </target>
+
   <target name="phpunit">
     <exec command="${phing} _phpunit" passthru="true"/>
   </target>
@@ -257,5 +270,6 @@
   <target name="all" depends="clean, prepare, package, report"/>
   <target name="build" depends="prepare, test"/>
   <target name="test" depends="prepare, phpunit"/>
+  <target name="testfast" depends="prepare, phpunitfast"/>
   <target name="report" depends="build, phploc, phpdoc, phpdepend, phpcs, phpmd, phpcpd"/>
 </project>
