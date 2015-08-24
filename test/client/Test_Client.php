@@ -914,6 +914,224 @@ class Test_Client extends \PHPUnit_Framework_TestCase
         $this->assertTrue(SomeListenerClass::$event instanceof \PAMI\Message\Event\UnknownEvent);
 
     }
+
+    /**
+     * @test
+     * @group channel_vars
+     * ChanVariable is sent without a channel name and without a "channel"
+     * key.
+     * https://github.com/marcelog/PAMI/issues/85
+     */
+    public function can_get_channel_variables_without_default_channel_name()
+    {
+        global $mock_stream_socket_client;
+        global $mock_stream_set_blocking;
+        global $mockTime;
+        global $standardAMIStart;
+        $mockTime = true;
+        $mock_stream_socket_client = true;
+        $mock_stream_set_blocking = true;
+        $options = array(
+            'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties',
+            'host' => '2.3.4.5',
+            'scheme' => 'tcp://',
+            'port' => 9999,
+            'username' => 'asd',
+            'secret' => 'asd',
+            'connect_timeout' => 10,
+            'read_timeout' => 10
+        );
+        $write = array(
+            "action: Login\r\nactionid: 1432.123\r\nusername: asd\r\nsecret: asd\r\n"
+        );
+        setFgetsMock($standardAMIStart, $write);
+        $client = new \PAMI\Client\Impl\ClientImpl($options);
+        $client->registerEventListener(new SomeListenerClass);
+        $client->open();
+        $event = array(
+            'Event: Dial',
+            'Privilege: call,all',
+            'SubEvent: Begin',
+            'Destination: SIP/jw1034-00000010',
+            'CallerIDNum: 1201',
+            'CallerIDName: <unknown>',
+            'ConnectedLineNum: strategy-sequential',
+            'ConnectedLineName: <unknown>',
+            'UniqueID: pbx-1439974866.33',
+            'DestUniqueID: pbx-1439974866.34',
+            'Dialstring: jw1034',
+            'ChanVariable: var1',
+            'ChanVariable: var2=v2',
+            ''
+        );
+        setFgetsMock($event, $event);
+        for($i = 0; $i < 14; $i++) {
+            $client->process();
+        }
+        $event = SomeListenerClass::$event;
+        $varChan = array(
+            'var1' => '',
+            'var2' => 'v2'
+        );
+        $channelVars = array(
+            'default' => $varChan
+        );
+        $this->assertEquals($channelVars, $event->getAllChannelVariables());
+        $this->assertEquals($varChan, $event->getChannelVariables());
+        $this->assertEquals($varChan, $event->getChannelVariables('default'));
+    }
+
+
+    /**
+     * @test
+     * @group channel_vars
+     * ChanVariable is sent without a channel name but with a "channel" key.
+     * https://github.com/marcelog/PAMI/issues/85
+     */
+    public function can_get_channel_variables_with_default_channel_name()
+    {
+        global $mock_stream_socket_client;
+        global $mock_stream_set_blocking;
+        global $mockTime;
+        global $standardAMIStart;
+        $mockTime = true;
+        $mock_stream_socket_client = true;
+        $mock_stream_set_blocking = true;
+        $options = array(
+            'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties',
+            'host' => '2.3.4.5',
+            'scheme' => 'tcp://',
+            'port' => 9999,
+            'username' => 'asd',
+            'secret' => 'asd',
+            'connect_timeout' => 10,
+            'read_timeout' => 10
+        );
+        $write = array(
+            "action: Login\r\nactionid: 1432.123\r\nusername: asd\r\nsecret: asd\r\n"
+        );
+        setFgetsMock($standardAMIStart, $write);
+        $client = new \PAMI\Client\Impl\ClientImpl($options);
+        $client->registerEventListener(new SomeListenerClass);
+        $client->open();
+        $event = array(
+            'Event: Dial',
+            'Privilege: call,all',
+            'Channel: Local/0@pbx_dial_callroute_to_endpoint-00000008;2',
+            'SubEvent: Begin',
+            'Destination: SIP/jw1034-00000010',
+            'CallerIDNum: 1201',
+            'CallerIDName: <unknown>',
+            'ConnectedLineNum: strategy-sequential',
+            'ConnectedLineName: <unknown>',
+            'UniqueID: pbx-1439974866.33',
+            'DestUniqueID: pbx-1439974866.34',
+            'Dialstring: jw1034',
+            'ChanVariable: var1',
+            'ChanVariable: var2=v2',
+            ''
+        );
+        setFgetsMock($event, $event);
+        for($i = 0; $i < 15; $i++) {
+            $client->process();
+        }
+        $event = SomeListenerClass::$event;
+        $varChan = array(
+            'var1' => '',
+            'var2' => 'v2'
+        );
+        $channelVars = array(
+            'local/0@pbx_dial_callroute_to_endpoint-00000008;2' => $varChan
+        );
+        $this->assertEquals($channelVars, $event->getAllChannelVariables());
+        $this->assertEquals($varChan, $event->getChannelVariables());
+        $this->assertEquals(
+            $varChan,
+            $event->getChannelVariables(
+                'Local/0@pbx_dial_callroute_to_endpoint-00000008;2'
+            )
+        );
+    }
+
+    /**
+     * @test
+     * @group channel_vars
+     * ChanVariable is sent with a channel name and with a "channel" key.
+     * https://github.com/marcelog/PAMI/issues/85
+     */
+    public function can_get_channel_variables()
+    {
+        global $mock_stream_socket_client;
+        global $mock_stream_set_blocking;
+        global $mockTime;
+        global $standardAMIStart;
+        $mockTime = true;
+        $mock_stream_socket_client = true;
+        $mock_stream_set_blocking = true;
+        $options = array(
+            'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties',
+            'host' => '2.3.4.5',
+            'scheme' => 'tcp://',
+            'port' => 9999,
+            'username' => 'asd',
+            'secret' => 'asd',
+            'connect_timeout' => 10,
+            'read_timeout' => 10
+        );
+        $write = array(
+            "action: Login\r\nactionid: 1432.123\r\nusername: asd\r\nsecret: asd\r\n"
+        );
+        setFgetsMock($standardAMIStart, $write);
+        $client = new \PAMI\Client\Impl\ClientImpl($options);
+        $client->registerEventListener(new SomeListenerClass);
+        $client->open();
+        $event = array(
+            'Event: Dial',
+            'Privilege: call,all',
+            'SubEvent: Begin',
+            'Channel: Local/0@pbx_dial_callroute_to_endpoint-00000008;2',
+            'Destination: SIP/jw1034-00000010',
+            'CallerIDNum: 1201',
+            'CallerIDName: <unknown>',
+            'ConnectedLineNum: strategy-sequential',
+            'ConnectedLineName: <unknown>',
+            'UniqueID: pbx-1439974866.33',
+            'DestUniqueID: pbx-1439974866.34',
+            'Dialstring: jw1034',
+            'ChanVariable: var1',
+            'ChanVariable: var2=value2',
+            'ChanVariable(Local/0@pbx_dial_callroute_to_endpoint-00000008;2): var3=value3',
+            'ChanVariable(Local/0@pbx_dial_callroute_to_endpoint-00000008;2): var4=value4',
+            'ChanVariable(Local/0@pbx_dial_callroute_to_endpoint-00000008;2): var5=value5',
+            'ChanVariable(SIP/jw1034-00000010): var12=value12',
+            'ChanVariable(SIP/jw1034-00000010): var22=value22',
+            'ChanVariable(SIP/jw1034-00000010): var32=value32',
+            ''
+        );
+        setFgetsMock($event, $event);
+        for($i = 0; $i < 21; $i++) {
+            $client->process();
+        }
+        $event = SomeListenerClass::$event;
+        $varChan1 = array(
+            'var1' => '',
+            'var2' => 'value2',
+            'var3' => 'value3',
+            'var4' => 'value4',
+            'var5' => 'value5'
+        );
+        $varChan2 = array(
+            'var12' => 'value12',
+            'var22' => 'value22',
+            'var32' => 'value32'
+        );
+        $channelVars = array(
+            'local/0@pbx_dial_callroute_to_endpoint-00000008;2' => $varChan1,
+            'sip/jw1034-00000010' => $varChan2
+        );
+        $this->assertEquals($varChan1, $event->getChannelVariables());
+        $this->assertEquals($channelVars, $event->getAllChannelVariables());
+    }
 }
 class SomeListenerClass implements \PAMI\Listener\IEventListener
 {
