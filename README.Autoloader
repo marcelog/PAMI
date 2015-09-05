@@ -4,5 +4,13 @@ PAMI's autoloader has been renamed to the namespace PAMI\Autoloader and the
 class name is now \PAMI\Autoloader\Autoloader so we now honor namespace to
 filesystem convention for classes. Thus, change your code to:
 
+Versions < 1.80.0
+-----------------
 require_once 'PAMI/Autoloader/Autoloader.php'; // Include pami autoloader.
 \PAMI\Autoloader\Autoloader::register(); // Call autoloader register for pami autoloader.
+
+Versions >= 1.80.0
+------------------
+Use the composer autoloader:
+
+require_once 'vendor/autoload.php'

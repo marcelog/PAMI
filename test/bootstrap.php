@@ -5,7 +5,7 @@ ini_set(
         PATH_SEPARATOR,
         array(
             realpath(implode(
-                DIRECTORY_SEPARATOR, array(__DIR__, '..', 'src', 'mg')
+                DIRECTORY_SEPARATOR, array(__DIR__, '..', 'vendor')
             )),
             ini_get('include_path'),
         )
@@ -17,5 +17,4 @@ ini_set('display_errors', 1);
 if (!defined('RESOURCES_DIR')) {
     define ('RESOURCES_DIR', realpath(__DIR__) . DIRECTORY_SEPARATOR . 'resources');
 }
-require_once 'PAMI/Autoloader/Autoloader.php';
-\PAMI\Autoloader\Autoloader::register();
+require_once 'autoload.php';
