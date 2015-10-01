@@ -47,7 +47,7 @@ interface IClient
 	/**
 	 * Opens a tcp connection to ami.
 	 *
-	 * @throws PAMI\Client\Exception\ClientException
+	 * @throws \PAMI\Client\Exception\ClientException
 	 * @return void
 	 */
 	public function open();
@@ -96,8 +96,8 @@ interface IClient
 	 * @param OutgoingMessage $message Message to send.
 	 *
 	 * @see ClientImpl::send()
-	 * @throws PAMI\Client\Exception\ClientException
-	 * @return PAMI\Message\Response\ResponseMessage
+	 * @throws \PAMI\Client\Exception\ClientException
+	 * @return \PAMI\Message\Response\ResponseMessage
 	 */
 	public function send(OutgoingMessage $message);
 }

@@ -48,7 +48,7 @@ interface IEventListener
     /**
      * Event handler.
      *
-     * @param PAMI\Message\Event\EventMessage $event The received event.
+     * @param \PAMI\Message\Event\EventMessage $event The received event.
      *
      * @return void
      */

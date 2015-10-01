@@ -53,12 +53,12 @@ class AsyncClientImpl extends PagiClient implements IEventListener
     private static $_instance = false;
     /**
      * The pami client to be used.
-     * @var PAMI\Client\IClient
+     * @var \PAMI\Client\IClient
      */
     private $_pamiClient;
     /**
      * The event that originated this async agi request.
-     * @var PAMI\Message\Event\AsyncAGIEvent
+     * @var \PAMI\Message\Event\AsyncAGIEvent
      */
     private $_asyncAgiEvent;
     /**

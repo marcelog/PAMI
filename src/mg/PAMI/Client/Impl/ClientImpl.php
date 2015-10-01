@@ -157,7 +157,7 @@ class ClientImpl implements IClient
 	/**
 	 * Opens a tcp connection to ami.
 	 *
-	 * @throws PAMI\Client\Exception\ClientException
+	 * @throws \PAMI\Client\Exception\ClientException
 	 * @return void
 	 */
 	public function open()
@@ -295,7 +295,7 @@ class ClientImpl implements IClient
 	 *
 	 * @param IncomingMessage $message Message sent by asterisk.
 	 *
-	 * @return PAMI\Message\Response\ResponseMessage
+	 * @return \PAMI\Message\Response\ResponseMessage
 	 */
 	protected function findResponse(IncomingMessage $message)
 	{
@@ -309,7 +309,7 @@ class ClientImpl implements IClient
 	/**
 	 * Dispatchs the incoming message to a handler.
 	 *
-	 * @param PAMI\Message\IncomingMessage $message Message to dispatch.
+	 * @param \PAMI\Message\IncomingMessage $message Message to dispatch.
 	 *
 	 * @return void
 	 */
@@ -336,7 +336,7 @@ class ClientImpl implements IClient
 	 *
 	 * @param string $msg Raw string.
 	 *
-	 * @return PAMI\Message\Response\ResponseMessage
+	 * @return \PAMI\Message\Response\ResponseMessage
 	 */
 	private function _messageToResponse($msg)
 	{
@@ -354,7 +354,7 @@ class ClientImpl implements IClient
 	 *
 	 * @param string $msg Raw string.
 	 *
-	 * @return PAMI\Message\Event\EventMessage
+	 * @return \PAMI\Message\Event\EventMessage
 	 */
 	private function _messageToEvent($msg)
 	{
@@ -367,7 +367,7 @@ class ClientImpl implements IClient
 	 *
 	 * @todo not suitable for multithreaded applications.
 	 *
-	 * @return PAMI\Message\IncomingMessage
+	 * @return \PAMI\Message\IncomingMessage
 	 */
 	protected function getRelated(OutgoingMessage $message)
 	{
@@ -386,11 +386,11 @@ class ClientImpl implements IClient
 	/**
 	 * Sends a message to ami.
 	 *
-	 * @param PAMI\Message\OutgoingMessage $message Message to send.
+	 * @param \PAMI\Message\OutgoingMessage $message Message to send.
 	 *
 	 * @see ClientImpl::send()
-	 * @throws PAMI\Client\Exception\ClientException
-	 * @return PAMI\Message\Response\ResponseMessage
+	 * @throws \PAMI\Client\Exception\ClientException
+	 * @return \PAMI\Message\Response\ResponseMessage
 	 */
 	public function send(OutgoingMessage $message)
 	{
