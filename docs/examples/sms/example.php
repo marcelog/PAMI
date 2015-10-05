@@ -44,7 +44,7 @@ ini_set(
         PATH_SEPARATOR,
         array(
             ini_get('include_path'),
-            implode(DIRECTORY_SEPARATOR, array('..', '..', '..', 'src', 'mg'))
+            implode(DIRECTORY_SEPARATOR, array('..', '..', '..', 'vendor'))
         )
     )
 );
@@ -52,8 +52,7 @@ ini_set(
 ////////////////////////////////////////////////////////////////////////////////
 // Mandatory stuff to bootstrap.
 ////////////////////////////////////////////////////////////////////////////////
-require_once 'PAMI/Autoloader/Autoloader.php'; // Include PAMI autoloader.
-\PAMI\Autoloader\Autoloader::register(); // Call autoloader register for PAMI autoloader.
+require_once 'autoload.php'; // Include Composer autoloader.
 use PAMI\Client\Impl\ClientImpl;
 use PAMI\Listener\IEventListener;
 use PAMI\Message\Event\EventMessage;

@@ -14,12 +14,24 @@
     }
   ],
   "autoload": {
-    "psr-0": {
-      "PAMI": "src/mg"
+    "psr-4": {
+      "PAMI\\": "src/mg/PAMI"
     }
   },
   "require": {
     "php": ">=5.3.3",
-    "apache/log4php": "2.3.0"
+    "apache/log4php": "2.3.0",
+    "psr/log": "~1.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^4.8",
+    "phing/phing": "2.*",
+    "squizlabs/php_codesniffer": "2.*",
+    "sebastian/phpcpd": "*",
+    "phpmd/phpmd": "*",
+    "pdepend/pdepend" : "2.1.0",
+    "phpdocumentor/phpdocumentor": "2.*",
+    "phploc/phploc": "*",
+    "marcelog/pagi": "*"
   }
 }

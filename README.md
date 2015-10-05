@@ -33,7 +33,7 @@ to 5.3.8 (see README.PHP-5.3.9-and-5.3.10).
 CI Server
 ---------
 Take a look at the Jenkins CI Server (http://ci.marcelog.name/) to check out
-the docs, metrics, and pear and phar packages available.
+the docs, metrics.
 
 -------------------------------------------------------------------------------
 
@@ -47,30 +47,8 @@ Just add the package "marcelog/pami":
 ```
 Packagist URL: http://packagist.org/packages/marcelog/pami
 
--------------------------------------------------------------------------------
-
-Available via PEAR
-------------------
-You can now easily install PAMI by issuing:
-```
-# pear channel-discover pear.marcelog.name
-# pear install marcelog/PAMI
-```
-
-or
-```
-# pear install marcelog/PAMI-1.72
-```
-just replace 1.72 by the release version you'd like to install :)
-See: http://pear.marcelog.name/
-
--------------------------------------------------------------------------------
-
-Available as PHAR
------------------
-Just go to the Jenkins server at http://ci.marcelog.name and grab the latest
-phar distribution from the PAMI job.
-
+**NOTE**: Since version 1.80.0 PEAR and PHAR support are deprecated, and only
+composer is supported.
 -------------------------------------------------------------------------------
 
 Asterisk versions supported
@@ -86,9 +64,11 @@ QuickStart
 For an in-depth tutorial: http://marcelog.github.com/articles/pami_introduction_tutorial_how_to_install.html
 
 ```
+$log = new \Psr\Log\NullLogger();
 $options = array(
-    'log4php.properties' =>
-         RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties',
+    'psr3_logger' => $log,
+    // Alternative logger configuration uses default log4php implementation
+    // 'log4php.properties' => __DIR__ . '/log4php.properties',
     'host' => '2.3.4.5',
     'scheme' => 'tcp://',
     'port' => 9999,
@@ -110,12 +90,13 @@ $client->registerEventListener(array($listener, 'handle'));
 $client->registerEventListener($listener);
 ```
 
+For a full composer application example see [docs/examples/composer_app](https://github.com/marcelog/PAMI/tree/master/docs/examples/composer_app)
 -------------------------------------------------------------------------------
 
 Using Predicates
 ================
 A second (optional) argument can be used when registering the event listener: a
-closure that will be evaluated before calling the callback. The callback will 
+closure that will be evaluated before calling the callback. The callback will
 be called only if this predicate returns true:
 
 ```
@@ -329,11 +310,11 @@ Developers
 
 * build.xml is a phing build file, not ant.
 * It's very possible that you may need to edit build.properties and change
-php.bin and pear.bin properties.
+php.bin.
 * Available main targets: all, build, test, report.
 * Tools run: phpdoc, phploc, phpcs, phpmd, phpcpd, phpdepend, phpunit.
-* Setup your installation by editing pear and php paths in build.properties
-* Run phing install-dependencies this will install pear and everything needed
+* Setup your installation by editing php paths in build.properties
+* Run `composer.phar install` this will install everything needed
 to run phing tests and metrics.
 * Copy resources/php.ini.example to resources/php.ini and edit it.
 * Run phing all
@@ -344,14 +325,14 @@ to run phing tests and metrics.
 Debugging, logging
 ==================
 
-You need log4php (http://logging.apache.org/log4php/). Just make sure you copy
-it to the include_path and PAMI will pick it up from there.
+You will need a PSR-3 compatible logger. By default, PAMI will use will use
+[log4php](http://logging.apache.org/log4php/), for which an adapter is provided.
 
 -------------------------------------------------------------------------------
 
 LICENSE
 =======
-Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
+Copyright 2015 Marcelo Gornstein <marcelog@gmail.com>
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -385,8 +366,7 @@ dongle support.
 * Joshua Elson for his help in trying and debugging in loaded asterisk servers.
 
 * Jacob Kiers for his help in bringing in and testing async agi functionality,
-and CEL event
-support.
+CEL event support, and PSR-3 patches.
 
 * Richard Baar for noticing the lack of eof support when reading from socket,
 the JabberEvent, and the ScreenName in JabberAction.

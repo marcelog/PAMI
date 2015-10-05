@@ -1,0 +1,6 @@
+{
+    "require": {
+        "monolog/monolog": "1.3",
+        "marcelog/pami": "dev-master"
+    }
+}
