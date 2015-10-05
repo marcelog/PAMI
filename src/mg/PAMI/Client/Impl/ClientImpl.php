@@ -197,7 +197,7 @@ class ClientImpl implements IClient
 	 * an optional predicate to invoke before calling the callback.
 	 *
 	 * @param mixed $listener
-	 * @param Closure|null $predicate
+	 * @param \Closure|null $predicate
 	 *
 	 * @return string
 	 */
@@ -225,7 +225,8 @@ class ClientImpl implements IClient
 	/**
 	 * Reads a complete message over the stream until EOM.
 	 *
-	 * @return string
+	 * @throws ClientException
+	 * @return \string[]
 	 */
 	protected function getMessages()
 	{
@@ -439,7 +440,6 @@ class ClientImpl implements IClient
 	 *
 	 * @param string[] $options Options for ami client.
 	 *
-	 * @return void
 	 */
 	public function __construct(array $options)
 	{
