@@ -45,7 +45,7 @@ use PAMI\Message\Event\EventMessage;
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
  * @link       http://marcelog.github.com/PAMI/
  */
-class ResponseMessage extends IncomingMessage
+class ResponseMessage extends IncomingMessage implements \JsonSerializable
 {
     /**
      * Child events.
@@ -159,6 +159,19 @@ class ResponseMessage extends IncomingMessage
     public function setActionId($actionId)
     {
         $this->setKey('ActionId', $actionId);
+    }
+
+    /**
+     * Implements JsonSerializable
+     *
+     * @return object
+     */
+    public function jsonSerialize ()
+    {
+        return ( object ) array_merge(array(
+            'completed' => $this->isComplete(),
+            'events' => $this->getEvents()
+        ), $this->keys);
     }
 
     /**
