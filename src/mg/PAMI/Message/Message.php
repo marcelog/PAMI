@@ -39,7 +39,7 @@ namespace PAMI\Message;
  * @license  http://marcelog.github.com/PAMI/ Apache License 2.0
  * @link     http://marcelog.github.com/PAMI/
  */
-abstract class Message
+abstract class Message implements \JsonSerializable
 {
 	/**
 	 * End Of Line means this token.
@@ -235,6 +235,16 @@ abstract class Message
     {
         return $this->getKey('ActionID');
     }
+
+	/**
+	 * Implements JsonSerializable
+	 *
+	 * @return object
+	 */
+	public function jsonSerialize ()
+	{
+		return ( object ) $this->keys;
+	}
 
 	/**
 	 * Constructor.
