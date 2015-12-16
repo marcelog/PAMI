@@ -21,5 +21,8 @@
   "require": {
     "php": ">=5.3.3",
     "apache/log4php": "2.3.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.8"
   }
 }

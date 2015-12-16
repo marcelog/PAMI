@@ -216,31 +216,7 @@ class Test_Client extends \PHPUnit_Framework_TestCase
         );
 	    $client = new \PAMI\Client\Impl\ClientImpl($options);
     }
-    /**
-     * @test
-     */
-    public function can_connect_timeout()
-    {
-        $options = array(
-            'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties',
-        	'host' => '2.3.4.5',
-            'scheme' => 'tcp://',
-        	'port' => 9999,
-        	'username' => 'asd',
-        	'secret' => 'asd',
-            'connect_timeout' => 3,
-        	'read_timeout' => 10
-        );
-        $start = time();
-        try
-        {
-	        $client = new \PAMI\Client\Impl\ClientImpl($options);
-	        $client->open();
-        } catch(\Exception $e) {
-        }
-        $length = time() - $start;
-        $this->assertTrue($length >= 2 && $length <= 5);
-    }
+
     /**
      * @test
      * @expectedException \PAMI\Client\Exception\ClientException
