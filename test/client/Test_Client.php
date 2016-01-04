@@ -81,11 +81,11 @@ namespace PAMI\Client\Impl {
             return call_user_func_array('\microtime', func_get_args());
         }
     }
-    function stream_socket_client() {
+    function stream_socket_client($remote_socket, &$errno = null, &$errstr = null, $timeout = null, $flags = null, $context = null) {
         global $mock_stream_socket_client;
         if (isset($mock_stream_socket_client) && $mock_stream_socket_client === true) {
         } else {
-            return call_user_func_array('\stream_socket_client', func_get_args());
+            return \stream_socket_client($remote_socket, $errno, $errstr, $timeout, $flags, $context);
         }
     }
     function stream_socket_shutdown() {
