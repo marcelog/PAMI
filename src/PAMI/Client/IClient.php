@@ -29,6 +29,8 @@
 namespace PAMI\Client;
 
 use PAMI\Message\OutgoingMessage;
+use Psr\Log\LoggerInterface;
+use Psr\Log\NullLogger;
 
 /**
  * Interface for an ami client.
@@ -100,4 +102,13 @@ interface IClient
 	 * @return \PAMI\Message\Response\ResponseMessage
 	 */
 	public function send(OutgoingMessage $message);
+
+    /**
+     * Sets the logger implementation.
+     *
+     * @param Psr\Log\LoggerInterface $logger The PSR3-Logger
+     *
+     * @return void
+     */
+    public function setLogger(LoggerInterface $logger);
 }

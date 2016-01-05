@@ -427,6 +427,18 @@ class ClientImpl implements IClient
 		@stream_socket_shutdown($this->_socket, STREAM_SHUT_RDWR);
 	}
 
+    /**
+     * Sets the logger implementation.
+     *
+     * @param Psr\Log\LoggerInterface $logger The PSR3-Logger
+     *
+     * @return void
+     */
+    public function setLogger(LoggerInterface $logger)
+    {
+        $this->logger = $logger;
+    }
+
 	/**
 	 * Constructor.
 	 *
