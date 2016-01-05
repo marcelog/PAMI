@@ -325,7 +325,7 @@ class ClientImpl implements IClient
             if ($listener instanceof \Closure) {
                 $listener($message);
             } else if (is_array($listener)) {
-                $listener[0]->$listener[1]($message);
+                $listener[0]->{$listener[1]}($message);
             } else {
                 $listener->handle($message);
             }
