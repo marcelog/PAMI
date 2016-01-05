@@ -63,7 +63,7 @@ abstract class ActionMessage extends OutgoingMessage
      *
      * The ActionID can be at most 69 characters long, according to
      * {@link https://issues.asterisk.org/jira/browse/14847 Asterisk Issue 14847}.
-     * 
+     *
      * Therefore we'll throw an exception when the ActionID is too long.
      *
      * @param $actionID The Action ID to have this action known by

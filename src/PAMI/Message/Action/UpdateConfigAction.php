@@ -63,7 +63,7 @@ class UpdateConfigAction extends ActionMessage
      *
      * @return void
      */
-    public function setSrcFilename( $filename )
+    public function setSrcFilename($filename)
     {
         $this->setKey('SrcFilename', $filename);
     }
@@ -75,7 +75,7 @@ class UpdateConfigAction extends ActionMessage
      *
      * @return void
      */
-    public function setDstFilename( $filename )
+    public function setDstFilename($filename)
     {
         $this->setKey('DstFilename', $filename);
     }
@@ -103,7 +103,7 @@ class UpdateConfigAction extends ActionMessage
     public function setAction($input)
     {
         UpdateConfigAction::$counter++;
-        $this->setKey('Action-'.$this->_getPaddedCounter(), $input);
+        $this->setKey('Action-'.$this->getPaddedCounter(), $input);
     }
 
     /**
@@ -115,7 +115,7 @@ class UpdateConfigAction extends ActionMessage
      */
     public function setCat($input)
     {
-        $this->setKey('Cat-'.$this->_getPaddedCounter(), $input);
+        $this->setKey('Cat-'.$this->getPaddedCounter(), $input);
     }
 
     /**
@@ -127,7 +127,7 @@ class UpdateConfigAction extends ActionMessage
      */
     public function setVar($input)
     {
-        $this->setKey('Var-'.$this->_getPaddedCounter(), $input);
+        $this->setKey('Var-'.$this->getPaddedCounter(), $input);
     }
 
     /**
@@ -139,7 +139,7 @@ class UpdateConfigAction extends ActionMessage
      */
     public function setValue($input)
     {
-        $this->setKey('Value-'.$this->_getPaddedCounter(), $input);
+        $this->setKey('Value-'.$this->getPaddedCounter(), $input);
     }
 
      /**
@@ -151,7 +151,7 @@ class UpdateConfigAction extends ActionMessage
      */
     public function setMatch($input)
     {
-        $this->setKey('Match-'.$this->_getPaddedCounter(), $input);
+        $this->setKey('Match-'.$this->getPaddedCounter(), $input);
     }
 
      /**
@@ -163,7 +163,7 @@ class UpdateConfigAction extends ActionMessage
      */
     public function setLine($input)
     {
-        $this->setKey('Line-'.$this->_getPaddedCounter(), $input);
+        $this->setKey('Line-'.$this->getPaddedCounter(), $input);
     }
 
     /**
@@ -171,7 +171,7 @@ class UpdateConfigAction extends ActionMessage
      *
      * @return string
      */
-    protected function _getPaddedCounter()
+    protected function getPaddedCounter()
     {
         return str_pad(UpdateConfigAction::$counter, 6, '0', STR_PAD_LEFT);
     }

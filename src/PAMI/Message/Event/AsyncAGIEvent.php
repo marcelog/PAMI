@@ -45,8 +45,6 @@ use PAMI\Message\Event\EventMessage;
  */
 class AsyncAGIEvent extends EventMessage
 {
-    private $_envVariables = array();
-
     /**
      * Returns key: 'Privilege'.
      *

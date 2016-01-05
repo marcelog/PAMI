@@ -119,7 +119,7 @@ class NewstateEvent extends EventMessage
 
    /**
      * Returns key: 'ConnectedLineNum'. Asterisk >= 1.8.
-     * 
+     *
      * @return string
      */
     public function getConnectedLineNum()
@@ -129,7 +129,7 @@ class NewstateEvent extends EventMessage
 
     /**
      * Returns key: 'ConnectedLineName'. Asterisk >= 1.8.
-     * 
+     *
      * @return string
      */
     public function getConnectedLineName()

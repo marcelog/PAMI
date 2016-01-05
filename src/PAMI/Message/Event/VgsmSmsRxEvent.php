@@ -47,7 +47,7 @@ use PAMI\Message\Event\EventMessage;
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
  * @link       http://marcelog.github.com/PAMI/
  */
-class vgsm_sms_rxEvent extends EventMessage
+class VgsmSmsRxEvent extends EventMessage
 {
     /**
      * Returns key: 'Privilege'.

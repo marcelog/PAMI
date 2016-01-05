@@ -54,7 +54,10 @@ class QueueReloadAction extends ActionMessage
      * @return void
      */
     public function __construct(
-        $queue = false, $members = false, $rules = false, $parameters = false
+        $queue = false,
+        $members = false,
+        $rules = false,
+        $parameters = false
     ) {
         parent::__construct('QueueReload');
         if ($queue !== false) {

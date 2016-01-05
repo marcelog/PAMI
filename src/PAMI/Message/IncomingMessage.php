@@ -110,15 +110,15 @@ abstract class IncomingMessage extends Message
      */
     public function getChannelVariables($channel = null)
     {
-        if(is_null($channel)) {
-            if(!isset($this->keys['channel'])) {
+        if (is_null($channel)) {
+            if (!isset($this->keys['channel'])) {
                 return $this->getChannelVariables('default');
             } else {
-               return $this->getChannelVariables($this->keys['channel']);
+                return $this->getChannelVariables($this->keys['channel']);
             }
         } else {
             $channel = strtolower($channel);
-            if(!isset($this->channelVariables[$channel])) {
+            if (!isset($this->channelVariables[$channel])) {
                 return null;
             }
             return $this->channelVariables[$channel];
@@ -143,11 +143,11 @@ abstract class IncomingMessage extends Message
             $name = strtolower(trim($content[0]));
             unset($content[0]);
             $value = isset($content[1]) ? trim(implode(':', $content)) : '';
-            if(!strncmp($name, 'chanvariable', 12)) {
+            if (!strncmp($name, 'chanvariable', 12)) {
                 // https://github.com/marcelog/PAMI/issues/85
                 $matches = preg_match("/\(([^\)]*)\)/", $name, $captures);
                 $chanName = 'default';
-                if($matches > 0) {
+                if ($matches > 0) {
                     $chanName = $captures[1];
                 }
                 $content = explode('=', $value);
@@ -160,9 +160,9 @@ abstract class IncomingMessage extends Message
             }
         }
         // https://github.com/marcelog/PAMI/issues/85
-        if(isset($this->keys['channel'])) {
+        if (isset($this->keys['channel'])) {
             $channel = strtolower($this->keys['channel']);
-            if(isset($this->channelVariables[$channel])) {
+            if (isset($this->channelVariables[$channel])) {
                 $this->channelVariables[$channel] = array_merge(
                     $this->channelVariables[$channel],
                     $this->channelVariables['default']

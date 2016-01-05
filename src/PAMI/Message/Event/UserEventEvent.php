@@ -54,7 +54,7 @@ class UserEventEvent extends EventMessage
     {
         return $this->getKey('UserEvent');
     }
-    
+
     /**
      * Returns key: 'Privilege'.
      *

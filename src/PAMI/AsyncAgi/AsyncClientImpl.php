@@ -49,43 +49,38 @@ use Psr\Log\NullLogger;
 class AsyncClientImpl extends PagiClient implements IEventListener
 {
     /**
-     * Current instance.
-     * @var AsyncClientImpl
-     */
-    private static $_instance = false;
-    /**
      * The pami client to be used.
      * @var \PAMI\Client\IClient
      */
-    private $_pamiClient;
+    private $pamiClient;
     /**
      * The event that originated this async agi request.
      * @var \PAMI\Message\Event\AsyncAGIEvent
      */
-    private $_asyncAgiEvent;
+    private $asyncAgiEvent;
     /**
      * The channel that originated this async agi request.
      * @var string
      */
-    private $_channel;
+    private $channel;
     /**
      * The listener id after registering with the pami client.
      * @var string
      */
-    private $_listenerId;
+    private $listenerId;
 
     /**
      * Last CommandId issued, so we can track responses for agi commands.
      * @var string
      */
-    private $_lastCommandId;
+    private $lastCommandId;
 
     /**
      * Filled when an async agi event has been received, with command id equal
      * to the last command id sent.
      * @var string
      */
-    private $_lastAgiResult;
+    private $lastAgiResult;
 
     /**
      * Handles pami events.
@@ -97,8 +92,8 @@ class AsyncClientImpl extends PagiClient implements IEventListener
     public function handle(EventMessage $event)
     {
         if ($event instanceof \PAMI\Message\Event\AsyncAGIEvent) {
-            if ($event->getCommandId() == $this->_lastCommandId) {
-                $this->_lastAgiResult = trim($event->getResult());
+            if ($event->getCommandId() == $this->lastCommandId) {
+                $this->lastAgiResult = trim($event->getResult());
             }
         }
     }
@@ -109,19 +104,19 @@ class AsyncClientImpl extends PagiClient implements IEventListener
      */
     protected function send($text)
     {
-        $this->_logger->debug('Sending: ' . $text);
-        $this->_lastCommandId = uniqid(__CLASS__);
-        $action = new \PAMI\Message\Action\AGIAction($this->_channel, $text, $this->_lastCommandId);
-        $this->_lastAgiResult = false;
-        $response = $this->_pamiClient->send($action);
+        $this->logger->debug('Sending: ' . $text);
+        $this->lastCommandId = uniqid(__CLASS__);
+        $action = new \PAMI\Message\Action\AGIAction($this->channel, $text, $this->lastCommandId);
+        $this->lastAgiResult = false;
+        $response = $this->pamiClient->send($action);
         if (!$response->isSuccess()) {
             throw new \PAGI\Exception\ChannelDownException($response->getMessage());
         }
-        while ($this->_lastAgiResult === false) {
-            $this->_pamiClient->process();
+        while ($this->lastAgiResult === false) {
+            $this->pamiClient->process();
             usleep(1000);
         }
-        return $this->getResultFromResultString($this->_lastAgiResult);
+        return $this->getResultFromResultString($this->lastAgiResult);
     }
 
     /**
@@ -130,16 +125,16 @@ class AsyncClientImpl extends PagiClient implements IEventListener
      */
     protected function open()
     {
-        $environment = $this->_asyncAgiEvent->getEnvironment();
-        $this->_channel = $this->_asyncAgiEvent->getChannel();
+        $environment = $this->asyncAgiEvent->getEnvironment();
+        $this->channel = $this->asyncAgiEvent->getChannel();
         foreach (explode("\n", $environment) as $line) {
             if ($this->isEndOfEnvironmentVariables($line)) {
                 break;
             }
             $this->readEnvironmentVariable($line);
         }
-        $this->_listenerId = $this->_pamiClient->registerEventListener($this);
-        $this->_logger->debug(print_r($this->_variables, true));
+        $this->listenerId = $this->pamiClient->registerEventListener($this);
+        $this->logger->debug(print_r($this->variables, true));
     }
 
     /**
@@ -148,7 +143,7 @@ class AsyncClientImpl extends PagiClient implements IEventListener
      */
     protected function close()
     {
-        $this->_pamiClient->unregisterEventListener($this->_listenerId);
+        $this->pamiClient->unregisterEventListener($this->listenerId);
     }
 
     /**
@@ -166,10 +161,10 @@ class AsyncClientImpl extends PagiClient implements IEventListener
      */
     public function __construct(array $options = array())
     {
-        $this->_options = $options;
-        $this->_logger = new NullLogger;
-        $this->_pamiClient = $options['pamiClient'];
-        $this->_asyncAgiEvent = $options['asyncAgiEvent'];
+        $this->options = $options;
+        $this->logger = new NullLogger;
+        $this->pamiClient = $options['pamiClient'];
+        $this->asyncAgiEvent = $options['asyncAgiEvent'];
         $this->open();
     }
 }

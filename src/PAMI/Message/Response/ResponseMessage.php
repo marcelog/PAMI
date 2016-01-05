@@ -51,13 +51,13 @@ class ResponseMessage extends IncomingMessage
      * Child events.
      * @var EventMessage[]
      */
-    private $_events;
+    private $events;
 
     /**
      * Is this response completed? (with all its events).
      * @var boolean
      */
-    private $_completed;
+    private $completed;
 
     /**
      * Serialize function.
@@ -67,8 +67,8 @@ class ResponseMessage extends IncomingMessage
     public function __sleep()
     {
         $ret = parent::__sleep();
-        $ret[] = '_completed';
-        $ret[] = '_events';
+        $ret[] = 'completed';
+        $ret[] = 'events';
         return $ret;
     }
 
@@ -81,7 +81,7 @@ class ResponseMessage extends IncomingMessage
      */
     public function isComplete()
     {
-        return $this->_completed;
+        return $this->completed;
     }
 
     /**
@@ -93,13 +93,12 @@ class ResponseMessage extends IncomingMessage
      */
     public function addEvent(EventMessage $event)
     {
-        $this->_events[] = $event;
-        if (
-            stristr($event->getEventList(), 'complete') !== false
+        $this->events[] = $event;
+        if (stristr($event->getEventList(), 'complete') !== false
             || stristr($event->getName(), 'complete') !== false
             || stristr($event->getName(), 'DBGetResponse') !== false
         ) {
-            $this->_completed = true;
+            $this->completed = true;
         }
     }
 
@@ -110,7 +109,7 @@ class ResponseMessage extends IncomingMessage
      */
     public function getEvents()
     {
-        return $this->_events;
+        return $this->events;
     }
 
     /**
@@ -171,8 +170,8 @@ class ResponseMessage extends IncomingMessage
     public function __construct($rawContent)
     {
         parent::__construct($rawContent);
-        $this->_events = array();
-        $this->_eventsCount = 0;
-        $this->_completed = !$this->isList();
+        $this->events = array();
+        $this->eventsCount = 0;
+        $this->completed = !$this->isList();
     }
 }

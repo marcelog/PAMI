@@ -33,7 +33,7 @@ namespace PAMI\Message\Event;
 use PAMI\Message\Event\EventMessage;
 
 /**
- * Event Jabber 
+ * Event Jabber
  *
  * PHP Version 5
  *

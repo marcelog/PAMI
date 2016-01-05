@@ -46,62 +46,62 @@ use Psr\Log\NullLogger;
  */
 interface IClient
 {
-	/**
-	 * Opens a tcp connection to ami.
-	 *
-	 * @throws \PAMI\Client\Exception\ClientException
-	 * @return void
-	 */
-	public function open();
+    /**
+     * Opens a tcp connection to ami.
+     *
+     * @throws \PAMI\Client\Exception\ClientException
+     * @return void
+     */
+    public function open();
 
-	/**
-	 * Main processing loop. Also called from send(), you should call this in
-	 * your own application in order to continue reading events and responses
-	 * from ami.
-	 *
-	 * @return void
-	 */
-	public function process();
+    /**
+     * Main processing loop. Also called from send(), you should call this in
+     * your own application in order to continue reading events and responses
+     * from ami.
+     *
+     * @return void
+     */
+    public function process();
 
-	/**
-	 * Registers the given listener so it can receive events. Returns the generated
-	 * id for this new listener. You can pass in a an IEventListener, a Closure,
-	 * and an array containing the object and name of the method to invoke. Can specify
-	 * an optional predicate to invoke before calling the callback.
-	 *
-	 * @param mixed $listener
-	 * @param Closure|null $predicate
-	 *
-	 * @return string
-	 */
-	public function registerEventListener($listener, $predicate = null);
+    /**
+     * Registers the given listener so it can receive events. Returns the generated
+     * id for this new listener. You can pass in a an IEventListener, a Closure,
+     * and an array containing the object and name of the method to invoke. Can specify
+     * an optional predicate to invoke before calling the callback.
+     *
+     * @param mixed $listener
+     * @param Closure|null $predicate
+     *
+     * @return string
+     */
+    public function registerEventListener($listener, $predicate = null);
 
-	/**
-	 * Unregisters an event listener.
-	 *
-	 * @param string $id The id returned by registerEventListener.
-	 *
-	 * @return void
-	 */
-	public function unregisterEventListener($id);
+    /**
+     * Unregisters an event listener.
+     *
+     * @param string $listenerId The id returned by registerEventListener.
+     *
+     * @return void
+     */
+    public function unregisterEventListener($listenerId);
 
-	/**
-	 * Closes the connection to ami.
-	 *
-	 * @return void
-	 */
-	public function close();
+    /**
+     * Closes the connection to ami.
+     *
+     * @return void
+     */
+    public function close();
 
-	/**
-	 * Sends a message to ami.
-	 *
-	 * @param OutgoingMessage $message Message to send.
-	 *
-	 * @see ClientImpl::send()
-	 * @throws \PAMI\Client\Exception\ClientException
-	 * @return \PAMI\Message\Response\ResponseMessage
-	 */
-	public function send(OutgoingMessage $message);
+    /**
+     * Sends a message to ami.
+     *
+     * @param OutgoingMessage $message Message to send.
+     *
+     * @see ClientImpl::send()
+     * @throws \PAMI\Client\Exception\ClientException
+     * @return \PAMI\Message\Response\ResponseMessage
+     */
+    public function send(OutgoingMessage $message);
 
     /**
      * Sets the logger implementation.

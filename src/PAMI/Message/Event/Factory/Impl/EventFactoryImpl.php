@@ -59,21 +59,22 @@ class EventFactoryImpl
     public static function createFromRaw($message)
     {
         $eventStart = strpos($message, 'Event: ') + 7;
-/*
-        if ($eventStart > strlen($message)) {
-            return new UnknownEvent($message);
-        }
-*/
         $eventEnd = strpos($message, Message::EOL, $eventStart);
         if ($eventEnd === false) {
             $eventEnd = strlen($message);
         }
         $name = substr($message, $eventStart, $eventEnd - $eventStart);
+        $parts = explode('_', $name);
+        $totalParts = count($parts);
+        for ($i = 0; $i < $totalParts; $i++) {
+            $parts[$i] = ucfirst($parts[$i]);
+        }
+        $name = implode($parts, '');
         $className = '\\PAMI\\Message\\Event\\' . $name . 'Event';
         if (class_exists($className, true)) {
             return new $className($message);
         }
-	    return new UnknownEvent($message);
+        return new UnknownEvent($message);
     }
 
     /**
