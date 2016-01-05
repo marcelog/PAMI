@@ -195,9 +195,7 @@ class Test_Client extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->_properties = array(
-            'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties'
-        );
+        $this->_properties = array();
     }
 
     /**
@@ -206,7 +204,6 @@ class Test_Client extends \PHPUnit_Framework_TestCase
     public function can_get_client()
     {
         $options = array(
-            'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties',
         	'host' => 'tcp://1.1.1.1',
         	'port' => 9999,
         	'username' => 'asd',
@@ -222,7 +219,6 @@ class Test_Client extends \PHPUnit_Framework_TestCase
     public function can_connect_timeout()
     {
         $options = array(
-            'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties',
         	'host' => '2.3.4.5',
             'scheme' => 'tcp://',
         	'port' => 9999,
@@ -252,7 +248,6 @@ class Test_Client extends \PHPUnit_Framework_TestCase
         $mock_stream_socket_client = true;
         $mock_stream_set_blocking = true;
         $options = array(
-            'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties',
         	'host' => '2.3.4.5',
             'scheme' => 'tcp://',
         	'port' => 9999,
@@ -280,7 +275,6 @@ class Test_Client extends \PHPUnit_Framework_TestCase
         $mock_stream_socket_client = true;
         $mock_stream_set_blocking = true;
         $options = array(
-            'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties',
         	'host' => '2.3.4.5',
             'scheme' => 'tcp://',
         	'port' => 9999,
@@ -326,7 +320,6 @@ class Test_Client extends \PHPUnit_Framework_TestCase
         $mock_stream_socket_client = true;
         $mock_stream_set_blocking = true;
         $options = array(
-            'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties',
         	'host' => '2.3.4.5',
             'scheme' => 'tcp://',
         	'port' => 9999,
@@ -374,7 +367,6 @@ class Test_Client extends \PHPUnit_Framework_TestCase
         $mock_stream_socket_client = true;
         $mock_stream_set_blocking = true;
         $options = array(
-            'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties',
         	'host' => '2.3.4.5',
             'scheme' => 'tcp://',
         	'port' => 9999,
@@ -422,7 +414,6 @@ class Test_Client extends \PHPUnit_Framework_TestCase
         $mock_stream_socket_client = true;
         $mock_stream_set_blocking = true;
         $options = array(
-            'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties',
         	'host' => '2.3.4.5',
             'scheme' => 'tcp://',
         	'port' => 9999,
@@ -469,7 +460,6 @@ class Test_Client extends \PHPUnit_Framework_TestCase
         $mock_stream_socket_client = true;
         $mock_stream_set_blocking = true;
         $options = array(
-            'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties',
         	'host' => '2.3.4.5',
             'scheme' => 'tcp://',
         	'port' => 9999,
@@ -521,7 +511,6 @@ class Test_Client extends \PHPUnit_Framework_TestCase
         $mock_stream_socket_client = true;
         $mock_stream_set_blocking = true;
         $options = array(
-            'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties',
         	'host' => '2.3.4.5',
             'scheme' => 'tcp://',
         	'port' => 9999,
@@ -552,7 +541,6 @@ class Test_Client extends \PHPUnit_Framework_TestCase
         $mock_stream_socket_client = true;
         $mock_stream_set_blocking = true;
         $options = array(
-            'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties',
         	'host' => '2.3.4.5',
             'scheme' => 'tcp://',
         	'port' => 9999,
@@ -583,7 +571,6 @@ class Test_Client extends \PHPUnit_Framework_TestCase
         $mock_stream_socket_client = true;
         $mock_stream_set_blocking = true;
         $options = array(
-            'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties',
         	'host' => '2.3.4.5',
             'scheme' => 'tcp://',
         	'port' => 9999,
@@ -613,7 +600,6 @@ class Test_Client extends \PHPUnit_Framework_TestCase
         $mock_stream_socket_client = true;
         $mock_stream_set_blocking = true;
         $options = array(
-            'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties',
         	'host' => '2.3.4.5',
             'scheme' => 'tcp://',
         	'port' => 9999,
@@ -645,7 +631,6 @@ class Test_Client extends \PHPUnit_Framework_TestCase
         $mock_stream_socket_client = true;
         $mock_stream_set_blocking = true;
         $options = array(
-            'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties',
         	'host' => '2.3.4.5',
             'scheme' => 'tcp://',
         	'port' => 9999,
@@ -678,7 +663,6 @@ class Test_Client extends \PHPUnit_Framework_TestCase
         $mock_stream_socket_client = true;
         $mock_stream_set_blocking = true;
         $options = array(
-            'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties',
         	'host' => '2.3.4.5',
             'scheme' => 'tcp://',
         	'port' => 9999,
@@ -738,7 +722,6 @@ class Test_Client extends \PHPUnit_Framework_TestCase
         $mock_stream_socket_client = true;
         $mock_stream_set_blocking = true;
         $options = array(
-            'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties',
         	'host' => '2.3.4.5',
             'scheme' => 'tcp://',
         	'port' => 9999,
@@ -792,7 +775,6 @@ class Test_Client extends \PHPUnit_Framework_TestCase
         $mock_stream_socket_client = true;
         $mock_stream_set_blocking = true;
         $options = array(
-            'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties',
         	'host' => '2.3.4.5',
             'scheme' => 'tcp://',
         	'port' => 9999,
@@ -885,7 +867,6 @@ class Test_Client extends \PHPUnit_Framework_TestCase
         $mock_stream_socket_client = true;
         $mock_stream_set_blocking = true;
         $options = array(
-            'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties',
         	'host' => '2.3.4.5',
             'scheme' => 'tcp://',
         	'port' => 9999,
@@ -932,7 +913,6 @@ class Test_Client extends \PHPUnit_Framework_TestCase
         $mock_stream_socket_client = true;
         $mock_stream_set_blocking = true;
         $options = array(
-            'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties',
             'host' => '2.3.4.5',
             'scheme' => 'tcp://',
             'port' => 9999,
@@ -998,7 +978,6 @@ class Test_Client extends \PHPUnit_Framework_TestCase
         $mock_stream_socket_client = true;
         $mock_stream_set_blocking = true;
         $options = array(
-            'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties',
             'host' => '2.3.4.5',
             'scheme' => 'tcp://',
             'port' => 9999,
@@ -1069,7 +1048,6 @@ class Test_Client extends \PHPUnit_Framework_TestCase
         $mock_stream_socket_client = true;
         $mock_stream_set_blocking = true;
         $options = array(
-            'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties',
             'host' => '2.3.4.5',
             'scheme' => 'tcp://',
             'port' => 9999,

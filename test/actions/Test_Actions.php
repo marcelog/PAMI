@@ -48,9 +48,7 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         global $mockTime;
-        $this->_properties = array(
-            'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties'
-        );
+        $this->_properties = array();
         $mockTime = true;
     }
 
@@ -63,7 +61,6 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
         $mock_stream_socket_client = true;
         $mock_stream_set_blocking = true;
         $options = array(
-            'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties',
         	'host' => '2.3.4.5',
             'scheme' => 'tcp://',
         	'port' => 9999,

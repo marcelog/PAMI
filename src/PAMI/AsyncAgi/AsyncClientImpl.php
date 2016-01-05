@@ -32,6 +32,8 @@ use PAGI\Client\AbstractClient as PagiClient;
 use PAMI\Listener\IEventListener;
 use PAMI\Message\Event\EventMessage;
 use PAGI\Client\Result\Result;
+use Psr\Log\LoggerInterface;
+use Psr\Log\NullLogger;
 
 /**
  * An AGI client implementation.
@@ -107,9 +109,7 @@ class AsyncClientImpl extends PagiClient implements IEventListener
      */
     protected function send($text)
     {
-        if ($this->_logger->isDebugEnabled()) {
-            $this->_logger->debug('Sending: ' . $text);
-        }
+        $this->_logger->debug('Sending: ' . $text);
         $this->_lastCommandId = uniqid(__CLASS__);
         $action = new \PAMI\Message\Action\AGIAction($this->_channel, $text, $this->_lastCommandId);
         $this->_lastAgiResult = false;
@@ -139,9 +139,7 @@ class AsyncClientImpl extends PagiClient implements IEventListener
             $this->readEnvironmentVariable($line);
         }
         $this->_listenerId = $this->_pamiClient->registerEventListener($this);
-        if ($this->_logger->isDebugEnabled()) {
-            $this->_logger->debug(print_r($this->_variables, true));
-        }
+        $this->_logger->debug(print_r($this->_variables, true));
     }
 
     /**
@@ -158,9 +156,6 @@ class AsyncClientImpl extends PagiClient implements IEventListener
      *
      * Note: The client accepts an array with options. The available options are
      *
-     * log4php.properties => Optional. If set, should contain the absolute
-     * path to the log4php.properties file.
-     *
      * pamiClient => The PAMI client that will be used to run this async client.
      *
      * environment => Environment as received by the AsyncAGI Event.
@@ -172,10 +167,7 @@ class AsyncClientImpl extends PagiClient implements IEventListener
     public function __construct(array $options = array())
     {
         $this->_options = $options;
-        if (isset($options['log4php.properties'])) {
-            \Logger::configure($options['log4php.properties']);
-        }
-        $this->_logger = \Logger::getLogger(__CLASS__);
+        $this->_logger = new NullLogger;
         $this->_pamiClient = $options['pamiClient'];
         $this->_asyncAgiEvent = $options['asyncAgiEvent'];
         $this->open();
