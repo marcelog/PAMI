@@ -49,13 +49,13 @@ class VGSMSMSTxAction extends ActionMessage
     /**
      * Sets CellPhone Number . Mandatory
      *
-     * @param string $to phone to send SMS to. Sign + and Countr code is needed in some countries.
+     * @param string $target phone to send SMS to. Sign + and Countr code is needed in some countries.
      *
      * @return void
      */
-    public function setTo($to)
+    public function setTo($target)
     {
-        $this->setKey('To', $to);
+        $this->setKey('To', $target);
     }
 
     /**
@@ -85,13 +85,13 @@ class VGSMSMSTxAction extends ActionMessage
     /**
      * Sets Chip Id - It will use the chip_id provided.Optional
      *
-     * @param string $me_id Chip Id to use format meX , eg. me0 for VGSM 2 cards
+     * @param string $chipId Chip Id to use format meX , eg. me0 for VGSM 2 cards
      *
      * @return void
      */
-    public function setMe($id)
+    public function setMe($chipId)
     {
-        $this->setKey('X-SMS-ME', $id);
+        $this->setKey('X-SMS-ME', $chipId);
     }
 
     /**

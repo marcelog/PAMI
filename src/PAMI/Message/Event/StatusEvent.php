@@ -46,6 +46,16 @@ use PAMI\Message\Event\EventMessage;
 class StatusEvent extends EventMessage
 {
     /**
+     * Returns key: 'BridgedUniqueID'.
+     *
+     * @return string
+     */
+    public function getBridgedUniqueID()
+    {
+        return $this->getKey('BridgedUniqueID');
+    }
+
+    /**
      * Returns key: 'Privilege'.
      *
      * @return string
@@ -63,16 +73,6 @@ class StatusEvent extends EventMessage
     public function getChannel()
     {
         return $this->getKey('Channel');
-    }
-
-    /**
-     * Returns key: 'UniqueID'.
-     *
-     * @return string
-     */
-    public function getUniqueID()
-    {
-        return $this->getKey('UniqueID');
     }
 
     /**
@@ -95,6 +95,15 @@ class StatusEvent extends EventMessage
         return $this->getKey('Extension');
     }
 
+    /**
+     * Returns key: 'UniqueID'.
+     *
+     * @return string
+     */
+    public function getUniqueID()
+    {
+        return $this->getKey('UniqueID');
+    }
 
     /**
      * Returns key: 'Priority'.
@@ -194,15 +203,5 @@ class StatusEvent extends EventMessage
     public function getBridgedChannel()
     {
         return $this->getKey('BridgedChannel');
-    }
-
-    /**
-     * Returns key: 'BridgedUniqueID'.
-     *
-     * @return string
-     */
-    public function getBridgedUniqueID()
-    {
-        return $this->getKey('BridgedUniqueID');
     }
 }

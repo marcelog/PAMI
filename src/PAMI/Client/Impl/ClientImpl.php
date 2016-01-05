@@ -188,7 +188,6 @@ class ClientImpl implements IClient
         }
         @stream_set_blocking($this->socket, 0);
         $this->currentProcessingMessage = '';
-        //register_tick_function(array($this, 'process'));
         $this->logger->debug('Logged in successfully to ami.');
     }
 
@@ -205,9 +204,9 @@ class ClientImpl implements IClient
      */
     public function registerEventListener($listener, $predicate = null)
     {
-        $id = uniqid('PamiListener');
-        $this->eventListeners[$id] = array($listener, $predicate);
-        return $id;
+        $listenerId = uniqid('PamiListener');
+        $this->eventListeners[$listenerId] = array($listener, $predicate);
+        return $listenerId;
     }
 
     /**

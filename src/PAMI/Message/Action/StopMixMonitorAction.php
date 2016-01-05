@@ -46,13 +46,13 @@ class StopMixMonitorAction extends ActionMessage
     /**
      * Sets MixMonitorID key.
      *
-     * @param string $mix_monitor_id MixMonitorID to use.
+     * @param string $mixMonitorId MixMonitorID to use.
      *
      * @return void
      */
-    public function setMixMonitorId($mix_monitor_id)
+    public function setMixMonitorId($mixMonitorId)
     {
-        $this->setKey('MixMonitorID', $mix_monitor_id);
+        $this->setKey('MixMonitorID', $mixMonitorId);
     }
 
     /**
