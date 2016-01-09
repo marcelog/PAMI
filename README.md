@@ -321,7 +321,7 @@ To contribute:
 
 LICENSE
 =======
-Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
+Copyright 2016 Marcelo Gornstein <marcelog@gmail.com>
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
