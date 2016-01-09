@@ -52,7 +52,7 @@ contact me.
 
 For an in-depth tutorial: http://marcelog.github.com/articles/pami_introduction_tutorial_how_to_install.html
 
-```
+```php
 // Make sure you include the composer autoload.
 require __DIR__ . '/vendor/autoload.php';
 
@@ -83,7 +83,7 @@ A second (optional) argument can be used when registering the event listener: a
 closure that will be evaluated before calling the callback. The callback will
 be called only if this predicate returns true:
 
-```
+```php
 use PAMI\Message\Event\DialEvent;
 
 $client->registerEventListener(
