@@ -4,7 +4,6 @@
  * This script will send a message and listen for any incoming message. Multipart message is
  * supported (receiving a multiparte msg will trigger 2 separate msgs instead of concatenate
  * them correctly :P )
-
  *
  * PHP Version 5
  *
@@ -36,33 +35,25 @@ if ($argc <7 ) {
     exit (254);
 }
 
-// Setup include path.
-
-ini_set(
-    'include_path',
-    implode(
-        PATH_SEPARATOR,
-        array(
-            ini_get('include_path'),
-            implode(DIRECTORY_SEPARATOR, array('..', '..', '..', 'src', 'mg'))
-        )
-    )
-);
-
 ////////////////////////////////////////////////////////////////////////////////
 // Mandatory stuff to bootstrap.
 ////////////////////////////////////////////////////////////////////////////////
-require_once 'PAMI/Autoloader/Autoloader.php'; // Include PAMI autoloader.
-\PAMI\Autoloader\Autoloader::register(); // Call autoloader register for PAMI autoloader.
+require(implode(DIRECTORY_SEPARATOR, array(
+    __DIR__,
+    '..',
+    '..',
+    '..',
+    'vendor',
+    'autoload.php'
+)));
+
 use PAMI\Client\Impl\ClientImpl;
 use PAMI\Listener\IEventListener;
 use PAMI\Message\Event\EventMessage;
 use PAMI\Message\Action\ListCommandsAction;
 use PAMI\Message\Action\ListCategoriesAction;
-use PAMI\Message\Event\vgsm_sms_rxEvent;
-
+use PAMI\Message\Event\VgsmSmsRxEvent;
 use PAMI\Message\Action\VGSMSMSTxAction;
-
 
 class A implements IEventListener
 {
@@ -97,7 +88,6 @@ try
 
 {
     $options = array(
-        'log4php.properties' => realpath(__DIR__) . DIRECTORY_SEPARATOR . 'log4php.properties',
         'host' => $argv[1],
         'port' => $argv[2],
         'username' => $argv[3],

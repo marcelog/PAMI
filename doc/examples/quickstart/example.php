@@ -31,23 +31,18 @@ if ($argc != 7) {
     exit (254);
 }
 
-// Setup include path.
-ini_set(
-    'include_path',
-    implode(
-        PATH_SEPARATOR,
-        array(
-            implode(DIRECTORY_SEPARATOR, array('..', '..', '..', 'src', 'mg')),
-            ini_get('include_path'),
-        )
-    )
-);
-
 ////////////////////////////////////////////////////////////////////////////////
 // Mandatory stuff to bootstrap.
 ////////////////////////////////////////////////////////////////////////////////
-require_once 'PAMI/Autoloader/Autoloader.php'; // Include PAMI autoloader.
-\PAMI\Autoloader\Autoloader::register(); // Call autoloader register for PAMI autoloader.
+require(implode(DIRECTORY_SEPARATOR, array(
+    __DIR__,
+    '..',
+    '..',
+    '..',
+    'vendor',
+    'autoload.php'
+)));
+
 use PAMI\Client\Impl\ClientImpl;
 use PAMI\Listener\IEventListener;
 use PAMI\Message\Event\EventMessage;
@@ -149,7 +144,6 @@ ini_set('display_errors', 1);
 try
 {
     $options = array(
-        'log4php.properties' => realpath(__DIR__) . DIRECTORY_SEPARATOR . 'log4php.properties',
         'host' => $argv[1],
         'port' => $argv[2],
         'username' => $argv[3],
@@ -195,8 +189,8 @@ try
 	var_dump($a->send(new GetConfigJSONAction('extensions.conf')));
 	var_dump($a->send(new DAHDIShowChannelsAction()));
 	var_dump($a->send(new AgentsAction()));
-	var_dump($a->send(new MailboxStatusAction('marcelog@netlabs')));
-	var_dump($a->send(new MailboxCountAction('marcelog@netlabs')));
+	var_dump($a->send(new MailboxStatusAction('marcelog@gmail')));
+	var_dump($a->send(new MailboxCountAction('marcelog@gmail')));
 	var_dump($a->send(new VoicemailUsersListAction()));
 	var_dump($a->send(new DBPutAction('something', 'a', 'a')));
 	var_dump($a->send(new DBGetAction('something', 'a')));
