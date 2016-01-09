@@ -12,7 +12,7 @@ install:
   - composer install
 
 script:
-  - vendor/bin/phing build
+  - vendor/bin/phing travis
 
 after_script:
   - travis_retry php vendor/bin/coveralls -v

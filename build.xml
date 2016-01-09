@@ -72,6 +72,7 @@
   </target>
 
   <target name="build" depends="clean, prepare, cpd, cs, md, doc, test"/>
+  <target name="travis" depends="clean, prepare, cpd, cs, test"/>
   <target name="doc" depends="docxml, dochtml, docmd"/>
 
 </project>
