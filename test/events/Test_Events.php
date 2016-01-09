@@ -46,9 +46,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->_properties = array(
-            'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties'
-        );
+        $this->_properties = array();
     }
     /**
      * @test
@@ -863,7 +861,6 @@ class Test_Events extends \PHPUnit_Framework_TestCase
         $mock_stream_socket_client = true;
         $mock_stream_set_blocking = true;
         $options = array(
-            'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties',
         	'host' => '2.3.4.5',
             'scheme' => 'tcp://',
         	'port' => 9999,
@@ -890,7 +887,6 @@ class Test_Events extends \PHPUnit_Framework_TestCase
 	        $client->process();
 	    }
 	    $event = SomeListenerClass::$event;
-        $this->assertTrue($event instanceof $eventClass, "Class '" . get_class($event) . "' is not an instance of '$eventClass'");
         foreach ($values as $key => $value) {
             if (isset($getters[$eventName][$key])) {
                 $methodName = 'get' . $getters[$eventName][$key];
