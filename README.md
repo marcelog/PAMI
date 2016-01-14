@@ -7,6 +7,8 @@
 [![Code Climate](https://codeclimate.com/github/marcelog/PAMI/badges/gpa.svg)](https://codeclimate.com/github/marcelog/PAMI)
 [![Issue Count](https://codeclimate.com/github/marcelog/PAMI/badges/issue_count.svg)](https://codeclimate.com/github/marcelog/PAMI)
 
+[![Click here to lend your support to: PAMI and make a donation at pledgie.com !](https://pledgie.com/campaigns/30944.png?skin_name=chrome' border='0')](https://pledgie.com/campaigns/30944)
+
 # Introduction
 
 PAMI means PHP Asterisk Manager Interface. As its name suggests its just a
