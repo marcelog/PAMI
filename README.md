@@ -158,6 +158,7 @@ can still catch them. If you catch one of these, please report it!
 * PeerEntry
 * PeerlistComplete
 * PeerStatus
+* QueueEvent
 * QueueMember
 * QueueMemberAdded
 * QueueMemberRemoved
