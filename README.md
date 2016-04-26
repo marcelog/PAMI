@@ -41,12 +41,6 @@ composer.json:
   }
 ```
 
-# Asterisk versions supported
-
-PAMI is tested in asterisk 1.6, 1.4, and 1.8 versions, just because this are
-the versions I use in my boxes. If you need support for other versions, please
-contact me.
-
 # QuickStart
 
 For an in-depth tutorial: http://marcelog.github.com/articles/pami_introduction_tutorial_how_to_install.html
