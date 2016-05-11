@@ -71,54 +71,22 @@
                     <li><a href="users.html">Who uses it?</a></li>
                 </ul>
                 <div id="tab-content" class="tab-content">
-                <h3>Tutorial</h3>
+                <h3>Tutorial for PAMI to use PHP for your Asterisk PBX Telephony applications</h3>
                 <p>
-                For an in-depth tutorial, read <a href="http://marcelog.github.com/articles/pami_introduction_tutorial_how_to_install.html">this</a>.
+                For an in-depth tutorial, read <a href="http://marcelog.github.com/articles/pami_introduction_tutorial_how_to_install.html">"<b>Getting Started with the PAMI: PHP Asterisk Manager Interface = Easy Asterisk Monitoring</b>"</a>.
                 </p>
 <p>
 <a href="http://www.slideshare.net/mgornstein/phpconf-2013">Check the slides</a> about writing telephony applications using Asterisk, PHP, and PAGI and PAMI, at the <b>PHP Conference Argentina 2013</b>. You can download the slides, <b>don't forget to see the notes!</b> The complete talk is right there if you missed it :)&nbsp;<a href="http://www.slideshare.net/mgornstein/phpconf-2013"></a></p>
 
-<H3>Quickstart</H3>
-<pre name="code" class="php">
-require 'vendor/autoload.php';
-
-$options = array(
-    'host' => '2.3.4.5',
-    'scheme' => 'tcp://',
-    'port' => 9999,
-    'username' => 'asd',
-    'secret' => 'asd',
-    'connect_timeout' => 10,
-    'read_timeout' => 10
-);
-$client = new \PAMI\Client\Impl\ClientImpl($options);
-
-// Registering a closure
-$client->registerEventListener(function ($event) {
-});
-
-// Register a specific method of an object for event listening
-$client->registerEventListener(array($listener, 'handle'));
-
-// Register an IEventListener:
-$client->registerEventListener($listener);
-</pre>
+<H3>Quickstart: Controlling events from the Asterisk PBX in your PHP Code</H3>
+<script src="https://gist.github.com/marcelog/9ade525187c96d341f09d78ed08933d6.js"></script>
 <h3>Using Predicates to control events flow</h3>
 <p>
 A second (optional) argument can be used when registering the event listener: a
 closure that will be evaluated before calling the callback. The callback will be
 called only if this predicate returns true:
 </p>
-<pre name="code" class="php">
-use PAMI\Message\Event\DialEvent;
-
-$client->registerEventListener(
-    array($listener, 'handleDialStart'),
-    function ($event) {
-        return $event instanceof DialEvent && $event->getSubEvent() == 'Begin';
-    })
-);
-</pre>
+<script src="https://gist.github.com/marcelog/9f38c89038cbd0074099020cc636f4c8.js"></script>
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <!-- blog1 -->
 <ins class="adsbygoogle"
@@ -129,7 +97,7 @@ $client->registerEventListener(
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
-<H3>Examples</H3>
+<H3>PHP Examples to interact with the Asterisk PBX</H3>
 <p>
 For a very raw quickstart: <a href="https://github.com/marcelog/PAMI/tree/master/doc/examples">https://github.com/marcelog/PAMI/tree/master/docs/examples</a> for all (and full) examples.
 </p>
