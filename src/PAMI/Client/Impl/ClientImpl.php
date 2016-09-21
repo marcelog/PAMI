@@ -319,9 +319,12 @@ class ClientImpl implements IClient
         foreach ($this->eventListeners as $data) {
             $listener = $data[0];
             $predicate = $data[1];
-            if (is_callable($predicate) && !call_user_func($predicate, $message)) {
+
+            if (!$this->evaluatePredicate($predicate, $message))
+            {
                 continue;
             }
+
             if ($listener instanceof \Closure) {
                 $listener($message);
             } elseif (is_array($listener)) {
@@ -330,6 +333,33 @@ class ClientImpl implements IClient
                 $listener->handle($message);
             }
         }
+    }
+
+    /**
+     * Evaluate a predicate for a message.
+     *
+     * @param $predicate a closure or an array of filters.
+     * @param \PAMI\Message\IncomingMessage $message Message to compare.
+     *
+     * @return bool
+     */
+    protected function evaluatePredicate($predicate, IncomingMessage $message)
+    {
+        if (is_callable($predicate)) {
+            return call_user_func($predicate, $message);
+        }
+
+        if (!is_array($predicate)) {
+            return true;
+        }
+
+        foreach ($predicate as $key => $value) {
+            if (!preg_match($value, $message->getKey($key))) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     /**
