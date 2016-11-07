@@ -1,6 +1,6 @@
 <?php
 /**
- * Event triggered when a new extension is accessed.
+ * Event triggered when a received AGI command starts processing.
  *
  * PHP Version 5
  *
@@ -29,10 +29,8 @@
  */
 namespace PAMI\Message\Event;
 
-use PAMI\Message\Event\EventMessage;
-
 /**
- * Event triggered when a new extension is accessed.
+ * Event triggered when a received AGI command starts processing.
  *
  * PHP Version 5
  *
@@ -43,7 +41,7 @@ use PAMI\Message\Event\EventMessage;
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
  * @link       http://marcelog.github.com/PAMI/
  */
-class NewextenEvent extends EventMessage
+class AGIExecStartEvent extends EventMessage
 {
     /**
      * Returns key: 'Privilege'.
@@ -66,24 +64,73 @@ class NewextenEvent extends EventMessage
     }
 
     /**
-     * Returns key: 'Extension'.
-     * @deprecated Please use {@see getExten()}.
+     * Returns key: 'ChannelState'.
      *
      * @return string
      */
-    public function getExtension()
+    public function getChannelState()
     {
-        return $this->getKey('Extension');
+        return $this->getKey('ChannelState');
     }
 
     /**
-     * Returns key: 'Exten'.
+     * Returns key: 'ChannelStateDesc'.
      *
      * @return string
      */
-    public function getExten()
+    public function getChannelStateDesc()
     {
-        return $this->getKey('Exten') ?: $this->getKey('Extension');
+        return $this->getKey('ChannelStateDesc');
+    }
+
+    /**
+     * Returns key: 'CallerIDNum'.
+     *
+     * @return string
+     */
+    public function getCallerIDNum()
+    {
+        return $this->getKey('CallerIDNum');
+    }
+
+    /**
+     * Returns key: 'CallerIDName'.
+     *
+     * @return string
+     */
+    public function getCallerIDName()
+    {
+        return $this->getKey('CallerIDName');
+    }
+
+    /**
+     * Returns key: 'ConnectedLineNum'.
+     *
+     * @return string
+     */
+    public function getConnectedLineNum()
+    {
+        return $this->getKey('ConnectedLineNum');
+    }
+
+    /**
+     * Returns key: 'ConnectedLineName'.
+     *
+     * @return string
+     */
+    public function getConnectedLineName()
+    {
+        return $this->getKey('ConnectedLineName');
+    }
+
+    /**
+     * Returns key: 'AccountCode'.
+     *
+     * @return string
+     */
+    public function getAccountCode()
+    {
+        return $this->getKey('AccountCode');
     }
 
     /**
@@ -97,6 +144,16 @@ class NewextenEvent extends EventMessage
     }
 
     /**
+     * Returns key: 'Exten'.
+     *
+     * @return string
+     */
+    public function getExten()
+    {
+        return $this->getKey('Exten');
+    }
+
+    /**
      * Returns key: 'Priority'.
      *
      * @return string
@@ -107,32 +164,32 @@ class NewextenEvent extends EventMessage
     }
 
     /**
-     * Returns key: 'Application'.
+     * Returns key: 'Uniqueid'.
      *
      * @return string
      */
-    public function getApplication()
+    public function getUniqueid()
     {
-        return $this->getKey('Application');
+        return $this->getKey('Uniqueid');
     }
 
     /**
-     * Returns key: 'AppData'.
+     * Returns key: 'Command'.
      *
      * @return string
      */
-    public function getApplicationData()
+    public function getCommand()
     {
-        return $this->getKey('AppData');
+        return $this->getKey('Command');
     }
 
     /**
-     * Returns key: 'UniqueID'.
+     * Returns key: 'CommandId'.
      *
      * @return string
      */
-    public function getUniqueID()
+    public function getCommandId()
     {
-        return $this->getKey('UniqueID');
+        return $this->getKey('CommandId');
     }
 }

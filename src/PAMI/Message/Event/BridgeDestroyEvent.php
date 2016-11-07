@@ -1,6 +1,6 @@
 <?php
 /**
- * Event triggered when a new extension is accessed.
+ * Event triggered when a bridge is destroyed.
  *
  * PHP Version 5
  *
@@ -29,10 +29,8 @@
  */
 namespace PAMI\Message\Event;
 
-use PAMI\Message\Event\EventMessage;
-
 /**
- * Event triggered when a new extension is accessed.
+ * Event triggered when a bridge is destroyed.
  *
  * PHP Version 5
  *
@@ -43,7 +41,7 @@ use PAMI\Message\Event\EventMessage;
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
  * @link       http://marcelog.github.com/PAMI/
  */
-class NewextenEvent extends EventMessage
+class BridgeDestroyEvent extends EventMessage
 {
     /**
      * Returns key: 'Privilege'.
@@ -56,83 +54,62 @@ class NewextenEvent extends EventMessage
     }
 
     /**
-     * Returns key: 'Channel'.
+     * Returns key: 'BridgeUniqueid'.
      *
      * @return string
      */
-    public function getChannel()
+    public function getBridgeUniqueid()
     {
-        return $this->getKey('Channel');
+        return $this->getKey('BridgeUniqueid');
     }
 
     /**
-     * Returns key: 'Extension'.
-     * @deprecated Please use {@see getExten()}.
+     * Returns key: 'BridgeType'.
      *
      * @return string
      */
-    public function getExtension()
+    public function getBridgeType()
     {
-        return $this->getKey('Extension');
+        return $this->getKey('BridgeType');
     }
 
     /**
-     * Returns key: 'Exten'.
+     * Returns key: 'BridgeTechnology'.
      *
      * @return string
      */
-    public function getExten()
+    public function getBridgeTechnology()
     {
-        return $this->getKey('Exten') ?: $this->getKey('Extension');
+        return $this->getKey('BridgeTechnology');
     }
 
     /**
-     * Returns key: 'Context'.
+     * Returns key: 'BridgeCreator'.
      *
      * @return string
      */
-    public function getContext()
+    public function getBridgeCreator()
     {
-        return $this->getKey('Context');
+        return $this->getKey('BridgeCreator');
     }
 
     /**
-     * Returns key: 'Priority'.
+     * Returns key: 'BridgeName'.
      *
      * @return string
      */
-    public function getPriority()
+    public function getBridgeName()
     {
-        return $this->getKey('Priority');
+        return $this->getKey('BridgeName');
     }
 
     /**
-     * Returns key: 'Application'.
+     * Returns key: 'BridgeNumChannels'.
      *
      * @return string
      */
-    public function getApplication()
+    public function getBridgeNumChannels()
     {
-        return $this->getKey('Application');
-    }
-
-    /**
-     * Returns key: 'AppData'.
-     *
-     * @return string
-     */
-    public function getApplicationData()
-    {
-        return $this->getKey('AppData');
-    }
-
-    /**
-     * Returns key: 'UniqueID'.
-     *
-     * @return string
-     */
-    public function getUniqueID()
-    {
-        return $this->getKey('UniqueID');
+        return $this->getKey('BridgeNumChannels');
     }
 }

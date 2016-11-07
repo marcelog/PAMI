@@ -25,7 +25,7 @@
   </target>
 
   <target name="cpd">
-    <exec command="vendor/bin/phpcpd --fuzzy src"
+    <exec command="vendor/bin/phpcpd --fuzzy src --exclude PAMI/Message/Event"
       checkreturn="true"
       passthru="true"/>
   </target>

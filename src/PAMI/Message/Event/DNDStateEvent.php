@@ -1,12 +1,12 @@
 <?php
 /**
- * UserEvent action message.
+ * Event triggered when the Do Not Disturb state is changed on a DAHDI channel.
  *
  * PHP Version 5
  *
  * @category   Pami
  * @package    Message
- * @subpackage Action
+ * @subpackage Event
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
  * @version    SVN: $Id$
@@ -27,34 +27,60 @@
  * limitations under the License.
  *
  */
-namespace PAMI\Message\Action;
+namespace PAMI\Message\Event;
 
 /**
- * UserEvent action message.
+ * Event triggered when the Do Not Disturb state is changed on a DAHDI channel.
  *
  * PHP Version 5
  *
  * @category   Pami
  * @package    Message
- * @subpackage Action
+ * @subpackage Event
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
  * @link       http://marcelog.github.com/PAMI/
  */
-class UserEventAction extends ActionMessage
+class DNDStateEvent extends EventMessage
 {
     /**
-     * Constructor.
+     * Returns key: 'Privilege'.
      *
-     * @param string $userEvent UserEvent
-     * @param array $headers
+     * @return string
      */
-    public function __construct($userEvent, array $headers = [])
+    public function getPrivilege()
     {
-        parent::__construct('UserEvent');
-        $this->setKey('UserEvent', $userEvent);
-        foreach ($headers as $key => $value) {
-            $this->setKey((string)$key, (string)$value);
-        }
+        return $this->getKey('Privilege');
+    }
+
+    /**
+     * Returns key: 'Channel'.
+     * @deprecated Please use {@see getDAHDIChannel()}.
+     *
+     * @return string
+     */
+    public function getChannel()
+    {
+        return $this->getDAHDIChannel();
+    }
+
+    /**
+     * Returns key: 'DAHDIChannel'.
+     *
+     * @return string
+     */
+    public function getDAHDIChannel()
+    {
+        return $this->getKey('DAHDIChannel') ?: $this->getKey('Channel');
+    }
+
+    /**
+     * Returns key: 'Status'.
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->getKey('Status');
     }
 }

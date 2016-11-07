@@ -1,6 +1,6 @@
 <?php
 /**
- * UserEvent action message.
+ * BlindTransfer action message.
  *
  * PHP Version 5
  *
@@ -30,7 +30,7 @@
 namespace PAMI\Message\Action;
 
 /**
- * UserEvent action message.
+ * BlindTransfer action message.
  *
  * PHP Version 5
  *
@@ -41,20 +41,20 @@ namespace PAMI\Message\Action;
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
  * @link       http://marcelog.github.com/PAMI/
  */
-class UserEventAction extends ActionMessage
+class BlindTransferAction extends ActionMessage
 {
     /**
      * Constructor.
      *
-     * @param string $userEvent UserEvent
-     * @param array $headers
+     * @param string $channel Transferer's channel.
+     * @param string $extension Extension to transfer to.
+     * @param string $context Context to transfer to.
      */
-    public function __construct($userEvent, array $headers = [])
+    public function __construct($channel, $extension, $context)
     {
-        parent::__construct('UserEvent');
-        $this->setKey('UserEvent', $userEvent);
-        foreach ($headers as $key => $value) {
-            $this->setKey((string)$key, (string)$value);
-        }
+        parent::__construct('BlindTransfer');
+        $this->setKey('Channel', $channel);
+        $this->setKey('Exten', $extension);
+        $this->setKey('Context', $context);
     }
 }
