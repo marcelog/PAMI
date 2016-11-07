@@ -1,6 +1,6 @@
 <?php
 /**
- * WaitEvent action message.
+ * BlindTransfer action message.
  *
  * PHP Version 5
  *
@@ -30,7 +30,7 @@
 namespace PAMI\Message\Action;
 
 /**
- * WaitEvent action message.
+ * BlindTransfer action message.
  *
  * PHP Version 5
  *
@@ -41,17 +41,20 @@ namespace PAMI\Message\Action;
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
  * @link       http://marcelog.github.com/PAMI/
  */
-class WaitEventAction extends ActionMessage
+class BlindTransferAction extends ActionMessage
 {
     /**
      * Constructor.
      *
-     * @param int $timeout Timeout in seconds
+     * @param string $channel   Transferer's channel.
+     * @param string $extension Extension to transfer to.
+     * @param string $context   Context to transfer to.
      */
-    public function __construct($timeout)
+    public function __construct($channel, $extension, $context)
     {
-        parent::__construct('WaitEvent');
-
-        $this->setKey('Timeout', (int) $timeout);
+        parent::__construct('BlindTransfer');
+        $this->setKey('Channel', $channel);
+        $this->setKey('Exten', $extension);
+        $this->setKey('Context', $context);
     }
 }
