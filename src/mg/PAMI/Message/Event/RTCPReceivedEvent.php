@@ -29,8 +29,6 @@
  */
 namespace PAMI\Message\Event;
 
-use PAMI\Message\Event\EventMessage;
-
 /**
  * Event triggered when exchanging rtp stats.
  *

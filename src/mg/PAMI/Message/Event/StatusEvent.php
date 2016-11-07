@@ -205,4 +205,14 @@ class StatusEvent extends EventMessage
     {
         return $this->getKey('BridgedUniqueID');
     }
+
+    /**
+     * Returns key: 'BridgedID'.
+     *
+     * @return string
+     */
+    public function getBridgeID()
+    {
+        return $this->getKey('BridgeID');
+    }
 }

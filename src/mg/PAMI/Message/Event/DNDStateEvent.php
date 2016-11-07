@@ -1,6 +1,6 @@
 <?php
 /**
- * Event triggered when a new extension is accessed.
+ * Event triggered when a dial is executed.
  *
  * PHP Version 5
  *
@@ -30,7 +30,7 @@
 namespace PAMI\Message\Event;
 
 /**
- * Event triggered when a new extension is accessed.
+ * Event triggered when the Do Not Disturb state is changed on a DAHDI channel.
  *
  * PHP Version 5
  *
@@ -41,7 +41,7 @@ namespace PAMI\Message\Event;
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
  * @link       http://marcelog.github.com/PAMI/
  */
-class NewextenEvent extends EventMessage
+class DNDStateEvent extends EventMessage
 {
     /**
      * Returns key: 'Privilege'.
@@ -55,82 +55,32 @@ class NewextenEvent extends EventMessage
 
     /**
      * Returns key: 'Channel'.
+     * @deprecated Please use {@see getDAHDIChannel()}.
      *
      * @return string
      */
     public function getChannel()
     {
-        return $this->getKey('Channel');
+        return $this->getDAHDIChannel();
     }
 
     /**
-     * Returns key: 'Extension'.
-     * @deprecated Please use {@see getExten()}.
+     * Returns key: 'DAHDIChannel'.
      *
      * @return string
      */
-    public function getExtension()
+    public function getDAHDIChannel()
     {
-        return $this->getExten();
+        return $this->getKey('DAHDIChannel') ?: $this->getKey('Channel');
     }
 
     /**
-     * Returns key: 'Exten'.
+     * Returns key: 'Status'.
      *
      * @return string
      */
-    public function getExten()
+    public function getStatus()
     {
-        return $this->getKey('Exten') ?: $this->getKey('Extension');
-    }
-
-    /**
-     * Returns key: 'Context'.
-     *
-     * @return string
-     */
-    public function getContext()
-    {
-        return $this->getKey('Context');
-    }
-
-    /**
-     * Returns key: 'Priority'.
-     *
-     * @return string
-     */
-    public function getPriority()
-    {
-        return $this->getKey('Priority');
-    }
-
-    /**
-     * Returns key: 'Application'.
-     *
-     * @return string
-     */
-    public function getApplication()
-    {
-        return $this->getKey('Application');
-    }
-
-    /**
-     * Returns key: 'AppData'.
-     *
-     * @return string
-     */
-    public function getApplicationData()
-    {
-        return $this->getKey('AppData');
-    }
-
-    /**
-     * Returns key: 'UniqueID'.
-     *
-     * @return string
-     */
-    public function getUniqueID()
-    {
-        return $this->getKey('UniqueID');
+        return $this->getKey('Status');
     }
 }
