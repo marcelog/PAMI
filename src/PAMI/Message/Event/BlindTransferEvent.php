@@ -86,7 +86,8 @@ class BlindTransferEvent extends EventMessage
 
     /**
      * Returns key: 'TransfererChannelState'.
-     * TransfererChannelState - A numeric code for the channel's current state, related to TransfererChannelStateDesc
+     * TransfererChannelState - A numeric code for the channel's current state,
+     * related to TransfererChannelStateDesc
      *
      * @return string
      */
@@ -219,7 +220,8 @@ class BlindTransferEvent extends EventMessage
 
     /**
      * Returns key: 'TransfereeChannelState'.
-     * TransfereeChannelState - A numeric code for the channel's current state, related to TransfereeChannelStateDesc
+     * TransfereeChannelState - A numeric code for the channel's current state,
+     * related to TransfereeChannelStateDesc
      *
      * @return string
      */
@@ -407,7 +409,8 @@ class BlindTransferEvent extends EventMessage
 
     /**
      * Returns key: 'IsExternal'.
-     * IsExternal - Indicates if the transfer was performed outside of Asterisk. For instance, a channel protocol native transfer is external. A DTMF transfer is internal.
+     * IsExternal - Indicates if the transfer was performed outside of Asterisk.
+     * For instance, a channel protocol native transfer is external. A DTMF transfer is internal.
      *
      * Yes
      * No
@@ -420,7 +423,8 @@ class BlindTransferEvent extends EventMessage
     }
 
     /**
-     * Indicates if the transfer was performed outside of Asterisk. For instance, a channel protocol native transfer is external. A DTMF transfer is internal.
+     * Indicates if the transfer was performed outside of Asterisk.
+     * For instance, a channel protocol native transfer is external. A DTMF transfer is internal.
      *
      * @return bool
      */

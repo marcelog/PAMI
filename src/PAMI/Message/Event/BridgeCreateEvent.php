@@ -112,5 +112,4 @@ class BridgeCreateEvent extends EventMessage
     {
         return $this->getKey('BridgeNumChannels');
     }
-
 }

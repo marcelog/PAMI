@@ -242,5 +242,4 @@ class BridgeEnterEvent extends EventMessage
     {
         return $this->getKey('SwapUniqueid');
     }
-
 }

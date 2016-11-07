@@ -205,5 +205,4 @@ class DTMFEndEvent extends EventMessage
     {
         return $this->getKey('Direction');
     }
-
 }

@@ -232,5 +232,4 @@ class BridgeLeaveEvent extends EventMessage
     {
         return $this->getKey('Uniqueid');
     }
-
 }

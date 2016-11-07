@@ -28,6 +28,7 @@
  *
  */
 namespace PAMI\Message\Action;
+
 /**
  * BlindTransfer action message.
  *
@@ -45,9 +46,9 @@ class BlindTransferAction extends ActionMessage
     /**
      * Constructor.
      *
-     * @param string $channel   Transferer's channel.
+     * @param string $channel Transferer's channel.
      * @param string $extension Extension to transfer to.
-     * @param string $context   Context to transfer to.
+     * @param string $context Context to transfer to.
      */
     public function __construct($channel, $extension, $context)
     {

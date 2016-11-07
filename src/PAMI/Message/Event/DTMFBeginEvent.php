@@ -195,5 +195,4 @@ class DTMFBeginEvent extends EventMessage
     {
         return $this->getKey('Direction');
     }
-
 }

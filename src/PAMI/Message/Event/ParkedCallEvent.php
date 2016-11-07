@@ -28,6 +28,7 @@
  *
  */
 namespace PAMI\Message\Event;
+
 /**
  * Event triggered when a call is parked.
  *
@@ -51,6 +52,7 @@ class ParkedCallEvent extends EventMessage
     {
         return $this->getKey('Privilege');
     }
+
     /**
      * Returns key: 'Parkinglot'.
      *
@@ -60,6 +62,7 @@ class ParkedCallEvent extends EventMessage
     {
         return $this->getKey('Parkinglot');
     }
+
     /**
      * Returns key: 'From'.
      *
@@ -69,6 +72,7 @@ class ParkedCallEvent extends EventMessage
     {
         return $this->getKey('From');
     }
+
     /**
      * Returns key: 'Timeout'.
      * @deprecated Deprecated since Asterisk 12. {@use ParkingTimeout()}.
@@ -79,6 +83,7 @@ class ParkedCallEvent extends EventMessage
     {
         return $this->getParkingTimeout();
     }
+
     /**
      * Returns key: 'ConnectedLineNum'.
      * @deprecated Deprecated since Asterisk 12. {@use getParkeeConnectedLineNum()}.
@@ -89,6 +94,7 @@ class ParkedCallEvent extends EventMessage
     {
         return $this->getParkeeConnectedLineNum();
     }
+
     /**
      * Returns key: 'ConnectedLineName'.
      * @deprecated Deprecated since Asterisk 12. {@use getParkeeConnectedLineName()}.
@@ -99,6 +105,7 @@ class ParkedCallEvent extends EventMessage
     {
         return $this->getParkeeConnectedLineName();
     }
+
     /**
      * Returns key: 'Channel'.
      * @deprecated Deprecated since Asterisk 12. {@use getParkeeChannel()}.
@@ -109,6 +116,7 @@ class ParkedCallEvent extends EventMessage
     {
         return $this->getParkeeChannel();
     }
+
     /**
      * Returns key: 'CallerIDNum'.
      * @deprecated Deprecated since Asterisk 12. {@use getParkeeCallerIDNum()}.
@@ -119,6 +127,7 @@ class ParkedCallEvent extends EventMessage
     {
         return $this->getParkeeCallerIDNum();
     }
+
     /**
      * Returns key: 'CallerIDName'.
      * @deprecated Deprecated since Asterisk 12. {@use getParkeeCallerIDName()}.
@@ -129,6 +138,7 @@ class ParkedCallEvent extends EventMessage
     {
         return $this->getParkeeCallerIDName();
     }
+
     /**
      * Returns key: 'UniqueID'.
      * @deprecated Deprecated since Asterisk 12. {@use getParkeeUniqueid()}.
@@ -139,6 +149,7 @@ class ParkedCallEvent extends EventMessage
     {
         return $this->getParkeeUniqueid();
     }
+
     /**
      * Returns key: 'Exten'.
      * @deprecated Deprecated since Asterisk 12. {@use getParkingSpace()}.
@@ -149,6 +160,7 @@ class ParkedCallEvent extends EventMessage
     {
         return $this->getParkingSpace();
     }
+
     /**
      * Returns key: 'ParkeeChannel'.
      *
@@ -158,6 +170,7 @@ class ParkedCallEvent extends EventMessage
     {
         return $this->getKey('ParkeeChannel') ?: $this->getKey('Channel');
     }
+
     /**
      * Returns key: 'ParkeeChannelState'.
      *
@@ -167,6 +180,7 @@ class ParkedCallEvent extends EventMessage
     {
         return $this->getKey('ParkeeChannelState');
     }
+
     /**
      * Returns key: 'ParkeeChannelStateDesc'.
      *
@@ -176,6 +190,7 @@ class ParkedCallEvent extends EventMessage
     {
         return $this->getKey('ParkeeChannelStateDesc');
     }
+
     /**
      * Returns key: 'ParkeeCallerIDNum'.
      *
@@ -185,6 +200,7 @@ class ParkedCallEvent extends EventMessage
     {
         return $this->getKey('ParkeeCallerIDNum') ?: $this->getKey('CallerIDNum');
     }
+
     /**
      * Returns key: 'ParkeeCallerIDName'.
      *
@@ -194,6 +210,7 @@ class ParkedCallEvent extends EventMessage
     {
         return $this->getKey('ParkeeCallerIDName') ?: $this->getKey('CallerIDName');
     }
+
     /**
      * Returns key: 'ParkeeConnectedLineNum'.
      *
@@ -203,6 +220,7 @@ class ParkedCallEvent extends EventMessage
     {
         return $this->getKey('ParkeeConnectedLineNum') ?: $this->getKey('ConnectedLineNum');
     }
+
     /**
      * Returns key: 'ParkeeConnectedLineName'.
      *
@@ -212,6 +230,7 @@ class ParkedCallEvent extends EventMessage
     {
         return $this->getKey('ParkeeConnectedLineName') ?: $this->getKey('ConnectedLineName');
     }
+
     /**
      * Returns key: 'ParkeeAccountCode'.
      *
@@ -221,6 +240,7 @@ class ParkedCallEvent extends EventMessage
     {
         return $this->getKey('ParkeeAccountCode');
     }
+
     /**
      * Returns key: 'ParkeeContext'.
      *
@@ -230,6 +250,7 @@ class ParkedCallEvent extends EventMessage
     {
         return $this->getKey('ParkeeContext');
     }
+
     /**
      * Returns key: 'ParkeeExten'.
      *
@@ -239,6 +260,7 @@ class ParkedCallEvent extends EventMessage
     {
         return $this->getKey('ParkeeExten');
     }
+
     /**
      * Returns key: 'ParkeePriority'.
      *
@@ -248,6 +270,7 @@ class ParkedCallEvent extends EventMessage
     {
         return $this->getKey('ParkeePriority');
     }
+
     /**
      * Returns key: 'ParkeeUniqueid'.
      *
@@ -257,6 +280,7 @@ class ParkedCallEvent extends EventMessage
     {
         return $this->getKey('ParkeeUniqueid') ?: $this->getKey('UniqueId');
     }
+
     /**
      * Returns key: 'ParkerDialString'.
      *
@@ -266,6 +290,7 @@ class ParkedCallEvent extends EventMessage
     {
         return $this->getKey('ParkerDialString');
     }
+
     /**
      * Returns key: 'ParkingSpace'.
      *
@@ -275,6 +300,7 @@ class ParkedCallEvent extends EventMessage
     {
         return $this->getKey('ParkingSpace') ?: $this->getKey('Exten');
     }
+
     /**
      * Returns key: 'ParkingTimeout'.
      *
@@ -284,6 +310,7 @@ class ParkedCallEvent extends EventMessage
     {
         return $this->getKey('ParkingTimeout') ?: $this->getKey('Timeout');
     }
+
     /**
      * Returns key: 'ParkingDuration'.
      *

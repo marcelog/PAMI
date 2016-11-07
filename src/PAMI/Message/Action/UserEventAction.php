@@ -28,6 +28,7 @@
  *
  */
 namespace PAMI\Message\Action;
+
 /**
  * UserEvent action message.
  *
@@ -46,14 +47,14 @@ class UserEventAction extends ActionMessage
      * Constructor.
      *
      * @param string $userEvent UserEvent
-     * @param array  $headers
+     * @param array $headers
      */
-    public function __construct($userEvent, array $headers = array())
+    public function __construct($userEvent, array $headers = [])
     {
         parent::__construct('UserEvent');
         $this->setKey('UserEvent', $userEvent);
         foreach ($headers as $key => $value) {
-            $this->setKey((string) $key, (string) $value);
+            $this->setKey((string)$key, (string)$value);
         }
     }
 }

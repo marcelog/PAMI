@@ -53,7 +53,7 @@ class QueueCallerAbandonEvent extends EventMessage
         return $this->getKey('Privilege');
     }
 
-	/**
+    /**
      * Returns key: 'Channel'.
      *
      * @return string
@@ -63,7 +63,7 @@ class QueueCallerAbandonEvent extends EventMessage
         return $this->getKey('Channel');
     }
 
-	/**
+    /**
      * Returns key: 'ChannelState'.
      *
      * @return string
@@ -73,7 +73,7 @@ class QueueCallerAbandonEvent extends EventMessage
         return $this->getKey('ChannelState');
     }
 
-	/**
+    /**
      * Returns key: 'ChannelStateDesc'.
      *
      * @return string
@@ -83,7 +83,7 @@ class QueueCallerAbandonEvent extends EventMessage
         return $this->getKey('ChannelStateDesc');
     }
 
-	/**
+    /**
      * Returns key: 'CallerIDNum'.
      *
      * @return string
@@ -93,7 +93,7 @@ class QueueCallerAbandonEvent extends EventMessage
         return $this->getKey('CallerIDNum');
     }
 
-	/**
+    /**
      * Returns key: 'CallerIDName'.
      *
      * @return string
@@ -103,7 +103,7 @@ class QueueCallerAbandonEvent extends EventMessage
         return $this->getKey('CallerIDName');
     }
 
-	/**
+    /**
      * Returns key: 'ConnectedLineNum'.
      *
      * @return string
@@ -113,7 +113,7 @@ class QueueCallerAbandonEvent extends EventMessage
         return $this->getKey('ConnectedLineNum');
     }
 
-	/**
+    /**
      * Returns key: 'ConnectedLineName'.
      *
      * @return string
@@ -123,7 +123,7 @@ class QueueCallerAbandonEvent extends EventMessage
         return $this->getKey('ConnectedLineName');
     }
 
-	/**
+    /**
      * Returns key: 'AccountCode'.
      *
      * @return string
@@ -133,7 +133,7 @@ class QueueCallerAbandonEvent extends EventMessage
         return $this->getKey('AccountCode');
     }
 
-	/**
+    /**
      * Returns key: 'Context'.
      *
      * @return string
@@ -143,7 +143,7 @@ class QueueCallerAbandonEvent extends EventMessage
         return $this->getKey('Context');
     }
 
-	/**
+    /**
      * Returns key: 'Exten'.
      *
      * @return string
@@ -153,7 +153,7 @@ class QueueCallerAbandonEvent extends EventMessage
         return $this->getKey('Exten');
     }
 
-	/**
+    /**
      * Returns key: 'Priority'.
      *
      * @return string
@@ -163,7 +163,7 @@ class QueueCallerAbandonEvent extends EventMessage
         return $this->getKey('Priority');
     }
 
-	/**
+    /**
      * Returns key: 'Uniqueid'.
      *
      * @return string
@@ -173,7 +173,7 @@ class QueueCallerAbandonEvent extends EventMessage
         return $this->getKey('Uniqueid');
     }
 
-	/**
+    /**
      * Returns key: 'Queue'.
      *
      * @return string
@@ -183,7 +183,7 @@ class QueueCallerAbandonEvent extends EventMessage
         return $this->getKey('Queue');
     }
 
-	/**
+    /**
      * Returns key: 'Position'.
      *
      * @return string
@@ -193,7 +193,7 @@ class QueueCallerAbandonEvent extends EventMessage
         return $this->getKey('Position');
     }
 
-	/**
+    /**
      * Returns key: 'OriginalPosition'.
      *
      * @return string
@@ -203,7 +203,7 @@ class QueueCallerAbandonEvent extends EventMessage
         return $this->getKey('OriginalPosition');
     }
 
-	/**
+    /**
      * Returns key: 'HoldTime'.
      *
      * @return string

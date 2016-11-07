@@ -28,6 +28,7 @@
  *
  */
 namespace PAMI\Message\Action;
+
 /**
  * Challenge action message.
  *

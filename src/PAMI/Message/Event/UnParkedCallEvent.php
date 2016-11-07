@@ -28,6 +28,7 @@
  *
  */
 namespace PAMI\Message\Event;
+
 /**
  * Event triggered when a call is unparked.
  *

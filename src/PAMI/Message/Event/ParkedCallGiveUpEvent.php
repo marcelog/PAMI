@@ -28,6 +28,7 @@
  *
  */
 namespace PAMI\Message\Event;
+
 /**
  * Event triggered when a channel leaves a parking lot because it hung up without being answered.
  *
@@ -51,6 +52,7 @@ class ParkedCallGiveUpEvent extends EventMessage
     {
         return $this->getKey('Privilege');
     }
+
     /**
      * Returns key: 'ParkeeChannel'.
      *
@@ -60,6 +62,7 @@ class ParkedCallGiveUpEvent extends EventMessage
     {
         return $this->getKey('ParkeeChannel');
     }
+
     /**
      * Returns key: 'ParkeeChannelState'.
      *
@@ -69,6 +72,7 @@ class ParkedCallGiveUpEvent extends EventMessage
     {
         return $this->getKey('ParkeeChannelState');
     }
+
     /**
      * Returns key: 'ParkeeChannelStateDesc'.
      *
@@ -78,6 +82,7 @@ class ParkedCallGiveUpEvent extends EventMessage
     {
         return $this->getKey('ParkeeChannelStateDesc');
     }
+
     /**
      * Returns key: 'ParkeeCallerIDNum'.
      *
@@ -87,6 +92,7 @@ class ParkedCallGiveUpEvent extends EventMessage
     {
         return $this->getKey('ParkeeCallerIDNum');
     }
+
     /**
      * Returns key: 'ParkeeCallerIDName'.
      *
@@ -96,6 +102,7 @@ class ParkedCallGiveUpEvent extends EventMessage
     {
         return $this->getKey('ParkeeCallerIDName');
     }
+
     /**
      * Returns key: 'ParkeeConnectedLineNum'.
      *
@@ -105,6 +112,7 @@ class ParkedCallGiveUpEvent extends EventMessage
     {
         return $this->getKey('ParkeeConnectedLineNum');
     }
+
     /**
      * Returns key: 'ParkeeConnectedLineName'.
      *
@@ -114,6 +122,7 @@ class ParkedCallGiveUpEvent extends EventMessage
     {
         return $this->getKey('ParkeeConnectedLineName');
     }
+
     /**
      * Returns key: 'ParkeeAccountCode'.
      *
@@ -123,6 +132,7 @@ class ParkedCallGiveUpEvent extends EventMessage
     {
         return $this->getKey('ParkeeAccountCode');
     }
+
     /**
      * Returns key: 'ParkeeContext'.
      *
@@ -132,6 +142,7 @@ class ParkedCallGiveUpEvent extends EventMessage
     {
         return $this->getKey('ParkeeContext');
     }
+
     /**
      * Returns key: 'ParkeeExten'.
      *
@@ -141,6 +152,7 @@ class ParkedCallGiveUpEvent extends EventMessage
     {
         return $this->getKey('ParkeeExten') ?: $this->getKey('Exten');
     }
+
     /**
      * Returns key: 'ParkeePriority'.
      *
@@ -150,6 +162,7 @@ class ParkedCallGiveUpEvent extends EventMessage
     {
         return $this->getKey('ParkeePriority');
     }
+
     /**
      * Returns key: 'ParkeeUniqueid'.
      *
@@ -159,6 +172,7 @@ class ParkedCallGiveUpEvent extends EventMessage
     {
         return $this->getKey('ParkeeUniqueid');
     }
+
     /**
      * Returns key: 'ParkerChannel'.
      *
@@ -168,6 +182,7 @@ class ParkedCallGiveUpEvent extends EventMessage
     {
         return $this->getKey('ParkerChannel');
     }
+
     /**
      * Returns key: 'ParkerChannelState'.
      *
@@ -177,6 +192,7 @@ class ParkedCallGiveUpEvent extends EventMessage
     {
         return $this->getKey('ParkerChannelState');
     }
+
     /**
      * Returns key: 'ParkerChannelStateDesc'.
      *
@@ -186,6 +202,7 @@ class ParkedCallGiveUpEvent extends EventMessage
     {
         return $this->getKey('ParkerChannelStateDesc');
     }
+
     /**
      * Returns key: 'ParkerCallerIDNum'.
      *
@@ -195,6 +212,7 @@ class ParkedCallGiveUpEvent extends EventMessage
     {
         return $this->getKey('ParkerCallerIDNum');
     }
+
     /**
      * Returns key: 'ParkerCallerIDName'.
      *
@@ -204,6 +222,7 @@ class ParkedCallGiveUpEvent extends EventMessage
     {
         return $this->getKey('ParkerCallerIDName');
     }
+
     /**
      * Returns key: 'ParkerConnectedLineNum'.
      *
@@ -213,6 +232,7 @@ class ParkedCallGiveUpEvent extends EventMessage
     {
         return $this->getKey('ParkerConnectedLineNum');
     }
+
     /**
      * Returns key: 'ParkerConnectedLineName'.
      *
@@ -222,6 +242,7 @@ class ParkedCallGiveUpEvent extends EventMessage
     {
         return $this->getKey('ParkerConnectedLineName');
     }
+
     /**
      * Returns key: 'ParkerAccountCode'.
      *
@@ -231,6 +252,7 @@ class ParkedCallGiveUpEvent extends EventMessage
     {
         return $this->getKey('ParkerAccountCode');
     }
+
     /**
      * Returns key: 'ParkerContext'.
      *
@@ -240,6 +262,7 @@ class ParkedCallGiveUpEvent extends EventMessage
     {
         return $this->getKey('ParkerContext');
     }
+
     /**
      * Returns key: 'ParkerExten'.
      *
@@ -249,6 +272,7 @@ class ParkedCallGiveUpEvent extends EventMessage
     {
         return $this->getKey('ParkerExten');
     }
+
     /**
      * Returns key: 'ParkerPriority'.
      *
@@ -258,6 +282,7 @@ class ParkedCallGiveUpEvent extends EventMessage
     {
         return $this->getKey('ParkerPriority');
     }
+
     /**
      * Returns key: 'ParkerUniqueid'.
      *
@@ -267,6 +292,7 @@ class ParkedCallGiveUpEvent extends EventMessage
     {
         return $this->getKey('ParkerUniqueid');
     }
+
     /**
      * Returns key: 'ParkerDialString'.
      *
@@ -276,6 +302,7 @@ class ParkedCallGiveUpEvent extends EventMessage
     {
         return $this->getKey('ParkerDialString');
     }
+
     /**
      * Returns key: 'Parkinglot'.
      *
@@ -285,6 +312,7 @@ class ParkedCallGiveUpEvent extends EventMessage
     {
         return $this->getKey('Parkinglot');
     }
+
     /**
      * Returns key: 'ParkingSpace'.
      *
@@ -294,6 +322,7 @@ class ParkedCallGiveUpEvent extends EventMessage
     {
         return $this->getKey('ParkingSpace');
     }
+
     /**
      * Returns key: 'ParkingTimeout'.
      *
@@ -303,6 +332,7 @@ class ParkedCallGiveUpEvent extends EventMessage
     {
         return $this->getKey('ParkingTimeout');
     }
+
     /**
      * Returns key: 'ParkingDuration'.
      *

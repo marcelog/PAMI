@@ -28,6 +28,7 @@
  *
  */
 namespace PAMI\Message\Action;
+
 /**
  * WaitEvent action message.
  *
@@ -50,6 +51,6 @@ class WaitEventAction extends ActionMessage
     public function __construct($timeout)
     {
         parent::__construct('WaitEvent');
-        $this->setKey('Timeout', (int) $timeout);
+        $this->setKey('Timeout', (int)$timeout);
     }
 }
