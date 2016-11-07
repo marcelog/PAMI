@@ -1,6 +1,6 @@
 <?php
 /**
- * Event triggered when a dial is executed.
+ * Event triggered when a dial action has completed.
  *
  * PHP Version 5
  *
@@ -43,6 +43,16 @@ namespace PAMI\Message\Event;
  */
 class DialEndEvent extends EventMessage
 {
+    /**
+     * Returns key: 'Privilege'.
+     *
+     * @return string
+     */
+    public function getPrivilege()
+    {
+        return $this->getKey('Privilege');
+    }
+
     /**
      * Returns key: 'Channel'.
      *

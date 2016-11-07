@@ -1,6 +1,6 @@
 <?php
 /**
- * Event triggered when a call is transfered.
+ * Event triggered when a blind transfer is complete.
  *
  * PHP Version 5
  *
@@ -47,6 +47,16 @@ class BlindTransferEvent extends EventMessage
     const RESULT_INVALID = 'Invalid';
     const RESULT_NOT_PERMITTED = 'Not Permitted';
     const RESULT_SUCCESS = 'Success';
+
+    /**
+     * Returns key: 'Privilege'.
+     *
+     * @return string
+     */
+    public function getPrivilege()
+    {
+        return $this->getKey('Privilege');
+    }
 
     /**
      * Returns key: 'Result'.

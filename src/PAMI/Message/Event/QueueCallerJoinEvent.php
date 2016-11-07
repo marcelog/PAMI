@@ -1,6 +1,6 @@
 <?php
 /**
- * Event triggered when .. ?
+ * Event triggered when a caller joins a Queue.
  *
  * PHP Version 5
  *
@@ -30,7 +30,7 @@
 namespace PAMI\Message\Event;
 
 /**
- * Event triggered when .. ?
+ * Event triggered when a caller joins a Queue.
  *
  * PHP Version 5
  *

@@ -1,6 +1,6 @@
 <?php
 /**
- * Event triggered when a channel leaves a bridge.
+ * Event triggered when a caller abandons the queue.
  *
  * PHP Version 5
  *
@@ -30,7 +30,7 @@
 namespace PAMI\Message\Event;
 
 /**
- * Event triggered when a channel leaves a bridge.
+ * Event triggered when a caller abandons the queue.
  *
  * PHP Version 5
  *
@@ -41,7 +41,7 @@ namespace PAMI\Message\Event;
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
  * @link       http://marcelog.github.com/PAMI/
  */
-class BridgeLeaveEvent extends EventMessage
+class QueueCallerAbandonEvent extends EventMessage
 {
     /**
      * Returns key: 'Privilege'.
@@ -53,67 +53,7 @@ class BridgeLeaveEvent extends EventMessage
         return $this->getKey('Privilege');
     }
 
-    /**
-     * Returns key: 'BridgeUniqueid'.
-     *
-     * @return string
-     */
-    public function getBridgeUniqueid()
-    {
-        return $this->getKey('BridgeUniqueid');
-    }
-
-    /**
-     * Returns key: 'BridgeType'.
-     *
-     * @return string
-     */
-    public function getBridgeType()
-    {
-        return $this->getKey('BridgeType');
-    }
-
-    /**
-     * Returns key: 'BridgeTechnology'.
-     *
-     * @return string
-     */
-    public function getBridgeTechnology()
-    {
-        return $this->getKey('BridgeTechnology');
-    }
-
-    /**
-     * Returns key: 'BridgeCreator'.
-     *
-     * @return string
-     */
-    public function getBridgeCreator()
-    {
-        return $this->getKey('BridgeCreator');
-    }
-
-    /**
-     * Returns key: 'BridgeName'.
-     *
-     * @return string
-     */
-    public function getBridgeName()
-    {
-        return $this->getKey('BridgeName');
-    }
-
-    /**
-     * Returns key: 'BridgeNumChannels'.
-     *
-     * @return string
-     */
-    public function getBridgeNumChannels()
-    {
-        return $this->getKey('BridgeNumChannels');
-    }
-
-    /**
+	/**
      * Returns key: 'Channel'.
      *
      * @return string
@@ -123,7 +63,7 @@ class BridgeLeaveEvent extends EventMessage
         return $this->getKey('Channel');
     }
 
-    /**
+	/**
      * Returns key: 'ChannelState'.
      *
      * @return string
@@ -133,7 +73,7 @@ class BridgeLeaveEvent extends EventMessage
         return $this->getKey('ChannelState');
     }
 
-    /**
+	/**
      * Returns key: 'ChannelStateDesc'.
      *
      * @return string
@@ -143,7 +83,7 @@ class BridgeLeaveEvent extends EventMessage
         return $this->getKey('ChannelStateDesc');
     }
 
-    /**
+	/**
      * Returns key: 'CallerIDNum'.
      *
      * @return string
@@ -153,7 +93,7 @@ class BridgeLeaveEvent extends EventMessage
         return $this->getKey('CallerIDNum');
     }
 
-    /**
+	/**
      * Returns key: 'CallerIDName'.
      *
      * @return string
@@ -163,7 +103,7 @@ class BridgeLeaveEvent extends EventMessage
         return $this->getKey('CallerIDName');
     }
 
-    /**
+	/**
      * Returns key: 'ConnectedLineNum'.
      *
      * @return string
@@ -173,7 +113,7 @@ class BridgeLeaveEvent extends EventMessage
         return $this->getKey('ConnectedLineNum');
     }
 
-    /**
+	/**
      * Returns key: 'ConnectedLineName'.
      *
      * @return string
@@ -183,7 +123,7 @@ class BridgeLeaveEvent extends EventMessage
         return $this->getKey('ConnectedLineName');
     }
 
-    /**
+	/**
      * Returns key: 'AccountCode'.
      *
      * @return string
@@ -193,7 +133,7 @@ class BridgeLeaveEvent extends EventMessage
         return $this->getKey('AccountCode');
     }
 
-    /**
+	/**
      * Returns key: 'Context'.
      *
      * @return string
@@ -203,7 +143,7 @@ class BridgeLeaveEvent extends EventMessage
         return $this->getKey('Context');
     }
 
-    /**
+	/**
      * Returns key: 'Exten'.
      *
      * @return string
@@ -213,7 +153,7 @@ class BridgeLeaveEvent extends EventMessage
         return $this->getKey('Exten');
     }
 
-    /**
+	/**
      * Returns key: 'Priority'.
      *
      * @return string
@@ -223,7 +163,7 @@ class BridgeLeaveEvent extends EventMessage
         return $this->getKey('Priority');
     }
 
-    /**
+	/**
      * Returns key: 'Uniqueid'.
      *
      * @return string
@@ -233,4 +173,43 @@ class BridgeLeaveEvent extends EventMessage
         return $this->getKey('Uniqueid');
     }
 
+	/**
+     * Returns key: 'Queue'.
+     *
+     * @return string
+     */
+    public function getQueue()
+    {
+        return $this->getKey('Queue');
+    }
+
+	/**
+     * Returns key: 'Position'.
+     *
+     * @return string
+     */
+    public function getPosition()
+    {
+        return $this->getKey('Position');
+    }
+
+	/**
+     * Returns key: 'OriginalPosition'.
+     *
+     * @return string
+     */
+    public function getOriginalPosition()
+    {
+        return $this->getKey('OriginalPosition');
+    }
+
+	/**
+     * Returns key: 'HoldTime'.
+     *
+     * @return string
+     */
+    public function getHoldTime()
+    {
+        return $this->getKey('HoldTime');
+    }
 }

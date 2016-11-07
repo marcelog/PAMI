@@ -1,6 +1,6 @@
 <?php
 /**
- * Event triggered when .. ?
+ * Event triggered when music on hold has stopped on a channel.
  *
  * PHP Version 5
  *
@@ -43,6 +43,16 @@ namespace PAMI\Message\Event;
  */
 class MusicOnHoldStopEvent extends EventMessage
 {
+    /**
+     * Returns key: 'Privilege'.
+     *
+     * @return string
+     */
+    public function getPrivilege()
+    {
+        return $this->getKey('Privilege');
+    }
+
     /**
      * Returns key: 'Channel'.
      *

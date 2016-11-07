@@ -1,6 +1,6 @@
 <?php
 /**
- * Event triggered when an agi executes an application.
+ * Event triggered when a received AGI command starts processing.
  *
  * PHP Version 5
  *
@@ -43,6 +43,16 @@ namespace PAMI\Message\Event;
  */
 class AGIExecStartEvent extends EventMessage
 {
+    /**
+     * Returns key: 'Privilege'.
+     *
+     * @return string
+     */
+    public function getPrivilege()
+    {
+        return $this->getKey('Privilege');
+    }
+
     /**
      * Returns key: 'Channel'.
      *
