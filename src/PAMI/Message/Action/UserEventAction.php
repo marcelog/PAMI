@@ -48,7 +48,7 @@ class UserEventAction extends ActionMessage
      * @param string $userEvent UserEvent
      * @param array  $headers
      */
-    public function __construct($userEvent, array $headers = [])
+    public function __construct($userEvent, array $headers = array())
     {
         parent::__construct('UserEvent');
         $this->setKey('UserEvent', $userEvent);
