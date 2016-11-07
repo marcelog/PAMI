@@ -47,12 +47,17 @@ class HangupAction extends ActionMessage
      * Constructor.
      *
      * @param string $channel Channel to hangup.
+     * @param int    $cause   Hangup cause.
      *
      * @return void
      */
-    public function __construct($channel)
+    public function __construct($channel, $cause = null)
     {
         parent::__construct('Hangup');
         $this->setKey('Channel', $channel);
+
+        if (null !== $cause) {
+            $this->setKey('Cause', $cause);
+        }
     }
 }
