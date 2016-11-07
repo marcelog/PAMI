@@ -192,4 +192,14 @@ class QueueCallerJoinEvent extends EventMessage
     {
         return $this->getKey('AccountCode');
     }
+
+    /**
+     * Returns key: 'Priority'.
+     *
+     * @return string
+     */
+    public function getPriority()
+    {
+        return $this->getKey('Priority');
+    }
 }
