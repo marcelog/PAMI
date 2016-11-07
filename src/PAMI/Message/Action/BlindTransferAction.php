@@ -1,6 +1,6 @@
 <?php
 /**
- * Challenge action message.
+ * BlindTransfer action message.
  *
  * PHP Version 5
  *
@@ -29,7 +29,7 @@
  */
 namespace PAMI\Message\Action;
 /**
- * Challenge action message.
+ * BlindTransfer action message.
  *
  * PHP Version 5
  *
@@ -40,16 +40,20 @@ namespace PAMI\Message\Action;
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
  * @link       http://marcelog.github.com/PAMI/
  */
-class ChallengeAction extends ActionMessage
+class BlindTransferAction extends ActionMessage
 {
     /**
      * Constructor.
      *
-     * @param string $authType Auth type
+     * @param string $channel   Transferer's channel.
+     * @param string $extension Extension to transfer to.
+     * @param string $context   Context to transfer to.
      */
-    public function __construct($authType = 'MD5')
+    public function __construct($channel, $extension, $context)
     {
-        parent::__construct('Challenge');
-        $this->setKey('AuthType', $authType);
+        parent::__construct('BlindTransfer');
+        $this->setKey('Channel', $channel);
+        $this->setKey('Exten', $extension);
+        $this->setKey('Context', $context);
     }
 }
