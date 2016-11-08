@@ -156,6 +156,22 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
+    public function can_blindTransfer()
+    {
+        $write = array(implode("\r\n", array(
+            'action: BlindTransfer',
+            'actionid: 1432.123',
+            'channel: channel',
+            'exten: exten',
+            'context: context',
+            ''
+        )));
+        $action = new \PAMI\Message\Action\BlindTransferAction('channel', 'exten', 'context');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
     public function can_bridge()
     {
         $write = array(implode("\r\n", array(
@@ -167,6 +183,20 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
             ''
         )));
 	    $action = new \PAMI\Message\Action\BridgeAction('channel1', 'channel2', true);
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_challenge()
+    {
+        $write = array(implode("\r\n", array(
+            'action: Challenge',
+            'actionid: 1432.123',
+            'authtype: test',
+            ''
+        )));
+        $action = new \PAMI\Message\Action\ChallengeAction('test');
         $client = $this->_start($write, $action);
     }
     /**
@@ -480,6 +510,20 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
             ''
         )));
 	    $action = new \PAMI\Message\Action\DAHDIShowChannelsAction;
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_dahdi_transfer()
+    {
+        $write = array(implode("\r\n", array(
+            'action: DAHDITransfer',
+            'actionid: 1432.123',
+            'dahdichannel: channel',
+            ''
+        )));
+        $action = new \PAMI\Message\Action\DAHDITransferAction('channel');
         $client = $this->_start($write, $action);
     }
     /**
@@ -1459,6 +1503,38 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
             ''
         )));
         $action = new \PAMI\Message\Action\LogoffAction();
+        $client = $this->_start($write, $action);
+    }
+
+    /**
+     * @test
+     */
+    public function can_user_event()
+    {
+        $write = array(implode("\r\n", array(
+            'action: UserEvent',
+            'actionid: 1432.123',
+            'userevent: FooEvent',
+            'foo: Bar',
+            'bar: Foo',
+            ''
+        )));
+        $action = new \PAMI\Message\Action\UserEventAction('FooEvent', ['Foo' => 'Bar', 'Bar' => 'Foo']);
+        $client = $this->_start($write, $action);
+    }
+
+    /**
+     * @test
+     */
+    public function can_wait_event()
+    {
+        $write = array(implode("\r\n", array(
+            'action: WaitEvent',
+            'actionid: 1432.123',
+            'timeout: 20',
+            ''
+        )));
+        $action = new \PAMI\Message\Action\WaitEventAction(20);
         $client = $this->_start($write, $action);
     }
 
