@@ -1,6 +1,6 @@
 <?php
 /**
- * Event triggered when an async agi is executed.
+ * Event triggered when a channel stops AsyncAGI command processing.
  *
  * PHP Version 5
  *
@@ -43,6 +43,16 @@ namespace PAMI\Message\Event;
  */
 class AsyncAGIEndEvent extends EventMessage
 {
+    /**
+     * Returns key: 'Privilege'.
+     *
+     * @return string
+     */
+    public function getPrivilege()
+    {
+        return $this->getKey('Privilege');
+    }
+
     /**
      * Returns key: 'Channel'.
      *

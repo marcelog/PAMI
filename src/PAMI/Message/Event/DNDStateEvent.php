@@ -1,6 +1,6 @@
 <?php
 /**
- * Event triggered when a bridge is created.
+ * Event triggered when the Do Not Disturb state is changed on a DAHDI channel.
  *
  * PHP Version 5
  *
@@ -30,7 +30,7 @@
 namespace PAMI\Message\Event;
 
 /**
- * Event triggered when a bridge is created.
+ * Event triggered when the Do Not Disturb state is changed on a DAHDI channel.
  *
  * PHP Version 5
  *
@@ -41,7 +41,7 @@ namespace PAMI\Message\Event;
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
  * @link       http://marcelog.github.com/PAMI/
  */
-class BridgeCreateEvent extends EventMessage
+class DNDStateEvent extends EventMessage
 {
     /**
      * Returns key: 'Privilege'.
@@ -54,62 +54,33 @@ class BridgeCreateEvent extends EventMessage
     }
 
     /**
-     * Returns key: 'BridgeUniqueid'.
+     * Returns key: 'Channel'.
+     * @deprecated Please use {@see getDAHDIChannel()}.
      *
      * @return string
      */
-    public function getBridgeUniqueid()
+    public function getChannel()
     {
-        return $this->getKey('BridgeUniqueid');
+        return $this->getDAHDIChannel();
     }
 
     /**
-     * Returns key: 'BridgeType'.
+     * Returns key: 'DAHDIChannel'.
      *
      * @return string
      */
-    public function getBridgeType()
+    public function getDAHDIChannel()
     {
-        return $this->getKey('BridgeType');
+        return $this->getKey('DAHDIChannel') ?: $this->getKey('Channel');
     }
 
     /**
-     * Returns key: 'BridgeTechnology'.
+     * Returns key: 'Status'.
      *
      * @return string
      */
-    public function getBridgeTechnology()
+    public function getStatus()
     {
-        return $this->getKey('BridgeTechnology');
-    }
-
-    /**
-     * Returns key: 'BridgeCreator'.
-     *
-     * @return string
-     */
-    public function getBridgeCreator()
-    {
-        return $this->getKey('BridgeCreator');
-    }
-
-    /**
-     * Returns key: 'BridgeName'.
-     *
-     * @return string
-     */
-    public function getBridgeName()
-    {
-        return $this->getKey('BridgeName');
-    }
-
-    /**
-     * Returns key: 'BridgeNumChannels'.
-     *
-     * @return string
-     */
-    public function getBridgeNumChannels()
-    {
-        return $this->getKey('BridgeNumChannels');
+        return $this->getKey('Status');
     }
 }

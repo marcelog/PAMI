@@ -1,6 +1,6 @@
 <?php
 /**
- * Event triggered when a call is transfered.
+ * Event triggered when a blind transfer is complete.
  *
  * PHP Version 5
  *
@@ -47,6 +47,16 @@ class BlindTransferEvent extends EventMessage
     const RESULT_INVALID = 'Invalid';
     const RESULT_NOT_PERMITTED = 'Not Permitted';
     const RESULT_SUCCESS = 'Success';
+
+    /**
+     * Returns key: 'Privilege'.
+     *
+     * @return string
+     */
+    public function getPrivilege()
+    {
+        return $this->getKey('Privilege');
+    }
 
     /**
      * Returns key: 'Result'.
@@ -397,7 +407,8 @@ class BlindTransferEvent extends EventMessage
 
     /**
      * Returns key: 'IsExternal'.
-     * IsExternal - Indicates if the transfer was performed outside of Asterisk. For instance, a channel protocol native transfer is external. A DTMF transfer is internal.
+     * IsExternal - Indicates if the transfer was performed outside of Asterisk.
+     * For instance, a channel protocol native transfer is external. A DTMF transfer is internal.
      *
      * Yes
      * No
@@ -410,7 +421,8 @@ class BlindTransferEvent extends EventMessage
     }
 
     /**
-     * Indicates if the transfer was performed outside of Asterisk. For instance, a channel protocol native transfer is external. A DTMF transfer is internal.
+     * Indicates if the transfer was performed outside of Asterisk.
+     * For instance, a channel protocol native transfer is external. A DTMF transfer is internal.
      *
      * @return bool
      */

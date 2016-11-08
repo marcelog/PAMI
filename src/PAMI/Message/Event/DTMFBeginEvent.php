@@ -1,6 +1,6 @@
 <?php
 /**
- * Event triggered when a dtmf is detected in a call.
+ * Event triggered when a DTMF digit has started on a channel.
  *
  * PHP Version 5
  *
@@ -43,6 +43,16 @@ namespace PAMI\Message\Event;
  */
 class DTMFBeginEvent extends EventMessage
 {
+    /**
+     * Returns key: 'Privilege'.
+     *
+     * @return string
+     */
+    public function getPrivilege()
+    {
+        return $this->getKey('Privilege');
+    }
+
     /**
      * Returns key: 'Channel'.
      *
@@ -185,5 +195,4 @@ class DTMFBeginEvent extends EventMessage
     {
         return $this->getKey('Direction');
     }
-
 }
