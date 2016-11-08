@@ -647,6 +647,21 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
+    public function can_hangup_with_cause()
+    {
+        $write = array(implode("\r\n", array(
+            'action: Hangup',
+            'actionid: 1432.123',
+            'channel: channel',
+            'cause: 5',
+            ''
+        )));
+        $action = new \PAMI\Message\Action\HangupAction('channel', 5);
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
     public function can_jabbersend()
     {
         $write = array(implode("\r\n", array(
