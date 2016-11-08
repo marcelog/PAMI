@@ -150,8 +150,8 @@ class VGSMSMSTxAction extends ActionMessage
     public function setConcatTotalMsg($totalmsg)
     {
         $this->setKey('X-SMS-Concatenate-Total-Messages', $totalmsg);
-
     }
+
     /**
      * Sets Account key.
      *
