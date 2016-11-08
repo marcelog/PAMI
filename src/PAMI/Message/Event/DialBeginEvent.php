@@ -302,4 +302,14 @@ class DialBeginEvent extends EventMessage
     {
         return $this->getKey('DialStatus');
     }
+
+    /**
+     * Returns key: 'DialString'.
+     *
+     * @return string
+     */
+    public function getDialString()
+    {
+        return $this->getKey('DialString');
+    }
 }
