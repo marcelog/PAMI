@@ -46,15 +46,20 @@ class LoginAction extends ActionMessage
     /**
      * Constructor.
      *
-     * @param string $user     AMI username.
+     * @param string $user AMI username.
      * @param string $password AMI password.
+     * @param string|null $eventMask
      *
      * @return void
      */
-    public function __construct($user, $password)
+    public function __construct($user, $password, $eventMask = null)
     {
         parent::__construct('Login');
         $this->setKey('Username', $user);
         $this->setKey('Secret', $password);
+
+        if (null !== $eventMask) {
+            $this->setKey('Events', $eventMask);
+        }
     }
 }
