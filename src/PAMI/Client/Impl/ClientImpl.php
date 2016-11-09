@@ -34,9 +34,7 @@ use PAMI\Message\OutgoingMessage;
 use PAMI\Message\Message;
 use PAMI\Message\IncomingMessage;
 use PAMI\Message\Action\LoginAction;
-use PAMI\Message\Action\LogoffAction;
 use PAMI\Message\Response\ResponseMessage;
-use PAMI\Message\Event\EventMessage;
 use PAMI\Message\Event\Factory\Impl\EventFactoryImpl;
 use PAMI\Listener\IEventListener;
 use PAMI\Client\Exception\ClientException;
@@ -60,7 +58,7 @@ class ClientImpl implements IClient
 {
     /**
      * PSR-3 logger.
-     * @var Logger
+     * @var LoggerInterface
      */
     private $logger;
 
@@ -151,6 +149,12 @@ class ClientImpl implements IClient
     private $lastActionId;
 
     /**
+     * Event mask to apply on login action.
+     * @var string|null
+     */
+    private $eventMask;
+
+    /**
      * Opens a tcp connection to ami.
      *
      * @throws \PAMI\Client\Exception\ClientException
@@ -173,7 +177,7 @@ class ClientImpl implements IClient
         if ($this->socket === false) {
             throw new ClientException('Error connecting to ami: ' . $errstr);
         }
-        $msg = new LoginAction($this->user, $this->pass);
+        $msg = new LoginAction($this->user, $this->pass, $this->eventMask);
         $asteriskId = @stream_get_line($this->socket, 1024, Message::EOL);
         if (strstr($asteriskId, 'Asterisk') === false) {
             throw new ClientException(
@@ -434,7 +438,7 @@ class ClientImpl implements IClient
     /**
      * Sets the logger implementation.
      *
-     * @param Psr\Log\LoggerInterface $logger The PSR3-Logger
+     * @param LoggerInterface $logger The PSR3-Logger
      *
      * @return void
      */
@@ -453,12 +457,13 @@ class ClientImpl implements IClient
     {
         $this->logger = new NullLogger;
         $this->host = $options['host'];
-        $this->port = intval($options['port']);
+        $this->port = (int) $options['port'];
         $this->user = $options['username'];
         $this->pass = $options['secret'];
         $this->cTimeout = $options['connect_timeout'];
         $this->rTimeout = $options['read_timeout'];
         $this->scheme = isset($options['scheme']) ? $options['scheme'] : 'tcp://';
+        $this->eventMask = isset($options['event_mask']) ? $options['event_mask'] : null;
         $this->eventListeners = array();
         $this->eventFactory = new EventFactoryImpl();
         $this->incomingQueue = array();

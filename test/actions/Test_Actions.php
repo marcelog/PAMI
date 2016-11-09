@@ -111,6 +111,37 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
+    public function can_login()
+    {
+        $write = array(implode("\r\n", array(
+            'action: Login',
+            'actionid: 1432.123',
+            'username: foo',
+            'secret: bar',
+            ''
+        )));
+        $action = new \PAMI\Message\Action\LoginAction('foo', 'bar');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_login_with_events()
+    {
+        $write = array(implode("\r\n", array(
+            'action: Login',
+            'actionid: 1432.123',
+            'username: foo',
+            'secret: bar',
+            'events: all',
+            ''
+        )));
+        $action = new \PAMI\Message\Action\LoginAction('foo', 'bar', 'all');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
     public function can_agent_logoff()
     {
         $write = array(implode("\r\n", array(
