@@ -130,7 +130,7 @@ class ClientImpl implements IClient
 
     /**
      * The receiving queue.
-     * @var IncomingMessage[]
+     * @var ResponseMessage[]
      */
     private $incomingQueue;
 
@@ -238,7 +238,7 @@ class ClientImpl implements IClient
         $msgs = array();
         // Read something.
         $read = @fread($this->socket, 65535);
-        if ($read === false || @feof($this->socket)) {
+        if ($read === false || (empty($read) && @feof($this->socket))) {
             throw new ClientException('Error reading');
         }
         $this->currentProcessingMessage .= $read;
@@ -372,12 +372,12 @@ class ClientImpl implements IClient
      *
      * @todo not suitable for multithreaded applications.
      *
-     * @return \PAMI\Message\IncomingMessage
+     * @return \PAMI\Message\Response\ResponseMessage
      */
     protected function getRelated(OutgoingMessage $message)
     {
         $ret = false;
-        $id = $message->getActionID('ActionID');
+        $id = $message->getActionID();
         if (isset($this->incomingQueue[$id])) {
             $response = $this->incomingQueue[$id];
             if ($response->isComplete()) {
