@@ -164,13 +164,13 @@ class QueueCallerAbandonEvent extends EventMessage
     }
 
     /**
-     * Returns key: 'Uniqueid'.
+     * Returns key: 'UniqueID'.
      *
      * @return string
      */
-    public function getUniqueid()
+    public function getUniqueID()
     {
-        return $this->getKey('Uniqueid');
+        return $this->getKey('UniqueID');
     }
 
     /**
