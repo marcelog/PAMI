@@ -82,6 +82,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
             'QueueCallerLeave',
             'AttendedTransfer',
             'BlindTransfer',
+            'DeviceStateChange',
             'DialBegin',
             'DialEnd',
             'DTMFBegin',
@@ -1084,6 +1085,10 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'IsExternal' => 'IsExternal',
                 'Context' => 'Context',
                 'Extension' => 'Extension',
+            ),
+            'DeviceStateChange' => array(
+                'Device' => 'Device',
+                'State' => 'State',
             ),
             'DialBegin' => array(
                 'Channel' => 'Channel',
