@@ -682,7 +682,13 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'Channel' => 'Channel',
                 'Variable' => 'Variable',
                 'Value' => 'Value',
-        	    'UniqueID' => 'UniqueID'
+        	    'UniqueID' => 'UniqueID',
+                'ChannelState' => 'ChannelState',
+                'ChannelStateDesc' => 'ChannelStateDesc',
+                'CallerIDNum' => 'CallerIDNum',
+                'CallerIDName' => 'CallerIDName',
+                'ConnectedLineNum' => 'ConnectedLineNum',
+                'ConnectedLineName' => 'ConnectedLineName'
         	),
         	'Unlink' => array(
         		'Privilege' => 'Privilege',

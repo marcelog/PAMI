@@ -94,4 +94,63 @@ class VarSetEvent extends EventMessage
     {
         return $this->getKey('UniqueID');
     }
+
+    /**
+     * Returns key: 'ChannelState'.
+     *
+     * @return string
+     */
+    public function getChannelState()
+    {
+        return $this->getKey('ChannelState');
+    }
+
+    /**
+     * Returns key: 'ChannelStateDesc'.
+     *
+     * @return string
+     */
+    public function getChannelStateDesc()
+    {
+        return $this->getKey('ChannelStateDesc');
+    }
+
+    /**
+     * Returns key: 'CallerIDNum'.
+     *
+     * @return string
+     */
+    public function getCallerIDNum()
+    {
+        return $this->getKey('CallerIDNum');
+    }
+
+    /**
+     * Returns key: 'CallerIDName'.
+     *
+     * @return string
+     */
+    public function getCallerIDName()
+    {
+        return $this->getKey('CallerIDName');
+    }
+
+    /**
+     * Returns key: 'ConnectedLineNum'.
+     *
+     * @return string
+     */
+    public function getConnectedLineNum()
+    {
+        return $this->getKey('ConnectedLineNum');
+    }
+    /**
+     * Returns key: 'ConnectedLineName'.
+     *
+     * @return string
+     */
+    public function getConnectedLineName()
+    {
+        return $this->getKey('ConnectedLineName');
+    }
 }
