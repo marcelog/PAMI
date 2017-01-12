@@ -1087,6 +1087,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'Extension' => 'Extension',
             ),
             'DeviceStateChange' => array(
+                'Privilege' => 'Privilege',
                 'Device' => 'Device',
                 'State' => 'State',
             ),
