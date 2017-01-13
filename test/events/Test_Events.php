@@ -146,7 +146,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
             'DeviceStateChange',
             'DialBegin',
             'DialEnd',
-            'DNDStateEvent',
+            'DNDState',
             'DTMFBegin',
             'DTMFEnd',
             'BridgeCreate',
@@ -277,7 +277,9 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'Releasing' => 'Releasing',
                 'Initializing' => 'Initializing'
             ),
-            'DongleShowDevicesComplete' => array('ListItems' => 'items'),
+            'DongleShowDevicesComplete' => array(
+                'ListItems' => 'items'
+            ),
             'DongleSMSStatus' => array(
                 'Privilege' => 'Privilege',
                 'Id' => 'Id',
@@ -289,7 +291,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'Device' => 'Device',
                 'Status' => 'Status'
             ),
-            'DNDStateEvent' => array(
+            'DNDState' => array(
                 'Privilege' => 'Privilege',
                 'Status' => 'Status',
                 'DAHDIChannel' => 'DAHDIChannel',
