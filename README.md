@@ -116,6 +116,14 @@ can still catch them. If you catch one of these, please report it!
 * Bridge
 * CEL
 * ChannelUpdate
+* ConfbridgeStart
+* ConfbridgeEnd
+* ConfbridgeJoin
+* ConfbridgeLeave
+* ConfbridgeMute
+* ConfbridgeStart
+* ConfbridgeTalking
+* ConfbridgeUnmute
 * CoreShowChannel
 * CoreShowChannelComplete
 * DAHDIShowChannel
