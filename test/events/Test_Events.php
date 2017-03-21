@@ -91,6 +91,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
             'BridgeEnter',
             'BridgeLeave',
             'MusicOnHoldStart',
+            'MusicOnHoldStop',
             'ConfbridgeStart',
             'ConfbridgeEnd',
             'ConfbridgeJoin',
