@@ -1276,7 +1276,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'BridgeName' => 'BridgeName',
                 'BridgeNumChannels' => 'BridgeNumChannels',
             ),
-            'ConfbridgeJoinEvent' => array(
+            'ConfbridgeJoin' => array(
                 'Conference' => 'Conference',
                 'BridgeUniqueid' => 'BridgeUniqueid',
                 'BridgeType' => 'BridgeType',
@@ -1299,7 +1299,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'Linkedid' => 'Linkedid',
                 'Admin' => 'Admin',
             ),
-            'ConfbridgeLeaveEvent' => array(
+            'ConfbridgeLeave' => array(
                 'Conference' => 'Conference',
                 'BridgeUniqueid' => 'BridgeUniqueid',
                 'BridgeType' => 'BridgeType',
@@ -1322,7 +1322,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'Linkedid' => 'Linkedid',
                 'Admin' => 'Admin',
             ),
-            'ConfbridgeMuteEvent' => array(
+            'ConfbridgeMute' => array(
                 'Conference' => 'Conference',
                 'BridgeUniqueid' => 'BridgeUniqueid',
                 'BridgeType' => 'BridgeType',
@@ -1345,7 +1345,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'Linkedid' => 'Linkedid',
                 'Admin' => 'Admin',
             ),
-            'ConfbridgeUnmuteEvent' => array(
+            'ConfbridgeUnmute' => array(
                 'Conference' => 'Conference',
                 'BridgeUniqueid' => 'BridgeUniqueid',
                 'BridgeType' => 'BridgeType',
@@ -1368,7 +1368,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'Linkedid' => 'Linkedid',
                 'Admin' => 'Admin',
             ),
-            'ConfbridgeTalkingEvent' => array(
+            'ConfbridgeTalking' => array(
                 'Conference' => 'Conference',
                 'BridgeUniqueid' => 'BridgeUniqueid',
                 'BridgeType' => 'BridgeType',
