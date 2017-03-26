@@ -82,6 +82,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
             'QueueCallerLeave',
             'AttendedTransfer',
             'BlindTransfer',
+            'DeviceStateChange',
             'DialBegin',
             'DialEnd',
             'DTMFBegin',
@@ -689,7 +690,13 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'Channel' => 'Channel',
                 'Variable' => 'Variable',
                 'Value' => 'Value',
-        	    'UniqueID' => 'UniqueID'
+        	    'UniqueID' => 'UniqueID',
+                'ChannelState' => 'ChannelState',
+                'ChannelStateDesc' => 'ChannelStateDesc',
+                'CallerIDNum' => 'CallerIDNum',
+                'CallerIDName' => 'CallerIDName',
+                'ConnectedLineNum' => 'ConnectedLineNum',
+                'ConnectedLineName' => 'ConnectedLineName'
         	),
         	'Unlink' => array(
         		'Privilege' => 'Privilege',
@@ -1085,6 +1092,11 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'IsExternal' => 'IsExternal',
                 'Context' => 'Context',
                 'Extension' => 'Extension',
+            ),
+            'DeviceStateChange' => array(
+                'Privilege' => 'Privilege',
+                'Device' => 'Device',
+                'State' => 'State',
             ),
             'DialBegin' => array(
                 'Channel' => 'Channel',
