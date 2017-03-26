@@ -805,11 +805,74 @@ class Test_Client extends \PHPUnit_Framework_TestCase
 			'ActionID: 1432.123',
 			''
         );
+
         $write = array(
         	"action: CoreShowChannels\r\nactionid: 1432.123\r\n"
         );
         setFgetsMock($event, $write);
 	    $result = $client->send(new \PAMI\Message\Action\CoreShowChannelsAction);
+        $events = $result->getEvents();
+        $this->assertEquals($events[0]->getName(), 'ResponseEvent');
+        $this->assertEquals($events[0]->getKey('Channel'), 'pepe');
+        $this->assertEquals($events[0]->getKey('Count'), 'Blah');
+        $this->assertEquals($events[1]->getName(), 'CoreShowChannelsComplete');
+        $this->assertEquals($events[1]->getListItems(), 0);
+    }
+
+    /**
+     * This test resolve issue #108
+     *
+     * @test
+     */
+    public function can_get_response_events_with_broken_ami()
+    {
+        global $mock_stream_socket_client;
+        global $mock_stream_set_blocking;
+        global $mockTime;
+        global $standardAMIStart;
+        $mockTime = true;
+        $mock_stream_socket_client = true;
+        $mock_stream_set_blocking = true;
+        $options = array(
+            'host' => '2.3.4.5',
+            'scheme' => 'tcp://',
+            'port' => 9999,
+            'username' => 'asd',
+            'secret' => 'asd',
+            'connect_timeout' => 1000,
+            'read_timeout' => 1000
+        );
+        $write = array(
+            "action: Login\r\nactionid: 1432.123\r\nusername: asd\r\nsecret: asd\r\n"
+        );
+        setFgetsMock($standardAMIStart, $write);
+        $client = new \PAMI\Client\Impl\ClientImpl($options);
+        $client->registerEventListener(new SomeListenerClass);
+        $client->open();
+        $event = array(
+            'ame: CID:001234567',
+            'Uniqueid: 1480410361.10132991',
+            '',
+            'Response: Success',
+            'ActionID: 1432.123',
+            'Eventlist: start',
+            'Message: Channels will follow',
+            '',
+            'Channel: pepe',
+            'Count: Blah',
+            '',
+            'Event: CoreShowChannelsComplete',
+            'EventList: Complete',
+            'ListItems: 0',
+            'ActionID: 1432.123',
+            '',
+        );
+
+        $write = array(
+            "action: CoreShowChannels\r\nactionid: 1432.123\r\n"
+        );
+        setFgetsMock($event, $write);
+        $result = $client->send(new \PAMI\Message\Action\CoreShowChannelsAction);
         $events = $result->getEvents();
         $this->assertEquals($events[0]->getName(), 'ResponseEvent');
         $this->assertEquals($events[0]->getKey('Channel'), 'pepe');
