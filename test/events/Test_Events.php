@@ -291,6 +291,13 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'BridgedChannel' => 'BridgedChannel',
                 'Duration' => 'Duration',
             ),
+            'DAHDIChannel' => array(
+                'Priviledge' => 'Priviledge',
+                'DAHDIChannel' => 'DAHDIChannel',
+                'DAHDISpan' => 'DAHDISpan',
+                'Channel' => 'Channel',
+                'UniqueID' => 'UniqueID'
+            ),
             'DAHDIShowChannels' => array(
                 'Channel' => 'Channel',
                 'Context' => 'Context',
