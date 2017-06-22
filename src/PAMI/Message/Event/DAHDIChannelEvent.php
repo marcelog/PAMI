@@ -45,6 +45,26 @@ class DAHDIChannelEvent extends EventMessage
     }
 
     /**
+     * Returns key: 'DAHDIChannel'.
+     *
+     * @return string
+     */
+    public function getDAHDIChannel()
+    {
+        return $this->getKey('DAHDIChannel');
+    }
+
+    /**
+     * Returns key: 'DAHDISpan'.
+     *
+     * @return string
+     */
+    public function getDAHDISpan()
+    {
+        return $this->getKey('DAHDISpan');
+    }
+
+    /**
      * Returns key: 'Channel'.
      *
      * @return string
