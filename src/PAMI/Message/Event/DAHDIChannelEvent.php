@@ -34,34 +34,33 @@ use PAMI\Message\Event\EventMessage;
 
 class DAHDIChannelEvent extends EventMessage
 {
-	/**
-	 * Returns key: 'Privilege'.
-	 *
-	 * @return string
-	 */
-	public function getPrivilege()
-	{
-		return $this->getKey('Privilege');
-	}
+    /**
+     * Returns key: 'Privilege'.
+     *
+     * @return string
+     */
+    public function getPrivilege()
+    {
+        return $this->getKey('Privilege');
+    }
 
-	/**
-	 * Returns key: 'Channel'.
-	 *
-	 * @return string
-	 */
-	public function getChannel()
-	{
-		return $this->getKey('Channel');
-	}
+    /**
+     * Returns key: 'Channel'.
+     *
+     * @return string
+     */
+    public function getChannel()
+    {
+        return $this->getKey('Channel');
+    }
 
-	/**
-	 * Returns key: 'UniqueID'.
-	 *
-	 * @return string
-	 */
-	public function getUniqueID()
-	{
-		return $this->getKey('UniqueID');
-	}
-
+    /**
+     * Returns key: 'UniqueID'.
+     *
+     * @return string
+     */
+    public function getUniqueID()
+    {
+        return $this->getKey('UniqueID');
+    }
 }
