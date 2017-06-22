@@ -66,7 +66,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
             'PeerStatus', 'PeerEntry', 'OriginateResponse', 'Newstate', 'Newexten',
             'Newchannel', 'NewCallerid', 'NewAccountCode', 'MusicOnHold',
             'MessageWaiting', 'Masquerade', 'ListDialplan', 'Leave', 'Join',
-            'Hold', 'Hangup', 'ExtensionStatus', 'Dial', 'DAHDIShowChannels',
+            'Hold', 'Hangup', 'ExtensionStatus', 'Dial', 'DAHDIChannel', 'DAHDIShowChannels',
             'CoreShowChannelsComplete', 'CoreShowChannel', 'ChannelUpdate',
             'Agents', 'AgentsComplete', 'Agentlogoff', 'Agentlogin', 'AgentConnect',
             'DongleSMSStatus', 'FullyBooted', 'DongleShowDevicesComplete', 'DongleDeviceEntry',
