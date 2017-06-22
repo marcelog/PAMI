@@ -207,6 +207,7 @@ can still catch them. If you catch one of these, please report it!
 * CoreSettings
 * CoreShowChannels
 * CoreStatus
+* DAHDIChannel
 * DAHDIDialOffHookAction
 * DAHDIHangup
 * DAHDIRestart
