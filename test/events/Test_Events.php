@@ -72,7 +72,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
             'DongleSMSStatus', 'FullyBooted', 'DongleShowDevicesComplete', 'DongleDeviceEntry',
             'DongleNewUSSDBase64', 'DongleNewUSSD', 'DongleUSSDStatus', 'DongleNewCUSD',
             'DongleStatus', 'CEL', 'JabberEvent', 'Registry', 'UserEvent',
-            'ParkedCall', 'UnParkedCall', 'Link', 'DAHDIChannel', 'Reload', 'Success'
+            'ParkedCall', 'UnParkedCall', 'Link', 'DAHDIChannel', 'Reload', 'Success',
             'AGIExecStart',
             'AGIExecEnd',
             'AsyncAGIStart',
