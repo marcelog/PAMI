@@ -126,6 +126,7 @@ can still catch them. If you catch one of these, please report it!
 * ConfbridgeUnmute
 * CoreShowChannel
 * CoreShowChannelComplete
+* DAHDIChannel
 * DAHDIShowChannel
 * DAHDIShowChannelsComplete
 * FullyBooted
@@ -170,6 +171,7 @@ can still catch them. If you catch one of these, please report it!
 * QueueParams
 * QueueStatusComplete
 * QueueSummaryComplete
+* Reload
 * RegistrationsComplete
 * Registry
 * Rename
@@ -179,6 +181,7 @@ can still catch them. If you catch one of these, please report it!
 * RTPReceiverStat
 * RTPSenderStat
 * ShowDialPlanComplete
+* Success
 * Status
 * StatusComplete
 * Transfer
