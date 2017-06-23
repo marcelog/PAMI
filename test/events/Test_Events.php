@@ -1533,7 +1533,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
 
             $this->assertTrue(
                 method_exists($event, $methodName),
-                sprintf('Method %s doesn\'t exixt in event %s', $methodName, get_class($event))
+                sprintf('Method %s doesn\'t exist in event %s', $methodName, get_class($event))
             );
 
             $this->assertEquals($event->$methodName(), $value, $eventName);
