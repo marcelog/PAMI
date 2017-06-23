@@ -66,7 +66,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
             'PeerStatus', 'PeerEntry', 'OriginateResponse', 'Newstate', 'Newexten',
             'Newchannel', 'NewCallerid', 'NewAccountCode', 'MusicOnHold',
             'MessageWaiting', 'Masquerade', 'ListDialplan', 'Leave', 'Join',
-            'Hold', 'Hangup', 'ExtensionStatus', 'Dial', 'DAHDIChannel', 'DAHDIShowChannels',
+            'Hold', 'Hangup', 'ExtensionStatus', 'Dial', 'DAHDIShowChannels',
             'CoreShowChannelsComplete', 'CoreShowChannel', 'ChannelUpdate',
             'Agents', 'AgentsComplete', 'Agentlogoff', 'Agentlogin', 'AgentConnect',
             'DongleSMSStatus', 'FullyBooted', 'DongleShowDevicesComplete', 'DongleDeviceEntry',
@@ -290,13 +290,6 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'BridgedUniqueID' => 'BridgedUniqueID',
                 'BridgedChannel' => 'BridgedChannel',
                 'Duration' => 'Duration',
-            ),
-            'DAHDIChannel' => array(
-                'Priviledge' => 'Priviledge',
-                'DAHDIChannel' => 'DAHDIChannel',
-                'DAHDISpan' => 'DAHDISpan',
-                'Channel' => 'Channel',
-                'UniqueID' => 'UniqueID'
             ),
             'DAHDIShowChannels' => array(
                 'Channel' => 'Channel',
