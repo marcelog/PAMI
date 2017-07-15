@@ -1,261 +1,78 @@
-<project name="PAMI" default="all" basedir=".">
-  <property file="./build.properties"/>
+<?xml version="1.0"?>
+<project
+  name="pami"
+  default="build"
+  basedir="."
+  description="PAMI Asterisk Manager Interface (AMI) client for PHP">
 
-  <target name="prepare" depends="clean">
-    <mkdir dir="${dir.output}"/>
-    <mkdir dir="${dir.tmp}"/>
+  <target name="install">
+    <exec command="./composer.phar install" checkreturn="true" passthru="true"/>
+    <exec command="./composer.phar update" checkreturn="true" passthru="true"/>
   </target>
 
   <target name="clean">
-    <delete dir="${dir.output}"/>
+    <delete dir="build"/>
   </target>
 
-  <target name="phpdepend">
-    <exec command="${phing} _phpdepend" passthru="true"/>
-  </target>
-  <target name="_phpdepend">
-    <mkdir dir="${phpdepend.output.xml.dir}"/>
-    <mkdir dir="${phpdepend.output.html.dir}"/>
-    <exec
-      command="${phpdepend.exec} ${phpdepend.args}"
-      dir="${project.basedir}"
-      passthru="true"
-    />
-    <xslt
-      file="${phpdepend.output.xml.file}"
-      tofile="${phpdepend.output.html.file}"
-      style="${phpdepend.style}"
-    />
+  <target name="prepare">
+    <mkdir dir="build" mode="0755"/>
+    <mkdir dir="build/doc" mode="0755"/>
+    <mkdir dir="build/doc/xml" mode="0755"/>
+    <mkdir dir="build/doc/html" mode="0755"/>
+    <mkdir dir="build/doc/md" mode="0755"/>
+    <mkdir dir="build/logs" mode="0755"/>
+    <mkdir dir="build/coverage-html" mode="0755"/>
   </target>
 
-  <target name="phpcs">
-    <exec command="${phing} _phpcs" passthru="true"/>
-  </target>
-  <target name="_phpcs">
-    <mkdir dir="${phpcs.output.xml.dir}"/>
-    <mkdir dir="${phpcs.output.html.dir}"/>
-    <exec
-      command="${phpcs.exec} ${phpcs.args}"
-      dir="${project.basedir}"
-      passthru="true"
-    />
-    <xslt
-      file="${phpcs.output.xml.file}"
-      tofile="${phpcs.output.html.file}"
-      style="${phpcs.style}"
-    />
+  <target name="cpd">
+    <exec command="vendor/bin/phpcpd --fuzzy src --exclude PAMI/Message/Event"
+      checkreturn="true"
+      passthru="true"/>
   </target>
 
-  <target name="phpunit">
-    <exec command="${phing} _phpunit" passthru="true"/>
-  </target>
-  <target name="_phpunit">
-    <mkdir dir="${phpunit.output.xml.dir}"/>
-    <mkdir dir="${phpunit.output.html.dir}"/>
-    <exec
-      command="${phpunit.exec} ${phpunit.args}"
-      dir="${project.basedir}/test"
-      passthru="true"
-    />
-    <xslt
-      file="${phpunit.output.xml.file}"
-      tofile="${junit.output.xml.file}"
-      style="${junit.style}"
-    />
+  <target name="md">
+    <exec command="vendor/bin/phpmd ./src text cleancode,codesize,controversial,design,naming,unusedcode"
+      checkreturn="false"
+      passthru="true"/>
   </target>
 
-  <target name="phpmd">
-    <exec command="${phing} _phpmd" passthru="true"/>
-  </target>
-  <target name="_phpmd">
-    <mkdir dir="${phpmd.output.xml.dir}"/>
-    <mkdir dir="${phpmd.output.html.dir}"/>
-    <exec
-      command="${phpmd.exec} ${phpmd.args}"
-      dir="${project.basedir}"
-      passthru="true"
-    />
-    <xslt
-      file="${phpmd.output.xml.file}"
-      tofile="${phpmd.output.html.file}"
-      style="${phpmd.style}"
-    />
+  <target name="cs">
+    <exec command="vendor/bin/phpcs --standard=PSR2 src/*"
+      checkreturn="true"
+      passthru="true"/>
   </target>
 
-  <target name="phpcpd">
-    <exec command="${phing} _phpcpd" passthru="true"/>
-  </target>
-  <target name="_phpcpd">
-    <mkdir dir="${phpcpd.output.xml.dir}"/>
-    <mkdir dir="${phpcpd.output.html.dir}"/>
-    <exec
-      command="${phpcpd.exec} ${phpcpd.args}"
-      dir="${project.basedir}"
-      passthru="true"
-    />
-    <xslt
-      file="${phpcpd.output.xml.file}"
-      tofile="${phpcpd.output.html.file}"
-      style="${phpcpd.style}"
-    />
+  <target name="docxml">
+    <exec command="vendor/bin/phpdoc --template=xml -t build/doc/xml -d src --validate --sourcecode --force --log"
+      checkreturn="true"
+      passthru="true"/>
   </target>
 
-  <target name="phpdoc">
-    <exec command="${phing} _phpdoc" passthru="true"/>
-  </target>
-  <target name="_phpdoc">
-    <mkdir dir="${phpdoc.output.html.dir}"/>
-    <exec
-      command="${phpdoc.exec} ${phpdoc.args}"
-      dir="${project.basedir}"
-      passthru="true"
-    />
+  <target name="dochtml">
+    <exec command="vendor/bin/phpdoc -t build/doc/html -d src --validate --sourcecode --force --log"
+      checkreturn="true"
+      passthru="true"/>
   </target>
 
-  <target name="phploc">
-    <exec command="${phing} _phploc" passthru="true"/>
-  </target>
-  <target name="_phploc">
-    <mkdir dir="${phploc.output.html.dir}"/>
-    <exec
-      command="${phploc.exec} ${phploc.args} > ${phploc.output.html.file}"
-      dir="${project.basedir}"
-      passthru="true"
-    />
-  </target>
-
-  <target name="package">
-    <exec command="${phing} _package" passthru="true"/>
-  </target>
-  <target name="_package">
-    <mkdir dir="${package.output.dir}"/>
-    <exec
-      command="${pear.exec} channel-discover pear.marcelog.name"
-      dir="${project.basedir}" passthru="true"
-    />
-    <exec
-      command="${genphar.exec} ${genphar.args}"
-      dir="${project.basedir}"
-      passthru="true"
-    />
-    <exec
-      command="${genpear.exec}" dir="${project.basedir}" passthru="true"
-      output="${dir.output}/package.xml"
-     />
-    <copy file="${dir.output}/package.xml" tofile="${dir.src}/package.xml" />
-    <exec
-      command="${pear.exec} package" dir="${dir.src}" passthru="true"
-    />
-    <delete file="${dir.src}/package.xml" />
-    <move file="${dir.src}/${peartgz}" tofile="${dir.output}/${peartgz}" overwrite="true"/>
+  <target name="docmd">
+    <exec dir="build/doc/md" command="../../../vendor/bin/phpdocmd ../xml/structure.xml"
+      checkreturn="true"
+      passthru="true"/>
+    <copy todir="doc" overwrite="true">
+      <fileset dir="build/doc/md">
+        <include name="*.md" />
+      </fileset>
+    </copy>
   </target>
 
-  <target name="install-dependencies">
-    <mkdir dir="${dir.vendor}"/>
-    <exec
-      command="${defaultpear.bin} config-create ${dir.vendor} ${dir.vendor}/.pearrc"
-      passthru="true"
-    />
-    <exec
-      command="${defaultpear.exec} config-set php_bin ${php.bin}"
-      passthru="true"
-    />
-    <exec
-      command="${defaultpear.exec} config-set php_dir ${dir.vendor}/php"
-      passthru="true"
-    />
-    <exec
-      command="${defaultpear.exec} config-set bin_dir ${dir.vendor}/bin"
-      passthru="true"
-    />
-    <exec
-      command="${defaultpear.exec} config-set cache_dir ${dir.vendor}/cache"
-      passthru="true"
-    />
-    <exec
-      command="${defaultpear.exec} config-set cfg_dir ${dir.vendor}/cfg"
-      passthru="true"
-    />
-    <exec
-      command="${defaultpear.exec} config-set data_dir ${dir.vendor}/data"
-      passthru="true"
-    />
-    <exec
-      command="${defaultpear.exec} config-set download_dir ${dir.vendor}/download"
-      passthru="true"
-    />
-    <exec
-      command="${defaultpear.exec} config-set temp_dir ${dir.vendor}/tmp"
-      passthru="true"
-    />
-    <exec
-      command="${defaultpear.exec} config-set doc_dir ${dir.vendor}/doc"
-      passthru="true"
-    />
-    <exec
-      command="${defaultpear.exec} config-set test_dir ${dir.vendor}/test"
-      passthru="true"
-    />
-    <exec
-      command="${defaultpear.exec} config-set www_dir ${dir.vendor}/www"
-      passthru="true"
-    />
-    <exec
-      command="${defaultpear.exec} config-set auto_discover 1"
-      passthru="true"
-    />
-    <exec
-      command="${defaultpear.exec} install pear"
-      passthru="true"
-    />
-    <exec
-      command="${pear.exec} install --alldeps pear.phpunit.de/PHPUnit"
-      passthru="true"
-    />
-    <exec
-      command="${pear.exec} install --alldeps pear.marcelog.name/PAGI"
-      passthru="true"
-    />
-    <exec
-      command="${pear.exec} install --alldeps phpunit/phploc"
-      passthru="true"
-    />
-    <exec
-      command="${pear.exec} install --alldeps pear.docblox-project.org/DocBlox"
-      passthru="true"
-    />
-    <exec
-      command="${pear.exec} install --alldeps pear.pdepend.org/PHP_Depend-beta"
-      passthru="true"
-    />
-    <exec
-      command="${pear.exec} install --alldeps pear.phpmd.org/PHP_PMD"
-      passthru="true"
-    />
-    <exec
-      command="${pear.exec} install --alldeps pear.phpunit.de/phpcpd"
-      passthru="true"
-    />
-    <exec
-      command="${pear.exec} install --alldeps PHP_CodeSniffer"
-      passthru="true"
-    />
-    <exec
-      command="${pear.exec} install --alldeps pear.phing.info/phing"
-      passthru="true"
-    />
-    <exec
-      command="${pear.exec} install --alldeps pear.apache.org/log4php/Apache_log4php"
-      passthru="true"
-    />
+  <target name="test">
+    <exec command="vendor/bin/phpunit -v --debug -c test/resources/phpunit.xml"
+      checkreturn="true"
+      passthru="true"/>
   </target>
 
-  <target name="clean-dependencies">
-    <delete dir="${dir.vendor}"/>
-  </target>
+  <target name="build" depends="clean, prepare, cpd, cs, md, doc, test"/>
+  <target name="travis" depends="clean, prepare, cpd, cs, test"/>
+  <target name="doc" depends="docxml, dochtml, docmd"/>
 
-  <target name="all" depends="clean, prepare, package, report"/>
-  <target name="build" depends="prepare, test"/>
-  <target name="test" depends="prepare, phpunit"/>
-  <target name="report" depends="build, phploc, phpdoc, phpdepend, phpcs, phpmd, phpcpd"/>
 </project>

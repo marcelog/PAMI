@@ -48,9 +48,7 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         global $mockTime;
-        $this->_properties = array(
-            'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties'
-        );
+        $this->_properties = array();
         $mockTime = true;
     }
 
@@ -63,7 +61,6 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
         $mock_stream_socket_client = true;
         $mock_stream_set_blocking = true;
         $options = array(
-            'log4php.properties' => RESOURCES_DIR . DIRECTORY_SEPARATOR . 'log4php.properties',
         	'host' => '2.3.4.5',
             'scheme' => 'tcp://',
         	'port' => 9999,
@@ -114,6 +111,37 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
+    public function can_login()
+    {
+        $write = array(implode("\r\n", array(
+            'action: Login',
+            'actionid: 1432.123',
+            'username: foo',
+            'secret: bar',
+            ''
+        )));
+        $action = new \PAMI\Message\Action\LoginAction('foo', 'bar');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_login_with_events()
+    {
+        $write = array(implode("\r\n", array(
+            'action: Login',
+            'actionid: 1432.123',
+            'username: foo',
+            'secret: bar',
+            'events: all',
+            ''
+        )));
+        $action = new \PAMI\Message\Action\LoginAction('foo', 'bar', 'all');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
     public function can_agent_logoff()
     {
         $write = array(implode("\r\n", array(
@@ -159,6 +187,22 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
+    public function can_blindTransfer()
+    {
+        $write = array(implode("\r\n", array(
+            'action: BlindTransfer',
+            'actionid: 1432.123',
+            'channel: channel',
+            'exten: exten',
+            'context: context',
+            ''
+        )));
+        $action = new \PAMI\Message\Action\BlindTransferAction('channel', 'exten', 'context');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
     public function can_bridge()
     {
         $write = array(implode("\r\n", array(
@@ -170,6 +214,20 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
             ''
         )));
 	    $action = new \PAMI\Message\Action\BridgeAction('channel1', 'channel2', true);
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_challenge()
+    {
+        $write = array(implode("\r\n", array(
+            'action: Challenge',
+            'actionid: 1432.123',
+            'authtype: test',
+            ''
+        )));
+        $action = new \PAMI\Message\Action\ChallengeAction('test');
         $client = $this->_start($write, $action);
     }
     /**
@@ -488,6 +546,20 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
+    public function can_dahdi_transfer()
+    {
+        $write = array(implode("\r\n", array(
+            'action: DAHDITransfer',
+            'actionid: 1432.123',
+            'dahdichannel: channel',
+            ''
+        )));
+        $action = new \PAMI\Message\Action\DAHDITransferAction('channel');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
     public function can_dbdel()
     {
         $write = array(implode("\r\n", array(
@@ -645,6 +717,21 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
             ''
         )));
 	    $action = new \PAMI\Message\Action\HangupAction('channel');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_hangup_with_cause()
+    {
+        $write = array(implode("\r\n", array(
+            'action: Hangup',
+            'actionid: 1432.123',
+            'channel: channel',
+            'cause: 5',
+            ''
+        )));
+        $action = new \PAMI\Message\Action\HangupAction('channel', 5);
         $client = $this->_start($write, $action);
     }
     /**
@@ -1468,6 +1555,38 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
+    public function can_user_event()
+    {
+        $write = array(implode("\r\n", array(
+            'action: UserEvent',
+            'actionid: 1432.123',
+            'userevent: FooEvent',
+            'foo: Bar',
+            'bar: Foo',
+            ''
+        )));
+        $action = new \PAMI\Message\Action\UserEventAction('FooEvent', ['Foo' => 'Bar', 'Bar' => 'Foo']);
+        $client = $this->_start($write, $action);
+    }
+
+    /**
+     * @test
+     */
+    public function can_wait_event()
+    {
+        $write = array(implode("\r\n", array(
+            'action: WaitEvent',
+            'actionid: 1432.123',
+            'timeout: 20',
+            ''
+        )));
+        $action = new \PAMI\Message\Action\WaitEventAction(20);
+        $client = $this->_start($write, $action);
+    }
+
+    /**
+     * @test
+     */
     public function can_set_actionid()
     {
         $action = new \PAMI\Message\Action\PingAction();
@@ -1497,6 +1616,72 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
         $action = new \PAMI\Message\Action\PingAction();
         // An empty ActionID
         $action->setActionID('');
+    }
+
+    /**
+     * @test
+     */
+    public function can_update_config()
+    {
+        $number = 9876;
+        $writeCreate = array( implode("\r\n", array(
+            'action: UpdateConfig',
+            'actionid: 1432.123',
+            'srcfilename: sip.conf',
+            'dstfilename: sip.conf',
+            'action-000000: NewCat',
+            'cat-000000: '.$number,
+            'action-000001: Append',
+            'cat-000001: '.$number,
+            'var-000001: username',
+            'value-000001: test',
+            'action-000002: Append',
+            'cat-000002: '.$number,
+            'var-000002: secret',
+            'value-000002: secret',
+            ''
+        )) );
+
+        $actionCreate = new \PAMI\Message\Action\UpdateConfigAction();
+
+        $actionCreate->setSrcFilename('sip.conf');
+        $actionCreate->setDstFilename('sip.conf');
+
+        $actionCreate->setAction('NewCat');
+        $actionCreate->setCat($number);
+
+        $actionCreate->setAction('Append');
+        $actionCreate->setCat($number);
+        $actionCreate->setVar('username');
+        $actionCreate->setValue('test');
+
+        $actionCreate->setAction('Append');
+        $actionCreate->setCat($number);
+        $actionCreate->setVar('secret');
+        $actionCreate->setValue('secret');
+
+        $client = $this->_start($writeCreate, $actionCreate);
+
+        $writeDelete = array( implode("\r\n", array(
+            'action: UpdateConfig',
+            'actionid: 1432.123',
+            'srcfilename: sip.conf',
+            'dstfilename: sip.conf',
+            'reload: yes',
+            'action-000000: DelCat',
+            'cat-000000: '.$number,
+            ''
+        )) );
+
+        $actionDelete = new \PAMI\Message\Action\UpdateConfigAction();
+
+        $actionDelete->setSrcFilename('sip.conf');
+        $actionDelete->setDstFilename('sip.conf');
+        $actionDelete->setReload(true);
+        $actionDelete->setAction('DelCat');
+        $actionDelete->setCat($number);
+
+        $client = $this->_start($writeDelete, $actionDelete);
     }
 }
 }

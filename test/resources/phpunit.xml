@@ -1,0 +1,47 @@
+<phpunit
+    backupGlobals="true"
+    backupStaticAttributes="false"
+    bootstrap="bootstrap.php"
+    cacheTokens="false"
+    colors="true"
+    convertErrorsToExceptions="true"
+    convertNoticesToExceptions="true"
+    convertWarningsToExceptions="true"
+    forceCoversAnnotation="false"
+    mapTestClassNameToCoveredClassName="false"
+    processIsolation="false"
+    stopOnError="true"
+    stopOnFailure="true"
+    stopOnIncomplete="true"
+    stopOnSkipped="true"
+    stopOnRisky="true"
+    timeoutForSmallTests="1"
+    timeoutForMediumTests="10"
+    timeoutForLargeTests="60"
+    verbose="true">
+
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">../../src</directory>
+            <exclude>
+                <directory suffix="Launcher.php">../../src/PAMI/Application</directory>
+                <directory suffix=".php">../../vendor</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+    <testsuites>
+        <testsuite name="Client">
+          <directory suffix=".php">../client</directory>
+        </testsuite>
+        <testsuite name="Actions">
+            <directory suffix=".php">../actions</directory>
+        </testsuite>
+        <testsuite name="Events">
+            <directory suffix=".php">../events</directory>
+        </testsuite>
+    </testsuites>
+    <logging>
+        <log type="coverage-html" target="../../build/coverage-html"/>
+        <log type="coverage-clover" target="../../build/logs/clover.xml"/>
+    </logging>
+</phpunit>
