@@ -29,7 +29,8 @@
  */
 namespace PAMI\Message\Event;
 
-use PAMI\Message\Event\EventMessage;
+use PAMI\AsyncAgi\Event\IAsyncAgiExecEvent;
+use PAMI\AsyncAgi\Event\IAsyncAgiStartEvent;
 
 /**
  * Event triggered when an async agi is executed.
@@ -43,7 +44,7 @@ use PAMI\Message\Event\EventMessage;
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
  * @link       http://marcelog.github.com/PAMI/
  */
-class AsyncAGIEvent extends EventMessage
+class AsyncAGIEvent extends EventMessage implements IAsyncAgiExecEvent,IAsyncAgiStartEvent
 {
     /**
      * Returns key: 'Privilege'.
