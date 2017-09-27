@@ -15,7 +15,7 @@ abstract class PAGIAsyncApplication extends PAGIApplication
      * AGI Client.
      * @var IAsyncClient
      */
-    private $agiClient;
+    protected $agiClient;
 
     /**
      * Returns AGI Client.
