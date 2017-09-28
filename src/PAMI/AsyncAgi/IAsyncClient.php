@@ -2,7 +2,6 @@
 
 namespace PAMI\AsyncAgi;
 
-
 use PAGI\Client\IClient;
 
 /**

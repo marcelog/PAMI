@@ -33,5 +33,4 @@ interface IAsyncAgiExecEvent
      * @return string
      */
     public function getResult();
-
 }

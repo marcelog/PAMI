@@ -44,7 +44,7 @@ use PAMI\AsyncAgi\Event\IAsyncAgiStartEvent;
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
  * @link       http://marcelog.github.com/PAMI/
  */
-class AsyncAGIEvent extends EventMessage implements IAsyncAgiExecEvent,IAsyncAgiStartEvent
+class AsyncAGIEvent extends EventMessage implements IAsyncAgiExecEvent, IAsyncAgiStartEvent
 {
     /**
      * Returns key: 'Privilege'.
