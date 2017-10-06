@@ -99,6 +99,8 @@ class Test_Events extends \PHPUnit_Framework_TestCase
             'ConfbridgeMute',
             'ConfbridgeUnmute',
             'ConfbridgeTalking',
+            'BridgeInfoChannel',
+            'BridgeInfoComplete',
         );
         $eventTranslatedValues = array(
             'QueueMemberStatus' => array(
@@ -1392,6 +1394,31 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'Linkedid' => 'Linkedid',
                 'TalkingStatus' => 'TalkingStatus',
                 'Admin' => 'Admin',
+            ),
+            'BridgeInfoChannel' => array(
+                'Channel' => 'Channel',
+                'ChannelState' => 'ChannelState',
+                'ChannelStateDesc' => 'ChannelStateDesc',
+                'CallerIDNum' => 'CallerIDNum',
+                'CallerIDName' => 'CallerIDName',
+                'ConnectedLineNum' => 'ConnectedLineNum',
+                'ConnectedLineName' => 'ConnectedLineName',
+                'AccountCode' => 'AccountCode',
+                'Context' => 'Context',
+                'Exten' => 'Exten',
+                'Priority' => 'Priority',
+                'Uniqueid' => 'Uniqueid',
+                'Linkedid' => 'Linkedid',
+            ),
+            'BridgeInfoComplete' => array(
+                'BridgeUniqueid' => 'BridgeUniqueid',
+                'BridgeType' => 'BridgeType',
+                'BridgeTechnology' => 'BridgeTechnology',
+                'BridgeCreator' => 'BridgeCreator',
+                'BridgeName' => 'BridgeName',
+                'BridgeNumChannels' => 'BridgeNumChannels',
+                'BridgeVideoSourceMode' => 'BridgeVideoSourceMode',
+                'BridgeVideoSource' => 'BridgeVideoSource',
             ),
         );
         $eventGetters = array(

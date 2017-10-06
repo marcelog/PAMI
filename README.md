@@ -114,6 +114,8 @@ can still catch them. If you catch one of these, please report it!
 * AGIExec
 * AsyncAGI
 * Bridge
+* BridgeInfoChannel
+* BridgeInfoComplete
 * CEL
 * ChannelUpdate
 * ConfbridgeStart
@@ -200,6 +202,7 @@ can still catch them. If you catch one of these, please report it!
 * AgentLogoff
 * Atxfer (asterisk 1.8?)
 * Bridge
+* BridgeInfo
 * ChangeMonitor
 * Command
 * ConfbridgeMute
