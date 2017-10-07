@@ -219,6 +219,22 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
+    public function can_bridge_info()
+    {
+        $bridge_uniqueid = '57cb3a7e-0fa3-4e28-924f-d7728b0d7a9a';
+
+        $write = array(implode("\r\n", array(
+            'action: BridgeInfo',
+            'actionid: 1432.123',
+            'bridgeuniqueid: '. $bridge_uniqueid,
+            ''
+        )));
+        $action = new \PAMI\Message\Action\BridgeInfoAction($bridge_uniqueid);
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
     public function can_challenge()
     {
         $write = array(implode("\r\n", array(
