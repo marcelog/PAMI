@@ -118,10 +118,11 @@ can still catch them. If you catch one of these, please report it!
 * BridgeInfoComplete
 * CEL
 * ChannelUpdate
-* ConfbridgeStart
 * ConfbridgeEnd
 * ConfbridgeJoin
 * ConfbridgeLeave
+* ConfbridgeList
+* ConfbridgeListComplete
 * ConfbridgeMute
 * ConfbridgeStart
 * ConfbridgeTalking
@@ -205,6 +206,7 @@ can still catch them. If you catch one of these, please report it!
 * BridgeInfo
 * ChangeMonitor
 * Command
+* ConfbridgeList
 * ConfbridgeMute
 * ConfbridgeUnmute
 * CoreSettings
