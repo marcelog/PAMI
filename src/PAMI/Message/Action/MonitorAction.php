@@ -56,15 +56,17 @@ class MonitorAction extends ActionMessage
      *
      * @param string $channel  Channel to monitor.
      * @param string $filename Absolute path to target filename.
+     * @param string $format Recording format, default 'wav'.
+     * @param string $mix Mix channels, default 'true'.
      *
      * @return void
      */
-    public function __construct($channel, $filename)
+    public function __construct($channel, $filename, $format = 'wav', $mix = 'true')
     {
         parent::__construct('Monitor');
         $this->setKey('Channel', $channel);
-        $this->setKey('Mix', 'true');
-        $this->setKey('Format', 'wav');
+        $this->setKey('Mix', $mix);
+        $this->setKey('Format', $format);
         $this->setKey('File', $filename);
     }
 }
