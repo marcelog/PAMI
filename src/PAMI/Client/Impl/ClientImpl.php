@@ -163,7 +163,12 @@ class ClientImpl implements IClient
     public function open()
     {
         $cString = $this->scheme . $this->host . ':' . $this->port;
-        $this->context = stream_context_create();
+        $this->context = stream_context_create([
+            'ssl' => [
+                'verify_peer'       => false,
+                'verify_peer_name'  => false
+            ]
+        ]);
         $errno = 0;
         $errstr = '';
         $this->socket = @stream_socket_client(
