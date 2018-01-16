@@ -8,7 +8,7 @@
  * @category   Pami
  * @package    Message
  * @subpackage Event
- * @author     Maxim Dorofeev <makdorf@gmail.com>
+ * @author     Maxim Dorofeev <makdorf@gmail.com> 
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
  * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
