@@ -235,6 +235,19 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
+    public function can_bridge_list()
+    {
+        $write = array(implode("\r\n", array(
+            'action: BridgeList',
+            'actionid: 1432.123',
+            ''
+        )));
+        $action = new \PAMI\Message\Action\BridgeListAction();
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
     public function can_challenge()
     {
         $write = array(implode("\r\n", array(
