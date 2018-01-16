@@ -90,6 +90,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
             'BridgeDestroy',
             'BridgeEnter',
             'BridgeLeave',
+            'BridgeList',
             'MusicOnHoldStart',
             'MusicOnHoldStop',
             'ConfbridgeStart',
@@ -1233,6 +1234,15 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'Exten' => 'Exten',
                 'Priority' => 'Priority',
                 'Uniqueid' => 'Uniqueid',
+            ),
+            'BridgeList' => array(
+                'BridgeUniqueid' => 'BridgeUniqueid',
+                'BridgeType' => 'BridgeType',
+                'BridgeTechnology' => 'BridgeTechnology',
+                'BridgeCreator' => 'BridgeCreator',
+                'BridgeName' => 'BridgeName',
+                'BridgeNumChannels' => 'BridgeNumChannels',
+                'BridgeVideoSourceMode' => 'BridgeVideoSourceMode',
             ),
             'MusicOnHoldStart' => array(
                 'Channel' => 'Channel',
