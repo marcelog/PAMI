@@ -90,6 +90,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
             'BridgeDestroy',
             'BridgeEnter',
             'BridgeLeave',
+            'BridgeListItem',
             'MusicOnHoldStart',
             'MusicOnHoldStop',
             'ConfbridgeStart',
@@ -1234,6 +1235,15 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'Priority' => 'Priority',
                 'Uniqueid' => 'Uniqueid',
             ),
+            'BridgeListItem' => array(
+                'BridgeUniqueid' => 'BridgeUniqueid',
+                'BridgeType' => 'BridgeType',
+                'BridgeTechnology' => 'BridgeTechnology',
+                'BridgeCreator' => 'BridgeCreator',
+                'BridgeName' => 'BridgeName',
+                'BridgeNumChannels' => 'BridgeNumChannels',
+                'BridgeVideoSourceMode' => 'BridgeVideoSourceMode',
+            ),
             'MusicOnHoldStart' => array(
                 'Channel' => 'Channel',
                 'ChannelState' => 'ChannelState',
@@ -1560,10 +1570,9 @@ class Test_Events extends \PHPUnit_Framework_TestCase
             if (isset($translatedValues[$eventName][$key])) {
                 $value = $translatedValues[$eventName][$key];
             }
-
             $this->assertTrue(
                 method_exists($event, $methodName),
-                sprintf('Method %s doesn\'t exixt in event %s', $methodName, get_class($event))
+                sprintf('Method %s doesn\'t exist in the event %s', $methodName, get_class($event))
             );
 
             $this->assertEquals($event->$methodName(), $value, $eventName);

@@ -116,6 +116,7 @@ can still catch them. If you catch one of these, please report it!
 * Bridge
 * BridgeInfoChannel
 * BridgeInfoComplete
+* BridgeListItem
 * CEL
 * ChannelUpdate
 * ConfbridgeEnd
@@ -204,6 +205,7 @@ can still catch them. If you catch one of these, please report it!
 * Atxfer (asterisk 1.8?)
 * Bridge
 * BridgeInfo
+* BridgeList
 * ChangeMonitor
 * Command
 * ConfbridgeList
