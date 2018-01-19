@@ -1,12 +1,12 @@
-PAMI\Message\Event\ParkedCallEvent
+PAMI\Message\Event\BridgeLeaveEvent
 ===============
 
-Event triggered when a call is parked.
+Event triggered when a channel leaves a bridge.
 
 PHP Version 5
 
 
-* Class name: ParkedCallEvent
+* Class name: BridgeLeaveEvent
 * Namespace: PAMI\Message\Event
 * Parent class: [PAMI\Message\Event\EventMessage](PAMI-Message-Event-EventMessage.md)
 
@@ -109,7 +109,7 @@ Methods
 
 ### getPrivilege
 
-    string PAMI\Message\Event\ParkedCallEvent::getPrivilege()
+    string PAMI\Message\Event\BridgeLeaveEvent::getPrivilege()
 
 Returns key: 'Privilege'.
 
@@ -120,24 +120,11 @@ Returns key: 'Privilege'.
 
 
 
-### getParkinglot
+### getBridgeUniqueid
 
-    string PAMI\Message\Event\ParkedCallEvent::getParkinglot()
+    string PAMI\Message\Event\BridgeLeaveEvent::getBridgeUniqueid()
 
-Returns key: 'Parkinglot'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getFrom
-
-    string PAMI\Message\Event\ParkedCallEvent::getFrom()
-
-Returns key: 'From'.
+Returns key: 'BridgeUniqueid'.
 
 
 
@@ -146,24 +133,11 @@ Returns key: 'From'.
 
 
 
-### getTimeout
+### getBridgeType
 
-    string PAMI\Message\Event\ParkedCallEvent::getTimeout()
+    string PAMI\Message\Event\BridgeLeaveEvent::getBridgeType()
 
-Returns key: 'Timeout'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getConnectedLineNum
-
-    string PAMI\Message\Event\ParkedCallEvent::getConnectedLineNum()
-
-Returns key: 'ConnectedLineNum'.
+Returns key: 'BridgeType'.
 
 
 
@@ -172,11 +146,50 @@ Returns key: 'ConnectedLineNum'.
 
 
 
-### getConnectedLineName
+### getBridgeTechnology
 
-    string PAMI\Message\Event\ParkedCallEvent::getConnectedLineName()
+    string PAMI\Message\Event\BridgeLeaveEvent::getBridgeTechnology()
 
-Returns key: 'ConnectedLineName'.
+Returns key: 'BridgeTechnology'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getBridgeCreator
+
+    string PAMI\Message\Event\BridgeLeaveEvent::getBridgeCreator()
+
+Returns key: 'BridgeCreator'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getBridgeName
+
+    string PAMI\Message\Event\BridgeLeaveEvent::getBridgeName()
+
+Returns key: 'BridgeName'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getBridgeNumChannels
+
+    string PAMI\Message\Event\BridgeLeaveEvent::getBridgeNumChannels()
+
+Returns key: 'BridgeNumChannels'.
 
 
 
@@ -187,7 +200,7 @@ Returns key: 'ConnectedLineName'.
 
 ### getChannel
 
-    string PAMI\Message\Event\ParkedCallEvent::getChannel()
+    string PAMI\Message\Event\BridgeLeaveEvent::getChannel()
 
 Returns key: 'Channel'.
 
@@ -198,9 +211,35 @@ Returns key: 'Channel'.
 
 
 
+### getChannelState
+
+    string PAMI\Message\Event\BridgeLeaveEvent::getChannelState()
+
+Returns key: 'ChannelState'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getChannelStateDesc
+
+    string PAMI\Message\Event\BridgeLeaveEvent::getChannelStateDesc()
+
+Returns key: 'ChannelStateDesc'.
+
+
+
+* Visibility: **public**
+
+
+
+
 ### getCallerIDNum
 
-    string PAMI\Message\Event\ParkedCallEvent::getCallerIDNum()
+    string PAMI\Message\Event\BridgeLeaveEvent::getCallerIDNum()
 
 Returns key: 'CallerIDNum'.
 
@@ -213,7 +252,7 @@ Returns key: 'CallerIDNum'.
 
 ### getCallerIDName
 
-    string PAMI\Message\Event\ParkedCallEvent::getCallerIDName()
+    string PAMI\Message\Event\BridgeLeaveEvent::getCallerIDName()
 
 Returns key: 'CallerIDName'.
 
@@ -224,11 +263,11 @@ Returns key: 'CallerIDName'.
 
 
 
-### getUniqueID
+### getConnectedLineNum
 
-    string PAMI\Message\Event\ParkedCallEvent::getUniqueID()
+    string PAMI\Message\Event\BridgeLeaveEvent::getConnectedLineNum()
 
-Returns key: 'UniqueID'.
+Returns key: 'ConnectedLineNum'.
 
 
 
@@ -237,9 +276,48 @@ Returns key: 'UniqueID'.
 
 
 
-### getExtension
+### getConnectedLineName
 
-    string PAMI\Message\Event\ParkedCallEvent::getExtension()
+    string PAMI\Message\Event\BridgeLeaveEvent::getConnectedLineName()
+
+Returns key: 'ConnectedLineName'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getAccountCode
+
+    string PAMI\Message\Event\BridgeLeaveEvent::getAccountCode()
+
+Returns key: 'AccountCode'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getContext
+
+    string PAMI\Message\Event\BridgeLeaveEvent::getContext()
+
+Returns key: 'Context'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getExten
+
+    string PAMI\Message\Event\BridgeLeaveEvent::getExten()
 
 Returns key: 'Exten'.
 
@@ -250,24 +328,11 @@ Returns key: 'Exten'.
 
 
 
-### getParkeeChannel
+### getPriority
 
-    string PAMI\Message\Event\ParkedCallEvent::getParkeeChannel()
+    string PAMI\Message\Event\BridgeLeaveEvent::getPriority()
 
-Returns key: 'ParkeeChannel'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getParkeeChannelState
-
-    string PAMI\Message\Event\ParkedCallEvent::getParkeeChannelState()
-
-Returns key: 'ParkeeChannelState'.
+Returns key: 'Priority'.
 
 
 
@@ -276,180 +341,11 @@ Returns key: 'ParkeeChannelState'.
 
 
 
-### getParkeeChannelStateDesc
+### getUniqueid
 
-    string PAMI\Message\Event\ParkedCallEvent::getParkeeChannelStateDesc()
+    string PAMI\Message\Event\BridgeLeaveEvent::getUniqueid()
 
-Returns key: 'ParkeeChannelStateDesc'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getParkeeCallerIDNum
-
-    string PAMI\Message\Event\ParkedCallEvent::getParkeeCallerIDNum()
-
-Returns key: 'ParkeeCallerIDNum'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getParkeeCallerIDName
-
-    string PAMI\Message\Event\ParkedCallEvent::getParkeeCallerIDName()
-
-Returns key: 'ParkeeCallerIDName'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getParkeeConnectedLineNum
-
-    string PAMI\Message\Event\ParkedCallEvent::getParkeeConnectedLineNum()
-
-Returns key: 'ParkeeConnectedLineNum'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getParkeeConnectedLineName
-
-    string PAMI\Message\Event\ParkedCallEvent::getParkeeConnectedLineName()
-
-Returns key: 'ParkeeConnectedLineName'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getParkeeAccountCode
-
-    string PAMI\Message\Event\ParkedCallEvent::getParkeeAccountCode()
-
-Returns key: 'ParkeeAccountCode'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getParkeeContext
-
-    string PAMI\Message\Event\ParkedCallEvent::getParkeeContext()
-
-Returns key: 'ParkeeContext'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getParkeeExten
-
-    string PAMI\Message\Event\ParkedCallEvent::getParkeeExten()
-
-Returns key: 'ParkeeExten'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getParkeePriority
-
-    string PAMI\Message\Event\ParkedCallEvent::getParkeePriority()
-
-Returns key: 'ParkeePriority'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getParkeeUniqueid
-
-    string PAMI\Message\Event\ParkedCallEvent::getParkeeUniqueid()
-
-Returns key: 'ParkeeUniqueid'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getParkerDialString
-
-    string PAMI\Message\Event\ParkedCallEvent::getParkerDialString()
-
-Returns key: 'ParkerDialString'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getParkingSpace
-
-    string PAMI\Message\Event\ParkedCallEvent::getParkingSpace()
-
-Returns key: 'ParkingSpace'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getParkingTimeout
-
-    string PAMI\Message\Event\ParkedCallEvent::getParkingTimeout()
-
-Returns key: 'ParkingTimeout'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getParkingDuration
-
-    string PAMI\Message\Event\ParkedCallEvent::getParkingDuration()
-
-Returns key: 'ParkingDuration'.
+Returns key: 'Uniqueid'.
 
 
 

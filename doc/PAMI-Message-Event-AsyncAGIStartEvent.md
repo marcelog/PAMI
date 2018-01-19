@@ -1,14 +1,14 @@
-PAMI\Message\Action\OriginateAction
+PAMI\Message\Event\AsyncAGIStartEvent
 ===============
 
-Originate action message.
+Event triggered when a channel starts AsyncAGI command processing.
 
 PHP Version 5
 
 
-* Class name: OriginateAction
-* Namespace: PAMI\Message\Action
-* Parent class: [PAMI\Message\Action\ActionMessage](PAMI-Message-Action-ActionMessage.md)
+* Class name: AsyncAGIStartEvent
+* Namespace: PAMI\Message\Event
+* Parent class: [PAMI\Message\Event\EventMessage](PAMI-Message-Event-EventMessage.md)
 
 
 
@@ -34,6 +34,28 @@ Constants
 
 Properties
 ----------
+
+
+### $rawContent
+
+    protected string $rawContent
+
+Holds original message.
+
+
+
+* Visibility: **protected**
+
+
+### $channelVariables
+
+    protected array<mixed,string> $channelVariables
+
+Metadata. Specific channel variables.
+
+
+
+* Visibility: **protected**
 
 
 ### $lines
@@ -85,163 +107,185 @@ Methods
 -------
 
 
-### setExtension
+### getPrivilege
 
-    void PAMI\Message\Action\OriginateAction::setExtension(string $extension)
+    string PAMI\Message\Event\AsyncAGIStartEvent::getPrivilege()
 
-Sets Exten key.
-
-
-
-* Visibility: **public**
-
-
-#### Arguments
-* $extension **string** - &lt;p&gt;Extension to use (requires Context and Priority).&lt;/p&gt;
-
-
-
-### setContext
-
-    void PAMI\Message\Action\OriginateAction::setContext(string $context)
-
-Sets Context key.
+Returns key: 'Privilege'.
 
 
 
 * Visibility: **public**
 
 
-#### Arguments
-* $context **string** - &lt;p&gt;Context to use (requires Exten and Priority).&lt;/p&gt;
 
 
+### getChannel
 
-### setPriority
+    string PAMI\Message\Event\AsyncAGIStartEvent::getChannel()
 
-    void PAMI\Message\Action\OriginateAction::setPriority(string $priority)
-
-Sets Priority key.
-
-
-
-* Visibility: **public**
-
-
-#### Arguments
-* $priority **string** - &lt;p&gt;Priority to use (requires Exten and Context).&lt;/p&gt;
-
-
-
-### setApplication
-
-    void PAMI\Message\Action\OriginateAction::setApplication(string $application)
-
-Sets Application key.
+Returns key: 'Channel'.
 
 
 
 * Visibility: **public**
 
 
-#### Arguments
-* $application **string** - &lt;p&gt;Application to execute.&lt;/p&gt;
 
 
+### getChannelState
 
-### setData
+    string PAMI\Message\Event\AsyncAGIStartEvent::getChannelState()
 
-    void PAMI\Message\Action\OriginateAction::setData(string $data)
-
-Sets Data key.
-
-
-
-* Visibility: **public**
-
-
-#### Arguments
-* $data **string** - &lt;p&gt;Data to use (requires Application).&lt;/p&gt;
-
-
-
-### setTimeout
-
-    void PAMI\Message\Action\OriginateAction::setTimeout(integer $timeout)
-
-Sets Timeout key.
+Returns key: 'ChannelState'.
 
 
 
 * Visibility: **public**
 
 
-#### Arguments
-* $timeout **integer** - &lt;p&gt;How long to wait for call to be answered (in ms).&lt;/p&gt;
 
 
+### getChannelStateDesc
 
-### setCallerId
+    string PAMI\Message\Event\AsyncAGIStartEvent::getChannelStateDesc()
 
-    void PAMI\Message\Action\OriginateAction::setCallerId(string $clid)
-
-Sets CallerID key.
-
-
-
-* Visibility: **public**
-
-
-#### Arguments
-* $clid **string** - &lt;p&gt;Caller ID to be set on the outgoing channel.&lt;/p&gt;
-
-
-
-### setAccount
-
-    void PAMI\Message\Action\OriginateAction::setAccount(string $account)
-
-Sets Account key.
+Returns key: 'ChannelStateDesc'.
 
 
 
 * Visibility: **public**
 
 
-#### Arguments
-* $account **string** - &lt;p&gt;Account code.&lt;/p&gt;
 
 
+### getCallerIDNum
 
-### setAsync
+    string PAMI\Message\Event\AsyncAGIStartEvent::getCallerIDNum()
 
-    void PAMI\Message\Action\OriginateAction::setAsync(boolean $async)
-
-Sets Async key.
-
-
-
-* Visibility: **public**
-
-
-#### Arguments
-* $async **boolean** - &lt;p&gt;Set to true for fast origination.&lt;/p&gt;
-
-
-
-### setCodecs
-
-    void PAMI\Message\Action\OriginateAction::setCodecs(array<mixed,string> $codecs)
-
-Sets Codecs key.
+Returns key: 'CallerIDNum'.
 
 
 
 * Visibility: **public**
 
 
-#### Arguments
-* $codecs **array&lt;mixed,string&gt;** - &lt;p&gt;List of codecs to use for this call.&lt;/p&gt;
+
+
+### getCallerIDName
+
+    string PAMI\Message\Event\AsyncAGIStartEvent::getCallerIDName()
+
+Returns key: 'CallerIDName'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getConnectedLineNum
+
+    string PAMI\Message\Event\AsyncAGIStartEvent::getConnectedLineNum()
+
+Returns key: 'ConnectedLineNum'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getConnectedLineName
+
+    string PAMI\Message\Event\AsyncAGIStartEvent::getConnectedLineName()
+
+Returns key: 'ConnectedLineName'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getAccountCode
+
+    string PAMI\Message\Event\AsyncAGIStartEvent::getAccountCode()
+
+Returns key: 'AccountCode'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getContext
+
+    string PAMI\Message\Event\AsyncAGIStartEvent::getContext()
+
+Returns key: 'Context'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getExten
+
+    string PAMI\Message\Event\AsyncAGIStartEvent::getExten()
+
+Returns key: 'Exten'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getPriority
+
+    string PAMI\Message\Event\AsyncAGIStartEvent::getPriority()
+
+Returns key: 'Priority'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getUniqueid
+
+    string PAMI\Message\Event\AsyncAGIStartEvent::getUniqueid()
+
+Returns key: 'Uniqueid'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getEnv
+
+    string PAMI\Message\Event\AsyncAGIStartEvent::getEnv()
+
+Returns key: 'Env'.
+
+
+
+* Visibility: **public**
+
 
 
 
@@ -259,23 +303,17 @@ Constructor.
 
 
 
-### setActionID
+### getName
 
-    void PAMI\Message\Action\ActionMessage::setActionID($actionID)
+    string PAMI\Message\Event\EventMessage::getName()
 
-Sets Action ID.
+Returns key 'Event'.
 
-The ActionID can be at most 69 characters long, according to
-[Asterisk Issue 14847](https://issues.asterisk.org/jira/browse/14847).
 
-Therefore we'll throw an exception when the ActionID is too long.
 
 * Visibility: **public**
-* This method is defined by [PAMI\Message\Action\ActionMessage](PAMI-Message-Action-ActionMessage.md)
+* This method is defined by [PAMI\Message\Event\EventMessage](PAMI-Message-Event-EventMessage.md)
 
-
-#### Arguments
-* $actionID **mixed** - &lt;p&gt;The Action ID to have this action known by&lt;/p&gt;
 
 
 
@@ -290,6 +328,69 @@ Serialize function.
 * Visibility: **public**
 * This method is defined by [PAMI\Message\Message](PAMI-Message-Message.md)
 
+
+
+
+### getEventList
+
+    string PAMI\Message\IncomingMessage::getEventList()
+
+Returns key 'EventList'. In respones, this will surely be a "start". In
+events, should be a "complete".
+
+
+
+* Visibility: **public**
+* This method is defined by [PAMI\Message\IncomingMessage](PAMI-Message-IncomingMessage.md)
+
+
+
+
+### getRawContent
+
+    string PAMI\Message\IncomingMessage::getRawContent()
+
+Returns the original message content without parsing.
+
+
+
+* Visibility: **public**
+* This method is defined by [PAMI\Message\IncomingMessage](PAMI-Message-IncomingMessage.md)
+
+
+
+
+### getAllChannelVariables
+
+    array PAMI\Message\IncomingMessage::getAllChannelVariables()
+
+Returns the channel variables for all reported channels.
+
+https://github.com/marcelog/PAMI/issues/85
+
+The channel names will be lowercased.
+
+* Visibility: **public**
+* This method is defined by [PAMI\Message\IncomingMessage](PAMI-Message-IncomingMessage.md)
+
+
+
+
+### getChannelVariables
+
+    array PAMI\Message\IncomingMessage::getChannelVariables(string $channel)
+
+Returns the channel variables for the given channel.
+
+https://github.com/marcelog/PAMI/issues/85
+
+* Visibility: **public**
+* This method is defined by [PAMI\Message\IncomingMessage](PAMI-Message-IncomingMessage.md)
+
+
+#### Arguments
+* $channel **string** - &lt;p&gt;Channel name. If not given, will return variables
+for the &quot;current&quot; channel.&lt;/p&gt;
 
 
 

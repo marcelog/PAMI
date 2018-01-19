@@ -1,12 +1,12 @@
-PAMI\Message\Event\ParkedCallEvent
+PAMI\Message\Event\BlindTransferEvent
 ===============
 
-Event triggered when a call is parked.
+Event triggered when a blind transfer is complete.
 
 PHP Version 5
 
 
-* Class name: ParkedCallEvent
+* Class name: BlindTransferEvent
 * Namespace: PAMI\Message\Event
 * Parent class: [PAMI\Message\Event\EventMessage](PAMI-Message-Event-EventMessage.md)
 
@@ -14,6 +14,38 @@ PHP Version 5
 
 Constants
 ----------
+
+
+### RESULT_FAIL
+
+    const RESULT_FAIL = 'Fail'
+
+
+
+
+
+### RESULT_INVALID
+
+    const RESULT_INVALID = 'Invalid'
+
+
+
+
+
+### RESULT_NOT_PERMITTED
+
+    const RESULT_NOT_PERMITTED = 'Not Permitted'
+
+
+
+
+
+### RESULT_SUCCESS
+
+    const RESULT_SUCCESS = 'Success'
+
+
+
 
 
 ### EOL
@@ -109,7 +141,7 @@ Methods
 
 ### getPrivilege
 
-    string PAMI\Message\Event\ParkedCallEvent::getPrivilege()
+    string PAMI\Message\Event\BlindTransferEvent::getPrivilege()
 
 Returns key: 'Privilege'.
 
@@ -120,11 +152,29 @@ Returns key: 'Privilege'.
 
 
 
-### getParkinglot
+### getResult
 
-    string PAMI\Message\Event\ParkedCallEvent::getParkinglot()
+    string PAMI\Message\Event\BlindTransferEvent::getResult()
 
-Returns key: 'Parkinglot'.
+Returns key: 'Result'.
+
+Result - Indicates if the transfer was successful or if it failed.
+
+- Fail - An internal error occurred.
+- Invalid - Invalid configuration for transfer (e.g. Not bridged)
+- Not Permitted - Bridge does not permit transfers
+- Success - Transfer completed successfully
+
+* Visibility: **public**
+
+
+
+
+### getTransfererChannel
+
+    string PAMI\Message\Event\BlindTransferEvent::getTransfererChannel()
+
+Returns key: 'TransfererChannel'.
 
 
 
@@ -133,11 +183,47 @@ Returns key: 'Parkinglot'.
 
 
 
-### getFrom
+### getTransfererChannelState
 
-    string PAMI\Message\Event\ParkedCallEvent::getFrom()
+    string PAMI\Message\Event\BlindTransferEvent::getTransfererChannelState()
 
-Returns key: 'From'.
+Returns key: 'TransfererChannelState'.
+
+TransfererChannelState - A numeric code for the channel's current state, related to TransfererChannelStateDesc
+
+* Visibility: **public**
+
+
+
+
+### getTransfererChannelStateDesc
+
+    string PAMI\Message\Event\BlindTransferEvent::getTransfererChannelStateDesc()
+
+Returns key: 'TransfererChannelStateDesc'.
+
+Down
+Rsrvd
+OffHook
+Dialing
+Ring
+Ringing
+Up
+Busy
+Dialing Offhook
+Pre-ring
+Unknown
+
+* Visibility: **public**
+
+
+
+
+### getTransfererCallerIDNum
+
+    string PAMI\Message\Event\BlindTransferEvent::getTransfererCallerIDNum()
+
+Returns key: 'TransfererCallerIDNum'.
 
 
 
@@ -146,24 +232,11 @@ Returns key: 'From'.
 
 
 
-### getTimeout
+### getTransfererCallerIDName
 
-    string PAMI\Message\Event\ParkedCallEvent::getTimeout()
+    string PAMI\Message\Event\BlindTransferEvent::getTransfererCallerIDName()
 
-Returns key: 'Timeout'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getConnectedLineNum
-
-    string PAMI\Message\Event\ParkedCallEvent::getConnectedLineNum()
-
-Returns key: 'ConnectedLineNum'.
+Returns key: 'TransfererCallerIDName'.
 
 
 
@@ -172,24 +245,11 @@ Returns key: 'ConnectedLineNum'.
 
 
 
-### getConnectedLineName
+### getTransfererConnectedLineNum
 
-    string PAMI\Message\Event\ParkedCallEvent::getConnectedLineName()
+    string PAMI\Message\Event\BlindTransferEvent::getTransfererConnectedLineNum()
 
-Returns key: 'ConnectedLineName'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getChannel
-
-    string PAMI\Message\Event\ParkedCallEvent::getChannel()
-
-Returns key: 'Channel'.
+Returns key: 'TransfererConnectedLineNum'.
 
 
 
@@ -198,24 +258,11 @@ Returns key: 'Channel'.
 
 
 
-### getCallerIDNum
+### getTransfererConnectedLineName
 
-    string PAMI\Message\Event\ParkedCallEvent::getCallerIDNum()
+    string PAMI\Message\Event\BlindTransferEvent::getTransfererConnectedLineName()
 
-Returns key: 'CallerIDNum'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getCallerIDName
-
-    string PAMI\Message\Event\ParkedCallEvent::getCallerIDName()
-
-Returns key: 'CallerIDName'.
+Returns key: 'TransfererConnectedLineName'.
 
 
 
@@ -224,13 +271,352 @@ Returns key: 'CallerIDName'.
 
 
 
-### getUniqueID
+### getTransfererAccountCode
 
-    string PAMI\Message\Event\ParkedCallEvent::getUniqueID()
+    string PAMI\Message\Event\BlindTransferEvent::getTransfererAccountCode()
 
-Returns key: 'UniqueID'.
+Returns key: 'TransfererAccountCode'.
 
 
+
+* Visibility: **public**
+
+
+
+
+### getTransfererContext
+
+    string PAMI\Message\Event\BlindTransferEvent::getTransfererContext()
+
+Returns key: 'TransfererContext'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getTransfererExten
+
+    string PAMI\Message\Event\BlindTransferEvent::getTransfererExten()
+
+Returns key: 'TransfererExten'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getTransfererPriority
+
+    string PAMI\Message\Event\BlindTransferEvent::getTransfererPriority()
+
+Returns key: 'TransfererPriority'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getTransfererUniqueid
+
+    string PAMI\Message\Event\BlindTransferEvent::getTransfererUniqueid()
+
+Returns key: 'TransfererUniqueid'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getTransfereeChannel
+
+    string PAMI\Message\Event\BlindTransferEvent::getTransfereeChannel()
+
+Returns key: 'TransfereeChannel'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getTransfereeChannelState
+
+    string PAMI\Message\Event\BlindTransferEvent::getTransfereeChannelState()
+
+Returns key: 'TransfereeChannelState'.
+
+TransfereeChannelState - A numeric code for the channel's current state, related to TransfereeChannelStateDesc
+
+* Visibility: **public**
+
+
+
+
+### getTransfereeChannelStateDesc
+
+    string PAMI\Message\Event\BlindTransferEvent::getTransfereeChannelStateDesc()
+
+Returns key: 'TransfereeChannelStateDesc'.
+
+Down
+Rsrvd
+OffHook
+Dialing
+Ring
+Ringing
+Up
+Busy
+Dialing Offhook
+Pre-ring
+Unknown
+
+* Visibility: **public**
+
+
+
+
+### getTransfereeCallerIDNum
+
+    string PAMI\Message\Event\BlindTransferEvent::getTransfereeCallerIDNum()
+
+Returns key: 'TransfereeCallerIDNum'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getTransfereeCallerIDName
+
+    string PAMI\Message\Event\BlindTransferEvent::getTransfereeCallerIDName()
+
+Returns key: 'TransfereeCallerIDName'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getTransfereeConnectedLineNum
+
+    string PAMI\Message\Event\BlindTransferEvent::getTransfereeConnectedLineNum()
+
+Returns key: 'TransfereeConnectedLineNum'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getTransfereeConnectedLineName
+
+    string PAMI\Message\Event\BlindTransferEvent::getTransfereeConnectedLineName()
+
+Returns key: 'TransfereeConnectedLineName'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getTransfereeAccountCode
+
+    string PAMI\Message\Event\BlindTransferEvent::getTransfereeAccountCode()
+
+Returns key: 'TransfereeAccountCode'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getTransfereeContext
+
+    string PAMI\Message\Event\BlindTransferEvent::getTransfereeContext()
+
+Returns key: 'TransfereeContext'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getTransfereeExten
+
+    string PAMI\Message\Event\BlindTransferEvent::getTransfereeExten()
+
+Returns key: 'TransfereeExten'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getTransfereePriority
+
+    string PAMI\Message\Event\BlindTransferEvent::getTransfereePriority()
+
+Returns key: 'TransfereePriority'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getTransfereeUniqueid
+
+    string PAMI\Message\Event\BlindTransferEvent::getTransfereeUniqueid()
+
+Returns key: 'TransfereeUniqueid'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getBridgeUniqueid
+
+    string PAMI\Message\Event\BlindTransferEvent::getBridgeUniqueid()
+
+Returns key: 'BridgeUniqueid'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getBridgeType
+
+    string PAMI\Message\Event\BlindTransferEvent::getBridgeType()
+
+Returns key: 'BridgeType'.
+
+BridgeType - The type of bridge
+
+* Visibility: **public**
+
+
+
+
+### getBridgeTechnology
+
+    string PAMI\Message\Event\BlindTransferEvent::getBridgeTechnology()
+
+Returns key: 'BridgeTechnology'.
+
+BridgeTechnology - Technology in use by the bridge
+
+* Visibility: **public**
+
+
+
+
+### getBridgeCreator
+
+    string PAMI\Message\Event\BlindTransferEvent::getBridgeCreator()
+
+Returns key: 'BridgeCreator'.
+
+BridgeCreator - Entity that created the bridge if applicable
+
+* Visibility: **public**
+
+
+
+
+### getBridgeName
+
+    string PAMI\Message\Event\BlindTransferEvent::getBridgeName()
+
+Returns key: 'BridgeName'.
+
+BridgeName - Name used to refer to the bridge by its BridgeCreator if applicable
+
+* Visibility: **public**
+
+
+
+
+### getBridgeNumChannels
+
+    string PAMI\Message\Event\BlindTransferEvent::getBridgeNumChannels()
+
+Returns key: 'BridgeNumChannels'.
+
+BridgeNumChannels - Number of channels in the bridge
+
+* Visibility: **public**
+
+
+
+
+### getIsExternal
+
+    string PAMI\Message\Event\BlindTransferEvent::getIsExternal()
+
+Returns key: 'IsExternal'.
+
+IsExternal - Indicates if the transfer was performed outside of Asterisk.
+For instance, a channel protocol native transfer is external. A DTMF transfer is internal.
+
+Yes
+No
+
+* Visibility: **public**
+
+
+
+
+### isExternal
+
+    boolean PAMI\Message\Event\BlindTransferEvent::isExternal()
+
+Indicates if the transfer was performed outside of Asterisk.
+
+For instance, a channel protocol native transfer is external. A DTMF transfer is internal.
+
+* Visibility: **public**
+
+
+
+
+### getContext
+
+    string PAMI\Message\Event\BlindTransferEvent::getContext()
+
+Returns key: 'Context'.
+
+Context - Destination context for the blind transfer.
 
 * Visibility: **public**
 
@@ -239,219 +625,11 @@ Returns key: 'UniqueID'.
 
 ### getExtension
 
-    string PAMI\Message\Event\ParkedCallEvent::getExtension()
+    string PAMI\Message\Event\BlindTransferEvent::getExtension()
 
-Returns key: 'Exten'.
+Returns key: 'Extension'.
 
-
-
-* Visibility: **public**
-
-
-
-
-### getParkeeChannel
-
-    string PAMI\Message\Event\ParkedCallEvent::getParkeeChannel()
-
-Returns key: 'ParkeeChannel'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getParkeeChannelState
-
-    string PAMI\Message\Event\ParkedCallEvent::getParkeeChannelState()
-
-Returns key: 'ParkeeChannelState'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getParkeeChannelStateDesc
-
-    string PAMI\Message\Event\ParkedCallEvent::getParkeeChannelStateDesc()
-
-Returns key: 'ParkeeChannelStateDesc'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getParkeeCallerIDNum
-
-    string PAMI\Message\Event\ParkedCallEvent::getParkeeCallerIDNum()
-
-Returns key: 'ParkeeCallerIDNum'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getParkeeCallerIDName
-
-    string PAMI\Message\Event\ParkedCallEvent::getParkeeCallerIDName()
-
-Returns key: 'ParkeeCallerIDName'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getParkeeConnectedLineNum
-
-    string PAMI\Message\Event\ParkedCallEvent::getParkeeConnectedLineNum()
-
-Returns key: 'ParkeeConnectedLineNum'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getParkeeConnectedLineName
-
-    string PAMI\Message\Event\ParkedCallEvent::getParkeeConnectedLineName()
-
-Returns key: 'ParkeeConnectedLineName'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getParkeeAccountCode
-
-    string PAMI\Message\Event\ParkedCallEvent::getParkeeAccountCode()
-
-Returns key: 'ParkeeAccountCode'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getParkeeContext
-
-    string PAMI\Message\Event\ParkedCallEvent::getParkeeContext()
-
-Returns key: 'ParkeeContext'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getParkeeExten
-
-    string PAMI\Message\Event\ParkedCallEvent::getParkeeExten()
-
-Returns key: 'ParkeeExten'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getParkeePriority
-
-    string PAMI\Message\Event\ParkedCallEvent::getParkeePriority()
-
-Returns key: 'ParkeePriority'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getParkeeUniqueid
-
-    string PAMI\Message\Event\ParkedCallEvent::getParkeeUniqueid()
-
-Returns key: 'ParkeeUniqueid'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getParkerDialString
-
-    string PAMI\Message\Event\ParkedCallEvent::getParkerDialString()
-
-Returns key: 'ParkerDialString'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getParkingSpace
-
-    string PAMI\Message\Event\ParkedCallEvent::getParkingSpace()
-
-Returns key: 'ParkingSpace'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getParkingTimeout
-
-    string PAMI\Message\Event\ParkedCallEvent::getParkingTimeout()
-
-Returns key: 'ParkingTimeout'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getParkingDuration
-
-    string PAMI\Message\Event\ParkedCallEvent::getParkingDuration()
-
-Returns key: 'ParkingDuration'.
-
-
+Extension - Destination extension for the blind transfer.
 
 * Visibility: **public**
 

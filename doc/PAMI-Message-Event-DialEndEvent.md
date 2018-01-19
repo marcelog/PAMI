@@ -1,12 +1,12 @@
-PAMI\Message\Event\ParkedCallEvent
+PAMI\Message\Event\DialEndEvent
 ===============
 
-Event triggered when a call is parked.
+Event triggered when a dial action has completed.
 
 PHP Version 5
 
 
-* Class name: ParkedCallEvent
+* Class name: DialEndEvent
 * Namespace: PAMI\Message\Event
 * Parent class: [PAMI\Message\Event\EventMessage](PAMI-Message-Event-EventMessage.md)
 
@@ -109,7 +109,7 @@ Methods
 
 ### getPrivilege
 
-    string PAMI\Message\Event\ParkedCallEvent::getPrivilege()
+    string PAMI\Message\Event\DialEndEvent::getPrivilege()
 
 Returns key: 'Privilege'.
 
@@ -120,74 +120,9 @@ Returns key: 'Privilege'.
 
 
 
-### getParkinglot
-
-    string PAMI\Message\Event\ParkedCallEvent::getParkinglot()
-
-Returns key: 'Parkinglot'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getFrom
-
-    string PAMI\Message\Event\ParkedCallEvent::getFrom()
-
-Returns key: 'From'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getTimeout
-
-    string PAMI\Message\Event\ParkedCallEvent::getTimeout()
-
-Returns key: 'Timeout'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getConnectedLineNum
-
-    string PAMI\Message\Event\ParkedCallEvent::getConnectedLineNum()
-
-Returns key: 'ConnectedLineNum'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getConnectedLineName
-
-    string PAMI\Message\Event\ParkedCallEvent::getConnectedLineName()
-
-Returns key: 'ConnectedLineName'.
-
-
-
-* Visibility: **public**
-
-
-
-
 ### getChannel
 
-    string PAMI\Message\Event\ParkedCallEvent::getChannel()
+    string PAMI\Message\Event\DialEndEvent::getChannel()
 
 Returns key: 'Channel'.
 
@@ -198,9 +133,35 @@ Returns key: 'Channel'.
 
 
 
+### getChannelState
+
+    string PAMI\Message\Event\DialEndEvent::getChannelState()
+
+Returns key: 'ChannelState'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getChannelStateDesc
+
+    string PAMI\Message\Event\DialEndEvent::getChannelStateDesc()
+
+Returns key: 'ChannelStateDesc'.
+
+
+
+* Visibility: **public**
+
+
+
+
 ### getCallerIDNum
 
-    string PAMI\Message\Event\ParkedCallEvent::getCallerIDNum()
+    string PAMI\Message\Event\DialEndEvent::getCallerIDNum()
 
 Returns key: 'CallerIDNum'.
 
@@ -213,7 +174,7 @@ Returns key: 'CallerIDNum'.
 
 ### getCallerIDName
 
-    string PAMI\Message\Event\ParkedCallEvent::getCallerIDName()
+    string PAMI\Message\Event\DialEndEvent::getCallerIDName()
 
 Returns key: 'CallerIDName'.
 
@@ -224,11 +185,11 @@ Returns key: 'CallerIDName'.
 
 
 
-### getUniqueID
+### getConnectedLineNum
 
-    string PAMI\Message\Event\ParkedCallEvent::getUniqueID()
+    string PAMI\Message\Event\DialEndEvent::getConnectedLineNum()
 
-Returns key: 'UniqueID'.
+Returns key: 'ConnectedLineNum'.
 
 
 
@@ -237,9 +198,48 @@ Returns key: 'UniqueID'.
 
 
 
-### getExtension
+### getConnectedLineName
 
-    string PAMI\Message\Event\ParkedCallEvent::getExtension()
+    string PAMI\Message\Event\DialEndEvent::getConnectedLineName()
+
+Returns key: 'ConnectedLineName'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getAccountCode
+
+    string PAMI\Message\Event\DialEndEvent::getAccountCode()
+
+Returns key: 'AccountCode'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getContext
+
+    string PAMI\Message\Event\DialEndEvent::getContext()
+
+Returns key: 'Context'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getExten
+
+    string PAMI\Message\Event\DialEndEvent::getExten()
 
 Returns key: 'Exten'.
 
@@ -250,24 +250,11 @@ Returns key: 'Exten'.
 
 
 
-### getParkeeChannel
+### getPriority
 
-    string PAMI\Message\Event\ParkedCallEvent::getParkeeChannel()
+    string PAMI\Message\Event\DialEndEvent::getPriority()
 
-Returns key: 'ParkeeChannel'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getParkeeChannelState
-
-    string PAMI\Message\Event\ParkedCallEvent::getParkeeChannelState()
-
-Returns key: 'ParkeeChannelState'.
+Returns key: 'Priority'.
 
 
 
@@ -276,24 +263,11 @@ Returns key: 'ParkeeChannelState'.
 
 
 
-### getParkeeChannelStateDesc
+### getUniqueid
 
-    string PAMI\Message\Event\ParkedCallEvent::getParkeeChannelStateDesc()
+    string PAMI\Message\Event\DialEndEvent::getUniqueid()
 
-Returns key: 'ParkeeChannelStateDesc'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getParkeeCallerIDNum
-
-    string PAMI\Message\Event\ParkedCallEvent::getParkeeCallerIDNum()
-
-Returns key: 'ParkeeCallerIDNum'.
+Returns key: 'Uniqueid'.
 
 
 
@@ -302,24 +276,11 @@ Returns key: 'ParkeeCallerIDNum'.
 
 
 
-### getParkeeCallerIDName
+### getDestChannel
 
-    string PAMI\Message\Event\ParkedCallEvent::getParkeeCallerIDName()
+    string PAMI\Message\Event\DialEndEvent::getDestChannel()
 
-Returns key: 'ParkeeCallerIDName'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getParkeeConnectedLineNum
-
-    string PAMI\Message\Event\ParkedCallEvent::getParkeeConnectedLineNum()
-
-Returns key: 'ParkeeConnectedLineNum'.
+Returns key: 'DestChannel'.
 
 
 
@@ -328,24 +289,11 @@ Returns key: 'ParkeeConnectedLineNum'.
 
 
 
-### getParkeeConnectedLineName
+### getDestChannelState
 
-    string PAMI\Message\Event\ParkedCallEvent::getParkeeConnectedLineName()
+    string PAMI\Message\Event\DialEndEvent::getDestChannelState()
 
-Returns key: 'ParkeeConnectedLineName'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getParkeeAccountCode
-
-    string PAMI\Message\Event\ParkedCallEvent::getParkeeAccountCode()
-
-Returns key: 'ParkeeAccountCode'.
+Returns key: 'DestChannelState'.
 
 
 
@@ -354,24 +302,11 @@ Returns key: 'ParkeeAccountCode'.
 
 
 
-### getParkeeContext
+### getDestChannelStateDesc
 
-    string PAMI\Message\Event\ParkedCallEvent::getParkeeContext()
+    string PAMI\Message\Event\DialEndEvent::getDestChannelStateDesc()
 
-Returns key: 'ParkeeContext'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getParkeeExten
-
-    string PAMI\Message\Event\ParkedCallEvent::getParkeeExten()
-
-Returns key: 'ParkeeExten'.
+Returns key: 'DestChannelStateDesc'.
 
 
 
@@ -380,24 +315,11 @@ Returns key: 'ParkeeExten'.
 
 
 
-### getParkeePriority
+### getDestCallerIDNum
 
-    string PAMI\Message\Event\ParkedCallEvent::getParkeePriority()
+    string PAMI\Message\Event\DialEndEvent::getDestCallerIDNum()
 
-Returns key: 'ParkeePriority'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getParkeeUniqueid
-
-    string PAMI\Message\Event\ParkedCallEvent::getParkeeUniqueid()
-
-Returns key: 'ParkeeUniqueid'.
+Returns key: 'DestCallerIDNum'.
 
 
 
@@ -406,24 +328,11 @@ Returns key: 'ParkeeUniqueid'.
 
 
 
-### getParkerDialString
+### getDestCallerIDName
 
-    string PAMI\Message\Event\ParkedCallEvent::getParkerDialString()
+    string PAMI\Message\Event\DialEndEvent::getDestCallerIDName()
 
-Returns key: 'ParkerDialString'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getParkingSpace
-
-    string PAMI\Message\Event\ParkedCallEvent::getParkingSpace()
-
-Returns key: 'ParkingSpace'.
+Returns key: 'DestCallerIDName'.
 
 
 
@@ -432,11 +341,11 @@ Returns key: 'ParkingSpace'.
 
 
 
-### getParkingTimeout
+### getDestConnectedLineNum
 
-    string PAMI\Message\Event\ParkedCallEvent::getParkingTimeout()
+    string PAMI\Message\Event\DialEndEvent::getDestConnectedLineNum()
 
-Returns key: 'ParkingTimeout'.
+Returns key: 'DestConnectedLineNum'.
 
 
 
@@ -445,11 +354,89 @@ Returns key: 'ParkingTimeout'.
 
 
 
-### getParkingDuration
+### getDestConnectedLineName
 
-    string PAMI\Message\Event\ParkedCallEvent::getParkingDuration()
+    string PAMI\Message\Event\DialEndEvent::getDestConnectedLineName()
 
-Returns key: 'ParkingDuration'.
+Returns key: 'DestConnectedLineName'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getDestAccountCode
+
+    string PAMI\Message\Event\DialEndEvent::getDestAccountCode()
+
+Returns key: 'DestAccountCode'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getDestContext
+
+    string PAMI\Message\Event\DialEndEvent::getDestContext()
+
+Returns key: 'DestContext'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getDestExten
+
+    string PAMI\Message\Event\DialEndEvent::getDestExten()
+
+Returns key: 'DestExten'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getDestPriority
+
+    string PAMI\Message\Event\DialEndEvent::getDestPriority()
+
+Returns key: 'DestPriority'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getDestUniqueid
+
+    string PAMI\Message\Event\DialEndEvent::getDestUniqueid()
+
+Returns key: 'DestUniqueid'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getDialStatus
+
+    string PAMI\Message\Event\DialEndEvent::getDialStatus()
+
+Returns key: 'DialStatus'.
 
 
 

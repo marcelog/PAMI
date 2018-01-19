@@ -235,7 +235,7 @@ setConcatRefId and setConcatSeqNum
 
 ### setAccount
 
-    void PAMI\Message\Action\VGSMSMSTxAction::setAccount($account)
+    void PAMI\Message\Action\VGSMSMSTxAction::setAccount(string $account)
 
 Sets Account key.
 
@@ -245,7 +245,7 @@ Sets Account key.
 
 
 #### Arguments
-* $account **mixed**
+* $account **string** - &lt;p&gt;Account code.&lt;/p&gt;
 
 
 

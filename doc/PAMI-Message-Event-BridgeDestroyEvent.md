@@ -1,14 +1,14 @@
-PAMI\Message\Action\OriginateAction
+PAMI\Message\Event\BridgeDestroyEvent
 ===============
 
-Originate action message.
+Event triggered when a bridge is destroyed.
 
 PHP Version 5
 
 
-* Class name: OriginateAction
-* Namespace: PAMI\Message\Action
-* Parent class: [PAMI\Message\Action\ActionMessage](PAMI-Message-Action-ActionMessage.md)
+* Class name: BridgeDestroyEvent
+* Namespace: PAMI\Message\Event
+* Parent class: [PAMI\Message\Event\EventMessage](PAMI-Message-Event-EventMessage.md)
 
 
 
@@ -34,6 +34,28 @@ Constants
 
 Properties
 ----------
+
+
+### $rawContent
+
+    protected string $rawContent
+
+Holds original message.
+
+
+
+* Visibility: **protected**
+
+
+### $channelVariables
+
+    protected array<mixed,string> $channelVariables
+
+Metadata. Specific channel variables.
+
+
+
+* Visibility: **protected**
 
 
 ### $lines
@@ -85,171 +107,116 @@ Methods
 -------
 
 
-### setExtension
+### getPrivilege
 
-    void PAMI\Message\Action\OriginateAction::setExtension(string $extension)
+    string PAMI\Message\Event\BridgeDestroyEvent::getPrivilege()
 
-Sets Exten key.
-
-
-
-* Visibility: **public**
-
-
-#### Arguments
-* $extension **string** - &lt;p&gt;Extension to use (requires Context and Priority).&lt;/p&gt;
-
-
-
-### setContext
-
-    void PAMI\Message\Action\OriginateAction::setContext(string $context)
-
-Sets Context key.
+Returns key: 'Privilege'.
 
 
 
 * Visibility: **public**
 
 
-#### Arguments
-* $context **string** - &lt;p&gt;Context to use (requires Exten and Priority).&lt;/p&gt;
 
 
+### getBridgeUniqueid
 
-### setPriority
+    string PAMI\Message\Event\BridgeDestroyEvent::getBridgeUniqueid()
 
-    void PAMI\Message\Action\OriginateAction::setPriority(string $priority)
-
-Sets Priority key.
-
-
-
-* Visibility: **public**
-
-
-#### Arguments
-* $priority **string** - &lt;p&gt;Priority to use (requires Exten and Context).&lt;/p&gt;
-
-
-
-### setApplication
-
-    void PAMI\Message\Action\OriginateAction::setApplication(string $application)
-
-Sets Application key.
+Returns key: 'BridgeUniqueid'.
 
 
 
 * Visibility: **public**
 
 
-#### Arguments
-* $application **string** - &lt;p&gt;Application to execute.&lt;/p&gt;
 
 
+### getBridgeType
 
-### setData
+    string PAMI\Message\Event\BridgeDestroyEvent::getBridgeType()
 
-    void PAMI\Message\Action\OriginateAction::setData(string $data)
-
-Sets Data key.
-
-
-
-* Visibility: **public**
-
-
-#### Arguments
-* $data **string** - &lt;p&gt;Data to use (requires Application).&lt;/p&gt;
-
-
-
-### setTimeout
-
-    void PAMI\Message\Action\OriginateAction::setTimeout(integer $timeout)
-
-Sets Timeout key.
+Returns key: 'BridgeType'.
 
 
 
 * Visibility: **public**
 
 
-#### Arguments
-* $timeout **integer** - &lt;p&gt;How long to wait for call to be answered (in ms).&lt;/p&gt;
 
 
+### getBridgeTechnology
 
-### setCallerId
+    string PAMI\Message\Event\BridgeDestroyEvent::getBridgeTechnology()
 
-    void PAMI\Message\Action\OriginateAction::setCallerId(string $clid)
-
-Sets CallerID key.
-
-
-
-* Visibility: **public**
-
-
-#### Arguments
-* $clid **string** - &lt;p&gt;Caller ID to be set on the outgoing channel.&lt;/p&gt;
-
-
-
-### setAccount
-
-    void PAMI\Message\Action\OriginateAction::setAccount(string $account)
-
-Sets Account key.
+Returns key: 'BridgeTechnology'.
 
 
 
 * Visibility: **public**
 
 
-#### Arguments
-* $account **string** - &lt;p&gt;Account code.&lt;/p&gt;
 
 
+### getBridgeCreator
 
-### setAsync
+    string PAMI\Message\Event\BridgeDestroyEvent::getBridgeCreator()
 
-    void PAMI\Message\Action\OriginateAction::setAsync(boolean $async)
-
-Sets Async key.
-
-
-
-* Visibility: **public**
-
-
-#### Arguments
-* $async **boolean** - &lt;p&gt;Set to true for fast origination.&lt;/p&gt;
-
-
-
-### setCodecs
-
-    void PAMI\Message\Action\OriginateAction::setCodecs(array<mixed,string> $codecs)
-
-Sets Codecs key.
+Returns key: 'BridgeCreator'.
 
 
 
 * Visibility: **public**
 
 
-#### Arguments
-* $codecs **array&lt;mixed,string&gt;** - &lt;p&gt;List of codecs to use for this call.&lt;/p&gt;
+
+
+### getBridgeName
+
+    string PAMI\Message\Event\BridgeDestroyEvent::getBridgeName()
+
+Returns key: 'BridgeName'.
 
 
 
-### __construct
+* Visibility: **public**
 
-    void PAMI\Message\Message::__construct()
 
-Constructor.
+
+
+### getBridgeNumChannels
+
+    string PAMI\Message\Event\BridgeDestroyEvent::getBridgeNumChannels()
+
+Returns key: 'BridgeNumChannels'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getName
+
+    string PAMI\Message\Event\EventMessage::getName()
+
+Returns key 'Event'.
+
+
+
+* Visibility: **public**
+* This method is defined by [PAMI\Message\Event\EventMessage](PAMI-Message-Event-EventMessage.md)
+
+
+
+
+### __sleep
+
+    array<mixed,string> PAMI\Message\Message::__sleep()
+
+Serialize function.
 
 
 
@@ -259,31 +226,74 @@ Constructor.
 
 
 
-### setActionID
+### getEventList
 
-    void PAMI\Message\Action\ActionMessage::setActionID($actionID)
+    string PAMI\Message\IncomingMessage::getEventList()
 
-Sets Action ID.
+Returns key 'EventList'. In respones, this will surely be a "start". In
+events, should be a "complete".
 
-The ActionID can be at most 69 characters long, according to
-[Asterisk Issue 14847](https://issues.asterisk.org/jira/browse/14847).
 
-Therefore we'll throw an exception when the ActionID is too long.
 
 * Visibility: **public**
-* This method is defined by [PAMI\Message\Action\ActionMessage](PAMI-Message-Action-ActionMessage.md)
+* This method is defined by [PAMI\Message\IncomingMessage](PAMI-Message-IncomingMessage.md)
+
+
+
+
+### getRawContent
+
+    string PAMI\Message\IncomingMessage::getRawContent()
+
+Returns the original message content without parsing.
+
+
+
+* Visibility: **public**
+* This method is defined by [PAMI\Message\IncomingMessage](PAMI-Message-IncomingMessage.md)
+
+
+
+
+### getAllChannelVariables
+
+    array PAMI\Message\IncomingMessage::getAllChannelVariables()
+
+Returns the channel variables for all reported channels.
+
+https://github.com/marcelog/PAMI/issues/85
+
+The channel names will be lowercased.
+
+* Visibility: **public**
+* This method is defined by [PAMI\Message\IncomingMessage](PAMI-Message-IncomingMessage.md)
+
+
+
+
+### getChannelVariables
+
+    array PAMI\Message\IncomingMessage::getChannelVariables(string $channel)
+
+Returns the channel variables for the given channel.
+
+https://github.com/marcelog/PAMI/issues/85
+
+* Visibility: **public**
+* This method is defined by [PAMI\Message\IncomingMessage](PAMI-Message-IncomingMessage.md)
 
 
 #### Arguments
-* $actionID **mixed** - &lt;p&gt;The Action ID to have this action known by&lt;/p&gt;
+* $channel **string** - &lt;p&gt;Channel name. If not given, will return variables
+for the &quot;current&quot; channel.&lt;/p&gt;
 
 
 
-### __sleep
+### __construct
 
-    array<mixed,string> PAMI\Message\Message::__sleep()
+    void PAMI\Message\Message::__construct()
 
-Serialize function.
+Constructor.
 
 
 

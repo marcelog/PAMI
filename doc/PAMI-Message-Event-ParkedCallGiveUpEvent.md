@@ -1,12 +1,12 @@
-PAMI\Message\Event\ParkedCallEvent
+PAMI\Message\Event\ParkedCallGiveUpEvent
 ===============
 
-Event triggered when a call is parked.
+Event triggered when a channel leaves a parking lot because it hung up without being answered.
 
 PHP Version 5
 
 
-* Class name: ParkedCallEvent
+* Class name: ParkedCallGiveUpEvent
 * Namespace: PAMI\Message\Event
 * Parent class: [PAMI\Message\Event\EventMessage](PAMI-Message-Event-EventMessage.md)
 
@@ -109,7 +109,7 @@ Methods
 
 ### getPrivilege
 
-    string PAMI\Message\Event\ParkedCallEvent::getPrivilege()
+    string PAMI\Message\Event\ParkedCallGiveUpEvent::getPrivilege()
 
 Returns key: 'Privilege'.
 
@@ -120,139 +120,9 @@ Returns key: 'Privilege'.
 
 
 
-### getParkinglot
-
-    string PAMI\Message\Event\ParkedCallEvent::getParkinglot()
-
-Returns key: 'Parkinglot'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getFrom
-
-    string PAMI\Message\Event\ParkedCallEvent::getFrom()
-
-Returns key: 'From'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getTimeout
-
-    string PAMI\Message\Event\ParkedCallEvent::getTimeout()
-
-Returns key: 'Timeout'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getConnectedLineNum
-
-    string PAMI\Message\Event\ParkedCallEvent::getConnectedLineNum()
-
-Returns key: 'ConnectedLineNum'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getConnectedLineName
-
-    string PAMI\Message\Event\ParkedCallEvent::getConnectedLineName()
-
-Returns key: 'ConnectedLineName'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getChannel
-
-    string PAMI\Message\Event\ParkedCallEvent::getChannel()
-
-Returns key: 'Channel'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getCallerIDNum
-
-    string PAMI\Message\Event\ParkedCallEvent::getCallerIDNum()
-
-Returns key: 'CallerIDNum'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getCallerIDName
-
-    string PAMI\Message\Event\ParkedCallEvent::getCallerIDName()
-
-Returns key: 'CallerIDName'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getUniqueID
-
-    string PAMI\Message\Event\ParkedCallEvent::getUniqueID()
-
-Returns key: 'UniqueID'.
-
-
-
-* Visibility: **public**
-
-
-
-
-### getExtension
-
-    string PAMI\Message\Event\ParkedCallEvent::getExtension()
-
-Returns key: 'Exten'.
-
-
-
-* Visibility: **public**
-
-
-
-
 ### getParkeeChannel
 
-    string PAMI\Message\Event\ParkedCallEvent::getParkeeChannel()
+    string PAMI\Message\Event\ParkedCallGiveUpEvent::getParkeeChannel()
 
 Returns key: 'ParkeeChannel'.
 
@@ -265,7 +135,7 @@ Returns key: 'ParkeeChannel'.
 
 ### getParkeeChannelState
 
-    string PAMI\Message\Event\ParkedCallEvent::getParkeeChannelState()
+    string PAMI\Message\Event\ParkedCallGiveUpEvent::getParkeeChannelState()
 
 Returns key: 'ParkeeChannelState'.
 
@@ -278,7 +148,7 @@ Returns key: 'ParkeeChannelState'.
 
 ### getParkeeChannelStateDesc
 
-    string PAMI\Message\Event\ParkedCallEvent::getParkeeChannelStateDesc()
+    string PAMI\Message\Event\ParkedCallGiveUpEvent::getParkeeChannelStateDesc()
 
 Returns key: 'ParkeeChannelStateDesc'.
 
@@ -291,7 +161,7 @@ Returns key: 'ParkeeChannelStateDesc'.
 
 ### getParkeeCallerIDNum
 
-    string PAMI\Message\Event\ParkedCallEvent::getParkeeCallerIDNum()
+    string PAMI\Message\Event\ParkedCallGiveUpEvent::getParkeeCallerIDNum()
 
 Returns key: 'ParkeeCallerIDNum'.
 
@@ -304,7 +174,7 @@ Returns key: 'ParkeeCallerIDNum'.
 
 ### getParkeeCallerIDName
 
-    string PAMI\Message\Event\ParkedCallEvent::getParkeeCallerIDName()
+    string PAMI\Message\Event\ParkedCallGiveUpEvent::getParkeeCallerIDName()
 
 Returns key: 'ParkeeCallerIDName'.
 
@@ -317,7 +187,7 @@ Returns key: 'ParkeeCallerIDName'.
 
 ### getParkeeConnectedLineNum
 
-    string PAMI\Message\Event\ParkedCallEvent::getParkeeConnectedLineNum()
+    string PAMI\Message\Event\ParkedCallGiveUpEvent::getParkeeConnectedLineNum()
 
 Returns key: 'ParkeeConnectedLineNum'.
 
@@ -330,7 +200,7 @@ Returns key: 'ParkeeConnectedLineNum'.
 
 ### getParkeeConnectedLineName
 
-    string PAMI\Message\Event\ParkedCallEvent::getParkeeConnectedLineName()
+    string PAMI\Message\Event\ParkedCallGiveUpEvent::getParkeeConnectedLineName()
 
 Returns key: 'ParkeeConnectedLineName'.
 
@@ -343,7 +213,7 @@ Returns key: 'ParkeeConnectedLineName'.
 
 ### getParkeeAccountCode
 
-    string PAMI\Message\Event\ParkedCallEvent::getParkeeAccountCode()
+    string PAMI\Message\Event\ParkedCallGiveUpEvent::getParkeeAccountCode()
 
 Returns key: 'ParkeeAccountCode'.
 
@@ -356,7 +226,7 @@ Returns key: 'ParkeeAccountCode'.
 
 ### getParkeeContext
 
-    string PAMI\Message\Event\ParkedCallEvent::getParkeeContext()
+    string PAMI\Message\Event\ParkedCallGiveUpEvent::getParkeeContext()
 
 Returns key: 'ParkeeContext'.
 
@@ -369,7 +239,7 @@ Returns key: 'ParkeeContext'.
 
 ### getParkeeExten
 
-    string PAMI\Message\Event\ParkedCallEvent::getParkeeExten()
+    string PAMI\Message\Event\ParkedCallGiveUpEvent::getParkeeExten()
 
 Returns key: 'ParkeeExten'.
 
@@ -382,7 +252,7 @@ Returns key: 'ParkeeExten'.
 
 ### getParkeePriority
 
-    string PAMI\Message\Event\ParkedCallEvent::getParkeePriority()
+    string PAMI\Message\Event\ParkedCallGiveUpEvent::getParkeePriority()
 
 Returns key: 'ParkeePriority'.
 
@@ -395,7 +265,7 @@ Returns key: 'ParkeePriority'.
 
 ### getParkeeUniqueid
 
-    string PAMI\Message\Event\ParkedCallEvent::getParkeeUniqueid()
+    string PAMI\Message\Event\ParkedCallGiveUpEvent::getParkeeUniqueid()
 
 Returns key: 'ParkeeUniqueid'.
 
@@ -406,9 +276,165 @@ Returns key: 'ParkeeUniqueid'.
 
 
 
+### getParkerChannel
+
+    string PAMI\Message\Event\ParkedCallGiveUpEvent::getParkerChannel()
+
+Returns key: 'ParkerChannel'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getParkerChannelState
+
+    string PAMI\Message\Event\ParkedCallGiveUpEvent::getParkerChannelState()
+
+Returns key: 'ParkerChannelState'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getParkerChannelStateDesc
+
+    string PAMI\Message\Event\ParkedCallGiveUpEvent::getParkerChannelStateDesc()
+
+Returns key: 'ParkerChannelStateDesc'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getParkerCallerIDNum
+
+    string PAMI\Message\Event\ParkedCallGiveUpEvent::getParkerCallerIDNum()
+
+Returns key: 'ParkerCallerIDNum'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getParkerCallerIDName
+
+    string PAMI\Message\Event\ParkedCallGiveUpEvent::getParkerCallerIDName()
+
+Returns key: 'ParkerCallerIDName'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getParkerConnectedLineNum
+
+    string PAMI\Message\Event\ParkedCallGiveUpEvent::getParkerConnectedLineNum()
+
+Returns key: 'ParkerConnectedLineNum'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getParkerConnectedLineName
+
+    string PAMI\Message\Event\ParkedCallGiveUpEvent::getParkerConnectedLineName()
+
+Returns key: 'ParkerConnectedLineName'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getParkerAccountCode
+
+    string PAMI\Message\Event\ParkedCallGiveUpEvent::getParkerAccountCode()
+
+Returns key: 'ParkerAccountCode'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getParkerContext
+
+    string PAMI\Message\Event\ParkedCallGiveUpEvent::getParkerContext()
+
+Returns key: 'ParkerContext'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getParkerExten
+
+    string PAMI\Message\Event\ParkedCallGiveUpEvent::getParkerExten()
+
+Returns key: 'ParkerExten'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getParkerPriority
+
+    string PAMI\Message\Event\ParkedCallGiveUpEvent::getParkerPriority()
+
+Returns key: 'ParkerPriority'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getParkerUniqueid
+
+    string PAMI\Message\Event\ParkedCallGiveUpEvent::getParkerUniqueid()
+
+Returns key: 'ParkerUniqueid'.
+
+
+
+* Visibility: **public**
+
+
+
+
 ### getParkerDialString
 
-    string PAMI\Message\Event\ParkedCallEvent::getParkerDialString()
+    string PAMI\Message\Event\ParkedCallGiveUpEvent::getParkerDialString()
 
 Returns key: 'ParkerDialString'.
 
@@ -419,9 +445,22 @@ Returns key: 'ParkerDialString'.
 
 
 
+### getParkinglot
+
+    string PAMI\Message\Event\ParkedCallGiveUpEvent::getParkinglot()
+
+Returns key: 'Parkinglot'.
+
+
+
+* Visibility: **public**
+
+
+
+
 ### getParkingSpace
 
-    string PAMI\Message\Event\ParkedCallEvent::getParkingSpace()
+    string PAMI\Message\Event\ParkedCallGiveUpEvent::getParkingSpace()
 
 Returns key: 'ParkingSpace'.
 
@@ -434,7 +473,7 @@ Returns key: 'ParkingSpace'.
 
 ### getParkingTimeout
 
-    string PAMI\Message\Event\ParkedCallEvent::getParkingTimeout()
+    string PAMI\Message\Event\ParkedCallGiveUpEvent::getParkingTimeout()
 
 Returns key: 'ParkingTimeout'.
 
@@ -447,7 +486,7 @@ Returns key: 'ParkingTimeout'.
 
 ### getParkingDuration
 
-    string PAMI\Message\Event\ParkedCallEvent::getParkingDuration()
+    string PAMI\Message\Event\ParkedCallGiveUpEvent::getParkingDuration()
 
 Returns key: 'ParkingDuration'.
 

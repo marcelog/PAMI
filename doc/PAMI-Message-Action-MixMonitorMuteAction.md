@@ -1,12 +1,12 @@
-PAMI\Message\Action\OriginateAction
+PAMI\Message\Action\MixMonitorMuteAction
 ===============
 
-Originate action message.
+MixMonitorMute action message.
 
 PHP Version 5
 
 
-* Class name: OriginateAction
+* Class name: MixMonitorMuteAction
 * Namespace: PAMI\Message\Action
 * Parent class: [PAMI\Message\Action\ActionMessage](PAMI-Message-Action-ActionMessage.md)
 
@@ -14,6 +14,30 @@ PHP Version 5
 
 Constants
 ----------
+
+
+### DIRECTION_READ
+
+    const DIRECTION_READ = 'read'
+
+
+
+
+
+### DIRECTION_WRITE
+
+    const DIRECTION_WRITE = 'write'
+
+
+
+
+
+### DIRECTION_BOTH
+
+    const DIRECTION_BOTH = 'both'
+
+
+
 
 
 ### EOL
@@ -85,27 +109,11 @@ Methods
 -------
 
 
-### setExtension
+### setState
 
-    void PAMI\Message\Action\OriginateAction::setExtension(string $extension)
+    void PAMI\Message\Action\MixMonitorMuteAction::setState(boolean $state)
 
-Sets Exten key.
-
-
-
-* Visibility: **public**
-
-
-#### Arguments
-* $extension **string** - &lt;p&gt;Extension to use (requires Context and Priority).&lt;/p&gt;
-
-
-
-### setContext
-
-    void PAMI\Message\Action\OriginateAction::setContext(string $context)
-
-Sets Context key.
+Sets state key.
 
 
 
@@ -113,31 +121,15 @@ Sets Context key.
 
 
 #### Arguments
-* $context **string** - &lt;p&gt;Context to use (requires Exten and Priority).&lt;/p&gt;
+* $state **boolean** - &lt;p&gt;Mute state&lt;/p&gt;
 
 
 
-### setPriority
+### setDirection
 
-    void PAMI\Message\Action\OriginateAction::setPriority(string $priority)
+    void PAMI\Message\Action\MixMonitorMuteAction::setDirection(string $direction)
 
-Sets Priority key.
-
-
-
-* Visibility: **public**
-
-
-#### Arguments
-* $priority **string** - &lt;p&gt;Priority to use (requires Exten and Context).&lt;/p&gt;
-
-
-
-### setApplication
-
-    void PAMI\Message\Action\OriginateAction::setApplication(string $application)
-
-Sets Application key.
+Sets state key.
 
 
 
@@ -145,103 +137,8 @@ Sets Application key.
 
 
 #### Arguments
-* $application **string** - &lt;p&gt;Application to execute.&lt;/p&gt;
-
-
-
-### setData
-
-    void PAMI\Message\Action\OriginateAction::setData(string $data)
-
-Sets Data key.
-
-
-
-* Visibility: **public**
-
-
-#### Arguments
-* $data **string** - &lt;p&gt;Data to use (requires Application).&lt;/p&gt;
-
-
-
-### setTimeout
-
-    void PAMI\Message\Action\OriginateAction::setTimeout(integer $timeout)
-
-Sets Timeout key.
-
-
-
-* Visibility: **public**
-
-
-#### Arguments
-* $timeout **integer** - &lt;p&gt;How long to wait for call to be answered (in ms).&lt;/p&gt;
-
-
-
-### setCallerId
-
-    void PAMI\Message\Action\OriginateAction::setCallerId(string $clid)
-
-Sets CallerID key.
-
-
-
-* Visibility: **public**
-
-
-#### Arguments
-* $clid **string** - &lt;p&gt;Caller ID to be set on the outgoing channel.&lt;/p&gt;
-
-
-
-### setAccount
-
-    void PAMI\Message\Action\OriginateAction::setAccount(string $account)
-
-Sets Account key.
-
-
-
-* Visibility: **public**
-
-
-#### Arguments
-* $account **string** - &lt;p&gt;Account code.&lt;/p&gt;
-
-
-
-### setAsync
-
-    void PAMI\Message\Action\OriginateAction::setAsync(boolean $async)
-
-Sets Async key.
-
-
-
-* Visibility: **public**
-
-
-#### Arguments
-* $async **boolean** - &lt;p&gt;Set to true for fast origination.&lt;/p&gt;
-
-
-
-### setCodecs
-
-    void PAMI\Message\Action\OriginateAction::setCodecs(array<mixed,string> $codecs)
-
-Sets Codecs key.
-
-
-
-* Visibility: **public**
-
-
-#### Arguments
-* $codecs **array&lt;mixed,string&gt;** - &lt;p&gt;List of codecs to use for this call.&lt;/p&gt;
+* $direction **string** - &lt;p&gt;Which part of the recording to mute:
+read, write or both (from channel, to channel or both channels).&lt;/p&gt;
 
 
 
