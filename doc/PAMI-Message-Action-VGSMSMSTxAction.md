@@ -168,7 +168,7 @@ Sets $content  - Message to send. Mandatory
 
 ### setSmsClass
 
-    void PAMI\Message\Action\VGSMSMSTxAction::setSmsClass($class)
+    void PAMI\Message\Action\VGSMSMSTxAction::setSmsClass(string $smsClass)
 
 Sets X-SMS-Class  key. Optional
 
@@ -178,7 +178,7 @@ Sets X-SMS-Class  key. Optional
 
 
 #### Arguments
-* $class **mixed**
+* $smsClass **string** - &lt;p&gt;Class of SMS to send. Values are 0, 1. 0 is Flash message.&lt;/p&gt;
 
 
 
@@ -201,7 +201,7 @@ setConcatSeqNum and setConcatSeqNum
 
 ### setConcatSeqNum
 
-    void PAMI\Message\Action\VGSMSMSTxAction::setConcatSeqNum($seqnum)
+    void PAMI\Message\Action\VGSMSMSTxAction::setConcatSeqNum($seqNum)
 
 Sets X-SMS-Concatenate-Sequence-Number. Optional. Should be set with
 setConcatSeqNum: setConcatTotalMsg
@@ -212,7 +212,7 @@ setConcatSeqNum: setConcatTotalMsg
 
 
 #### Arguments
-* $seqnum **mixed**
+* $seqNum **mixed**
 
 
 

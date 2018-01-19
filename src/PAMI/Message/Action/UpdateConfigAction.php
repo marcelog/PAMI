@@ -43,6 +43,7 @@ namespace PAMI\Message\Action;
  */
 class UpdateConfigAction extends ActionMessage
 {
+    /** @var int */
     protected static $counter = -1;
 
     /**
@@ -57,33 +58,33 @@ class UpdateConfigAction extends ActionMessage
     }
 
     /**
-     * Sets Src filename key.
+     * Sets source filename key.
      *
-     * @param string $filename.
+     * @param string $fileName.
      *
      * @return void
      */
-    public function setSrcFilename($filename)
+    public function setSrcFilename($fileName)
     {
-        $this->setKey('SrcFilename', $filename);
+        $this->setKey('SrcFilename', $fileName);
     }
 
     /**
-     * Sets Dst Filename key.
+     * Sets destination Filename key.
      *
-     * @param string $filename.
+     * @param string $fileName.
      *
      * @return void
      */
-    public function setDstFilename($filename)
+    public function setDstFilename($fileName)
     {
-        $this->setKey('DstFilename', $filename);
+        $this->setKey('DstFilename', $fileName);
     }
 
      /**
      * Sets Reload key.
      *
-     * @param string $input.
+     * @param string $reload.
      *
      * @return void
      */
@@ -113,9 +114,9 @@ class UpdateConfigAction extends ActionMessage
      *
      * @return void
      */
-    public function setCat($input)
+    public function setCat($cat)
     {
-        $this->setKey('Cat-'.$this->getPaddedCounter(), $input);
+        $this->setKey('Cat-'.$this->getPaddedCounter(), $cat);
     }
 
     /**

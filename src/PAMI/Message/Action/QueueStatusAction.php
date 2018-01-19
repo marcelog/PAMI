@@ -48,15 +48,15 @@ class QueueStatusAction extends ActionMessage
      *
      * @param string $queue The queue (optional).
      *
-     * @return void
+     * @param string $member
      */
-    public function __construct($queue = false, $member = false)
+    public function __construct($queue = null, $member = null)
     {
         parent::__construct('QueueStatus');
-        if ($queue != false) {
+        if ($queue != null) {
             $this->setKey('Queue', $queue);
         }
-        if ($member != false) {
+        if ($member != null) {
             $this->setKey('Member', $member);
         }
     }

@@ -179,6 +179,7 @@ abstract class Message
     /**
      * Returns the end of message token appended to the end of a given message.
      *
+     * @param $message
      * @return string
      */
     protected function finishMessage($message)

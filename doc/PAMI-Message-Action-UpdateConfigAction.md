@@ -113,9 +113,9 @@ Constructor.
 
 ### setSrcFilename
 
-    void PAMI\Message\Action\UpdateConfigAction::setSrcFilename($filename)
+    void PAMI\Message\Action\UpdateConfigAction::setSrcFilename($fileName)
 
-Sets Src filename key.
+Sets source filename key.
 
 
 
@@ -123,15 +123,15 @@ Sets Src filename key.
 
 
 #### Arguments
-* $filename **mixed**
+* $fileName **mixed**
 
 
 
 ### setDstFilename
 
-    void PAMI\Message\Action\UpdateConfigAction::setDstFilename($filename)
+    void PAMI\Message\Action\UpdateConfigAction::setDstFilename($fileName)
 
-Sets Dst Filename key.
+Sets destination Filename key.
 
 
 
@@ -139,7 +139,7 @@ Sets Dst Filename key.
 
 
 #### Arguments
-* $filename **mixed**
+* $fileName **mixed**
 
 
 
@@ -177,7 +177,7 @@ Sets Action-XXXXXX key.
 
 ### setCat
 
-    void PAMI\Message\Action\UpdateConfigAction::setCat($input)
+    void PAMI\Message\Action\UpdateConfigAction::setCat($cat)
 
 Sets Cat-XXXXXX key.
 
@@ -187,7 +187,7 @@ Sets Cat-XXXXXX key.
 
 
 #### Arguments
-* $input **mixed**
+* $cat **mixed**
 
 
 

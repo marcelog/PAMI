@@ -46,15 +46,17 @@ class QueuePauseAction extends ActionMessage
     /**
      * Constructor.
      *
-     * @return void
+     * @param $interface
+     * @param string $queue
+     * @param string $reason
      */
-    public function __construct($interface, $queue = false, $reason = false)
+    public function __construct($interface, $queue = null, $reason = null)
     {
         parent::__construct('QueuePause');
-        if ($queue !== false) {
+        if ($queue !== null) {
             $this->setKey('Queue', $queue);
         }
-        if ($reason !== false) {
+        if ($reason !== null) {
             $this->setKey('Reason', $reason);
         }
         $this->setKey('Interface', $interface);
