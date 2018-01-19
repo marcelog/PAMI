@@ -38,7 +38,7 @@ Properties
 
 ### $counter
 
-    protected mixed $counter = -1
+    protected integer $counter = -1
 
 
 
