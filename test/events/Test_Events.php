@@ -106,6 +106,8 @@ class Test_Events extends \PHPUnit_Framework_TestCase
             'BridgeInfoChannel',
             'BridgeInfoComplete',
             'QueueCallerAbandon',
+            'EndpointList',
+            'EndpointListComplete',
         );
         $eventTranslatedValues = array(
             'QueueMemberStatus' => array(
@@ -1562,6 +1564,17 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'BridgeVideoSourceMode' => 'BridgeVideoSourceMode',
                 'BridgeVideoSource' => 'BridgeVideoSource',
             ),
+            'EndpointList' => array(
+                'ObjectType' => 'ObjectType',
+                'ObjectName' => 'ObjectName',
+                'Transport' => 'Transport',
+                'Aor' => 'Aor',
+                'Auths' => 'Auths',
+                'OutboundAuths' => 'OutboundAuths',
+                'DeviceState' => 'DeviceState',
+                'ActiveChannels' => 'ActiveChannels',
+            ),
+            'EndpointListComplete' => array('ListItems' => 'ListItems'),
         );
         $eventGetters = array(
             'UserEvent' => array(

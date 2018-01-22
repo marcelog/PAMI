@@ -1727,5 +1727,19 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
 
         $client = $this->_start($writeDelete, $actionDelete);
     }
+
+    /**
+     * @test
+     */
+    public function can_pjsip_show_endpoints()
+    {
+        $write = array(implode("\r\n", array(
+            'action: PJSIPShowEndpoints',
+            'actionid: 1432.123',
+            ''
+        )));
+        $action = new \PAMI\Message\Action\PJSIPShowEndpointsAction();
+        $client = $this->_start($write, $action);
+    }
 }
 }
