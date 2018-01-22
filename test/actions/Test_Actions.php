@@ -945,6 +945,24 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
+    public function can_mute_mix_monitor()
+    {
+        $write = array(implode("\r\n", array(
+            'action: MixMonitorMute',
+            'actionid: 1432.123',
+            'channel: channel',
+            'state: 1',
+            'direction: both',
+            ''
+        )));
+        $action = new \PAMI\Message\Action\MixMonitorMuteAction('channel', false, 'read');
+        $action->setState(true);
+        $action->setDirection('both');
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
     public function can_module_check()
     {
         $write = array(implode("\r\n", array(
@@ -1698,6 +1716,10 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
             'cat-000002: '.$number,
             'var-000002: secret',
             'value-000002: secret',
+            'action-000003: Append',
+            'cat-000003: '.$number,
+            'match-000003: some_match',
+            'line-000003: line',
             ''
         )) );
 
@@ -1718,6 +1740,11 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
         $actionCreate->setCat($number);
         $actionCreate->setVar('secret');
         $actionCreate->setValue('secret');
+
+        $actionCreate->setAction('Append');
+        $actionCreate->setCat($number);
+        $actionCreate->setMatch('some_match');
+        $actionCreate->setLine('line');
 
         $client = $this->_start($writeCreate, $actionCreate);
 
