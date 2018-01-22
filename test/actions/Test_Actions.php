@@ -248,6 +248,21 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
+    public function can_bridge_list_with_bridge_type()
+    {
+        $write = array(implode("\r\n", array(
+            'action: BridgeList',
+            'actionid: 1432.123',
+            'bridgetype: basic',
+            ''
+        )));
+        $bridgeType = 'basic';
+        $action = new \PAMI\Message\Action\BridgeListAction($bridgeType);
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
     public function can_challenge()
     {
         $write = array(implode("\r\n", array(
