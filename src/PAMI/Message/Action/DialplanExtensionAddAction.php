@@ -55,32 +55,32 @@ class DialplanExtensionAddAction extends ActionMessage
     
     public function setContext($input)
     {
-        $this->setKey('Context-'.$this->getPaddedCounter(), $input);
+        $this->setKey('Context', $input);
     }
     
     public function setExtension($input)
     {
-        $this->setKey('Extension-'.$this->getPaddedCounter(), $input);
+        $this->setKey('Extension', $input);
     }
     
     public function setPriority($input)
     {
-        $this->setKey('Priority-'.$this->getPaddedCounter(), $input);
+        $this->setKey('Priority', $input);
     }
     
     public function setApplication($input)
     {
-        $this->setKey('Application-'.$this->getPaddedCounter(), $input);
+        $this->setKey('Application', $input);
     }
     
     public function setApplicationData($input)
     {
-        $this->setKey('ApplicationData-'.$this->getPaddedCounter(), $input);
+        $this->setKey('ApplicationData', $input);
     }
     
     public function setReplace($input)
     {
-        $this->setKey('Replace-'.$this->getPaddedCounter(), $input);
+        $this->setKey('Replace', $input);
     }
     
 }
