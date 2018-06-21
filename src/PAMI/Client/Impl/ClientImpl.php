@@ -452,7 +452,7 @@ class ClientImpl implements IClient
      *
      * @return resource
      */
-    public function getSocket() 
+    public function getSocket()
     {
         return $this->socket;
     }
