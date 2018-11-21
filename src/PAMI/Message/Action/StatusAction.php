@@ -57,4 +57,18 @@ class StatusAction extends ActionMessage
             $this->setKey('Channel', $channel);
         }
     }
+
+    /**
+     * Sets Variables key.
+     *
+     * @param array $variables Variables to use.
+     *
+     * @return void
+     */
+    public function setVariables($variables = array())
+    {
+        if (!empty($variables)) {
+          $this->setKey('Variables', implode(',', $variables));
+        }
+    }
 }
