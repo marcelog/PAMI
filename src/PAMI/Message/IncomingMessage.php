@@ -157,9 +157,9 @@ abstract class IncomingMessage extends Message
     {
         if (is_null($channel)) {
             if (!isset($this->keys['channel'])) {
-                return $this->getChannelVariables('default');
+                return $this->getStatusVariables('default');
             } else {
-                return $this->getChannelVariables($this->keys['channel']);
+                return $this->getStatusVariables($this->keys['channel']);
             }
         } else {
             $channel = strtolower($channel);
