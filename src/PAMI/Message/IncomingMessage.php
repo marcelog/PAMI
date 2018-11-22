@@ -54,6 +54,12 @@ abstract class IncomingMessage extends Message
     protected $channelVariables;
 
     /**
+     * Metadata. Specific channel variables.
+     * @var string[]
+     */
+    protected $statusVariables;
+
+    /**
      * Serialize function.
      *
      * @return string[]
@@ -126,6 +132,45 @@ abstract class IncomingMessage extends Message
     }
 
     /**
+     * Returns the channel variables for all reported channels.
+     * https://github.com/marcelog/PAMI/issues/85
+     *
+     * The channel names will be lowercased.
+     *
+     * @return array
+     */
+    public function getAllStatusVariables()
+    {
+        return $this->statusVariables;
+    }
+
+    /**
+     * Returns the channel variables for the given channel.
+     * https://github.com/marcelog/PAMI/issues/85
+     *
+     * @param string $channel Channel name. If not given, will return variables
+     * for the "current" channel.
+     *
+     * @return array
+     */
+    public function getStatusVariables($channel = null)
+    {
+        if (is_null($channel)) {
+            if (!isset($this->keys['channel'])) {
+                return $this->getChannelVariables('default');
+            } else {
+                return $this->getChannelVariables($this->keys['channel']);
+            }
+        } else {
+            $channel = strtolower($channel);
+            if (!isset($this->statusVariables[$channel])) {
+                return null;
+            }
+            return $this->statusVariables[$channel];
+        }
+    }
+
+    /**
      * Constructor.
      *
      * @param string $rawContent Original message as received from ami.
@@ -136,6 +181,7 @@ abstract class IncomingMessage extends Message
     {
         parent::__construct();
         $this->channelVariables = array('default' => array());
+        $this->statusVariables = array('default' => array());
         $this->rawContent = $rawContent;
         $lines = explode(Message::EOL, $rawContent);
         foreach ($lines as $line) {
@@ -155,6 +201,18 @@ abstract class IncomingMessage extends Message
                 unset($content[0]);
                 $value = isset($content[1]) ? trim(implode(':', $content)) : '';
                 $this->channelVariables[$chanName][$name] = $value;
+            } else if (!strncmp($name, 'variable', 8)) {
+                // https://github.com/marcelog/PAMI/issues/85
+                $matches = preg_match("/\(([^\)]*)\)/", $name, $captures);
+                $chanName = 'default';
+                if ($matches > 0) {
+                    $chanName = $captures[1];
+                }
+                $content = explode('=', $value);
+                $name = strtolower(trim($content[0]));
+                unset($content[0]);
+                $value = isset($content[1]) ? trim(implode(':', $content)) : '';
+                $this->statusVariables[$chanName][$name] = $value;
             } else {
                 $this->setKey($name, $value);
             }
@@ -162,6 +220,7 @@ abstract class IncomingMessage extends Message
         // https://github.com/marcelog/PAMI/issues/85
         if (isset($this->keys['channel'])) {
             $channel = strtolower($this->keys['channel']);
+
             if (isset($this->channelVariables[$channel])) {
                 $this->channelVariables[$channel] = array_merge(
                     $this->channelVariables[$channel],
@@ -171,6 +230,16 @@ abstract class IncomingMessage extends Message
                 $this->channelVariables[$channel] = $this->channelVariables['default'];
             }
             unset($this->channelVariables['default']);
+
+            if (isset($this->statusVariables[$channel])) {
+                $this->statusVariables[$channel] = array_merge(
+                    $this->statusVariables[$channel],
+                    $this->statusVariables['default']
+                );
+            } else {
+                $this->statusVariables[$channel] = $this->statusVariables['default'];
+            }
+            unset($this->statusVariables['default']);
         }
     }
 }
