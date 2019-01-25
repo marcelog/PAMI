@@ -1411,6 +1411,13 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'Admin' => 'Admin',
             ),
             'ConfbridgeListComplete' => array('ListItems' => 'ListItems'),
+            'ConfbridgeListRooms' => array(
+                'Conference' => 'Conference',
+                'Parties' => 'Parties',
+                'Marked' => 'Marked',
+                'Locked' => 'Locked',
+            ),
+            'ConfbridgeListRoomsComplete' => array('ListItems' => 'ListItems'),
             'BridgeInfoChannel' => array(
                 'Channel' => 'Channel',
                 'ChannelState' => 'ChannelState',
