@@ -101,6 +101,8 @@ class Test_Events extends \PHPUnit_Framework_TestCase
             'ConfbridgeTalking',
             'ConfbridgeList',
             'ConfbridgeListComplete',
+            'ConfbridgeListRooms',
+            'ConfbridgeListRoomsComplete',
             'BridgeInfoChannel',
             'BridgeInfoComplete',
         );
