@@ -70,7 +70,7 @@ class ConfbridgeListRoomsEvent extends EventMessage
      *
      * @return string
      */
-    public function getMaked()
+    public function getMarked()
     {
         return $this->getKey('Marked');
     }
