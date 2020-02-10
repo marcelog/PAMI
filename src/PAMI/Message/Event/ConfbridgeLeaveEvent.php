@@ -1,6 +1,6 @@
 <?php
 /**
- * Event triggered when a caller abandons the queue.
+ * Event triggered when a channel leaves a confbridge.
  *
  * PHP Version 5
  *
@@ -30,7 +30,7 @@
 namespace PAMI\Message\Event;
 
 /**
- * Event triggered when a caller abandons the queue.
+ * Event triggered when a channel leaves a confbridge.
  *
  * PHP Version 5
  *
@@ -41,7 +41,7 @@ namespace PAMI\Message\Event;
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
  * @link       http://marcelog.github.com/PAMI/
  */
-class QueueCallerAbandonEvent extends EventMessage
+class ConfbridgeLeaveEvent extends EventMessage
 {
     /**
      * Returns key: 'Privilege'.
@@ -51,6 +51,76 @@ class QueueCallerAbandonEvent extends EventMessage
     public function getPrivilege()
     {
         return $this->getKey('Privilege');
+    }
+
+    /**
+     * Returns key: 'Conference'.
+     *
+     * @return string
+     */
+    public function getConference()
+    {
+        return $this->getKey('Conference');
+    }
+
+    /**
+     * Returns key: 'BridgeUniqueid'.
+     *
+     * @return string
+     */
+    public function getBridgeUniqueid()
+    {
+        return $this->getKey('BridgeUniqueid');
+    }
+
+    /**
+     * Returns key: 'BridgeType'.
+     *
+     * @return string
+     */
+    public function getBridgeType()
+    {
+        return $this->getKey('BridgeType');
+    }
+
+    /**
+     * Returns key: 'BridgeTechnology'.
+     *
+     * @return string
+     */
+    public function getBridgeTechnology()
+    {
+        return $this->getKey('BridgeTechnology');
+    }
+
+    /**
+     * Returns key: 'BridgeCreator'.
+     *
+     * @return string
+     */
+    public function getBridgeCreator()
+    {
+        return $this->getKey('BridgeCreator');
+    }
+
+    /**
+     * Returns key: 'BridgeName'.
+     *
+     * @return string
+     */
+    public function getBridgeName()
+    {
+        return $this->getKey('BridgeName');
+    }
+
+    /**
+     * Returns key: 'BridgeNumChannels'.
+     *
+     * @return string
+     */
+    public function getBridgeNumChannels()
+    {
+        return $this->getKey('BridgeNumChannels');
     }
 
     /**
@@ -164,52 +234,32 @@ class QueueCallerAbandonEvent extends EventMessage
     }
 
     /**
-     * Returns key: 'UniqueID'.
+     * Returns key: 'Uniqueid'.
      *
      * @return string
      */
-    public function getUniqueID()
+    public function getUniqueid()
     {
-        return $this->getKey('UniqueID');
+        return $this->getKey('Uniqueid');
     }
 
     /**
-     * Returns key: 'Queue'.
+     * Returns key: 'Linkedid'.
      *
      * @return string
      */
-    public function getQueue()
+    public function getLinkedid()
     {
-        return $this->getKey('Queue');
+        return $this->getKey('Linkedid');
     }
 
     /**
-     * Returns key: 'Position'.
+     * Returns key: 'Admin'.
      *
      * @return string
      */
-    public function getPosition()
+    public function getAdmin()
     {
-        return $this->getKey('Position');
-    }
-
-    /**
-     * Returns key: 'OriginalPosition'.
-     *
-     * @return string
-     */
-    public function getOriginalPosition()
-    {
-        return $this->getKey('OriginalPosition');
-    }
-
-    /**
-     * Returns key: 'HoldTime'.
-     *
-     * @return string
-     */
-    public function getHoldTime()
-    {
-        return $this->getKey('HoldTime');
+        return $this->getKey('Admin');
     }
 }

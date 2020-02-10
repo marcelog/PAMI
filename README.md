@@ -114,8 +114,19 @@ can still catch them. If you catch one of these, please report it!
 * AGIExec
 * AsyncAGI
 * Bridge
+* BridgeInfoChannel
+* BridgeInfoComplete
 * CEL
 * ChannelUpdate
+* ConfbridgeEnd
+* ConfbridgeJoin
+* ConfbridgeLeave
+* ConfbridgeList
+* ConfbridgeListComplete
+* ConfbridgeMute
+* ConfbridgeStart
+* ConfbridgeTalking
+* ConfbridgeUnmute
 * CoreShowChannel
 * CoreShowChannelComplete
 * DAHDIShowChannel
@@ -192,8 +203,10 @@ can still catch them. If you catch one of these, please report it!
 * AgentLogoff
 * Atxfer (asterisk 1.8?)
 * Bridge
+* BridgeInfo
 * ChangeMonitor
 * Command
+* ConfbridgeList
 * ConfbridgeMute
 * ConfbridgeUnmute
 * CoreSettings

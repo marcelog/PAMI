@@ -1,13 +1,13 @@
 <?php
 /**
- * Event triggered when a caller abandons the queue.
+ * Event triggered when an action BridgeInfo is issued.
  *
  * PHP Version 5
  *
  * @category   Pami
  * @package    Message
  * @subpackage Event
- * @author     Marcelo Gornstein <marcelog@gmail.com>
+ * @author     Matt Styles <mstyleshk@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
  * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
@@ -30,29 +30,19 @@
 namespace PAMI\Message\Event;
 
 /**
- * Event triggered when a caller abandons the queue.
+ * Event triggered when an action BridgeInfo is issued.
  *
  * PHP Version 5
  *
  * @category   Pami
  * @package    Message
  * @subpackage Event
- * @author     Marcelo Gornstein <marcelog@gmail.com>
+ * @author     Matt Styles <mstyleshk@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
  * @link       http://marcelog.github.com/PAMI/
  */
-class QueueCallerAbandonEvent extends EventMessage
+class BridgeInfoChannelEvent extends EventMessage
 {
-    /**
-     * Returns key: 'Privilege'.
-     *
-     * @return string
-     */
-    public function getPrivilege()
-    {
-        return $this->getKey('Privilege');
-    }
-
     /**
      * Returns key: 'Channel'.
      *
@@ -164,52 +154,22 @@ class QueueCallerAbandonEvent extends EventMessage
     }
 
     /**
-     * Returns key: 'UniqueID'.
+     * Returns key: 'Uniqueid'.
      *
      * @return string
      */
-    public function getUniqueID()
+    public function getUniqueid()
     {
-        return $this->getKey('UniqueID');
+        return $this->getKey('Uniqueid');
     }
 
     /**
-     * Returns key: 'Queue'.
+     * Returns key: 'Linkedid'.
      *
      * @return string
      */
-    public function getQueue()
+    public function getLinkedid()
     {
-        return $this->getKey('Queue');
-    }
-
-    /**
-     * Returns key: 'Position'.
-     *
-     * @return string
-     */
-    public function getPosition()
-    {
-        return $this->getKey('Position');
-    }
-
-    /**
-     * Returns key: 'OriginalPosition'.
-     *
-     * @return string
-     */
-    public function getOriginalPosition()
-    {
-        return $this->getKey('OriginalPosition');
-    }
-
-    /**
-     * Returns key: 'HoldTime'.
-     *
-     * @return string
-     */
-    public function getHoldTime()
-    {
-        return $this->getKey('HoldTime');
+        return $this->getKey('Linkedid');
     }
 }
