@@ -33,6 +33,6 @@
     "evert/phpdoc-md" : "~0.1.1",
     "codeclimate/php-test-reporter": "dev-master",
     "sebastian/phpcpd": "*",
-    "marcelog/PAGI": "2.*"
+    "marcelog/pagi": "2.*"
   }
 }
