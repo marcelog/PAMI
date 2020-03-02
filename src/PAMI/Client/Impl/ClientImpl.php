@@ -155,6 +155,13 @@ class ClientImpl implements IClient
     private $eventMask;
 
     /**
+     * Custom event prefix
+     * see PAMI\Message\Event\CustomEvent\
+     * @var string
+     */
+    private $customEventPrefix;
+
+    /**
      * Opens a tcp connection to ami.
      *
      * @throws \PAMI\Client\Exception\ClientException
@@ -269,6 +276,7 @@ class ClientImpl implements IClient
             );
             $resPos = strpos($aMsg, 'Response:');
             $evePos = strpos($aMsg, 'Event:');
+            $memPos = strpos($aMsg, 'Members:');
             if (($resPos !== false) &&
               (($resPos < $evePos) || $evePos === false)
             ) {
@@ -282,6 +290,18 @@ class ClientImpl implements IClient
                 } else {
                     $response->addEvent($event);
                 }
+            } elseif ($memPos !== false) {
+                $message = 'Event:'.$this->customEventPrefix.'Members'.Message::EOL;
+                $message .= implode(Message::EOL, $msgs);
+
+                $event = $this->messageToEvent($message);
+                $response = $this->findResponse($event);
+                if ($response === false || $response->isComplete()) {
+                    $this->dispatch($event);
+                } else {
+                    $response->addEvent($event);
+                }
+                break;
             } else {
                 // broken ami.. sending a response with events without
                 // Event and ActionId
@@ -462,6 +482,7 @@ class ClientImpl implements IClient
         $this->pass = $options['secret'];
         $this->cTimeout = $options['connect_timeout'];
         $this->rTimeout = $options['read_timeout'];
+        $this->customEventPrefix = isset($options['event_prefix']) ? $options['event_prefix'] : '';
         $this->scheme = isset($options['scheme']) ? $options['scheme'] : 'tcp://';
         $this->eventMask = isset($options['event_mask']) ? $options['event_mask'] : null;
         $this->eventListeners = array();

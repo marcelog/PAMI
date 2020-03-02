@@ -44,6 +44,12 @@ class TfMembersEvent extends EventMessage
 {
 
     /**
+     * Search by pattern
+     * @var string
+     */
+    public $pattern_members_domain = '/tfoms(\-?)\d+/';
+
+    /**
      * Returns key: 'Members'.
      *
      * @return array
@@ -53,11 +59,11 @@ class TfMembersEvent extends EventMessage
         return unserialize($this->getKey('Members'));
     }
 
-    protected function parseMessage(String $message, $re_pattern)
+    protected function parseMessage(String $message, $pattern)
     {
         $results = array();
 
-        preg_match_all('/.+\n/', $message, $matches);
+        preg_match_all('/\n/', $message, $matches);
 
         for ($j = 0; $j < count($matches[0]); $j++) {
             if (!$matches[0][$j]) {
@@ -66,7 +72,7 @@ class TfMembersEvent extends EventMessage
 
             $msg = trim($matches[0][$j] );
 
-            preg_match($re_pattern, $msg, $names);
+            preg_match($pattern, $msg, $names);
 
             if (!$names) {
                 continue;
@@ -83,7 +89,8 @@ class TfMembersEvent extends EventMessage
 
     protected function setMembers(String $message)
     {
-        $this->setKey('Members',  \serialize($this->parseMessage($message, '/tfoms(\-?)\d+/')));
+        $this->setKey('Members',
+            \serialize($this->parseMessage($message, $this->pattern_members_domain)));
     }
 
     /**
@@ -97,7 +104,7 @@ class TfMembersEvent extends EventMessage
     {
         parent::__construct($rawContent);
 
-        $this->setKey('name', 'AgentList');
+        $this->setKey('name', array_pop(explode('\\', __CLASS__)));
         $this->setMembers($rawContent);
     }
 
