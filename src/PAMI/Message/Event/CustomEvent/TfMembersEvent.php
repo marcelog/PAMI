@@ -42,7 +42,6 @@ use PAMI\Message\Event\EventMessage;
  */
 class TfMembersEvent extends EventMessage
 {
-
     /**
      * Search by pattern
      * @var string
@@ -59,6 +58,13 @@ class TfMembersEvent extends EventMessage
         return unserialize($this->getKey('Members'));
     }
 
+    /**
+     * Parser returns array
+     *
+     * @param $message
+     * @param $pattern
+     * @return array
+     */
     protected function parseMessage(String $message, $pattern)
     {
         $results = array();
@@ -70,7 +76,7 @@ class TfMembersEvent extends EventMessage
                 continue;
             }
 
-            $msg = trim($matches[0][$j] );
+            $msg = trim($matches[0][$j]);
 
             preg_match($pattern, $msg, $names);
 
@@ -80,17 +86,22 @@ class TfMembersEvent extends EventMessage
 
             if (preg_match('/(\d)+/', $names[0], $key)) {
                 $results[$key[0]] = $names[0];
+            } else {
+                $results[] = $names[0];
             }
-
         }
 
         return $results;
     }
 
+    /**
+     * Setter key Members
+     *
+     * @param $message
+     */
     protected function setMembers(String $message)
     {
-        $this->setKey('Members',
-            \serialize($this->parseMessage($message, $this->pattern_members_domain)));
+        $this->setKey('Members', serialize($this->parseMessage($message, $this->pattern_members_domain)));
     }
 
     /**
@@ -107,8 +118,4 @@ class TfMembersEvent extends EventMessage
         $this->setKey('name', array_pop(explode('\\', __CLASS__)));
         $this->setMembers($rawContent);
     }
-
-
-
 }
-
