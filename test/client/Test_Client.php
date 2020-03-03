@@ -216,6 +216,22 @@ class Test_Client extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
+    public function can_set_logger()
+    {
+        $options = array(
+		'host' => 'tcp://1.1.1.1',
+		'port' => 9999,
+		'username' => 'asd',
+		'secret' => 'asd',
+		'connect_timeout' => 10,
+		'read_timeout' => 10
+        );
+        $client = new \PAMI\Client\Impl\ClientImpl($options);
+        $client -> setLogger(new \Psr\Log\NullLogger);
+    }
+    /**
+     * @test
+     */
     public function can_connect_timeout()
     {
         $options = array(
@@ -1109,6 +1125,7 @@ class Test_Client extends \PHPUnit_Framework_TestCase
         );
         $this->assertEquals($varChan1, $event->getChannelVariables());
         $this->assertEquals($channelVars, $event->getAllChannelVariables());
+        $this->assertNull($event->getChannelVariables('unknown'));
     }
 }
 class SomeListenerClass implements \PAMI\Listener\IEventListener
