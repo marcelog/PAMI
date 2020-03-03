@@ -28,6 +28,7 @@
  *
  */
 namespace PAMI\Client\Impl {
+
 /**
  * This class will test some events.
  *
@@ -54,25 +55,86 @@ class Test_Events extends \PHPUnit_Framework_TestCase
     public function can_report_events()
     {
         $eventNames = array(
-            'AsyncAGI', 'AGIExec', 'VarSet', 'Unlink', 'vgsm_sms_rx', 'vgsm_net_state',
-            'vgsm_me_state', 'DTMF', 'Bridge', 'VoicemailUserEntryComplete',
-            'StatusComplete', 'ParkedCallsComplete', 'DBGetResponse',
-            'VoicemailUserEntry', 'Transfer', 'Status', 'ShowDialPlanComplete',
-            'Rename', 'RegistrationsComplete', 'RTPSenderStat', 'RTPReceiverStat',
-            'RTCPSent', 'RTCPReceiverStat', 'RTCPReceived', 'QueueSummaryComplete',
-            'QueueStatusComplete', 'DAHDIShowChannelsComplete', 'QueueSummary',
-            'QueueParams', 'QueueMemberStatus', 'QueueMemberRemoved',
-            'QueueMemberPaused', 'QueueMember', 'QueueMemberAdded', 'PeerlistComplete',
-            'PeerStatus', 'PeerEntry', 'OriginateResponse', 'Newstate', 'Newexten',
-            'Newchannel', 'NewCallerid', 'NewAccountCode', 'MusicOnHold',
-            'MessageWaiting', 'Masquerade', 'ListDialplan', 'Leave', 'Join',
-            'Hold', 'Hangup', 'ExtensionStatus', 'Dial', 'DAHDIShowChannels',
-            'CoreShowChannelsComplete', 'CoreShowChannel', 'ChannelUpdate',
-            'Agents', 'AgentsComplete', 'Agentlogoff', 'Agentlogin', 'AgentConnect',
-            'DongleSMSStatus', 'FullyBooted', 'DongleShowDevicesComplete', 'DongleDeviceEntry',
-            'DongleNewUSSDBase64', 'DongleNewUSSD', 'DongleUSSDStatus', 'DongleNewCUSD',
-            'DongleStatus', 'CEL', 'JabberEvent', 'Registry', 'UserEvent',
-            'ParkedCall', 'UnParkedCall', 'Link',
+            'AsyncAGI',
+            'AGIExec',
+            'VarSet',
+            'Unlink',
+            'vgsm_sms_rx',
+            'vgsm_net_state',
+            'vgsm_me_state',
+            'DTMF',
+            'Bridge',
+            'VoicemailUserEntryComplete',
+            'StatusComplete',
+            'ParkedCallsComplete',
+            'DBGetResponse',
+            'VoicemailUserEntry',
+            'Transfer',
+            'Status',
+            'ShowDialPlanComplete',
+            'Rename',
+            'RegistrationsComplete',
+            'RTPSenderStat',
+            'RTPReceiverStat',
+            'RTCPSent',
+            'RTCPReceiverStat',
+            'RTCPReceived',
+            'QueueSummaryComplete',
+            'QueueStatusComplete',
+            'DAHDIShowChannelsComplete',
+            'QueueSummary',
+            'QueueParams',
+            'QueueMemberStatus',
+            'QueueMemberRemoved',
+            'QueueMemberPaused',
+            'QueueMember',
+            'QueueMemberAdded',
+            'PeerlistComplete',
+            'PeerStatus',
+            'PeerEntry',
+            'OriginateResponse',
+            'ParkedCallGiveUp',
+            'ParkedCallTimeOut',
+            'Newstate',
+            'Newexten',
+            'Newchannel',
+            'NewCallerid',
+            'NewAccountCode',
+            'MusicOnHold',
+            'MessageWaiting',
+            'Masquerade',
+            'ListDialplan',
+            'Leave',
+            'Join',
+            'Hold',
+            'Hangup',
+            'ExtensionStatus',
+            'Dial',
+            'DAHDIShowChannels',
+            'CoreShowChannelsComplete',
+            'CoreShowChannel',
+            'ChannelUpdate',
+            'Agents',
+            'AgentsComplete',
+            'Agentlogoff',
+            'Agentlogin',
+            'AgentConnect',
+            'DongleSMSStatus',
+            'FullyBooted',
+            'DongleShowDevicesComplete',
+            'DongleDeviceEntry',
+            'DongleNewUSSDBase64',
+            'DongleNewUSSD',
+            'DongleUSSDStatus',
+            'DongleNewCUSD',
+            'DongleStatus',
+            'CEL',
+            'JabberEvent',
+            'Registry',
+            'UserEvent',
+            'ParkedCall',
+            'UnParkedCall',
+            'Link',
             'AGIExecStart',
             'AGIExecEnd',
             'AsyncAGIStart',
@@ -80,10 +142,13 @@ class Test_Events extends \PHPUnit_Framework_TestCase
             'AsyncAGIEnd',
             'QueueCallerJoin',
             'QueueCallerLeave',
+            'QueueCallerAbandon',
             'AttendedTransfer',
             'BlindTransfer',
+            'DeviceStateChange',
             'DialBegin',
             'DialEnd',
+            'DNDState',
             'DTMFBegin',
             'DTMFEnd',
             'BridgeCreate',
@@ -145,16 +210,16 @@ class Test_Events extends \PHPUnit_Framework_TestCase
             'FullyBooted' => array(),
             'DongleUSSDStatus' => array(
                 'Privilege' => 'Privilege',
-        		'Id' => 'Id',
-        		'Device' => 'Device',
+                'Id' => 'Id',
+                'Device' => 'Device',
                 'Status' => 'Status'
              ),
-        	'DongleNewUSSDBase64' => array(
+            'DongleNewUSSDBase64' => array(
                 'Device' => 'Device',
                 'Message' => 'Message',
                 'Privilege' => 'Privilege'
             ),
-        	'DongleNewCUSD' => array(
+            'DongleNewCUSD' => array(
                 'Device' => 'Device',
                 'Message' => 'Message',
                 'Privilege' => 'Privilege'
@@ -224,18 +289,25 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'Waiting' => 'Waiting',
                 'Releasing' => 'Releasing',
                 'Initializing' => 'Initializing'
-        	),
-        	'DongleShowDevicesComplete' => array('ListItems' => 'items'),
+            ),
+            'DongleShowDevicesComplete' => array(
+                'ListItems' => 'items'
+            ),
             'DongleSMSStatus' => array(
                 'Privilege' => 'Privilege',
-        		'Id' => 'Id',
-        		'Device' => 'Device',
+                'Id' => 'Id',
+                'Device' => 'Device',
                 'Status' => 'Status'
             ),
             'DongleStatus' => array(
                 'Privilege' => 'Privilege',
-        		'Device' => 'Device',
+                'Device' => 'Device',
                 'Status' => 'Status'
+            ),
+            'DNDState' => array(
+                'Privilege' => 'Privilege',
+                'Status' => 'Status',
+                'DAHDIChannel' => 'DAHDIChannel',
             ),
             'AgentConnect' => array(
                 'HoldTime' => 'HoldTime',
@@ -274,12 +346,12 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'Privilege' => 'Privilege',
                 'Channel' => 'Channel',
                 'ChannelType' => 'ChannelType',
-        		'UniqueID' => 'UniqueID',
+                'UniqueID' => 'UniqueID',
                 'SIPfullcontact' => 'SIPfullcontact',
                 'SIPcallid' => 'SIPcallid'
             ),
             'CoreShowChannel' => array(
-        		'UniqueID' => 'UniqueID',
+                'UniqueID' => 'UniqueID',
                 'Privilege' => 'Privilege',
                 'Channel' => 'Channel',
                 'AccountCode' => 'AccountCode',
@@ -307,40 +379,40 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'Privilege' => 'Privilege',
                 'Destination' => 'Destination',
                 'SubEvent' => 'SubEvent',
-        		'CallerIdName' => 'CallerIdName',
+                'CallerIdName' => 'CallerIdName',
                 'CallerIdNum' => 'CallerIdNum',
                 'Channel' => 'Channel',
-        		'DialStatus' => 'DialStatus',
+                'DialStatus' => 'DialStatus',
                 'DialString' => 'DialString',
-        		'UniqueID' => 'UniqueID',
-        		'DestUniqueID' => 'DestUniqueID',
+                'UniqueID' => 'UniqueID',
+                'DestUniqueID' => 'DestUniqueID',
             ),
             'ExtensionStatus' => array(
                 'Privilege' => 'Privilege',
                 'Status' => 'Status',
                 'Exten' => 'Extension',
                 'Hint' => 'Hint',
-        		'Context' => 'Context',
+                'Context' => 'Context',
             ),
             'Hangup' => array(
                 'CallerIdName' => 'CallerIdName',
                 'CallerIdNum' => 'CallerIdNum',
                 'Channel' => 'Channel',
                 'Privilege' => 'Privilege',
-        		'UniqueID' => 'UniqueID',
+                'UniqueID' => 'UniqueID',
                 'Cause' => 'Cause',
                 'cause-txt' => 'cause-txt'
             ),
             'Hold' => array(
                 'Privilege' => 'Privilege',
-        		'UniqueID' => 'UniqueID',
+                'UniqueID' => 'UniqueID',
                 'Status' => 'Status',
                 'Channel' => 'Channel',
             ),
-        	'Join' => array(
+            'Join' => array(
                 'CallerIdName' => 'CallerIdName',
                 'CallerIdNum' => 'CallerIdNum',
-        		'UniqueID' => 'UniqueID',
+                'UniqueID' => 'UniqueID',
                 'Position' => 'Position',
                 'Queue' => 'Queue',
                 'Channel' => 'Channel',
@@ -350,11 +422,11 @@ class Test_Events extends \PHPUnit_Framework_TestCase
             'Leave' => array(
                 'Channel' => 'Channel',
                 'Privilege' => 'Privilege',
-        		'UniqueID' => 'UniqueID',
+                'UniqueID' => 'UniqueID',
                 'Count' => 'Count',
                 'Queue' => 'Queue'
             ),
-        	'ListDialplan' => array(
+            'ListDialplan' => array(
                 'AppData' => 'AppData',
                 'Application' => 'Application',
                 'Priority' => 'Priority',
@@ -371,25 +443,25 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'Privilege' => 'Privilege',
             ),
             'MessageWaiting' => array(
-        		'Privilege' => 'Privilege',
-        		'Waiting' => 'Waiting',
-        		'Mailbox' => 'Mailbox',
+                'Privilege' => 'Privilege',
+                'Waiting' => 'Waiting',
+                'Mailbox' => 'Mailbox',
             ),
             'MusicOnHold' => array(
                 'Channel' => 'Channel',
                 'Privilege' => 'Privilege',
-        		'UniqueID' => 'UniqueID',
-        		'State' => 'State',
+                'UniqueID' => 'UniqueID',
+                'State' => 'State',
             ),
             'NewAccountCode' => array(
                 'Channel' => 'Channel',
                 'Privilege' => 'Privilege',
-        		'UniqueID' => 'UniqueID',
+                'UniqueID' => 'UniqueID',
                 'AccountCode' => 'AccountCode',
                 'OldAccountCode' => 'OldAccountCode',
             ),
             'NewCallerid' => array(
-        		'UniqueID' => 'UniqueID',
+                'UniqueID' => 'UniqueID',
                 'CallerIdName' => 'CallerIdName',
                 'CallerIdNum' => 'CallerIdNum',
                 'Channel' => 'Channel',
@@ -397,7 +469,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'CID-CallingPres' => 'CID-CallingPres'
             ),
             'Newchannel' => array(
-        		'UniqueID' => 'UniqueID',
+                'UniqueID' => 'UniqueID',
                 'CallerIdName' => 'CallerIdName',
                 'CallerIdNum' => 'CallerIdNum',
                 'ChannelStateDesc' => 'ChannelStateDesc',
@@ -408,7 +480,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'Exten' => 'Exten',
                 'Privilege' => 'Privilege'
             ),
-        	'Newexten' => array(
+            'Newexten' => array(
                 'Channel' => 'Channel',
                 'Privilege' => 'Privilege',
                 'AppData' => 'AppData',
@@ -417,9 +489,9 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'Extension' => 'Extension',
                 'Exten' => 'Exten',
                 'Context' => 'Context',
-        		'UniqueID' => 'UniqueID',
+                'UniqueID' => 'UniqueID',
             ),
-        	'Newstate' => array(
+            'Newstate' => array(
                 'CallerIdName' => 'CallerIdName',
                 'CallerIdNum' => 'CallerIdNum',
                 'UniqueID' => 'UniqueID',
@@ -442,6 +514,70 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'Exten' => 'Exten',
                 'Privilege' => 'Privilege'
             ),
+            'ParkedCallGiveUp' => array(
+                'Privilege' => 'Privilege',
+                'ParkeeChannel' => 'ParkeeChannel',
+                'ParkeeChannelState' => 'ParkeeChannelState',
+                'ParkeeChannelStateDesc' => 'ParkeeChannelStateDesc',
+                'ParkeeCallerIDNum' => 'ParkeeCallerIDNum',
+                'ParkeeCallerIDName' => 'ParkeeCallerIDName',
+                'ParkeeConnectedLineNum' => 'ParkeeConnectedLineNum',
+                'ParkeeConnectedLineName' => 'ParkeeConnectedLineName',
+                'ParkeeAccountCode' => 'ParkeeAccountCode',
+                'ParkeeContext' => 'ParkeeContext',
+                'ParkeeExten' => 'ParkeeExten',
+                'ParkeePriority' => 'ParkeePriority',
+                'ParkeeUniqueid' => 'ParkeeUniqueid',
+                'ParkerChannel' => 'ParkerChannel',
+                'ParkerChannelState' => 'ParkerChannelState',
+                'ParkerChannelStateDesc' => 'ParkerChannelStateDesc',
+                'ParkerCallerIDNum' => 'ParkerCallerIDNum',
+                'ParkerCallerIDName' => 'ParkerCallerIDName',
+                'ParkerConnectedLineNum' => 'ParkerConnectedLineNum',
+                'ParkerConnectedLineName' => 'ParkerConnectedLineName',
+                'ParkerAccountCode' => 'ParkerAccountCode',
+                'ParkerContext' => 'ParkerContext',
+                'ParkerExten' => 'ParkerExten',
+                'ParkerPriority' => 'ParkerPriority',
+                'ParkerUniqueid' => 'ParkerUniqueid',
+                'ParkerDialString' => 'ParkerDialString',
+                'Parkinglot' => 'Parkinglot',
+                'ParkingSpace' => 'ParkingSpace',
+                'ParkingTimeout' => 'ParkingTimeout',
+                'ParkingDuration' => 'ParkingDuration',
+            ),
+            'ParkedCallTimeOut' => array(
+                'Privilege' => 'Privilege',
+                'ParkeeChannel' => 'ParkeeChannel',
+                'ParkeeChannelState' => 'ParkeeChannelState',
+                'ParkeeChannelStateDesc' => 'ParkeeChannelStateDesc',
+                'ParkeeCallerIDNum' => 'ParkeeCallerIDNum',
+                'ParkeeCallerIDName' => 'ParkeeCallerIDName',
+                'ParkeeConnectedLineNum' => 'ParkeeConnectedLineNum',
+                'ParkeeConnectedLineName' => 'ParkeeConnectedLineName',
+                'ParkeeAccountCode' => 'ParkeeAccountCode',
+                'ParkeeContext' => 'ParkeeContext',
+                'ParkeeExten' => 'ParkeeExten',
+                'ParkeePriority' => 'ParkeePriority',
+                'ParkeeUniqueid' => 'ParkeeUniqueid',
+                'ParkerChannel' => 'ParkerChannel',
+                'ParkerChannelState' => 'ParkerChannelState',
+                'ParkerChannelStateDesc' => 'ParkerChannelStateDesc',
+                'ParkerCallerIDNum' => 'ParkerCallerIDNum',
+                'ParkerCallerIDName' => 'ParkerCallerIDName',
+                'ParkerConnectedLineNum' => 'ParkerConnectedLineNum',
+                'ParkerConnectedLineName' => 'ParkerConnectedLineName',
+                'ParkerAccountCode' => 'ParkerAccountCode',
+                'ParkerContext' => 'ParkerContext',
+                'ParkerExten' => 'ParkerExten',
+                'ParkerPriority' => 'ParkerPriority',
+                'ParkerUniqueid' => 'ParkerUniqueid',
+                'ParkerDialString' => 'ParkerDialString',
+                'Parkinglot' => 'Parkinglot',
+                'ParkingSpace' => 'ParkingSpace',
+                'ParkingTimeout' => 'ParkingTimeout',
+                'ParkingDuration' => 'ParkingDuration',
+            ),
             'PeerEntry' => array(
                 'RealtimeDevice' => 'RealtimeDevice',
                 'Status' => 'Status',
@@ -456,7 +592,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'ObjectName' => 'ObjectName',
                 'ChannelType' => 'ChannelType',
             ),
-        	'PeerStatus' => array(
+            'PeerStatus' => array(
                 'Privilege' => 'Privilege',
                 'ChannelType' => 'ChannelType',
                 'Peer' => 'Peer',
@@ -473,28 +609,28 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'Location' => 'Location',
                 'Queue' => 'Queue',
                 'Privilege' => 'Privilege',
-            	'Paused' => 1,
+                'Paused' => 1,
             ),
             'QueueMember' => array(
                 'Name' => 'Name',
                 'Location' => 'Location',
                 'Queue' => 'Queue',
-            	'Paused' => 1,
+                'Paused' => 1,
                 'Status' => 'Status',
                 'CallsTaken' => 'CallsTaken',
                 'Penalty' => 'Penalty',
-            	'Membership' => 'Membership',
+                'Membership' => 'Membership',
             ),
             'QueueMemberAdded' => array(
                 'MemberName' => 'MemberName',
                 'LastCall' => 'LastCall',
                 'Location' => 'Location',
                 'Queue' => 'Queue',
-            	'Paused' => 1,
+                'Paused' => 1,
                 'Status' => 'Status',
                 'CallsTaken' => 'CallsTaken',
                 'Penalty' => 'Penalty',
-            	'Membership' => 'Membership',
+                'Membership' => 'Membership',
                 'Privilege' => 'Privilege'
             ),
             'QueueMemberStatus' => array(
@@ -508,9 +644,9 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'Queue' => 'Queue',
                 'Privilege' => 'Privilege'
             ),
-        	'QueueParams' => array(
+            'QueueParams' => array(
                 'Completed' => '4',
-        		'HoldTime' => '5',
+                'HoldTime' => '5',
                 'Calls' => '6',
                 'Strategy' => 'Strategy',
                 'Max' => '6',
@@ -521,7 +657,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'Abandoned' => '3'
             ),
             'QueueSummaryComplete' => array(),
-        	'QueueSummary' => array(
+            'QueueSummary' => array(
                 'LongestHoldTime' => 'LongestHoldTime',
                 'HoldTime' => 'HoldTime',
                 'Callers' => 'Callers',
@@ -530,8 +666,8 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'Queue' => 'Queue',
             ),
             'QueueStatusComplete' => array(),
-        	'DAHDIShowChannelsComplete' => array('items' => 'ListItems'),
-        	'PeerlistComplete' => array('ListItems' => 'ListItems'),
+            'DAHDIShowChannelsComplete' => array('items' => 'ListItems'),
+            'PeerlistComplete' => array('ListItems' => 'ListItems'),
             'CoreShowChannelsComplete' => array('ListItems' => 'ListItems'),
             'RTCPReceived' => array(
                 'DLSR' => 'DLSR',
@@ -619,7 +755,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'Extension' => 'Extension',
                 'Context' => 'Context',
                 'UniqueID' => 'UniqueID',
-        		'Privilege' => 'Privilege',
+                'Privilege' => 'Privilege',
                 'Channel' => 'Channel'
             ),
             'Transfer' => array(
@@ -667,85 +803,91 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'Key' => 'Key',
                 'Val' => 'Val'
             ),
-        	'ParkedCallsComplete' => array(),
-        	'StatusComplete' => array('Items' => 'Items'),
+            'ParkedCallsComplete' => array(),
+            'StatusComplete' => array('Items' => 'Items'),
             'RegistrationsComplete' => array('ListItems' => 'ListItems'),
             'DTMF' => array(
-            	'Privilege' => 'Privilege',
-        		'UniqueID' => 'UniqueID',
+                'Privilege' => 'Privilege',
+                'UniqueID' => 'UniqueID',
                 'Channel' => 'Channel',
                 'Direction' => 'Direction',
                 'End' => 'End',
                 'Begin' => 'Begin',
                 'Digit' => 'Digit'
-        	),
+            ),
             'AGIExec' => array(
-            	'Privilege' => 'Privilege',
-            	'CommandId' => 'CommandId',
+                'Privilege' => 'Privilege',
+                'CommandId' => 'CommandId',
                 'SubEvent' => 'SubEvent',
                 'Channel' => 'Channel',
                 'Command' => 'Command',
                 'Result' => 'Result',
                 'ResultCode' => 'ResultCode'
-        	),
+            ),
             'VarSet' => array(
-            	'Privilege' => 'Privilege',
+                'Privilege' => 'Privilege',
                 'Channel' => 'Channel',
                 'Variable' => 'Variable',
                 'Value' => 'Value',
-        	    'UniqueID' => 'UniqueID'
-        	),
-        	'Unlink' => array(
-        		'Privilege' => 'Privilege',
-        	    'CallerID1' => 'CallerID1',
-        	    'CallerID2' => 'CallerID2',
-        	    'UniqueID1' => 'UniqueID1',
-        		'UniqueID2' => 'UniqueID2',
-        	    'Channel1' => 'Channel1',
-        		'Channel2' => 'Channel2',
-        	),
-        	'Bridge' => array(
-        		'Privilege' => 'Privilege',
-        	    'CallerID1' => 'CallerID1',
-        	    'CallerID2' => 'CallerID2',
-        	    'UniqueID1' => 'UniqueID1',
-        		'UniqueID2' => 'UniqueID2',
-        	    'Channel1' => 'Channel1',
-        		'Channel2' => 'Channel2',
-        	    'BridgeState' => 'BridgeStart',
-        	    'BridgeType' => 'BridgeType'
-        	),
-        	'vgsm_sms_rx' => array(
-        		'Privilege' => 'Privilege',
-        		'X-SMS-Status-Report-Indication' => 'X-SMS-Status-Report-Indication',
-        	    'X-SMS-User-Data-Header-Indicator' => 'X-SMS-User-Data-Header-Indicator',
-        	    'X-SMS-Reply-Path' => 'X-SMS-Reply-Path',
-        	    'X-SMS-More-Messages-To-Send' => 'X-SMS-More-Messages-To-Send',
-        	    'X-SMS-SMCC-Number' => 'X-SMS-SMCC-Number',
-        	    'X-SMS-SMCC-TON' => 'X-SMS-SMCC-TON',
-        	    'X-SMS-SMCC-NP' => 'X-SMS-SMCC-NP',
-        	    'X-SMS-Sender-Number' => 'X-SMS-Sender-Number',
-        	    'X-SMS-Sender-TON' => 'X-SMS-Sender-TON',
-        	    'X-SMS-Sender-NP' => 'X-SMS-Sender-NP',
-        	    'X-SMS-Message-Type' => 'X-SMS-Message-Type',
-        	    'Content' => 'Content',
-        	    'Date' => 'Date',
-        	    'Content-Transfer-Encoding' => 'ContentEncoding',
-        		'Content-Type' => 'ContentType',
-        	    'MIME-Version' => 'MIME-Version',
-        	    'Subject' => 'Subject',
-        	    'From' => 'From',
-        	    'Received' => 'Received'
-        	),
-        	'vgsm_net_state' => array(
-        		'Privilege' => 'Privilege',
-        		'X-vGSM-GSM-Registration' => 'X-vGSM-GSM-Registration',
-        	),
-        	'vgsm_me_state' => array(
-        		'Privilege' => 'Privilege',
-        	    'X-vGSM-ME-State-Change-Reason' => 'X-vGSM-ME-State-Change-Reason',
-        	    'X-vGSM-ME-Old-State' => 'X-vGSM-ME-Old-State',
-        	    'X-vGSM-ME-State' => 'X-vGSM-ME-State',
+                'UniqueID' => 'UniqueID',
+                'ChannelState' => 'ChannelState',
+                'ChannelStateDesc' => 'ChannelStateDesc',
+                'CallerIDNum' => 'CallerIDNum',
+                'CallerIDName' => 'CallerIDName',
+                'ConnectedLineNum' => 'ConnectedLineNum',
+                'ConnectedLineName' => 'ConnectedLineName'
+            ),
+            'Unlink' => array(
+                'Privilege' => 'Privilege',
+                'CallerID1' => 'CallerID1',
+                'CallerID2' => 'CallerID2',
+                'UniqueID1' => 'UniqueID1',
+                'UniqueID2' => 'UniqueID2',
+                'Channel1' => 'Channel1',
+                'Channel2' => 'Channel2',
+            ),
+            'Bridge' => array(
+                'Privilege' => 'Privilege',
+                'CallerID1' => 'CallerID1',
+                'CallerID2' => 'CallerID2',
+                'UniqueID1' => 'UniqueID1',
+                'UniqueID2' => 'UniqueID2',
+                'Channel1' => 'Channel1',
+                'Channel2' => 'Channel2',
+                'BridgeState' => 'BridgeStart',
+                'BridgeType' => 'BridgeType'
+            ),
+            'vgsm_sms_rx' => array(
+                'Privilege' => 'Privilege',
+                'X-SMS-Status-Report-Indication' => 'X-SMS-Status-Report-Indication',
+                'X-SMS-User-Data-Header-Indicator' => 'X-SMS-User-Data-Header-Indicator',
+                'X-SMS-Reply-Path' => 'X-SMS-Reply-Path',
+                'X-SMS-More-Messages-To-Send' => 'X-SMS-More-Messages-To-Send',
+                'X-SMS-SMCC-Number' => 'X-SMS-SMCC-Number',
+                'X-SMS-SMCC-TON' => 'X-SMS-SMCC-TON',
+                'X-SMS-SMCC-NP' => 'X-SMS-SMCC-NP',
+                'X-SMS-Sender-Number' => 'X-SMS-Sender-Number',
+                'X-SMS-Sender-TON' => 'X-SMS-Sender-TON',
+                'X-SMS-Sender-NP' => 'X-SMS-Sender-NP',
+                'X-SMS-Message-Type' => 'X-SMS-Message-Type',
+                'Content' => 'Content',
+                'Date' => 'Date',
+                'Content-Transfer-Encoding' => 'ContentEncoding',
+                'Content-Type' => 'ContentType',
+                'MIME-Version' => 'MIME-Version',
+                'Subject' => 'Subject',
+                'From' => 'From',
+                'Received' => 'Received'
+            ),
+            'vgsm_net_state' => array(
+                'Privilege' => 'Privilege',
+                'X-vGSM-GSM-Registration' => 'X-vGSM-GSM-Registration',
+            ),
+            'vgsm_me_state' => array(
+                'Privilege' => 'Privilege',
+                'X-vGSM-ME-State-Change-Reason' => 'X-vGSM-ME-State-Change-Reason',
+                'X-vGSM-ME-Old-State' => 'X-vGSM-ME-Old-State',
+                'X-vGSM-ME-State' => 'X-vGSM-ME-State',
             ),
             'CEL' => array(
                 'AMAFlags' => 'AMAFlags',
@@ -874,6 +1016,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'Context' => 'Context',
                 'Exten' => 'Exten',
                 'Priority' => 'Priority',
+                'Privilege' => 'Privilege',
                 'Uniqueid' => 'Uniqueid',
                 'Command' => 'Command',
                 'CommandId' => 'CommandId',
@@ -890,6 +1033,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'Context' => 'Context',
                 'Exten' => 'Exten',
                 'Priority' => 'Priority',
+                'Privilege' => 'Privilege',
                 'Uniqueid' => 'Uniqueid',
                 'Command' => 'Command',
                 'CommandId' => 'CommandId',
@@ -908,6 +1052,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'Context' => 'Context',
                 'Exten' => 'Exten',
                 'Priority' => 'Priority',
+                'Privilege' => 'Privilege',
                 'Uniqueid' => 'Uniqueid',
                 'Env' => 'Env',
             ),
@@ -923,6 +1068,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'Context' => 'Context',
                 'Exten' => 'Exten',
                 'Priority' => 'Priority',
+                'Privilege' => 'Privilege',
                 'Uniqueid' => 'Uniqueid',
                 'CommandID' => 'CommandID',
                 'Result' => 'Result',
@@ -939,6 +1085,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'Context' => 'Context',
                 'Exten' => 'Exten',
                 'Priority' => 'Priority',
+                'Privilege' => 'Privilege',
                 'Uniqueid' => 'Uniqueid',
             ),
             'QueueCallerJoin' => array(
@@ -953,6 +1100,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'Context' => 'Context',
                 'Exten' => 'Exten',
                 'Priority' => 'Priority',
+                'Privilege' => 'Privilege',
                 'Uniqueid' => 'Uniqueid',
                 'Queue' => 'Queue',
                 'Position' => 'Position',
@@ -970,10 +1118,30 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'Context' => 'Context',
                 'Exten' => 'Exten',
                 'Priority' => 'Priority',
+                'Privilege' => 'Privilege',
                 'Uniqueid' => 'Uniqueid',
                 'Queue' => 'Queue',
                 'Count' => 'Count',
                 'Position' => 'Position',
+            ),
+            'QueueCallerAbandon' => array(
+                'Channel' => 'Channel',
+                'ChannelState' => 'ChannelState',
+                'ChannelStateDesc' => 'ChannelStateDesc',
+                'CallerIDNum' => 'CallerIDNum',
+                'CallerIDName' => 'CallerIDName',
+                'ConnectedLineNum' => 'ConnectedLineNum',
+                'ConnectedLineName' => 'ConnectedLineName',
+                'AccountCode' => 'AccountCode',
+                'Context' => 'Context',
+                'Exten' => 'Exten',
+                'Priority' => 'Priority',
+                'Privilege' => 'Privilege',
+                'Uniqueid' => 'Uniqueid',
+                'Queue' => 'Queue',
+                'OriginalPosition' => 'OriginalPosition',
+                'Position' => 'Position',
+                'HoldTime' => 'HoldTime',
             ),
             'AttendedTransfer' => array(
                 'Result' => 'Result',
@@ -1089,6 +1257,12 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'IsExternal' => 'IsExternal',
                 'Context' => 'Context',
                 'Extension' => 'Extension',
+                'Privilege' => 'Privilege',
+            ),
+            'DeviceStateChange' => array(
+                'Privilege' => 'Privilege',
+                'Device' => 'Device',
+                'State' => 'State',
             ),
             'DialBegin' => array(
                 'Channel' => 'Channel',
@@ -1116,6 +1290,8 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'DestPriority' => 'DestPriority',
                 'DestUniqueid' => 'DestUniqueid',
                 'DialString' => 'DialString',
+                'DialStatus' => 'DialStatus',
+                'Privilege' => 'Privilege',
             ),
             'DialEnd' => array(
                 'Channel' => 'Channel',
@@ -1129,6 +1305,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'Context' => 'Context',
                 'Exten' => 'Exten',
                 'Priority' => 'Priority',
+                'Privilege' => 'Privilege',
                 'Uniqueid' => 'Uniqueid',
                 'DestChannel' => 'DestChannel',
                 'DestChannelState' => 'DestChannelState',
@@ -1156,6 +1333,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'Context' => 'Context',
                 'Exten' => 'Exten',
                 'Priority' => 'Priority',
+                'Privilege' => 'Privilege',
                 'Uniqueid' => 'Uniqueid',
                 'Digit' => 'Digit',
                 'Direction' => 'Direction',
@@ -1172,6 +1350,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'Context' => 'Context',
                 'Exten' => 'Exten',
                 'Priority' => 'Priority',
+                'Privilege' => 'Privilege',
                 'Uniqueid' => 'Uniqueid',
                 'Digit' => 'Digit',
                 'DurationMs' => 'DurationMs',
@@ -1184,6 +1363,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'BridgeCreator' => 'BridgeCreator',
                 'BridgeName' => 'BridgeName',
                 'BridgeNumChannels' => 'BridgeNumChannels',
+                'Privilege' => 'Privilege',
             ),
             'BridgeDestroy' => array(
                 'BridgeUniqueid' => 'BridgeUniqueid',
@@ -1192,6 +1372,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'BridgeCreator' => 'BridgeCreator',
                 'BridgeName' => 'BridgeName',
                 'BridgeNumChannels' => 'BridgeNumChannels',
+                'Privilege' => 'Privilege',
             ),
             'BridgeEnter' => array(
                 'BridgeUniqueid' => 'BridgeUniqueid',
@@ -1211,6 +1392,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'Context' => 'Context',
                 'Exten' => 'Exten',
                 'Priority' => 'Priority',
+                'Privilege' => 'Privilege',
                 'Uniqueid' => 'Uniqueid',
                 'SwapUniqueid' => 'SwapUniqueid',
             ),
@@ -1246,6 +1428,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'Context' => 'Context',
                 'Exten' => 'Exten',
                 'Priority' => 'Priority',
+                'Privilege' => 'Privilege',
                 'Uniqueid' => 'Uniqueid',
                 'Class' => 'Class',
             ),
@@ -1261,6 +1444,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
                 'Context' => 'Context',
                 'Exten' => 'Exten',
                 'Priority' => 'Priority',
+                'Privilege' => 'Privilege',
                 'Uniqueid' => 'Uniqueid',
             ),
             'ConfbridgeStart' => array(
@@ -1447,20 +1631,20 @@ class Test_Events extends \PHPUnit_Framework_TestCase
             'Agents' => array(
                 'LoggedInChan' => 'Channel'
             ),
-        	'ExtensionStatus' => array(
+            'ExtensionStatus' => array(
                 'Exten' => 'Extension'
             ),
             'Hangup' => array(
                 'cause-txt' => 'CauseText'
              ),
-        	'ListDialplan' => array(
+            'ListDialplan' => array(
                 'AppData' => 'ApplicationData',
             ),
             'NewCallerid' => array(
                 'CID-CallingPres' => 'CallerIdPres'
             ),
             'Newchannel' => array('Exten' => 'Extension'),
-        	'Newexten' => array(
+            'Newexten' => array(
                 'AppData' => 'ApplicationData',
             ),
             'QueueMemberStatus' => array(
@@ -1469,7 +1653,7 @@ class Test_Events extends \PHPUnit_Framework_TestCase
             'QueueMember' => array(
                 'Name' => 'MemberName'
             ),
-        	'AGIExec' => array(),
+            'AGIExec' => array(),
             'Transfer' => array(
                 'SIP-Callid' => 'SipCallID',
             ),
@@ -1478,31 +1662,31 @@ class Test_Events extends \PHPUnit_Framework_TestCase
             ),
             'PeerEntry' => array('ChanObjectType' => 'ChannelObjectType'),
             'VarSet' => array('Variable' => 'VariableName'),
-        	'StatusComplete' => array('Items' => 'ListItems'),
+            'StatusComplete' => array('Items' => 'ListItems'),
             'DBGetResponse' => array('Key' => 'KeyName', 'Val' => 'Value'),
-        	'vgsm_sms_rx' => array(
-        	    'X-SMS-Status-Report-Indication' => 'StatusReportIndication',
-        	    'X-SMS-User-Data-Header-Indicator' => 'DataHeaderIndicator',
-        	    'X-SMS-Reply-Path' => 'ReplyPath',
-        	    'X-SMS-More-Messages-To-Send' => 'MoreMessagesToSend',
+            'vgsm_sms_rx' => array(
+                'X-SMS-Status-Report-Indication' => 'StatusReportIndication',
+                'X-SMS-User-Data-Header-Indicator' => 'DataHeaderIndicator',
+                'X-SMS-Reply-Path' => 'ReplyPath',
+                'X-SMS-More-Messages-To-Send' => 'MoreMessagesToSend',
                 'X-SMS-SMCC-Number' => 'SMCCNumber',
-        	    'X-SMS-SMCC-TON' => 'SMCCTON',
-        	    'X-SMS-SMCC-NP' => 'SMCCNP',
-        	    'X-SMS-Sender-Number' => 'SenderNumber',
-        	    'X-SMS-Sender-TON' => 'SenderTON',
-        	    'X-SMS-Sender-NP' => 'SenderNP',
-        	    'X-SMS-Message-Type' => 'MessageType',
+                'X-SMS-SMCC-TON' => 'SMCCTON',
+                'X-SMS-SMCC-NP' => 'SMCCNP',
+                'X-SMS-Sender-Number' => 'SenderNumber',
+                'X-SMS-Sender-TON' => 'SenderTON',
+                'X-SMS-Sender-NP' => 'SenderNP',
+                'X-SMS-Message-Type' => 'MessageType',
                 'Content-Transfer-Encoding' => 'ContentEncoding',
                 'Content-Type' => 'ContentType',
                 'MIME-Version' => 'MIMEVersion'
-        	),
-        	'DAHDIShowChannelsComplete' => array('items' => 'ListItems'),
-        	'vgsm_net_state' => array('X-vGSM-GSM-Registration' => 'State'),
-        	'vgsm_me_state' => array(
-        		'X-vGSM-ME-State-Change-Reason' => 'Reason',
-        	    'X-vGSM-ME-Old-State' => 'OldState',
-        	    'X-vGSM-ME-State' => 'State',
-        	),
+            ),
+            'DAHDIShowChannelsComplete' => array('items' => 'ListItems'),
+            'vgsm_net_state' => array('X-vGSM-GSM-Registration' => 'State'),
+            'vgsm_me_state' => array(
+                'X-vGSM-ME-State-Change-Reason' => 'Reason',
+                'X-vGSM-ME-Old-State' => 'OldState',
+                'X-vGSM-ME-State' => 'State',
+            ),
             'ParkedCall' => array('Exten' => 'Extension'),
             'UnParkedCall' => array('Exten' => 'Extension'),
             'AGIExecStart' => array(
@@ -1525,32 +1709,32 @@ class Test_Events extends \PHPUnit_Framework_TestCase
         $mock_stream_socket_client = true;
         $mock_stream_set_blocking = true;
         $options = array(
-        	'host' => '2.3.4.5',
+            'host' => '2.3.4.5',
             'scheme' => 'tcp://',
-        	'port' => 9999,
-        	'username' => 'asd',
-        	'secret' => 'asd',
+            'port' => 9999,
+            'username' => 'asd',
+            'secret' => 'asd',
             'connect_timeout' => 10,
-        	'read_timeout' => 10
+            'read_timeout' => 10
         );
         $write = array(
-        	"action: Login\r\nactionid: 1432.123\r\nusername: asd\r\nsecret: asd\r\n"
+            "action: Login\r\nactionid: 1432.123\r\nusername: asd\r\nsecret: asd\r\n"
         );
         setFgetsMock($standardAMIStart, $write);
         $client = new \PAMI\Client\Impl\ClientImpl($options);
         $client->registerEventListener(new SomeListenerClass);
-	    $client->open();
-	    $message = array();
-	    $message[] = 'Event: ' . $eventName;
-	    foreach ($values as $key => $value) {
-	        $message[] = $key . ': ' . $value;
-	    }
-	    $message[] = '';
-	    setFgetsMock($message, $message);
-	    for($i = 0; $i < count($message); $i++) {
-	        $client->process();
-	    }
-	    $event = SomeListenerClass::$event;
+        $client->open();
+        $message = array();
+        $message[] = 'Event: ' . $eventName;
+        foreach ($values as $key => $value) {
+            $message[] = $key . ': ' . $value;
+        }
+        $message[] = '';
+        setFgetsMock($message, $message);
+        for ($i = 0; $i < count($message); $i++) {
+            $client->process();
+        }
+        $event = SomeListenerClass::$event;
         foreach ($values as $key => $value) {
             if (isset($getters[$eventName][$key])) {
                 $methodName = 'get' . $getters[$eventName][$key];
