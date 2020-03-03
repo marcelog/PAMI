@@ -101,6 +101,11 @@ class AsyncClientImpl extends PagiClient implements IEventListener
     /**
      * (non-PHPdoc)
      * @see ClientImpl::send()
+     * @param $text
+     * @return Result
+     * @throws \PAGI\Exception\ChannelDownException
+     * @throws \PAGI\Exception\InvalidCommandException
+     * @throws \PAMI\Client\Exception\ClientException
      */
     protected function send($text)
     {

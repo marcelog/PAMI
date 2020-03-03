@@ -1,5 +1,4 @@
 <?php
-declare(ticks=1);
 /**
  * TCP Client implementation for AMI.
  *
@@ -28,6 +27,7 @@ declare(ticks=1);
  * limitations under the License.
  *
  */
+declare(ticks=1);
 namespace PAMI\Client\Impl;
 
 use PAMI\Message\OutgoingMessage;
@@ -372,6 +372,7 @@ class ClientImpl implements IClient
      *
      * @todo not suitable for multithreaded applications.
      *
+     * @param OutgoingMessage $message
      * @return \PAMI\Message\IncomingMessage
      */
     protected function getRelated(OutgoingMessage $message)

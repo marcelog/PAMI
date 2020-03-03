@@ -46,10 +46,8 @@ class PlayDTMFAction extends ActionMessage
     /**
      * Constructor.
      *
-     * @param string $user     AMI username.
-     * @param string $password AMI password.
-     *
-     * @return void
+     * @param $channel
+     * @param $digit
      */
     public function __construct($channel, $digit)
     {

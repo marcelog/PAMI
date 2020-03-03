@@ -199,7 +199,7 @@ Sets CallerID key.
 
 ### setAccount
 
-    void PAMI\Message\Action\OriginateAction::setAccount($account)
+    void PAMI\Message\Action\OriginateAction::setAccount(string $account)
 
 Sets Account key.
 
@@ -209,7 +209,7 @@ Sets Account key.
 
 
 #### Arguments
-* $account **mixed**
+* $account **string** - &lt;p&gt;Account code.&lt;/p&gt;
 
 
 

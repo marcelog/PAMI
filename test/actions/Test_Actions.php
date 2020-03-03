@@ -235,6 +235,34 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
+    public function can_bridge_list()
+    {
+        $write = array(implode("\r\n", array(
+            'action: BridgeList',
+            'actionid: 1432.123',
+            ''
+        )));
+        $action = new \PAMI\Message\Action\BridgeListAction();
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_bridge_list_with_bridge_type()
+    {
+        $write = array(implode("\r\n", array(
+            'action: BridgeList',
+            'actionid: 1432.123',
+            'bridgetype: basic',
+            ''
+        )));
+        $bridgeType = 'basic';
+        $action = new \PAMI\Message\Action\BridgeListAction($bridgeType);
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
     public function can_challenge()
     {
         $write = array(implode("\r\n", array(
@@ -912,6 +940,24 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
         $action = new \PAMI\Message\Action\MixMonitorAction('channel');
         $action->setFile('file');
         $action->setOptions(array('o', 'p', 't', 'i', 'o', 'n', 's'));
+        $client = $this->_start($write, $action);
+    }
+    /**
+     * @test
+     */
+    public function can_mute_mix_monitor()
+    {
+        $write = array(implode("\r\n", array(
+            'action: MixMonitorMute',
+            'actionid: 1432.123',
+            'channel: channel',
+            'state: 1',
+            'direction: both',
+            ''
+        )));
+        $action = new \PAMI\Message\Action\MixMonitorMuteAction('channel', false, 'read');
+        $action->setState(true);
+        $action->setDirection('both');
         $client = $this->_start($write, $action);
     }
     /**
@@ -1670,6 +1716,10 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
             'cat-000002: '.$number,
             'var-000002: secret',
             'value-000002: secret',
+            'action-000003: Append',
+            'cat-000003: '.$number,
+            'match-000003: some_match',
+            'line-000003: line',
             ''
         )) );
 
@@ -1690,6 +1740,11 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
         $actionCreate->setCat($number);
         $actionCreate->setVar('secret');
         $actionCreate->setValue('secret');
+
+        $actionCreate->setAction('Append');
+        $actionCreate->setCat($number);
+        $actionCreate->setMatch('some_match');
+        $actionCreate->setLine('line');
 
         $client = $this->_start($writeCreate, $actionCreate);
 
@@ -1713,6 +1768,20 @@ class Test_Actions extends \PHPUnit_Framework_TestCase
         $actionDelete->setCat($number);
 
         $client = $this->_start($writeDelete, $actionDelete);
+    }
+
+    /**
+     * @test
+     */
+    public function can_pjsip_show_endpoints()
+    {
+        $write = array(implode("\r\n", array(
+            'action: PJSIPShowEndpoints',
+            'actionid: 1432.123',
+            ''
+        )));
+        $action = new \PAMI\Message\Action\PJSIPShowEndpointsAction();
+        $client = $this->_start($write, $action);
     }
 }
 }
