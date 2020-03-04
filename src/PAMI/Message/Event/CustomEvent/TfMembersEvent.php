@@ -25,7 +25,7 @@
  * limitations under the License.
  *
  */
-namespace PAMI\Message\Event;
+namespace PAMI\Message\Event\CustomEvent;
 
 use PAMI\Message\Event\EventMessage;
 
@@ -69,7 +69,7 @@ class TfMembersEvent extends EventMessage
     {
         $results = array();
 
-        preg_match_all('/\n/', $message, $matches);
+        preg_match_all('/.+\n/', $message, $matches);
 
         for ($j = 0; $j < count($matches[0]); $j++) {
             if (!$matches[0][$j]) {
@@ -115,7 +115,6 @@ class TfMembersEvent extends EventMessage
     {
         parent::__construct($rawContent);
 
-        $this->setKey('name', array_pop(explode('\\', __CLASS__)));
         $this->setMembers($rawContent);
     }
 }

@@ -291,7 +291,7 @@ class ClientImpl implements IClient
                     $response->addEvent($event);
                 }
             } elseif ($memPos !== false) {
-                $message = 'Event:'.$this->customEventPrefix.'Members'.Message::EOL;
+                $message = 'Event: '.$this->customEventPrefix.'Members'.Message::EOL;
                 $message .= implode(Message::EOL, $msgs);
 
                 $event = $this->messageToEvent($message);
