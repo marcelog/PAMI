@@ -34,6 +34,10 @@ use PAMI\Message\Event\EventMessage;
  *
  * PHP Version 5
  *
+ * Response: Success
+ * ActionID: 1583305512.6875
+ * Message: Authentication accepted
+ *
  * @category   Pami
  * @package    Message
  * @subpackage Event
@@ -46,7 +50,7 @@ class TfMembersEvent extends EventMessage
      * Search by pattern
      * @var string
      */
-    public $pattern_members_domain = '/tfoms(\-?)\d+/';
+    public $pattern_members_domain = '/(tfoms|astra-metal)(\-?)\d+/';
 
     /**
      * Returns key: 'Members'.
@@ -69,7 +73,7 @@ class TfMembersEvent extends EventMessage
     {
         $results = array();
 
-        preg_match_all('/.+\n/', $message, $matches);
+        preg_match_all('/.+(\n|$)/', $message, $matches);
 
         for ($j = 0; $j < count($matches[0]); $j++) {
             if (!$matches[0][$j]) {
