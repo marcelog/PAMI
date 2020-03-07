@@ -165,6 +165,18 @@ class UpdateConfigAction extends ActionMessage
     {
         $this->setKey('Line-'.$this->getPaddedCounter(), $input);
     }
+    
+     /**
+     * Sets Options-XXXXXX key.
+     *
+     * @param string $input.
+     *
+     * @return void
+     */
+    public function setOptions($input)
+    {
+        $this->setKey('Options-'.$this->getPaddedCounter(), $input);
+    }
 
     /**
      * Returns the string representation for counter with leading zeroes in UpdateConfig action format.
