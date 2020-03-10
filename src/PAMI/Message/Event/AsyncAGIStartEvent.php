@@ -29,6 +29,8 @@
  */
 namespace PAMI\Message\Event;
 
+use PAMI\AsyncAgi\Event\IAsyncAgiStartEvent;
+
 /**
  * Event triggered when a channel starts AsyncAGI command processing.
  *
@@ -41,7 +43,7 @@ namespace PAMI\Message\Event;
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
  * @link       http://marcelog.github.com/PAMI/
  */
-class AsyncAGIStartEvent extends EventMessage
+class AsyncAGIStartEvent extends EventMessage implements IAsyncAgiStartEvent
 {
     /**
      * Returns key: 'Privilege'.
@@ -174,11 +176,21 @@ class AsyncAGIStartEvent extends EventMessage
     }
 
     /**
+     * @deprecated
+     * @use AsyncAGIStartEvent::getEnvironment()
+     * @return string
+     */
+    public function getEnv()
+    {
+        return $this->getEnvironment();
+    }
+
+    /**
      * Returns key: 'Env'.
      *
      * @return string
      */
-    public function getEnv()
+    public function getEnvironment()
     {
         return $this->getKey('Env');
     }
