@@ -50,7 +50,7 @@ class TfMembersEvent extends EventMessage
      * Search by pattern
      * @var string
      */
-    public $pattern_members_domain = '/(tfoms|astra-metal)(\-?)\d+/';
+    public $pattern_members_domain = '/(tfoms|astra-metall)(\-?)\d+/';
 
     /**
      * Returns key: 'Members'.
