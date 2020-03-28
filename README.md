@@ -89,13 +89,13 @@ $client->registerEventListener(
 
 # Example
 
-Please see docs/examples/quickstart/example.php for a very basic example.
+Please see doc/examples/quickstart/example.php for a very basic example.
 
 AsterTrace is a full application: https://github.com/marcelog/AsterTrace.
 
 Also, you might want to look at this article: http://marcelog.github.com/articles/php_asterisk_listener_example_using_pami_and_ding.html
 
-For an example of using asynchronous AGI with PAMI, see docs/examples/asyncagi
+For an example of using asynchronous AGI with PAMI, see doc/examples/asyncagi
 
 The [march edition](http://sdjournal.org/a-practical-introduction-to-functional-programming-with-php-sdj-issue-released/) of [Software Developer Journal](http://sdjournal.org/) features a complete article about writing telephony applications with PAMI and PAGI.
 
