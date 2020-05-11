@@ -46,14 +46,16 @@ class AGIAction extends ActionMessage
     /**
      * Constructor.
      *
-     * @return void
+     * @param $channel
+     * @param $command
+     * @param string $commandId
      */
-    public function __construct($channel, $command, $commandId = false)
+    public function __construct($channel, $command, $commandId = null)
     {
         parent::__construct('AGI');
         $this->setKey('Channel', $channel);
         $this->setKey('Command', $command);
-        if ($commandId !== false) {
+        if ($commandId !== null) {
             $this->setKey('CommandId', $commandId);
         }
     }

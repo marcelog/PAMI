@@ -19,7 +19,7 @@ Properties
 
 ### $logger
 
-    private \PAMI\Client\Impl\Logger $logger
+    private \Psr\Log\LoggerInterface $logger
 
 PSR-3 logger.
 
@@ -178,6 +178,17 @@ eventually with an EOM.
 
 This should not happen. Asterisk may send responses without a
 corresponding ActionId.
+
+
+
+* Visibility: **private**
+
+
+### $eventMask
+
+    private string $eventMask
+
+Event mask to apply on login action.
 
 
 

@@ -137,6 +137,19 @@ Returns key: 'Channel'.
 
     string PAMI\Message\Event\NewextenEvent::getExtension()
 
+Returns key: 'Extension'.
+
+
+
+* Visibility: **public**
+
+
+
+
+### getExten
+
+    string PAMI\Message\Event\NewextenEvent::getExten()
+
 Returns key: 'Exten'.
 
 

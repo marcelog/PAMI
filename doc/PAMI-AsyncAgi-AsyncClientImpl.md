@@ -108,7 +108,7 @@ Event handler.
 
 ### send
 
-    mixed PAMI\AsyncAgi\AsyncClientImpl::send($text)
+    \PAGI\Client\Result\Result PAMI\AsyncAgi\AsyncClientImpl::send($text)
 
 (non-PHPdoc)
 

@@ -46,17 +46,16 @@ class QueuePenaltyAction extends ActionMessage
     /**
      * Constructor.
      *
+     * @param $interface
+     * @param $penalty
      * @param string $queue Queue name.
-     * @param string $event Event.
-     *
-     * @return void
      */
-    public function __construct($interface, $penalty, $queue = false)
+    public function __construct($interface, $penalty, $queue = null)
     {
         parent::__construct('QueuePenalty');
         $this->setKey('Interface', $interface);
         $this->setKey('Penalty', $penalty);
-        if ($queue !== false) {
+        if ($queue !== null) {
             $this->setKey('Queue', $queue);
         }
     }
