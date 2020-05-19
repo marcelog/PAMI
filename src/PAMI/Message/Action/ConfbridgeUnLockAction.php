@@ -2,7 +2,7 @@
 namespace PAMI\Message\Action;
 
 /**
- * ConfbridgeUnLockAction action message.
+ * ConfbridgeUnlockAction action message.
  *
  * PHP Version 5
  *
@@ -27,7 +27,7 @@ namespace PAMI\Message\Action;
  * limitations under the License.
  *
  */
-class ConfbridgeUnLockAction extends ActionMessage
+class ConfbridgeUnlockAction extends ActionMessage
 {
     /**
      * Constructor.
@@ -38,7 +38,7 @@ class ConfbridgeUnLockAction extends ActionMessage
      */
     public function __construct($conference)
     {
-        parent::__construct('ConfbridgeUnLock');
+        parent::__construct('ConfbridgeUnlock');
         $this->setKey('Conference', $conference);
     }
 }
