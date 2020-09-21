@@ -94,6 +94,16 @@ class QueueParamsEvent extends EventMessage
     {
         return intval($this->getKey('HoldTime'));
     }
+    
+    /**
+     * Returns key: 'TalkTime'.
+     *
+     * @return integer
+     */
+    public function getTalkTime()
+    {
+        return intval($this->getKey('TalkTime'));
+    }
 
     /**
      * Returns key: 'Completed'.
@@ -144,4 +154,5 @@ class QueueParamsEvent extends EventMessage
     {
         return intval($this->getKey('Weight'));
     }
+    
 }

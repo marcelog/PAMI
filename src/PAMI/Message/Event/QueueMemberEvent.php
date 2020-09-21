@@ -124,4 +124,34 @@ class QueueMemberEvent extends EventMessage
     {
         return intval($this->getKey('Paused')) != 0;
     }
+    
+    /**
+     * Returns key: 'LastCall'.
+     *
+     * @return int
+     */
+    public function getLastCall()
+    {
+        return intval($this->getKey('lastcall'));
+    }
+    
+    /**
+     * Returns key: 'IsInCall'.
+     *
+     * @return int
+     */
+    public function getIsInCall()
+    {
+        return intval($this->getKey('isincall'));
+    }
+    
+    /**
+     * Returns key: 'StateInterface'.
+     *
+     * @return string
+     */
+    public function getStateInterface()
+    {
+        return $this->getKey('stateinterface');
+    }
 }
