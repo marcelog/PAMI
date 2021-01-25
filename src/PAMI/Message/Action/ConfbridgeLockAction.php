@@ -11,7 +11,7 @@ namespace PAMI\Message\Action;
  * @subpackage Action
  * @author     Szabolcs Morvai <smorvai@arenim.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * 
+ *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
