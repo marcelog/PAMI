@@ -25,7 +25,7 @@ before_script:
   - phpenv config-add test/resources/php.ini
 
 install:
-  - composer install --ignore-platform-reqs
+  - composer install
 
 script:
   - vendor/bin/phing travis
