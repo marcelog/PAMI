@@ -23,7 +23,7 @@
     "psr/log": ">= 1.0.0"
   },
   "require-dev": {
-    "phpunit/phpunit": "*",
+    "phpunit/phpunit": "4.8.36",
     "monolog/monolog": "1.*",
     "squizlabs/php_codesniffer": "3.*",
     "phpdocumentor/phpdocumentor": "2.*",
