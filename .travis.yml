@@ -2,16 +2,16 @@ language: php
 
 jobs:
   include:
-    - php: 5.4
-      dist: trusty
-    - php: 5.5
-      dist: trusty
-    - php: 5.6
-      dist: xenial
-    - php: 7.0
-      dist: xenial
-    - php: 7.1
-      dist: xenial
+#    - php: 5.4
+#      dist: trusty
+#    - php: 5.5
+#      dist: trusty
+#    - php: 5.6
+#      dist: xenial
+#    - php: 7.0
+#      dist: xenial
+#    - php: 7.1
+#      dist: xenial
     - php: 7.2
       dist: xenial
     - php: 7.3
@@ -26,7 +26,7 @@ before_script:
 
 install:
   - composer install || composer install --ignore-platform-reqs
-  - if [[ ${TRAVIS_PHP_VERSION:0:1} == "8" ]]; then composer require phpunit/phpunit:9.5.2; fi
+  - if [[ ${TRAVIS_PHP_VERSION:0:1} == "8" ]]; then composer require phpunit/phpunit:9.* --ignore-platform-reqs; fi
 
 script:
   - vendor/bin/phing travis
