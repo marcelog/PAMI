@@ -26,6 +26,7 @@ before_script:
 
 install:
   - composer install || composer install --ignore-platform-reqs
+  - if [[ ${TRAVIS_PHP_VERSION:0:3} >= "8.0" ]]; then composer require phpunit/phpunit:9.5.2; fi
 
 script:
   - vendor/bin/phing travis
