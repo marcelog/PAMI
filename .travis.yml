@@ -26,7 +26,7 @@ before_script:
 
 install:
   - composer install || composer install --ignore-platform-reqs
-  - if [[ ${TRAVIS_PHP_VERSION:0:1} == "8" ]]; then composer require phpunit/phpunit:7.* sebastian/phpcpd:* --ignore-platform-reqs --with-all-dependencies; fi
+  - if [[ ${TRAVIS_PHP_VERSION:0:1} == "8" ]]; then composer require phpunit/phpunit:8.* sebastian/phpcpd:* --ignore-platform-reqs --with-all-dependencies; fi
 #disable cpd for now, as newer version fails with duplicated code
   - if [[ ${TRAVIS_PHP_VERSION:0:1} == "8" ]]; then sed -i 's/, cpd//g' build.xml; fi
 
