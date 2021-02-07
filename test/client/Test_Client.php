@@ -193,7 +193,7 @@ class Test_Client extends \PHPUnit\Framework\TestCase
 {
     private $_properties = array();
 
-    public function setUp(): void
+    public function setUp()
     {
         $this->_properties = array();
     }
