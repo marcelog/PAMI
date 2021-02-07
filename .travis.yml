@@ -18,8 +18,8 @@ jobs:
       dist: xenial
     - php: 7.4
       dist: xenial
-#    - php: 8.0 note: not working, since php8 phpunit requires rewrite which is incomatible with php 5.*
-#      dist: focal
+    - php: 8.0
+      dist: focal
     
 before_script:
   - phpenv config-add test/resources/php.ini
