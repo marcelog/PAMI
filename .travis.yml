@@ -29,7 +29,7 @@ install:
   - if [[ ${TRAVIS_PHP_VERSION:0:1} == "8" ]]; then composer require phpunit/phpunit:8.* sebastian/phpcpd:* --ignore-platform-reqs --with-all-dependencies; fi
 #disable cpd for now, as newer version fails with duplicated code
   - if [[ ${TRAVIS_PHP_VERSION:0:1} == "8" ]]; then sed -i 's/, cpd//g' build.xml; fi
-  - if [[ ${TRAVIS_PHP_VERSION:0:1} == "8" ]]; then sed -i 's/function setUp()/function setUp() : void/g' test/*/*.php; fi
+  - if [[ ${TRAVIS_PHP_VERSION:0:1} == "8" ]]; then sed -i 's/function setUp\(\)/function setUp\(\) \: void/g' test/*/*.php; fi
 
 script:
   - vendor/bin/phing travis
