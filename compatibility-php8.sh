@@ -6,3 +6,4 @@ composer require phpunit/phpunit:8.* sebastian/phpcpd:* --ignore-platform-reqs -
 sed -i 's/, cpd//g' build.xml
 sed -i 's/function setUp()/function setUp() : void/g' test/*/*.php
 sed -i 's/mapTestClassNameToCoveredClassName="false"//g' test/resources/phpunit.xml
+sed -i 's/stopOnRisky="true"//g' test/resources/phpunit.xml
