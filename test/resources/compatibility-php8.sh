@@ -3,7 +3,7 @@
 
 # require new version of phpunit and phpcpd, as the old ones are incompatible with php8
 # (note: cannot generally require the new ones as these are not compatible with php 5)
-composer require phpunit/phpunit:9.* sebastian/phpcpd:* --ignore-platform-reqs --with-all-dependencies
+composer require phpunit/phpunit:8.* sebastian/phpcpd:* --ignore-platform-reqs --with-all-dependencies
 
 # disable cpd for now, as newer version fails with duplicated code
 sed -i 's/, cpd//g' build.xml
