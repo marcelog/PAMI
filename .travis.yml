@@ -4,18 +4,18 @@ jobs:
   include:
     - php: 5.4
       dist: trusty
-#    - php: 5.5
-#      dist: trusty
-#    - php: 5.6
-#      dist: xenial
+    - php: 5.5
+      dist: trusty
+    - php: 5.6
+      dist: xenial
     - php: 7.0
       dist: xenial
-#    - php: 7.1
-#      dist: xenial
-#    - php: 7.2
-#      dist: xenial
-#    - php: 7.3
-#      dist: xenial
+    - php: 7.1
+      dist: xenial
+    - php: 7.2
+      dist: xenial
+    - php: 7.3
+      dist: xenial
     - php: 7.4
       dist: xenial
     - php: 8.0
@@ -26,7 +26,7 @@ before_script:
 
 install:
   - composer install || composer install --ignore-platform-reqs
-  - if [[ ${TRAVIS_PHP_VERSION:0:1} == "8" ]]; then sh compatibility-php8.sh; fi
+  - if [[ ${TRAVIS_PHP_VERSION:0:1} == "8" ]]; then sh test/resources/compatibility-php8.sh; fi
 
 script:
   - vendor/bin/phing travis
