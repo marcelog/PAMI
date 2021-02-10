@@ -256,7 +256,7 @@ class Test_Client extends \PHPUnit\Framework\TestCase
             'connect_timeout' => 10,
         	'read_timeout' => 10
         );
-        $read = array('Whatever');
+        $read = array('Asterisk');
         $write = array();
         setFgetsMock($read, $write);
         $client = new \PAMI\Client\Impl\ClientImpl($options);
