@@ -35,7 +35,6 @@ to 5.3.8 (see README.PHP-5.3.9-and-5.3.10).
 Also running on 5.4 and 5.5.
 
 ## PHP 7
-
 PHP Versions 7.0, 7.1, 7.2, 7.3 and 7.4 are also confirmed working with
 the latest version. 
 
