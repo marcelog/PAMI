@@ -11,12 +11,12 @@
 
 # Introduction
 
-PAMI means PHP Asterisk Manager Interface. As its name suggests its just a
+PAMI means PHP Asterisk Manager Interface. As its name suggests its a
 set of php classes that will let you issue commands to an ami and/or receive
 events, using an observer-listener pattern.
 
-The idea behind this, is to easily implement operator consoles, monitors, etc.
-either via SOA or ajax.
+The idea behind this, is to easily implement operator consoles, monitors,
+real time telephone applications, etc. either via SOA or ajax.
 
 A port for nodejs is available at: http://marcelog.github.com/Nami
 A port for erlang is available at: https://github.com/marcelog/erlami
@@ -28,17 +28,25 @@ A port for erlang is available at: https://github.com/marcelog/erlami
 
 # PHP Versions
 
+## PHP 5
 Note: PAMI Requires PHP 5.3+. PHP versions 5.3.9 and 5.3.10 WILL NOT WORK due
 to a bug introduced in stream_get_line() in 5.3.9. Please use 5.3.11+ or up
 to 5.3.8 (see README.PHP-5.3.9-and-5.3.10).
+Also running on 5.4 and 5.5.
+
+## PHP 7
+
+PHP Versions 7.0, 7.1, 7.2, 7.3 and 7.4 are also confirmed working with
+the latest version. 
+
+## PHP 8
+This version is also supported.
 
 # Installing
 Add this library to your [Composer](https://packagist.org/) configuration. In
 composer.json:
-```json
-  "require": {
-    "marcelog/pami": "2.*"
-  }
+```sh
+composer require marcelog/pami
 ```
 
 # QuickStart
@@ -97,7 +105,8 @@ Also, you might want to look at this article: http://marcelog.github.com/article
 
 For an example of using asynchronous AGI with PAMI, see docs/examples/asyncagi
 
-The [march edition](http://sdjournal.org/a-practical-introduction-to-functional-programming-with-php-sdj-issue-released/) of [Software Developer Journal](http://sdjournal.org/) features a complete article about writing telephony applications with PAMI and PAGI.
+The [2014 march edition](http://web.archive.org/web/20140625083045/http://sdjournal.org/a-practical-introduction-to-functional-programming-with-php-sdj-issue-released/) 
+of [Software Developer Journal](http://sdjournal.org/) features a complete article about writing telephony applications with PAMI and PAGI.
 
 # Currently Supported Events
 
