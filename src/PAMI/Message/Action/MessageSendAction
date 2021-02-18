@@ -1,0 +1,106 @@
+<?php
+/**
+ * MessageSend action message.
+ *
+ * PHP Version 5
+ *
+ * @category   Pami
+ * @package    Message
+ * @subpackage Action
+ * @author     Levi Dhuyvetter <levidhuyvetter@icloud.com>
+ * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
+ * @version    SVN: $Id$
+ * @link       http://marcelog.github.com/PAMI/
+ *
+ * Copyright 2021 Levi Dhuyvetter <levidhuyvetter@icloud.com>
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
+namespace PAMI\Message\Action;
+
+/**
+ * MessageSend action message.
+ *
+ * PHP Version 5
+ *
+ * @category   Pami
+ * @package    Message
+ * @subpackage Action
+ * @author     Levi Dhuyvetter <levidhuyvetter@icloud.com>
+ * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
+ * @link       http://marcelog.github.com/PAMI/
+ */
+class MessageSendAction extends ActionMessage
+{
+    /**
+     * Sets From key.
+     *
+     * @param string $from A From URI for the message if needed for the message technology being used to send this message.
+     *
+     * @return void
+     */
+    public function setFrom($from)
+    {
+        $this->setKey('From', $from);
+    }
+
+    /**
+     * Sets Body key.
+     *
+     * @param string $body The message body text.  This must not contain any newlines as that conflicts with the AMI protocol.
+     *
+     * @return void
+     */
+    public function setBody($body)
+    {
+        $this->setKey('Body', $body);
+    }
+
+    /**
+     * Sets Base64Body key.
+     *
+     * @param string $base64body Text bodies requiring the use of newlines have to be base64 encoded in this field.  Base64Body will be decoded before being sent out. Base64Body takes precedence over Body.
+     *
+     * @return void
+     */
+    public function setBase64Body($base64body)
+    {
+        $this->setKey('Base64Body', $base64body);
+    }
+
+    /**
+     * Sets Application key.
+     *
+     * @param string $application Application to execute.
+     *
+     * @return void
+     */
+    public function setApplication($application)
+    {
+        $this->setKey('Application', $application);
+    }
+
+    /**
+     * Constructor.
+     *
+     * @param string $to The URI the message is to be sent to.
+     *
+     * @return void
+     */
+    public function __construct($to)
+    {
+        parent::__construct('MessageSend');
+        $this->setKey('To', $to);
+    }
+}
