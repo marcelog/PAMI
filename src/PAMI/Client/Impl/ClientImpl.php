@@ -28,7 +28,6 @@ declare(ticks=1);
  * limitations under the License.
  *
  */
-
 namespace PAMI\Client\Impl;
 
 use PAMI\Message\OutgoingMessage;
@@ -158,8 +157,8 @@ class ClientImpl implements IClient
     /**
      * Opens a tcp connection to ami.
      *
-     * @return void
      * @throws \PAMI\Client\Exception\ClientException
+     * @return void
      */
     public function open()
     {
@@ -231,8 +230,8 @@ class ClientImpl implements IClient
     /**
      * Reads a complete message over the stream until EOM.
      *
-     * @return \string[]
      * @throws ClientException
+     * @return \string[]
      */
     protected function getMessages()
     {
@@ -271,7 +270,7 @@ class ClientImpl implements IClient
             $resPos = strpos($aMsg, 'Response:');
             $evePos = strpos($aMsg, 'Event:');
             if (($resPos !== false) &&
-                (($resPos < $evePos) || $evePos === false)
+              (($resPos < $evePos) || $evePos === false)
             ) {
                 $response = $this->messageToResponse($aMsg);
                 $this->incomingQueue[$response->getActionId()] = $response;
@@ -290,10 +289,7 @@ class ClientImpl implements IClient
                 $bMsg .= 'ActionId: ' . $this->lastActionId . "\r\n" . $aMsg;
                 $event = $this->messageToEvent($bMsg);
                 $response = $this->findResponse($event);
-                //find Response can return false
-                if ($response !== false) {
-                    $response->addEvent($event);
-                }
+                $response->addEvent($event);
             }
             $this->logger->debug('----------------');
         }
@@ -374,9 +370,9 @@ class ClientImpl implements IClient
      * Returns a message (response) related to the given message. This uses
      * the ActionID tag (key).
      *
-     * @return \PAMI\Message\IncomingMessage
      * @todo not suitable for multithreaded applications.
      *
+     * @return \PAMI\Message\IncomingMessage
      */
     protected function getRelated(OutgoingMessage $message)
     {
@@ -397,9 +393,9 @@ class ClientImpl implements IClient
      *
      * @param \PAMI\Message\OutgoingMessage $message Message to send.
      *
-     * @return \PAMI\Message\Response\ResponseMessage
-     * @throws \PAMI\Client\Exception\ClientException
      * @see ClientImpl::send()
+     * @throws \PAMI\Client\Exception\ClientException
+     * @return \PAMI\Message\Response\ResponseMessage
      */
     public function send(OutgoingMessage $message)
     {
@@ -461,7 +457,7 @@ class ClientImpl implements IClient
     {
         $this->logger = new NullLogger;
         $this->host = $options['host'];
-        $this->port = (int)$options['port'];
+        $this->port = (int) $options['port'];
         $this->user = $options['username'];
         $this->pass = $options['secret'];
         $this->cTimeout = $options['connect_timeout'];
