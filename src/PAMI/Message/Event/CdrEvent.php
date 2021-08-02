@@ -43,7 +43,7 @@ use PAMI\Message\Event\EventMessage;
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
  * @link       http://marcelog.github.com/PAMI/
  */
-class ChannelUpdateEvent extends EventMessage
+class CdrEvent extends EventMessage
 {
     /**
      * Returns key: 'Privilege'.
