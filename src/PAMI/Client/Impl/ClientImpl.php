@@ -289,7 +289,12 @@ class ClientImpl implements IClient
                 $bMsg .= 'ActionId: ' . $this->lastActionId . "\r\n" . $aMsg;
                 $event = $this->messageToEvent($bMsg);
                 $response = $this->findResponse($event);
-                $response->addEvent($event);
+
+                if ($response) {
+                    $response->addEvent($event);
+                } else {
+                    $this->logger->debug('Unable to find an associated response for the given message.');
+                }
             }
             $this->logger->debug('----------------');
         }
@@ -300,15 +305,15 @@ class ClientImpl implements IClient
      *
      * @param IncomingMessage $message Message sent by asterisk.
      *
-     * @return \PAMI\Message\Response\ResponseMessage
+     * @return \PAMI\Message\Response\ResponseMessage|null
      */
-    protected function findResponse(IncomingMessage $message)
+    protected function findResponse(IncomingMessage $message): ?ResponseMessage
     {
         $actionId = $message->getActionId();
         if (isset($this->incomingQueue[$actionId])) {
             return $this->incomingQueue[$actionId];
         }
-        return false;
+        return null;
     }
 
     /**

@@ -1,11 +1,17 @@
 {
-  "name": "marcelog/pami",
+  "name": "level23/pami",
   "type": "library",
   "description": "Asterisk Manager Interface (AMI) client for PHP, event driven, object oriented",
   "keywords": ["asterisk","ami","client","telephony","voip","event","action","manager","monitor"],
   "homepage": "http://marcelog.github.com/PAMI",
   "license": "Apache-2.0",
   "authors": [
+    {
+      "name": "Richard Stellingwerff",
+      "email": "richard@level23.nl",
+      "homepage": "http://level23.github.com/",
+      "role": "Maintainer"
+    },
     {
       "name": "Marcelo Gornstein",
       "email": "marcelog@gmail.com",
@@ -19,7 +25,7 @@
     }
   },
   "require": {
-    "php": ">=5.3.3",
+    "php": ">=7.4",
     "psr/log": ">= 1.0.0"
   },
   "require-dev": {
