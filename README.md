@@ -18,7 +18,7 @@ events, using an observer-listener pattern.
 The idea behind this, is to easily implement operator consoles, monitors, etc.
 either via SOA or ajax.
 
-A port for nodejs is available at: http://marcelog.github.com/Nami
+A port for nodejs is available at: http://marcelog.github.io/Nami
 A port for erlang is available at: https://github.com/marcelog/erlami
 
 # Resources
@@ -43,7 +43,7 @@ composer.json:
 
 # QuickStart
 
-For an in-depth tutorial: http://marcelog.github.com/articles/pami_introduction_tutorial_how_to_install.html
+For an in-depth tutorial: http://marcelog.github.io/articles/pami_introduction_tutorial_how_to_install.html
 
 ```php
 // Make sure you include the composer autoload.
@@ -93,7 +93,7 @@ Please see docs/examples/quickstart/example.php for a very basic example.
 
 AsterTrace is a full application: https://github.com/marcelog/AsterTrace.
 
-Also, you might want to look at this article: http://marcelog.github.com/articles/php_asterisk_listener_example_using_pami_and_ding.html
+Also, you might want to look at this article: http://marcelog.github.io/articles/php_asterisk_listener_example_using_pami_and_ding.html
 
 For an example of using asynchronous AGI with PAMI, see docs/examples/asyncagi
 
