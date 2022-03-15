@@ -59,4 +59,15 @@ class GetConfigAction extends ActionMessage
             $this->setKey('Category', $category);
         }
     }
+    
+    /**
+     * Sets Filter.
+     *
+     * @param string $filter.
+     *
+     * @return void
+     */
+    public function setFilter($filter) {
+    	$this->setKey('Filter', $filter);
+    }
 }
