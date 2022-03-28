@@ -114,4 +114,14 @@ class HangupEvent extends EventMessage
     {
         return $this->getKey('Cause-txt');
     }
+
+    /**
+     * Returns key: 'AccountCode'.
+     *
+     * @return string
+     */
+    public function getAccountCode()
+    {
+        return $this->getKey('AccountCode');
+    }
 }
