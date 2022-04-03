@@ -189,7 +189,7 @@ namespace PAMI\Client\Impl {
  * @license    http://marcelog.github.com/ Apache License 2.0
  * @link       http://marcelog.github.com/
  */
-class Test_Client extends \PHPUnit_Framework_TestCase
+class Test_Client extends \PHPUnit\Framework\TestCase
 {
     private $_properties = array();
 
@@ -256,7 +256,7 @@ class Test_Client extends \PHPUnit_Framework_TestCase
             'connect_timeout' => 10,
         	'read_timeout' => 10
         );
-        $read = array('Whatever');
+        $read = array("Whatever");
         $write = array();
         setFgetsMock($read, $write);
         $client = new \PAMI\Client\Impl\ClientImpl($options);
