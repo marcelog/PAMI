@@ -4,7 +4,7 @@
   "description": "Asterisk Manager Interface (AMI) client for PHP, event driven, object oriented",
   "keywords": ["asterisk","ami","client","telephony","voip","event","action","manager","monitor"],
   "homepage": "http://marcelog.github.com/PAMI",
-  "license": "Apache2",
+  "license": "Apache-2.0",
   "authors": [
     {
       "name": "Marcelo Gornstein",
@@ -23,16 +23,16 @@
     "psr/log": ">= 1.0.0"
   },
   "require-dev": {
-    "phpunit/phpunit": "4.*",
+    "phpunit/phpunit": "4.8.36",
     "monolog/monolog": "1.*",
-    "squizlabs/php_codesniffer": "2.*",
+    "squizlabs/php_codesniffer": "2.*|3.*",
     "phpdocumentor/phpdocumentor": "2.*",
-    "phing/phing": "2.*",
+    "phing/phing": "2.16.3",
     "phpmd/phpmd": "2.*",
     "satooshi/php-coveralls": "1.0.1",
     "evert/phpdoc-md" : "~0.1.1",
     "codeclimate/php-test-reporter": "dev-master",
-    "sebastian/phpcpd": "*",
-    "marcelog/PAGI": "2.*"
+    "sebastian/phpcpd": "2.0.4",
+    "marcelog/pagi": "2.*"
   }
 }
