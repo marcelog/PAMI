@@ -69,7 +69,7 @@ class EventFactoryImpl
         for ($i = 0; $i < $totalParts; $i++) {
             $parts[$i] = ucfirst($parts[$i]);
         }
-        if (PHP_MAJOR_VERSION < 7 || PHP_MINOR_VERSION < 4) {
+        if (PHP_MAJOR_VERSION < 7 || (PHP_MAJOR_VERSION == 7 && PHP_MINOR_VERSION < 4)) {
             $name = implode($parts, '');
         } else {
             $name = implode('', $parts);
