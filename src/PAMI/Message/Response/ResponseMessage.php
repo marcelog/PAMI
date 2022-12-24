@@ -131,10 +131,7 @@ class ResponseMessage extends IncomingMessage
      */
     public function isList()
     {
-        return
-            stristr($this->getKey('EventList'), 'start') !== false
-            || stristr($this->getMessage(), 'follow') !== false
-        ;
+        return ($this->getKey('EventList') && stristr($this->getKey('EventList'), 'start') !== false) || ($this->getMessage() && stristr($this->getMessage(), 'follow') !== false);
     }
 
     /**
