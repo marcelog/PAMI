@@ -1,15 +1,15 @@
 {
-  "name": "marcelog/pami",
+  "name": "dyegogssouza/pami",
   "type": "library",
   "description": "Asterisk Manager Interface (AMI) client for PHP, event driven, object oriented",
   "keywords": ["asterisk","ami","client","telephony","voip","event","action","manager","monitor"],
-  "homepage": "http://marcelog.github.com/PAMI",
+  "homepage": "https://github.com/dyegogssouza/PAMI",
   "license": "Apache-2.0",
   "authors": [
     {
-      "name": "Marcelo Gornstein",
-      "email": "marcelog@gmail.com",
-      "homepage": "http://marcelog.github.com/",
+      "name": "Dyego Souza",
+      "email": "dddyego@gmail.com",
+      "homepage": "https://github.com/dyegogssouza",
       "role": "Developer"
     }
   ],
