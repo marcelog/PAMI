@@ -54,7 +54,7 @@ class SorceryMemoryCacheStaleObjectAction extends ActionMessage
      */
     public function __construct($cache, $object, $reload = false)
     {
-        parent::__construct('SorceryMemoryCacheExpireObject');
+        parent::__construct('SorceryMemoryCacheStaleObject');
         $this->setKey('Cache', $cache);
         $this->setKey('Object', $object);
         if ($reload !== false) {
