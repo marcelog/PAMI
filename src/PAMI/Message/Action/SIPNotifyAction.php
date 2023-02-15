@@ -47,12 +47,16 @@ class SIPNotifyAction extends ActionMessage
      * Constructor.
      *
      * @param string $channel Peer to receive the notify.
+     * @param array $variables Variable Key-Value pairs.
      *
      * @return void
      */
-    public function __construct($channel)
+    public function __construct($channel, $variables)
     {
         parent::__construct('SIPnotify');
         $this->setKey('Channel', $channel);
+        foreach ($variables as $key => $value) {
+            $this->setKey('Variable', $key . '=' . $value);
+        }
     }
 }
