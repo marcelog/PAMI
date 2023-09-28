@@ -1,18 +1,18 @@
 <?php
 /**
- * SIPNotify action message.
+ * PJSIPNotify action message.
  *
  * PHP Version 5
  *
  * @category   Pami
  * @package    Message
  * @subpackage Action
- * @author     Marcelo Gornstein <marcelog@gmail.com>
+ * @author     Sperl Viktor <viktike32@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
  * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
- * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
+ * Copyright 2023 Sperl Viktor <viktike32@gmail.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,33 +30,41 @@
 namespace PAMI\Message\Action;
 
 /**
- * SIPNotify action message.
+ * PJSIPNotify action message.
  *
  * PHP Version 5
  *
  * @category   Pami
  * @package    Message
  * @subpackage Action
- * @author     Marcelo Gornstein <marcelog@gmail.com>
+ * @author     Sperl Viktor <viktike32@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
  * @link       http://marcelog.github.com/PAMI/
  */
-class SIPNotifyAction extends ActionMessage
+class PJSIPNotifyAction extends ActionMessage
 {
     /**
      * Constructor.
      *
-     * @param string $channel Peer to receive the notify.
-     * @param array $variables Variable Key-Value pairs.
+     * @param string $endpoint PJSIP endpoint or URI to receive the notify.
+     * @param array/string $variables Variable Key-Value pairs / pjsip_notify.conf context (section) name.
      *
      * @return void
      */
-    public function __construct($channel, $variables)
+    public function __construct($endpoint, $variables)
     {
-        parent::__construct('SIPnotify');
-        $this->setKey('Channel', $channel);
-        foreach ($variables as $key => $value) {
-            $this->setKey('Variable', $key . '=' . $value);
+        parent::__construct('PJSIPNotify');
+        if (strpos($endpoint, "@") !== false) {
+            $this->setKey('URI', $endpoint);
+        } else {
+            $this->setKey('Endpoint', $endpoint);
+        }
+        if (is_array($variables)) {
+            foreach ($variables as $key => $value) {
+                $this->setKey('Variable', $key . '=' . $value);
+            }
+        } else {
+            $this->setKey('Option', $variables);
         }
     }
 }
