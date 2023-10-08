@@ -50,9 +50,15 @@ class GetConfigJSONAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($filename)
+    public function __construct($filename, $category = false, $filter = false)
     {
         parent::__construct('GetConfigJSON');
         $this->setKey('Filename', $filename);
+        if ($category != false) {
+            $this->setKey('Category', $category);
+        }
+        if ($filter != false) {
+            $this->setKey('Filter', $filter);
+        }
     }
 }
