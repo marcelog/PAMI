@@ -51,12 +51,15 @@ class GetConfigAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($filename, $category = false)
+    public function __construct($filename, $category = false, $filter = false)
     {
         parent::__construct('GetConfig');
         $this->setKey('Filename', $filename);
         if ($category != false) {
             $this->setKey('Category', $category);
+        }
+        if ($filter != false) {
+            $this->setKey('Filter', $filter);
         }
     }
 }
