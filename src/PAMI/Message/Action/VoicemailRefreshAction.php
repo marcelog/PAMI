@@ -48,12 +48,12 @@ class VoicemailRefreshAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($context = null, $mailbox = null)
+    public function __construct($context = false, $mailbox = false)
     {
         parent::__construct('VoicemailRefresh');
-        if(!is_null($context)){
+        if($context != false){
             $this->setKey('Context', $context);
-            if(!is_null($mailbox)){
+            if($mailbox != false){
                 $this->setKey('Mailbox', $mailbox);
             }
         }
