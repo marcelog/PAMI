@@ -47,6 +47,7 @@ class GetConfigJSONAction extends ActionMessage
      * Constructor.
      *
      * @param string $filename Configuration filename (e.g.: foo.conf).
+     * @param string $category Contect name in ini file (e.g.: [general]).
      *
      * @return void
      */
