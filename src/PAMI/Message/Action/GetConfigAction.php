@@ -47,16 +47,19 @@ class GetConfigAction extends ActionMessage
      * Constructor.
      *
      * @param string  $filename Configuration filename (e.g.: foo.conf).
-     * @param boolean $category Category in configuration file.
+     * @param string $category Contect name in ini file (e.g.: [general]).
      *
      * @return void
      */
-    public function __construct($filename, $category = false)
+    public function __construct($filename, $category = false, $filter = false)
     {
         parent::__construct('GetConfig');
         $this->setKey('Filename', $filename);
         if ($category != false) {
             $this->setKey('Category', $category);
+        }
+        if ($filter != false) {
+            $this->setKey('Filter', $filter);
         }
     }
 }
