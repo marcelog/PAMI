@@ -238,7 +238,7 @@ class ClientImpl implements IClient
         $msgs = array();
         // Read something.
         $read = @fread($this->socket, 65535);
-        if ($read === false || @feof($this->socket)) {
+        if ($read === false || !@feof($this->socket)) {
             throw new ClientException('Error reading');
         }
         $this->currentProcessingMessage .= $read;
