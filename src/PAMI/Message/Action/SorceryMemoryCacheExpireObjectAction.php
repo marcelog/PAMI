@@ -1,18 +1,18 @@
 <?php
 /**
- * GetConfigJSON action message.
+ * SorceryMemoryCacheExpireObject action message.
  *
  * PHP Version 5
  *
  * @category   Pami
  * @package    Message
  * @subpackage Action
- * @author     Marcelo Gornstein <marcelog@gmail.com>
+ * @author     Sperl Viktor <viktike32@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
  * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
- * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
+ * Copyright 2023 Sperl Viktor <viktike32@gmail.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,36 +30,31 @@
 namespace PAMI\Message\Action;
 
 /**
- * GetConfigJSON action message.
+ * SorceryMemoryCacheExpireObject action message.
  *
  * PHP Version 5
  *
  * @category   Pami
  * @package    Message
  * @subpackage Action
- * @author     Marcelo Gornstein <marcelog@gmail.com>
+ * @author     Sperl Viktor <viktike32@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
  * @link       http://marcelog.github.com/PAMI/
  */
-class GetConfigJSONAction extends ActionMessage
+class SorceryMemoryCacheExpireObjectAction extends ActionMessage
 {
     /**
      * Constructor.
      *
-     * @param string $filename Configuration filename (e.g.: foo.conf).
-     * @param string $category Contect name in ini file (e.g.: [general]).
+     * @param string $cache Cache name.
+     * @param string $object Object name.
      *
      * @return void
      */
-    public function __construct($filename, $category = false, $filter = false)
+    public function __construct($cache, $object)
     {
-        parent::__construct('GetConfigJSON');
-        $this->setKey('Filename', $filename);
-        if ($category != false) {
-            $this->setKey('Category', $category);
-        }
-        if ($filter != false) {
-            $this->setKey('Filter', $filter);
-        }
+        parent::__construct('SorceryMemoryCacheExpireObject');
+        $this->setKey('Cache', $cache);
+        $this->setKey('Object', $object);
     }
 }

@@ -1,16 +1,16 @@
 <?php
+namespace PAMI\Message\Action;
+
 /**
- * SIPNotify action message.
+ * ConfbridgeKickAction action message.
  *
  * PHP Version 5
  *
  * @category   Pami
  * @package    Message
  * @subpackage Action
- * @author     Marcelo Gornstein <marcelog@gmail.com>
+ * @author     Szabolcs Morvai <smorvai@arenim.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
- * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
  *
@@ -27,36 +27,20 @@
  * limitations under the License.
  *
  */
-namespace PAMI\Message\Action;
-
-/**
- * SIPNotify action message.
- *
- * PHP Version 5
- *
- * @category   Pami
- * @package    Message
- * @subpackage Action
- * @author     Marcelo Gornstein <marcelog@gmail.com>
- * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @link       http://marcelog.github.com/PAMI/
- */
-class SIPNotifyAction extends ActionMessage
+class ConfbridgeKickAction extends ActionMessage
 {
     /**
      * Constructor.
      *
-     * @param string $channel Peer to receive the notify.
-     * @param array $variables Variable Key-Value pairs.
+     * @param string $channel Channel to be muted.
+     * @param string $conference Conference on which to act.
      *
      * @return void
      */
-    public function __construct($channel, $variables)
+    public function __construct($channel, $conference)
     {
-        parent::__construct('SIPnotify');
+        parent::__construct('ConfbridgeKick');
         $this->setKey('Channel', $channel);
-        foreach ($variables as $key => $value) {
-            $this->setKey('Variable', $key . '=' . $value);
-        }
+        $this->setKey('Conference', $conference);
     }
 }
