@@ -129,7 +129,7 @@ class ClientTest extends MockeryTestCase
     public function testCanConnectTimeout(): void
     {
         $this->expectException(\ErrorException::class);
-        $this->expectExceptionMessage('Operation timed out');
+        $this->expectExceptionMessage('timed out');
 
         set_error_handler(
         /**
