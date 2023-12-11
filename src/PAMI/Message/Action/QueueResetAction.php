@@ -46,7 +46,7 @@ class QueueResetAction extends ActionMessage
     /**
      * Constructor.
      *
-     * @param string $queue Queue name.
+     * @param string|false $queue Queue name.
      *
      * @return void
      */

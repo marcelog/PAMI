@@ -52,5 +52,5 @@ interface IEventListener
      *
      * @return void
      */
-    public function handle(EventMessage $event);
+    public function handle(EventMessage $event): void;
 }

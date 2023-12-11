@@ -46,11 +46,6 @@ class DongleShowDevicesAction extends ActionMessage
     /**
      * Constructor.
      *
-     * @param string $device  Device name (like dongle01).
-     * @param string $number  Destination number.
-     * @param string $message What to send.
-     *
-     * @return void
      */
     public function __construct()
     {

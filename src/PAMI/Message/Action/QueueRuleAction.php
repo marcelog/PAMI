@@ -46,7 +46,7 @@ class QueueRuleAction extends ActionMessage
     /**
      * Constructor.
      *
-     * @param string $rule Rule.
+     * @param string|false $rule Rule.
      *
      * @return void
      */

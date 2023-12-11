@@ -29,8 +29,6 @@
  */
 namespace PAMI\Message\Event;
 
-use PAMI\Message\Event\EventMessage;
-
 /**
  * Event triggered for agents.
  *
@@ -88,7 +86,7 @@ class AgentsEvent extends EventMessage
     /**
      * Returns key: 'LoggedInTime'.
      *
-     * @return integer
+     * @return string
      */
     public function getLoggedInTime()
     {
@@ -98,7 +96,7 @@ class AgentsEvent extends EventMessage
     /**
      * Returns key: 'TalkingTo'.
      *
-     * @return integer
+     * @return string
      */
     public function getTalkingTo()
     {
@@ -108,7 +106,7 @@ class AgentsEvent extends EventMessage
     /**
      * Returns key: 'TalkingToChannel'.
      *
-     * @return integer
+     * @return string
      */
     public function getTalkingToChannel()
     {

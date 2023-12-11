@@ -46,7 +46,7 @@ class QueueSummaryAction extends ActionMessage
     /**
      * Constructor.
      *
-     * @param string $queue The queue (optional).
+     * @param string|false $queue The queue (optional).
      *
      * @return void
      */

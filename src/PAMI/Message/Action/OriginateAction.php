@@ -106,7 +106,7 @@ class OriginateAction extends ActionMessage
     /**
      * Sets Timeout key.
      *
-     * @param integer $timeout How long to wait for call to be answered (in ms).
+     * @param integer|string $timeout How long to wait for call to be answered (in ms).
      *
      * @return void
      */
@@ -130,7 +130,7 @@ class OriginateAction extends ActionMessage
     /**
      * Sets Account key.
      *
-     * @param string Account code.
+     * @param string $account Account code.
      *
      * @return void
      */
@@ -142,7 +142,7 @@ class OriginateAction extends ActionMessage
     /**
      * Sets Async key.
      *
-     * @param boolean $async Set to true for fast origination.
+     * @param bool $async Set to true for fast origination.
      *
      * @return void
      */

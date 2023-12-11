@@ -1,0 +1,50 @@
+name: Build
+on:
+  push:
+    branches:
+      - master
+      - github-actions
+  pull_request:
+    branches:
+      - master
+      - github-actions
+jobs:
+  build:
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      matrix:
+        operating-system: [ 'ubuntu-latest' ]
+        php-versions: [ '8.2', '8.3' ]
+        phpunit-versions: [ '10' ]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup PHP with PECL extension
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          coverage: xdebug
+          tools: phpstan,phpunit:${{ matrix.phpunit-versions }}
+
+      - name: Get composer cache directory
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
+          restore-keys: ${{ runner.os }}-composer-
+
+      - name: Setup problem matchers for PHPUnit
+        run: echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
+
+      - name: Install dependencies
+        run: composer install
+
+      - run: phpunit --version
+
+      - run: vendor/bin/phpunit --configuration phpunit.xml
+      - run: vendor/bin/phpstan analyze

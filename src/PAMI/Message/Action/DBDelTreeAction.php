@@ -27,6 +27,7 @@
  * limitations under the License.
  *
  */
+
 namespace PAMI\Message\Action;
 
 /**
@@ -46,8 +47,8 @@ class DBDelTreeAction extends ActionMessage
     /**
      * Constructor.
      *
-     * @param string $family Family.
-     * @param string $key    Name (optional)
+     * @param string      $family Family.
+     * @param string|bool $key    Name (optional)
      *
      * @return void
      */

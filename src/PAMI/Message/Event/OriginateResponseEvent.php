@@ -29,8 +29,6 @@
  */
 namespace PAMI\Message\Event;
 
-use PAMI\Message\Event\EventMessage;
-
 /**
  * Response from an async originate.
  *
@@ -110,7 +108,7 @@ class OriginateResponseEvent extends EventMessage
      *
      * @return string
      */
-    public function getActionID()
+    public function getActionID(): string
     {
         return $this->getKey('ActionID');
     }

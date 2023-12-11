@@ -27,6 +27,7 @@
  * limitations under the License.
  *
  */
+
 namespace PAMI\Message\Action;
 
 /**
@@ -46,8 +47,8 @@ class GetVarAction extends ActionMessage
     /**
      * Constructor.
      *
-     * @param string $name    Variable name.
-     * @param string $channel Optional channel name.
+     * @param string      $name    Variable name.
+     * @param string|bool $channel Optional channel name.
      *
      * @return void
      */

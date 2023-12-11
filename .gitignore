@@ -7,3 +7,13 @@ build
 docs/examples/quickstart/log.log
 resources/php.ini
 
+/.phpunit.result.cache
+/.phpunit.cache/
+/.idea/.gitignore
+/.idea/modules.xml
+/.idea/PAMI.iml
+/.idea/php.xml
+/.idea/php-test-framework.xml
+/.idea/phpspec.xml
+/.idea/phpunit.xml
+/.idea/vcs.xml

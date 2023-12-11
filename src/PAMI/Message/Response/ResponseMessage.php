@@ -27,9 +27,9 @@
  * limitations under the License.
  *
  */
+
 namespace PAMI\Message\Response;
 
-use PAMI\Message\Message;
 use PAMI\Message\IncomingMessage;
 use PAMI\Message\Event\EventMessage;
 
@@ -49,15 +49,17 @@ class ResponseMessage extends IncomingMessage
 {
     /**
      * Child events.
-     * @var EventMessage[]
+     *
+     * @var array<int, EventMessage>
      */
-    private $events;
+    private array $events;
 
     /**
      * Is this response completed? (with all its events).
-     * @var boolean
+     *
+     * @var bool
      */
-    private $completed;
+    private bool $completed;
 
     /**
      * Serialize function.
@@ -69,6 +71,7 @@ class ResponseMessage extends IncomingMessage
         $ret = parent::__sleep();
         $ret[] = 'completed';
         $ret[] = 'events';
+
         return $ret;
     }
 
@@ -77,9 +80,9 @@ class ResponseMessage extends IncomingMessage
      * if it's not a list OR it's a list with its last child event containing
      * an EventList = Complete.
      *
-     * @return boolean
+     * @return bool
      */
-    public function isComplete()
+    public function isComplete(): bool
     {
         return $this->completed;
     }
@@ -91,7 +94,7 @@ class ResponseMessage extends IncomingMessage
      *
      * @return void
      */
-    public function addEvent(EventMessage $event)
+    public function addEvent(EventMessage $event): void
     {
         $this->events[] = $event;
         if (stristr($event->getEventList(), 'complete') !== false
@@ -107,7 +110,7 @@ class ResponseMessage extends IncomingMessage
      *
      * @return EventMessage[]
      */
-    public function getEvents()
+    public function getEvents(): array
     {
         return $this->events;
     }
@@ -115,11 +118,11 @@ class ResponseMessage extends IncomingMessage
     /**
      * Checks if the Response field has the word Error in it.
      *
-     * @return boolean
+     * @return bool
      */
-    public function isSuccess()
+    public function isSuccess(): bool
     {
-        return stristr($this->getKey('Response'), 'Error') === false;
+        return stristr($this->getKey('Response') ?? '', 'Error') === false;
     }
 
     /**
@@ -127,14 +130,13 @@ class ResponseMessage extends IncomingMessage
      * word 'start' in it. Another way is to have a Message key, like:
      * Message: Result will follow
      *
-     * @return boolean
+     * @return bool
      */
-    public function isList()
+    public function isList(): bool
     {
         return
-            stristr($this->getKey('EventList'), 'start') !== false
-            || stristr($this->getMessage(), 'follow') !== false
-        ;
+            stristr($this->getKey('EventList') ?? '', 'start') !== false
+            || stristr($this->getMessage(), 'follow') !== false;
     }
 
     /**
@@ -142,9 +144,9 @@ class ResponseMessage extends IncomingMessage
      *
      * @return string
      */
-    public function getMessage()
+    public function getMessage(): string
     {
-        return $this->getKey('Message');
+        return $this->getKey('Message') ?? '';
     }
 
     /**
@@ -155,7 +157,7 @@ class ResponseMessage extends IncomingMessage
      *
      * @return void
      */
-    public function setActionId($actionId)
+    public function setActionId(string $actionId): void
     {
         $this->setKey('ActionId', $actionId);
     }
@@ -167,11 +169,10 @@ class ResponseMessage extends IncomingMessage
      *
      * @return void
      */
-    public function __construct($rawContent)
+    public function __construct(string $rawContent)
     {
         parent::__construct($rawContent);
-        $this->events = array();
-        $this->eventsCount = 0;
+        $this->events = [];
         $this->completed = !$this->isList();
     }
 }

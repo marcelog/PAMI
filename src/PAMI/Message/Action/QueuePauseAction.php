@@ -46,7 +46,9 @@ class QueuePauseAction extends ActionMessage
     /**
      * Constructor.
      *
-     * @return void
+     * @param string      $interface
+     * @param bool|string $queue
+     * @param bool|string $reason
      */
     public function __construct($interface, $queue = false, $reason = false)
     {

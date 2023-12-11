@@ -48,8 +48,8 @@ class ParkAction extends ActionMessage
      *
      * @param string  $channel1 Channel name to park.
      * @param string  $channel2 Channel to announce park info to (and return to if timeout).
-     * @param integer $timeout  Number of milliseconds to wait before callback.
-     * @param string  $lot      Parking lot to park channel in.
+     * @param integer|false $timeout Number of milliseconds to wait before callback.
+     * @param string|false  $lot     Parking lot to park channel in.
      *
      * @return void
      */

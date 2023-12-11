@@ -27,6 +27,7 @@
  * limitations under the License.
  *
  */
+
 namespace PAMI\Message\Action;
 
 /**
@@ -47,7 +48,7 @@ class AgentLogoffAction extends ActionMessage
      * Constructor.
      *
      * @param string $agent Agent ID of the agent to log off.
-     * @param string $soft  Set to true to not hangup existing calls.
+     * @param bool   $soft  Set to true to not hangup existing calls.
      *
      * @return void
      */

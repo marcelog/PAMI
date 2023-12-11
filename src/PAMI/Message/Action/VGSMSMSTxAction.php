@@ -109,7 +109,7 @@ class VGSMSMSTxAction extends ActionMessage
     /**
      * Sets X-SMS-Class  key. Optional
      *
-     * @param string $sms_class Class of SMS to send. Values are 0, 1. 0 is Flash message.
+     * @param string $class Class of SMS to send. Values are 0, 1. 0 is Flash message.
      *
      * @return void
      */
@@ -118,10 +118,11 @@ class VGSMSMSTxAction extends ActionMessage
         $this->setKey('X-SMS-Class', $class);
     }
 
-
     /**
      * Sets X-SMS-Concatenate-RefID . Optional. Should be set with
      * setConcatSeqNum and setConcatSeqNum
+     *
+     * @param string|int $refid
      *
      * @return void
      */
@@ -134,6 +135,8 @@ class VGSMSMSTxAction extends ActionMessage
      * Sets X-SMS-Concatenate-Sequence-Number. Optional. Should be set with
      * setConcatSeqNum: setConcatTotalMsg
      *
+     * @param string $seqnum
+     *
      * @return void
      */
     public function setConcatSeqNum($seqnum)
@@ -145,6 +148,8 @@ class VGSMSMSTxAction extends ActionMessage
      * Sets X-SMS-Concatenate-Total-Messages. Optional. Should be set with
      * setConcatRefId and setConcatSeqNum
      *
+     * @param string|int $totalmsg
+     *
      * @return void
      */
     public function setConcatTotalMsg($totalmsg)
@@ -155,7 +160,7 @@ class VGSMSMSTxAction extends ActionMessage
     /**
      * Sets Account key.
      *
-     * @param string Account code.
+     * @param string $account Account code.
      *
      * @return void
      */

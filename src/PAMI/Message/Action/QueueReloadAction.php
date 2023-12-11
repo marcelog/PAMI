@@ -27,6 +27,7 @@
  * limitations under the License.
  *
  */
+
 namespace PAMI\Message\Action;
 
 /**
@@ -46,10 +47,10 @@ class QueueReloadAction extends ActionMessage
     /**
      * Constructor.
      *
-     * @param string  $queue      Queue name.
-     * @param boolean $members    Reload members.
-     * @param boolean $rules      Reload rules.
-     * @param boolean $parameters Reload parameters.
+     * @param string|false $queue      Queue name.
+     * @param bool         $members    Reload members.
+     * @param bool         $rules      Reload rules.
+     * @param bool         $parameters Reload parameters.
      *
      * @return void
      */

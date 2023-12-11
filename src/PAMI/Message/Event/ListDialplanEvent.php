@@ -29,8 +29,6 @@
  */
 namespace PAMI\Message\Event;
 
-use PAMI\Message\Event\EventMessage;
-
 /**
  * Event triggered when an action ShowDialPlan is issued.
  *
@@ -43,7 +41,7 @@ use PAMI\Message\Event\EventMessage;
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
  * @link       http://marcelog.github.com/PAMI/
  */
-class ListDialPlanEvent extends EventMessage
+class ListDialplanEvent extends EventMessage
 {
     /**
      * Returns key: 'Context'.

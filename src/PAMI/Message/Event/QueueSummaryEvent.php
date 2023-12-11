@@ -29,8 +29,6 @@
  */
 namespace PAMI\Message\Event;
 
-use PAMI\Message\Event\EventMessage;
-
 /**
  * Event triggered for a QueueSummary action.
  *
@@ -88,7 +86,7 @@ class QueueSummaryEvent extends EventMessage
     /**
      * Returns key: 'HoldTime'.
      *
-     * @return integer
+     * @return string
      */
     public function getHoldTime()
     {
@@ -98,7 +96,7 @@ class QueueSummaryEvent extends EventMessage
     /**
      * Returns key: 'LongestHoldTime'.
      *
-     * @return integer
+     * @return string
      */
     public function getLongestHoldTime()
     {

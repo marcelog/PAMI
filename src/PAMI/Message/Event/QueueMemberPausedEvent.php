@@ -29,8 +29,6 @@
  */
 namespace PAMI\Message\Event;
 
-use PAMI\Message\Event\EventMessage;
-
 /**
  * Event triggered for a change in a queue member (pause/unpause).
  *
@@ -88,7 +86,7 @@ class QueueMemberPausedEvent extends EventMessage
     /**
      * Returns key: 'Paused'.
      *
-     * @return boolean
+     * @return bool
      */
     public function getPaused()
     {

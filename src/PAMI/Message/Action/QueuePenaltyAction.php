@@ -27,6 +27,7 @@
  * limitations under the License.
  *
  */
+
 namespace PAMI\Message\Action;
 
 /**
@@ -46,10 +47,9 @@ class QueuePenaltyAction extends ActionMessage
     /**
      * Constructor.
      *
-     * @param string $queue Queue name.
-     * @param string $event Event.
-     *
-     * @return void
+     * @param string      $interface
+     * @param string|bool $penalty
+     * @param string|bool $queue
      */
     public function __construct($interface, $penalty, $queue = false)
     {
