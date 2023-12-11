@@ -47,8 +47,8 @@ class GetConfigAction extends ActionMessage
     /**
      * Constructor.
      *
-     * @param string         $filename Configuration filename (e.g.: foo.conf).
-     * @param string|boolean $category Category in configuration file.
+     * @param string      $filename Configuration filename (e.g.: foo.conf).
+     * @param string|bool $category Category in configuration file.
      *
      * @return void
      */

@@ -378,7 +378,7 @@ class ClientImpl implements IClient
      *
      * @return void
      */
-    protected function dispatch(IncomingMessage $message): void
+    protected function dispatch(EventMessage $message): void
     {
         foreach ($this->eventListeners as $data) {
             $listener = $data[0];

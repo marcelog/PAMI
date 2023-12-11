@@ -142,7 +142,7 @@ class OriginateAction extends ActionMessage
     /**
      * Sets Async key.
      *
-     * @param boolean $async Set to true for fast origination.
+     * @param bool $async Set to true for fast origination.
      *
      * @return void
      */

@@ -47,8 +47,8 @@ class AgentLogoffAction extends ActionMessage
     /**
      * Constructor.
      *
-     * @param string  $agent Agent ID of the agent to log off.
-     * @param boolean $soft  Set to true to not hangup existing calls.
+     * @param string $agent Agent ID of the agent to log off.
+     * @param bool   $soft  Set to true to not hangup existing calls.
      *
      * @return void
      */

@@ -126,7 +126,7 @@ class QueueMemberStatusEvent extends EventMessage
     /**
      * Returns key: 'Paused'.
      *
-     * @return boolean
+     * @return bool
      */
     public function getPause()
     {

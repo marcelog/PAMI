@@ -57,7 +57,7 @@ class ResponseMessage extends IncomingMessage
     /**
      * Is this response completed? (with all its events).
      *
-     * @var boolean
+     * @var bool
      */
     private bool $completed;
 
@@ -80,7 +80,7 @@ class ResponseMessage extends IncomingMessage
      * if it's not a list OR it's a list with its last child event containing
      * an EventList = Complete.
      *
-     * @return boolean
+     * @return bool
      */
     public function isComplete(): bool
     {
@@ -118,7 +118,7 @@ class ResponseMessage extends IncomingMessage
     /**
      * Checks if the Response field has the word Error in it.
      *
-     * @return boolean
+     * @return bool
      */
     public function isSuccess(): bool
     {
@@ -130,7 +130,7 @@ class ResponseMessage extends IncomingMessage
      * word 'start' in it. Another way is to have a Message key, like:
      * Message: Result will follow
      *
-     * @return boolean
+     * @return bool
      */
     public function isList(): bool
     {
