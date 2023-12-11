@@ -27,6 +27,7 @@
  * limitations under the License.
  *
  */
+
 namespace PAMI\Message\Action;
 
 /**
@@ -46,7 +47,8 @@ class QueueStatusAction extends ActionMessage
     /**
      * Constructor.
      *
-     * @param string $queue The queue (optional).
+     * @param string|false $queue The queue (optional).
+     * @param string|false $member
      *
      * @return void
      */

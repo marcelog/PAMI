@@ -27,6 +27,7 @@
  * limitations under the License.
  *
  */
+
 namespace PAMI\Message\Action;
 
 /**
@@ -46,7 +47,8 @@ class DAHDIDialOffHookAction extends ActionMessage
     /**
      * Constructor.
      *
-     * @return void
+     * @param string $channel
+     * @param string $number
      */
     public function __construct($channel, $number)
     {

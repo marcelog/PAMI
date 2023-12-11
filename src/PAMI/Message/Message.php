@@ -26,6 +26,7 @@
  * limitations under the License.
  *
  */
+
 namespace PAMI\Message;
 
 /**
@@ -43,12 +44,13 @@ abstract class Message
 {
     /**
      * End Of Line means this token.
+     *
      * @var string
      */
     const EOL = "\r\n";
-
     /**
      * End Of Message means this token.
+     *
      * @var string
      */
     const EOM = "\r\n\r\n";
@@ -56,36 +58,40 @@ abstract class Message
     /**
      * Message content, line by line. This is what it gets sent
      * or received literally.
+     *
      * @var string[]
      */
-    protected $lines;
+    protected array $lines;
 
     /**
      * Metadata. Message variables (key/value).
+     *
      * @var string[]
      */
-    protected $variables;
+    protected array $variables;
 
     /**
      * Metadata. Message "keys" i.e: Action: login
-     * @var string[]
+     *
+     * @var array<string,string|int|bool>
      */
-    protected $keys;
+    protected array $keys;
 
     /**
      * Created date (unix timestamp).
+     *
      * @var integer
      */
-    protected $createdDate;
+    protected int $createdDate;
 
     /**
      * Serialize function.
      *
-     * @return string[]
+     * @return array<int,string>
      */
     public function __sleep()
     {
-        return array('lines', 'variables', 'keys', 'createdDate');
+        return ['lines', 'variables', 'keys', 'createdDate'];
     }
 
     /**
@@ -93,7 +99,7 @@ abstract class Message
      *
      * @return integer
      */
-    public function getCreatedDate()
+    public function getCreatedDate(): int
     {
         return $this->createdDate;
     }
@@ -102,11 +108,11 @@ abstract class Message
      * Adds a variable to this message.
      *
      * @param string $key   Variable name.
-     * @param string $value Variable value.
+     * @param mixed $value Variable value.
      *
      * @return void
      */
-    public function setVariable($key, $value)
+    public function setVariable(string $key, mixed $value): void
     {
         $this->variables[$key] = $value;
     }
@@ -116,28 +122,29 @@ abstract class Message
      *
      * @param string $key Variable name.
      *
-     * @return string
+     * @return mixed
      */
-    public function getVariable($key)
+    public function getVariable(string $key): mixed
     {
         if (!isset($this->variables[$key])) {
             return null;
         }
+
         return $this->variables[$key];
     }
 
     /**
      * Adds a variable to this message.
      *
-     * @param string $key   Key name (i.e: Action).
-     * @param string $value Key value.
+     * @param string          $key   Key name (i.e: Action).
+     * @param string|int|bool $value Key value.
      *
      * @return void
      */
-    protected function setKey($key, $value)
+    protected function setKey(string $key, string|int|bool $value): void
     {
-        $key = strtolower((string)$key);
-        $this->keys[$key] = (string)$value;
+        $key              = strtolower($key);
+        $this->keys[$key] = $value;
     }
 
     /**
@@ -145,23 +152,24 @@ abstract class Message
      *
      * @param string $key Key name (i.e: Action).
      *
-     * @return string
+     * @return string|int|bool|null
      */
-    public function getKey($key)
+    public function getKey(string $key): string|int|bool|null
     {
         $key = strtolower($key);
         if (!isset($this->keys[$key])) {
             return null;
         }
+
         return (string)$this->keys[$key];
     }
 
     /**
      * Returns all keys for this message.
      *
-     * @return string[]
+     * @return array<string,string>
      */
-    public function getKeys()
+    public function getKeys(): array
     {
         return $this->keys;
     }
@@ -169,9 +177,9 @@ abstract class Message
     /**
      * Returns all variabels for this message.
      *
-     * @return string[]
+     * @return array<string,mixed>
      */
-    public function getVariables()
+    public function getVariables(): array
     {
         return $this->variables;
     }
@@ -179,9 +187,11 @@ abstract class Message
     /**
      * Returns the end of message token appended to the end of a given message.
      *
+     * @param string $message
+     *
      * @return string
      */
-    protected function finishMessage($message)
+    protected function finishMessage(string $message): string
     {
         return $message . self::EOL . self::EOL;
     }
@@ -194,7 +204,7 @@ abstract class Message
      *
      * @return string
      */
-    private function serializeVariable($key, $value)
+    private function serializeVariable(string $key, string $value): string
     {
         return "Variable: $key=$value";
     }
@@ -205,9 +215,9 @@ abstract class Message
      *
      * @return string
      */
-    public function serialize()
+    public function serialize(): string
     {
-        $result = array();
+        $result = [];
         foreach ($this->getKeys() as $k => $v) {
             $result[] = $k . ': ' . $v;
         }
@@ -220,8 +230,8 @@ abstract class Message
                 $result[] = $this->serializeVariable($k, $v);
             }
         }
-        $mStr = $this->finishMessage(implode(self::EOL, $result));
-        return $mStr;
+
+        return $this->finishMessage(implode(self::EOL, $result));
     }
 
     /**
@@ -229,9 +239,9 @@ abstract class Message
      *
      * @return string
      */
-    public function getActionID()
+    public function getActionID(): string
     {
-        return $this->getKey('ActionID');
+        return $this->getKey('ActionID') ?? '';
     }
 
     /**
@@ -241,9 +251,9 @@ abstract class Message
      */
     public function __construct()
     {
-        $this->lines = array();
-        $this->variables = array();
-        $this->keys = array();
-        $this->createdDate = time();
+        $this->lines       = [];
+        $this->variables   = [];
+        $this->keys        = [];
+        $this->createdDate = getTime();
     }
 }

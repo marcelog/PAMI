@@ -43,6 +43,9 @@ namespace PAMI\Message\Action;
  */
 class UpdateConfigAction extends ActionMessage
 {
+    /**
+     * @var int
+     */
     protected static $counter = -1;
 
     /**
@@ -80,10 +83,10 @@ class UpdateConfigAction extends ActionMessage
         $this->setKey('DstFilename', $filename);
     }
 
-     /**
+    /**
      * Sets Reload key.
      *
-     * @param string $input.
+     * @param bool $reload
      *
      * @return void
      */
@@ -109,7 +112,7 @@ class UpdateConfigAction extends ActionMessage
     /**
      * Sets Cat-XXXXXX key.
      *
-     * @param string $cat.
+     * @param string|int $input
      *
      * @return void
      */
@@ -173,6 +176,6 @@ class UpdateConfigAction extends ActionMessage
      */
     protected function getPaddedCounter()
     {
-        return str_pad(UpdateConfigAction::$counter, 6, '0', STR_PAD_LEFT);
+        return str_pad((string)UpdateConfigAction::$counter, 6, '0', STR_PAD_LEFT);
     }
 }

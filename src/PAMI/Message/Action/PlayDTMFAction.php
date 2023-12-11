@@ -27,6 +27,7 @@
  * limitations under the License.
  *
  */
+
 namespace PAMI\Message\Action;
 
 /**
@@ -46,10 +47,8 @@ class PlayDTMFAction extends ActionMessage
     /**
      * Constructor.
      *
-     * @param string $user     AMI username.
-     * @param string $password AMI password.
-     *
-     * @return void
+     * @param string     $channel
+     * @param string|int $digit
      */
     public function __construct($channel, $digit)
     {

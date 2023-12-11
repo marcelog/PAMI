@@ -46,7 +46,7 @@ class QueueReloadAction extends ActionMessage
     /**
      * Constructor.
      *
-     * @param string  $queue      Queue name.
+     * @param string|false $queue Queue name.
      * @param boolean $members    Reload members.
      * @param boolean $rules      Reload rules.
      * @param boolean $parameters Reload parameters.

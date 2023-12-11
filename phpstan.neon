@@ -1,0 +1,11 @@
+includes:
+    - vendor/phpstan/phpstan-mockery/extension.neon
+
+parameters:
+    level: 6
+    checkMissingIterableValueType: true
+    ignoreErrors:
+    excludePaths:
+    paths:
+      - tests
+      - src

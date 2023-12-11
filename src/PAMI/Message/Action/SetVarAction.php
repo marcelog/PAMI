@@ -48,7 +48,7 @@ class SetVarAction extends ActionMessage
      *
      * @param string $name    Variable name.
      * @param string $value   Variable value.
-     * @param string $channel Optional channel name.
+     * @param string|bool $channel Optional channel name.
      *
      * @return void
      */

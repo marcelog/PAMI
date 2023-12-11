@@ -47,7 +47,7 @@ class UserEventAction extends ActionMessage
      * Constructor.
      *
      * @param string $userEvent UserEvent
-     * @param array $headers
+     * @param array<string,string> $headers
      */
     public function __construct($userEvent, array $headers = [])
     {

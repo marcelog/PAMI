@@ -46,7 +46,7 @@ class ReloadAction extends ActionMessage
     /**
      * Constructor.
      *
-     * @param string $module Optional module name.
+     * @param string|bool $module Optional module name.
      *
      * @return void
      */

@@ -27,6 +27,7 @@
  * limitations under the License.
  *
  */
+
 namespace PAMI\Message\Action;
 
 /**
@@ -46,7 +47,9 @@ class AGIAction extends ActionMessage
     /**
      * Constructor.
      *
-     * @return void
+     * @param string      $channel
+     * @param string      $command
+     * @param bool|String $commandId
      */
     public function __construct($channel, $command, $commandId = false)
     {

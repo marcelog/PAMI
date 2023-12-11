@@ -29,8 +29,6 @@
  */
 namespace PAMI\Message\Event;
 
-use PAMI\Message\Event\EventMessage;
-
 /**
  * Event triggered for a QueueMemberAdd action.
  *
@@ -98,7 +96,7 @@ class QueueMemberAddedEvent extends EventMessage
     /**
      * Returns key: 'Penalty'.
      *
-     * @return integer
+     * @return string
      */
     public function getPenalty()
     {
@@ -108,7 +106,7 @@ class QueueMemberAddedEvent extends EventMessage
     /**
      * Returns key: 'CallsTaken'.
      *
-     * @return integer
+     * @return string
      */
     public function getCallsTaken()
     {
@@ -118,7 +116,7 @@ class QueueMemberAddedEvent extends EventMessage
     /**
      * Returns key: 'LastCall'.
      *
-     * @return integer
+     * @return string
      */
     public function getLastCall()
     {
@@ -128,7 +126,7 @@ class QueueMemberAddedEvent extends EventMessage
     /**
      * Returns key: 'Status'.
      *
-     * @return integer
+     * @return string
      */
     public function getStatus()
     {

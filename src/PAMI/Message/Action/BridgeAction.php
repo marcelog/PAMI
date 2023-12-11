@@ -47,7 +47,7 @@ class BridgeAction extends ActionMessage
      * Constructor.
      *
      * @param string  $channel1 Channel1
-     * @param string  $channel1 Channel1
+     * @param string $channel2 Channel2
      * @param boolean $tone     Play courtesy tone to Channel2
      *
      * @return void

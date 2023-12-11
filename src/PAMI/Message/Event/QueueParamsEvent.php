@@ -29,8 +29,6 @@
  */
 namespace PAMI\Message\Event;
 
-use PAMI\Message\Event\EventMessage;
-
 /**
  * Event triggered for a QueueStatus action.
  *
@@ -128,7 +126,7 @@ class QueueParamsEvent extends EventMessage
     /**
      * Returns key: 'ServiceLevelPerf'.
      *
-     * @return float
+     * @return string
      */
     public function getServiceLevelPerf()
     {

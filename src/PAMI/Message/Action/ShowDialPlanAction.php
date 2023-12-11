@@ -46,8 +46,8 @@ class ShowDialPlanAction extends ActionMessage
     /**
      * Constructor.
      *
-     * @param string $context   Show a specific context (optional)
-     * @param string $extension Show a specific extension (optional)
+     * @param string|bool $context   Show a specific context (optional)
+     * @param string|bool $extension Show a specific extension (optional)
      *
      * @return void
      */

@@ -7,3 +7,5 @@ build
 docs/examples/quickstart/log.log
 resources/php.ini
 
+/.phpunit.result.cache
+/.phpunit.cache/

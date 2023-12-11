@@ -26,11 +26,13 @@
  * limitations under the License.
  *
  */
+
 namespace PAMI\Client;
 
-use PAMI\Message\OutgoingMessage;
 use Psr\Log\LoggerInterface;
-use Psr\Log\NullLogger;
+use PAMI\Message\OutgoingMessage;
+use PAMI\Listener\IEventListener;
+use PAMI\Message\Response\ResponseMessage;
 
 /**
  * Interface for an ami client.
@@ -49,8 +51,8 @@ interface IClient
     /**
      * Opens a tcp connection to ami.
      *
-     * @throws \PAMI\Client\Exception\ClientException
      * @return void
+     * @throws \PAMI\Client\Exception\ClientException
      */
     public function open();
 
@@ -65,16 +67,16 @@ interface IClient
 
     /**
      * Registers the given listener so it can receive events. Returns the generated
-     * id for this new listener. You can pass in a an IEventListener, a Closure,
+     * id for this new listener. You can pass in an IEventListener, a Closure,
      * and an array containing the object and name of the method to invoke. Can specify
      * an optional predicate to invoke before calling the callback.
      *
-     * @param mixed $listener
-     * @param Closure|null $predicate
+     * @param callable|IEventListener $listener
+     * @param callable|null           $predicate
      *
      * @return string
      */
-    public function registerEventListener($listener, $predicate = null);
+    public function registerEventListener(callable|IEventListener $listener, ?callable $predicate = null): string;
 
     /**
      * Unregisters an event listener.
@@ -83,32 +85,32 @@ interface IClient
      *
      * @return void
      */
-    public function unregisterEventListener($listenerId);
+    public function unregisterEventListener(string $listenerId): void;
 
     /**
      * Closes the connection to ami.
      *
      * @return void
      */
-    public function close();
+    public function close(): void;
 
     /**
      * Sends a message to ami.
      *
      * @param OutgoingMessage $message Message to send.
      *
-     * @see ClientImpl::send()
-     * @throws \PAMI\Client\Exception\ClientException
      * @return \PAMI\Message\Response\ResponseMessage
+     * @throws \PAMI\Client\Exception\ClientException
+     * @see ClientImpl::send()
      */
-    public function send(OutgoingMessage $message);
+    public function send(OutgoingMessage $message): ResponseMessage;
 
     /**
      * Sets the logger implementation.
      *
-     * @param Psr\Log\LoggerInterface $logger The PSR3-Logger
+     * @param \Psr\Log\LoggerInterface $logger The PSR3-Logger
      *
      * @return void
      */
-    public function setLogger(LoggerInterface $logger);
+    public function setLogger(LoggerInterface $logger): void;
 }

@@ -2,43 +2,64 @@
   "name": "level23/pami",
   "type": "library",
   "description": "Asterisk Manager Interface (AMI) client for PHP, event driven, object oriented",
-  "keywords": ["asterisk","ami","client","telephony","voip","event","action","manager","monitor"],
-  "homepage": "http://marcelog.github.com/PAMI",
+  "keywords": [
+    "asterisk",
+    "ami",
+    "client",
+    "telephony",
+    "voip",
+    "event",
+    "action",
+    "manager",
+    "monitor"
+  ],
+  "homepage": "https://github.com/level23/PAMI",
   "license": "Apache-2.0",
   "authors": [
     {
       "name": "Richard Stellingwerff",
       "email": "richard@level23.nl",
-      "homepage": "http://level23.github.com/",
+      "homepage": "https://level23.github.com/",
+      "role": "Maintainer"
+    },
+    {
+      "name": "Teye Heimans",
+      "email": "teye@level23.nl",
+      "homepage": "https://level23.github.com/",
       "role": "Maintainer"
     },
     {
       "name": "Marcelo Gornstein",
       "email": "marcelog@gmail.com",
-      "homepage": "http://marcelog.github.com/",
+      "homepage": "https://marcelog.github.com/",
       "role": "Developer"
     }
   ],
   "autoload": {
+    "files": [
+      "src/PAMI/Helpers/helpers.php"
+    ],
     "psr-4": {
       "PAMI\\": "src/PAMI"
     }
   },
+  "autoload-dev": {
+    "files": [
+      "src/PAMI/Helpers/helpers.php"
+    ],
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
   "require": {
-    "php": ">=7.4",
+    "php": "^8.2",
     "psr/log": ">= 1.0.0"
   },
   "require-dev": {
-    "phpunit/phpunit": "4.*",
-    "monolog/monolog": "1.*",
-    "squizlabs/php_codesniffer": "2.*",
-    "phpdocumentor/phpdocumentor": "2.*",
-    "phing/phing": "2.*",
-    "phpmd/phpmd": "2.*",
-    "satooshi/php-coveralls": "1.0.1",
-    "evert/phpdoc-md" : "~0.1.1",
-    "codeclimate/php-test-reporter": "dev-master",
-    "sebastian/phpcpd": "*",
-    "marcelog/pagi": "2.*"
+    "phpunit/phpunit": "10",
+    "monolog/monolog": "3.5.*",
+    "mockery/mockery": "^1.6",
+    "phpstan/phpstan": "^1.10",
+    "phpstan/phpstan-mockery": "^1.1"
   }
 }

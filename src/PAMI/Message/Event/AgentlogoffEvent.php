@@ -29,8 +29,6 @@
  */
 namespace PAMI\Message\Event;
 
-use PAMI\Message\Event\EventMessage;
-
 /**
  * Event triggered when an agent logs off.
  *
@@ -78,7 +76,7 @@ class AgentlogoffEvent extends EventMessage
     /**
      * Returns key: 'Logintime'.
      *
-     * @return integer
+     * @return string
      */
     public function getLogintime()
     {

@@ -26,6 +26,7 @@
  * limitations under the License.
  *
  */
+
 namespace PAMI\Message\Action;
 
 use PAMI\Message\OutgoingMessage;
@@ -55,7 +56,7 @@ abstract class ActionMessage extends OutgoingMessage
     {
         parent::__construct();
         $this->setKey('Action', $what);
-        $this->setKey('ActionID', microtime(true));
+        $this->setKey('ActionID', \getMicroTime());
     }
 
     /**
@@ -64,14 +65,14 @@ abstract class ActionMessage extends OutgoingMessage
      * The ActionID can be at most 69 characters long, according to
      * {@link https://issues.asterisk.org/jira/browse/14847 Asterisk Issue 14847}.
      *
-     * Therefore we'll throw an exception when the ActionID is too long.
+     * Therefore, we'll throw an exception when the ActionID is too long.
      *
-     * @param $actionID The Action ID to have this action known by
+     * @param string $actionID The Action ID to have this action known by
      *
      * @return void
-     * @throws PAMIException When the ActionID is more then 69 characters long
+     * @throws PAMIException When the ActionID is more than 69 characters long
      */
-    public function setActionID($actionID)
+    public function setActionID($actionID): void
     {
         if (0 == strlen($actionID)) {
             throw new PAMIException('ActionID cannot be empty.');

@@ -1,13 +1,5 @@
+[![Build](https://github.com/level23/PAMI/actions/workflows/build.yml/badge.svg)](https://github.com/level23/PAMI/actions/workflows/build.yml)
 [![License](https://poser.pugx.org/marcelog/PAMI/license)](https://packagist.org/packages/marcelog/PAMI)
-[![Latest Stable Version](https://poser.pugx.org/marcelog/PAMI/v/stable)](https://packagist.org/packages/marcelog/PAMI)
-[![Documentation Status](https://readthedocs.org/projects/pami/badge/?version=latest)](http://pami.readthedocs.org/en/latest/?badge=latest)
-
-[![Build Status](https://travis-ci.org/marcelog/PAMI.svg)](https://travis-ci.org/marcelog/PAMI)
-[![Coverage Status](https://coveralls.io/repos/marcelog/PAMI/badge.svg?branch=master&service=github)](https://coveralls.io/github/marcelog/PAMI?branch=master)
-[![Code Climate](https://codeclimate.com/github/marcelog/PAMI/badges/gpa.svg)](https://codeclimate.com/github/marcelog/PAMI)
-[![Issue Count](https://codeclimate.com/github/marcelog/PAMI/badges/issue_count.svg)](https://codeclimate.com/github/marcelog/PAMI)
-
-[![Click here to lend your support to: PAMI and make a donation at pledgie.com !](https://pledgie.com/campaigns/30944.png?skin_name=chrome' border='0')](https://pledgie.com/campaigns/30944)
 
 # Introduction
 
@@ -18,8 +10,8 @@ events, using an observer-listener pattern.
 The idea behind this, is to easily implement operator consoles, monitors, etc.
 either via SOA or ajax.
 
-A port for nodejs is available at: http://marcelog.github.com/Nami
-A port for erlang is available at: https://github.com/marcelog/erlami
+This package was forked and updated to the latest PHP standards. The original can be found here:
+[https://github.com/marcelog/PAMI](https://github.com/marcelog/PAMI)
 
 # Resources
 
@@ -28,16 +20,14 @@ A port for erlang is available at: https://github.com/marcelog/erlami
 
 # PHP Versions
 
-Note: PAMI Requires PHP 5.3+. PHP versions 5.3.9 and 5.3.10 WILL NOT WORK due
-to a bug introduced in stream_get_line() in 5.3.9. Please use 5.3.11+ or up
-to 5.3.8 (see README.PHP-5.3.9-and-5.3.10).
+This PAMI requires PHP 8.2 or higher.
 
 # Installing
 Add this library to your [Composer](https://packagist.org/) configuration. In
 composer.json:
 ```json
   "require": {
-    "marcelog/pami": "2.*"
+"level23/pami": "2.*"
   }
 ```
 
@@ -49,15 +39,15 @@ For an in-depth tutorial: http://marcelog.github.com/articles/pami_introduction_
 // Make sure you include the composer autoload.
 require __DIR__ . '/vendor/autoload.php';
 
-$options = array(
+$options = [
     'host' => '2.3.4.5',
     'scheme' => 'tcp://',
     'port' => 9999,
     'username' => 'asd',
     'secret' => 'asd',
     'connect_timeout' => 10,
-    'read_timeout' => 10
-);
+    'read_timeout' => 10,
+];
 $client = new \PAMI\Client\Impl\ClientImpl($options);
 
 // Registering a closure
@@ -316,7 +306,7 @@ vendor/bin/phing build
 ## Contributing
 To contribute:
  * Make sure you open a **concise** and **short** pull request.
- * Throw in any needed unit tests to accomodate the new code or the
+* Throw in any needed unit tests to accommodate the new code or the
  changes involved.
  * Run `phing` and make sure everything is ok before submitting the pull
  request (make phpmd and CodeSniffer happy, also make sure that phpDocumentor

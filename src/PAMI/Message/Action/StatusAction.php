@@ -46,7 +46,7 @@ class StatusAction extends ActionMessage
     /**
      * Constructor.
      *
-     * @param string $channel Channel to query (optional)
+     * @param string|bool $channel Channel to query (optional)
      *
      * @return void
      */

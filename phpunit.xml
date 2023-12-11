@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         backupGlobals="true"
+         bootstrap="./tests/Resources/bootstrap.php"
+         colors="true"
+         processIsolation="false"
+         stopOnError="true"
+         stopOnFailure="true"
+         stopOnIncomplete="true"
+         stopOnSkipped="true"
+         stopOnRisky="true"
+         timeoutForSmallTests="1"
+         timeoutForMediumTests="10"
+         timeoutForLargeTests="60"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.0/phpunit.xsd"
+         cacheDirectory=".phpunit.cache">
+    <coverage>
+        <include>
+            <directory suffix=".php">src</directory>
+        </include>
+        <exclude>
+            <directory suffix="Launcher.php">src/PAMI/Application</directory>
+            <directory suffix=".php">vendor</directory>
+        </exclude>
+    </coverage>
+    <testsuites>
+        <testsuite name="Tests">
+            <directory suffix="Test.php">tests/</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>
