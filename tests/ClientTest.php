@@ -3,7 +3,6 @@
 namespace Tests;
 
 use Mockery;
-use Exception;
 use PAMI\Stream\Stream;
 use PAMI\Client\IClient;
 use Mockery\MockInterface;
@@ -129,6 +128,17 @@ class ClientTest extends MockeryTestCase
 
     public function testCanConnectTimeout(): void
     {
+        $this->expectException(\ErrorException::class);
+        $this->expectExceptionMessage('Operation timed out');
+
+        set_error_handler(
+        /**
+         * @throws \ErrorException
+         */
+            function (int $errno, string $errstr, string $errfile, int $errline) {
+                throw new \ErrorException($errstr, $errno, 1, $errfile, $errline);
+            });
+
         $options = [
             'host'         => '2.3.4.5',
             'scheme'       => 'tcp://',
@@ -139,13 +149,14 @@ class ClientTest extends MockeryTestCase
             'read_timeout' => 10,
         ];
         $start   = time();
-        try {
-            $client = new ClientImpl($options);
-            $client->open();
-        } catch (Exception) {
-        }
+
+        $client = new ClientImpl($options);
+        $client->open();
+
         $length = time() - $start;
         $this->assertTrue($length >= 2 && $length <= 5);
+
+        restore_error_handler();
     }
 
     public function testCanDetectOtherPeer(): void

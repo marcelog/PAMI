@@ -52,6 +52,6 @@ abstract class EventMessage extends IncomingMessage
      */
     public function getName()
     {
-        return $this->getKey('Event');
+        return $this->getKey('Event') ?? '';
     }
 }

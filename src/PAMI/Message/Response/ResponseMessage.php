@@ -122,7 +122,7 @@ class ResponseMessage extends IncomingMessage
      */
     public function isSuccess(): bool
     {
-        return stristr($this->getKey('Response'), 'Error') === false;
+        return stristr($this->getKey('Response') ?? '', 'Error') === false;
     }
 
     /**
@@ -135,7 +135,7 @@ class ResponseMessage extends IncomingMessage
     public function isList(): bool
     {
         return
-            stristr($this->getKey('EventList'), 'start') !== false
+            stristr($this->getKey('EventList') ?? '', 'start') !== false
             || stristr($this->getMessage(), 'follow') !== false;
     }
 
